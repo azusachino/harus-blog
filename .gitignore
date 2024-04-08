@@ -1,0 +1,7 @@
+# macos dogshit
+._*
+.DS_Store
+
+# generated
+public/
+resources/

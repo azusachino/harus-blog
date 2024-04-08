@@ -1,0 +1,16 @@
+version: "3"
+
+tasks:
+  dev:
+    cmds:
+      - hugo server -D -d /tmp/mika
+  clean:
+    cmds:
+      - rm -rf /tmp/mika
+      - rm -rf resources
+  sync:
+    cmds:
+      - hugo -d /tmp/mika
+      - rsync -a -I --delete /tmp/mika/ 104.224.188.126:/usr/share/nginx/html/
+      - rm -rf /tmp/mika
+      - rm -rf ./resources

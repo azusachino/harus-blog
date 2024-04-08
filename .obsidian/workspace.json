@@ -1,0 +1,181 @@
+{
+  "main": {
+    "id": "f1ba20bbc5c6a3ef",
+    "type": "split",
+    "children": [
+      {
+        "id": "9f15264e53819c29",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "dbe3b91b24f469a3",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "728b2a9999559c32",
+    "type": "split",
+    "children": [
+      {
+        "id": "ab2f75c938c957d9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "20c66b079a1078fe",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "b685805444cae209",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "551721a23fbc6b92",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "33349a9212a29556",
+    "type": "split",
+    "children": [
+      {
+        "id": "96863d052b5e15df",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "45ddc9ae28bf9a77",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "6a57581adb2cec6a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "a8d0a261b4b158f4",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "66628020d8aa44b3",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "dbe3b91b24f469a3",
+  "lastOpenFiles": [
+    "content/post/2024/report/10.md",
+    "content/post/2024/report/12.md",
+    "static/images/2024/03/YosemiteFirefall.png",
+    "content/post/2024/report/09.md",
+    "content/post/2024/report/11.md",
+    "static/images/2024/03/LeapingSquirrel.png",
+    "public/book 2",
+    "public/archives 2",
+    "public/index 2.xml",
+    "public/book/2021/plato-and-platypus.jpg",
+    "public/book/2021/how-to-read-a-book.jpg",
+    "public/book/2021/amusing-ourselves-to-death.jpg",
+    "public/book/2022/ggs.jpg",
+    "public/book/2021",
+    "public/book/2022",
+    "public/book",
+    "public/images/avatar.jpg",
+    "public/images/2021/12/sif-main.jpg",
+    "public/images/2021/12/SalzburgKrampus.jpg",
+    "public/images/2021/12/SiberianSunset.jpg",
+    "public/images/2021/12",
+    "public/images/2021/06",
+    "public/images/2021/10",
+    "public/images/2021/09",
+    "content/post/2024/report/08.md",
+    "content/post/2024/report/07.md",
+    "content/post/2024/report/06.md",
+    "content/post/2024/report/05.md",
+    "content/post/2024/report/04.md",
+    "content/post/2024/report/03.md",
+    "content/post/2024/report/02.md",
+    "content/post/2024/report/01.md",
+    "content/post/2023/review-2023.md",
+    "content/post/2023/death-elixir.md",
+    "config/week-report-template.md",
+    "README.md",
+    "content/post/series/effective-cpp/02.构造与析构与赋值.md"
+  ]
+}
