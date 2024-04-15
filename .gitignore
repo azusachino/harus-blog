@@ -5,3 +5,7 @@
 # generated
 public/
 resources/
+jsconfig.json
+
+# env
+.env

@@ -1,9 +1,12 @@
 version: "3"
 
+dotenv:
+  - ".env"
+
 tasks:
   dev:
     cmds:
-      - hugo server -D -d /tmp/mika
+      - "hugo server -D --bind=${HOST_IP} --baseURL=http://${HOST_IP} --port=1313 -d /tmp/mika"
   clean:
     cmds:
       - rm -rf /tmp/mika
@@ -11,6 +14,6 @@ tasks:
   sync:
     cmds:
       - hugo -d /tmp/mika
-      - rsync -a -I --delete /tmp/mika/ 104.224.188.126:/usr/share/nginx/html/
+      - "rsync -a -I --delete /tmp/mika/ ${TARGET_IP}:/usr/share/nginx/html/"
       - rm -rf /tmp/mika
       - rm -rf ./resources
