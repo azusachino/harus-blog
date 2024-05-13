@@ -1,8 +1,8 @@
 ---
 title: CV
-description: The true self, or is it?
+description: True Persona
 date: 2022-12-31
-lastmod: 2023-04-22
+lastmod: 2024-04-30
 menu:
   main:
     weight: -50
@@ -10,39 +10,25 @@ menu:
       icon: user
 ---
 
-- **Name:** Yinchun Pang (Haru | ハル)
+- **Name:** Yinchun Pang (ホウイハル)
 - **Email:** <mailto>azusa146@gmail.com<mailto>
-- **Phone:** +86 13265423108 | GV +1 9255265365
+- **Phone:** +86 13265423108 | GV +1 9255265365 | +81 09018110554
 - **LinkedIn:** [azusachino](https://www.linkedin.com/in/azusachino/)
 - **Github:** [azusachino](https://github.com/azusachino)
 - **Birth:** 1996.09.09
-
-~~You may treat _azusachino_ as my online identity.~~
-
-## Summary
-
-Backend engineer with 5 years of experience in the development of scalable and reliable web applications (Java & Spring-Ecosystem). Also, I could use other programming languages to solve some specific problems, like Python is suitable to write http request tests, Golang is suitable to write cli-tools, Rust is suitable to write memory-safe services.
-
-Proven ability to work independently and as part of a team to deliver high-quality results. I'm very self-motivated.
-
-Strong problem-solving and analytical skills, and there are so many tools and resources which could help me solve problems faster.
+- **Education:** Changsha University of Science and Technology - Information Management and Information System (Bachelor) - 2014/09 -- 2018/06
 
 ## Skills
 
-- Programming Languages: Java(JNI), JavaScript, Python, Golang, Rust
-  - Java Frameworks: Spring Boot, Spring Cloud
+- Programming Languages: Java(JNI), Python, Golang, JavaScript, Rust
+  - Java Frameworks: Spring Boot, Spring Cloud, Netty
   - Misc Frameworks: gRPC, Mybatis-Plus
-- Databases: MySQL, Redis, ElasticSearch, Prometheus
-- DevOps: Git, Docker, Kubernetes
+- Databases: MySQL, Redis, ELK, Prometheus
+- Middlewares: Kafka, XXLJOB, Nacos
+- DevOps: AWS, Git, Podman, Kubernetes
 - IDEs: IDEA, VSCode, NeoVim
-- Familiar Environment: Windows, MacOS, Linux
-- Working Style: Agile Development
-
-## Education
-
-- School: Changsha University of Science and Technology
-- Major: Information Management and Information System (Bachelor)
-- Period: 2014/09 -- 2018/06
+- Language: Chinese(Native), English(Working Proficiency - IETLS 6.5), Japanese(Conversation Proficiency - N1)
+- Certification: [AWS SAP](https://www.credly.com/badges/5dd714e3-6476-4389-925e-6b61bfa668fd)
 
 ## Working Experiences
 

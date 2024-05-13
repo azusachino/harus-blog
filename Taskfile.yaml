@@ -4,6 +4,9 @@ dotenv:
   - ".env"
 
 tasks:
+  local:
+    cmds:
+      - "hugo server -D --port=1313 -d /tmp/mika"
   dev:
     cmds:
       - "hugo server -D --bind=${HOST_IP} --baseURL=http://${HOST_IP} --port=1313 -d /tmp/mika"
