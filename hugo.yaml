@@ -1,5 +1,6 @@
 baseurl: https://azusachino.icu
-languageCode: en-us
+# fix giscus loading error 20241118
+languageCode: en
 # theme: hugo-theme-stack
 paginate: 10
 title: idealistic daydreamer
