@@ -74,5 +74,5 @@ Finally, I ran, from CN to Japan. Even though, it's not such a big matter. It's 
    1. 3, 4th language (EXAM)
    2. Financial (Invest)
 4. Travel
-   1. Conenct with the nature
+   1. Connect with the nature
    2. Show gratitude to those true artifacts
