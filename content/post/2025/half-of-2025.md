@@ -1,5 +1,5 @@
 ---
-title: Review 2025
+title: Half of 2025
 created: 2025-01-01 21:00:00
 modified: 2025-01-01 21:00:00
 description: 
