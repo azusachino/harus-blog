@@ -30,6 +30,9 @@ module:
     min: "0.87.0"
 
 params:
+  mermaid:
+    enabled: true
+    theme: light
   mainSections:
     - post
   featuredImageField: image
@@ -138,7 +141,7 @@ menu:
         icon: brand-twitter
     - identifier: note
       name: Note
-      url: https://note.azusachino.icu
+      url: https://harus-note.notion.site/harusDocs-1737242dc8218043a2e0e2fca24a5cd5
       params:
         icon: link
 

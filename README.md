@@ -30,4 +30,4 @@ modified: 2024-01-09 15:21:47
 
 - `resources/_gen` is temp files, shall be clean after build
 - only one `hugo.yaml` or `config.yaml` could exist
-- check the `Taskfile.yaml`
+- check the justfile for build and deploy scripts

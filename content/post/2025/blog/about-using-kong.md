@@ -1,11 +1,11 @@
 ---
-title: My understanding on GC5
+title: how to use kong oss
 created: 2024-01-04 04:01:00
 modified: 2024-01-09 11:32:34
-description: everything is recyclable
+description: magic composition
 date: 2099-12-20
-slug: my-understanding-on-garbage-collection
-image: images/2024/04/KyrgyzstanRainbow.png
+slug: how-to-use-kong-oss
+image: images/2025/VeniceLagoon.png
 categories:
   - Learning
 tags:

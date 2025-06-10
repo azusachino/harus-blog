@@ -1,0 +1,159 @@
+<mxfile host="65bd71144e">
+    <diagram id="SfvmW1QNAGe2M4HsEfIN" name="aeron-overview">
+        <mxGraphModel dx="1273" dy="970" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="ZVmdalMy1DLUHb2ctJkb-1" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;aeron cluster node&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="170" y="170" width="520" height="330" as="geometry"/>
+                </mxCell>
+                <mxCell id="ZVmdalMy1DLUHb2ctJkb-2" value="Recorder" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="280" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ZVmdalMy1DLUHb2ctJkb-3" value="Archiving&lt;br&gt;MediaDriver&lt;br&gt;Conductor" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="340" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ZVmdalMy1DLUHb2ctJkb-4" value="Replayer" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="400" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ZVmdalMy1DLUHb2ctJkb-5" value="Sender" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="280" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ZVmdalMy1DLUHb2ctJkb-6" value="Driver&lt;br&gt;Conductor" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="340" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ZVmdalMy1DLUHb2ctJkb-7" value="Receiver" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="400" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ZVmdalMy1DLUHb2ctJkb-8" value="ConsensusModule&lt;br&gt;Agent&lt;br&gt;Conductor" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="340" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ZVmdalMy1DLUHb2ctJkb-9" value="MediaDriver" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="540" y="230" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ZVmdalMy1DLUHb2ctJkb-10" value="Archive" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="410" y="230" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ZVmdalMy1DLUHb2ctJkb-11" value="Cluster" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="270" y="230" width="60" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="YqZqFU1qMPw7I0OpoTMv" name="aeron-cluster">
+        <mxGraphModel dx="2927" dy="1731" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-1" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="-370" y="-110" width="520" height="330" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-2" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;aeron cluster node&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=top;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-1">
+                    <mxGeometry width="520" height="330" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-3" value="Recorder" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-1">
+                    <mxGeometry x="210" y="110" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-4" value="Archiving&lt;br&gt;MediaDriver&lt;br&gt;Conductor" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-1">
+                    <mxGeometry x="210" y="170" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-5" value="Replayer" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-1">
+                    <mxGeometry x="210" y="230" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-6" value="Sender" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-1">
+                    <mxGeometry x="350" y="110" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-7" value="Driver&lt;br&gt;Conductor" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-1">
+                    <mxGeometry x="350" y="170" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-8" value="Receiver" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-1">
+                    <mxGeometry x="350" y="230" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-9" value="ConsensusModule&lt;br&gt;Agent&lt;br&gt;Conductor" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-1">
+                    <mxGeometry x="70" y="170" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-10" value="MediaDriver" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-1">
+                    <mxGeometry x="370" y="60" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-11" value="Archive" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-1">
+                    <mxGeometry x="240" y="60" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-12" value="Cluster" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-1">
+                    <mxGeometry x="100" y="60" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-13" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="260" y="-120" width="520" height="330" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-14" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;aeron cluster node&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=top;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-13">
+                    <mxGeometry width="520" height="330" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-15" value="Recorder" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-13">
+                    <mxGeometry x="210" y="110" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-16" value="Archiving&lt;br&gt;MediaDriver&lt;br&gt;Conductor" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-13">
+                    <mxGeometry x="210" y="170" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-17" value="Replayer" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-13">
+                    <mxGeometry x="210" y="230" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-18" value="Sender" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-13">
+                    <mxGeometry x="350" y="110" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-19" value="Driver&lt;br&gt;Conductor" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-13">
+                    <mxGeometry x="350" y="170" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-20" value="Receiver" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-13">
+                    <mxGeometry x="350" y="230" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-21" value="ConsensusModule&lt;br&gt;Agent&lt;br&gt;Conductor" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-13">
+                    <mxGeometry x="70" y="170" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-22" value="MediaDriver" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-13">
+                    <mxGeometry x="370" y="60" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-23" value="Archive" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-13">
+                    <mxGeometry x="240" y="60" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-24" value="Cluster" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-13">
+                    <mxGeometry x="100" y="60" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-25" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="-120" y="-540" width="520" height="330" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-26" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;aeron cluster node&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;verticalAlign=top;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-25">
+                    <mxGeometry width="520" height="330" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-27" value="Recorder" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-25">
+                    <mxGeometry x="210" y="110" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-28" value="Archiving&lt;br&gt;MediaDriver&lt;br&gt;Conductor" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-25">
+                    <mxGeometry x="210" y="170" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-29" value="Replayer" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-25">
+                    <mxGeometry x="210" y="230" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-30" value="Sender" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-25">
+                    <mxGeometry x="350" y="110" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-31" value="Driver&lt;br&gt;Conductor" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-25">
+                    <mxGeometry x="350" y="170" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-32" value="Receiver" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-25">
+                    <mxGeometry x="350" y="230" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-33" value="ConsensusModule&lt;br&gt;Agent&lt;br&gt;Conductor" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-25">
+                    <mxGeometry x="70" y="170" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-34" value="MediaDriver" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-25">
+                    <mxGeometry x="370" y="60" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-35" value="Archive" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-25">
+                    <mxGeometry x="240" y="60" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="-F0Zjivs0Wm1btPe3z0l-36" value="Cluster" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="-F0Zjivs0Wm1btPe3z0l-25">
+                    <mxGeometry x="100" y="60" width="60" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
