@@ -9,3 +9,6 @@ jsconfig.json
 
 # env
 .env
+
+# build
+build/
