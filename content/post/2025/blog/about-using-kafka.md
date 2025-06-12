@@ -4,6 +4,7 @@ created: 2024-01-04 04:01:00
 modified: 2024-01-09 11:32:34
 description: an unease trip
 date: 2025-06-01
+status: released
 slug: what-i-know-about-kafka
 image: images/2025/MonaValePool.png
 categories:

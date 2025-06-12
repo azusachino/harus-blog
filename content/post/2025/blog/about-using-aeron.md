@@ -4,6 +4,7 @@ created: 2024-01-04 04:01:00
 modified: 2024-01-09 11:32:34
 description: consistency and persistency
 date: 2025-06-11
+status: released
 slug: aeron-knowledge-sharing
 image: images/2025/KelpOtter.png
 categories:

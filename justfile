@@ -1,7 +1,7 @@
 set dotenv-load := true
 
 local:
-  hugo server -D --bind "0.0.0.0" --port 23333 -d build
+  hugo server -D --bind "100.77.233.63" --port 23333 -d build
 
 deploy:
   hugo -d /tmp/mika
