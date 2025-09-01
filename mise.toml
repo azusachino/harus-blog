@@ -1,3 +1,8 @@
+[tools]
+go = "1.25"
+uv = "latest"
+bun = "latest"
+
 [env]
 '_'.file = ".env"
 
