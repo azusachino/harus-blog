@@ -109,9 +109,9 @@ By default, Aeron Transport creates files below the `/dev/shm` directory on Linu
   - cnc.dat
   - loss-report.dat
   - images
-    - $correlationId.logbuffer
+  - $correlationId.logbuffer
   - publications
-    - $correlationId.logbuffer
+  - $correlationId.logbuffer
 ```
 
 ## persistency -- archive
@@ -301,72 +301,72 @@ aeron cluster consensus module file structure.
 ```mermaid
 graph LR
     CMA["ConsensusModuleAgent<br/>(ConsensusModuleAgent.java)"]
-    
+
     %% Core Raft State
     CMA --> |"role, state, term"| RS["RaftState<br/>role: Cluster.Role<br/>state: ConsensusModule.State<br/>leadershipTermId: long<br/>logPosition: long"]
-    
+
     %% Election & Leadership
     CMA --> |"election"| EL["Election<br/>consensusModuleId: int<br/>leaderMember: ClusterMember<br/>candidateTermId: long<br/>isLeaderStartup: boolean"]
-    
+
     %% Log Replication
     CMA --> |"logReplication"| LR["LogReplication<br/>logPublisher: LogPublisher<br/>appendPosition: long<br/>followerCommitPosition: long<br/>replicationSessionId: long"]
-    
+
     %% Ingress/Egress
     CMA --> |"ingressAdapter"| CIA["ClusterIngressAdapter<br/>fragmentHandler: IngressFragmentHandler<br/>subscription: Subscription"]
     CMA --> |"egressPublisher"| CEP["EgressPublisher<br/>publication: ExclusivePublication<br/>sessionId: long<br/>streamId: int"]
-    
+
     %% Service Adapter
     CMA --> |"serviceAdapter"| SA["ServiceAdapter<br/>serviceControlPublisher: ServiceControlPublisher<br/>serviceControlSubscription: Subscription<br/>consensusModuleProxy: ConsensusModuleProxy"]
-    
+
     %% Archive Integration
     CMA --> |"logPublisher"| LP["LogPublisher<br/>publication: ExclusivePublication<br/>maxPayloadLength: int<br/>sessionId: long"]
     CMA --> |"logAdapter"| LA["LogAdapter<br/>subscription: Subscription<br/>fragmentHandler: FragmentHandler<br/>image: Image"]
-    
+
     %% Timer Management
     CMA --> |"timerService"| TS["TimerService<br/>wheel: TimerWheel<br/>timeUnit: TimeUnit<br/>resolution: long"]
-    
+
     %% Session Management
     CMA --> |"sessionByIdMap"| SBM["Int2ObjectHashMap<ClusterSession><br/>ClusterSession.state<br/>ClusterSession.lastCorrelationId<br/>ClusterSession.timeOfLastActivityNs"]
-    
+
     %% Pending Service Messages
     CMA --> |"pendingServiceMessages"| PSM["ArrayDeque<ServiceMessage><br/>ServiceMessage.buffer<br/>ServiceMessage.offset<br/>ServiceMessage.length"]
-    
+
     %% Cluster Members
     CMA --> |"clusterMembers"| CM["ClusterMember[]<br/>ClusterMember.id<br/>ClusterMember.clientFacingEndpoint<br/>ClusterMember.memberFacingEndpoint<br/>ClusterMember.logEndpoint<br/>ClusterMember.transferEndpoint<br/>ClusterMember.archiveEndpoint"]
-    
+
     %% Timers & Timeouts
     CMA --> |"timeouts"| TO["Timeouts<br/>electionTimeoutNs: long<br/>heartbeatTimeoutNs: long<br/>heartbeatIntervalNs: long<br/>leaderHeartbeatIntervalNs: long"]
-    
+
     %% Archive Context
     CMA --> |"archiveCtx"| AC["AeronArchive.Context<br/>controlRequestChannel: String<br/>controlRequestStreamId: int<br/>controlResponseChannel: String<br/>controlResponseStreamId: int<br/>recordingEventsChannel: String"]
-    
+
     %% Cluster Context
     CMA --> |"ctx"| CC["ConsensusModule.Context<br/>clusterId: int<br/>serviceCount: int<br/>appointedLeaderId: int<br/>memberEndpoints: String<br/>clusterDir: File<br/>archiveContext: AeronArchive.Context<br/>deleteDirOnStart: boolean"]
-    
+
     %% Mark File
     CMA --> |"markFile"| MF["ClusterMarkFile<br/>markFileDir: File<br/>clusterId: int<br/>memberId: int<br/>appointedLeaderId: int<br/>serviceId: int<br/>joinPosition: long"]
-    
+
     %% Aeron Instance
     CMA --> |"aeron"| AER["Aeron<br/>context: Aeron.Context<br/>clientLock: ReentrantLock<br/>isClientConductorFromDriver: boolean"]
-    
+
     %% Sequence Numbers & Positions
     RS --> |"maintains"| SEQ["Sequence Tracking<br/>expectedAckPosition: long<br/>serviceAckId: long<br/>terminationPosition: long<br/>logServiceSessionId: long<br/>logSubscriptionId: long"]
-    
+
     %% Election State
     EL --> |"tracks"| ES["Election State<br/>nominations: Int2IntCounterMap<br/>thisMemberPosition: long<br/>appendPosition: long<br/>catchupPosition: long"]
-    
+
     %% Log Replication Details
     LR --> |"manages"| LRD["Replication Details<br/>nextIndex: long[]<br/>matchIndex: long[]<br/>timeOfLastAppendPositionNs: long<br/>timeOfLastUpdateNs: long"]
-    
+
     %% Service Control
     SA --> |"controls"| SC["Service Control<br/>ackId: long<br/>serviceId: int<br/>logPosition: long<br/>leadershipTermId: long<br/>timestampNs: long"]
-    
+
     %% Timer Wheel
     TS --> |"uses"| TW["TimerWheel<br/>currentTick: long<br/>resolution: long<br/>wheel: TimerWheel.Timer[]<br/>timersPerWheel: int"]
-    
+
     %% Session State
     SBM --> |"contains"| SS["Session State<br/>id: long<br/>responseStreamId: int<br/>responseChannel: String<br/>encodedPrincipal: byte[]<br/>timeOfLastActivityNs: long<br/>correlationId: long"]
-    
+
     %% Member State
     CM --> |"tracks"| MS["Member State<br/>id: int<br/>clientFacingEndpoint: String<br/>memberFacingEndpoint: String<br/>logEndpoint: String<br/>transferEndpoint: String<br/>archiveEndpoint: String<br/>isLeader: boolean"]
 
@@ -378,7 +378,7 @@ graph LR
     classDef session fill:#fce4ec,stroke:#880e4f
     classDef timer fill:#f1f8e9,stroke:#33691e
     classDef context fill:#f9fbe7,stroke:#827717
-    
+
     class CMA agent
     class RS,EL,LR,ES,LRD raft
     class CIA,CEP,SA,SC communication

@@ -279,19 +279,19 @@ sequenceDiagram
     participant LogSegment
     participant TimeIndex
     participant LogCleaner
-    
+
     Note over Producer,LogCleaner: Message Production & Timestamp Recording
     Producer->>Broker: ProduceRequest(records with timestamps)
     Broker->>LogSegment: Append records
     LogSegment->>LogSegment: Track largest timestamp
     LogSegment->>TimeIndex: Update time index mapping
-    
+
     Note over Producer,LogCleaner: Retention Check Process
     LogCleaner->>LogSegment: Check segment for retention
     LogSegment->>LogSegment: Get largest timestamp in segment
     LogSegment->>LogCleaner: Return segment.largestTimestamp
     LogCleaner->>LogCleaner: Calculate: now - largestTimestamp
-    
+
     alt If age > log.retention.ms
         LogCleaner->>LogSegment: Mark for deletion
         LogSegment->>LogSegment: Delete segment files

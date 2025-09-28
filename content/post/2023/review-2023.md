@@ -1,5 +1,5 @@
 ---
-title: Review 2023
+title: review 2023
 created: 2022-09-01 21:25:57
 modified: 2022-12-28 21:14:40
 description: Escapist
@@ -7,10 +7,10 @@ date: 2024-01-04
 slug: review-2023
 image: images/2023/12/SantaPark.jpg
 categories:
-  - Review
+  - review
 tags:
-  - Life
-  - Review
+  - life
+  - review
 ---
 
 ## Keyword

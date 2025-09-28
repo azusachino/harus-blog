@@ -1,5 +1,5 @@
 ---
-title: Review 2024
+title: review 2024
 created: 2024-01-01 21:00:00
 modified: 2024-01-01 21:00:00
 description: 自由に描こう
@@ -7,10 +7,10 @@ date: 2024-12-10
 slug: review-2024
 image: images/2024/miku_fanart_board.jpeg
 categories:
-  - Review
+  - review
 tags:
-  - Life
-  - Review
+  - life
+  - review
 ---
 
 ## Keyword

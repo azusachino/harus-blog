@@ -52,7 +52,7 @@ RollingFileAppender主要负责处理文件和滚动逻辑。
 ROOT 是所有 Logger 的 parent，初始化时就会生成好。
 
 ```java
-public class LoggerContext extends ContextBase implements ILoggerFactory, LifeCycle {
+public class LoggerContext extends ContextBase implements ILoggerFactory, lifeCycle {
   // ROOT Logger, initialized at construction
   final Logger root;
   // local logger storage

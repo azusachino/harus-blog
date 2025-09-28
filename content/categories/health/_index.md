@@ -1,6 +1,6 @@
 ---
-title: Health
-description: 健康相关主题
+title: health
+description: to live healthily
 slug: health
 image: DolbadarnCastle.jpg
 style:

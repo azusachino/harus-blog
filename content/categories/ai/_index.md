@@ -1,7 +1,7 @@
 ---
-title: ChatGPT
+title: ai
 description: Automated Learning
-slug: gpt
+slug: ai
 image: miku_duo.jpg
 style:
   background: "#ffd36a"

@@ -41,7 +41,7 @@ params:
 
   footer:
     since: 2021
-    customText: The older I get, the more I realize that most of life is a matter of what we pay attention to, of what we attend to [with focus].
+    customText: the world you live in and the world you see, you must find the charming point.
 
   dateFormat:
     published: Jan 02, 2006
@@ -49,11 +49,11 @@ params:
 
   sidebar:
     emoji: 🎨
-    subtitle: Palette gives you the ability, but you're the possibility.
+    subtitle: palette gives you the capability, but you're the source of possibility.
     avatar:
       enabled: true
       local: true
-      src: images/nahida.png
+      src: images/icon.png
 
   article:
     math: true
@@ -143,7 +143,12 @@ menu:
       name: Note
       url: https://harus-note.notion.site/harusDocs-1737242dc8218043a2e0e2fca24a5cd5
       params:
-        icon: link
+        icon: infinity
+    - identifier: running-page
+      name: running-page
+      url: https://run.azusachino.icu
+      params:
+        icon: hash
 
 related:
   includeNewer: true

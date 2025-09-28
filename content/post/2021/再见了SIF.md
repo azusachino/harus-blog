@@ -4,8 +4,8 @@ description: 青春的一页
 date: 2021-12-27
 slug: goodbye-sif
 image: images/2021/12/sif-main.jpg
-categories: [Life]
-tags: [Life, Game]
+categories: [life]
+tags: [life, Game]
 ---
 
 **每天早上签到打歌的日子，大概就这样一去不复返了。**

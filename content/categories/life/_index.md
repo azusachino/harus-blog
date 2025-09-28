@@ -1,6 +1,6 @@
 ---
-title: Life
-description: 生活相关主题
+title: life
+description: to live
 slug: life
 image: PingganVillage.jpg
 style:

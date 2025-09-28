@@ -33,7 +33,7 @@ menu:
 - Learning (Code, Foreign Language, Piano, Drawing for now)
 - Exercise
 
-## Life long rules
+## life long rules
 
 The sum of behavior is to retain a man's own dignity without intruding upon others' liberty.
 

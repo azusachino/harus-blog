@@ -1,6 +1,6 @@
 ---
-title: Thought
-description: 碎碎念
+title: thought
+description: to put in words
 slug: thought
 image: HohenzollernBurg.jpg
 style:

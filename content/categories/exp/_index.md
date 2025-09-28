@@ -1,6 +1,6 @@
 ---
-title: Exp
-description: 工作中的经验教训
+title: exp
+description: all round of experience
 slug: exp
 image: LakePukaki.jpg
 style:

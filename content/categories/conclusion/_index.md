@@ -1,5 +1,5 @@
 ---
-title: Conclusion
+title: conclusion
 description: 学习总结
 slug: conclusion
 image: HallwylfjelletSunset.jpg

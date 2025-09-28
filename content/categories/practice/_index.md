@@ -1,6 +1,6 @@
 ---
-title: Practice
-description: 尝试做的一些事情
+title: practice
+description: random stuff
 slug: practice
 image: Cahuita.jpg
 style:

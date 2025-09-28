@@ -1,6 +1,6 @@
 ---
-title: Book
-description: 书籍推荐
+title: book
+description: book reding & sharing
 slug: book
 image: BulgariaPerseids.jpg
 style:

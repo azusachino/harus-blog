@@ -1,13 +1,13 @@
 ---
-title: Review 2022
+title: review 2022
 created: 2022-09-01 21:25:57
 modified: 2022-12-28 21:14:40
 description: One Step Forward, Two Steps Back
 date: 2022-12-28
 slug: review-2022
 image: images/2022/12/SMC and the Magellanic Bridge.png
-categories: [Review]
-tags: [Life, Review]
+categories: [review]
+tags: [life, review]
 ---
 
 情けない
