@@ -1,5 +1,5 @@
 module github.com/azusachino/harus-blog
 
-go 1.24
+go 1.25
 
-require github.com/CaiJimmy/hugo-theme-stack/v3 v3.31.0
+require github.com/CaiJimmy/hugo-theme-stack/v3 v3.32.0
