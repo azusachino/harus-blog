@@ -8,8 +8,8 @@ categories:
   - life
 tags:
   - life
-create_time: 2025-09-26 12:07
-modify_time: 2025-10-04 23:58
+created: 2025-09-26 12:07
+modified: 2025-10-04 23:58
 ---
 
 Rella 先生、wowaka さん、 ヒトリエの皆さん、指揮の栗田さん、東京りぃルハーモニー交响楽団の皆さんに感謝の気持ちを送ります、ありがとうございました。

@@ -9,8 +9,8 @@ categories:
 tags:
   - book
   - philosophy
-create_time: 2025-10-06 23:43
-modify_time: 2025-10-06 23:58
+created: 2025-10-06 23:43
+modified: 2025-10-06 23:58
 ---
 
 **Stoicism 是 privilege 的产物**
