@@ -1,0 +1,58 @@
+---
+title: week report 2024.04
+date: 2024-01-28
+description: enjoy today's life
+categories:
+- Weekly
+tags:
+- life
+- week-report
+slug: week-report-2024-04
+comments: true
+---
+
+![](/assets/images/2024/01/PlitviceWinter.png){ .post-cover }
+
+<!-- more -->
+
+## Entertainment
+
+### YOASOBI Haneda Zepp Live
+
+First and best live ever.
+
+![.](/assets/images/2024/01/yoasobi-zepp-haneda.png)
+
+## Learning
+
+nothing, I think
+
+## life
+
+- bought a new iPhone to replace current se2
+- after finish AWS courses, I didn't know what's next
+- weekends? wasting time on Dota2 games, didn't feel like doing anything
+
+## Sharing
+
+### K8S Lessons
+
+1. use Kubernetes in the clouds
+2. deploy your entire Kubernetes-related infrastructure with code
+3. avoid overusing helm charts that you don't fully control
+4. Kubernetes doesn't like lift and shift
+   1. you have to update the apps to be cloud-compatible
+5. avoid multiplying tools
+6. you must always define resource limits allocated to your pods
+7. think stateless
+8. configure HPA - Horizontal Pod Autoscaler
+9. don't be afraid of change
+
+## References
+
+- https://github.com/gunnarmorling/1brc/discussions/57
+  - sort 1 billion records in a file (by using the fastest method)
+  - mmap whole file, split it into slices (one per core), collect partial results and merge.
+- https://blog.robertelder.org/how-to-make-a-cpu/
+  - image based, how to make a CPU
+- https://hervekhg.medium.com/3-years-managing-kubernetes-clusters-my-10-lessons-b565a5509f0e

@@ -12,3 +12,10 @@ jsconfig.json
 
 # build
 build/
+site/
+
+# python / mkdocs
+.venv/
+__pycache__/
+*.pyc
+.cache/

@@ -1,0 +1,49 @@
+---
+title: week report 2023.35
+date: 2023-09-03
+description: 遺憾
+categories:
+- Weekly
+tags:
+- life
+- week-report
+slug: week-report-2023-35
+comments: true
+---
+
+![](/assets/images/2023/09/ManhattanAerial.jpg){ .post-cover }
+
+<!-- more -->
+
+好きな物に、好きって言いたい。
+
+## Entertainment
+
+### マジカルミライ 2023 企画展
+
+ライブのティケットないのため、展覧会に行って見た。幕張メッセで、ミクいっぱいあります。
+
+![1](/assets/images/2023/09/photo_2023-09-04_11-20-58.jpg)
+![2](/assets/images/2023/09/photo_2023-09-04_11-21-07.jpg)
+![3](/assets/images/2023/09/photo_2023-09-04_11-21-12.jpg)
+![4](/assets/images/2023/09/photo_2023-09-04_11-21-19.jpg)
+![5](/assets/images/2023/09/photo_2023-09-04_11-21-30.jpg)
+![6](/assets/images/2023/09/photo_2023-09-04_11-21-25.jpg)
+
+## Learning
+
+批判性思考に関する話題をちょっとみった。
+
+## life
+
+- 大岳山登りました、あまり疲れていないです、音ゲーより（
+- 泳ぐのは下手くそすぎます
+- ミク入りの箱ごとやるのはちょっと怖いです
+
+## Thought
+
+生活に滲むより、やはり自分のルールを従う方がいいです。
+
+## Quotation
+
+> 事实上，有很多文献，比如美国的《宪法》，都是有意要显得模棱两可，这样这份文献才能与时俱进，其中的关键词如“自由”“携带武器”的不同含义才能适应不断发展的现实需求。
