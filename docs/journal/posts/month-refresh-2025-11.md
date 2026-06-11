@@ -73,7 +73,8 @@ adapt, and be adept.
 
 we are human capital, and the education is the only short-cut to "success" (having more value than others)?
 
-```ad-warning
+---
+
 **Weiss's most devastating analysis**: Education as investment
 
 **The promise**:
@@ -90,4 +91,6 @@ we are human capital, and the education is the only short-cut to "success" (havi
 - Bachelor's → Master's → PhD → certificates → lifelong learning
 - Treadmill speeds up, never reaches destination
 - Student debt = mortgage on your future self
-```
+
+---
+

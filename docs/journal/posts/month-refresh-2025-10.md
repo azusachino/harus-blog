@@ -321,7 +321,8 @@ from a pragmatism perspective, life is "Cut through the noise. Focus on what mat
 - 如何从根本上消除这种让人必须在生命之间做选择的社会条件?
 ```
 
-```ad-quote
+---
+
 @ https://weread.qq.com/review-detail?reviewid=323501160_82P7Kh6lN
 
 “被全然理解”的需求究竟是亲密关系里的必需品，还是我们在成长过程中，被不断灌输和强化的幻想？
@@ -351,19 +352,21 @@ Janice A. Radway 认为，小说中的男性角色，“并非只是一个爱人
 我们期待被理解和看见，但如果自己的情感价值只能依赖外部认可来获得验证，那么这种需求很难获得真正的满足。
 
 但人与人之间的关系像是潮水，时远时近，偶尔交汇，有时错过。而真正决定一段关系的，往往不是能否彻底理解彼此，而是愿不愿意在不理解的时刻，依然选择向对方靠近。
-```
 
-```ad-quote
+---
+
 羡慕是事 嫉妒是人
-```
 
-```ad-quote
+---
+
 “历史并不是被讲述出来的故事，而是被压制后留下的沉默。”
 \- 米歇尔 福柯
 
 - 历史上沉默的大多数（比如农民、奴隶、妇女、底层劳工）往往是**被书写者**，而不是**书写者**。
 - 他们的命运、经验、苦难、思想很少成为被尊重的“知识”或“历史”。
-```
+
+---
+
 
 1. **历史不是公正的，而是权力的产物**；
 2. **记忆是一种斗争：不是每个人都有资格被记住**；
@@ -371,10 +374,13 @@ Janice A. Radway 认为，小说中的男性角色，“并非只是一个爱人
 4. **如果你不掌握语言与记录的工具，你的存在就不算数**；
 5. **真正的“历史正义”是让沉默者说话。**
 
-```ad-quote
+---
+
 “Wanting more information is often just a form of procrastination.”
 —Russ Roberts
-```
+
+---
+
 
 > [!quote]
 > The idea that your actions need validation from future generations is itself a kind of weakness - seeking eternal meaning because you can't create your own.
