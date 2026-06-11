@@ -50,7 +50,7 @@ The countryside life was great, but I have to remind myself that it isn't real l
 
 ---
 
-title: 量化绞杀
+**量化绞杀**
 
 - 一分钟杀猪（虚假挂单）：利用开盘前的撮合机制虚假挂单诱多，在最后一秒撤单并反手融券砸盘，让散户由于 T+1 规则被套 [02:50]。
 - 定向爆破心理防线：通过大数据计算出散户密集止损位，利用集中抛售瞬间击穿，触发散户自动割肉后再低位接回 [03:56]。
