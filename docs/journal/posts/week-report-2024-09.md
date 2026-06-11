@@ -1,0 +1,79 @@
+---
+title: week report 2024.09
+date: 2024-03-03
+description: the frustration
+categories:
+- Weekly
+tags:
+- life
+- week-report
+slug: week-report-2024-09
+comments: true
+---
+
+![](/assets/images/2024/03/PeakDistrictNP.png){ .post-cover }
+
+<!-- more -->
+
+It's just not like what you think. refers to SAP problems and those materials I use to prepare.
+
+## Entertainment
+
+maybe some dota game montages.
+
+## Learning
+
+### SAP
+
+What a Megalovania, who thinks he could challenge SAP without even know every aspects of AWS services?
+
+## life
+
+- It's kinda my first time to witness so many prod-disruptions under one week
+- It's critical important to be aware of collective interests
+- First 10km in 2024, feels good, huh
+- Concentration is the must to GTD
+
+## Sharing
+
+The Pygmalion Effect is when one’s behavior, performance, and expectations about what they can accomplish is dyed with the colors and pigments of the thoughts, feedback, and expectations of those around them.
+
+> We don't inherit the earth from our ancestors, we borrow it from our children.
+
+### how to find places for optimizations
+
+Generally, you need to have good introspection for your application and always profile your application, both in production and during development. You also need to be curious to explore every possible performance optimization opportunity. Even highly optimized places in your application can be optimized even further.
+
+#### source code level optimizations
+
+- avoid memory copying
+- avoid unnecessary allocations
+- change data layout to reduce memory usage and improve cache locality
+- use manual SIMD instructions or manual loop unrolling
+
+### how to learning from other people
+
+- pick one or two people who have achieved success in the area you want to learn more about
+- observe and take notes on what they do
+- ask yourself: "how might I replicate what this person is doing"
+- make an effort to try out what you observe
+- share your observations with others
+
+### lessons from scaling Pinterest
+
+- use known, proven technologies
+- keep it simple
+- don't get too creative
+- limit your options
+- sharding databases > cluster
+
+## References
+
+- https://cep.dev/posts/every-infrastructure-decision-i-endorse-or-regret-after-4-years-running-infrastructure-at-a-startup/
+  - for a startup, what to endorse, what to desert, when talking about infrastructure
+- https://maksimkita.com/blog/power-of-small-optimizations.html
+  - how to find the places for optimization and just do them
+- https://dariusforoux.com/learn-from-people/
+  - learn from people
+- https://read.engineerscodex.com/p/how-pinterest-scaled-to-11-million
+  - scaling

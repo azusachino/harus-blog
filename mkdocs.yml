@@ -1,0 +1,168 @@
+site_name: Idealistic Daydreamer
+site_url: https://azusachino.icu
+site_author: haru
+site_description: palette gives you the capability, but you're the source of possibility.
+
+validation:
+  links:
+    absolute_links: ignore
+    unrecognized_links: ignore
+    anchors: ignore
+copyright: >-
+  the world you live in and the world you see, you must find the charming point.
+
+theme:
+  name: material
+  custom_dir: overrides
+  language: en
+  favicon: assets/images/favicon.ico
+  icon:
+    logo: material/palette
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - content.code.copy
+    - content.code.annotate
+    - toc.follow
+    - search.suggest
+    - search.highlight
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: light blue
+      accent: light blue
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: light blue
+      accent: light blue
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+extra_css:
+  - assets/extra.css
+
+extra_javascript:
+  - assets/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/azusachino
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/azusachino
+    - icon: fontawesome/solid/infinity
+      link: https://harus-note.notion.site/harusDocs-1737242dc8218043a2e0e2fca24a5cd5
+    - icon: fontawesome/solid/person-running
+      link: https://azusachino.github.io/running_page/
+  analytics:
+    provider: google
+    property: G-59FEKVM9G5
+
+hooks:
+  - hooks/shortcodes.py
+
+plugins:
+  - search
+  - tags
+  - blog:
+      blog_dir: tech
+      blog_toc: true
+      archive: false
+      draft_if_future_date: true
+      post_url_format: "{slug}"
+  - blog:
+      blog_dir: journal
+      blog_toc: true
+      archive: false
+      draft_if_future_date: true
+      categories: false
+      post_url_format: "{slug}"
+
+markdown_extensions:
+  - toc:
+      permalink: true
+      toc_depth: 4
+  - admonition
+  - footnotes
+  - attr_list
+  - md_in_html
+  - tables
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+nav:
+  - Home: index.md
+  - Tech:
+      - tech/index.md
+      - Series:
+          - effective-cpp:
+              - tech/series/effective-cpp/01.习惯CPP.md
+              - tech/series/effective-cpp/02.构造与析构与赋值.md
+              - tech/series/effective-cpp/03.资源管理.md
+              - tech/series/effective-cpp/04.设计与声明.md
+              - tech/series/effective-cpp/05.实现.md
+              - tech/series/effective-cpp/06.模板与泛型编程.md
+              - tech/series/effective-cpp/07.创建与销毁.md
+              - tech/series/effective-cpp/08.继承与面向对象.md
+          - more-effective-cpp:
+              - tech/series/more-effective-cpp/01.基础内容.md
+              - tech/series/more-effective-cpp/02.操作符.md
+          - k8s:
+              - tech/series/k8s/01.初见.md
+              - tech/series/k8s/02.概览.md
+              - tech/series/k8s/03.架构.md
+          - network:
+              - tech/series/network/01.浏览器与HTTP.md
+              - tech/series/network/02.TCP.md
+              - tech/series/network/03.IP与以太网.md
+              - tech/series/network/04.互联网.md
+              - tech/series/network/05.网络设备.md
+  - Journal:
+      - journal/index.md
+  - Reviews:
+      - reviews/index.md
+      - 2026 review: reviews/2026-review.md
+      - 2025 review: reviews/2025-review.md
+      - review 2024: reviews/review-2024.md
+      - review 2023: reviews/review-2023.md
+      - review 2022: reviews/review-2022.md
+      - 2022 年中总结: reviews/2022-middle-term.md
+      - review 2021: reviews/review-2021.md
+  - Life:
+      - life/index.md
+      - the limitation of stoicism: life/the limitation of stoicism.md
+      - 初音ミクシンフォニー2025: life/miku-symphony-2025.md
+      - ヨルシカ 盗作再演: life/yorushika-live-2025-09-30.md
+      - 枪炮病菌与钢铁: life/gun-germ-steel.md
+      - 再见了, SIF: life/goodbye-sif.md
+      - 娱乐至死: life/amusing-ourselves-to-death.md
+      - 如何阅读一本书: life/how-to-read-a-book.md
+      - 柏拉图和鸭嘴兽一起去酒吧: life/plato-and-platypus.md
+  - About: about.md
+  - CV: cv.md

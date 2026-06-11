@@ -1,33 +1,33 @@
----
-title: Idealistic Daydreamer
-created: 2023-08-21 09:58:23
-modified: 2024-01-09 15:21:47
----
+# Idealistic Daydreamer
 
-## 保持初心
+> 假如我最终无法继续战斗下去，假如我放弃了，我堕落了，那么我就比那些从未战斗过的人更为恶劣。
 
-假如我最终无法继续战斗下去，假如我放弃了，我堕落了，那么我就比那些从未战斗过的人更为恶劣。
+Personal blog, built with [MkDocs](https://www.mkdocs.org/) + [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/).
 
-## short codes
+## Layout
 
-### PPT
+Content lives in `docs/`, split into type-based tabs (no year-wise layout):
 
-`{{< ppt src="">}}`
+- **Tech** — `docs/tech/` (blog) + `docs/tech/series/` (ordered tutorials)
+- **Journal** — `docs/journal/` (weekly reports + monthly refresh)
+- **Reviews** — `docs/reviews/` (yearly reviews, flat nav)
+- **Life** — `docs/life/` (life / books / thoughts, flat nav)
 
-### BILIBILI
+Images live under `docs/assets/images/` and `docs/assets/book/`.
 
-`{{< bilibili BV1Ab4y117G2 >}}`
+## Tasks
 
-### YTB
+Tooling is managed by `mise` (runtimes) + `uv` (Python deps); `make` is the task runner:
 
-`{{< youtube Fm4oT4QJbWs >}}`
+```bash
+make local     # serve with live reload at :1313
+make build     # build the static site (strict)
+make migrate   # regenerate docs/ from legacy Hugo content (one-shot, see scripts/migrate.py)
+make format    # prettier
+```
 
-### DOUBAN
+## Notes
 
-`{{< douban src="直接放网址如：https://book.douban.com/subject/20394150/" >}}`
-
-## Other
-
-- `resources/_gen` is temp files, shall be clean after build
-- only one `hugo.yaml` or `config.yaml` could exist
-- check the justfile for build and deploy scripts
+- Comments: Giscus, configured in `overrides/partials/comments.html`.
+- Legacy Hugo shortcodes (`youtube`/`bilibili`/`douban`/`ppt`) still render via `hooks/shortcodes.py`.
+- Posts dated in the future are treated as drafts (`draft_if_future_date`).
