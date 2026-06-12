@@ -1,5 +1,5 @@
 ---
-title: month refresh 2023.08
+title: Monthly Refresh 2023.08
 date: 2023-08-31
 description: 新常态?
 categories:

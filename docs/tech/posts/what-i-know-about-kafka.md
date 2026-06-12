@@ -1,5 +1,5 @@
 ---
-title: What I know about kafka
+title: "Inside Kafka: Architecture and Replica Management"
 date: 2025-06-01
 description: an unease trip
 categories:
@@ -113,7 +113,7 @@ How did partitions get handled? there are two critical components: ReplicaManage
 - handles log appends, fetches, truncations, and high watermark management
 - coordinates with fetcher threads for replication from leaders to followers
   - `ReplicaFetcherManager`
-- manages ISRs (in sync replica) set and triggerrs actions when replicas fall out of sync
+- manages ISRs (in sync replica) set and triggers actions when replicas fall out of sync
   - startup() --> `scheduler.schedule("isr-expiration", () => maybeShrinkIsr(), 0L, config.replicaLagTimeMaxMs / 2)`
 - handles partition leadership changes (role change) as directed by the controller
   - `becomeLeaderOrFollower`

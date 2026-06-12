@@ -1,5 +1,5 @@
 ---
-title: week report 2024.17
+title: Weekly Report 2024.17
 date: 2024-04-28
 description: what is real life?
 categories:

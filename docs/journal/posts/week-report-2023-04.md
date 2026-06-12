@@ -1,5 +1,5 @@
 ---
-title: week report 2023.04
+title: Weekly Report 2023.04
 date: 2023-01-29
 description: 真理掌握在自己手里
 categories:

@@ -1,5 +1,5 @@
 ---
-title: month refresh 2026.02
+title: Monthly Refresh 2026.02
 date: 2026-03-01
 description: swift blink
 categories:

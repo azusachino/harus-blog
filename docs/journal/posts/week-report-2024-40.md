@@ -1,5 +1,5 @@
 ---
-title: week report 2024.40
+title: Weekly Report 2024.40
 date: 2024-10-06
 description: now, what trick will make you fall into
 categories:

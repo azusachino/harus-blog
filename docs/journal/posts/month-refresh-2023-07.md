@@ -1,5 +1,5 @@
 ---
-title: month refresh 2023.07
+title: Monthly Refresh 2023.07
 date: 2023-07-31
 description: What a Dilemma
 categories:

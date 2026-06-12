@@ -1,5 +1,5 @@
 ---
-title: week report 2024.52
+title: Weekly Report 2024.52
 date: 2024-12-29
 description: last week of 2024
 categories:

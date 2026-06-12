@@ -1,5 +1,5 @@
 ---
-title: week report 2022.05
+title: Weekly Report 2022.05
 date: 2022-01-30
 description: 不能过于信任自己的记忆力
 categories:

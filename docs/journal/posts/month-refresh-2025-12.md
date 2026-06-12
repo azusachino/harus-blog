@@ -1,5 +1,5 @@
 ---
-title: month refresh 2025.12
+title: Monthly Refresh 2025.12
 date: 2025-12-31
 description: timeless
 categories:

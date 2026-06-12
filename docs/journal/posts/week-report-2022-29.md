@@ -1,5 +1,5 @@
 ---
-title: week report 2022.29
+title: Weekly Report 2022.29
 date: 2022-07-17
 description: Absurdity
 categories:

@@ -1,5 +1,5 @@
 ---
-title: week report 2023.30
+title: Weekly Report 2023.30
 date: 2023-07-30
 description: 何来的道貌岸然
 categories:

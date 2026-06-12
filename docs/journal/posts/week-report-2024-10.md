@@ -1,5 +1,5 @@
 ---
-title: week report 2024.10
+title: Weekly Report 2024.10
 date: 2024-03-10
 description: when non-sense becomes the main stream
 categories:

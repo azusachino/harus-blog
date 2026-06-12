@@ -1,5 +1,5 @@
 ---
-title: 了解 Docker, Containerd, RunC
+title: "Docker, containerd, and runC: How They Fit Together"
 date: 2021-12-26
 description: 自顶向下
 categories:
@@ -15,7 +15,7 @@ comments: true
 
 <!-- more -->
 
-From the graph below, I think everyone could gain a good understanding about container-relate stuffs. Thanks tutorial works, please check reference.
+From the graph below, I think everyone could gain a good understanding about container-related stuffs. Thanks tutorial works, please check reference.
 
 ![ ](/assets/images/2021/12/docker-relation.jpg)
 

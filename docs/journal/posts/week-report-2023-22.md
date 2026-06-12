@@ -1,5 +1,5 @@
 ---
-title: week report 2023.22
+title: Weekly Report 2023.22
 date: 2023-06-04
 description: 我有选择吗?
 categories:

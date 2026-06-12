@@ -1,5 +1,5 @@
 ---
-title: week report 2023.07
+title: Weekly Report 2023.07
 date: 2023-02-19
 description: No life, No Game
 categories:

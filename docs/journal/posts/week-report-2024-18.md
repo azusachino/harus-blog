@@ -1,5 +1,5 @@
 ---
-title: week report 2024.18
+title: Weekly Report 2024.18
 date: 2024-05-05
 description: nature or nurture
 categories:

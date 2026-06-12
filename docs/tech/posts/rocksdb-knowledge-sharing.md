@@ -1,7 +1,7 @@
 ---
-title: rocksdb knowledge sharing
+title: "Understanding RocksDB: An Embedded Key-Value Store"
 date: 2025-06-12
-description: disk effiency hack
+description: disk efficiency hack
 categories:
 - Research
 tags:
@@ -66,7 +66,7 @@ int main() {
   {
     std::string string_val;
     // If it cannot pin the value, it copies the value to its internal buffer.
-    // The intenral buffer could be set during construction.
+    // The internal buffer could be set during construction.
     PinnableSlice pinnable_val(&string_val);
     db->Get(ReadOptions(), db->DefaultColumnFamily(), "key2", &pinnable_val);
     assert(pinnable_val == "value");
@@ -136,7 +136,7 @@ flowchart TD
 
 1. (active) memtable
 2. append WAL (restart, restore)
-3. once the active memtable becomse full, it is marked as immutable and a new active memtable is created, and the immutable ones are queued for flushing to disk
+3. once the active memtable becomes full, it is marked as immutable and a new active memtable is created, and the immutable ones are queued for flushing to disk
 4. immutable memtables are flushed to disk as one or more level 0 SST files (each level 0 file is sorted internally, but key ranges may overlap with other level-0 files)
 5. possible compaction if the number of SST files reach a certain threshold (4 by default)
 
@@ -153,7 +153,7 @@ flowchart TD
 
 Because LSM Trees convert all data modification operations into **append-only writes**: an insert writes a new data entry, an update writes a modified entry, and a delete writes a tombstone marker—reading data, if not found in memory, requires searching through SSTable files starting from Layer 0. If there are many duplicate entries, this can lead to **read amplification**. Therefore, Compaction operations are used to merge data in lower layers and clean up marked-for-deletion data, thereby reducing the impact of amplification factors.
 
-three kinds of aimpilication:
+three kinds of amplification:
 
 - space -- occupy more space than the raw data (append-only strategy)
 - read -- worst O(n)

@@ -1,5 +1,5 @@
 ---
-title: week report 2024.07
+title: Weekly Report 2024.07
 date: 2024-02-18
 description: no elixir for life
 categories:

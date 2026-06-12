@@ -1,6 +1,7 @@
 ---
 title: 为什么说死亡是万能药
 date: 2023-03-13
+description: 解脱、平等与永恒
 categories:
 - Research
 tags:

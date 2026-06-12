@@ -1,5 +1,5 @@
 ---
-title: week report 2023.20
+title: Weekly Report 2023.20
 date: 2023-05-21
 description: Back to Future
 categories:

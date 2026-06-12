@@ -1,5 +1,5 @@
 ---
-title: Logstash 使用总结
+title: Logstash 入门：FileBeat、Kafka 与 ES 日志链路
 date: 2021-05-29
 description: 一直在学，却总是学不会
 categories:

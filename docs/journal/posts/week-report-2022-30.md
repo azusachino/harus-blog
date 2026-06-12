@@ -1,5 +1,5 @@
 ---
-title: week report 2022.30
+title: Weekly Report 2022.30
 date: 2022-07-24
 description: 不要给他人提意见
 categories:

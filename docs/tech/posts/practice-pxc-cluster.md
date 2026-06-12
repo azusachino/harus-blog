@@ -1,5 +1,5 @@
 ---
-title: 练习 MySQL 集群搭建
+title: 用 Docker 搭建 MySQL 集群：Percona XtraDB Cluster
 date: 2021-04-29
 description: 没有最完善的解决方案
 categories:

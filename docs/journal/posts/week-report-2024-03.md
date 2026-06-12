@@ -1,5 +1,5 @@
 ---
-title: week report 2024.03
+title: Weekly Report 2024.03
 date: 2024-01-21
 description: easy to start, hard to finish
 categories:

@@ -1,5 +1,5 @@
 ---
-title: 对比 React，Flutter
+title: Flutter 与 React 对比：项目结构与状态管理
 date: 2021-06-05
 description: 世上本没有那么多技术，场景多了，技术也多了
 categories:

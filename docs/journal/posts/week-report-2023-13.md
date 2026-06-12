@@ -1,5 +1,5 @@
 ---
-title: week report 2023.13
+title: Weekly Report 2023.13
 date: 2023-04-02
 description: Going for the next dream
 categories:

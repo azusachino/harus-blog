@@ -1,5 +1,5 @@
 ---
-title: week report 2022.10
+title: Weekly Report 2022.10
 date: 2022-03-06
 description: 暗自怜惜
 categories:

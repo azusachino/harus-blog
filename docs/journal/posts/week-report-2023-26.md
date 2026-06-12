@@ -1,5 +1,5 @@
 ---
-title: week report 2023.26
+title: Weekly Report 2023.26
 date: 2023-07-02
 description: 如梦似幻
 categories:

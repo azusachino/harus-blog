@@ -1,5 +1,5 @@
 ---
-title: week report 2024.02
+title: Weekly Report 2024.02
 date: 2024-01-14
 description: Finish what you started
 categories:

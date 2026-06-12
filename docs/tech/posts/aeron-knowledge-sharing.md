@@ -1,5 +1,5 @@
 ---
-title: aeron knowledge sharing
+title: "Understanding Aeron: Low-Latency Transport, Archive, and Cluster"
 date: 2025-06-11
 description: consistency and persistency
 categories:
@@ -64,7 +64,7 @@ correlationId is critical, too; the agent simply knows how to doWork, but doesn'
 
 - MediaDriver -- DriverConductor
 - ArchivingMediaDriver -- ArchiveConductor
-- ConsensueModule -- ConsensueModuleAgent, ClusteredServiceAgent
+- ConsensusModule -- ConsensusModuleAgent, ClusteredServiceAgent
 
 ## how to communicate -- transport
 
@@ -80,7 +80,7 @@ this is how the publication from machine-1 gets subscribed by machine-2 with mul
 
 - exclusivePublication only one publication instance (session)
 - shareablePublication can be held by multiple publication instances
-- a publication could be subcribed multiple times
+- a publication could be subscribed multiple times
   - read data from the same image log-buffer
 
 ![.](/assets/images/2025/topics/aeron/aeron-overview.png)
@@ -99,7 +99,7 @@ var sub2 = aeron.addSubscription("10.110.0.2:9010", 3939);
 
 By default, Aeron Transport creates files below the `/dev/shm` directory on Linux systems. aka SharedMemory.
 
-- `cnc.dat` stores control and response for client-conductor and media driver conductor; also other interal states (counters, positions)
+- `cnc.dat` stores control and response for client-conductor and media driver conductor; also other internal states (counters, positions)
 - `loss-report.dat` any message loss for Network Publications
 - `images` on receiver side, log buffer
 - `publications` on sender side, log buffer
@@ -120,7 +120,7 @@ Aeron Archive builds on top of Aeron Transport - it allows the streams of messag
 
 ### overview
 
-Archive on the subscription side, spy data from image logbuffer for recording, also a demostration of replay data from Archive.
+Archive on the subscription side, spy data from image logbuffer for recording, also a demonstration of replay data from Archive.
 
 lets take machine-1 as `10.110.0.1`, and machine-2 as `10.110.0.2`
 

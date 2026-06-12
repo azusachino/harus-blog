@@ -1,5 +1,5 @@
 ---
-title: week report 2024.14
+title: Weekly Report 2024.14
 date: 2024-04-07
 description: make your own choice
 categories:

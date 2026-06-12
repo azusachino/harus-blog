@@ -1,5 +1,5 @@
 ---
-title: month refresh 2025.10
+title: Monthly Refresh 2025.10
 date: 2025-10-29
 description: choose the hard one
 categories:

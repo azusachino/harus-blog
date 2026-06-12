@@ -1,5 +1,5 @@
 ---
-title: week report 2023.27
+title: Weekly Report 2023.27
 date: 2023-07-09
 description: Where is my standpoint?
 categories:

@@ -1,5 +1,5 @@
 ---
-title: week report 2024.31
+title: Weekly Report 2024.31
 date: 2024-08-04
 description: consistency is the key, again
 categories:

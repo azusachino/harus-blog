@@ -1,5 +1,5 @@
 ---
-title: week report 2024.38
+title: Weekly Report 2024.38
 date: 2024-09-22
 description: refreshing weekend
 categories:

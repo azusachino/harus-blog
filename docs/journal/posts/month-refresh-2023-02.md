@@ -1,5 +1,5 @@
 ---
-title: month refresh 2023.02
+title: Monthly Refresh 2023.02
 date: 2023-02-28
 description: in the end, what matters?
 categories:

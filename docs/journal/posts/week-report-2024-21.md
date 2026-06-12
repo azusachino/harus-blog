@@ -1,5 +1,5 @@
 ---
-title: week report 2024.21
+title: Weekly Report 2024.21
 date: 2024-05-26
 description: what matters eventually?
 categories:

@@ -1,5 +1,5 @@
 ---
-title: week report 2024.11
+title: Weekly Report 2024.11
 date: 2024-03-17
 description: a wonderful week
 categories:

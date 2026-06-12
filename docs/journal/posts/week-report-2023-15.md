@@ -1,5 +1,5 @@
 ---
-title: week report 2023.15
+title: Weekly Report 2023.15
 date: 2023-04-16
 description: Stay Proactive
 categories:

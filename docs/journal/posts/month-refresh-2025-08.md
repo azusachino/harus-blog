@@ -1,5 +1,5 @@
 ---
-title: month refresh 2025.08
+title: Monthly Refresh 2025.08
 date: 2025-08-31
 description: yet days pass by
 categories:

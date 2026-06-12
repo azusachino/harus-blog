@@ -1,5 +1,5 @@
 ---
-title: week report 2024.51
+title: Weekly Report 2024.51
 date: 2024-12-22
 description: summer? vacation!
 categories:

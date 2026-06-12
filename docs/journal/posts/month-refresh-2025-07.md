@@ -1,5 +1,5 @@
 ---
-title: month refresh 2025.07
+title: Monthly Refresh 2025.07
 date: 2025-07-31
 description: wasting time or life
 categories:

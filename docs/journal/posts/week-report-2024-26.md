@@ -1,5 +1,5 @@
 ---
-title: week report 2024.26
+title: Weekly Report 2024.26
 date: 2024-06-30
 description: life is exploration and memories
 categories:

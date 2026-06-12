@@ -1,5 +1,5 @@
 ---
-title: month refresh 2025.11
+title: Monthly Refresh 2025.11
 date: 2025-11-30
 description: consistency is the hard choice
 categories:

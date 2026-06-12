@@ -1,5 +1,5 @@
 ---
-title: 练习 Minikube
+title: 在 Minikube 上部署 MySQL
 date: 2021-08-31
 description: 最简单的 k8s 集群方案
 categories:

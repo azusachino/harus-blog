@@ -1,5 +1,5 @@
 ---
-title: 练习 gRPC，opentracing
+title: "OpenTracing in Go: Tracing gRPC and GoFiber with Jaeger"
 date: 2021-09-16
 description: Golang 的一次小练习
 categories:
@@ -21,7 +21,7 @@ First of all, I will treat a successful http request as a valid `Span`.
 
 ## OpenTracing With GoFiber
 
-`gofiber` is a http library written by go, `jaeger` is a commly used tracer, here I will use a middleware to collect all info from a span.
+`gofiber` is a http library written by go, `jaeger` is a commonly used tracer, here I will use a middleware to collect all info from a span.
 
 > jaeger uses `uber-trace-id` as default propagation in http headers, the format is like `fmt.Sprintf("%016x%016x:%016x:%016x:%x", c.traceID.High, c.traceID.Low, uint64(c.spanID), uint64(c.parentID), flags)`
 

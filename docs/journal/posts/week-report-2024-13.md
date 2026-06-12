@@ -1,5 +1,5 @@
 ---
-title: week report 2024.13
+title: Weekly Report 2024.13
 date: 2024-03-31
 description: What a lovely world
 categories:

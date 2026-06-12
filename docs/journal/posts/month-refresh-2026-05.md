@@ -1,5 +1,5 @@
 ---
-title: month refresh 2026.05
+title: Monthly Refresh 2026.05
 date: 2026-05-31
 description: I was wrong, twice
 categories:

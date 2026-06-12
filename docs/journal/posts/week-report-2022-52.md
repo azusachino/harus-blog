@@ -1,5 +1,5 @@
 ---
-title: week report 2022.52
+title: Weekly Report 2022.52
 date: 2022-12-25
 description: 不知其中滋味
 categories:

@@ -1,5 +1,5 @@
 ---
-title: week report 2022.32
+title: Weekly Report 2022.32
 date: 2022-08-07
 description: 己不能渡，何以渡人
 categories:

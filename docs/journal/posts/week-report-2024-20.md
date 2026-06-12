@@ -1,5 +1,5 @@
 ---
-title: week report 2024.20
+title: Weekly Report 2024.20
 date: 2024-05-19
 description: focus, focus
 categories:

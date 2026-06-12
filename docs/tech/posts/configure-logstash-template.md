@@ -1,5 +1,5 @@
 ---
-title: 实践 Logstash 中的 Template 功能
+title: Logstash 索引模板实践：控制 ES 字段映射
 date: 2021-06-03
 description: 活用 ES 提供的 ILM 功能
 categories:

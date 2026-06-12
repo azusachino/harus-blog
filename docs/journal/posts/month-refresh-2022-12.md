@@ -1,5 +1,5 @@
 ---
-title: month refresh 2022.12
+title: Monthly Refresh 2022.12
 date: 2022-12-27
 description: How to unlive your life?
 categories:

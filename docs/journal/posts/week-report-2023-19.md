@@ -1,5 +1,5 @@
 ---
-title: week report 2023.19
+title: Weekly Report 2023.19
 date: 2023-05-14
 description: 儚い現実
 categories:

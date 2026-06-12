@@ -1,5 +1,5 @@
 ---
-title: week report 2024.50
+title: Weekly Report 2024.50
 date: 2024-12-15
 description: gaming week?
 categories:

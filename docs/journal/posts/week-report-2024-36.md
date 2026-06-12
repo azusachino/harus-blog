@@ -1,5 +1,5 @@
 ---
-title: week report 2024.36
+title: Weekly Report 2024.36
 date: 2024-09-08
 description: life were so different
 categories:

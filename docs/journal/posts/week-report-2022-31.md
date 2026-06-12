@@ -1,5 +1,5 @@
 ---
-title: week report 2022.31
+title: Weekly Report 2022.31
 date: 2022-07-31
 description: 赡养父母是灰犀牛事件
 categories:

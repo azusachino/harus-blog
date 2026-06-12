@@ -1,5 +1,5 @@
 ---
-title: week report 2023.29
+title: Weekly Report 2023.29
 date: 2023-07-23
 description: 分裂、分离
 categories:

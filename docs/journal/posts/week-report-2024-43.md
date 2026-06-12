@@ -1,5 +1,5 @@
 ---
-title: week report 2024.43
+title: Weekly Report 2024.43
 date: 2024-10-27
 description: payback or paycheck?
 categories:

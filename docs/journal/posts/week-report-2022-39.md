@@ -1,5 +1,5 @@
 ---
-title: week report 2022.39
+title: Weekly Report 2022.39
 date: 2022-09-25
 description: 杀死一只知更鸟
 categories:

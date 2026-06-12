@@ -1,5 +1,5 @@
 ---
-title: week report 2024.42
+title: Weekly Report 2024.42
 date: 2024-10-20
 description: average week, probably
 categories:

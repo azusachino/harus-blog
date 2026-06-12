@@ -1,5 +1,5 @@
 ---
-title: month refresh 2025.04
+title: Monthly Refresh 2025.04
 date: 2025-05-05
 description: melty world
 categories:

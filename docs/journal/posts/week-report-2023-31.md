@@ -1,5 +1,5 @@
 ---
-title: week report 2023.31
+title: Weekly Report 2023.31
 date: 2023-08-06
 description: 最后的一段旅程
 categories:

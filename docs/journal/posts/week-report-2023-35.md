@@ -1,5 +1,5 @@
 ---
-title: week report 2023.35
+title: Weekly Report 2023.35
 date: 2023-09-03
 description: 遺憾
 categories:

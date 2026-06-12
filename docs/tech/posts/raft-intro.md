@@ -1,5 +1,5 @@
 ---
-title: Raft 入门
+title: "An Introduction to the Raft Consensus Algorithm"
 date: 2021-10-08
 description: 最热门的共识算法之一
 categories:
@@ -36,7 +36,7 @@ Replicated state machines are typically implemented using a replicated log. Each
 
 ### Consensus algorithms properties
 
-- ensure `safety` (never returning an incorrect result) under all non-Byzantine conditions, including network delays, partitions, packet loss, dulication and reordering
+- ensure `safety` (never returning an incorrect result) under all non-Byzantine conditions, including network delays, partitions, packet loss, duplication and reordering
 - are fully functional (available) as long as any majority of the servers are operational and can communicate with each other and with clients
 - do not depend on timing to ensure the consistency of the logs: faulty clocks and extreme message delays can, at worst, cause availability problems
 - in the most common case, a command can complete as soon as a majority of the cluster has responded to a single round of RPC; a minority of slow servers need not impact overall system performance
@@ -56,7 +56,7 @@ Raft implements consensus by first electing a distinguished leader, then giving 
 - `Log replication`: the leader must accept log entries from clients and replicate them across the cluster, forcing the other logs to agree with its own
 - `Safety`: the key safety property for Raft is the State Machine Safety
 
-### Raft gurantees
+### Raft guarantees
 
 - `Election Safety`: at most one leader can be elected in a given term
 - `Leader Append-Only`: a leader never overwrites or deletes entries in its log; it only appends new entries
@@ -112,7 +112,7 @@ If a follower or candidate crashes, then future RequestVote and AppendEntries RP
 
 ### Timing and availability
 
-Leader election is the aspect of Raft where timing is most critical. Raft will be able to elect and maintain a steady leader as long as the system satifies the following timing requirement:
+Leader election is the aspect of Raft where timing is most critical. Raft will be able to elect and maintain a steady leader as long as the system satisfies the following timing requirement:
 
 $$broadCastTime << electionTimeout << MTBF$$
 
@@ -125,7 +125,7 @@ Snapshotting is the simplest approach to compaction. In snapshotting, the entire
 
 ### Client interaction
 
-Client of Raft send all of their requests to the leader. When a client first starts up, it connects to a randomly-chosen server. If the client's first choice is not the leader, that server will reject the client's request and supply information about the most recent leader it has heard from. If the leader crashes, client requests will timout; clients then try again with randomly-chosen servers.
+Client of Raft send all of their requests to the leader. When a client first starts up, it connects to a randomly-chosen server. If the client's first choice is not the leader, that server will reject the client's request and supply information about the most recent leader it has heard from. If the leader crashes, client requests will timeout; clients then try again with randomly-chosen servers.
 
 ## Not a Conclusion
 

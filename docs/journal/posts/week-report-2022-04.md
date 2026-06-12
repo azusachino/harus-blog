@@ -1,5 +1,5 @@
 ---
-title: week report 2022.04
+title: Weekly Report 2022.04
 date: 2022-01-23
 description: いつかの時には、好き放題生きて遺影はピースで、清々しくこの世を去りたい
 categories:

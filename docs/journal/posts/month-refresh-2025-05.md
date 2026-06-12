@@ -1,5 +1,5 @@
 ---
-title: month refresh 2025.05
+title: Monthly Refresh 2025.05
 date: 2025-06-05
 description: a rough period
 categories:

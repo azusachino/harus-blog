@@ -1,5 +1,5 @@
 ---
-title: month refresh 2022.09
+title: Monthly Refresh 2022.09
 date: 2022-09-30
 description: 慢步前行
 categories:

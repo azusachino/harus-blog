@@ -1,5 +1,5 @@
 ---
-title: week report 2024.44
+title: Weekly Report 2024.44
 date: 2024-11-03
 description: know yourself
 categories:

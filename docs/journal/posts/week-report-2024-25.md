@@ -1,5 +1,5 @@
 ---
-title: week report 2024.25
+title: Weekly Report 2024.25
 date: 2024-06-23
 description: lost hours
 categories:

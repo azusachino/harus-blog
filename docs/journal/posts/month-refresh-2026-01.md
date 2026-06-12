@@ -1,5 +1,5 @@
 ---
-title: month refresh 2026.01
+title: Monthly Refresh 2026.01
 date: 2026-01-29
 description: the curse of knowledge
 categories:

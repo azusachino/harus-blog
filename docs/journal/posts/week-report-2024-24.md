@@ -1,5 +1,5 @@
 ---
-title: week report 2024.24
+title: Weekly Report 2024.24
 date: 2024-06-16
 description: the changed, the unchanged
 categories:

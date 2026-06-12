@@ -1,5 +1,5 @@
 ---
-title: month refresh 2025.01
+title: Monthly Refresh 2025.01
 date: 2025-02-01
 description: 何为无意义
 categories:

@@ -1,5 +1,5 @@
 ---
-title: week report 2022.40
+title: Weekly Report 2022.40
 date: 2022-10-02
 description: 割裂感
 categories:
