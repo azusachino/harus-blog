@@ -4,9 +4,6 @@ date: 2022-04-03
 description: 实事求是
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-14
 comments: true
 ---

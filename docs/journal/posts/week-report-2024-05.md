@@ -4,9 +4,6 @@ date: 2024-02-04
 description: 不可解な
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-05
 comments: true
 ---

@@ -4,9 +4,6 @@ date: 2022-07-03
 description: Systems vs Goals
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-27
 comments: true
 ---

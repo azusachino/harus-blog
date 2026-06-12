@@ -3,10 +3,9 @@ title: aeron knowledge sharing
 date: 2025-06-11
 description: consistency and persistency
 categories:
-- Learning
+- Research
 tags:
 - Java
-- Learning
 slug: aeron-knowledge-sharing
 comments: true
 ---

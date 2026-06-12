@@ -4,9 +4,6 @@ date: 2023-09-03
 description: 遺憾
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2023-35
 comments: true
 ---

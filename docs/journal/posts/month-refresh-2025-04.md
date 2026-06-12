@@ -4,9 +4,6 @@ date: 2025-05-05
 description: melty world
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2025-04
 comments: true
 ---

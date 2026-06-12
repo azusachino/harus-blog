@@ -3,9 +3,8 @@ title: 博客搭建总结
 date: 2021-04-30
 description: 进入互联网的第一步
 categories:
-- Exp
+- Practice
 tags:
-- Exp
 - Hugo
 slug: blog-setup
 comments: true

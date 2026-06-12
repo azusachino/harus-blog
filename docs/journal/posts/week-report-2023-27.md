@@ -4,9 +4,6 @@ date: 2023-07-09
 description: Where is my standpoint?
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2023-27
 comments: true
 ---

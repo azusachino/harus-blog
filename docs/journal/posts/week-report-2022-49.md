@@ -4,9 +4,6 @@ date: 2022-12-04
 description: 変わっていく人をどうやって好きで居続けられるんだろう?
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-49
 comments: true
 ---

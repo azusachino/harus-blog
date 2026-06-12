@@ -4,9 +4,6 @@ date: 2022-07-24
 description: 不要给他人提意见
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-30
 comments: true
 ---

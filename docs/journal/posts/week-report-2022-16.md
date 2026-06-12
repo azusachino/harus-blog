@@ -4,9 +4,6 @@ date: 2022-04-17
 description: 一次喜欢不亚于一场流行性感冒
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-16
 comments: true
 ---

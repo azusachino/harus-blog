@@ -4,9 +4,6 @@ date: 2024-06-02
 description: it's the action which makes the difference
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-22
 comments: true
 ---

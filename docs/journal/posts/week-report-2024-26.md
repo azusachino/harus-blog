@@ -4,9 +4,6 @@ date: 2024-06-30
 description: life is exploration and memories
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-26
 comments: true
 ---

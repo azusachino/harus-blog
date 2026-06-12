@@ -4,9 +4,6 @@ date: 2023-07-02
 description: 如梦似幻
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2023-26
 comments: true
 ---

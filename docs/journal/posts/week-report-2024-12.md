@@ -4,9 +4,6 @@ date: 2024-03-24
 description: long lasting recovery
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-12
 comments: true
 ---

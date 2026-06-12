@@ -4,9 +4,6 @@ date: 2024-04-14
 description: the learning curve
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-15
 comments: true
 ---

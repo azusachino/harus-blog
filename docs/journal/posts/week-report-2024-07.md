@@ -4,9 +4,6 @@ date: 2024-02-18
 description: no elixir for life
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-07
 comments: true
 ---

@@ -3,9 +3,8 @@ title: 了解 Docker, Containerd, RunC
 date: 2021-12-26
 description: 自顶向下
 categories:
-- Conclusion
+- Research
 tags:
-- Conclusion
 - Docker
 - Runc
 slug: understand-docker-containerd-runc

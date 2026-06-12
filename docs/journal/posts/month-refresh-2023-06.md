@@ -4,9 +4,6 @@ date: 2023-06-30
 description: 时代的局限
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2023-06
 comments: true
 ---

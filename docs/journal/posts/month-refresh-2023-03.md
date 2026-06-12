@@ -4,9 +4,6 @@ date: 2023-03-28
 description: 一定要追上这个时代吗?
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2023-03
 comments: true
 ---

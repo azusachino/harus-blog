@@ -4,9 +4,6 @@ date: 2023-06-18
 description: Know your disadvantage
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2023-24
 comments: true
 ---

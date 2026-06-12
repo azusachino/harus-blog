@@ -4,9 +4,6 @@ date: 2024-06-16
 description: the changed, the unchanged
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-24
 comments: true
 ---

@@ -4,9 +4,6 @@ date: 2023-04-23
 description: 一念之间的自信与自卑
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2023-16
 comments: true
 ---

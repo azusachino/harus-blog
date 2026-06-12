@@ -4,9 +4,6 @@ date: 2022-10-30
 description: 难辞其咎
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-44
 comments: true
 ---

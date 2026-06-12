@@ -4,9 +4,6 @@ date: 2024-03-17
 description: a wonderful week
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-11
 comments: true
 ---

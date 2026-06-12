@@ -4,9 +4,6 @@ date: 2023-05-28
 description: ASAP
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2023-21
 comments: true
 ---

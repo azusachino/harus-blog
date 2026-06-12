@@ -4,9 +4,6 @@ date: 2022-05-08
 description: 我又何尝不是生活的人质
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-19
 comments: true
 ---

@@ -4,9 +4,6 @@ date: 2023-02-19
 description: No life, No Game
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2023-07
 comments: true
 ---

@@ -4,9 +4,6 @@ date: 2024-10-13
 description: know your restrictions
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-41
 comments: true
 ---

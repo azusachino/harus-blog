@@ -4,9 +4,6 @@ date: 2023-08-27
 description: 争いは血の燃料
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2023-34
 comments: true
 ---

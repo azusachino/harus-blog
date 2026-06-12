@@ -4,9 +4,6 @@ date: 2024-12-15
 description: gaming week?
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-50
 comments: true
 ---

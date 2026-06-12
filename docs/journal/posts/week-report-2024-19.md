@@ -4,9 +4,6 @@ date: 2024-05-12
 description: no logic
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-19
 comments: true
 ---

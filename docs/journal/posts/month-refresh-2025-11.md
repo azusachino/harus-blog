@@ -4,9 +4,6 @@ date: 2025-11-30
 description: consistency is the hard choice
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2025-11
 comments: true
 ---

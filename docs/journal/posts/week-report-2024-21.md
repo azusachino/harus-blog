@@ -4,9 +4,6 @@ date: 2024-05-26
 description: what matters eventually?
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-21
 comments: true
 ---

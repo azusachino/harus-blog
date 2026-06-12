@@ -4,9 +4,6 @@ date: 2024-05-05
 description: nature or nurture
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-18
 comments: true
 ---

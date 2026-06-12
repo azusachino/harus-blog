@@ -4,9 +4,6 @@ date: 2023-05-31
 description: Useless
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2023-05
 comments: true
 ---

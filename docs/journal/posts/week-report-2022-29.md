@@ -4,9 +4,6 @@ date: 2022-07-17
 description: Absurdity
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-29
 comments: true
 ---

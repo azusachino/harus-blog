@@ -4,9 +4,6 @@ date: 2024-10-20
 description: average week, probably
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-42
 comments: true
 ---

@@ -4,9 +4,6 @@ date: 2023-04-30
 description: True Picture of life
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2023-17
 comments: true
 ---

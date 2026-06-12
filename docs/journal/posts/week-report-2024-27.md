@@ -4,9 +4,6 @@ date: 2024-07-07
 description: always got something to blame
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-27
 comments: true
 ---

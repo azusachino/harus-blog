@@ -4,9 +4,6 @@ date: 2022-02-06
 description: 自己本该是最可信的，但是也不可轻信
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-06
 comments: true
 ---

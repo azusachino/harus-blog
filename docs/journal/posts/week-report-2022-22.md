@@ -4,9 +4,6 @@ date: 2022-05-29
 description: 寻觅初心
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-22
 comments: true
 ---

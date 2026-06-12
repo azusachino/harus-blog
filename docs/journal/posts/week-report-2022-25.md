@@ -4,9 +4,6 @@ date: 2022-06-19
 description: そらから宇宙論
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-25
 comments: true
 ---

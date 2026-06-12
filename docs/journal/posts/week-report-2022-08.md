@@ -4,9 +4,6 @@ date: 2022-02-20
 description: 幸福如出一辙，不幸难觅一致
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-08
 comments: true
 ---

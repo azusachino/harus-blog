@@ -4,9 +4,6 @@ date: 2022-02-13
 description: 可怜之人必有可恨之处
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-07
 comments: true
 ---

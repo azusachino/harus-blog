@@ -4,9 +4,6 @@ date: 2024-10-06
 description: now, what trick will make you fall into
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-40
 comments: true
 ---

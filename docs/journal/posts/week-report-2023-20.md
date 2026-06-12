@@ -4,9 +4,6 @@ date: 2023-05-21
 description: Back to Future
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2023-20
 comments: true
 ---

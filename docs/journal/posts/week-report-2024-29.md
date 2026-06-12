@@ -4,9 +4,6 @@ date: 2024-07-21
 description: life continues
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-29
 comments: true
 ---

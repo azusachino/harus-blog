@@ -4,9 +4,6 @@ date: 2022-09-25
 description: 杀死一只知更鸟
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-39
 comments: true
 ---

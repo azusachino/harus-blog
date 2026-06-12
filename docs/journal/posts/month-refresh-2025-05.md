@@ -4,9 +4,6 @@ date: 2025-06-05
 description: a rough period
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2025-05
 comments: true
 ---

@@ -3,10 +3,9 @@ title: 练习 gRPC，Protobuf
 date: 2021-09-13
 description: 高效率的序列化方案
 categories:
-- Exp
+- Practice
 tags:
-- Exp
-- Grpc
+- gRPC
 - ProtoBuf
 slug: practice-grpc-protobuf
 comments: true

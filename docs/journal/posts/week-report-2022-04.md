@@ -4,9 +4,6 @@ date: 2022-01-23
 description: いつかの時には、好き放題生きて遺影はピースで、清々しくこの世を去りたい
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-04
 comments: true
 ---

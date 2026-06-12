@@ -3,9 +3,8 @@ title: 练习 React
 date: 2021-05-30
 description: React的学习可能就到此为止了
 categories:
-- Exp
+- Practice
 tags:
-- Exp
 - React
 slug: practice-react
 comments: true

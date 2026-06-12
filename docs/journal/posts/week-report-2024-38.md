@@ -4,9 +4,6 @@ date: 2024-09-22
 description: refreshing weekend
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-38
 comments: true
 ---

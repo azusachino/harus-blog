@@ -4,9 +4,6 @@ date: 2024-08-18
 description: what comes, what doesnt
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-33
 comments: true
 ---

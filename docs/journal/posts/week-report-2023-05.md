@@ -4,9 +4,6 @@ date: 2023-02-05
 description: Happy Hacking
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2023-05
 comments: true
 ---

@@ -4,9 +4,6 @@ date: 2022-07-10
 description: The finality of everything
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-28
 comments: true
 ---

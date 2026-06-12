@@ -4,9 +4,6 @@ date: 2023-07-31
 description: What a Dilemma
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2023-07
 comments: true
 ---

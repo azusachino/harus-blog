@@ -4,9 +4,6 @@ date: 2022-05-22
 description: 颓废的势头不止
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-21
 comments: true
 ---

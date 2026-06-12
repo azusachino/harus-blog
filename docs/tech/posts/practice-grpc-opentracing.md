@@ -3,10 +3,9 @@ title: 练习 gRPC，opentracing
 date: 2021-09-16
 description: Golang 的一次小练习
 categories:
-- Exp
+- Practice
 tags:
-- Exp
-- Grpc
+- gRPC
 - OpenTracing
 slug: practice-grpc-opentracing
 comments: true

@@ -4,9 +4,6 @@ date: 2022-08-21
 description: 事与愿违
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-34
 comments: true
 ---

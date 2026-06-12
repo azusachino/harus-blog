@@ -4,9 +4,6 @@ date: 2022-03-06
 description: 暗自怜惜
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-10
 comments: true
 ---

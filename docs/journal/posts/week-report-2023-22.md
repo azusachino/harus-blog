@@ -4,9 +4,6 @@ date: 2023-06-04
 description: 我有选择吗?
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2023-22
 comments: true
 ---

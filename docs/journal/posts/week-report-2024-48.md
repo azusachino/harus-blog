@@ -4,9 +4,6 @@ date: 2024-12-01
 description: A trip to Sapporo
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-48
 comments: true
 ---

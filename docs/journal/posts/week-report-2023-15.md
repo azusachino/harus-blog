@@ -4,9 +4,6 @@ date: 2023-04-16
 description: Stay Proactive
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2023-15
 comments: true
 ---

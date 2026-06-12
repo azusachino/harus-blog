@@ -4,9 +4,6 @@ date: 2026-05-12
 description: the country-side life
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2026-04
 comments: true
 ---

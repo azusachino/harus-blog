@@ -4,9 +4,6 @@ date: 2024-12-08
 description: busy and fun week
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-49
 comments: true
 ---

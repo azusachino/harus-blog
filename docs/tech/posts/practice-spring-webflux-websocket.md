@@ -3,9 +3,8 @@ title: 实践 Spring Webflux Websocket
 date: 2022-02-17
 description: 高性能的 Websocket 方案
 categories:
-- Exp
+- Practice
 tags:
-- Exp
 - Java
 - Spring
 - WebSocket

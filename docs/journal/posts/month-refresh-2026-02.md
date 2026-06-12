@@ -4,9 +4,6 @@ date: 2026-03-01
 description: swift blink
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2026-02
 comments: true
 ---

@@ -4,9 +4,6 @@ date: 2024-11-17
 description: a day trip to mt. odake
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-46
 comments: true
 ---

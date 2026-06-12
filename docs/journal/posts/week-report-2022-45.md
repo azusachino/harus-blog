@@ -4,9 +4,6 @@ date: 2022-11-06
 description: 欲張り
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-45
 comments: true
 ---

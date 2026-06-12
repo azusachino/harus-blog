@@ -4,9 +4,6 @@ date: 2024-08-11
 description: lives were so different
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-32
 comments: true
 ---

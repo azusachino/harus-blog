@@ -4,9 +4,6 @@ date: 2025-12-31
 description: timeless
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2025-12
 comments: true
 ---

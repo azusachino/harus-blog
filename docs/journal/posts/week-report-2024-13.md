@@ -4,9 +4,6 @@ date: 2024-03-31
 description: What a lovely world
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-13
 comments: true
 ---

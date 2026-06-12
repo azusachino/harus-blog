@@ -4,9 +4,6 @@ date: 2024-05-19
 description: focus, focus
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-20
 comments: true
 ---

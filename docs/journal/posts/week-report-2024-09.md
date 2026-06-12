@@ -4,9 +4,6 @@ date: 2024-03-03
 description: the frustration
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-09
 comments: true
 ---

@@ -3,9 +3,8 @@ title: Runc 初探
 date: 2022-01-16
 description: 容器化的基石
 categories:
-- Conclusion
+- Research
 tags:
-- Conclusion
 - Runc
 slug: runc-intro
 comments: true

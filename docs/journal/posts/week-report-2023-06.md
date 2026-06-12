@@ -4,9 +4,6 @@ date: 2023-02-12
 description: Entertainment
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2023-06
 comments: true
 ---

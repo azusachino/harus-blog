@@ -4,9 +4,6 @@ date: 2024-12-22
 description: summer? vacation!
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-51
 comments: true
 ---

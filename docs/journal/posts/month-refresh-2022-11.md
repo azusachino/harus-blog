@@ -4,9 +4,6 @@ date: 2022-11-30
 description: 时事造人
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2022-11
 comments: true
 ---

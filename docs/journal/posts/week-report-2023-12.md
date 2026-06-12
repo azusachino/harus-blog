@@ -4,9 +4,6 @@ date: 2023-03-26
 description: 决定论
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2023-12
 comments: true
 ---

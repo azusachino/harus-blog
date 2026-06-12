@@ -4,9 +4,6 @@ date: 2024-01-21
 description: easy to start, hard to finish
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-03
 comments: true
 ---

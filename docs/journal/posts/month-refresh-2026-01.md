@@ -4,9 +4,6 @@ date: 2026-01-29
 description: the curse of knowledge
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2026-01
 comments: true
 ---

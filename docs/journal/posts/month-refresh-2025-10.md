@@ -4,9 +4,6 @@ date: 2025-10-29
 description: choose the hard one
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2025-10
 comments: true
 ---

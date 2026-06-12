@@ -3,9 +3,8 @@ title: 练习 MySQL 集群搭建
 date: 2021-04-29
 description: 没有最完善的解决方案
 categories:
-- Exp
+- Practice
 tags:
-- Exp
 - MySQL
 slug: practice-pxc-cluster
 comments: true

@@ -4,9 +4,6 @@ date: 2025-03-01
 description: 没有成果便是无意义
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2025-02
 comments: true
 ---

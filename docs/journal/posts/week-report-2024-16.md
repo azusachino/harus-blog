@@ -4,9 +4,6 @@ date: 2024-04-21
 description: there is no way to explain the real-life
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-16
 comments: true
 ---

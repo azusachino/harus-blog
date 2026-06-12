@@ -4,9 +4,6 @@ date: 2022-08-31
 description: 观念与行动尚未统一
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2022-08
 comments: true
 ---

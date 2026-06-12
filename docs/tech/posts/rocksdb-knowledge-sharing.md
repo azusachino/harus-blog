@@ -3,10 +3,9 @@ title: rocksdb knowledge sharing
 date: 2025-06-12
 description: disk effiency hack
 categories:
-- Learning
+- Research
 tags:
 - DB
-- Learning
 slug: rocksdb-knowledge-sharing
 comments: true
 ---

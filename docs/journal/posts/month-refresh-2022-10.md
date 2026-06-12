@@ -4,9 +4,6 @@ date: 2022-10-31
 description: 事与愿违
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2022-10
 comments: true
 ---

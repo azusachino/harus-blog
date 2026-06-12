@@ -4,9 +4,6 @@ date: 2024-07-28
 description: hot days continued
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-30
 comments: true
 ---

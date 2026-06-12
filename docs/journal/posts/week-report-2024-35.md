@@ -4,9 +4,6 @@ date: 2024-09-01
 description: magical mirai
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-35
 comments: true
 ---

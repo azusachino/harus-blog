@@ -3,10 +3,7 @@ title: Boring Kubernetes
 date: 2026-01-22
 description: A Private, Production-Ready Homelab with K3s & Tailscale
 categories:
-- Exp
-tags:
-- exp
-- life
+- Practice
 slug: k3s-migration
 comments: true
 ---

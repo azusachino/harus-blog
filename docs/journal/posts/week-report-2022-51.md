@@ -4,9 +4,6 @@ date: 2022-12-18
 description: 如果有后悔药的话
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-51
 comments: true
 ---

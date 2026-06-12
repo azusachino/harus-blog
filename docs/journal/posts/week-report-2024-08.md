@@ -4,9 +4,6 @@ date: 2024-02-25
 description: new stage of learning
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-08
 comments: true
 ---

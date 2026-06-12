@@ -4,9 +4,6 @@ date: 2024-04-28
 description: what is real life?
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-17
 comments: true
 ---

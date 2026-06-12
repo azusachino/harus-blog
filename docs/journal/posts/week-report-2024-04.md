@@ -4,9 +4,6 @@ date: 2024-01-28
 description: enjoy today's life
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-04
 comments: true
 ---

@@ -4,9 +4,6 @@ date: 2023-06-11
 description: Walking on the Edge
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2023-23
 comments: true
 ---

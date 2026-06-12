@@ -4,9 +4,6 @@ date: 2022-07-31
 description: 赡养父母是灰犀牛事件
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-31
 comments: true
 ---

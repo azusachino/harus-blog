@@ -3,9 +3,8 @@ title: 对比 Golang，Nodejs
 date: 2021-06-01
 description: 唯有套路得人心
 categories:
-- Conclusion
+- Research
 tags:
-- Conclusion
 - Go
 - Node
 slug: compare-go-and-node

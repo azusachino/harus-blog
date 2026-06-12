@@ -4,9 +4,6 @@ date: 2024-11-03
 description: know yourself
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-44
 comments: true
 ---

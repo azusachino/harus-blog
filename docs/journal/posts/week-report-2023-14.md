@@ -4,9 +4,6 @@ date: 2023-04-09
 description: The meaning of life
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2023-14
 comments: true
 ---

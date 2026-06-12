@@ -4,9 +4,6 @@ date: 2024-08-25
 description: this is the city night?
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-34
 comments: true
 ---

@@ -4,9 +4,6 @@ date: 2024-06-09
 description: understand your situation
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-23
 comments: true
 ---

@@ -4,9 +4,8 @@ date: 2026-06-12
 draft: true
 description: 代理模式的范式
 categories:
-- Conclusion
+- Research
 tags:
-- Conclusion
 - Java
 slug: understand-java-logger
 comments: true

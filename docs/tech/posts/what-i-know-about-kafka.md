@@ -3,10 +3,9 @@ title: What I know about kafka
 date: 2025-06-01
 description: an unease trip
 categories:
-- Learning
+- Research
 tags:
 - Java
-- Learning
 - Middleware
 slug: what-i-know-about-kafka
 comments: true

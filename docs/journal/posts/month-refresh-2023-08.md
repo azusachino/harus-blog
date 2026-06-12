@@ -4,9 +4,6 @@ date: 2023-08-31
 description: 新常态?
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2023-08
 comments: true
 ---

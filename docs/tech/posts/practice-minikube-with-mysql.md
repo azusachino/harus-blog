@@ -5,9 +5,7 @@ description: 最简单的 k8s 集群方案
 categories:
 - Practice
 tags:
-- Practice
 - Kubernetes
-- K8S
 - MySQL
 slug: practice-minikube-with-mysql
 comments: true

@@ -4,9 +4,6 @@ date: 2022-06-12
 description: うみより海底譚
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-24
 comments: true
 ---

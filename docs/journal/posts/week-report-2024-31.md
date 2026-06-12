@@ -4,9 +4,6 @@ date: 2024-08-04
 description: consistency is the key, again
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-31
 comments: true
 ---

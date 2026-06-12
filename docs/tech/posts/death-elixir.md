@@ -2,7 +2,7 @@
 title: 为什么说死亡是万能药
 date: 2023-03-13
 categories:
-- AI
+- Research
 tags:
 - ChatGPT
 slug: death-elixir

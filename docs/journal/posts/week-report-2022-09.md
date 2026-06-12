@@ -4,9 +4,6 @@ date: 2022-02-27
 description: 君は初恋を知る途中，僕はそんな君に夢中
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-09
 comments: true
 ---

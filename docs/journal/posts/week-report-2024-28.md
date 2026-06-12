@@ -4,9 +4,6 @@ date: 2024-07-14
 description: bloodborne weekend
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-28
 comments: true
 ---

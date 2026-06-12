@@ -3,9 +3,8 @@ title: 实践 Spring Cloud Gateway
 date: 2022-05-24
 description: 顺序很重要
 categories:
-- Exp
+- Practice
 tags:
-- Exp
 - Java
 - Spring
 slug: practice-spring-cloud-gateway

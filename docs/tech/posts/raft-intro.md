@@ -3,9 +3,8 @@ title: Raft 入门
 date: 2021-10-08
 description: 最热门的共识算法之一
 categories:
-- Learning
+- Research
 tags:
-- Learning
 - Raft
 slug: raft-intro
 comments: true

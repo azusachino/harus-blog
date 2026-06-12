@@ -4,9 +4,6 @@ date: 2024-01-14
 description: Finish what you started
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-02
 comments: true
 ---

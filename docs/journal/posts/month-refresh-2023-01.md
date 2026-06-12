@@ -4,9 +4,6 @@ date: 2023-01-31
 description: 苦行的终点
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2023-01
 comments: true
 ---

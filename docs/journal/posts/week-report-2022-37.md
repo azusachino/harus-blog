@@ -4,9 +4,6 @@ date: 2022-09-11
 description: 可愛さしか勝たん
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-37
 comments: true
 ---

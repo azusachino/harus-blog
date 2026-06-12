@@ -3,9 +3,8 @@ title: 云直播简介
 date: 2022-02-21
 description: 直播已经成为了时代的标志之一
 categories:
-- Learning
+- Research
 tags:
-- Learning
 - CS
 - LiveStream
 slug: what-is-live-stream

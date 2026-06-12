@@ -4,9 +4,6 @@ date: 2021-12-27
 description: 2021年的终结
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2021-52
 comments: true
 ---

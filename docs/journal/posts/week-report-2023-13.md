@@ -4,9 +4,6 @@ date: 2023-04-02
 description: Going for the next dream
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2023-13
 comments: true
 ---

@@ -4,9 +4,6 @@ date: 2026-05-31
 description: I was wrong, twice
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2026-05
 comments: true
 ---

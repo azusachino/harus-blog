@@ -4,9 +4,6 @@ date: 2022-09-04
 description: 生命线
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-36
 comments: true
 ---

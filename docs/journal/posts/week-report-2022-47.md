@@ -4,9 +4,6 @@ date: 2022-11-20
 description: 始于极限，终于庸俗
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-47
 comments: true
 ---

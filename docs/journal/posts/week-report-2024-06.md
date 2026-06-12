@@ -4,9 +4,6 @@ date: 2024-02-11
 description: showing up is really important
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-06
 comments: true
 ---

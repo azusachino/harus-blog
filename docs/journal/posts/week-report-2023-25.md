@@ -4,9 +4,6 @@ date: 2023-06-25
 description: Can't be right
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2023-25
 comments: true
 ---

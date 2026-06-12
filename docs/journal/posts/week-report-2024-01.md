@@ -4,9 +4,6 @@ date: 2024-01-07
 description: Gaming life a little bit
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-01
 comments: true
 ---

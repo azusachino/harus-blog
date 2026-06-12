@@ -4,9 +4,6 @@ date: 2024-11-24
 description: ゲーム三昧
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-47
 comments: true
 ---

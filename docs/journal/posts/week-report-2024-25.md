@@ -4,9 +4,6 @@ date: 2024-06-23
 description: lost hours
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-25
 comments: true
 ---

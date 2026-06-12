@@ -3,9 +3,8 @@ title: Rust 入门
 date: 2021-12-15
 description: 又一门我不太能用上的语言
 categories:
-- Learning
+- Research
 tags:
-- Learning
 - Rust
 slug: rust-intro
 comments: true

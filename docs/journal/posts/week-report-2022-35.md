@@ -4,9 +4,6 @@ date: 2022-08-28
 description: 强大的信念才是立身之本
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-35
 comments: true
 ---

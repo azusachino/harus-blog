@@ -4,9 +4,6 @@ date: 2025-07-31
 description: wasting time or life
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2025-07
 comments: true
 ---

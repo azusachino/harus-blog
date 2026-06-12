@@ -4,9 +4,6 @@ date: 2024-10-27
 description: payback or paycheck?
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-43
 comments: true
 ---

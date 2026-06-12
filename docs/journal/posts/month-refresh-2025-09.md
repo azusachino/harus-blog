@@ -4,9 +4,6 @@ date: 2025-09-28
 description: today is a good day to start
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2025-09
 comments: true
 ---

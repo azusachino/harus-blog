@@ -3,9 +3,8 @@ title: Java 中的文件读取方式总结
 date: 2021-05-31
 description: 效率与便捷之间的对决
 categories:
-- Exp
+- Practice
 tags:
-- Exp
 - Java
 slug: java-file-reading
 comments: true

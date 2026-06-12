@@ -4,9 +4,6 @@ date: 2022-11-13
 description: PinPoint
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-46
 comments: true
 ---

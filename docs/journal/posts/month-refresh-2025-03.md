@@ -4,9 +4,6 @@ date: 2025-03-31
 description: 体验生活
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2025-03
 comments: true
 ---

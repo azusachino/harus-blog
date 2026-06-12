@@ -4,9 +4,6 @@ date: 2024-04-07
 description: make your own choice
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-14
 comments: true
 ---

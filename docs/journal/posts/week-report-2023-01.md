@@ -4,9 +4,6 @@ date: 2023-01-08
 description: 不害人、又乐己，何不躺平
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2023-01
 comments: true
 ---

@@ -4,9 +4,6 @@ date: 2023-02-28
 description: in the end, what matters?
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2023-02
 comments: true
 ---

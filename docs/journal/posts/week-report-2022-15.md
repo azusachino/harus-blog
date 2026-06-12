@@ -4,9 +4,6 @@ date: 2022-04-10
 description: 神のまにまに
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-15
 comments: true
 ---

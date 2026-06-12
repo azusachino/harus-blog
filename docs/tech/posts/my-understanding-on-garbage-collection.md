@@ -4,10 +4,9 @@ date: 2026-06-12
 draft: true
 description: everything is recyclable
 categories:
-- Learning
+- Research
 tags:
 - Java
-- Learning
 slug: my-understanding-on-garbage-collection
 comments: true
 ---

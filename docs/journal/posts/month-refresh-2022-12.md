@@ -4,9 +4,6 @@ date: 2022-12-27
 description: How to unlive your life?
 categories:
 - Refresh
-tags:
-- life
-- month-refresh
 slug: month-refresh-2022-12
 comments: true
 ---

@@ -4,9 +4,6 @@ date: 2022-06-26
 description: Improvise Adapt Overcome
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-26
 comments: true
 ---

@@ -4,9 +4,6 @@ date: 2022-10-09
 description: 看不完的风景
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-41
 comments: true
 ---

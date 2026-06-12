@@ -4,9 +4,6 @@ date: 2024-03-10
 description: when non-sense becomes the main stream
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2024-10
 comments: true
 ---

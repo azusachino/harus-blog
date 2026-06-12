@@ -4,9 +4,6 @@ date: 2022-10-02
 description: 割裂感
 categories:
 - Weekly
-tags:
-- life
-- week-report
 slug: week-report-2022-40
 comments: true
 ---
