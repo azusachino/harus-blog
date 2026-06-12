@@ -1,6 +1,7 @@
 ---
 title: 探究 Spring 中 Logger 的实现
-date: 2029-01-11
+date: 2026-06-12
+draft: true
 description: 代理模式的范式
 categories:
 - Conclusion

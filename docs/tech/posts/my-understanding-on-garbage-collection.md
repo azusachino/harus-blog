@@ -1,6 +1,7 @@
 ---
 title: My understanding on GC
-date: 2099-12-20
+date: 2026-06-12
+draft: true
 description: everything is recyclable
 categories:
 - Learning

@@ -79,6 +79,9 @@ plugins:
       archive: false
       draft_if_future_date: true
       post_url_format: "{slug}"
+      # Single unlimited index — keep scrolling to see every post, no
+      # easy-to-miss "next page" link.
+      pagination_per_page: 100
   - blog:
       blog_dir: journal
       blog_toc: true
