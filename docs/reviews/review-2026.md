@@ -1,5 +1,5 @@
 ---
-title: 2026 review
+title: Review 2026
 comments: true
 ---
 

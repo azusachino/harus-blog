@@ -1,5 +1,5 @@
 ---
-title: 2025 review
+title: Review 2025
 description: cynicism is easy, but leads to nowhere
 comments: true
 ---

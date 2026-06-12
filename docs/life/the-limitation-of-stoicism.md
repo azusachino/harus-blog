@@ -1,5 +1,5 @@
 ---
-title: the limitation of stoicism
+title: The Limitation of Stoicism
 description: philosophy is never reality
 comments: true
 ---

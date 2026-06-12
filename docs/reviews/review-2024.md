@@ -1,5 +1,5 @@
 ---
-title: review 2024
+title: Review 2024
 description: 自由に描こう
 comments: true
 ---

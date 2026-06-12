@@ -82,7 +82,10 @@ plugins:
   - blog:
       blog_dir: journal
       blog_toc: true
-      archive: false
+      archive: true
+      archive_name: By year
+      archive_date_format: yyyy
+      archive_url_date_format: yyyy
       draft_if_future_date: true
       categories: false
       post_url_format: "{slug}"
@@ -152,16 +155,16 @@ nav:
       - journal/index.md
   - Reviews:
       - reviews/index.md
-      - 2026 review: reviews/2026-review.md
-      - 2025 review: reviews/2025-review.md
-      - review 2024: reviews/review-2024.md
-      - review 2023: reviews/review-2023.md
-      - review 2022: reviews/review-2022.md
-      - 2022 年中总结: reviews/2022-middle-term.md
-      - review 2021: reviews/review-2021.md
+      - Review 2026: reviews/review-2026.md
+      - Review 2025: reviews/review-2025.md
+      - Review 2024: reviews/review-2024.md
+      - Review 2023: reviews/review-2023.md
+      - Review 2022: reviews/review-2022.md
+      - Review 2022 (Mid-Year): reviews/review-2022-mid.md
+      - Review 2021: reviews/review-2021.md
   - Life:
       - life/index.md
-      - the limitation of stoicism: life/the limitation of stoicism.md
+      - The Limitation of Stoicism: life/the-limitation-of-stoicism.md
       - 初音ミクシンフォニー2025: life/miku-symphony-2025.md
       - ヨルシカ 盗作再演: life/yorushika-live-2025-09-30.md
       - 枪炮病菌与钢铁: life/gun-germ-steel.md

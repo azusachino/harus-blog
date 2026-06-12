@@ -1,5 +1,5 @@
 ---
-title: 2022 年中总结
+title: Review 2022 (Mid-Year)
 description: 孤独的未完成进行时
 comments: true
 ---

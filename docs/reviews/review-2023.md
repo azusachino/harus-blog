@@ -1,5 +1,5 @@
 ---
-title: review 2023
+title: Review 2023
 description: Escapist
 comments: true
 ---
