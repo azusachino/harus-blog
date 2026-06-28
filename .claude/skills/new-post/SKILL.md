@@ -26,7 +26,7 @@ value (URLs are slug-based, so the two must agree).
 
 ## 2. Write the frontmatter
 
-**Blog posts (tech & journal)** — full frontmatter:
+**All content posts/pages** use the same universal frontmatter, keys in this exact order:
 
 ```yaml
 ---
@@ -35,16 +35,17 @@ date: YYYY-MM-DD          # a future date = draft, auto-excluded from `make buil
 description: <one short line — a mood/hook, not a summary>
 categories:
 - <Category>              # see §3
-tags:                     # tech only; omit for journal
+tags:                     # tech only; omit otherwise
 - <Topic>
 slug: <filename-without-.md>
 comments: true
 ---
 ```
 
-**Reviews & life pages** — these are flat nav pages, not blog posts. Use a minimal
-header (`title:` + `description:` optional) and an `# H1`; they do **not** need
-`categories`/`slug`/`comments`. Match an existing sibling file.
+This applies to **reviews & life pages too**. They are flat nav pages, so their
+`date`/`categories`/`slug` aren't consumed by the blog plugin — but we keep them for a
+consistent format (`date` = the page's real date; `categories` = `Review` or `Life`).
+Only nav landing pages (`index.md`, `about.md`, `cv.md`) are exempt.
 
 ## 3. Categorize
 
@@ -52,7 +53,7 @@ header (`title:` + `description:` optional) and an `# H1`; they do **not** need
   something) or **`Research`** (concepts, theory, understanding how something works). Put the
   actual technologies in **`tags`** (e.g. `Java`, `Go`, `Rust`, `Kubernetes`, `gRPC`).
 - **Journal** — `categories` is **`Weekly`** (week report) or **`Refresh`** (monthly). No tags.
-- **Reviews / Life** — no categories.
+- **Reviews / Life** — `categories` is **`Review`** or **`Life`** respectively. No tags.
 
 When unsure between Practice/Research, ask the user rather than guessing.
 

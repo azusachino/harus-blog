@@ -19,7 +19,12 @@ type-based tabs — **no year-wise layout**.
 
 ## Conventions
 
-- Post frontmatter: `title`, `date`, `description`, `categories`, `slug`, `comments: true`.
+- Universal frontmatter — **every** content post/page (journal, tech, reviews, life) uses the same
+  keys in this order: `title`, `date`, `description`, `categories`, `slug`, `comments: true`
+  (optional `tags` go after `categories`). Reviews/life are flat nav pages, so their `date`/`categories`/`slug`
+  are organizational only (not consumed by the blog plugin), but kept for consistency.
+  Nav landing pages (`index.md`, `about.md`, `cv.md`) are exempt.
+- `scripts/normalize_frontmatter.py` reorders keys in place without touching values; rerun if drift creeps in.
 - Cover image = first `![](...){ .post-cover }` line; blog posts put it before `<!-- more -->` so it
   shows on the index card.
 - Future-dated posts are drafts (`draft_if_future_date: true`) — excluded from `make build`.

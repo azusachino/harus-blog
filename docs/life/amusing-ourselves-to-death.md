@@ -1,6 +1,10 @@
 ---
 title: 娱乐至死
+date: 2024-04-08
 description: 娱乐也要适可而止
+categories:
+- Life
+slug: amusing-ourselves-to-death
 comments: true
 ---
 

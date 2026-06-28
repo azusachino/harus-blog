@@ -1,6 +1,10 @@
 ---
 title: 柏拉图和鸭嘴兽一起去酒吧
+date: 2024-04-08
 description: 哲学何尝不是词法与语义的游戏
+categories:
+- Life
+slug: plato-and-platypus
 comments: true
 ---
 

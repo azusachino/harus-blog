@@ -1,6 +1,10 @@
 ---
 title: Review 2021
+date: 2021-12-31
 description: 以经验为食粮
+categories:
+- Review
+slug: review-2021
 comments: true
 ---
 

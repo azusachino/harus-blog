@@ -1,6 +1,10 @@
 ---
 title: Review 2022 (Mid-Year)
+date: 2022-06-30
 description: 孤独的未完成进行时
+categories:
+- Review
+slug: review-2022-mid
 comments: true
 ---
 
