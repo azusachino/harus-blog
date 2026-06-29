@@ -119,9 +119,9 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-        # Honour 2-space nested lists (CommonMark/Obsidian style) instead of
-        # Python-Markdown's default 4-space requirement.
-
+  - pymdownx.magiclink
+  # Honour 2-space nested lists (CommonMark/Obsidian style) instead of
+  # Python-Markdown's default 4-space requirement.
   - mdx_truly_sane_lists:
       nested_indent: 2
       truly_sane: true
