@@ -3,7 +3,7 @@ title: Weekly Report 2024.14
 date: 2024-04-07
 description: make your own choice
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-14
 comments: true
 ---

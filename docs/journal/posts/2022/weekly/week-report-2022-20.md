@@ -3,7 +3,7 @@ title: Weekly Report 2022.20
 date: 2022-05-15
 description: 失乐园
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-20
 comments: true
 ---

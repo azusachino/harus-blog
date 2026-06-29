@@ -3,7 +3,7 @@ title: Monthly Refresh 2026.04
 date: 2026-05-12
 description: the country-side life
 categories:
-- Refresh
+  - refresh
 slug: month-refresh-2026-04
 comments: true
 ---
@@ -43,7 +43,7 @@ The countryside life was great, but I have to remind myself that it isn't real l
 - 最近爆火的 Harness Engineering 到底是个啥 https://www.youtube.com/watch?v=3DlXq9nsQOE
 - 量化绞杀 https://youtu.be/-rUBUbYpuXM
 - 将蓝莓拉下神坛 https://youtu.be/0U8euiflpJ0
-	- 更加理智地看待事物, 这才是“正确”的生活态度
+  - 更加理智地看待事物, 这才是“正确”的生活态度
 
 ---
 
@@ -56,4 +56,3 @@ The countryside life was great, but I have to remind myself that it isn't real l
 - 高频轮动（电风扇行情）：量化通过高频监测人为制造板块快速轮动，诱导散户频繁换股，从而在每一步切换中进行收割 [05:53]。
 
 ---
-

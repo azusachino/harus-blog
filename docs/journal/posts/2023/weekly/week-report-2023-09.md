@@ -3,7 +3,7 @@ title: Weekly Report 2023.09
 date: 2023-03-05
 description: 行动、理论都是瘸子
 categories:
-- Weekly
+  - weekly
 slug: week-report-2023-09
 comments: true
 ---

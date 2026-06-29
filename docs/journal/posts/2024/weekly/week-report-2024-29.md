@@ -3,7 +3,7 @@ title: Weekly Report 2024.29
 date: 2024-07-21
 description: life continues
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-29
 comments: true
 ---

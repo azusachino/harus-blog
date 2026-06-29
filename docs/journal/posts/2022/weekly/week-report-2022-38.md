@@ -3,7 +3,7 @@ title: Weekly Report 2022.38
 date: 2022-09-18
 description: 记住，自己始终是无知的
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-38
 comments: true
 ---

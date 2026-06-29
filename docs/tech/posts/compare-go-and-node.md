@@ -3,10 +3,10 @@ title: Go 与 Node.js 后端对比：Gin 与 Express
 date: 2021-06-01
 description: 唯有套路得人心
 categories:
-- Research
+  - research
 tags:
-- Go
-- Node
+  - go
+  - node
 slug: compare-go-and-node
 comments: true
 ---

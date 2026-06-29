@@ -3,7 +3,7 @@ title: ヨルシカ 盗作再演
 date: 2025-10-05
 description: 夏が終わっていく
 categories:
-- Life
+  - life
 slug: yorushika-live-2025-09-30
 comments: true
 ---

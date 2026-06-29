@@ -3,7 +3,7 @@ title: Monthly Refresh 2026.02
 date: 2026-03-01
 description: swift blink
 categories:
-- Refresh
+  - refresh
 slug: month-refresh-2026-02
 comments: true
 ---
@@ -22,7 +22,7 @@ February began with the tail end of a Genshin binge — finishing chapters 4, 5,
 
 Work picked up around the middle of the month. The EKS/CDK8s project became the main technical thread: deploying ArgoCD within EKS clusters using node-selectors and taints, refactoring the okj-services network topology with internal-kong-alb, and by the end of the month successfully installing external-dns and the Load Balancer Controller. Claude Code became an indispensable assistant throughout — though I noticed that relying on it heavily sometimes left me without a true understanding of what was happening.
 
-Two moments stood out as genuinely wonderful. On February 8th, a snow-covered trip to Yokohama for a concert left a strong impression — though the tanoc sound system proved overwhelming. Then on Valentine's Day (Feb 14), the Deco Miku live performance at Ikebukuro: 27 songs, a sea of light sabers, and the best live experience to date. No filler, only Miku and DECO*27.
+Two moments stood out as genuinely wonderful. On February 8th, a snow-covered trip to Yokohama for a concert left a strong impression — though the tanoc sound system proved overwhelming. Then on Valentine's Day (Feb 14), the Deco Miku live performance at Ikebukuro: 27 songs, a sea of light sabers, and the best live experience to date. No filler, only Miku and DECO\*27.
 
 The Chinese New Year period (around Feb 16) brought a quieter rhythm — leaving work early, hotpot alone with chili soup, brief calls with old friends. The karaoke session on Feb 21 (10AM to 5PM in Ueno) was another high point, followed by a walk through Ueno Park and spicy hotdishes.
 
@@ -57,7 +57,7 @@ The biggest unresolved tension: time is abundant, but focus is scarce. The quest
 
 ## sharing
 
-- The Deco Miku live (Feb 14) — 27 songs, no filler, just Miku and DECO*27. The most complete live experience so far.
+- The Deco Miku live (Feb 14) — 27 songs, no filler, just Miku and DECO\*27. The most complete live experience so far.
 - Silver short squeeze analysis: the milk-tea analogy for futures/shorting is one of the clearest explanations of leverage and forced liquidation I've encountered.
 - "如果的决策是基于突然发现了一个早已存在只是你自己没意识的现实情况，那么你大概率会因为另一个早已存在只是你自己没意识的现实情况而后悔。" — a thought worth sitting with.
 - Risk is what's left over when you think you've thought of everything.

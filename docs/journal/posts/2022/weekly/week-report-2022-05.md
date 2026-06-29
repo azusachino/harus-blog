@@ -3,7 +3,7 @@ title: Weekly Report 2022.05
 date: 2022-01-30
 description: 不能过于信任自己的记忆力
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-05
 comments: true
 ---

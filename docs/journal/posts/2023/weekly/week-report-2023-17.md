@@ -3,7 +3,7 @@ title: Weekly Report 2023.17
 date: 2023-04-30
 description: True Picture of life
 categories:
-- Weekly
+  - weekly
 slug: week-report-2023-17
 comments: true
 ---

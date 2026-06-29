@@ -3,7 +3,7 @@ title: Weekly Report 2023.29
 date: 2023-07-23
 description: 分裂、分离
 categories:
-- Weekly
+  - weekly
 slug: week-report-2023-29
 comments: true
 ---

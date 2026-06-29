@@ -3,7 +3,7 @@ title: Weekly Report 2022.37
 date: 2022-09-11
 description: 可愛さしか勝たん
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-37
 comments: true
 ---

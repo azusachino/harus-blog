@@ -3,7 +3,7 @@ title: Weekly Report 2024.32
 date: 2024-08-11
 description: lives were so different
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-32
 comments: true
 ---

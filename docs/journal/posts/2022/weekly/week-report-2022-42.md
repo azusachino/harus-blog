@@ -3,7 +3,7 @@ title: Weekly Report 2022.42
 date: 2022-10-16
 description: 想法太多，能力有限
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-42
 comments: true
 ---

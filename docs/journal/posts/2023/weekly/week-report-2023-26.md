@@ -3,7 +3,7 @@ title: Weekly Report 2023.26
 date: 2023-07-02
 description: 如梦似幻
 categories:
-- Weekly
+  - weekly
 slug: week-report-2023-26
 comments: true
 ---

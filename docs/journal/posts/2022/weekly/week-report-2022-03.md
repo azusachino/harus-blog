@@ -3,7 +3,7 @@ title: Weekly Report 2022.03
 date: 2022-01-16
 description: Hard to love
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-03
 comments: true
 ---

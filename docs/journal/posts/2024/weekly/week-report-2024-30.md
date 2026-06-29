@@ -3,7 +3,7 @@ title: Weekly Report 2024.30
 date: 2024-07-28
 description: hot days continued
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-30
 comments: true
 ---

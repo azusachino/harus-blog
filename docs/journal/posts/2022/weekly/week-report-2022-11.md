@@ -3,7 +3,7 @@ title: Weekly Report 2022.11
 date: 2022-03-13
 description: 韶华易逝
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-11
 comments: true
 ---

@@ -3,7 +3,7 @@ title: Weekly Report 2024.21
 date: 2024-05-26
 description: what matters eventually?
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-21
 comments: true
 ---

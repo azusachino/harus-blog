@@ -3,9 +3,9 @@ title: runC 初探：OCI 标准下的容器运行时
 date: 2022-01-16
 description: 容器化的基石
 categories:
-- Research
+  - research
 tags:
-- Runc
+  - runc
 slug: runc-intro
 comments: true
 ---

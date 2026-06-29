@@ -3,7 +3,7 @@ title: Monthly Refresh 2023.05
 date: 2023-05-31
 description: Useless
 categories:
-- Refresh
+  - refresh
 slug: month-refresh-2023-05
 comments: true
 ---

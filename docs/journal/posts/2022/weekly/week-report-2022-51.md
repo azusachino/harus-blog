@@ -3,7 +3,7 @@ title: Weekly Report 2022.51
 date: 2022-12-18
 description: 如果有后悔药的话
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-51
 comments: true
 ---

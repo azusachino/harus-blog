@@ -3,7 +3,7 @@ title: Weekly Report 2024.46
 date: 2024-11-17
 description: a day trip to mt. odake
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-46
 comments: true
 ---

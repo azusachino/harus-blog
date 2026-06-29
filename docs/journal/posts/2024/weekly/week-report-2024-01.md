@@ -3,7 +3,7 @@ title: Weekly Report 2024.01
 date: 2024-01-07
 description: Gaming life a little bit
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-01
 comments: true
 ---

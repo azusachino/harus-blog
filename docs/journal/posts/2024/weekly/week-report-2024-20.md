@@ -3,7 +3,7 @@ title: Weekly Report 2024.20
 date: 2024-05-19
 description: focus, focus
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-20
 comments: true
 ---

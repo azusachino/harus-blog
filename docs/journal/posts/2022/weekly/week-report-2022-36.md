@@ -3,7 +3,7 @@ title: Weekly Report 2022.36
 date: 2022-09-04
 description: 生命线
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-36
 comments: true
 ---

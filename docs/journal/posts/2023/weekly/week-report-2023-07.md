@@ -3,7 +3,7 @@ title: Weekly Report 2023.07
 date: 2023-02-19
 description: No life, No Game
 categories:
-- Weekly
+  - weekly
 slug: week-report-2023-07
 comments: true
 ---

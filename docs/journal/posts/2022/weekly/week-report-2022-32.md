@@ -3,7 +3,7 @@ title: Weekly Report 2022.32
 date: 2022-08-07
 description: 己不能渡，何以渡人
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-32
 comments: true
 ---

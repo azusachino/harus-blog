@@ -3,7 +3,7 @@ title: Weekly Report 2022.23
 date: 2022-06-05
 description: Round-a-Round Merry-go-round
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-23
 comments: true
 ---

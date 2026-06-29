@@ -3,7 +3,7 @@ title: Monthly Refresh 2023.07
 date: 2023-07-31
 description: What a Dilemma
 categories:
-- Refresh
+  - refresh
 slug: month-refresh-2023-07
 comments: true
 ---

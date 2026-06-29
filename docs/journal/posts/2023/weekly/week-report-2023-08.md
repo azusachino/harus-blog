@@ -3,7 +3,7 @@ title: Weekly Report 2023.08
 date: 2023-02-26
 description: ゲーム脳
 categories:
-- Weekly
+  - weekly
 slug: week-report-2023-08
 comments: true
 ---

@@ -3,7 +3,7 @@ title: 如何阅读一本书
 date: 2024-04-08
 description: 读完一本工具书，并不能代表你就掌握了这个工具
 categories:
-- Life
+  - life
 slug: how-to-read-a-book
 comments: true
 ---

@@ -3,7 +3,7 @@ title: Monthly Refresh 2025.11
 date: 2025-11-30
 description: consistency is the hard choice
 categories:
-- Refresh
+  - refresh
 slug: month-refresh-2025-11
 comments: true
 ---
@@ -90,4 +90,3 @@ we are human capital, and the education is the only short-cut to "success" (havi
 - Student debt = mortgage on your future self
 
 ---
-

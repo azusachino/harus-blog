@@ -3,7 +3,7 @@ title: Monthly Refresh 2025.09
 date: 2025-09-28
 description: today is a good day to start
 categories:
-- Refresh
+  - refresh
 slug: month-refresh-2025-09
 comments: true
 ---
@@ -176,4 +176,3 @@ see [https://www.v2ex.com/t/1156743](https://www.v2ex.com/t/1156743)
 @inside1024
 
 ---
-

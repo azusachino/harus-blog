@@ -3,7 +3,7 @@ title: Weekly Report 2024.06
 date: 2024-02-11
 description: showing up is really important
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-06
 comments: true
 ---

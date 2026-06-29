@@ -3,7 +3,7 @@ title: Weekly Report 2022.17
 date: 2022-04-24
 description: 幸福千篇一律，不幸一律千篇
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-17
 comments: true
 ---

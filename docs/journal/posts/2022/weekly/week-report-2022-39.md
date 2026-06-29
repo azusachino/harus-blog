@@ -3,7 +3,7 @@ title: Weekly Report 2022.39
 date: 2022-09-25
 description: 杀死一只知更鸟
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-39
 comments: true
 ---

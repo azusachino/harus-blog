@@ -3,7 +3,7 @@ title: Monthly Refresh 2026.05
 date: 2026-05-31
 description: I was wrong, twice
 categories:
-- Refresh
+  - refresh
 slug: month-refresh-2026-05
 comments: true
 ---
@@ -24,7 +24,7 @@ comments: true
 - My few days in Osaka were highly enjoyable—great food and friendly locals, though I noticed a surprising number of foreigners and smokers. At least the beaches and the Nara deer felt authentic, rather than just tourist traps.
 - Afterward, I completed my visa extension application, crossing off another major milestone for 2026.
 - I also played my fair share of gacha games, wrapping up storylines and seasonal events, which was quite satisfying.
-- I finally read the book *Clear Thinking* and came to the conclusion that most books in this genre are essentially extensions of the *Thinking, Fast and Slow* philosophy.
+- I finally read the book _Clear Thinking_ and came to the conclusion that most books in this genre are essentially extensions of the _Thinking, Fast and Slow_ philosophy.
 - I spent a significant amount of time building the `Ame Platform`. The process was a lot of fun—from design to implementation—even with a few complete reworks.
 
 ---

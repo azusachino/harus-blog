@@ -3,10 +3,10 @@ title: 云直播简介：架构、协议与延迟
 date: 2022-02-21
 description: 直播已经成为了时代的标志之一
 categories:
-- Research
+  - research
 tags:
-- CS
-- LiveStream
+  - cs
+  - livestream
 slug: what-is-live-stream
 comments: true
 ---

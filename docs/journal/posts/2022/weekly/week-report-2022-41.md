@@ -3,7 +3,7 @@ title: Weekly Report 2022.41
 date: 2022-10-09
 description: 看不完的风景
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-41
 comments: true
 ---

@@ -3,7 +3,7 @@ title: Monthly Refresh 2025.10
 date: 2025-10-29
 description: choose the hard one
 categories:
-- Refresh
+  - refresh
 slug: month-refresh-2025-10
 comments: true
 ---
@@ -364,7 +364,6 @@ Janice A. Radway 认为，小说中的男性角色，“并非只是一个爱人
 
 ---
 
-
 1. **历史不是公正的，而是权力的产物**；
 2. **记忆是一种斗争：不是每个人都有资格被记住**；
 3. **当我们阅读历史，其实是在阅读一种筛选过的意识形态剧本**；
@@ -378,10 +377,8 @@ Janice A. Radway 认为，小说中的男性角色，“并非只是一个爱人
 
 ---
 
-
 > [!quote]
 > The idea that your actions need validation from future generations is itself a kind of weakness - seeking eternal meaning because you can't create your own.
->
 >
 > [!quote]
 > "Education is not the filling of a pail, but the lighting of a fire." - W.B. Yeats

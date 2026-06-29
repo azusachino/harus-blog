@@ -3,7 +3,7 @@ title: Weekly Report 2024.25
 date: 2024-06-23
 description: lost hours
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-25
 comments: true
 ---

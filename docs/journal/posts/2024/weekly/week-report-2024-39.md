@@ -3,7 +3,7 @@ title: Weekly Report 2024.39
 date: 2024-09-29
 description: start to realize the real life
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-39
 comments: true
 ---

@@ -3,7 +3,7 @@ title: Weekly Report 2024.27
 date: 2024-07-07
 description: always got something to blame
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-27
 comments: true
 ---

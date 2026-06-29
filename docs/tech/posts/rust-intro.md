@@ -3,9 +3,9 @@ title: "Getting Started with Rust: Core Concepts"
 date: 2021-12-15
 description: 又一门我不太能用上的语言
 categories:
-- Research
+  - research
 tags:
-- Rust
+  - rust
 slug: rust-intro
 comments: true
 ---

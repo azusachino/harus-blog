@@ -3,7 +3,7 @@ title: Weekly Report 2023.02
 date: 2023-01-15
 description: Gaming is Fun
 categories:
-- Weekly
+  - weekly
 slug: week-report-2023-02
 comments: true
 ---

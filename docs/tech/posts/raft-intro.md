@@ -3,9 +3,9 @@ title: "An Introduction to the Raft Consensus Algorithm"
 date: 2021-10-08
 description: 最热门的共识算法之一
 categories:
-- Research
+  - research
 tags:
-- Raft
+  - raft
 slug: raft-intro
 comments: true
 ---

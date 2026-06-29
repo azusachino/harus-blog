@@ -3,7 +3,7 @@ title: Monthly Refresh 2025.06
 date: 2025-06-30
 description: thoughts and deeds
 categories:
-- Refresh
+  - refresh
 slug: month-refresh-2025-06
 comments: true
 ---
@@ -123,4 +123,3 @@ comments: true
 ——易中天
 
 ---
-

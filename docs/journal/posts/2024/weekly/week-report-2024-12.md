@@ -3,7 +3,7 @@ title: Weekly Report 2024.12
 date: 2024-03-24
 description: long lasting recovery
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-12
 comments: true
 ---

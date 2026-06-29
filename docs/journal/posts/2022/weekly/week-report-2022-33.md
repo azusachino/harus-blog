@@ -3,7 +3,7 @@ title: Weekly Report 2022.33
 date: 2022-08-14
 description: 无能为力
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-33
 comments: true
 ---

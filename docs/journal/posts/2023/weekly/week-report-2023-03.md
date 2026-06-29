@@ -3,7 +3,7 @@ title: Weekly Report 2023.03
 date: 2023-01-22
 description: 名副其实的【假期】
 categories:
-- Weekly
+  - weekly
 slug: week-report-2023-03
 comments: true
 ---

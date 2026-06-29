@@ -3,7 +3,7 @@ title: Weekly Report 2023.10
 date: 2023-03-12
 description: 麻醉剂
 categories:
-- Weekly
+  - weekly
 slug: week-report-2023-10
 comments: true
 ---

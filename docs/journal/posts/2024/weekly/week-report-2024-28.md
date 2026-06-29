@@ -3,7 +3,7 @@ title: Weekly Report 2024.28
 date: 2024-07-14
 description: bloodborne weekend
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-28
 comments: true
 ---

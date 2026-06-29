@@ -3,7 +3,7 @@ title: Weekly Report 2022.28
 date: 2022-07-10
 description: The finality of everything
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-28
 comments: true
 ---

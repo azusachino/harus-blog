@@ -3,7 +3,7 @@ title: Weekly Report 2022.15
 date: 2022-04-10
 description: 神のまにまに
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-15
 comments: true
 ---

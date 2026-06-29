@@ -3,7 +3,7 @@ title: Weekly Report 2024.35
 date: 2024-09-01
 description: magical mirai
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-35
 comments: true
 ---

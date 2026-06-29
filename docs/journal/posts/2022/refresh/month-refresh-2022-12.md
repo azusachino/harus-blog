@@ -3,7 +3,7 @@ title: Monthly Refresh 2022.12
 date: 2022-12-27
 description: How to unlive your life?
 categories:
-- Refresh
+  - refresh
 slug: month-refresh-2022-12
 comments: true
 ---

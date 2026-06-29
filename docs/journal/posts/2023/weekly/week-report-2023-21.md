@@ -3,7 +3,7 @@ title: Weekly Report 2023.21
 date: 2023-05-28
 description: ASAP
 categories:
-- Weekly
+  - weekly
 slug: week-report-2023-21
 comments: true
 ---

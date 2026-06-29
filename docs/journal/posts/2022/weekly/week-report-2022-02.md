@@ -3,7 +3,7 @@ title: Weekly Report 2022.02
 date: 2022-01-09
 description: Sympathy is an illusion
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-02
 comments: true
 ---

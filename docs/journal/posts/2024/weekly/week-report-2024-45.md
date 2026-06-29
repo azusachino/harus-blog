@@ -3,7 +3,7 @@ title: Weekly Report 2024.45
 date: 2024-11-10
 description: surrealism?
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-45
 comments: true
 ---

@@ -3,7 +3,7 @@ title: 再见了, SIF
 date: 2024-04-08
 description: 青春的一页
 categories:
-- Life
+  - life
 slug: goodbye-sif
 comments: true
 ---

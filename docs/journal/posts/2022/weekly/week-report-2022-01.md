@@ -3,7 +3,7 @@ title: Weekly Report 2022.01
 date: 2022-01-02
 description: 没有多余时间可以用来浪费了
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-01
 comments: true
 ---

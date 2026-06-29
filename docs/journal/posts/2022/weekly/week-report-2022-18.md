@@ -3,7 +3,7 @@ title: Weekly Report 2022.18
 date: 2022-05-01
 description: 心静自有良辰美景
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-18
 comments: true
 ---

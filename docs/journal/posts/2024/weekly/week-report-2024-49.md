@@ -3,7 +3,7 @@ title: Weekly Report 2024.49
 date: 2024-12-08
 description: busy and fun week
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-49
 comments: true
 ---

@@ -3,7 +3,7 @@ title: Monthly Refresh 2025.02
 date: 2025-03-01
 description: 没有成果便是无意义
 categories:
-- Refresh
+  - refresh
 slug: month-refresh-2025-02
 comments: true
 ---

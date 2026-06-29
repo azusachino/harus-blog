@@ -3,7 +3,7 @@ title: Weekly Report 2022.48
 date: 2022-11-27
 description: 做出力所能及的选择
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-48
 comments: true
 ---

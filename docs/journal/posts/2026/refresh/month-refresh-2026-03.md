@@ -3,7 +3,7 @@ title: Monthly Refresh 2026.03
 date: 2026-04-03
 description: quick change
 categories:
-- Refresh
+  - refresh
 slug: month-refresh-2026-03
 comments: true
 ---

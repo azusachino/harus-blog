@@ -3,7 +3,7 @@ title: Weekly Report 2022.44
 date: 2022-10-30
 description: 难辞其咎
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-44
 comments: true
 ---

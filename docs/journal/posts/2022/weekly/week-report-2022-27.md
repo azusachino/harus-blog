@@ -3,7 +3,7 @@ title: Weekly Report 2022.27
 date: 2022-07-03
 description: Systems vs Goals
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-27
 comments: true
 ---

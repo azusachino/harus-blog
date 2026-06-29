@@ -3,7 +3,7 @@ title: Monthly Refresh 2023.04
 date: 2023-04-30
 description: 侥"幸"
 categories:
-- Refresh
+  - refresh
 slug: month-refresh-2023-04
 comments: true
 ---

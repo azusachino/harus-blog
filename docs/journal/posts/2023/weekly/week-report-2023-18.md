@@ -3,7 +3,7 @@ title: Weekly Report 2023.18
 date: 2023-05-07
 description: 劳逸结合
 categories:
-- Weekly
+  - weekly
 slug: week-report-2023-18
 comments: true
 ---

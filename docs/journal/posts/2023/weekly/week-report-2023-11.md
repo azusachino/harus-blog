@@ -3,7 +3,7 @@ title: Weekly Report 2023.11
 date: 2023-03-19
 description: 多重现实
 categories:
-- Weekly
+  - weekly
 slug: week-report-2023-11
 comments: true
 ---

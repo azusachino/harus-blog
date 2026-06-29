@@ -3,7 +3,7 @@ title: Weekly Report 2022.53
 date: 2022-12-31
 description: Another Wish
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-53
 comments: true
 ---

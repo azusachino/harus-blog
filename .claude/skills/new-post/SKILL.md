@@ -12,14 +12,14 @@ the surrounding posts.
 
 ## 1. Pick the destination
 
-| Kind | Location | Indexed by | Nav edit? |
-| --- | --- | --- | --- |
-| Tech blog post | `docs/tech/posts/<slug>.md` | blog plugin | **No** |
-| Journal — weekly report | `docs/journal/posts/week-report-YYYY-WW.md` | blog plugin | **No** |
-| Journal — monthly refresh | `docs/journal/posts/month-refresh-YYYY-MM.md` | blog plugin | **No** |
-| Tech series chapter | `docs/tech/series/<name>/NN.标题.md` | nav | **Yes** |
-| Review | `docs/reviews/<slug>.md` | nav | **Yes** |
-| Life page | `docs/life/<slug>.md` | nav | **Yes** |
+| Kind                      | Location                                      | Indexed by  | Nav edit? |
+| ------------------------- | --------------------------------------------- | ----------- | --------- |
+| Tech blog post            | `docs/tech/posts/<slug>.md`                   | blog plugin | **No**    |
+| Journal — weekly report   | `docs/journal/posts/week-report-YYYY-WW.md`   | blog plugin | **No**    |
+| Journal — monthly refresh | `docs/journal/posts/month-refresh-YYYY-MM.md` | blog plugin | **No**    |
+| Tech series chapter       | `docs/tech/series/<name>/NN.标题.md`          | nav         | **Yes**   |
+| Review                    | `docs/reviews/<slug>.md`                      | nav         | **Yes**   |
+| Life page                 | `docs/life/<slug>.md`                         | nav         | **Yes**   |
 
 `slug` = the filename without `.md`, kebab-case. It must also be the `slug:` frontmatter
 value (URLs are slug-based, so the two must agree).
@@ -31,12 +31,12 @@ value (URLs are slug-based, so the two must agree).
 ```yaml
 ---
 title: "<see §4 for style>"
-date: YYYY-MM-DD          # a future date = draft, auto-excluded from `make build`
+date: YYYY-MM-DD # a future date = draft, auto-excluded from `make build`
 description: <one short line — a mood/hook, not a summary>
 categories:
-- <Category>              # see §3
-tags:                     # tech only; omit otherwise
-- <Topic>
+  - <Category> # see §3
+tags: # tech only; omit otherwise
+  - <Topic>
 slug: <filename-without-.md>
 comments: true
 ---

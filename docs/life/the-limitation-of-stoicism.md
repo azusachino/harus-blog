@@ -3,7 +3,7 @@ title: The Limitation of Stoicism
 date: 2025-12-01
 description: philosophy is never reality
 categories:
-- Life
+  - life
 slug: the-limitation-of-stoicism
 comments: true
 ---

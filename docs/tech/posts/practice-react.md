@@ -3,9 +3,9 @@ title: React 实践：用 Redux 与 TypeScript 写一个博客
 date: 2021-05-30
 description: React的学习可能就到此为止了
 categories:
-- Practice
+  - practice
 tags:
-- React
+  - react
 slug: practice-react
 comments: true
 ---

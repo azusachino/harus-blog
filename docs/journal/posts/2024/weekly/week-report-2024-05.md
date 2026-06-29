@@ -3,7 +3,7 @@ title: Weekly Report 2024.05
 date: 2024-02-04
 description: 不可解な
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-05
 comments: true
 ---

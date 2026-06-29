@@ -3,7 +3,7 @@ title: Weekly Report 2023.33
 date: 2023-08-20
 description: 逐渐消退的新鲜感
 categories:
-- Weekly
+  - weekly
 slug: week-report-2023-33
 comments: true
 ---

@@ -3,7 +3,7 @@ title: Weekly Report 2023.30
 date: 2023-07-30
 description: 何来的道貌岸然
 categories:
-- Weekly
+  - weekly
 slug: week-report-2023-30
 comments: true
 ---

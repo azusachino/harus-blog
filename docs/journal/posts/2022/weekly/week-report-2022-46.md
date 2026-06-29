@@ -3,7 +3,7 @@ title: Weekly Report 2022.46
 date: 2022-11-13
 description: PinPoint
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-46
 comments: true
 ---

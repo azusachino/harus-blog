@@ -45,21 +45,24 @@ scripts/migrate.py            # one-shot content migration script (committed for
 ## Implementation steps
 
 ### 1. Tooling bootstrap (replace Hugo)
+
 - Add `pyproject.toml` (or `requirements.txt`) pinning: `mkdocs-material>=9.5`, `pymdown-extensions`, `mkdocs` (+ `pillow`/`cairosvg` only if social cards are wanted). Manage runtime via `mise` (python) + `uv` for deps, consistent with user's nix-first/mise-runtime convention.
 - Rewrite `mise.toml` tasks: `local` → `uv run mkdocs serve -a 0.0.0.0:1313`; `build` → `uv run mkdocs build`; `deploy` → `mkdocs build` then copy `site/` to the existing `harus-server/.../www-data` target (same destination GEMINI.md documents, swapping `/tmp/mika` for `site/`).
 - Decommission after parity: `hugo.yaml`, `go.mod`, `go.sum`, `layouts/`, `resources/`, `public/`, `.hugo_build.lock`. Keep `static/` content only until images are moved.
 
 ### 2. `mkdocs.yml`
+
 - `theme: material` with features: `navigation.tabs`, `navigation.sections`, `navigation.top`, `navigation.indexes`, `content.code.copy`, `toc.follow`, `search.suggest`, palette toggle (light/dark to match current stack look).
 - **Four blog plugin instances** (Material supports listing `blog` multiple times), one per tab, each with its own `blog_dir` and `post_url_format`:
   ```yaml
   plugins:
     - search
     - tags
-    - blog: { blog_dir: tech,    post_dir: "{blog}/posts", categories_allowed: [...] }
+    - blog:
+        { blog_dir: tech, post_dir: "{blog}/posts", categories_allowed: [...] }
     - blog: { blog_dir: journal, post_dir: "{blog}/posts" }
     - blog: { blog_dir: reviews, post_dir: "{blog}/posts" }
-    - blog: { blog_dir: life,    post_dir: "{blog}/posts" }
+    - blog: { blog_dir: life, post_dir: "{blog}/posts" }
   ```
 - `hooks: [hooks/shortcodes.py]`.
 - `nav:` defines the tabs; `Tech` nests a `Series` section with the four ordered series; `Home/About/CV` as plain pages.
@@ -72,16 +75,20 @@ scripts/migrate.py            # one-shot content migration script (committed for
 - `extra.comments`/`overrides` for giscus (`azusachino/idealistic-daydreamer`), gated to post pages.
 
 ### 3. Shortcode hook — `hooks/shortcodes.py`
+
 Implement `on_page_markdown(markdown, page, config, files)` doing regex substitution:
+
 - `{{< youtube ID >}}` → responsive `<iframe>` to `youtube-nocookie.com/embed/ID`.
 - `{{< bilibili BVID >}}` → `<iframe>` to `player.bilibili.com/player.html?bvid=...`.
 - `{{< douban src="URL" >}}` → styled link/card to the Douban URL.
 - `{{< ppt src="URL" >}}` → `<iframe>`/link to the slide URL.
 - Wrap iframes in a `.video-wrapper` div; add a small `docs/assets/extra.css` for 16:9 responsiveness.
-This is the single reusable mechanism, so no per-file embed edits are needed.
+  This is the single reusable mechanism, so no per-file embed edits are needed.
 
 ### 4. Content migration — `scripts/migrate.py`
+
 A committed one-shot Python script (idempotent, re-runnable into a clean `docs/`):
+
 1. **Classify** each `content/post/**/*.md` into a tab bucket by directory + `categories`:
    - `series/*` → `tech/series/<series>/` (keep `NN.*` filename order; these become ordered nav pages, not blog posts).
    - `report/*` (week-report) and `refresh/*` / `month-refresh` → `journal/posts/`.
@@ -94,6 +101,7 @@ A committed one-shot Python script (idempotent, re-runnable into a clean `docs/`
 5. Write per-tab `index.md` files with a short intro for each blog instance.
 
 ### 5. Static pages & home
+
 - `content/page/about.md` → `docs/about.md`; `content/page/cv.md` → `docs/cv.md`. Drop Hugo-only `archives.md`/`search.md` (search is built into Material).
 - Build `docs/index.md` landing from the stack sidebar subtitle/avatar copy in `hugo.yaml`.
 
@@ -107,6 +115,7 @@ A committed one-shot Python script (idempotent, re-runnable into a clean `docs/`
 6. Compare post count: migrated `docs/**/posts/*.md` + `series` ≈ 239 source files (allow for skipped `_index.md` bundles); investigate any large delta.
 
 ## Open risks / notes
+
 - **Multiple blog instances** is a Material ≥9.2 feature — pin a recent version.
 - Series ordering relies on `NN.` filename prefixes; nav for series will be listed explicitly (or via an `awesome-nav`/literate-nav approach) to guarantee order.
 - A handful of files have malformed categories (`Concluion`, mixed case) — the script normalizes these; review the mapping table once.

@@ -3,7 +3,7 @@ title: Weekly Report 2024.34
 date: 2024-08-25
 description: this is the city night?
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-34
 comments: true
 ---

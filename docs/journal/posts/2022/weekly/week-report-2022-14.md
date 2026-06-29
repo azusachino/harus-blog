@@ -3,7 +3,7 @@ title: Weekly Report 2022.14
 date: 2022-04-03
 description: 实事求是
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-14
 comments: true
 ---

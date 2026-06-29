@@ -3,7 +3,7 @@ title: Weekly Report 2024.08
 date: 2024-02-25
 description: new stage of learning
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-08
 comments: true
 ---

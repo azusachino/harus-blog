@@ -3,7 +3,7 @@ title: Weekly Report 2024.09
 date: 2024-03-03
 description: the frustration
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-09
 comments: true
 ---

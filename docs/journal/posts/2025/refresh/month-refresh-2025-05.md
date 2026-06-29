@@ -3,7 +3,7 @@ title: Monthly Refresh 2025.05
 date: 2025-06-05
 description: a rough period
 categories:
-- Refresh
+  - refresh
 slug: month-refresh-2025-05
 comments: true
 ---

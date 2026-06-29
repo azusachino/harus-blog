@@ -3,9 +3,9 @@ title: "Understanding Aeron: Low-Latency Transport, Archive, and Cluster"
 date: 2025-06-11
 description: consistency and persistency
 categories:
-- Research
+  - research
 tags:
-- Java
+  - java
 slug: aeron-knowledge-sharing
 comments: true
 ---

@@ -3,7 +3,7 @@ title: Weekly Report 2022.07
 date: 2022-02-13
 description: 可怜之人必有可恨之处
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-07
 comments: true
 ---

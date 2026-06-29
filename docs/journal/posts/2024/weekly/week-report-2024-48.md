@@ -3,7 +3,7 @@ title: Weekly Report 2024.48
 date: 2024-12-01
 description: A trip to Sapporo
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-48
 comments: true
 ---

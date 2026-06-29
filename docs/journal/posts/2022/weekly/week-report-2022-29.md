@@ -3,7 +3,7 @@ title: Weekly Report 2022.29
 date: 2022-07-17
 description: Absurdity
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-29
 comments: true
 ---

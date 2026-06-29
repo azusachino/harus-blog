@@ -3,7 +3,7 @@ title: Weekly Report 2024.18
 date: 2024-05-05
 description: nature or nurture
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-18
 comments: true
 ---

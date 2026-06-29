@@ -3,7 +3,7 @@ title: Weekly Report 2023.16
 date: 2023-04-23
 description: 一念之间的自信与自卑
 categories:
-- Weekly
+  - weekly
 slug: week-report-2023-16
 comments: true
 ---

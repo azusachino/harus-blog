@@ -3,7 +3,7 @@ title: Weekly Report 2022.26
 date: 2022-06-26
 description: Improvise Adapt Overcome
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-26
 comments: true
 ---

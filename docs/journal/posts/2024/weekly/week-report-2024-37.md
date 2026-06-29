@@ -3,7 +3,7 @@ title: Weekly Report 2024.37
 date: 2024-09-15
 description: average working week
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-37
 comments: true
 ---

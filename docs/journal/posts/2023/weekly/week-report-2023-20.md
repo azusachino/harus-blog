@@ -3,7 +3,7 @@ title: Weekly Report 2023.20
 date: 2023-05-21
 description: Back to Future
 categories:
-- Weekly
+  - weekly
 slug: week-report-2023-20
 comments: true
 ---

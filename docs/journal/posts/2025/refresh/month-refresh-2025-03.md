@@ -3,7 +3,7 @@ title: Monthly Refresh 2025.03
 date: 2025-03-31
 description: 体验生活
 categories:
-- Refresh
+  - refresh
 slug: month-refresh-2025-03
 comments: true
 ---

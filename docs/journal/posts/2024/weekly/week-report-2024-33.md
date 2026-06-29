@@ -3,7 +3,7 @@ title: Weekly Report 2024.33
 date: 2024-08-18
 description: what comes, what doesnt
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-33
 comments: true
 ---

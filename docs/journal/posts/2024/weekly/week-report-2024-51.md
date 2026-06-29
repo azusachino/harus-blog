@@ -3,7 +3,7 @@ title: Weekly Report 2024.51
 date: 2024-12-22
 description: summer? vacation!
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-51
 comments: true
 ---

@@ -3,7 +3,7 @@ title: Weekly Report 2023.12
 date: 2023-03-26
 description: 决定论
 categories:
-- Weekly
+  - weekly
 slug: week-report-2023-12
 comments: true
 ---

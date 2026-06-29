@@ -3,7 +3,7 @@ title: Weekly Report 2022.49
 date: 2022-12-04
 description: 変わっていく人をどうやって好きで居続けられるんだろう?
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-49
 comments: true
 ---

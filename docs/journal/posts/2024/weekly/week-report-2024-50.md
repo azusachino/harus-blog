@@ -3,7 +3,7 @@ title: Weekly Report 2024.50
 date: 2024-12-15
 description: gaming week?
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-50
 comments: true
 ---

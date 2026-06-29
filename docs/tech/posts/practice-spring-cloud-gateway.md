@@ -3,10 +3,10 @@ title: "Spring Cloud Gateway 实践：HandlerMapping 与路由顺序"
 date: 2022-05-24
 description: 顺序很重要
 categories:
-- Practice
+  - practice
 tags:
-- Java
-- Spring
+  - java
+  - spring
 slug: practice-spring-cloud-gateway
 comments: true
 ---

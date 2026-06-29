@@ -3,10 +3,10 @@ title: "Inside Kafka: Architecture and Replica Management"
 date: 2025-06-01
 description: an unease trip
 categories:
-- Research
+  - research
 tags:
-- Java
-- Middleware
+  - java
+  - middleware
 slug: what-i-know-about-kafka
 comments: true
 ---

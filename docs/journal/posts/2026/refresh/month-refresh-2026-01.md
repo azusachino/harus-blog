@@ -3,7 +3,7 @@ title: Monthly Refresh 2026.01
 date: 2026-01-29
 description: the curse of knowledge
 categories:
-- Refresh
+  - refresh
 slug: month-refresh-2026-01
 comments: true
 ---
@@ -25,7 +25,7 @@ comments: true
 - I attended two live events: Lawson-Miku and Sekai 5th Frontier. Comparing the two made it very obvious that Makuhari Messe is not an appropriate venue for live concerts, as it's essentially just a big room rather than a proper stadium.
   - Lawson-Miku featured so many references to the first Magical Mirai (held at Yokohama Arena in 2013) that it really heated up the whole stadium.
 - My knee still hasn't fully recovered, so I can't run or do any strenuous activities.
-- I spent a lot of time playing mobile games and the co-op game *Nobody Saves the World*. It was a great adventure and a nice way to connect with others.
+- I spent a lot of time playing mobile games and the co-op game _Nobody Saves the World_. It was a great adventure and a nice way to connect with others.
 - Transitioning from Docker Compose to a local k3s server (with help from Gemini and Claude) was a great experience. Using a cronjob shell script for backups turned out to be much better than the custom backup tools I had written previously.
 
 ![lawson-miku](https://cdn.azusachino.icu/uploads/original/c9/34/18e5f476c7e4af183f1adb6d9a2f.png)
@@ -78,7 +78,6 @@ comments: true
 
 **天才的孤僻与现实意义上的成功**
 
-
 这是一个非常犀利且现实的问题。当我们看到乔布斯（Steve Jobs）把私生女拒之门外、在停车场乱停车，或者马斯克（Elon Musk）在公开场合羞辱员工、私生活混乱时，确实会产生一种**“因果错觉”**：是不是想要达到顶级成就，就必须抛弃世俗道德，变成一个偏执狂甚至混蛋？
 
 对于普通人来说，坚持“正派作风”如果不能带来世俗成功，甚至可能成为一种束缚，那么它的价值究竟在哪里？
@@ -102,7 +101,6 @@ comments: true
 
 - **失败的混蛋更多：** 在职场和创业圈中，绝大多数性格偏执、人品糟糕的人，并没有成为乔布斯。他们因为无法与人合作、失去信任、众叛亲离，最终死在了半路上。
 - **正派的成功者也很多：** 比如蒂姆·库克（Tim Cook）、萨提亚·纳德拉（Satya Nadella）、沃伦·巴菲特（Warren Buffett）。他们温和、正派、情绪稳定，同样取得了顶级成就。特别是纳德拉，他接手微软后，用同理心和合作精神让微软重回巅峰。
-
   - 这证明：**“变坏”不是成功的必要条件，甚至不是充分条件。**
 
 ### 3. 博弈论视角：正派是普通人的“最优算法”
@@ -127,7 +125,6 @@ comments: true
 - **必须承认的代价：** 那些为了成就而牺牲人性的人，往往生活在一个极度孤独、充满敌意的世界里。他们必须时刻保持战斗状态，因为他们没有真正的盟友，只有利益相关者。
 
 - **普通人的幸福公式：** 作为一个普通人（即使是高收入的工程师），我们的幸福感很大程度上来源于**良好的人际关系**（家庭、朋友、受人尊敬）。
-
   - 如果为了追求所谓的“顶级成就”而众叛亲离，对于非偏执狂的普通人来说，这种“成功”带来的痛苦可能远大于快乐。
 
 ### 总结
@@ -143,4 +140,3 @@ comments: true
 你可以学习乔布斯的极致审美和马斯克的第一性原理，但千万不要学习他们的混蛋性格。那是他们成功的副作用，而不是原因。既然我们只是在升级打怪的普通玩家，**“知行合一”**依然是通关副本最稳妥的攻略。
 
 ---
-

@@ -3,7 +3,7 @@ title: Monthly Refresh 2022.09
 date: 2022-09-30
 description: 慢步前行
 categories:
-- Refresh
+  - refresh
 slug: month-refresh-2022-09
 comments: true
 ---

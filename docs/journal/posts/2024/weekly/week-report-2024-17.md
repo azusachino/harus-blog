@@ -3,7 +3,7 @@ title: Weekly Report 2024.17
 date: 2024-04-28
 description: what is real life?
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-17
 comments: true
 ---

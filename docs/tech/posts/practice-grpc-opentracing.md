@@ -3,10 +3,10 @@ title: "OpenTracing in Go: Tracing gRPC and GoFiber with Jaeger"
 date: 2021-09-16
 description: Golang 的一次小练习
 categories:
-- Practice
+  - practice
 tags:
-- gRPC
-- OpenTracing
+  - grpc
+  - opentracing
 slug: practice-grpc-opentracing
 comments: true
 ---

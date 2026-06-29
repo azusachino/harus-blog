@@ -3,7 +3,7 @@ title: Weekly Report 2024.44
 date: 2024-11-03
 description: know yourself
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-44
 comments: true
 ---

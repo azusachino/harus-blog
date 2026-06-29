@@ -3,7 +3,7 @@ title: Weekly Report 2024.24
 date: 2024-06-16
 description: the changed, the unchanged
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-24
 comments: true
 ---

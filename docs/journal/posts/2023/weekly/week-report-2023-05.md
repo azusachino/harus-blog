@@ -3,7 +3,7 @@ title: Weekly Report 2023.05
 date: 2023-02-05
 description: Happy Hacking
 categories:
-- Weekly
+  - weekly
 slug: week-report-2023-05
 comments: true
 ---

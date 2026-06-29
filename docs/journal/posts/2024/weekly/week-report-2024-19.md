@@ -3,7 +3,7 @@ title: Weekly Report 2024.19
 date: 2024-05-12
 description: no logic
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-19
 comments: true
 ---

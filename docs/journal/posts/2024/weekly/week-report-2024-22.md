@@ -3,7 +3,7 @@ title: Weekly Report 2024.22
 date: 2024-06-02
 description: it's the action which makes the difference
 categories:
-- Weekly
+  - weekly
 slug: week-report-2024-22
 comments: true
 ---

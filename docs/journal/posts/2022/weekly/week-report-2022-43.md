@@ -3,7 +3,7 @@ title: Weekly Report 2022.43
 date: 2022-10-23
 description: Pursue the Truth, or Enjoy the life
 categories:
-- Weekly
+  - weekly
 slug: week-report-2022-43
 comments: true
 ---

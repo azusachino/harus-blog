@@ -3,7 +3,7 @@ title: Monthly Refresh 2025.08
 date: 2025-08-31
 description: yet days pass by
 categories:
-- Refresh
+  - refresh
 slug: month-refresh-2025-08
 comments: true
 ---

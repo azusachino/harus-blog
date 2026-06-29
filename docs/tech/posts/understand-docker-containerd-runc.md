@@ -3,10 +3,10 @@ title: "Docker, containerd, and runC: How They Fit Together"
 date: 2021-12-26
 description: 自顶向下
 categories:
-- Research
+  - research
 tags:
-- Docker
-- Runc
+  - docker
+  - runc
 slug: understand-docker-containerd-runc
 comments: true
 ---

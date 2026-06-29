@@ -3,7 +3,7 @@ title: Weekly Report 2023.28
 date: 2023-07-16
 description: 一个人的伟大征程?
 categories:
-- Weekly
+  - weekly
 slug: week-report-2023-28
 comments: true
 ---
