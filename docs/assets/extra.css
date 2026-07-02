@@ -1,3 +1,20 @@
+/* Hatsune Miku teal (#39C5BB) as the site's primary/accent color. */
+:root {
+  --md-primary-fg-color: #39c5bb;
+  --md-primary-fg-color--light: #5fd4cc;
+  --md-primary-fg-color--dark: #2ba59d;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: rgba(255, 255, 255, 0.7);
+  --md-accent-fg-color: #12b6a8;
+  --md-accent-fg-color--transparent: rgba(57, 197, 187, 0.1);
+}
+
+/* Slate (dark) mode: keep links/accents legible against the dark ground. */
+[data-md-color-scheme="slate"] {
+  --md-typeset-a-color: #5fd4cc;
+  --md-accent-fg-color: #5fd4cc;
+}
+
 /* Responsive 16:9 wrapper for embedded iframes (youtube/bilibili/ppt). */
 .video-wrapper {
   position: relative;

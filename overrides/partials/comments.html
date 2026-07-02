@@ -1,49 +1,6 @@
 {% if page.meta.comments %}
 <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
-<script
-  src="https://giscus.app/client.js"
-  data-repo="azusachino/idealistic-daydreamer"
-  data-repo-id="MDEwOlJlcG9zaXRvcnkzNTgxOTk2MjU="
-  data-category="General"
-  data-category-id="DIC_kwDOFVmxSc4CON34"
-  data-mapping="title"
-  data-strict="0"
-  data-reactions-enabled="1"
-  data-emit-metadata="0"
-  data-input-position="top"
-  data-theme="preferred_color_scheme"
-  data-lang="en"
-  data-loading="lazy"
-  crossorigin="anonymous"
-  async
-></script>
-
-<!-- Synchronize Giscus theme with palette -->
-<script>
-  var giscus = document.querySelector("script[src*=giscus]");
-  function setGiscusTheme() {
-    var palette = __md_get("__palette");
-    if (palette && typeof palette.color === "object") {
-      var theme = palette.color.scheme === "slate" ? "dark" : "light";
-      giscus.setAttribute("data-theme", theme);
-    }
-  }
-  setGiscusTheme();
-
-  var ref = document.querySelector("[data-md-component=palette]");
-  if (ref) {
-    ref.addEventListener("change", function () {
-      var palette = __md_get("__palette");
-      if (palette && typeof palette.color === "object") {
-        var theme = palette.color.scheme === "slate" ? "dark" : "light";
-        var frame = document.querySelector(".giscus-frame");
-        if (frame)
-          frame.contentWindow.postMessage(
-            { giscus: { setConfig: { theme: theme } } },
-            "https://giscus.app",
-          );
-      }
-    });
-  }
-</script>
+<!-- Giscus mounts here; loader lives in assets/giscus.js so it survives
+     instant navigation (inline <script> in swapped content won't re-run). -->
+<div class="giscus"></div>
 {% endif %}
