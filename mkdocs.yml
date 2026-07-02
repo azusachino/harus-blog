@@ -77,10 +77,6 @@ hooks:
 
 plugins:
   - search
-  - social:
-      cards_layout_options:
-        background_color: "#39c5bb"
-        color: "#ffffff"
   - tags
   - blog:
       blog_dir: tech

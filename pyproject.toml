@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Idealistic Daydreamer — personal blog (MkDocs Material)"
 requires-python = ">=3.11"
 dependencies = [
-  "mkdocs-material[imaging]>=9.7",
+  "mkdocs-material>=9.7",
   "pymdown-extensions>=10.7",
   "mkdocs>=1.6",
   "mdx-truly-sane-lists>=1.3",
