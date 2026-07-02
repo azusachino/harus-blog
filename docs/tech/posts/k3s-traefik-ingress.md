@@ -58,7 +58,7 @@ flowchart LR
   SRP -.->|"DNS crosses the router too"| CD
   G -.->|"response retraces every hop"| B
 
-  classDef pain fill:#fde,stroke:#c33,stroke-width:2px;
+  classDef pain fill:#c0392b,stroke:#7b241c,stroke-width:2px,color:#fff;
   class SRP pain;
 ```
 
@@ -100,7 +100,7 @@ flowchart LR
   KP --> G
   G -.->|"response"| B
 
-  classDef good fill:#eafbea,stroke:#3a3,stroke-width:2px;
+  classDef good fill:#1e8449,stroke:#145a32,stroke-width:2px,color:#fff;
   class TR good;
 ```
 
@@ -112,8 +112,8 @@ Same request, but look at what's gone:
 
 The division of labor is now clean:
 
-- **Traefik** handles all HTTP/L7 — every interactive web app.
-- **Subnet router** stays for raw TCP (`postgres:5432`) and `*.svc.cluster.local` admin/debug access — exactly the traffic that never minded the hop.
+- **Traefik** handles all HTTP/L7 — every interactive web app. There's no raw HTTP over the tailnet anymore.
+- **Subnet router** stays for **DNS** — CoreDNS's ClusterIP is still how `*.h.azusachino.icu` itself resolves — plus raw non-HTTP TCP like `postgres:5432`. Exactly the traffic that never minded the hop.
 - **NodePorts** are retired entirely.
 
 ## DNS: one wildcard to rule them all
@@ -249,7 +249,7 @@ The old post's thesis was "boring is good — build it once, let it run." Adopti
 - ✅ NodePort port-roulette retired
 - ✅ New service = one `IngressRoute` with `tls: {}`
 
-The subnet router didn't go away — it's still the right tool for raw TCP and admin access. It just stopped being the tool for *everything*. That's the real lesson of a boring homelab: it's not that you never change it. It's that when you do, you reach for the thing already on the cluster before you install a new one.
+The subnet router didn't go away — and its most load-bearing job now is the one that's easiest to miss: **DNS**. Even the shiny Traefik path can't resolve `*.h.azusachino.icu` without it, because those names answer at CoreDNS's ClusterIP, reachable only through the router. Beyond that it still carries raw, non-HTTP TCP (`postgres:5432` and friends) from the tailnet. What it *stopped* carrying is interactive HTTP — that's all Traefik now. It just stopped being the tool for *everything*. That's the real lesson of a boring homelab: it's not that you never change it. It's that when you do, you reach for the thing already on the cluster before you install a new one.
 
 ## What's next
 
