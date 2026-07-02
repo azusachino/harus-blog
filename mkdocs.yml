@@ -68,9 +68,6 @@ extra:
       link: https://harus-note.notion.site/harusDocs-1737242dc8218043a2e0e2fca24a5cd5
     - icon: fontawesome/solid/person-running
       link: https://azusachino.github.io/running_page/
-    - icon: material/rss
-      link: /feed_rss_created.xml
-      name: RSS feed
   analytics:
     provider: google
     property: G-59FEKVM9G5
@@ -104,21 +101,6 @@ plugins:
       draft_if_future_date: true
       categories: false
       post_url_format: "{slug}"
-  - rss:
-      match_path: "(tech|journal)/posts/.*"
-      # Channel logo — theme.logo is a Material icon (no image URL), so set one
-      # explicitly or the feed's <image> resolves to None.
-      image: https://github.com/azusachino.png
-      date_from_meta:
-        as_creation: date
-        # New posts can carry a real time: `date: 2026-06-30 14:30:00`.
-        datetime_format: "%Y-%m-%d %H:%M:%S"
-        default_timezone: Asia/Tokyo
-        # Fallback time for older, date-only posts.
-        default_time: "09:00"
-      categories:
-        - categories
-        - tags
   - glightbox
   # Image compression — needs pngquant/pngcrush/optipng (+svgo) on PATH.
   # Off by default so `make build` stays green; run with OPTIMIZE=true to enable.
