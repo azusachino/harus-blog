@@ -10,6 +10,8 @@ comments: true
 
 ![](/assets/images/2022/12/SMC and the Magellanic Bridge.png){ .post-cover }
 
+<!-- more -->
+
 情けない
 
 ## Keyword

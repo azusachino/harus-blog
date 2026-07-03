@@ -6,9 +6,13 @@ categories:
   - life
 slug: how-to-read-a-book
 comments: true
+hide:
+  - navigation
 ---
 
 ![](/assets/book/2021/how-to-read-a-book.jpg){ .post-cover }
+
+<!-- more -->
 
 ## 阅读的四个层次
 

@@ -6,9 +6,13 @@ categories:
   - life
 slug: amusing-ourselves-to-death
 comments: true
+hide:
+  - navigation
 ---
 
 ![](/assets/book/2021/amusing-ourselves-to-death.jpg){ .post-cover }
+
+<!-- more -->
 
 本书的封面是没有"脑袋"的一家四口观看电视的模样，对此你作何感想？
 

@@ -10,6 +10,8 @@ comments: true
 
 ![](/assets/images/2024/miku_fanart_board.jpeg){ .post-cover }
 
+<!-- more -->
+
 ## Keyword
 
 - Jan~Mar: AWS certs (SAA, SAP), along with fairly regular exercises; oh, and SKI

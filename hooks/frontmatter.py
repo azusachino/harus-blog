@@ -27,7 +27,6 @@ CONTENT_DIRS = (
     "tech/posts",
     "tech/series",
     "journal",
-    "reviews",
     "life",
 )
 

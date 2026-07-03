@@ -6,7 +6,11 @@ categories:
   - life
 slug: the-limitation-of-cynicism
 comments: true
+hide:
+  - navigation
 ---
+
+<!-- more -->
 
 **Cynicism is easy, but it leads to nowhere.**
 

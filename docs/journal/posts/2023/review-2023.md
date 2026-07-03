@@ -10,6 +10,8 @@ comments: true
 
 ![](/assets/images/2023/12/SantaPark.jpg){ .post-cover }
 
+<!-- more -->
+
 ## Keyword
 
 **祛魅 (disenchantment)**: Before I came Japan, I thought everything would be more or less same with those in animation, but I was wrong all the time.

@@ -10,6 +10,8 @@ comments: true
 
 ![](/assets/images/2025/ordinary-life.jpg){ .post-cover }
 
+<!-- more -->
+
 ## keyword
 
 fire watcher

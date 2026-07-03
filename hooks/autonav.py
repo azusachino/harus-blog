@@ -1,14 +1,16 @@
 """MkDocs hook: auto-generate nav lists that would otherwise be hand-maintained.
 
-Two kinds of sections are rebuilt on every build:
+Sections rebuilt on every build:
 
-- **Flat sections** (Life, Reviews) — standalone pages ordered *newest-first by
-  frontmatter `date`*. `index.md` is pinned to the top.
+- **Flat sections** (`FLAT_SECTIONS`) — standalone pages ordered *newest-first by
+  frontmatter `date`*, with `index.md` pinned to the top. Currently empty — Tech,
+  Journal, and Life are blog-plugin instances whose post lists the blog plugin manages.
 - **Series** (tech/series/<name>/NN.*.md) — ordered tutorials grouped by
   subdirectory and sorted *ascending by the numeric filename prefix*.
 
-To add content: drop a properly-front-mattered `.md` in the right directory — no
-`mkdocs.yml` edit needed. Series groups are listed alphabetically by directory name.
+To add a series tutorial: drop a properly-front-mattered `.md` in the right
+directory — no `mkdocs.yml` edit needed. Series groups are listed alphabetically
+by directory name.
 """
 
 from __future__ import annotations
@@ -19,10 +21,7 @@ import os
 import yaml
 
 # nav section title -> docs subdirectory (flat, date-desc)
-FLAT_SECTIONS = {
-    "Life": "life",
-    "Reviews": "reviews",
-}
+FLAT_SECTIONS: dict[str, str] = {}
 
 # nav section title -> docs subdirectory (grouped tutorials, filename-asc)
 SERIES_TITLE = "Series"

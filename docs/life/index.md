@@ -1,5 +1,7 @@
 ---
 title: Life
+hide:
+  - navigation
 ---
 
 # Life

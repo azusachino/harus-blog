@@ -6,9 +6,13 @@ categories:
   - life
 slug: yorushika-live-2025-09-30
 comments: true
+hide:
+  - navigation
 ---
 
 ![](/assets/images/2025/10-live.jpeg){ .post-cover }
+
+<!-- more -->
 
 ![百日紅](https://cdn.azusachino.icu/uploads/original/8d/37/c42131fd76af029361d1e9544093.png)
 

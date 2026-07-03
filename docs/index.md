@@ -18,8 +18,7 @@ hide:
 <div class="grid cards" markdown>
 
 - :material-code-tags: **[Tech](tech/index.md)** — 技术笔记与系列
-- :material-notebook: **[Journal](journal/index.md)** — 周报与月度刷新
-- :material-calendar-check: **[Reviews](reviews/index.md)** — 年度回顾
+- :material-notebook: **[Journal](journal/index.md)** — 周报、月度刷新与年度回顾
 - :material-coffee: **[Life](life/index.md)** — 生活、阅读与随想
 
 </div>

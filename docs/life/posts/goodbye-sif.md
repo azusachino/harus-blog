@@ -6,9 +6,13 @@ categories:
   - life
 slug: goodbye-sif
 comments: true
+hide:
+  - navigation
 ---
 
 ![](/assets/images/2021/12/sif-main.jpg){ .post-cover }
+
+<!-- more -->
 
 **每天早上签到打歌的日子，大概就这样一去不复返了。**
 

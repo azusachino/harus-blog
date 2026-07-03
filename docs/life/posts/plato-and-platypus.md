@@ -6,9 +6,13 @@ categories:
   - life
 slug: plato-and-platypus
 comments: true
+hide:
+  - navigation
 ---
 
 ![](/assets/book/2021/plato-and-platypus.jpg){ .post-cover }
+
+<!-- more -->
 
 ## 一些哲学理念(Joke)
 

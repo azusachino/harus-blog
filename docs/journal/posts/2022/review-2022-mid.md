@@ -10,6 +10,8 @@ comments: true
 
 ![](/assets/images/2022/07/Vulpes.jpg){ .post-cover }
 
+<!-- more -->
+
 富有「变化」的六个月，也算是在践行「体验生活」的基本理念吧。
 
 ## 一月

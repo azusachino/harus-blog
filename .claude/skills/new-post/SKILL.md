@@ -1,28 +1,30 @@
 ---
 name: new-post
-description: Scaffold, categorize, and polish a new blog post for this MkDocs site, and refresh the nav/index when needed. Use when the user wants to add/draft a new tech post, journal entry (weekly report / monthly refresh), review, life page, or a tutorial series chapter.
+description: Scaffold, categorize, and polish a new blog post for this MkDocs site. Use when the user wants to add/draft a new tech post, journal entry (weekly report / monthly refresh / yearly review), life post, or a tutorial series chapter.
 ---
 
 # Add a new blog post
 
 This site is **MkDocs + Material**. Content lives in `docs/`, split into type-based tabs.
-Two tabs use the Material **blog plugin** (auto-indexed — no nav edit); the rest are
-hand-listed in `mkdocs.yml` `nav`. Follow the steps below; keep edits minimal and match
-the surrounding posts.
+**All three content tabs (Tech / Journal / Life) are Material blog-plugin instances**, and
+`hooks/autonav.py` auto-generates the `Series` subtree — so **no `mkdocs.yml` nav edit is ever
+needed**. Just drop a properly-front-mattered file in the right directory. Keep edits minimal
+and match the surrounding posts.
 
 ## 1. Pick the destination
 
-| Kind                      | Location                                      | Indexed by  | Nav edit? |
-| ------------------------- | --------------------------------------------- | ----------- | --------- |
-| Tech blog post            | `docs/tech/posts/<slug>.md`                   | blog plugin | **No**    |
-| Journal — weekly report   | `docs/journal/posts/week-report-YYYY-WW.md`   | blog plugin | **No**    |
-| Journal — monthly refresh | `docs/journal/posts/month-refresh-YYYY-MM.md` | blog plugin | **No**    |
-| Tech series chapter       | `docs/tech/series/<name>/NN.标题.md`          | nav         | **Yes**   |
-| Review                    | `docs/reviews/<slug>.md`                      | nav         | **Yes**   |
-| Life page                 | `docs/life/<slug>.md`                         | nav         | **Yes**   |
+| Kind                      | Location                                          | Nav edit? |
+| ------------------------- | ------------------------------------------------- | --------- |
+| Tech blog post            | `docs/tech/posts/<slug>.md`                       | **No**    |
+| Journal — weekly report   | `docs/journal/posts/<YYYY>/week-report-YYYY-WW.md` | **No**   |
+| Journal — monthly refresh | `docs/journal/posts/<YYYY>/month-refresh-YYYY-MM.md` | **No** |
+| Journal — yearly review   | `docs/journal/posts/<YYYY>/review-YYYY.md`        | **No**    |
+| Life post                 | `docs/life/posts/<slug>.md`                        | **No**   |
+| Tech series chapter       | `docs/tech/series/<name>/NN.标题.md`              | **No**    |
 
-`slug` = the filename without `.md`, kebab-case. It must also be the `slug:` frontmatter
-value (URLs are slug-based, so the two must agree).
+A yearly review is a journal post — it lands in the Journal "By year" archive alongside the
+weekly/monthly entries. `slug` = the filename without `.md`, kebab-case; it must also be the
+`slug:` frontmatter value (URLs are slug-based).
 
 ## 2. Write the frontmatter
 
@@ -34,28 +36,31 @@ title: "<see §4 for style>"
 date: YYYY-MM-DD # a future date = draft, auto-excluded from `make build`
 description: <one short line — a mood/hook, not a summary>
 categories:
-  - <Category> # see §3
+  - <category> # lowercase; see §3
 tags: # tech only; omit otherwise
   - <Topic>
 slug: <filename-without-.md>
 comments: true
+hide: # Life posts only — drops the empty left sidebar
+  - navigation
 ---
 ```
 
-This applies to **reviews & life pages too**. They are flat nav pages, so their
-`date`/`categories`/`slug` aren't consumed by the blog plugin — but we keep them for a
-consistent format (`date` = the page's real date; `categories` = `Review` or `Life`).
-Only nav landing pages (`index.md`, `about.md`, `cv.md`) are exempt.
+`hooks/frontmatter.py` fails the strict build if these keys drift from the order above, so keep
+them exact. Only **Life** posts (and `life/index.md`) add the trailing `hide: [navigation]`.
+Nav landing pages (`index.md`, `about.md`, `cv.md`) are exempt from the frontmatter rules.
 
 ## 3. Categorize
 
-- **Tech** — `categories` is exactly one of **`Practice`** (hands-on: building/configuring
-  something) or **`Research`** (concepts, theory, understanding how something works). Put the
-  actual technologies in **`tags`** (e.g. `Java`, `Go`, `Rust`, `Kubernetes`, `gRPC`).
-- **Journal** — `categories` is **`Weekly`** (week report) or **`Refresh`** (monthly). No tags.
-- **Reviews / Life** — `categories` is **`Review`** or **`Life`** respectively. No tags.
+Categories are **lowercase**, exactly one per post:
 
-When unsure between Practice/Research, ask the user rather than guessing.
+- **Tech** — **`practice`** (hands-on: building/configuring something) or **`research`** (concepts,
+  theory, understanding how something works). Put the actual technologies in **`tags`** (e.g. `Java`,
+  `Go`, `Rust`, `Kubernetes`, `gRPC`).
+- **Journal** — **`weekly`** (week report), **`refresh`** (monthly), or **`review`** (yearly). No tags.
+- **Life** — **`life`**. No tags.
+
+When unsure between practice/research, ask the user rather than guessing.
 
 ## 4. Polish (always do this pass)
 
@@ -71,18 +76,11 @@ When unsure between Practice/Research, ask the user rather than guessing.
 - **Typos** — fix clear spelling/grammar/Markdown mistakes only. Do **not** rewrite voice,
   translate, restructure, or alter code blocks.
 
-## 5. Refresh the nav (series / reviews / life only)
+## 5. Nav is automatic
 
-Tech-post and journal additions need **no** `mkdocs.yml` change. For the nav-listed kinds,
-add one line under the matching tab in `mkdocs.yml` `nav:`:
-
-- **Reviews / Life** — newest-first; insert near the top, just under the tab's `index.md`:
-  `- <Display Title>: reviews/<slug>.md`
-- **Series chapter** — append in order under `Tech > Series > <series-name>`:
-  `- tech/series/<name>/NN.标题.md`
-
-Do not run `make migrate` to do this — that script is the one-shot Hugo importer and will
-wipe hand-authored changes. Edit `nav` directly.
+Every content kind lands in nav on its own: blog posts via the blog plugin's index/archive,
+series chapters via `hooks/autonav.py` (filename order). Just save the file in the right
+directory — `mkdocs.yml` stays untouched.
 
 ## 6. Verify
 

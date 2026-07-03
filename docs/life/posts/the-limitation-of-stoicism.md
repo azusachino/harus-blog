@@ -6,9 +6,13 @@ categories:
   - life
 slug: the-limitation-of-stoicism
 comments: true
+hide:
+  - navigation
 ---
 
 ![](/assets/images/2025/10-stoicism.png){ .post-cover }
+
+<!-- more -->
 
 **Stoicism is a product of privilege.**
 

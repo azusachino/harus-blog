@@ -6,9 +6,13 @@ categories:
   - life
 slug: miku-symphony-2025
 comments: true
+hide:
+  - navigation
 ---
 
 ![](/assets/images/2025/10-symphony.png){ .post-cover }
+
+<!-- more -->
 
 Rella 先生、wowaka さん、 ヒトリエの皆さん、指揮の栗田さん、東京りぃルハーモニー交响楽団の皆さんに感謝の気持ちを送ります、ありがとうございました。
 

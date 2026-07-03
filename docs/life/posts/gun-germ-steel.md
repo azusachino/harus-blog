@@ -6,9 +6,13 @@ categories:
   - life
 slug: gun-germ-steel
 comments: true
+hide:
+  - navigation
 ---
 
 ![](/assets/book/2022/ggs.jpg){ .post-cover }
+
+<!-- more -->
 
 ## 最初的疑问
 
