@@ -35,20 +35,20 @@ And the setting of the map was tricky as well, I had to check a lot of videos to
 
 ## Collectibles
 
-- https://m.okjike.com/originalPosts/667fdc4de910c4230941eea7
-  - chatgpt 可以对一般人的生活起到指导作用 (积极意义上)
-- https://sharkle.com/
-  - click for random wonderful websites
-- https://mp.weixin.qq.com/s/HJwErzn21qwlzG4irOC7Xg - 追求幸福必须心硬如铁
-  - 第一步是人际关系的心硬如铁
-  - 第二步就是与更宏大的时空事物建立共情
+- <https://m.okjike.com/originalPosts/667fdc4de910c4230941eea7>
+    - chatgpt 可以对一般人的生活起到指导作用 (积极意义上)
+- <https://sharkle.com/>
+    - click for random wonderful websites
+- <https://mp.weixin.qq.com/s/HJwErzn21qwlzG4irOC7Xg> - 追求幸福必须心硬如铁
+    - 第一步是人际关系的心硬如铁
+    - 第二步就是与更宏大的时空事物建立共情
 
 ### learn
 
-- https://m.okjike.com/originalPosts/6683eb9ff3005588e0e66373 - 学习的习惯
-  - 初学一个领域，直接付费找业界领头人物的指导或者课程，比起自己收集各类资料，花时间去摸索效率更高
-  - 给自己定下足够 SMART 的目标 (长期目标、阶段性目标)
-  - 采用指读法来读书，通过物理集中的方式，避免读书走神，提高专注度和阅读效率
-  - 整理出自己的知识体系框架 （输出、制作一门课程）
-  - 能用环境解决的，就不要轻易动用自己的意志力
-  - 每天写日记，思考今天的不足和收获，后续如何改进，哪怕只是写写自己的情绪感受，疏散一些负面的影响，也是一件非常有价值的事情。
+- <https://m.okjike.com/originalPosts/6683eb9ff3005588e0e66373> - 学习的习惯
+    - 初学一个领域，直接付费找业界领头人物的指导或者课程，比起自己收集各类资料，花时间去摸索效率更高
+    - 给自己定下足够 SMART 的目标 (长期目标、阶段性目标)
+    - 采用指读法来读书，通过物理集中的方式，避免读书走神，提高专注度和阅读效率
+    - 整理出自己的知识体系框架 （输出、制作一门课程）
+    - 能用环境解决的，就不要轻易动用自己的意志力
+    - 每天写日记，思考今天的不足和收获，后续如何改进，哪怕只是写写自己的情绪感受，疏散一些负面的影响，也是一件非常有价值的事情。

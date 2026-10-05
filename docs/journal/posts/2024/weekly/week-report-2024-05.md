@@ -32,11 +32,11 @@ absolutely nothing
 
 ## Sharing
 
-- https://www.youtube.com/watch?v=cBSOI67Jeuw
-  - MEGATON KICK '23 Clip【USAO】
-- https://www.tanocstore.net/shopbrand/all_items/
-  - tanoc official store
+- <https://www.youtube.com/watch?v=cBSOI67Jeuw>
+    - MEGATON KICK '23 Clip【USAO】
+- <https://www.tanocstore.net/shopbrand/all_items/>
+    - tanoc official store
 
 ## References
 
-- https://www.tano-c.net/tour2024/
+- <https://www.tano-c.net/tour2024/>

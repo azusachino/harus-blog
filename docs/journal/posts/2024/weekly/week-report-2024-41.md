@@ -56,16 +56,16 @@ University of Glasgow
 **techniques**:
 
 - testing/retrieval practice as a learning tool
-  - by supporting recall, the retention of knowledge is enhanced
-  - by enhancing self-awareness, learners become more aware of their mental processes and can better understand what they do and do not know
-  - by putting learners in controlled adversity, important non-cognitive skills such as resilience and grit can be developed
+    - by supporting recall, the retention of knowledge is enhanced
+    - by enhancing self-awareness, learners become more aware of their mental processes and can better understand what they do and do not know
+    - by putting learners in controlled adversity, important non-cognitive skills such as resilience and grit can be developed
 - spaced learning and interleaving
 - aiming for mastery
 
 ### share
 
-- https://martinfowler.com/bliki/MonolithFirst.html
-- https://www.youtube.com/watch?v=c1nYtX-NUsc
-  - Is Our World Broken? - kurzgesagt
-- https://m.okjike.com/originalPosts/67048c746fbc73186ff65d1b
-  - 为什么不要进股市？
+- <https://martinfowler.com/bliki/MonolithFirst.html>
+- <https://www.youtube.com/watch?v=c1nYtX-NUsc>
+    - Is Our World Broken? - kurzgesagt
+- <https://m.okjike.com/originalPosts/67048c746fbc73186ff65d1b>
+    - 为什么不要进股市？

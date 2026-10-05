@@ -33,25 +33,25 @@ may be next time.
 
 ### learn
 
-- https://tommihovi.com/2024/05/demystifying-cookies-and-tokens/
-  - Cookies are small text files that are created by the websites (web servers) you visit and stored in your device.
+- <https://tommihovi.com/2024/05/demystifying-cookies-and-tokens/>
+    - Cookies are small text files that are created by the websites (web servers) you visit and stored in your device.
 
 ### share
 
 - code is easy, it's the logic behind the code that is complex. (algorithm and data structure)
-  - https://read.engineerscodex.com/p/good-programmers-worry-about-data
-  - https://softwareengineering.stackexchange.com/questions/163185/torvalds-quote-about-good-programmer
+    - <https://read.engineerscodex.com/p/good-programmers-worry-about-data>
+    - <https://softwareengineering.stackexchange.com/questions/163185/torvalds-quote-about-good-programmer>
 - programmer level up (career ladder) - soft skills
-  - https://www.developing.dev/p/faang-career-ladder-mid-level-l4
-  - influence the team to take goals on improving it together
-  - build a process for everyone to make the team's oncall better
-  - drives team planning, and build a roadmap
-- https://www.youtube.com/watch?v=UoiiBM00GQ8 - 黑神话悟空技术评测：PS5 和 PC 优化如何？精美画面是怎么做的？
-  - the visual metrics inside a video game and PS5 version current experience
-- https://m.okjike.com/originalPosts/66c30b646f3cfe34540dab54 - 逆行人生
-  - 一群名利双收的演员，想象中产阶级的恐惧，扮演劳动人民的艰苦。
-  - 电影将这种极端赤贫——同时包括物质和精神上——所致的悲哀与残酷，生搬硬套到城市中产的失业影响里，除了强行煽情之外，看不到任何智力活动的影子，生离死别是重型武器，动不动就拿到拌嘴场景里用，只会变得廉价且矫饰。
-  - 画鬼容易画犬难，外卖小哥在生活里的活跃频率太高了，反而没了艺术塑造的想象空间，稍不留神就会露出人工痕迹，纵使做足功课，仍然尽是皮套。
+    - <https://www.developing.dev/p/faang-career-ladder-mid-level-l4>
+    - influence the team to take goals on improving it together
+    - build a process for everyone to make the team's oncall better
+    - drives team planning, and build a roadmap
+- <https://www.youtube.com/watch?v=UoiiBM00GQ8> - 黑神话悟空技术评测：PS5 和 PC 优化如何？精美画面是怎么做的？
+    - the visual metrics inside a video game and PS5 version current experience
+- <https://m.okjike.com/originalPosts/66c30b646f3cfe34540dab54> - 逆行人生
+    - 一群名利双收的演员，想象中产阶级的恐惧，扮演劳动人民的艰苦。
+    - 电影将这种极端赤贫——同时包括物质和精神上——所致的悲哀与残酷，生搬硬套到城市中产的失业影响里，除了强行煽情之外，看不到任何智力活动的影子，生离死别是重型武器，动不动就拿到拌嘴场景里用，只会变得廉价且矫饰。
+    - 画鬼容易画犬难，外卖小哥在生活里的活跃频率太高了，反而没了艺术塑造的想象空间，稍不留神就会露出人工痕迹，纵使做足功课，仍然尽是皮套。
 
 ### quote
 

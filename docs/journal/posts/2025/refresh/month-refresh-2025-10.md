@@ -25,10 +25,10 @@ if you find doing anything is hard, that might indicates you're on the right tra
 - I changed the style of journal, shed more light on feelings and thoughts rather then things (what I did, eat, played, etc.)
 - ran almost twice a day this month, and the result was exceptional; never ask yourself it's hard or not, ask yourself you are a runner or not
 - completed quite a lot of books
-  - [[klara and the sun]]
-  - [[思行无界]]
-  - [[周国平论阅读]]
-  - the eureka is I started to figure out the "seen and unseen" of an event. like the conversation with Claude on [[stoicism and aQ]], the experience of a single man is explicit, but the background, the "WHY" is implicit.
+    - [[klara and the sun]]
+    - [[思行无界]]
+    - [[周国平论阅读]]
+    - the eureka is I started to figure out the "seen and unseen" of an event. like the conversation with Claude on [[stoicism and aQ]], the experience of a single man is explicit, but the background, the "WHY" is implicit.
 - music theory and piano, I failed to keep learning and practicing.
 - cooked serveral times, edible I thought.
 
@@ -39,89 +39,89 @@ from a pragmatism perspective, life is "Cut through the noise. Focus on what mat
 ## review
 
 - AI 工具, next level ❌
-  - but knew a few patterns on learning language, philosophy concepts
+    - but knew a few patterns on learning language, philosophy concepts
 - running, 尝试半马 - half ✅
-  - PB is 13km, the rest is still challenge
+    - PB is 13km, the rest is still challenge
 - 读书, 笔记 & 心得更加完备
-  - AI for the rescue
-  - but the key is to speak in your own word
+    - AI for the rescue
+    - but the key is to speak in your own word
 - 工作, 本番上线做好准备
-  - not started, like what?
+    - not started, like what?
 - 材料, 开始着手打印出现有的部分, 以及日语翻译件查缺补漏
-  - not started, but had a rough understanding, TODO
+    - not started, but had a rough understanding, TODO
 
 ## resolution
 
 - yale courses (with Claude)
 - running (LDS, slow pace)
 - more output
-  - 2~ technical sharing materials
-  - conversation with Claude (revised version)
+    - 2~ technical sharing materials
+    - conversation with Claude (revised version)
 - residential application progress
 
 ## sharing
 
-- https://restofworld.org/2025/ai-china-childhood/
-  - the myth of child education
-  - could we say that everything has double-edge
+- <https://restofworld.org/2025/ai-china-childhood/>
+    - the myth of child education
+    - could we say that everything has double-edge
 - 写阿 Q 的人死了，扮演阿 Q 的人也死了，唯独阿 Q 本人，依然活着
-  - https://www.youtube.com/watch?v=ZWuvS4pKOXE
-  - the story of aQ
+    - <https://www.youtube.com/watch?v=ZWuvS4pKOXE>
+    - the story of aQ
 - SEONG-JIN CHO – Piano Concerto in E minor, Op. 11 (final stage of the Chopin Competition 2015)
-  - https://www.youtube.com/watch?v=614oSsDS734
-  - magnificent
+    - <https://www.youtube.com/watch?v=614oSsDS734>
+    - magnificent
 - 你一定聽過「田園交響曲」但你知道它有多「偉大」嗎？
-  - https://www.youtube.com/watch?v=f3-lyOMuwXw
-  - 模仿鸟叫那一段绝了
+    - <https://www.youtube.com/watch?v=f3-lyOMuwXw>
+    - 模仿鸟叫那一段绝了
 - THE ULTIMATE 200 ANIME SONGS プレミアムピアノメドレー BGM 全曲歌詞付
-  - https://youtu.be/p77-glF--GA
-  - true anime goat
+    - <https://youtu.be/p77-glF--GA>
+    - true anime goat
 - 原来我们都是“怪物”！震撼整个戛纳，2023 最好的电影！
-  - https://youtu.be/UK46dWBxGvk
-  - 谁是坏人, 谁是怪物
-  - 社会是坏人, 我们是怪物
+    - <https://youtu.be/UK46dWBxGvk>
+    - 谁是坏人, 谁是怪物
+    - 社会是坏人, 我们是怪物
 - 在深圳，可以有多穷？挂逼面 4 元一碗，8 块钱网吧包夜
-  - https://youtu.be/4JadzOg0Di8
-  - 三和“大神”实录
-  - 第一批农民工无奈外出打工, 成长后的留守儿童无奈踏上相同的路
-  - 网吧八元包夜, 何尝不是“我赢了”, 何尝不是又一种阿 Q 精神
+    - <https://youtu.be/4JadzOg0Di8>
+    - 三和“大神”实录
+    - 第一批农民工无奈外出打工, 成长后的留守儿童无奈踏上相同的路
+    - 网吧八元包夜, 何尝不是“我赢了”, 何尝不是又一种阿 Q 精神
 - 镜头下的公安局，成年人的尊严一文不值，看一遍喊一声“草”！
-  - https://youtu.be/3K_KRwQ1uIw
-  - 读作三声, 这是每个草根的生活
-  - 读作四声, 这是活在当下每个无奈人的心声
+    - <https://youtu.be/3K_KRwQ1uIw>
+    - 读作三声, 这是每个草根的生活
+    - 读作四声, 这是活在当下每个无奈人的心声
 - 只要你还能活著，就偷著乐吧！这电影把小人物的心酸都抖落出来了！
-  - https://youtu.be/wV6x3l07RHQ
-  - 逼仄的是房子, 还是人心, 还是社会
-  - 树是死的, 人是活的
+    - <https://youtu.be/wV6x3l07RHQ>
+    - 逼仄的是房子, 还是人心, 还是社会
+    - 树是死的, 人是活的
 - 【大象】真实儿童拐卖案改编，上映 6 年至今无差评，不忍心看第二遍的国产佳作《亲爱的》
-  - https://youtu.be/ck0U_EDyZrI
+    - <https://youtu.be/ck0U_EDyZrI>
 - 【大象】真实事件改编，一部改变韩国国家的电影 ，看了一遍就不敢再看《熔炉》
-  - https://youtu.be/mLQa3MFVo-k
+    - <https://youtu.be/mLQa3MFVo-k>
 - 為什麼莫札特鋼琴協奏曲是極品尤物？
-  - https://www.youtube.com/watch?v=K5fSeWInowc
-  - 感谢海牛老师
+    - <https://www.youtube.com/watch?v=K5fSeWInowc>
+    - 感谢海牛老师
 - why bun claims their redis implementation have better performance
-  - https://claude.ai/public/artifacts/d2ed28e8-01af-4754-9727-5e060cc80ef4
+    - <https://claude.ai/public/artifacts/d2ed28e8-01af-4754-9727-5e060cc80ef4>
 - 心地善良的人
-  - https://www.bilibili.com/video/BV1xYTCzNExo
+    - <https://www.bilibili.com/video/BV1xYTCzNExo>
 - 那些被制裁最最严重的国家，都怎么样了?
-  - https://www.youtube.com/watch?v=zsFTTKNLcXM
-  - 停止贸易, 冻结资产, 二级制裁(威慑周边国家)
-  - 制裁最终将由所有平民承担, 最后可能反而使得被制裁国“更加团结”
+    - <https://www.youtube.com/watch?v=zsFTTKNLcXM>
+    - 停止贸易, 冻结资产, 二级制裁(威慑周边国家)
+    - 制裁最终将由所有平民承担, 最后可能反而使得被制裁国“更加团结”
 - heroism
-  - https://youtu.be/N7D-WhMhuwo
+    - <https://youtu.be/N7D-WhMhuwo>
 - 海王星並不是深藍色，我們都被旅行者 2 號騙了｜太陽系行星
-  - https://youtu.be/tBqCPWsZIqA
+    - <https://youtu.be/tBqCPWsZIqA>
 - 一口气看完，《东京女子图鉴》努力加油!远方，应有尽有/ 远方，一无所有
-  - https://youtu.be/r2U5L7BVEIw
+    - <https://youtu.be/r2U5L7BVEIw>
 - 一口气看完《东京男子图鉴》努力 20 年，只为在大城市有一席之地，生活很难认真二字，可抵万难！
-  - https://youtu.be/B-nwae2LSrc
+    - <https://youtu.be/B-nwae2LSrc>
 - 豆瓣 9 分，离我们最近的神作 《我不是药神》
-  - https://youtu.be/8jmNPbhP0n8
+    - <https://youtu.be/8jmNPbhP0n8>
 - merry christmas Mr. lawrence
-  - https://www.youtube.com/watch?v=z9tECKZ60zk
+    - <https://www.youtube.com/watch?v=z9tECKZ60zk>
 
-三资改革：地方的“钱荒”与“钱术” - https://www.bilibili.com/video/BV1FYsWzLEPo
+三资改革：地方的“钱荒”与“钱术” - <https://www.bilibili.com/video/BV1FYsWzLEPo>
 
 ```markdown
 ## **政府策略核心:**
@@ -157,7 +157,7 @@ from a pragmatism perspective, life is "Cut through the noise. Focus on what mat
 **本质变化**: 从黄奇帆时代的**发展导向型**资本运作,转变为李殿勋时代的**生存导向型**资产变卖——用长期能力换短期生存。
 ```
 
-金价迭创新高,黄金还值得买吗? - https://www.bilibili.com/video/BV1RP44zUE5f - 高净值人群的保值工具
+金价迭创新高,黄金还值得买吗? - <https://www.bilibili.com/video/BV1RP44zUE5f> - 高净值人群的保值工具
 
 ```markdown
 ### **金价上涨的核心驱动因素:**
@@ -235,7 +235,7 @@ from a pragmatism perspective, life is "Cut through the noise. Focus on what mat
 **适合人群**: 寻求资产保值、对冲地缘风险和通胀的投资者,但需根据自身风险承受能力合理配置,不宜将全部资产投入黄金。
 ```
 
-马克思主义如何回答电车难题 https://www.bilibili.com/video/BV1HK4vznEtV/
+马克思主义如何回答电车难题 <https://www.bilibili.com/video/BV1HK4vznEtV/>
 
 ```markdown
 ### **电车难题简介:**
@@ -320,7 +320,7 @@ from a pragmatism perspective, life is "Cut through the noise. Focus on what mat
 
 ---
 
-@ https://weread.qq.com/review-detail?reviewid=323501160_82P7Kh6lN
+@ <https://weread.qq.com/review-detail?reviewid=323501160_82P7Kh6lN>
 
 “被全然理解”的需求究竟是亲密关系里的必需品，还是我们在成长过程中，被不断灌输和强化的幻想？
 

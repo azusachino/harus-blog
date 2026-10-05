@@ -44,15 +44,15 @@ probably work and life balanced.
 
 ## sharing
 
-- how to become a better reader https://youtu.be/A5ucvNAENjU
-  - treat reading like exercise
-  - read books more than once
-  - take notes with intention
-  - pick the right books (be intentional)
-  - make reading a habit
-- 男人结婚的10大“好处”——一场反讽的黑色幽默盛宴 https://b23.tv/Y3XRNni
-- 为什么偏偏是【光速】 https://www.bilibili.com/video/BV1rfUfBoEvp
-- the 25 best ideas of 2025 https://www.sahilbloom.com/newsletter/the-25-best-ideas-of-2025
+- how to become a better reader <https://youtu.be/A5ucvNAENjU>
+    - treat reading like exercise
+    - read books more than once
+    - take notes with intention
+    - pick the right books (be intentional)
+    - make reading a habit
+- 男人结婚的10大“好处”——一场反讽的黑色幽默盛宴 <https://b23.tv/Y3XRNni>
+- 为什么偏偏是【光速】 <https://www.bilibili.com/video/BV1rfUfBoEvp>
+- the 25 best ideas of 2025 <https://www.sahilbloom.com/newsletter/the-25-best-ideas-of-2025>
 
 ---
 
@@ -92,11 +92,10 @@ probably work and life balanced.
 - 速度守恒公式： 你在时空中的运动遵循这个守恒关系：
 
   $$(\text{空间速度})^2 + (\text{时间速度})^2 = c^2$$
-
 - **资源分配的比喻：**
-  - **坐着不动时：** 你把所有的速度资源都用在了**时间**轴上。你在空间速度为 0，所以你在时间上全速前进（正常变老，一秒就是一秒）。
-  - **高速运动时：** 如果你分出一部分速度给**空间**（跑得飞快），那么留给**时间**的速度就变少了。
-  - **结果：** 这就是**时间膨胀（Time Dilation）**。对于旁观者来说，你的时间流逝变慢了。
+    - **坐着不动时：** 你把所有的速度资源都用在了**时间**轴上。你在空间速度为 0，所以你在时间上全速前进（正常变老，一秒就是一秒）。
+    - **高速运动时：** 如果你分出一部分速度给**空间**（跑得飞快），那么留给**时间**的速度就变少了。
+    - **结果：** 这就是**时间膨胀（Time Dilation）**。对于旁观者来说，你的时间流逝变慢了。
 
 ### 3. 光子的视角：“时间停止”
 
@@ -129,13 +128,12 @@ probably work and life balanced.
 这是文稿中最硬核的部分，涉及精细结构常数（Fine Structure Constant, $\alpha$）。
 
 - **公式：** $\alpha = \frac{e^2}{\hbar c}$
-  - $e$：电子电荷
-  - $\hbar$：普朗克常数
-  - $c$：光速
-
+    - $e$：电子电荷
+    - $\hbar$：普朗克常数
+    - $c$：光速
 - **它的作用：** 这个常数（约等于 1/137）决定了电磁相互作用的强度。它直接控制着电子如何绕原子核运动，也就是控制着**化学反应**。
 - **4% 的生死线：** 文稿提到了恒星内部的**3α过程（Triple-Alpha Process）**。三个氦原子核聚变成一个碳-12原子核，需要非常特定的共振能量（霍伊尔态）。如果 $c$ 发生变化导致 $\alpha$ 改变超过 4%，这种共振就会失效。
-  - **后果：** 宇宙中将只有氢和氦，没有碳，也就没有有机化学，更没有生命。
+    - **后果：** 宇宙中将只有氢和氦，没有碳，也就没有有机化学，更没有生命。
 
 ### 6. 人择原理（幸存者偏差）
 

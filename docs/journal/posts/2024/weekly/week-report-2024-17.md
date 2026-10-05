@@ -70,17 +70,17 @@ class Solution:
 
 - finally eased some nerves, spent a lot of time to play games, or should I?
 - the days before and between holiday were always kinda meaningless
-  - the study plan was disrupted
-  - the working was not progressing
-  - the fun was just-so-so
+    - the study plan was disrupted
+    - the working was not progressing
+    - the fun was just-so-so
 - I'd rather go to office regularly to maintain a more disciplined life pace
 
 ## Sharing
 
 - [我发现了“高能量”和“松弛感”的秘诀](https://mp.weixin.qq.com/s/88YmIJki6AwnGKvfsTycdw)
-  - 零和博弈与把一块蛋糕做大的思维差距
+    - 零和博弈与把一块蛋糕做大的思维差距
 
 ## References
 
-- https://thecoder08.github.io/hello-world.html
-  - a deep researching of `hello world` in c and unix-system
+- <https://thecoder08.github.io/hello-world.html>
+    - a deep researching of `hello world` in c and unix-system

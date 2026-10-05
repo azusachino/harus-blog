@@ -36,53 +36,53 @@ comments: true
 
 ## review
 
-- aeron in practice https://github.com/azusachino/sakuranbo — a little bit of progress
+- aeron in practice <https://github.com/azusachino/sakuranbo> — a little bit of progress
 - running (weekly twice maybe) — basically achieved, monthly 36KM
 - gemini live maybe more frequently — failed totally
 - reading
-  - 查理之道 ❌
-  - 芒格之道 ❌
-  - 性心理学 ❌
-  - 叔本华的治疗 ✅
+    - 查理之道 ❌
+    - 芒格之道 ❌
+    - 性心理学 ❌
+    - 叔本华的治疗 ✅
 
 ## resolution
 
 - aeron practice
 - reading
-  - 《性心理学》— 了解性, 以及如何掌控性冲动, 如何进行性教育等等
-  - 重读《耶鲁大学公开课: 死亡》— 探讨生命与死亡的本质, 或者说基于现代人类的不同认知做探讨
-  - 《群星的法则》— 星座与观星之术
-  - 《园丁与木匠》— 教育之术
-  - 《有毒》— 百科
+    - 《性心理学》— 了解性, 以及如何掌控性冲动, 如何进行性教育等等
+    - 重读《耶鲁大学公开课: 死亡》— 探讨生命与死亡的本质, 或者说基于现代人类的不同认知做探讨
+    - 《群星的法则》— 星座与观星之术
+    - 《园丁与木匠》— 教育之术
+    - 《有毒》— 百科
 - running and possibly 10km
 - learn how to write (chinese, english, japanese)
 - genimi live (conversation based association) — morning routine
 
 ## sharing
 
-- https://youtu.be/31FpW6CMmYE -- 全球政府如何投资
-- https://youtu.be/8BbG1Jr94o8 -- 全球游戏产业分析
-- https://www.youtube.com/watch?v=3QvisCATm6I -- 购买相机前的储备知识
-  - general spec of camera, and 3 tier of cameras
-  - spare around 50% your budget for the lens
-- https://youtu.be/OlsvsExiaU0 -- 日本旅游景点介绍
-  - general introduction of japan tour (possible destinations)
-- https://youtu.be/5fQIMcZtYtk -- いいお湯だな
-- https://youtu.be/tAZGnS1FKRE -- ないばいたりてぃ
-- https://youtu.be/-qSqMSsJ4AE -- おくすり
-- https://www.youtube.com/watch?v=xuCn8ux2gbs -- history of the entire world (I Guess)
-  - very intereting tone of story telling
-- https://www.youtube.com/watch?v=1I1vxu5qIUM -- how does bluetooth work
-  - 2.4GHz frequency
-  - 49 separated channels
-  - channel hopping to minimize the problem of traffic jam
-- https://www.youtube.com/watch?v=Mh5LY4Mz15o -- history of japan
-- https://www.youtube.com/watch?v=rStL7niR7gs -- rules for rules
+- <https://youtu.be/31FpW6CMmYE> -- 全球政府如何投资
+- <https://youtu.be/8BbG1Jr94o8> -- 全球游戏产业分析
+- <https://www.youtube.com/watch?v=3QvisCATm6I> -- 购买相机前的储备知识
+    - general spec of camera, and 3 tier of cameras
+    - spare around 50% your budget for the lens
+- <https://youtu.be/OlsvsExiaU0> -- 日本旅游景点介绍
+    - general introduction of japan tour (possible destinations)
+- <https://youtu.be/5fQIMcZtYtk> -- いいお湯だな
+- <https://youtu.be/tAZGnS1FKRE> -- ないばいたりてぃ
+- <https://youtu.be/-qSqMSsJ4AE> -- おくすり
+- <https://www.youtube.com/watch?v=xuCn8ux2gbs> -- history of the entire world (I Guess)
+    - very intereting tone of story telling
+- <https://www.youtube.com/watch?v=1I1vxu5qIUM> -- how does bluetooth work
+    - 2.4GHz frequency
+    - 49 separated channels
+    - channel hopping to minimize the problem of traffic jam
+- <https://www.youtube.com/watch?v=Mh5LY4Mz15o> -- history of japan
+- <https://www.youtube.com/watch?v=rStL7niR7gs> -- rules for rules
   1. keep the key supporters on your side
   2. control the treasure
   3. minimize key supporters
-- https://http2-explained.haxx.se/
-- https://http3-explained.haxx.se/en
+- <https://http2-explained.haxx.se/>
+- <https://http3-explained.haxx.se/en>
 - how to use gemini deep search on summarise book
   Deep Research 读书提示词：
   > 我很喜欢《xxxxx》这本书。请你帮我起草一份深度解读报告，让我快速、全面、深刻的理解这本书中的所有重要观点和细节，请适当举例帮助我充分理解观点。我是普通读者，但是读完书之后还是觉得理解有限，希望通过报告来加深我对本书的理解，各个层面、各个角度的理解，关键是让这本书的阅读对我这个普通读者产生更大的影响和触动。
@@ -90,19 +90,19 @@ comments: true
   > 1、使用中文搜索，只采纳中文资料（因为我希望你扮演一个只会中文、不会外语的人），用中文回答。
   > 2、解读报告要细致，长度至少 1 万字。
   > 3、解读深度是面向普通读者，而非学术批评。
-- https://m.okjike.com/originalPosts/67db0732dc6b6d4853f6dda8
-- https://httptoolkit.com/blog/what-is-x-forwarded-for/
-- https://httptoolkit.com/blog/http3-quic-open-source-support-nowhere
-- https://www.youtube.com/watch?v=X96zX6Ahfko -- MOTTAI - Pmaru
-- https://www.youtube.com/watch?v=wo_e0EvEZn8 -- why your brain blinds you for 2 hours every day
-- https://petapixel.com/2025/03/17/photographers-once-in-a-lifetime-shots-of-the-lunar-eclipse-and-aurora/
-- https://www.youtube.com/watch?v=ZwEquW_Yij0 -- how to speed read
-  - actually usable tricks to read books
+- <https://m.okjike.com/originalPosts/67db0732dc6b6d4853f6dda8>
+- <https://httptoolkit.com/blog/what-is-x-forwarded-for/>
+- <https://httptoolkit.com/blog/http3-quic-open-source-support-nowhere>
+- <https://www.youtube.com/watch?v=X96zX6Ahfko> -- MOTTAI - Pmaru
+- <https://www.youtube.com/watch?v=wo_e0EvEZn8> -- why your brain blinds you for 2 hours every day
+- <https://petapixel.com/2025/03/17/photographers-once-in-a-lifetime-shots-of-the-lunar-eclipse-and-aurora/>
+- <https://www.youtube.com/watch?v=ZwEquW_Yij0> -- how to speed read
+    - actually usable tricks to read books
   1. establish your baseline (calculate your reading speed)
   2. focus on the middle third of the page
   3. try to think of two fixation points per line
   4. evaluate your read+comprehension speed, try to improve
-- https://www.bilibili.com/video/BV1oUoyYTECa -- 结婚为何成为“版本”陷阱
-- https://mp.weixin.qq.com/s/v7gZ7ZGYdsm6NKLYlL5uLg — 他们如此构思的未来却从未到来过
-  - 不要为过去而后悔，也不要为将来而担忧，全神贯注于此刻，如此就能获得心安。
-  - 无论是习惯于为过去后悔，还是为未来担忧的人，他们都过度自信。过去的事情已经过去，所有人都知道无论怎么想也改变不了即成事实，那么他们忍不住去后悔，说明他们有一种自信，可以不承认现实，可以逆转时空，可以修改因果，所以才愿意不断花时间花精力。
+- <https://www.bilibili.com/video/BV1oUoyYTECa> -- 结婚为何成为“版本”陷阱
+- <https://mp.weixin.qq.com/s/v7gZ7ZGYdsm6NKLYlL5uLg> — 他们如此构思的未来却从未到来过
+    - 不要为过去而后悔，也不要为将来而担忧，全神贯注于此刻，如此就能获得心安。
+    - 无论是习惯于为过去后悔，还是为未来担忧的人，他们都过度自信。过去的事情已经过去，所有人都知道无论怎么想也改变不了即成事实，那么他们忍不住去后悔，说明他们有一种自信，可以不承认现实，可以逆转时空，可以修改因果，所以才愿意不断花时间花精力。

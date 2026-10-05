@@ -45,5 +45,5 @@ A lot happened, but I haven't changed much.
 ## sharing
 
 - 时间管理领域有个“帕金森法则”：工作会不断膨胀，直到填满截止日期前的全部时间。
-- 莫札特-鋼琴奏鳴曲，看似簡單其實神乎其技！深入解析：降B大調奏鳴曲K.333 https://www.youtube.com/watch?v=hpoa4II9b9o
-- 内存暴涨，谁在哭？谁在笑？ https://www.youtube.com/watch?v=mcTAHffEkIw
+- 莫札特-鋼琴奏鳴曲，看似簡單其實神乎其技！深入解析：降B大調奏鳴曲K.333 <https://www.youtube.com/watch?v=hpoa4II9b9o>
+- 内存暴涨，谁在哭？谁在笑？ <https://www.youtube.com/watch?v=mcTAHffEkIw>

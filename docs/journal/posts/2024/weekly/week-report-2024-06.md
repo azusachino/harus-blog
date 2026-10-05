@@ -38,11 +38,11 @@ well, nothing important to point out.
 
 ### Wonder
 
-- https://youtube.com/shorts/MJSoPMoRnbo
-  - Everyday, stay guard at the door of your mind
-  - Don't let anyone just dump whatever they want into your mental factory
-- https://x.com/_CASTSTATION/status/1755177189879021939
-  - an amazing adaption of rabbit-hole (deco\*27)
+- <https://youtube.com/shorts/MJSoPMoRnbo>
+    - Everyday, stay guard at the door of your mind
+    - Don't let anyone just dump whatever they want into your mental factory
+- <https://x.com/_CASTSTATION/status/1755177189879021939>
+    - an amazing adaption of rabbit-hole (deco\*27)
 
 ### Inhabiting tactics
 
@@ -71,16 +71,16 @@ well, nothing important to point out.
 ## References
 
 - [Playing music throughout life associated with sharper brain in older age – study](https://www.northwalespioneer.co.uk/news/national/24080243.playing-music-throughout-life-associated-sharper-brain-older-age---study/)
-  - learn piano & stay tuned
-- https://mp.weixin.qq.com/s/TYNFkeDXEQ65F2aavfyJDw
-  - 为什么他人和社会无法评判你的价值
-- https://www.youtube.com/watch?v=zfNqp85g5JM
-  - using docker in unusual ways
-    - run legacy codes
-    - test-containers
-- https://www.youtube.com/watch?v=J_EQDtpYSNM
-  - acquire language through context (comprehensive input)
-  - maximize input
-  - listen & pronounce
-- https://rathod-ajay.medium.com/a-comprehensive-journey-from-java-8-to-java-21-with-code-examples-of-essential-api-enhancements-6817d2ab3ba8
-  - review jdk history
+    - learn piano & stay tuned
+- <https://mp.weixin.qq.com/s/TYNFkeDXEQ65F2aavfyJDw>
+    - 为什么他人和社会无法评判你的价值
+- <https://www.youtube.com/watch?v=zfNqp85g5JM>
+    - using docker in unusual ways
+        - run legacy codes
+        - test-containers
+- <https://www.youtube.com/watch?v=J_EQDtpYSNM>
+    - acquire language through context (comprehensive input)
+    - maximize input
+    - listen & pronounce
+- <https://rathod-ajay.medium.com/a-comprehensive-journey-from-java-8-to-java-21-with-code-examples-of-essential-api-enhancements-6817d2ab3ba8>
+    - review jdk history

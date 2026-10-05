@@ -28,14 +28,14 @@ And, you know, there were no background story for those uma girls (so far as my 
 
 - spot trade
 - future trade
-  - specific conclude time
-  - perpetual future
+    - specific conclude time
+    - perpetual future
 - post only
-  - 默认是“只做 Maker（Post only）”，不会立刻在市场成交，保证用户始终为 Maker，如果委托会立即与市场中的已有委托成交，那么该委托会被取消。
+    - 默认是“只做 Maker（Post only）”，不会立刻在市场成交，保证用户始终为 Maker，如果委托会立即与市场中的已有委托成交，那么该委托会被取消。
 - fill or kill
-  - 如果用户将委托单设置为“全部成交或立即取消（Fill Or Kill）”，该委托只会立即全部成交，否则将被取消。
+    - 如果用户将委托单设置为“全部成交或立即取消（Fill Or Kill）”，该委托只会立即全部成交，否则将被取消。
 - immediate or cancel
-  - 如果用户将委托单设置为“立即成交并取消剩余（Immediate Or Cancel）”，该委托的任何未被立即成交的部分将被立即取消。
+    - 如果用户将委托单设置为“立即成交并取消剩余（Immediate Or Cancel）”，该委托的任何未被立即成交的部分将被立即取消。
 
 ## life
 
@@ -46,20 +46,20 @@ And, you know, there were no background story for those uma girls (so far as my 
 
 ### learn
 
-- https://www.youtube.com/watch?v=D9wei4IjcZk -- IELTS Speaking Test Band 8.0 with Feedback - Tips and Tricks
-  - what does IELTS look like, and several practical tips for better band
-  - smooth talking is the key
-- https://www.youtube.com/watch?v=J-oQEzC6zAc -- 阿滴走心! 直接問考官為什麼我的雅思寫作分數這麼低!?（完整解析＋應考策略）
-  - first thing first, correctness
-  - make your point at first paragrah, first sentence
-  - variation on your expression
-  - right vocabulary on right topic
-- https://www.youtube.com/watch?v=DpIrzA2ohcg -- You've been reading wrong all your life.
-  - another perspective of how to read and learn faster (rather than simply try to read blazingly)
+- <https://www.youtube.com/watch?v=D9wei4IjcZk> -- IELTS Speaking Test Band 8.0 with Feedback - Tips and Tricks
+    - what does IELTS look like, and several practical tips for better band
+    - smooth talking is the key
+- <https://www.youtube.com/watch?v=J-oQEzC6zAc> -- 阿滴走心! 直接問考官為什麼我的雅思寫作分數這麼低!?（完整解析＋應考策略）
+    - first thing first, correctness
+    - make your point at first paragrah, first sentence
+    - variation on your expression
+    - right vocabulary on right topic
+- <https://www.youtube.com/watch?v=DpIrzA2ohcg> -- You've been reading wrong all your life.
+    - another perspective of how to read and learn faster (rather than simply try to read blazingly)
 
 ### share
 
-- https://www.youtube.com/watch?v=jWgvvESR09k -- 我们造出了“自动写作业机器人”！
-  - really impressive about the knowledge of AI (LLM), and the ability to take into practice
-- https://www.youtube.com/watch?v=WgV4cgbaRTo -- 永續合約，從原理到實操，幣安合約教程（怎麽做多 怎麽做空）——合約交易 永續合約怎麽玩 永續合約是什麽 資金費率 手續費 幣安合約教學 杠杠合約 比特幣期貨 Perpetual contracts
-  - random entry of my first insight of perpetual futures
+- <https://www.youtube.com/watch?v=jWgvvESR09k> -- 我们造出了“自动写作业机器人”！
+    - really impressive about the knowledge of AI (LLM), and the ability to take into practice
+- <https://www.youtube.com/watch?v=WgV4cgbaRTo> -- 永續合約，從原理到實操，幣安合約教程（怎麽做多 怎麽做空）——合約交易 永續合約怎麽玩 永續合約是什麽 資金費率 手續費 幣安合約教學 杠杠合約 比特幣期貨 Perpetual contracts
+    - random entry of my first insight of perpetual futures

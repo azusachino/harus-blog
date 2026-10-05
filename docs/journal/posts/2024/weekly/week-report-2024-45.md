@@ -40,12 +40,12 @@ comments: true
 
 ### share
 
-- https://youtu.be/6NsBztSGbOw
-  - 痛いの痛いの飛んでいけ、幸福なあなたに
-- https://nesslabs.com/curse-of-knowledge
-  - bridge the knowledge gap
-    - audience awareness
-    - simple language
-    - story-telling
-    - visual explanation
-    - active teaching
+- <https://youtu.be/6NsBztSGbOw>
+    - 痛いの痛いの飛んでいけ、幸福なあなたに
+- <https://nesslabs.com/curse-of-knowledge>
+    - bridge the knowledge gap
+        - audience awareness
+        - simple language
+        - story-telling
+        - visual explanation
+        - active teaching

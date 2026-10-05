@@ -35,8 +35,8 @@ comments: true
 
 - aeron learning — got a rough understanding, but failed to modeling the application
 - reading
-  - tiny habits ❌
-  - 人文主义 ❌
+    - tiny habits ❌
+    - 人文主义 ❌
 - run if possible — 39 KM
 - 把思绪化作文字
 
@@ -50,50 +50,50 @@ comments: true
 ## sharing
 
 - 《我认为这辈子完蛋了》
-- https://www.mcsweeneys.net/articles/i-will-do-anything-to-end-homelessness-except-build-more-homes
-  - https://news.ycombinator.com/item?id=44325617
-  - so you might be curious about why problems are still there, not solved
-- https://www.complexsystemspodcast.com/episodes/how-to-negotiate-your-salary-package/
-  - **薪资谈判至关重要：** 谈判带来的差异会随着时间推移对你的总薪酬产生巨大影响，因此值得投入时间和精力。
-  - **避免首先透露期望薪资：** 尽量不要在谈判初期就说出你期望的薪资，而是引导对方先出价。
-  - **了解自身价值和公司视角：** 谈判前要清楚自己的市场价值。同时，要理解公司看待员工的视角——他们通常考虑的是“完全成本”（Fully Loaded Cost），而不仅仅是你的工资。这意味着对于公司来说，工资上的小幅差异可能并没有你想象的那么敏感。
-  - **积极倾听与反馈：** 在谈判中，仔细倾听对方所说的内容，并尝试复述给他们。这表明你很专注且重视他们的观点。
-  - **做笔记的益处：** 在面试和薪资谈判过程中做笔记，这不仅能帮助你记住细节，还能向对方展示你的细致和认真。
-- https://nesslabs.com/is-chatgpt-really-rotting-our-brains The possible negative effect to your brain if using AI tools in the wrong way and long run.
-  - stay actively involved
-  - use AI to challenge your thinking, not replace it
-  - write first, refine later
-  - be mindful of over-reliance
-  - experiment to find your sweet spot
-- https://youtu.be/NYs-wpYp0bY 一口气了解 A 股上市
-- https://evanhahn.com/how-i-build-software-quickly/
-  - Know how good your code needs to be for the task at hand.
-  - Start with a rough draft/spike.
-  - Try to soften requirements if you can.
-  - Don’t get distracted.
-  - Make small changes.
-  - Practice specific skills.
-- https://youtu.be/xSszwsN_lkU
-  - F1 brand itself overall avenue
-  - hosting, livestreaming fee
-  - sponsorships
-- https://youtu.be/y8my6XzbwpA
-  - what is venture capital
-  - why it is profitable
-  - the comparison with angel list
-- https://www.youtube.com/watch?v=tm09cMTBTSU
-  - 稳定币的三大优势
-    - 便捷
-    - 私密
-    - 稳定 (与美元 1 比 1 绑定) 即用户在 Tether 购入 1USDT, Tether 就需要持有 1USD
-  - 美国政府推进稳定币的主要目的
-    - 美元地位 (USDT 绑定美元)
-    - 美债需求
-    - 加密世界地位
+- <https://www.mcsweeneys.net/articles/i-will-do-anything-to-end-homelessness-except-build-more-homes>
+    - <https://news.ycombinator.com/item?id=44325617>
+    - so you might be curious about why problems are still there, not solved
+- <https://www.complexsystemspodcast.com/episodes/how-to-negotiate-your-salary-package/>
+    - **薪资谈判至关重要：** 谈判带来的差异会随着时间推移对你的总薪酬产生巨大影响，因此值得投入时间和精力。
+    - **避免首先透露期望薪资：** 尽量不要在谈判初期就说出你期望的薪资，而是引导对方先出价。
+    - **了解自身价值和公司视角：** 谈判前要清楚自己的市场价值。同时，要理解公司看待员工的视角——他们通常考虑的是“完全成本”（Fully Loaded Cost），而不仅仅是你的工资。这意味着对于公司来说，工资上的小幅差异可能并没有你想象的那么敏感。
+    - **积极倾听与反馈：** 在谈判中，仔细倾听对方所说的内容，并尝试复述给他们。这表明你很专注且重视他们的观点。
+    - **做笔记的益处：** 在面试和薪资谈判过程中做笔记，这不仅能帮助你记住细节，还能向对方展示你的细致和认真。
+- <https://nesslabs.com/is-chatgpt-really-rotting-our-brains> The possible negative effect to your brain if using AI tools in the wrong way and long run.
+    - stay actively involved
+    - use AI to challenge your thinking, not replace it
+    - write first, refine later
+    - be mindful of over-reliance
+    - experiment to find your sweet spot
+- <https://youtu.be/NYs-wpYp0bY> 一口气了解 A 股上市
+- <https://evanhahn.com/how-i-build-software-quickly/>
+    - Know how good your code needs to be for the task at hand.
+    - Start with a rough draft/spike.
+    - Try to soften requirements if you can.
+    - Don’t get distracted.
+    - Make small changes.
+    - Practice specific skills.
+- <https://youtu.be/xSszwsN_lkU>
+    - F1 brand itself overall avenue
+    - hosting, livestreaming fee
+    - sponsorships
+- <https://youtu.be/y8my6XzbwpA>
+    - what is venture capital
+    - why it is profitable
+    - the comparison with angel list
+- <https://www.youtube.com/watch?v=tm09cMTBTSU>
+    - 稳定币的三大优势
+        - 便捷
+        - 私密
+        - 稳定 (与美元 1 比 1 绑定) 即用户在 Tether 购入 1USDT, Tether 就需要持有 1USD
+    - 美国政府推进稳定币的主要目的
+        - 美元地位 (USDT 绑定美元)
+        - 美债需求
+        - 加密世界地位
 - Don’t let inevitabilism frame the argument and take away your choice. Think about the future **you** want, and fight for it.
-- https://maalvika.substack.com/p/being-too-ambitious-is-a-clever-form
-  - This is what leads most of us to stop drawing. Not because we lack talent, but because we've developed the ability to judge before we've developed the ability to execute. We become connoisseurs of our own inadequacy.
-  - “Do.Learn”
+- <https://maalvika.substack.com/p/being-too-ambitious-is-a-clever-form>
+    - This is what leads most of us to stop drawing. Not because we lack talent, but because we've developed the ability to judge before we've developed the ability to execute. We become connoisseurs of our own inadequacy.
+    - “Do.Learn”
 
 ## quotes
 
@@ -103,7 +103,7 @@ comments: true
 >
 > 你身体差，是你自己不注意锻炼身体，绝口不提非人的校园作息和职场环境，问就是“为什么别人身体比你好”；你不会社交不会恋爱甚至工作沟通都不太行，是你自己躲在舒适区不注意锻炼能力，绝口不提你从小在家被父母关起来、在学校下课了都不许闲聊（所谓“无声校园”），问就是“为什么别人比你行”；你刚上班啥都不会，是你大学没好好学，绝口不提大学都教的啥，也不注重循序渐进的培养，一味指责你，问就是“为什么别人比你会”。
 >
-> 是啊，有人先天基因好，即使在压抑的环境下也能成长得很好，但大多数普通人呢？如果社会只能筛选少数精英（是不是真正的精英还得打问号），不能让大多数普通人自由而全面地发展，社会存续的意义何在？ source (http://www.douban.com/group/topic/328004005/)
+> 是啊，有人先天基因好，即使在压抑的环境下也能成长得很好，但大多数普通人呢？如果社会只能筛选少数精英（是不是真正的精英还得打问号），不能让大多数普通人自由而全面地发展，社会存续的意义何在？ source (<http://www.douban.com/group/topic/328004005/>)
 >
 > ✅ Understand the difference between men and women, and you’ll understand life:
 >
@@ -120,4 +120,4 @@ comments: true
 > 11. Men need honesty, women need emotional closeness.
 > 12. Men value leadership, women value a sense of protection.
 >
-> 🌐ᴘsʏᴄʜᴏ ᴡᴏʀʟᴅ (https://t.me/Psycho_Motivations/30133)
+> 🌐ᴘsʏᴄʜᴏ ᴡᴏʀʟᴅ (<https://t.me/Psycho_Motivations/30133>)

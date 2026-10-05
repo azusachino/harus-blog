@@ -38,18 +38,18 @@ comments: true
 
 ### learn
 
-- https://psyche.co/guides/how-to-get-better-at-remembering-names-and-shopping-lists
+- <https://psyche.co/guides/how-to-get-better-at-remembering-names-and-shopping-lists>
 
 ### share
 
-- https://www.youtube.com/watch?v=Ljr2wMSBHqU
-  - みむかｩわナイストライ - 初音ミク
-  - 我也不知道, 但真的很有感觉, za~ko za~ko
-- https://www.youtube.com/watch?v=cDdv7q4jtiY
-  - Clear Browser History | Key & Peele
-  - THE authentic awkward scene (and the MEME)
-- https://www.youtube.com/watch?v=K9mM8STIP84
-  - Playtime - BigBellyBear1907
-  - You know the drill (if you know the author)
-- https://www.youtube.com/watch?v=CNg9Vr4T-xs
-  - 1 年 150 期视频？影视飓风 2024 工作流分享！
+- <https://www.youtube.com/watch?v=Ljr2wMSBHqU>
+    - みむかｩわナイストライ - 初音ミク
+    - 我也不知道, 但真的很有感觉, za~ko za~ko
+- <https://www.youtube.com/watch?v=cDdv7q4jtiY>
+    - Clear Browser History | Key & Peele
+    - THE authentic awkward scene (and the MEME)
+- <https://www.youtube.com/watch?v=K9mM8STIP84>
+    - Playtime - BigBellyBear1907
+    - You know the drill (if you know the author)
+- <https://www.youtube.com/watch?v=CNg9Vr4T-xs>
+    - 1 年 150 期视频？影视飓风 2024 工作流分享！

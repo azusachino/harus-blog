@@ -27,26 +27,26 @@ Finally, I ran, from CN to Japan. Even though, it's not such a big matter. It's 
 ### Book
 
 - Sophie's World
-  - The Story of Story and Philosophy
+    - The Story of Story and Philosophy
 - The skinny on Success
-  - When we talk about success, what we will talk about
+    - When we talk about success, what we will talk about
 - How to invent everything
-  - Breif history on Human Society Breaking Changes
+    - Breif history on Human Society Breaking Changes
 - Don't sleep, there are snakes
-  - The mystery of the UNKNOWN world
+    - The mystery of the UNKNOWN world
 - Hackers and Painters
-  - The mindset to be a professional
+    - The mindset to be a professional
 - 植物的战斗 (Chinese version)
-  - How the hell did those plants live through this unfair world
+    - How the hell did those plants live through this unfair world
 - The HOT ZONE
-  - The most deadly virus(-es) in this world
+    - The most deadly virus(-es) in this world
 
 ### ACG
 
 - 転生王女と天才令嬢の魔法革命
-  - the lily flower blossom
+    - the lily flower blossom
 - 江戸前エルフ
-  - nostagia and respect of ol japanese culture
+    - nostagia and respect of ol japanese culture
 
 ## Outlook
 

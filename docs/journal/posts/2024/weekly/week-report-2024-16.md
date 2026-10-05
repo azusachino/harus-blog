@@ -30,8 +30,8 @@ Not much, I wasted a lot of time.
 
 - I don't know, but it may be kinda melancholy to see one relocate back to China
 - and, life sometimes will be super hard, if you don't have any one could back you up
-  - because we don't have any acquiantances before we come to Japan, so everything were depending on ourselves
-  - it's so funny for us to bring the furnitures from his apartment to mine by our own hands without vechicles
+    - because we don't have any acquiantances before we come to Japan, so everything were depending on ourselves
+    - it's so funny for us to bring the furnitures from his apartment to mine by our own hands without vechicles
 - I start to think "go to gym" is kinda wasting time, but at the same time, I spend more time on electricity devices
 - I was too tired in the weekdays, too free in the weekends, there were the excuses I told myself for not to contribute more to learning.
 
@@ -43,5 +43,5 @@ Not much, I wasted a lot of time.
 
 ## References
 
-- https://medium.com/@techworldwithmilan/when-to-use-graphql-grpc-and-rest-9d541c0bcfe0
-  - the comparison between rest, grpc, graphql and what to choose
+- <https://medium.com/@techworldwithmilan/when-to-use-graphql-grpc-and-rest-9d541c0bcfe0>
+    - the comparison between rest, grpc, graphql and what to choose

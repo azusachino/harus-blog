@@ -48,4 +48,4 @@ The purpose of education is to develop agency within a child. Purposeful work an
 
 ## References
 
-- https://www.palladiummag.com/2023/06/06/school-is-not-enough/
+- <https://www.palladiummag.com/2023/06/06/school-is-not-enough/>

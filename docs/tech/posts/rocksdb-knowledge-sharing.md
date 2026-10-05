@@ -272,9 +272,9 @@ The key is to understand your access patterns and optimize for the most critical
 
 ## references
 
-- https://deepwiki.com/facebook/rocksdb/1-overview
-- https://github.com/facebook/rocksdb/wiki/RocksDB-Overview
-- https://www.luozhiyun.com/archives/842
-- https://artem.krylysov.com/blog/2023/04/19/how-rocksdb-works/
-- https://www.scylladb.com/2018/01/17/compaction-series-space-amplification/
-- https://www.scylladb.com/2018/01/31/compaction-series-leveled-compaction/
+- <https://deepwiki.com/facebook/rocksdb/1-overview>
+- <https://github.com/facebook/rocksdb/wiki/RocksDB-Overview>
+- <https://www.luozhiyun.com/archives/842>
+- <https://artem.krylysov.com/blog/2023/04/19/how-rocksdb-works/>
+- <https://www.scylladb.com/2018/01/17/compaction-series-space-amplification/>
+- <https://www.scylladb.com/2018/01/31/compaction-series-leveled-compaction/>

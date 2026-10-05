@@ -47,9 +47,9 @@ nothing, I think
 
 ## References
 
-- https://github.com/gunnarmorling/1brc/discussions/57
-  - sort 1 billion records in a file (by using the fastest method)
-  - mmap whole file, split it into slices (one per core), collect partial results and merge.
-- https://blog.robertelder.org/how-to-make-a-cpu/
-  - image based, how to make a CPU
-- https://hervekhg.medium.com/3-years-managing-kubernetes-clusters-my-10-lessons-b565a5509f0e
+- <https://github.com/gunnarmorling/1brc/discussions/57>
+    - sort 1 billion records in a file (by using the fastest method)
+    - mmap whole file, split it into slices (one per core), collect partial results and merge.
+- <https://blog.robertelder.org/how-to-make-a-cpu/>
+    - image based, how to make a CPU
+- <https://hervekhg.medium.com/3-years-managing-kubernetes-clusters-my-10-lessons-b565a5509f0e>

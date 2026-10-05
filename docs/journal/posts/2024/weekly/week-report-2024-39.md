@@ -35,16 +35,16 @@ comments: true
 
 ### learn
 
-- https://www.uber.com/en-IN/blog/upgrading-ubers-mysql-fleet
-  - **Notably, while MySQL v5.7 primary to MySQL v8.0 read replica replication is compatible, the reverse scenario—MySQL v8.0 primary to MySQL v5.7 read replica replication—is not supported.**
-  - side by side upgrade
+- <https://www.uber.com/en-IN/blog/upgrading-ubers-mysql-fleet>
+    - **Notably, while MySQL v5.7 primary to MySQL v8.0 read replica replication is compatible, the reverse scenario—MySQL v8.0 primary to MySQL v5.7 read replica replication—is not supported.**
+    - side by side upgrade
 
 ### share
 
 - 趋势难于扭转的根本原因在于 3 点：趋势本身代表了当时最合理的走势；趋势自身具有惯性；趋势还具有自我加强性（个人的生活中也是如此）
-- https://m.okjike.com/originalPosts/66f23422d99e643dbd24e77e
-  - 热点评论员 -- 对热点把握的好，擅长输出自己的态度，比如通过反差性的观点来表达自己对某个事件的态度
-  - 心理咨询师 -- 擅长解决用户长期的焦虑问题，比如个人成长、亲密关系、人际沟通等
-  - 行业专家 -- 输出有获得感、启发感的干货
-  - 人形种草机 -- 人设塑造和推销产品
-  - 内容创新家 -- 内容的新鲜感和体验感
+- <https://m.okjike.com/originalPosts/66f23422d99e643dbd24e77e>
+    - 热点评论员 -- 对热点把握的好，擅长输出自己的态度，比如通过反差性的观点来表达自己对某个事件的态度
+    - 心理咨询师 -- 擅长解决用户长期的焦虑问题，比如个人成长、亲密关系、人际沟通等
+    - 行业专家 -- 输出有获得感、启发感的干货
+    - 人形种草机 -- 人设塑造和推销产品
+    - 内容创新家 -- 内容的新鲜感和体验感

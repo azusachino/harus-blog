@@ -29,7 +29,7 @@ SG exam related stuffs
 ## life
 
 - 为了 12 月份的札幌之旅, 开始省钱.
-  - 机票明明很便宜, 但是旅费还是吓人 (机场到札幌站的费用基本上够住一晚青旅了 👀)
+    - 机票明明很便宜, 但是旅费还是吓人 (机场到札幌站的费用基本上够住一晚青旅了 👀)
 - SG 考试算是低空飘过了, 经验教训就是不能完全靠过去问道场来准备, 还是有不少知识点从来没在模拟测试中遇到过
 - 久违地在周末两天窝在家里, 玩游戏, 目前看来在家打游戏确实是节省开销的好办法.
 
@@ -37,22 +37,22 @@ SG exam related stuffs
 
 ### learn
 
-- https://www.uber.com/en-IN/blog/postgres-to-mysql-migration
-  - architecture design between Postgresql & MySQL (with certain versions)
-- https://www.uber.com/en-IN/blog/differential-backups-on-myrocks
-  - by utilizing MyRocks as the backend of MySQL (SST), uber introduced differential backup
-    - manifest
-    - SST files (blob)
-    - ![.](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfCb9fhrKQmz_E-om9aLszMnP8rwiDhPJ3IbLdv7snvE5I3BpmXVJpMhVz9ZvPyvKsxc-PgGbw8bTlYbtX75kJvX-6KuRW9K8AHfM8lXpgAMpizpvXZg-Uq1T859HvLe5JPRn4RNTmH27ZjvYT3ryXluU9R?key=5NK_RoiIfdfw2rcH98YHAg)
-- https://netflixtechblog.com/netflix-edge-load-balancing-695308b5548c
-  - load balancing approach
-    - choice of 2
-    - primarily based on the load balancers' view of a server's utilization
-    - secondarily based on the servers' view of its utilization
-    - probation and server-age based mechanisms for avoiding overloading newly launched servers
-    - decay of collected server stats to zero over time (avoid latency problem)
-  - server reported utilization
-    - actively poll for each server's current utilization using health-check endpoints
-    - passively track responses from the servers annotated with their current utilization data
-- https://www.uber.com/en-JP/blog/avoiding-cpu-throttling-in-a-containerized-environment/
-  - allocating resouces by CPU or cpuset
+- <https://www.uber.com/en-IN/blog/postgres-to-mysql-migration>
+    - architecture design between Postgresql & MySQL (with certain versions)
+- <https://www.uber.com/en-IN/blog/differential-backups-on-myrocks>
+    - by utilizing MyRocks as the backend of MySQL (SST), uber introduced differential backup
+        - manifest
+        - SST files (blob)
+        - ![.](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfCb9fhrKQmz_E-om9aLszMnP8rwiDhPJ3IbLdv7snvE5I3BpmXVJpMhVz9ZvPyvKsxc-PgGbw8bTlYbtX75kJvX-6KuRW9K8AHfM8lXpgAMpizpvXZg-Uq1T859HvLe5JPRn4RNTmH27ZjvYT3ryXluU9R?key=5NK_RoiIfdfw2rcH98YHAg)
+- <https://netflixtechblog.com/netflix-edge-load-balancing-695308b5548c>
+    - load balancing approach
+        - choice of 2
+        - primarily based on the load balancers' view of a server's utilization
+        - secondarily based on the servers' view of its utilization
+        - probation and server-age based mechanisms for avoiding overloading newly launched servers
+        - decay of collected server stats to zero over time (avoid latency problem)
+    - server reported utilization
+        - actively poll for each server's current utilization using health-check endpoints
+        - passively track responses from the servers annotated with their current utilization data
+- <https://www.uber.com/en-JP/blog/avoiding-cpu-throttling-in-a-containerized-environment/>
+    - allocating resouces by CPU or cpuset

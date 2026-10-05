@@ -39,8 +39,8 @@ The false assumption is that almost all people, almost all the time, make choice
 ### share
 
 - Courage is knowing it might hurt, and doing it anyway. Stupidity is the same. And that's why life is hard. - Jeremy Goldberg
-- https://m.okjike.com/originalPosts/66aef77d59d1a984c66a9a8d
-  - 高手上来就用真诚待人他们不是傻，而是在用真诚，淘汰那些不同频的人。
-  - 哪怕被超越，也是一种反馈，说明自己还有提升空间，或者对方有值得学习的地方，那么又有了新的动力。
-- https://ntietz.com/blog/til-uses-for-the-different-uuid-versions/
-  - You'll usually be picking between two of them: v4 or v7. There are also some occasions to pick v5 or v8.
+- <https://m.okjike.com/originalPosts/66aef77d59d1a984c66a9a8d>
+    - 高手上来就用真诚待人他们不是傻，而是在用真诚，淘汰那些不同频的人。
+    - 哪怕被超越，也是一种反馈，说明自己还有提升空间，或者对方有值得学习的地方，那么又有了新的动力。
+- <https://ntietz.com/blog/til-uses-for-the-different-uuid-versions/>
+    - You'll usually be picking between two of them: v4 or v7. There are also some occasions to pick v5 or v8.

@@ -96,5 +96,5 @@ public:
 
 ## References
 
-- https://leetcode.com/problems/zigzag-conversion
-- https://leetcode.com/problems/lexicographically-smallest-string-after-operations-with-constraint/
+- <https://leetcode.com/problems/zigzag-conversion>
+- <https://leetcode.com/problems/lexicographically-smallest-string-after-operations-with-constraint/>

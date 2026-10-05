@@ -37,26 +37,26 @@ I was preparing for the SG exam, so did a bunch of exam simulation.
 
 ### learn
 
-- https://www.uber.com/en-JP/blog/better-load-balancing-real-time-dynamic-subsetting
-  - how to design load balancing system under a massive service mesh setting
-  - Subset for the rescue, but the metrics are critical for the fairly distributing
-  - three key factors in acticle
-    - traffic assignment - the percentage of traffic to send to each pool
-    - load - the amount of traffic it's sending to a target service
-    - aggregate load - the overall traffic a target service is receiving
-  - $desiredSubsetSize = numberOfTaskInPool * load/(aggregateLoad*assignment) * constant$
-- https://www.uber.com/en-IN/blog/load-balancing-handling-heterogeneous-hardware
-  - on-host agent, load balancing strategy (inter-cluster, intra-cluster)
-  - what problem to consider when we talk about metric
-    - any stat collection was deplayed
-    - the service was restarted
-  - instead of attaching the load meta-data to each of the responses, using a central component to collect and distribute the data.
-    - reponse-header-based
+- <https://www.uber.com/en-JP/blog/better-load-balancing-real-time-dynamic-subsetting>
+    - how to design load balancing system under a massive service mesh setting
+    - Subset for the rescue, but the metrics are critical for the fairly distributing
+    - three key factors in acticle
+        - traffic assignment - the percentage of traffic to send to each pool
+        - load - the amount of traffic it's sending to a target service
+        - aggregate load - the overall traffic a target service is receiving
+    - $desiredSubsetSize = numberOfTaskInPool * load/(aggregateLoad*assignment) * constant$
+- <https://www.uber.com/en-IN/blog/load-balancing-handling-heterogeneous-hardware>
+    - on-host agent, load balancing strategy (inter-cluster, intra-cluster)
+    - what problem to consider when we talk about metric
+        - any stat collection was deplayed
+        - the service was restarted
+    - instead of attaching the load meta-data to each of the responses, using a central component to collect and distribute the data.
+        - reponse-header-based
 
 ### share
 
 - breath-taking views
-  - Milano https://youtu.be/qS-r-vJpnvo
-  - 大兴安岭 https://youtu.be/BlsTrHqlNMo
-  - Svalbard part1 https://youtu.be/mt8UkFYfSBk
-  - Svalbard part2 https://youtu.be/qYTH1SWkW_s
+    - Milano <https://youtu.be/qS-r-vJpnvo>
+    - 大兴安岭 <https://youtu.be/BlsTrHqlNMo>
+    - Svalbard part1 <https://youtu.be/mt8UkFYfSBk>
+    - Svalbard part2 <https://youtu.be/qYTH1SWkW_s>

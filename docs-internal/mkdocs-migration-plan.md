@@ -13,7 +13,7 @@ The goal is to move to **MkDocs Material** with the **blog plugin**, replacing t
 
 ## Target layout
 
-```
+```text
 docs/
   index.md                    # landing page (from content/page/about + sidebar copy)
   about.md  cv.md             # static pages (from content/page/)
@@ -54,23 +54,25 @@ scripts/migrate.py            # one-shot content migration script (committed for
 
 - `theme: material` with features: `navigation.tabs`, `navigation.sections`, `navigation.top`, `navigation.indexes`, `content.code.copy`, `toc.follow`, `search.suggest`, palette toggle (light/dark to match current stack look).
 - **Four blog plugin instances** (Material supports listing `blog` multiple times), one per tab, each with its own `blog_dir` and `post_url_format`:
-  ```yaml
-  plugins:
-    - search
-    - tags
-    - blog:
-        { blog_dir: tech, post_dir: "{blog}/posts", categories_allowed: [...] }
-    - blog: { blog_dir: journal, post_dir: "{blog}/posts" }
-    - blog: { blog_dir: reviews, post_dir: "{blog}/posts" }
-    - blog: { blog_dir: life, post_dir: "{blog}/posts" }
-  ```
+
+    ```yaml
+    plugins:
+      - search
+      - tags
+      - blog:
+          { blog_dir: tech, post_dir: "{blog}/posts", categories_allowed: [...] }
+      - blog: { blog_dir: journal, post_dir: "{blog}/posts" }
+      - blog: { blog_dir: reviews, post_dir: "{blog}/posts" }
+      - blog: { blog_dir: life, post_dir: "{blog}/posts" }
+    ```
+
 - `hooks: [hooks/shortcodes.py]`.
 - `nav:` defines the tabs; `Tech` nests a `Series` section with the four ordered series; `Home/About/CV` as plain pages.
 - Markdown extensions to replicate Hugo features:
-  - `pymdownx.arithmatex` (`generic: true`) + MathJax `extra_javascript` → replaces `article.math`.
-  - `pymdownx.superfences` with a `mermaid` custom fence → replaces Hugo mermaid.
-  - `toc` (`permalink: true`, `toc_depth: 2-4`) → replaces stack TOC.
-  - `pymdownx.highlight` + `pymdownx.inlinehilite` + `tabbed` + `admonition` + `pymdownx.details`.
+    - `pymdownx.arithmatex` (`generic: true`) + MathJax `extra_javascript` → replaces `article.math`.
+    - `pymdownx.superfences` with a `mermaid` custom fence → replaces Hugo mermaid.
+    - `toc` (`permalink: true`, `toc_depth: 2-4`) → replaces stack TOC.
+    - `pymdownx.highlight` + `pymdownx.inlinehilite` + `tabbed` + `admonition` + `pymdownx.details`.
 - `extra`: `social:` links (GitHub, Twitter, Note, running-page from current `menu.social`), `analytics: { provider: google, property: G-59FEKVM9G5 }`.
 - `extra.comments`/`overrides` for giscus (`azusachino/idealistic-daydreamer`), gated to post pages.
 
@@ -90,11 +92,11 @@ Implement `on_page_markdown(markdown, page, config, files)` doing regex substitu
 A committed one-shot Python script (idempotent, re-runnable into a clean `docs/`):
 
 1. **Classify** each `content/post/**/*.md` into a tab bucket by directory + `categories`:
-   - `series/*` → `tech/series/<series>/` (keep `NN.*` filename order; these become ordered nav pages, not blog posts).
-   - `report/*` (week-report) and `refresh/*` / `month-refresh` → `journal/posts/`.
-   - `review-YYYY.md` / `categories review` → `reviews/posts/`.
-   - `life`, `book`, `concerning`, `thought`, `conclusion`, and the `2025/2026/{blog,life,concerning,data}` essays → `life/posts/`.
-   - everything else (Learning/Exp/Java/DB/Middleware/Practice/ai) → `tech/posts/`.
+    - `series/*` → `tech/series/<series>/` (keep `NN.*` filename order; these become ordered nav pages, not blog posts).
+    - `report/*` (week-report) and `refresh/*` / `month-refresh` → `journal/posts/`.
+    - `review-YYYY.md` / `categories review` → `reviews/posts/`.
+    - `life`, `book`, `concerning`, `thought`, `conclusion`, and the `2025/2026/{blog,life,concerning,data}` essays → `life/posts/`.
+    - everything else (Learning/Exp/Java/DB/Middleware/Practice/ai) → `tech/posts/`.
 2. **Rewrite frontmatter** Hugo → Material blog: keep `title`, `description`, `date`, `categories`; map `categories` values to a normalized set (fix typos seen: `Concluion`→`Conclusion`); convert Hugo `tags` if present; **drop** `slug`, `image`, `created`/`modified`. Filename becomes the slug (fresh URLs).
 3. **Images**: copy `static/images/YYYY/MM/*` → `docs/assets/images/YYYY/MM/`; copy page-bundle `images/` dirs into the same tree; rewrite in-body `](images/...)`, `](/images/...)` and any `image:` references to `/assets/images/...`. Drop the now-unused `image:` featured-image field (or, optionally, emit it as a leading inline image — default: drop).
 4. **Strip** remaining Hugo-isms the hook doesn't cover (e.g. `{{< ref >}}` internal links → relative md links; `_index.md` category bundles are not copied — categories come from frontmatter).

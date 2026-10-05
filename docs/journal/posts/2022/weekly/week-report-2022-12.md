@@ -51,7 +51,7 @@ int main()
 
 该文件系统驻留于 `/proc` 目录中，包含了各种用于展示内核信息的文件，并且允许进程通过常规文件 I/O 系统调用来方便地读取，有时还可以修改这些信息。
 
-![ ](/assets/images/2022/03/proc-system.svg)
+![](/assets/images/2022/03/proc-system.svg)
 
 ## life
 

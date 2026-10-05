@@ -43,11 +43,11 @@ And as a AWS professional, we also have to remember the approximate price of AWS
 ## life
 
 - actually, didn't make much progress on AWS
-  - it might be true, I did finish the course on `Udemy`, but it's hard to say how many percent of those contents I memorized well and let me use them to solve problem in real life (or just for the certification exam)
-  - in the next stage, I will focus on example exam, and those concepts I can't recall when I first see
+    - it might be true, I did finish the course on `Udemy`, but it's hard to say how many percent of those contents I memorized well and let me use them to solve problem in real life (or just for the certification exam)
+    - in the next stage, I will focus on example exam, and those concepts I can't recall when I first see
 - the blue archive 3rd year event
-  - kinda sad, I'm not familiar with events, got the shopping-ticket too late, didn't make it to buy `shiroko`'s scarf
-  - ![.](/assets/images/2024/01/20240120-mika.png)
+    - kinda sad, I'm not familiar with events, got the shopping-ticket too late, didn't make it to buy `shiroko`'s scarf
+    - ![.](/assets/images/2024/01/20240120-mika.png)
 
 ## Sharing
 
@@ -70,7 +70,7 @@ If you really did memorize so many IETLS writing examples, then, maybe you could
 ## References
 
 - [everyone-can-use-english](https://github.com/xiaolai/everyone-can-use-english)
-  - a book of how to improve your english skill
+    - a book of how to improve your english skill
 - [How we switched to Java 21 virtual threads and got a deadlock in TPC-C for PostgreSQL](https://blog.ydb.tech/how-we-switched-to-java-21-virtual-threads-and-got-deadlock-in-tpc-c-for-postgresql-cca2fe08d70b)
-  - virtual thread with synchronized
+    - virtual thread with synchronized
 - [virtual thread - oracle](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html)

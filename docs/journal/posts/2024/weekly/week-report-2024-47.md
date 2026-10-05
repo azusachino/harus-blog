@@ -31,18 +31,18 @@ FE; 大致上还是为了考试而刷模拟题
 - 天冷了, 原计划的外出游玩都取消了
 - 公司的“神人”太多了, 原计划年底的发布也能再推迟两个月, 还说这次是死命令了; 难道上次不是这样说?
 - 心理账户作祟; 一方面考虑着要从各种地方节省, 存钱; 一方面, 却又想着, 自己已经节省了不少了, 所以要在其他地方奖励自己. 于是乎, 花销要比之前还要多
-  - 原本准备一起去足立区参加 paypay 返点的活动, 还好没有去, 简单计算一下, 来回路费要比返点还贵, 更不用说这种促销活动带来的额外消费了
+    - 原本准备一起去足立区参加 paypay 返点的活动, 还好没有去, 简单计算一下, 来回路费要比返点还贵, 更不用说这种促销活动带来的额外消费了
 
 ## Collectibles
 
 ### share
 
-- https://b23.tv/gltpIZS
-  - 【焰与圆 x 星と僕らと-哔哩哔哩】
+- <https://b23.tv/gltpIZS>
+    - 【焰与圆 x 星と僕らと-哔哩哔哩】
 - study with miku
-  - https://www.youtube.com/watch?v=gdssxLx7ofs
-  - https://www.youtube.com/watch?v=J8P_1fVRYQI
-  - https://www.youtube.com/watch?v=Y54h0wQmQw4
+    - <https://www.youtube.com/watch?v=gdssxLx7ofs>
+    - <https://www.youtube.com/watch?v=J8P_1fVRYQI>
+    - <https://www.youtube.com/watch?v=Y54h0wQmQw4>
 - Vaping Is Too Good To Be True - Kurzgesagt
-  - https://www.youtube.com/watch?v=cHEOsKddURQ
-  - **The authentic now is we don't know yet**
+    - <https://www.youtube.com/watch?v=cHEOsKddURQ>
+    - **The authentic now is we don't know yet**

@@ -60,10 +60,10 @@ Get things done is way important than plan or OKR.
 This is the main factor that gives us the anxiety of finding a job and the fear of losing a job.
 
 - Four Ladders
-  - Some Savings
-  - Basic Necessities
-  - Homelessness
-  - Starvation
+    - Some Savings
+    - Basic Necessities
+    - Homelessness
+    - Starvation
 
 When we climb over the four ladders of `survival`, we are about to enter the level of `freedom`.
 
@@ -78,9 +78,9 @@ Rather than using money as the ticket out of an unfulfilling career, use it as t
 It's not about working hard to exchange freedom, we are free as who we are, what we are doing.
 
 - Three Levels
-  - Freedom-in-Attention **The less you have to think about money, the more free you actually are**
-  - Freedom-in-Work
-  - Freedom-as-Leisure
+    - Freedom-in-Attention **The less you have to think about money, the more free you actually are**
+    - Freedom-in-Work
+    - Freedom-as-Leisure
 
 #### Power - 权力
 
@@ -94,10 +94,10 @@ It's not about working hard to exchange freedom, we are free as who we are, what
 > If you want to express your individual power by buying yachts, wearing gold chains, and balling out at night clubs, then that does two things. First, it signals to others that these are the things that matter to you, and they will tie your human worth to your material worth. Second, you will view others through this same lens, and you will see materiality as the answer to solving their problems in turn.
 
 - Four Levels **How to use Money for ?**
-  - People you don't know
-  - Community
-  - Family
-  - Self
+    - People you don't know
+    - Community
+    - Family
+    - Self
 
 > If you view the world through the lens of scarcity and survival, money will only amplify that feeling of inadequacy. But if freedom is what defines you, then money will feel abundant, no matter how much you have. If power and influence is what you want, then money will drive the nature of your relationships in that direction.
 

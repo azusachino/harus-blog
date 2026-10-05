@@ -17,11 +17,11 @@ comments: true
 ## Keyword
 
 - Reading
-  - Harry Potter
-  - 别睡，这里有蛇
+    - Harry Potter
+    - 别睡，这里有蛇
 - Gaming
-  - Elden Ring
-  - It takes two
+    - Elden Ring
+    - It takes two
 
 ## Thing
 

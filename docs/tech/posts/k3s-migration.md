@@ -74,7 +74,7 @@ env:
 
 **Result:** Access any service via its Kubernetes DNS name:
 
-```
+```text
 http://jellyfin.harus-media.svc.cluster.local
 http://grafana.harus-infrastructure.svc.cluster.local
 ```
@@ -103,7 +103,7 @@ http://192.168.1.100:30283  # Immich
 
 I organized services into logical layers:
 
-```
+```text
 00-foundation/          # Namespaces, Tailscale Subnet Router
 01-infrastructure/      # Prometheus, Grafana, Node Exporter, Kite Dashboard
 02-middleware/          # PostgreSQL, MariaDB, Valkey (shared databases)
@@ -140,28 +140,28 @@ I tried **Bitnami Sealed Secrets** initially. It's great for GitOps teams, but a
 
 1. Keep `.env` files locally (gitignored):
 
-   ```bash
-   # postgres.env
-   POSTGRES_PASSWORD=super-secret-password
-   POSTGRES_USER=postgres
-   ```
+    ```bash
+    # postgres.env
+    POSTGRES_PASSWORD=super-secret-password
+    POSTGRES_USER=postgres
+    ```
 
 2. Generate secrets via make:
 
-   ```bash
-   make secret ENV=postgres.env NAME=postgres-secret NS=harus-middleware
-   ```
+    ```bash
+    make secret ENV=postgres.env NAME=postgres-secret NS=harus-middleware
+    ```
 
 3. Reference in manifests:
 
-   ```yaml
-   env:
-     - name: POSTGRES_PASSWORD
-       valueFrom:
-         secretKeyRef:
-           name: postgres-secret
-           key: POSTGRES_PASSWORD
-   ```
+    ```yaml
+    env:
+      - name: POSTGRES_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: postgres-secret
+            key: POSTGRES_PASSWORD
+    ```
 
 **Why it works:**
 
@@ -178,28 +178,28 @@ I avoided distributed storage (Ceph, Longhorn) and stuck with K3s's default `loc
 
 1. **Critical data (PersistentVolume + hostPath):**
 
-   ```yaml
-   # /mnt/harus_data/vaultwarden - survives pod restarts
-   hostPath:
-     path: /mnt/harus_data/vaultwarden
-     type: DirectoryOrCreate
-   ```
+    ```yaml
+    # /mnt/harus_data/vaultwarden - survives pod restarts
+    hostPath:
+      path: /mnt/harus_data/vaultwarden
+      type: DirectoryOrCreate
+    ```
 
 2. **Ephemeral/cache (local-path StorageClass):**
 
-   ```yaml
-   # Auto-provisioned at /var/lib/rancher/k3s/storage/pvc-{UUID}
-   storageClassName: local-path
-   ```
+    ```yaml
+    # Auto-provisioned at /var/lib/rancher/k3s/storage/pvc-{UUID}
+    storageClassName: local-path
+    ```
 
 3. **Read-only media (hostPath ReadOnly):**
 
-   ```yaml
-   # Large media libraries (movies, music, books)
-   hostPath:
-     path: /mnt/harus_storage/media
-     type: Directory
-   ```
+    ```yaml
+    # Large media libraries (movies, music, books)
+    hostPath:
+      path: /mnt/harus_storage/media
+      type: Directory
+    ```
 
 **Default storage location:**
 
@@ -309,28 +309,28 @@ containers:
 ### What Worked Immediately
 
 1. **Prometheus first:** I deployed monitoring BEFORE migrating apps. This let me:
-   - Understand baseline resource usage
-   - Catch memory leaks early
-   - Monitor migration progress
+    - Understand baseline resource usage
+    - Catch memory leaks early
+    - Monitor migration progress
 
 2. **Shared databases:** PostgreSQL and MariaDB in `harus-middleware` namespace
-   - Multiple apps share same database instance
-   - Saves ~500MB RAM vs. per-app databases
+    - Multiple apps share same database instance
+    - Saves ~500MB RAM vs. per-app databases
 
 3. **Resource limits everywhere:**
 
-   ```yaml
-   resources:
-     requests:
-       memory: "128Mi"
-       cpu: "100m"
-     limits:
-       memory: "512Mi"
-       cpu: "500m"
-   ```
+    ```yaml
+    resources:
+      requests:
+        memory: "128Mi"
+        cpu: "100m"
+      limits:
+        memory: "512Mi"
+        cpu: "500m"
+    ```
 
-   - Prevents one app from OOMing the node
-   - Kubernetes scheduler makes better decisions
+    - Prevents one app from OOMing the node
+    - Kubernetes scheduler makes better decisions
 
 ### What I Got Wrong (And Fixed)
 
@@ -348,7 +348,7 @@ containers:
 **Initial attempt:** Set PVCs to ReadWriteMany (RWX)
 **Error message:**
 
-```
+```text
 failed to provision volume: NodePath only supports ReadWriteOnce
 ```
 
@@ -360,7 +360,7 @@ When building my Obsidian notes static site with Quartz:
 
 **Error:**
 
-```
+```text
 Failed to emit from plugin `CustomOgImages`: codepoint 31-20e3 not found in map
 ```
 
@@ -386,7 +386,7 @@ sed -i 's/Plugin\.CustomOgImages/\/\/ Plugin.CustomOgImages/g' quartz.config.ts
 
 One of my favorite setups is the automated Obsidian notes publishing:
 
-```
+```text
 CouchDB (Obsidian LiveSync)
     ↓ (continuous sync - livesync-bridge)
 PVC (markdown files)

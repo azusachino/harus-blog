@@ -1,6 +1,7 @@
 [tools]
 uv = "latest"
 bun = "latest"
+rumdl = "0.2.73"
 
 [env]
 '_'.file = ".env"

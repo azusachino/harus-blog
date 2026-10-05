@@ -5,7 +5,7 @@ hide:
   - toc
 ---
 
-# Idealistic Daydreamer
+## Idealistic Daydreamer
 
 > palette gives you the capability, but you're the source of possibility.
 
@@ -13,7 +13,7 @@ hide:
 
 **假如我最终无法继续战斗下去，假如我放弃了，我堕落了，那么我就比那些从未战斗过的人更为恶劣。**
 
-## Where to go
+### Where to go
 
 <div class="grid cards" markdown>
 

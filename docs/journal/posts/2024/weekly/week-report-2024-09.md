@@ -66,11 +66,11 @@ Generally, you need to have good introspection for your application and always p
 
 ## References
 
-- https://cep.dev/posts/every-infrastructure-decision-i-endorse-or-regret-after-4-years-running-infrastructure-at-a-startup/
-  - for a startup, what to endorse, what to desert, when talking about infrastructure
-- https://maksimkita.com/blog/power-of-small-optimizations.html
-  - how to find the places for optimization and just do them
-- https://dariusforoux.com/learn-from-people/
-  - learn from people
-- https://read.engineerscodex.com/p/how-pinterest-scaled-to-11-million
-  - scaling
+- <https://cep.dev/posts/every-infrastructure-decision-i-endorse-or-regret-after-4-years-running-infrastructure-at-a-startup/>
+    - for a startup, what to endorse, what to desert, when talking about infrastructure
+- <https://maksimkita.com/blog/power-of-small-optimizations.html>
+    - how to find the places for optimization and just do them
+- <https://dariusforoux.com/learn-from-people/>
+    - learn from people
+- <https://read.engineerscodex.com/p/how-pinterest-scaled-to-11-million>
+    - scaling

@@ -42,22 +42,22 @@ Even after I find the cmd of `nsenter`, because of the unfamiliarity, I spent qu
 
 ### share
 
-- https://nouptime.com/
-  - best service ever existed, 100% guaranteed ✅
-- https://www.jpl.nasa.gov/news/nasas-curiosity-rover-discovers-a-surprise-in-a-martian-rock
-  - ![.](https://d2pn8kiwq2w21t.cloudfront.net/images/1-PIA26309-Curiosity_Views_Sulfur_Crystals_Wi.width-1320.png)
-- https://brycemecum.com/2023/03/31/til-mermaid-tracing/
-  - mermaid with gantt graph
+- <https://nouptime.com/>
+    - best service ever existed, 100% guaranteed ✅
+- <https://www.jpl.nasa.gov/news/nasas-curiosity-rover-discovers-a-surprise-in-a-martian-rock>
+    - ![.](https://d2pn8kiwq2w21t.cloudfront.net/images/1-PIA26309-Curiosity_Views_Sulfur_Crystals_Wi.width-1320.png)
+- <https://brycemecum.com/2023/03/31/til-mermaid-tracing/>
+    - mermaid with gantt graph
 - 剃刀
-  - 能解释为愚蠢的，就不要解释为恶意。
-  - 能解释为无知的，就不要解释为愚蠢。
-  - 能解释为可原谅的错误的，就不要解释为无知。
-  - 能用你未知的其他原因解释的，就不要解释为错误。
-  - 能用一群人在复杂系统中的互动解释的，就不要解释为恶意或者愚蠢。
-  - 能解释为情绪的，就不要解释为策略。
-- https://www.youtube.com/watch?v=3YRrVzxs9m8 - 如何管理预期
-- https://www.youtube.com/watch?v=t4vSzN2QDrE - 草台班子是如何运行的？
-- https://www.youtube.com/watch?v=j6DagWhZwFo - 如何避免各种“瘾”火烧身？
+    - 能解释为愚蠢的，就不要解释为恶意。
+    - 能解释为无知的，就不要解释为愚蠢。
+    - 能解释为可原谅的错误的，就不要解释为无知。
+    - 能用你未知的其他原因解释的，就不要解释为错误。
+    - 能用一群人在复杂系统中的互动解释的，就不要解释为恶意或者愚蠢。
+    - 能解释为情绪的，就不要解释为策略。
+- <https://www.youtube.com/watch?v=3YRrVzxs9m8> - 如何管理预期
+- <https://www.youtube.com/watch?v=t4vSzN2QDrE> - 草台班子是如何运行的？
+- <https://www.youtube.com/watch?v=j6DagWhZwFo> - 如何避免各种“瘾”火烧身？
 
 ```mermaid
 gantt
@@ -93,31 +93,31 @@ gantt
 
 ### learn
 
-- https://www.jvt.me/posts/2024/07/12/things-know-commits/
-  - `git reflog`
-  - `git commit -m sq`
-- self improvement - https://www.quora.com/profile/Momenul-Ahmad/The-17-Laws-of-Self-Improvement
-  - self awareness - understand your strengths and weaknesses
-  - discipline - stay committed to your goals
-  - gratitude - appreciate what you have
-  - patience - allow time for growth and progress
-  - resilience - bounce back from setbacks
-  - focus - concentrate on your priorities
-  - health - maintain physical and mental well-being
-  - networking - build meaningful connections
-  - creativity - embrace and cultivate your creative side
-  - adaptability - be flexible and open to change
-  - mindfulness - stay present and aware
-  - generosity - give back and help others
-  - confidence - believe in your abilities
-  - integrity - act with honesty and ethics
-  - goal setting - define and pursue your objectives
-  - consistency - keep a steady persistent approach
+- <https://www.jvt.me/posts/2024/07/12/things-know-commits/>
+    - `git reflog`
+    - `git commit -m sq`
+- self improvement - <https://www.quora.com/profile/Momenul-Ahmad/The-17-Laws-of-Self-Improvement>
+    - self awareness - understand your strengths and weaknesses
+    - discipline - stay committed to your goals
+    - gratitude - appreciate what you have
+    - patience - allow time for growth and progress
+    - resilience - bounce back from setbacks
+    - focus - concentrate on your priorities
+    - health - maintain physical and mental well-being
+    - networking - build meaningful connections
+    - creativity - embrace and cultivate your creative side
+    - adaptability - be flexible and open to change
+    - mindfulness - stay present and aware
+    - generosity - give back and help others
+    - confidence - believe in your abilities
+    - integrity - act with honesty and ethics
+    - goal setting - define and pursue your objectives
+    - consistency - keep a steady persistent approach
 - stoic lessons
-  - life is about managing your reactions
-  - misfortune is fortune
-  - thinking about loss makes your tougher
-  - guard your mind vigorously
-  - embrace amor fati (love of one's fate)
-- https://medium.com/@RoussiAbel/optimizing-java-base-docker-images-size-from-674mb-to-58mb-c1b7c911f622
-  - jdeps & jlink
+    - life is about managing your reactions
+    - misfortune is fortune
+    - thinking about loss makes your tougher
+    - guard your mind vigorously
+    - embrace amor fati (love of one's fate)
+- <https://medium.com/@RoussiAbel/optimizing-java-base-docker-images-size-from-674mb-to-58mb-c1b7c911f622>
+    - jdeps & jlink

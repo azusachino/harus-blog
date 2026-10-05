@@ -1,0 +1,8 @@
+[global]
+flavor = "mkdocs"
+# Allow long lines (prose) and inline HTML (Material tags/divs)
+disable = ["MD013", "MD033"]
+respect-gitignore = true
+
+[MD007]
+indent = 4

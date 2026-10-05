@@ -41,13 +41,13 @@ comments: true
 
 虽然看着很勤快，但都是记录性质的 Commit，希望 22 年能在开源社区多活跃一点。
 
-![ ](/assets/images/2021/12/github.png)
+![](/assets/images/2021/12/github.png)
 
 ### Leetcode
 
 其实今年没有好好学习算法，每日一题大多都是抄答案，还需要精进。
 
-![ ](/assets/images/2021/12/lc.png)
+![](/assets/images/2021/12/lc.png)
 
 ## 关于读书
 

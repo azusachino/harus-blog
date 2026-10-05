@@ -27,10 +27,10 @@ nah.
 ## life
 
 - worked overtime this week, just focused on the tasks
-  - got home in the late evening, and went to sleep afterwards
+    - got home in the late evening, and went to sleep afterwards
 - enoshima was great, and because it was one popular sight, there were so many foreigners
-  - and inside the whole seafood-bowl, maguro (tuna) was the only one which suited my taste
-  - the sea breeze was satisfying, but the wave was strong and kinda terrifying (if anyone got captured by it)
+    - and inside the whole seafood-bowl, maguro (tuna) was the only one which suited my taste
+    - the sea breeze was satisfying, but the wave was strong and kinda terrifying (if anyone got captured by it)
 
 ![.](/assets/images/2024/09/the-wave.jpg)
 
@@ -38,7 +38,7 @@ nah.
 
 ### share
 
-- https://blog.algomaster.io/p/resources-for-big-tech-interviews
-- https://www.v2ex.com/t/1073548
-  - 悲观去看, 乐观去活
-- https://m.okjike.com/originalPosts/66ea6f57d4cfe34b48423ebb - 解决问题最重要的是解决情绪
+- <https://blog.algomaster.io/p/resources-for-big-tech-interviews>
+- <https://www.v2ex.com/t/1073548>
+    - 悲观去看, 乐观去活
+- <https://m.okjike.com/originalPosts/66ea6f57d4cfe34b48423ebb> - 解决问题最重要的是解决情绪

@@ -19,3 +19,5 @@ site/
 __pycache__/
 *.pyc
 .cache/
+.rumdl_cache/
+

@@ -20,9 +20,9 @@ hide:
 
 主账号的所有 UR 如下，还是蛮惨的；我记得 17 年的时候还氪金了不少呢。
 
-![ ](/assets/images/2021/12/sif1.jpg)
-![ ](/assets/images/2021/12/sif2.jpg)
-![ ](/assets/images/2021/12/sif3.jpg)
+![](/assets/images/2021/12/sif1.jpg)
+![](/assets/images/2021/12/sif2.jpg)
+![](/assets/images/2021/12/sif3.jpg)
 
 虽然 LoveLive 中的各位依旧是年轻貌美的 Idols，但是时间对于现实世界的我们来说太残酷了。
 

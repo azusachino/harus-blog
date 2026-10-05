@@ -17,11 +17,11 @@ comments: true
 
 From the graph below, I think everyone could gain a good understanding about container-related stuffs. Thanks tutorial works, please check reference.
 
-![ ](/assets/images/2021/12/docker-relation.jpg)
+![](/assets/images/2021/12/docker-relation.jpg)
 
 Both Docker & Kubernetes are classical C/S architectures, e.g. (docker-cli -> docker-daemon, kubernetes-cli -> kube-apiserver)
 
-![ ](/assets/images/2021/12/docker.png)
+![](/assets/images/2021/12/docker.png)
 
 If you like, we can use runc bare in metal to run a container, also it's not recommended.
 

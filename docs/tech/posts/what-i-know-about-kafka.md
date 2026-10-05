@@ -109,14 +109,14 @@ How did partitions get handled? there are two critical components: ReplicaManage
 `ReplicaManager` key responsibilities:
 
 - manages local partition replicas
-  - `protected val allPartitions = new ConcurrentHashMap[TopicPartition, HostedPartition]`
+    - `protected val allPartitions = new ConcurrentHashMap[TopicPartition, HostedPartition]`
 - handles log appends, fetches, truncations, and high watermark management
 - coordinates with fetcher threads for replication from leaders to followers
-  - `ReplicaFetcherManager`
+    - `ReplicaFetcherManager`
 - manages ISRs (in sync replica) set and triggers actions when replicas fall out of sync
-  - startup() --> `scheduler.schedule("isr-expiration", () => maybeShrinkIsr(), 0L, config.replicaLagTimeMaxMs / 2)`
+    - startup() --> `scheduler.schedule("isr-expiration", () => maybeShrinkIsr(), 0L, config.replicaLagTimeMaxMs / 2)`
 - handles partition leadership changes (role change) as directed by the controller
-  - `becomeLeaderOrFollower`
+    - `becomeLeaderOrFollower`
 - cleans up resources and metrics for partitions as needed
 
 `Partition` Data structure that represents a topic partition.
@@ -339,8 +339,8 @@ sequenceDiagram
 
 ## references
 
-- https://deepwiki.com/apache/kafka
-- https://kafka.apache.org/documentation/#gettingStarted
-- https://github.com/apache/kafka
+- <https://deepwiki.com/apache/kafka>
+- <https://kafka.apache.org/documentation/#gettingStarted>
+- <https://github.com/apache/kafka>
 - [raft](https://raft.github.io/)
 - 深入理解 Kafka -- 核心设计与实践原理
