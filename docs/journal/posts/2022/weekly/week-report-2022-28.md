@@ -89,7 +89,7 @@ It's not about working hard to exchange freedom, we are free as who we are, what
 - The ability to do something or act in a particular way, especially as a faculty or quality
 - The capacity or ability to direct or influence the behavior of others or the course of events
 
-**The way you exercise power over yourself will set the conditions for how you exercise power over others**
+> The way you exercise power over yourself will set the conditions for how you exercise power over others
 
 > If you want to express your individual power by buying yachts, wearing gold chains, and balling out at night clubs, then that does two things. First, it signals to others that these are the things that matter to you, and they will tie your human worth to your material worth. Second, you will view others through this same lens, and you will see materiality as the answer to solving their problems in turn.
 
@@ -109,17 +109,17 @@ It's not about working hard to exchange freedom, we are free as who we are, what
 
 ### 睡个好觉
 
-**深度睡眠和睡眠效率**
+### 深度睡眠和睡眠效率
 
 成年人每晚需要拥有 1.5~2 小时的深度睡眠，才能基本保证第二天头脑清醒，精神充沛。
 
-**睡眠周期**
+### 睡眠周期
 
 - R90 - 以 90 分钟作为一个睡眠周期，包括非眼动睡眠、眼动睡眠和快速眼动睡眠
 - 一个完整的睡眠一般包括 4~6 个睡眠周期
 - 一周保证 28~35 个睡眠周期最为理想
 
-**睡前醒后的黄金 90 分钟**
+### 睡前醒后的黄金 90 分钟
 
 - 睡前的 90 分钟要为睡眠创造足够的条件和环境，比如停止进食或消耗性的剧烈运动，让胃里的食物得到充分消化，让身体得到平静，在空间上充分感受睡眠氛围。
 - 醒后的 90 分钟要为一天的开始做准备，逐渐唤醒大脑，比如喝杯咖啡、认真吃早餐，如果时间充足的情况下还可以做一些简单的运动，激发自己的身体。

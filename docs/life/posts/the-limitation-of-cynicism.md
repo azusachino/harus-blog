@@ -123,7 +123,7 @@ difference is that one of them has decided to do something in it.
 
 ## Explore Further
 
-**Books**
+### Books
 
 - *The Rebel* — Albert Camus. The definitive answer to nihilism: how to say "no" to an
   absurd world without collapsing into despair.
@@ -140,7 +140,7 @@ difference is that one of them has decided to do something in it.
 - *The Denial of Death* — Ernest Becker. Why we build armor (including cynicism) against
   vulnerability, and what it costs.
 
-**Talks & videos**
+### Talks & videos
 
 - Theodore Roosevelt, *"The Man in the Arena"* (1910 speech, widely available) — the
   original case against the spectator-critic.
@@ -151,7 +151,7 @@ difference is that one of them has decided to do something in it.
 - Hank Green, *"The Case Against Cynicism"* — a short, sharp popular articulation of the
   self-fulfilling-prophecy problem.
 
-**Websites & essays**
+### Websites & essays
 
 - [Stanford Encyclopedia of Philosophy — Ancient Cynicism](https://plato.stanford.edu/entries/cynics/)
   — rigorous background on what the Cynics originally meant.

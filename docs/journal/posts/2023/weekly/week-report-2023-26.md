@@ -51,7 +51,7 @@ Who deserves a happy end?
 
 ### 时代
 
-**True HERO**
+### True HERO
 
 "一切坚固的东西都烟消云散了，一切神圣的东西都被亵渎了" - 马克思
 

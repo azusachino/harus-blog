@@ -34,7 +34,7 @@ Living in a `consumerism society`, everyone is a consumer, which means, there is
 
 ### JNI
 
-**Process Java-Passed Param**
+### Process Java-Passed Param
 
 ```c++
 extern "C" JNIEXPORT jint JNICALL jni_native_do_something(JNIEnv* env, jobject, jobject param) {
@@ -55,7 +55,7 @@ extern "C" JNIEXPORT jint JNICALL jni_native_do_something(JNIEnv* env, jobject, 
 }
 ```
 
-**Callback Java Method**
+### Callback Java Method
 
 ```c++
 extern JavaVM *global_jvm_;
@@ -119,7 +119,7 @@ Quite ordinary week, no need to depict.
 
 ### 举办婚礼的理由
 
-**Always be grateful to those who care you**
+> Always be grateful to those who care you
 
 1. You officially become a significant investment in everyone’s Happiness Portfolio.
 2. A wedding solidifies your union into a concrete memory of support.

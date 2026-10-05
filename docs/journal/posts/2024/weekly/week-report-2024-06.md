@@ -66,7 +66,7 @@ well, nothing important to point out.
 2. 享受过程
 3. 照顾好自己的身体和心理健康
 
-**如果未经你的允许，他人没有伤害你的能力。**
+> 如果未经你的允许，他人没有伤害你的能力。
 
 ## References
 

@@ -105,7 +105,7 @@ The nature of nature is nature selection.
 
 > 所有的生活都是合理的，我们没必要互相理解。
 
-**人不是因为变老了才没有热情，而是因为没有热情才会变老。**
+> 人不是因为变老了才没有热情，而是因为没有热情才会变老。
 
 ## Recommendation
 

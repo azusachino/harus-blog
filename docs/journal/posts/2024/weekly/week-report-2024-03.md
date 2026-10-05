@@ -63,7 +63,7 @@ Under the hood, the Java Virtual Machine creates a pool of `carrier threads`, w
 
 ### how to english
 
-**你的问题也许不在于你不会说，而在于你没什么话可说。**
+> 你的问题也许不在于你不会说，而在于你没什么话可说。
 
 If you really did memorize so many IETLS writing examples, then, maybe you could have conversation with native speakers, just take the situation as writing. It's a proof that you can talk in english, and it's important for you to realize this.
 
