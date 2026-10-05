@@ -90,7 +90,7 @@ It's not about working hard to exchange freedom, we are free as who we are, what
 - The capacity or ability to direct or influence the behavior of others or the course of events
 
 > The way you exercise power over yourself will set the conditions for how you exercise power over others
-
+>
 > If you want to express your individual power by buying yachts, wearing gold chains, and balling out at night clubs, then that does two things. First, it signals to others that these are the things that matter to you, and they will tie your human worth to your material worth. Second, you will view others through this same lens, and you will see materiality as the answer to solving their problems in turn.
 
 - Four Levels **How to use Money for ?**

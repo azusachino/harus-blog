@@ -86,7 +86,7 @@ The absence of mental stimulation - If there is no external stimulus provoking a
 **Tame longing without any particular object** - Undirected Desire
 
 > It's when you long for something better, without knowing what that "something better" might even be. As a result, you try to satisfy it with various distractions, but without any purposeful pursuit, the cycle of boredom continues.
-
+>
 > Desire's greatest trick is in convincing us that we will be satisfied after we fulfill it
 
 ### Videos
