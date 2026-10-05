@@ -15,7 +15,7 @@ comments: true
 
 <!-- more -->
 
-Recently, I spent a lot of time on playing with `opentracing`, so here are some practical samples. `go` codes is [here](https://github.com/azusachino/ficus).
+Recently, I spent a lot of time on playing with `opentracing`, so here are some practical samples. `go` code is in [the ficus repository](https://github.com/azusachino/ficus).
 
 First of all, I will treat a successful http request as a valid `Span`.
 

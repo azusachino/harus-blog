@@ -34,7 +34,7 @@ H.264 是用于视频压缩的业界标准，因为视频是由一帧一帧的�
 
 想要尝试的话，可以参考[官方文档](https://docs.spring.io/spring-native/docs/current/reference/htmlsingle/#overview) 或者 baeldung 上的一篇[教程](https://www.baeldung.com/spring-native-intro)。
 
-Also, Download GraalVM from [here](https://github.com/graalvm/graalvm-ce-builds/releases).
+Also, Download GraalVM from the [GraalVM releases page](https://github.com/graalvm/graalvm-ce-builds/releases).
 
 ### 经济学相关
 
