@@ -8,7 +8,7 @@ slug: week-report-2022-53
 comments: true
 ---
 
-![](/assets/images/2022/12/miku.jpg){ .post-cover }
+![Hatsune Miku illustration](/assets/images/2022/12/miku.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -8,7 +8,7 @@ slug: week-report-2024-14
 comments: true
 ---
 
-![](/assets/images/2024/04/HangRaiVietnam.png){ .post-cover }
+![Cover photo: Hang Rai Vietnam](/assets/images/2024/04/HangRaiVietnam.png){ .post-cover }
 
 <!-- more -->
 

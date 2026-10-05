@@ -8,7 +8,7 @@ slug: month-refresh-2023-08
 comments: true
 ---
 
-![](/assets/images/2023/08/IronwoodCactus.jpg){ .post-cover }
+![Cover photo: Ironwood Cactus](/assets/images/2023/08/IronwoodCactus.jpg){ .post-cover }
 
 <!-- more -->
 

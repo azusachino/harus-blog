@@ -10,7 +10,7 @@ hide:
   - navigation
 ---
 
-![](/assets/images/2025/10-live.jpeg){ .post-cover }
+![Cover photo: 10 live](/assets/images/2025/10-live.jpeg){ .post-cover }
 
 <!-- more -->
 

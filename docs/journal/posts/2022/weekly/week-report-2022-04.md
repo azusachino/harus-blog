@@ -8,7 +8,7 @@ slug: week-report-2022-04
 comments: true
 ---
 
-![](/assets/images/2022/01/PorcupineWillow.jpg){ .post-cover }
+![Cover photo: Porcupine Willow](/assets/images/2022/01/PorcupineWillow.jpg){ .post-cover }
 
 <!-- more -->
 

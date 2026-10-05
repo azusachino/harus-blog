@@ -8,7 +8,7 @@ slug: week-report-2023-12
 comments: true
 ---
 
-![](/assets/images/2023/03/WildAnza.jpg){ .post-cover }
+![Cover photo: Wild Anza](/assets/images/2023/03/WildAnza.jpg){ .post-cover }
 
 <!-- more -->
 

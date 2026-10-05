@@ -8,7 +8,7 @@ slug: week-report-2021-52
 comments: true
 ---
 
-![](/assets/images/2021/12/SalehurstChurch.jpg){ .post-cover }
+![Cover photo: Salehurst Church](/assets/images/2021/12/SalehurstChurch.jpg){ .post-cover }
 
 <!-- more -->
 

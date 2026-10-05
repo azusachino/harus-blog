@@ -8,7 +8,7 @@ slug: week-report-2023-32
 comments: true
 ---
 
-![](/assets/images/2023/08/KeyWestBridge.jpg){ .post-cover }
+![Cover photo: Key West Bridge](/assets/images/2023/08/KeyWestBridge.jpg){ .post-cover }
 
 <!-- more -->
 

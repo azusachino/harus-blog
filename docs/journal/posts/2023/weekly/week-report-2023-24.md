@@ -8,7 +8,7 @@ slug: week-report-2023-24
 comments: true
 ---
 
-![](/assets/images/2023/06/SurfSanDiego.jpg){ .post-cover }
+![Cover photo: Surf San Diego](/assets/images/2023/06/SurfSanDiego.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -8,7 +8,7 @@ slug: week-report-2024-40
 comments: true
 ---
 
-![](/assets/images/2024/miku-symphony.jpg){ .post-cover }
+![Cover photo: miku symphony](/assets/images/2024/miku-symphony.jpg){ .post-cover }
 
 <!-- more -->
 

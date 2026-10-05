@@ -8,7 +8,7 @@ slug: month-refresh-2026-05
 comments: true
 ---
 
-![](/assets/images/2026/05-nara.png){ .post-cover }
+![Cover photo: 05 nara](/assets/images/2026/05-nara.png){ .post-cover }
 
 <!-- more -->
 

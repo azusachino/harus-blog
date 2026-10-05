@@ -8,7 +8,7 @@ slug: month-refresh-2023-05
 comments: true
 ---
 
-![](/assets/images/2023/05/HiddenBeach.jpg){ .post-cover }
+![Cover photo: Hidden Beach](/assets/images/2023/05/HiddenBeach.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -10,7 +10,7 @@ slug: java-file-reading
 comments: true
 ---
 
-![](/assets/images/2021/05/HouseboatKerala.jpg){ .post-cover }
+![Cover photo: Houseboat Kerala](/assets/images/2021/05/HouseboatKerala.jpg){ .post-cover }
 
 <!-- more -->
 

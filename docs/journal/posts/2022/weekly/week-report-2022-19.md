@@ -8,7 +8,7 @@ slug: week-report-2022-19
 comments: true
 ---
 
-![](/assets/images/2022/05/DuckHen.jpg){ .post-cover }
+![Cover photo: Duck Hen](/assets/images/2022/05/DuckHen.jpg){ .post-cover }
 
 <!-- more -->
 

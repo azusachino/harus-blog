@@ -10,7 +10,7 @@ slug: configure-logstash-template
 comments: true
 ---
 
-![](/assets/images/2021/06/AsianElephants.jpg){ .post-cover }
+![Cover photo: Asian Elephants](/assets/images/2021/06/AsianElephants.jpg){ .post-cover }
 
 <!-- more -->
 

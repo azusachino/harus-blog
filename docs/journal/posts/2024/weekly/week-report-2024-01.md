@@ -8,7 +8,7 @@ slug: week-report-2024-01
 comments: true
 ---
 
-![](/assets/images/2024/01/BukhansanSeoul.png){ .post-cover }
+![Cover photo: Bukhansan Seoul](/assets/images/2024/01/BukhansanSeoul.png){ .post-cover }
 
 <!-- more -->
 

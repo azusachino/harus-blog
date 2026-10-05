@@ -8,7 +8,7 @@ slug: week-report-2022-05
 comments: true
 ---
 
-![](/assets/images/2022/01/GrahamAdelie.jpg){ .post-cover }
+![Cover photo: Graham Adelie](/assets/images/2022/01/GrahamAdelie.jpg){ .post-cover }
 
 <!-- more -->
 

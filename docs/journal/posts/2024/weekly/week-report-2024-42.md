@@ -8,7 +8,7 @@ slug: week-report-2024-42
 comments: true
 ---
 
-![](/assets/images/2024/jp-sg-exam.png){ .post-cover }
+![Cover photo: jp sg exam](/assets/images/2024/jp-sg-exam.png){ .post-cover }
 
 <!-- more -->
 

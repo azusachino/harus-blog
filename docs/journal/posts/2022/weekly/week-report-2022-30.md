@@ -8,7 +8,7 @@ slug: week-report-2022-30
 comments: true
 ---
 
-![](/assets/images/2022/07/AmericanGoldfinch.jpg){ .post-cover }
+![Cover photo: American Goldfinch](/assets/images/2022/07/AmericanGoldfinch.jpg){ .post-cover }
 
 <!-- more -->
 

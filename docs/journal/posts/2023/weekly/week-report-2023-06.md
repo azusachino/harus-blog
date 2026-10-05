@@ -8,7 +8,7 @@ slug: week-report-2023-06
 comments: true
 ---
 
-![](/assets/images/2023/02/DarkSkiesDV.jpg){ .post-cover }
+![Cover photo: Dark Skies DV](/assets/images/2023/02/DarkSkiesDV.jpg){ .post-cover }
 
 <!-- more -->
 

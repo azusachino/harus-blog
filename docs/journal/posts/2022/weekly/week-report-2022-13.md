@@ -8,7 +8,7 @@ slug: week-report-2022-13
 comments: true
 ---
 
-![](/assets/images/2022/03/PandaDay.jpg){ .post-cover }
+![Cover photo: Panda Day](/assets/images/2022/03/PandaDay.jpg){ .post-cover }
 
 <!-- more -->
 

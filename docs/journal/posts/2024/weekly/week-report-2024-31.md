@@ -8,7 +8,7 @@ slug: week-report-2024-31
 comments: true
 ---
 
-![](/assets/images/2024/08/teachable.png){ .post-cover }
+![Cover photo: teachable](/assets/images/2024/08/teachable.png){ .post-cover }
 
 <!-- more -->
 

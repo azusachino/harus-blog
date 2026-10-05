@@ -8,7 +8,7 @@ slug: week-report-2022-18
 comments: true
 ---
 
-![](/assets/images/2022/05/MuteSwan.jpg){ .post-cover }
+![Cover photo: Mute Swan](/assets/images/2022/05/MuteSwan.jpg){ .post-cover }
 
 <!-- more -->
 

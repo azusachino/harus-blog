@@ -8,7 +8,7 @@ slug: week-report-2023-17
 comments: true
 ---
 
-![](/assets/images/2023/04/SouthPadre.jpg){ .post-cover }
+![Cover photo: South Padre](/assets/images/2023/04/SouthPadre.jpg){ .post-cover }
 
 <!-- more -->
 

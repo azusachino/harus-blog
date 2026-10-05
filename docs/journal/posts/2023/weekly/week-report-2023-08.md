@@ -8,7 +8,7 @@ slug: week-report-2023-08
 comments: true
 ---
 
-![](/assets/images/2023/02/BryceAnniv.jpg){ .post-cover }
+![Cover photo: Bryce Anniv](/assets/images/2023/02/BryceAnniv.jpg){ .post-cover }
 
 <!-- more -->
 

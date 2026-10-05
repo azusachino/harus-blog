@@ -8,7 +8,7 @@ slug: week-report-2022-39
 comments: true
 ---
 
-![](/assets/images/2022/09/EmeraldYoho.jpg){ .post-cover }
+![Cover photo: Emerald Yoho](/assets/images/2022/09/EmeraldYoho.jpg){ .post-cover }
 
 <!-- more -->
 

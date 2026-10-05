@@ -8,7 +8,7 @@ slug: week-report-2023-21
 comments: true
 ---
 
-![](/assets/images/2023/05/AloeDichotomum.jpg){ .post-cover }
+![Cover photo: Aloe Dichotomum](/assets/images/2023/05/AloeDichotomum.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -8,7 +8,7 @@ slug: week-report-2023-13
 comments: true
 ---
 
-![](/assets/images/2023/04/JavaBromo.jpg){ .post-cover }
+![Cover photo: Java Bromo](/assets/images/2023/04/JavaBromo.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -8,7 +8,7 @@ slug: month-refresh-2022-12
 comments: true
 ---
 
-![](/assets/images/2022/12/startup-start-up-notebooks-creative-fedea35e07f8fcc6b2a67b2eb0e37e97.jpg){ .post-cover }
+![Cover photo: startup start up notebooks creative fedea35e07f8fcc6b2a67b2eb0e37e97](/assets/images/2022/12/startup-start-up-notebooks-creative-fedea35e07f8fcc6b2a67b2eb0e37e97.jpg){ .post-cover }
 
 <!-- more -->
 

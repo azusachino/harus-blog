@@ -8,7 +8,7 @@ slug: week-report-2022-32
 comments: true
 ---
 
-![](/assets/images/2022/08/FourTigresses.jpg){ .post-cover }
+![Cover photo: Four Tigresses](/assets/images/2022/08/FourTigresses.jpg){ .post-cover }
 
 <!-- more -->
 

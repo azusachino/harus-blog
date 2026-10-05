@@ -8,7 +8,7 @@ slug: week-report-2024-09
 comments: true
 ---
 
-![](/assets/images/2024/03/PeakDistrictNP.png){ .post-cover }
+![Cover photo: Peak District NP](/assets/images/2024/03/PeakDistrictNP.png){ .post-cover }
 
 <!-- more -->
 

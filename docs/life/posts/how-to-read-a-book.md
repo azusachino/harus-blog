@@ -10,7 +10,7 @@ hide:
   - navigation
 ---
 
-![](/assets/book/2021/how-to-read-a-book.jpg){ .post-cover }
+![Cover photo: how to read a book](/assets/book/2021/how-to-read-a-book.jpg){ .post-cover }
 
 <!-- more -->
 

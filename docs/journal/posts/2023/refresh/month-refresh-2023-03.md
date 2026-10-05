@@ -8,7 +8,7 @@ slug: month-refresh-2023-03
 comments: true
 ---
 
-![](/assets/images/2023/03/MWDolomites.jpg){ .post-cover }
+![Cover photo: MWDolomites](/assets/images/2023/03/MWDolomites.jpg){ .post-cover }
 
 <!-- more -->
 

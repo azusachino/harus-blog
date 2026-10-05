@@ -8,7 +8,7 @@ slug: week-report-2022-28
 comments: true
 ---
 
-![](/assets/images/2022/07/SummerDogs.jpeg){ .post-cover }
+![Cover photo: Summer Dogs](/assets/images/2022/07/SummerDogs.jpeg){ .post-cover }
 
 <!-- more -->
 

@@ -8,7 +8,7 @@ slug: week-report-2024-45
 comments: true
 ---
 
-![](/assets/images/2024/yoasobi.jpg){ .post-cover }
+![Cover photo: yoasobi](/assets/images/2024/yoasobi.jpg){ .post-cover }
 
 <!-- more -->
 

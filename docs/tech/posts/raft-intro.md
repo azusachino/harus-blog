@@ -10,7 +10,7 @@ slug: raft-intro
 comments: true
 ---
 
-![](/assets/images/2021/10/MackenzieRiver.jpg){ .post-cover }
+![Cover photo: Mackenzie River](/assets/images/2021/10/MackenzieRiver.jpg){ .post-cover }
 
 <!-- more -->
 

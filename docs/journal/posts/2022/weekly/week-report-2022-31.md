@@ -8,7 +8,7 @@ slug: week-report-2022-31
 comments: true
 ---
 
-![](/assets/images/2022/07/FoxgloveHawkmoth.jpg){ .post-cover }
+![Cover photo: Foxglove Hawkmoth](/assets/images/2022/07/FoxgloveHawkmoth.jpg){ .post-cover }
 
 <!-- more -->
 

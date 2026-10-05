@@ -8,7 +8,7 @@ slug: week-report-2023-20
 comments: true
 ---
 
-![](/assets/images/2023/05/miku.jpg){ .post-cover }
+![Hatsune Miku illustration](/assets/images/2023/05/miku.jpg){ .post-cover }
 
 <!-- more -->
 

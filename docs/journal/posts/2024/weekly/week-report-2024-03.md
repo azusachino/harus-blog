@@ -8,7 +8,7 @@ slug: week-report-2024-03
 comments: true
 ---
 
-![](/assets/images/2024/01/LakeLouise.png){ .post-cover }
+![Cover photo: Lake Louise](/assets/images/2024/01/LakeLouise.png){ .post-cover }
 
 <!-- more -->
 

@@ -8,7 +8,7 @@ slug: month-refresh-2023-04
 comments: true
 ---
 
-![](/assets/images/2023/04/JTNPMilkyWay.jpg){ .post-cover }
+![Cover photo: JTNPMilky Way](/assets/images/2023/04/JTNPMilkyWay.jpg){ .post-cover }
 
 <!-- more -->
 

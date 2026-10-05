@@ -10,7 +10,7 @@ hide:
   - navigation
 ---
 
-![](/assets/book/2021/amusing-ourselves-to-death.jpg){ .post-cover }
+![Cover photo: amusing ourselves to death](/assets/book/2021/amusing-ourselves-to-death.jpg){ .post-cover }
 
 <!-- more -->
 

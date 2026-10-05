@@ -8,7 +8,7 @@ slug: week-report-2022-40
 comments: true
 ---
 
-![](/assets/images/2022/10/JohnstonWater.jpg){ .post-cover }
+![Cover photo: Johnston Water](/assets/images/2022/10/JohnstonWater.jpg){ .post-cover }
 
 <!-- more -->
 

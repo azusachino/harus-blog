@@ -8,7 +8,7 @@ slug: week-report-2024-34
 comments: true
 ---
 
-![](/assets/images/2024/08/city-night.jpeg){ .post-cover }
+![Cover photo: city night](/assets/images/2024/08/city-night.jpeg){ .post-cover }
 
 <!-- more -->
 

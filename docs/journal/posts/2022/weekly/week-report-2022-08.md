@@ -8,7 +8,7 @@ slug: week-report-2022-08
 comments: true
 ---
 
-![](/assets/images/2022/02/FaceOff.jpg){ .post-cover }
+![Cover photo: Face Off](/assets/images/2022/02/FaceOff.jpg){ .post-cover }
 
 <!-- more -->
 

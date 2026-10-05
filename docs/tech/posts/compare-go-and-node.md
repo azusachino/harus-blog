@@ -11,7 +11,7 @@ slug: compare-go-and-node
 comments: true
 ---
 
-![](/assets/images/2021/06/Aldeyjarfoss.jpg){ .post-cover }
+![Cover photo: Aldeyjarfoss](/assets/images/2021/06/Aldeyjarfoss.jpg){ .post-cover }
 
 <!-- more -->
 

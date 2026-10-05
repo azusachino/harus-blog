@@ -8,7 +8,7 @@ slug: month-refresh-2023-01
 comments: true
 ---
 
-![](/assets/images/2023/01/YearRabbit.jpg){ .post-cover }
+![Cover photo: Year Rabbit](/assets/images/2023/01/YearRabbit.jpg){ .post-cover }
 
 <!-- more -->
 

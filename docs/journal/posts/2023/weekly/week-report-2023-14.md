@@ -8,7 +8,7 @@ slug: week-report-2023-14
 comments: true
 ---
 
-![](/assets/images/2023/04/ArizonaPinkMoon.jpg){ .post-cover }
+![Cover photo: Arizona Pink Moon](/assets/images/2023/04/ArizonaPinkMoon.jpg){ .post-cover }
 
 <!-- more -->
 

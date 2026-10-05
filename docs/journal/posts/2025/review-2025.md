@@ -8,7 +8,7 @@ slug: review-2025
 comments: true
 ---
 
-![](/assets/images/2025/ordinary-life.jpg){ .post-cover }
+![Cover photo: ordinary life](/assets/images/2025/ordinary-life.jpg){ .post-cover }
 
 <!-- more -->
 

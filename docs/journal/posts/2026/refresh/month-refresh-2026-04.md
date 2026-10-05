@@ -8,7 +8,7 @@ slug: month-refresh-2026-04
 comments: true
 ---
 
-![](/assets/images/2026/04-tottori.png){ .post-cover }
+![Cover photo: 04 tottori](/assets/images/2026/04-tottori.png){ .post-cover }
 
 <!-- more -->
 

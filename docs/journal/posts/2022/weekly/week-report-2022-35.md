@@ -8,7 +8,7 @@ slug: week-report-2022-35
 comments: true
 ---
 
-![](/assets/images/2022/08/LacMontagnon.jpg){ .post-cover }
+![Cover photo: Lac Montagnon](/assets/images/2022/08/LacMontagnon.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -8,7 +8,7 @@ slug: week-report-2023-29
 comments: true
 ---
 
-![](/assets/images/2023/07/HammockDay.jpg){ .post-cover }
+![Cover photo: Hammock Day](/assets/images/2023/07/HammockDay.jpg){ .post-cover }
 
 <!-- more -->
 

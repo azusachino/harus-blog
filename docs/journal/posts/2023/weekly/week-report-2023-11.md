@@ -8,7 +8,7 @@ slug: week-report-2023-11
 comments: true
 ---
 
-![](/assets/images/2023/03/MarsTars.jpg){ .post-cover }
+![Cover photo: Mars Tars](/assets/images/2023/03/MarsTars.jpg){ .post-cover }
 
 <!-- more -->
 

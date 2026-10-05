@@ -8,7 +8,7 @@ slug: month-refresh-2023-02
 comments: true
 ---
 
-![](/assets/images/2023/02/AtraniAmalfi.jpg){ .post-cover }
+![Cover photo: Atrani Amalfi](/assets/images/2023/02/AtraniAmalfi.jpg){ .post-cover }
 
 <!-- more -->
 

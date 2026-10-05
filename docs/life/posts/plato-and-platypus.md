@@ -10,7 +10,7 @@ hide:
   - navigation
 ---
 
-![](/assets/book/2021/plato-and-platypus.jpg){ .post-cover }
+![Cover photo: plato and platypus](/assets/book/2021/plato-and-platypus.jpg){ .post-cover }
 
 <!-- more -->
 

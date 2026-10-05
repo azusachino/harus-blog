@@ -8,7 +8,7 @@ slug: month-refresh-2025-07
 comments: true
 ---
 
-![](/assets/images/2025/07-run.png){ .post-cover }
+![Cover photo: 07 run](/assets/images/2025/07-run.png){ .post-cover }
 
 <!-- more -->
 

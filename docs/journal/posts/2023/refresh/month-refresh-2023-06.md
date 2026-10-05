@@ -8,7 +8,7 @@ slug: month-refresh-2023-06
 comments: true
 ---
 
-![](/assets/images/2023/06/PeruAmazon.jpg){ .post-cover }
+![Cover photo: Peru Amazon](/assets/images/2023/06/PeruAmazon.jpg){ .post-cover }
 
 <!-- more -->
 

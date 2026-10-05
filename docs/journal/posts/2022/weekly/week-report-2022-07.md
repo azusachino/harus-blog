@@ -8,7 +8,7 @@ slug: week-report-2022-07
 comments: true
 ---
 
-![](/assets/images/2022/02/MexicoMonarchs.jpg){ .post-cover }
+![Cover photo: Mexico Monarchs](/assets/images/2022/02/MexicoMonarchs.jpg){ .post-cover }
 
 <!-- more -->
 

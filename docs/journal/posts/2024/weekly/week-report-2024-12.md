@@ -8,7 +8,7 @@ slug: week-report-2024-12
 comments: true
 ---
 
-![](/assets/images/2024/03/StFiniansBay.jpg){ .post-cover }
+![Cover photo: St Finians Bay](/assets/images/2024/03/StFiniansBay.jpg){ .post-cover }
 
 <!-- more -->
 

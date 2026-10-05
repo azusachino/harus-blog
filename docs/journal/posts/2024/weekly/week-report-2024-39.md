@@ -8,7 +8,7 @@ slug: week-report-2024-39
 comments: true
 ---
 
-![](/assets/images/2024/09/tgs2024.jpg){ .post-cover }
+![Cover photo: tgs2024](/assets/images/2024/09/tgs2024.jpg){ .post-cover }
 
 <!-- more -->
 

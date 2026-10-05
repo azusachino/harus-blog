@@ -8,7 +8,7 @@ slug: week-report-2024-52
 comments: true
 ---
 
-![](/assets/images/2024/ayumi.png){ .post-cover }
+![Cover photo: ayumi](/assets/images/2024/ayumi.png){ .post-cover }
 
 <!-- more -->
 

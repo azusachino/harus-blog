@@ -10,7 +10,7 @@ slug: rust-intro
 comments: true
 ---
 
-![](/assets/images/2021/12/LittleBirds.jpg){ .post-cover }
+![Cover photo: Little Birds](/assets/images/2021/12/LittleBirds.jpg){ .post-cover }
 
 <!-- more -->
 

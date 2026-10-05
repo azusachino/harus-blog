@@ -8,7 +8,7 @@ slug: month-refresh-2025-08
 comments: true
 ---
 
-![](/assets/images/2025/08-magical.jpeg){ .post-cover }
+![Cover photo: 08 magical](/assets/images/2025/08-magical.jpeg){ .post-cover }
 
 <!-- more -->
 

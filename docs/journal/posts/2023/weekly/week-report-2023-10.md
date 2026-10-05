@@ -8,7 +8,7 @@ slug: week-report-2023-10
 comments: true
 ---
 
-![](/assets/images/2023/03/LongWharf.jpg){ .post-cover }
+![Cover photo: Long Wharf](/assets/images/2023/03/LongWharf.jpg){ .post-cover }
 
 <!-- more -->
 

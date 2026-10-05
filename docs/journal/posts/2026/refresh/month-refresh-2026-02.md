@@ -8,7 +8,7 @@ slug: month-refresh-2026-02
 comments: true
 ---
 
-![](/assets/images/2026/02-deco-miku.png){ .post-cover }
+![Cover photo: 02 deco miku](/assets/images/2026/02-deco-miku.png){ .post-cover }
 
 <!-- more -->
 

@@ -8,7 +8,7 @@ slug: week-report-2022-25
 comments: true
 ---
 
-![](/assets/images/2022/06/IndigoBunting.jpg){ .post-cover }
+![Cover photo: Indigo Bunting](/assets/images/2022/06/IndigoBunting.jpg){ .post-cover }
 
 <!-- more -->
 

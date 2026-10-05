@@ -8,7 +8,7 @@ slug: month-refresh-2022-09
 comments: true
 ---
 
-![](/assets/images/2022/09/ZaanseSchans.jpg){ .post-cover }
+![Cover photo: Zaanse Schans](/assets/images/2022/09/ZaanseSchans.jpg){ .post-cover }
 
 <!-- more -->
 

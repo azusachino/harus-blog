@@ -8,7 +8,7 @@ slug: week-report-2023-33
 comments: true
 ---
 
-![](/assets/images/2023/08/AvatarMountain.jpg){ .post-cover }
+![Cover photo: Avatar Mountain](/assets/images/2023/08/AvatarMountain.jpg){ .post-cover }
 
 <!-- more -->
 

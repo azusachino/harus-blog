@@ -8,7 +8,7 @@ slug: week-report-2024-06
 comments: true
 ---
 
-![](/assets/images/2024/02/MaldivesAtolls.png){ .post-cover }
+![Cover photo: Maldives Atolls](/assets/images/2024/02/MaldivesAtolls.png){ .post-cover }
 
 <!-- more -->
 

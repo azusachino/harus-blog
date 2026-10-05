@@ -8,7 +8,7 @@ slug: week-report-2023-26
 comments: true
 ---
 
-![](/assets/images/2023/07/HalfwayBoats.jpg){ .post-cover }
+![Cover photo: Halfway Boats](/assets/images/2023/07/HalfwayBoats.jpg){ .post-cover }
 
 <!-- more -->
 

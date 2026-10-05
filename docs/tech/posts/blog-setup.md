@@ -10,7 +10,7 @@ slug: blog-setup
 comments: true
 ---
 
-![](/assets/images/2021/04/Porcini.jpg){ .post-cover }
+![Cover photo: Porcini](/assets/images/2021/04/Porcini.jpg){ .post-cover }
 
 <!-- more -->
 

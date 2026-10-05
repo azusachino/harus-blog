@@ -8,7 +8,7 @@ slug: week-report-2024-04
 comments: true
 ---
 
-![](/assets/images/2024/01/PlitviceWinter.png){ .post-cover }
+![Cover photo: Plitvice Winter](/assets/images/2024/01/PlitviceWinter.png){ .post-cover }
 
 <!-- more -->
 

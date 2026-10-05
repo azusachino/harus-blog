@@ -10,7 +10,7 @@ slug: runc-intro
 comments: true
 ---
 
-![](/assets/images/2022/01/KjellHenriksen.jpg){ .post-cover }
+![Cover photo: Kjell Henriksen](/assets/images/2022/01/KjellHenriksen.jpg){ .post-cover }
 
 <!-- more -->
 

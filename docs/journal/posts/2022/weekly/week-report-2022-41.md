@@ -8,7 +8,7 @@ slug: week-report-2022-41
 comments: true
 ---
 
-![](/assets/images/2022/10/BlumenwieseNRW.jpg){ .post-cover }
+![Cover photo: Blumenwiese NRW](/assets/images/2022/10/BlumenwieseNRW.jpg){ .post-cover }
 
 <!-- more -->
 

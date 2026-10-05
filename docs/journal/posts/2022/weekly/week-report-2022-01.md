@@ -8,7 +8,7 @@ slug: week-report-2022-01
 comments: true
 ---
 
-![](/assets/images/2022/01/JonesBeachHarpSeal.jpg){ .post-cover }
+![Cover photo: Jones Beach Harp Seal](/assets/images/2022/01/JonesBeachHarpSeal.jpg){ .post-cover }
 
 <!-- more -->
 

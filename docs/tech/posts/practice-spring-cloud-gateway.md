@@ -11,7 +11,7 @@ slug: practice-spring-cloud-gateway
 comments: true
 ---
 
-![](/assets/images/2022/05/GlassBridge.jpg){ .post-cover }
+![Cover photo: Glass Bridge](/assets/images/2022/05/GlassBridge.jpg){ .post-cover }
 
 <!-- more -->
 

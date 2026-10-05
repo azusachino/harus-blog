@@ -8,7 +8,7 @@ slug: week-report-2024-27
 comments: true
 ---
 
-![](/assets/images/2024/07/weekend-life.png){ .post-cover }
+![Cover photo: weekend life](/assets/images/2024/07/weekend-life.png){ .post-cover }
 
 <!-- more -->
 

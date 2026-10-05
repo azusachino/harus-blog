@@ -8,7 +8,7 @@ slug: week-report-2022-47
 comments: true
 ---
 
-![](/assets/images/2022/11/1013e493a83c1e0eecc202a767e5b833.jpg){ .post-cover }
+![Weekly Report 2022.47 cover image](/assets/images/2022/11/1013e493a83c1e0eecc202a767e5b833.jpg){ .post-cover }
 
 <!-- more -->
 

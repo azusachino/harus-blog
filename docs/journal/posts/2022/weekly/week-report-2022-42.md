@@ -8,7 +8,7 @@ slug: week-report-2022-42
 comments: true
 ---
 
-![](/assets/images/2022/10/MulberryArtificialHarbour.jpg){ .post-cover }
+![Cover photo: Mulberry Artificial Harbour](/assets/images/2022/10/MulberryArtificialHarbour.jpg){ .post-cover }
 
 <!-- more -->
 

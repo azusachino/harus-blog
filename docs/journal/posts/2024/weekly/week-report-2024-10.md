@@ -8,7 +8,7 @@ slug: week-report-2024-10
 comments: true
 ---
 
-![](/assets/images/2024/03/YosemiteFirefall.png){ .post-cover }
+![Cover photo: Yosemite Firefall](/assets/images/2024/03/YosemiteFirefall.png){ .post-cover }
 
 <!-- more -->
 

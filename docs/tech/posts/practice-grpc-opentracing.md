@@ -11,7 +11,7 @@ slug: practice-grpc-opentracing
 comments: true
 ---
 
-![](/assets/images/2021/09/PetitMinou.jpg){ .post-cover }
+![Cover photo: Petit Minou](/assets/images/2021/09/PetitMinou.jpg){ .post-cover }
 
 <!-- more -->
 

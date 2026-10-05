@@ -8,7 +8,7 @@ slug: week-report-2024-25
 comments: true
 ---
 
-![](/assets/images/2024/06/shanghai.jpg){ .post-cover }
+![Cover photo: shanghai](/assets/images/2024/06/shanghai.jpg){ .post-cover }
 
 <!-- more -->
 

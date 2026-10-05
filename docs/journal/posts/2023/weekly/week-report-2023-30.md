@@ -8,7 +8,7 @@ slug: week-report-2023-30
 comments: true
 ---
 
-![](/assets/images/2023/07/SanBlasIslands.jpg){ .post-cover }
+![Cover photo: San Blas Islands](/assets/images/2023/07/SanBlasIslands.jpg){ .post-cover }
 
 <!-- more -->
 

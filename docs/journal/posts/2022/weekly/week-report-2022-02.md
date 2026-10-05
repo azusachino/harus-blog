@@ -8,7 +8,7 @@ slug: week-report-2022-02
 comments: true
 ---
 
-![](/assets/images/2022/01/OreamnosAmericanus.jpg){ .post-cover }
+![Cover photo: Oreamnos Americanus](/assets/images/2022/01/OreamnosAmericanus.jpg){ .post-cover }
 
 <!-- more -->
 

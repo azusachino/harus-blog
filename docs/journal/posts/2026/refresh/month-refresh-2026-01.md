@@ -8,7 +8,7 @@ slug: month-refresh-2026-01
 comments: true
 ---
 
-![](/assets/images/2026/01-lawson-miku.png){ .post-cover }
+![Cover photo: 01 lawson miku](/assets/images/2026/01-lawson-miku.png){ .post-cover }
 
 <!-- more -->
 

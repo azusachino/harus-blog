@@ -8,7 +8,7 @@ slug: week-report-2024-50
 comments: true
 ---
 
-![](/assets/images/2024/poe2.png){ .post-cover }
+![Cover photo: poe2](/assets/images/2024/poe2.png){ .post-cover }
 
 <!-- more -->
 

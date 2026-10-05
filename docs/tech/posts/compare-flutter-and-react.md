@@ -11,7 +11,7 @@ slug: compare-flutter-and-react
 comments: true
 ---
 
-![](/assets/images/2021/06/HowgillFells.jpg){ .post-cover }
+![Cover photo: Howgill Fells](/assets/images/2021/06/HowgillFells.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -8,7 +8,7 @@ slug: week-report-2024-16
 comments: true
 ---
 
-![](/assets/images/2024/04/BeaverDenali.png){ .post-cover }
+![Cover photo: Beaver Denali](/assets/images/2024/04/BeaverDenali.png){ .post-cover }
 
 <!-- more -->
 

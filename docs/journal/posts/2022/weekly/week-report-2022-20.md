@@ -8,7 +8,7 @@ slug: week-report-2022-20
 comments: true
 ---
 
-![](/assets/images/2022/05/MaasaiGiraffe.jpg){ .post-cover }
+![Cover photo: Maasai Giraffe](/assets/images/2022/05/MaasaiGiraffe.jpg){ .post-cover }
 
 <!-- more -->
 

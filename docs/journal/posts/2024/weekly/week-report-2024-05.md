@@ -8,7 +8,7 @@ slug: week-report-2024-05
 comments: true
 ---
 
-![](/assets/images/2024/02/MacaroniPenguins.png){ .post-cover }
+![Cover photo: Macaroni Penguins](/assets/images/2024/02/MacaroniPenguins.png){ .post-cover }
 
 <!-- more -->
 

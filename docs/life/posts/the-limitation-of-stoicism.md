@@ -10,7 +10,7 @@ hide:
   - navigation
 ---
 
-![](/assets/images/2025/10-stoicism.png){ .post-cover }
+![Cover photo: 10 stoicism](/assets/images/2025/10-stoicism.png){ .post-cover }
 
 <!-- more -->
 

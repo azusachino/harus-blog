@@ -8,7 +8,7 @@ slug: week-report-2022-27
 comments: true
 ---
 
-![](/assets/images/2022/07/SwallowtailFlower.jpeg){ .post-cover }
+![Cover photo: Swallowtail Flower](/assets/images/2022/07/SwallowtailFlower.jpeg){ .post-cover }
 
 <!-- more -->
 

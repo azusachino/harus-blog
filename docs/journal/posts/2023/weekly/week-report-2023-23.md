@@ -8,7 +8,7 @@ slug: week-report-2023-23
 comments: true
 ---
 
-![](/assets/images/2023/06/GoliathHeron.jpg){ .post-cover }
+![Cover photo: Goliath Heron](/assets/images/2023/06/GoliathHeron.jpg){ .post-cover }
 
 <!-- more -->
 

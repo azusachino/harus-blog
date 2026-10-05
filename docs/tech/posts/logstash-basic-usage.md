@@ -10,7 +10,7 @@ slug: logstash-basic-usage
 comments: true
 ---
 
-![](/assets/images/2021/05/PortoFlavia.jpg){ .post-cover }
+![Cover photo: Porto Flavia](/assets/images/2021/05/PortoFlavia.jpg){ .post-cover }
 
 <!-- more -->
 

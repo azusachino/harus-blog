@@ -8,7 +8,7 @@ slug: week-report-2024-29
 comments: true
 ---
 
-![](/assets/images/2024/07/maimai.png){ .post-cover }
+![Cover photo: maimai](/assets/images/2024/07/maimai.png){ .post-cover }
 
 <!-- more -->
 

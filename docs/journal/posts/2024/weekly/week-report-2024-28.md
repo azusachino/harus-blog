@@ -8,7 +8,7 @@ slug: week-report-2024-28
 comments: true
 ---
 
-![](/assets/images/2024/07/vision.png){ .post-cover }
+![Cover photo: vision](/assets/images/2024/07/vision.png){ .post-cover }
 
 <!-- more -->
 

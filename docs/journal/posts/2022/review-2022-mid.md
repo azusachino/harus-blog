@@ -8,7 +8,7 @@ slug: review-2022-mid
 comments: true
 ---
 
-![](/assets/images/2022/07/Vulpes.jpg){ .post-cover }
+![Cover photo: Vulpes](/assets/images/2022/07/Vulpes.jpg){ .post-cover }
 
 <!-- more -->
 

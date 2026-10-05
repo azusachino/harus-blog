@@ -12,7 +12,7 @@ slug: practice-spring-webflux-websocket
 comments: true
 ---
 
-![](/assets/images/2022/02/Oymyakon.jpg){ .post-cover }
+![Cover photo: Oymyakon](/assets/images/2022/02/Oymyakon.jpg){ .post-cover }
 
 <!-- more -->
 

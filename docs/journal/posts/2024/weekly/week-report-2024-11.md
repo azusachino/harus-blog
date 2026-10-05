@@ -8,7 +8,7 @@ slug: week-report-2024-11
 comments: true
 ---
 
-![](/assets/images/2024/03/BryceSnow.jpg){ .post-cover }
+![Cover photo: Bryce Snow](/assets/images/2024/03/BryceSnow.jpg){ .post-cover }
 
 <!-- more -->
 

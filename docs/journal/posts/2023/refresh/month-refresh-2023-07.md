@@ -8,7 +8,7 @@ slug: month-refresh-2023-07
 comments: true
 ---
 
-![](/assets/images/2023/07/PalouseHills.jpg){ .post-cover }
+![Cover photo: Palouse Hills](/assets/images/2023/07/PalouseHills.jpg){ .post-cover }
 
 <!-- more -->
 

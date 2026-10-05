@@ -8,7 +8,7 @@ slug: week-report-2022-06
 comments: true
 ---
 
-![](/assets/images/2022/02/WinteringFowl.jpg){ .post-cover }
+![Cover photo: Wintering Fowl](/assets/images/2022/02/WinteringFowl.jpg){ .post-cover }
 
 <!-- more -->
 

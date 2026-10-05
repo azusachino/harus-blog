@@ -8,7 +8,7 @@ slug: review-2024
 comments: true
 ---
 
-![](/assets/images/2024/miku_fanart_board.jpeg){ .post-cover }
+![Cover photo: miku fanart board](/assets/images/2024/miku_fanart_board.jpeg){ .post-cover }
 
 <!-- more -->
 

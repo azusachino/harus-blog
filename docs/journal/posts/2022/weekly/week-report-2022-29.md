@@ -8,7 +8,7 @@ slug: week-report-2022-29
 comments: true
 ---
 
-![](/assets/images/2022/07/UhuRLP.jpg){ .post-cover }
+![Cover photo: Uhu RLP](/assets/images/2022/07/UhuRLP.jpg){ .post-cover }
 
 <!-- more -->
 

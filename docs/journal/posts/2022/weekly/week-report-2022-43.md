@@ -8,7 +8,7 @@ slug: week-report-2022-43
 comments: true
 ---
 
-![](/assets/images/2022/10/CherryLaurelMaze.jpg){ .post-cover }
+![Cover photo: Cherry Laurel Maze](/assets/images/2022/10/CherryLaurelMaze.jpg){ .post-cover }
 
 <!-- more -->
 

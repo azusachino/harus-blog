@@ -10,7 +10,7 @@ slug: practice-react
 comments: true
 ---
 
-![](/assets/images/2021/05/BirnbeckPier.jpg){ .post-cover }
+![Cover photo: Birnbeck Pier](/assets/images/2021/05/BirnbeckPier.jpg){ .post-cover }
 
 <!-- more -->
 

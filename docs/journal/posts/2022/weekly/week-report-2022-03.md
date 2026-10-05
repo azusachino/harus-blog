@@ -8,7 +8,7 @@ slug: week-report-2022-03
 comments: true
 ---
 
-![](/assets/images/2022/01/WinterBison.jpg){ .post-cover }
+![Cover photo: Winter Bison](/assets/images/2022/01/WinterBison.jpg){ .post-cover }
 
 <!-- more -->
 

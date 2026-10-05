@@ -8,7 +8,7 @@ slug: week-report-2022-26
 comments: true
 ---
 
-![](/assets/images/2022/06/OkavangoElephant.jpg){ .post-cover }
+![Cover photo: Okavango Elephant](/assets/images/2022/06/OkavangoElephant.jpg){ .post-cover }
 
 <!-- more -->
 
