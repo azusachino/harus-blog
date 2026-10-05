@@ -15,6 +15,48 @@
   --md-accent-fg-color: #5fd4cc;
 }
 
+/* Typography: harmonious CJK and Latin system font fallback stack */
+body,
+.md-typeset {
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Noto Sans CJK SC",
+    "Microsoft YaHei",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Monospace: clean modern code font stack */
+code,
+kbd,
+pre {
+  font-family:
+    "JetBrains Mono",
+    "Fira Code",
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Liberation Mono",
+    monospace;
+}
+
+/* Blockquote polish: Miku teal border and subtle background tint */
+.md-typeset blockquote {
+  border-left: 0.25rem solid var(--md-primary-fg-color);
+  background-color: var(--md-accent-fg-color--transparent);
+  padding: 0.6rem 1rem;
+  border-radius: 0.2rem;
+  margin: 1.2rem 0;
+}
+
+
 /* Responsive 16:9 wrapper for embedded iframes (youtube/bilibili/ppt). */
 .video-wrapper {
   position: relative;

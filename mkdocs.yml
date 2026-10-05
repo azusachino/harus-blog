@@ -1,5 +1,5 @@
 site_name: Idealistic Daydreamer
-site_url: https://azusachino.icu
+site_url: https://azusachino.com
 site_author: haru
 site_description: palette gives you the capability, but you're the source of possibility.
 
@@ -85,6 +85,8 @@ plugins:
       blog_toc: true
       archive: false
       draft_if_future_date: true
+      post_readtime: true
+      post_date_format: yyyy-MM-dd
       post_url_format: "{slug}"
       # Single unlimited index — keep scrolling to see every post, no
       # easy-to-miss "next page" link.
@@ -97,6 +99,8 @@ plugins:
       archive_date_format: yyyy
       archive_url_date_format: yyyy
       draft_if_future_date: true
+      post_readtime: true
+      post_date_format: yyyy-MM-dd
       categories: false
       post_url_format: "{slug}"
   - blog:
@@ -104,6 +108,8 @@ plugins:
       blog_toc: true
       archive: false
       draft_if_future_date: true
+      post_readtime: true
+      post_date_format: yyyy-MM-dd
       categories: false
       post_url_format: "{slug}"
   - glightbox
