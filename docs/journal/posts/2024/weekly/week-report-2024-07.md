@@ -37,19 +37,19 @@ You should have no less than 40% and no more than 70% of the information you nee
 ### how to learn any language on your own
 
 - beginner
-    - find a good learning resource
-    - get an understanding of basic sentences
-    - type notes and review them regularly
-    - use the language, speak and write in it
+  - find a good learning resource
+  - get an understanding of basic sentences
+  - type notes and review them regularly
+  - use the language, speak and write in it
 - intermediate
-    - high quality listening resource designed for those learning the language
-        - listen to the program everyday
-        - repeat short phrases you understand, trying to match the speaker's pronunciation
-        - when you're ready, repeat the word of phrase into google translate
+  - high quality listening resource designed for those learning the language
+    - listen to the program everyday
+    - repeat short phrases you understand, trying to match the speaker's pronunciation
+    - when you're ready, repeat the word of phrase into google translate
 - advanced
-    - talk with people in the target language
+  - talk with people in the target language
 
 ## References
 
-- <https://www.youtube.com/watch?v=qYsHLUAlH_8>
-    - how to learn any language on you own
+- https://www.youtube.com/watch?v=qYsHLUAlH_8
+  - how to learn any language on you own

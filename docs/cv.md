@@ -14,8 +14,8 @@ description: True Persona
 ## Skills
 
 - Programming Languages: Java(JNI), Python, Golang, JavaScript, Rust
-    - Java Frameworks: Spring Boot, Spring Cloud, Netty
-    - Misc Frameworks: gRPC, Mybatis-Plus
+  - Java Frameworks: Spring Boot, Spring Cloud, Netty
+  - Misc Frameworks: gRPC, Mybatis-Plus
 - Databases: MySQL, Redis, ELK, Prometheus
 - Middlewares: Kafka, XXLJOB, Nacos
 - DevOps: AWS, Git, Podman, Kubernetes
@@ -31,10 +31,10 @@ description: True Persona
 - Position: Backend Engineer
 - Period: 2021.01 ~ Today
 - Responsibility
-    - Maintaining the Java version SDK of our RTC platform's client-side ability
-    - Maintaining the RTC platform Logging Solution (also related components)
-    - Maintaining some other microservices which support our RTC platform
-    - Contributing new features to our RTC platform's brain, the signaling service
+  - Maintaining the Java version SDK of our RTC platform's client-side ability
+  - Maintaining the RTC platform Logging Solution (also related components)
+  - Maintaining some other microservices which support our RTC platform
+  - Contributing new features to our RTC platform's brain, the signaling service
 
 ### 合肥顶峰数码科技有限公司
 
@@ -42,7 +42,7 @@ description: True Persona
 - Position: Backend Engineer
 - Period: 2019.01 ~ 2020.12
 - Responsibility
-    - Contributing new features to the project Kessaisyoukai
+  - Contributing new features to the project Kessaisyoukai
 
 ## Projects
 
@@ -51,62 +51,62 @@ description: True Persona
 - Brief: Java version SDK of our RTC platform's client-side ability
 - Position: Maintainer
 - Tech Stack
-    - Java & Java Native Interface
-    - Spring Boot Starter
-    - C++ & Cmake
+  - Java & Java Native Interface
+  - Spring Boot Starter
+  - C++ & Cmake
 - Strengths
-    - Easy to use the client-side ability on the SERVER
-    - Use Spring Boot Starter to boost our users' application setup
-    - Capable of simulating hundreds of clients within seconds
+  - Easy to use the client-side ability on the SERVER
+  - Use Spring Boot Starter to boost our users' application setup
+  - Capable of simulating hundreds of clients within seconds
 
 ### RTC Wechat Agent
 
 - Brief: A work-around solution for ability-restricted devices (Wechat Mini Program)
 - Position: Maintainer
 - Tech Stack
-    - Java
-    - WebSocket
-    - Spring Boot & Spring Cloud (Gateway)
-    - [SRS](https://github.com/ossrs/srs)
-    - [srs-exporter](https://github.com/azusachino/srs-exporter) (Golang)
-    - Redis
+  - Java
+  - WebSocket
+  - Spring Boot & Spring Cloud (Gateway)
+  - [SRS](https://github.com/ossrs/srs)
+  - [srs-exporter](https://github.com/azusachino/srs-exporter) (Golang)
+  - Redis
 - Strengths
-    - This work-around solution helps non-RTP compliant devices to connect to our RTC platform
-    - The srs-exporter acts as a sidecar, helps SRS to do service registration, and reports metrics for prometheus scraping
+  - This work-around solution helps non-RTP compliant devices to connect to our RTC platform
+  - The srs-exporter acts as a sidecar, helps SRS to do service registration, and reports metrics for prometheus scraping
 
 ### RTC Logging Solution
 
 - Brief: A complete logging solution for our RTC platform
 - Position: Maintainer
 - Tech Stack
-    - ELK Stack
-    - Filebeat
-    - Zookeeper & Kafka
-    - Java
-    - Spring Boot & Spring Cloud
-    - gRPC
-    - Prometheus & Grafana
-    - VueJS
-    - MySQL
-    - Redis
+  - ELK Stack
+  - Filebeat
+  - Zookeeper & Kafka
+  - Java
+  - Spring Boot & Spring Cloud
+  - gRPC
+  - Prometheus & Grafana
+  - VueJS
+  - MySQL
+  - Redis
 - Strengths
-    - High throughput, Low Latency
-    - Dynamic Architecture (cluster version, single-machine version)
-    - No more worry for debugging problems while it's only occurred on our users' devices
-    - Search log online or download log files offline by using our admin web page
-    - Check the metric statistics on the grafana page
+  - High throughput, Low Latency
+  - Dynamic Architecture (cluster version, single-machine version)
+  - No more worry for debugging problems while it's only occurred on our users' devices
+  - Search log online or download log files offline by using our admin web page
+  - Check the metric statistics on the grafana page
 
 ### Kessaisyoukai
 
 - Brief: Typical Content Management System
 - Position: Contributor
 - Tech Stack
-    - Java
-    - Spring MVC
-    - JSP
-    - VueJS
+  - Java
+  - Spring MVC
+  - JSP
+  - VueJS
 - Strengths
-    - Monolith web application, easy to ship and deploy
+  - Monolith web application, easy to ship and deploy
 
 ## Misc
 

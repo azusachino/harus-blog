@@ -59,5 +59,5 @@ SARS-CoV-2 比它们更大胆。它的厚颜无耻揭示了某些此前我们早
 ## References
 
 - [JWST's best images: spectacular stars and spiralling galaxies](https://www.nature.com/immersive/d41586-022-03811-4/index.html)
-    - 詹姆斯韦伯望远镜 迄今为止最让人叹为观止的 Shots
+  - 詹姆斯韦伯望远镜 迄今为止最让人叹为观止的 Shots
 - 《新冠时代的我们》

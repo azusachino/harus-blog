@@ -40,10 +40,10 @@ The countryside life was great, but I have to remind myself that it isn't real l
 
 ### multimedia
 
-- 最近爆火的 Harness Engineering 到底是个啥 <https://www.youtube.com/watch?v=3DlXq9nsQOE>
-- 量化绞杀 <https://youtu.be/-rUBUbYpuXM>
-- 将蓝莓拉下神坛 <https://youtu.be/0U8euiflpJ0>
-    - 更加理智地看待事物, 这才是“正确”的生活态度
+- 最近爆火的 Harness Engineering 到底是个啥 https://www.youtube.com/watch?v=3DlXq9nsQOE
+- 量化绞杀 https://youtu.be/-rUBUbYpuXM
+- 将蓝莓拉下神坛 https://youtu.be/0U8euiflpJ0
+  - 更加理智地看待事物, 这才是“正确”的生活态度
 
 ---
 

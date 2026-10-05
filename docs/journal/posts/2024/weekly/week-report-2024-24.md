@@ -30,8 +30,8 @@ because of the agriculture-busy season, no much time to take care of the other t
 ### learn
 
 - The Steel Man Technique is the logical antidote to this fallacy:
-    - Create the strongest form of the opponent's argument
-    - Understand the merits of the argument in depth
-    - Engage with the Steel Man version of their argument
+  - Create the strongest form of the opponent's argument
+  - Understand the merits of the argument in depth
+  - Engage with the Steel Man version of their argument
 - how to export all your google account data
-    - <https://takeout.google.com/>
+  - https://takeout.google.com/

@@ -40,15 +40,15 @@ I made a little bit of progress, but nothing that matches the rapid leveling up 
 
 ### books
 
-- 抱歉，我动了你的脑子：一位神经外科医生的悲喜故事 <https://www.goodreads.com/book/show/209516249>
-    - the core of comedy is always tragedy
-- Think again <https://www.goodreads.com/book/show/55539565-think-again>
-    - there will always be multiple options, cases, unless you went too deep with your emotion
-- 教育的另一种可能 <https://www.goodreads.com/book/show/42551320>
-    - you can teach your child at home, or should you
+- 抱歉，我动了你的脑子：一位神经外科医生的悲喜故事 https://www.goodreads.com/book/show/209516249
+  - the core of comedy is always tragedy
+- Think again https://www.goodreads.com/book/show/55539565-think-again
+  - there will always be multiple options, cases, unless you went too deep with your emotion
+- 教育的另一种可能 https://www.goodreads.com/book/show/42551320
+  - you can teach your child at home, or should you
 
 ### multimedia
 
 - 【ピアノ】アニソン200曲をメドレーにして弾いてみた [https://www.youtube.com/watch?v=G-eNlqqkn1w](https://www.youtube.com/watch?v=G-eNlqqkn1w)
 - [https://shkspr.mobi/blog/2026/03/im-ok-being-left-behind-thanks/](https://shkspr.mobi/blog/2026/03/im-ok-being-left-behind-thanks/)
-    - There are a 16,000 new lives being born *every hour*. They’re all starting with a fairly blank slate. Are you genuinely saying that they’ll all be left behind because they didn’t learn your technology *in utero*?
+  - There are a 16,000 new lives being born *every hour*. They’re all starting with a fairly blank slate. Are you genuinely saying that they’ll all be left behind because they didn’t learn your technology *in utero*?

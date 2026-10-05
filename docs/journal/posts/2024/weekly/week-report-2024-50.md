@@ -26,8 +26,8 @@ comments: true
 ## life
 
 - 花了不少时间回顾 2024, 前半年比较努力, 各方面都做的还不错
-    - 下半年, 虽然完成了两个证书, 但其他方面都没有做出成绩, 甚至可以从每天的 journal 看出来, 在 learning/sharing section 的内容越来越少
-    - 大概可以说, 对外界的认识, 在整个下半年没有太多变化吧 (这也许是, 某种预期)
+  - 下半年, 虽然完成了两个证书, 但其他方面都没有做出成绩, 甚至可以从每天的 journal 看出来, 在 learning/sharing section 的内容越来越少
+  - 大概可以说, 对外界的认识, 在整个下半年没有太多变化吧 (这也许是, 某种预期)
 - 工作上暂时没有那么紧急了, 所以才能够抽出一点时间学习, 后面就要恢复上午自学的安排
 - 差不多玩了接近 20H 的 POE2, 主要是在周末, 平时的晚上时间太有限了, (都不够我完成手游任务的 😊)
 - 总算是在周末唱上 K 了, 只是人数太多, 唱的次数有限. 后续, 可能需要开发单人 solo 的 scenario
@@ -36,5 +36,5 @@ comments: true
 
 ### share
 
-- <https://radar.cloudflare.com/year-in-review/2024#ipv4-traffic-distribution>
-    - trends of 2024 in cyberworld
+- https://radar.cloudflare.com/year-in-review/2024#ipv4-traffic-distribution
+  - trends of 2024 in cyberworld

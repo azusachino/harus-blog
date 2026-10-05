@@ -35,11 +35,11 @@ comments: true
 ## review
 
 - aeron learning
-    - aeron cluster sharing — 有进展, 但不够深入
-    - customized demo — NO
+  - aeron cluster sharing — 有进展, 但不够深入
+  - customized demo — NO
 - reading
-    - the 5 types of wealth — AI 总结
-    - the skills for a broken world — 没开展
+  - the 5 types of wealth — AI 总结
+  - the skills for a broken world — 没开展
 - run possibly long distance — 天气热了, 没怎么跑
 - 中文写作 — 没开展
 - conversation based thinking model — 不够明确
@@ -47,30 +47,30 @@ comments: true
 ## resolution
 
 - aeron learning
-    - fully functioning application
+  - fully functioning application
 - reading
-    - tiny habits
-    - 人文主义
+  - tiny habits
+  - 人文主义
 - run if possible
 - 把思绪化作文字
 
 ## sharing
 
-- <https://xxchan.me/ai/2025/06/08/ai-coding.html>
-- <https://www.confluent.io/blog/kip-848-consumer-rebalance-protocol/> — **Introducing KIP-848: The Next Generation of the Consumer Rebalance Protocol**
-- <https://fellerts.no/projects/epoch.html> — **Mechanical Watch: Exploded View**
-- <https://psyche.co/guides/how-to-get-better-at-striking-up-more-rewarding-conversations> — **How to strike up a friendly conversation**
-    - many of us are missing out on connections
-    - recognize overlooked opportunities to talk
-    - be open to trying and failing
-    - seek an initial spark for conversation
-    - help search for topics you both care about
-    - show interest and ask follow-up questions
-    - beware topics starters and “bommerasking”
-    - make mental notes for next time
+- https://xxchan.me/ai/2025/06/08/ai-coding.html
+- https://www.confluent.io/blog/kip-848-consumer-rebalance-protocol/ — **Introducing KIP-848: The Next Generation of the Consumer Rebalance Protocol**
+- https://fellerts.no/projects/epoch.html — **Mechanical Watch: Exploded View**
+- https://psyche.co/guides/how-to-get-better-at-striking-up-more-rewarding-conversations — **How to strike up a friendly conversation**
+  - many of us are missing out on connections
+  - recognize overlooked opportunities to talk
+  - be open to trying and failing
+  - seek an initial spark for conversation
+  - help search for topics you both care about
+  - show interest and ask follow-up questions
+  - beware topics starters and “bommerasking”
+  - make mental notes for next time
 - Skinner's Law says that to get yourself to do something, you need to either:
-    - Make the pain of not doing it greater than the pain of doing it, or
-    - Make the pleasure of doing it greater than the pleasure of not doing it
+  - Make the pain of not doing it greater than the pain of doing it, or
+  - Make the pleasure of doing it greater than the pleasure of not doing it
 
 ### quote
 

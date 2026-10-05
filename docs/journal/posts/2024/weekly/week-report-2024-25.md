@@ -29,8 +29,8 @@ nothing
 ## life
 
 - one whole week at home
-    - helped parents grow rice? you would know if you live in the countryside
-    - played some dota2 omg games, there were really fun than the regular match
+  - helped parents grow rice? you would know if you live in the countryside
+  - played some dota2 omg games, there were really fun than the regular match
 
 ## Collectibles
 

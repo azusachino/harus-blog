@@ -43,11 +43,11 @@ This month I finally drafted the H2 2026 OKR (Aug–Dec), so starting now, resol
 
 ## sharing
 
-- <https://www.gingerbill.org/article/2026/07/10/good-tools-are-invisible/>
-    - landed the same week my `astro + starlight` experiment failed for being too rigid to hook into
-- <https://antirez.com/news/169>
-    - you can't just say "implement XYZ" — the honest read on why my clustering-library port kept stalling
-- <https://bun.com/blog/bun-in-rust>
-    - pre-work, trial-run, verification, dispatch — a name for the loop I'm already running on agent-built infra work
-- <https://akitaonrails.com/en/2026/04/20/clean-code-for-ai-agents/>
-    - KISS yet with context, a good note to close the month on
+- https://www.gingerbill.org/article/2026/07/10/good-tools-are-invisible/
+  - landed the same week my `astro + starlight` experiment failed for being too rigid to hook into
+- https://antirez.com/news/169
+  - you can't just say "implement XYZ" — the honest read on why my clustering-library port kept stalling
+- https://bun.com/blog/bun-in-rust
+  - pre-work, trial-run, verification, dispatch — a name for the loop I'm already running on agent-built infra work
+- https://akitaonrails.com/en/2026/04/20/clean-code-for-ai-agents/
+  - KISS yet with context, a good note to close the month on

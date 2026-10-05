@@ -32,26 +32,26 @@ comments: true
 ## review
 
 - reading with questions
-    - 想象的共同体 ❌
-    - 比较的幽灵 ❌
-    - 社会学的想象力 ❌
-    - 小镇喧嚣 ❌
+  - 想象的共同体 ❌
+  - 比较的幽灵 ❌
+  - 社会学的想象力 ❌
+  - 小镇喧嚣 ❌
     > 我也不知道怎么说, 对这方面比较感兴趣吧, 但这并不代表这个学科的内容有趣, 容易看懂; 也就导致, 越看越不懂, 个人时间也不是那么多, 不如放弃.
 - 每日运动量需要达标, 以及至少周末一次高强度版本
-    - 稍微跑了几次, 5 KM 不是问题, 只是有时个人状态比较差
+  - 稍微跑了几次, 5 KM 不是问题, 只是有时个人状态比较差
 - 口语练习, with gemini live
-    - 月初还做了几次, 月末就渐渐忘记了
+  - 月初还做了几次, 月末就渐渐忘记了
 
 ## resolution
 
-- aeron in practice <https://github.com/azusachino/sakuranbo>
+- aeron in practice https://github.com/azusachino/sakuranbo
 - running (weekly twice maybe)
 - gemini live maybe more frequently
 - reading
-    - 查理之道
-    - 芒格之道
-    - 性心理学
-    - 叔本华的治疗
+  - 查理之道
+  - 芒格之道
+  - 性心理学
+  - 叔本华的治疗
 
 ## what I read
 
@@ -61,16 +61,16 @@ comments: true
 
 > Once something is obvious and working, people tend to underestimate it.
 
-- <https://calculatingempires.net/> -- A Genealogy of Technology and Power Since 1500
-- <https://www.youtube.com/watch?v=1K5oDtVAYzk> -- The hidden pattern in post codes
-- <https://book.douban.com/subject/36374635/>
-    - 心理学大师与其爱人共同分享人生最后这段路的心路历程
-    - 理智也好, 感情也好, 最终都还是要向现实屈服, 或者两败俱伤
-    - 与高低贵贱的身份无关, 人始终还是人, 很难做到“忤逆天性”的事情, 但学会自省也同样重要, 否则可能只会陷入无尽的自责和无理由的愤怒
-- <https://www.youtube.com/watch?v=R0Hn5Z5M-ik> -- 频闪是什么
-- <https://www.youtube.com/watch?v=5lBkrzyRmW0> -- 夏天的贵州
-- <https://discord.com/blog/how-discord-reduced-websocket-traffic-by-40-percent>
-- <https://t.me/inside1024/59874> -- 建议大家永远不要去关注别人
-    - 我发现大家可能会有这样的经历。有时候我们会特别关注别人对自己的言行和态度，关注别人的进展，关注别人过得好不好，就把自己的注意力倾斜于对方身上，然后自己很容易陷入自我内耗，甚至会引发自己焦虑、嫉妒等负面情绪。
-    - 最近看到一条评论，她说：“高能量的人永远只关注自己的进步，永远只关注自己的目标，自己的提升，自己的修养，并不会把大量的注意力给到外界。很多人会无休止地关注别人的言行、进展，这无形就是把自己把能量消耗出去了，你关注了谁，就把自己的能量分给了谁。不管是好的关注还是不好的关注，你都在消耗着自己的能量。”
-    - 人的心神是极其宝贵的，关注别人的过程中，我们自己就会产生很多想法和情绪，这些都将会原本用于专注自我成长的注意力分散出去，相当于你把能量倾注到别人身上，让自己处于亏空的的状态，本质上是没有意义的。
+- https://calculatingempires.net/ -- A Genealogy of Technology and Power Since 1500
+- https://www.youtube.com/watch?v=1K5oDtVAYzk -- The hidden pattern in post codes
+- https://book.douban.com/subject/36374635/
+  - 心理学大师与其爱人共同分享人生最后这段路的心路历程
+  - 理智也好, 感情也好, 最终都还是要向现实屈服, 或者两败俱伤
+  - 与高低贵贱的身份无关, 人始终还是人, 很难做到“忤逆天性”的事情, 但学会自省也同样重要, 否则可能只会陷入无尽的自责和无理由的愤怒
+- https://www.youtube.com/watch?v=R0Hn5Z5M-ik -- 频闪是什么
+- https://www.youtube.com/watch?v=5lBkrzyRmW0 -- 夏天的贵州
+- https://discord.com/blog/how-discord-reduced-websocket-traffic-by-40-percent
+- https://t.me/inside1024/59874 -- 建议大家永远不要去关注别人
+  - 我发现大家可能会有这样的经历。有时候我们会特别关注别人对自己的言行和态度，关注别人的进展，关注别人过得好不好，就把自己的注意力倾斜于对方身上，然后自己很容易陷入自我内耗，甚至会引发自己焦虑、嫉妒等负面情绪。
+  - 最近看到一条评论，她说：“高能量的人永远只关注自己的进步，永远只关注自己的目标，自己的提升，自己的修养，并不会把大量的注意力给到外界。很多人会无休止地关注别人的言行、进展，这无形就是把自己把能量消耗出去了，你关注了谁，就把自己的能量分给了谁。不管是好的关注还是不好的关注，你都在消耗着自己的能量。”
+  - 人的心神是极其宝贵的，关注别人的过程中，我们自己就会产生很多想法和情绪，这些都将会原本用于专注自我成长的注意力分散出去，相当于你把能量倾注到别人身上，让自己处于亏空的的状态，本质上是没有意义的。

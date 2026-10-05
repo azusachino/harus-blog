@@ -52,14 +52,14 @@ def maxSteps(arr: List[int]) -> int:
 
 ### share
 
-- <https://blog.algomaster.io/p/20-patterns-to-master-dynamic-programming>
-    - dynamic programming with different types
-- <https://psyche.co/ideas/why-ill-never-forget-the-day-i-met-daniel-kahneman-for-lunch>
-    - We don’t want to live a good life. We want to remember having lived a good life.
-    - it is the relationships we maintain that determine how long and how well we each live.
-- <https://www.youtube.com/watch?v=qk5hdxFJXg8>
-    - 一口气了解全球经济形势
-- <https://www.youtube.com/watch?v=--KnsLGfXWM>
-    - 【硬核加长版】真正的做空
-- <https://www.youtube.com/watch?v=vHUZVwvvP7o>
-    - 一口气了解通货膨胀 | 硬核
+- https://blog.algomaster.io/p/20-patterns-to-master-dynamic-programming
+  - dynamic programming with different types
+- https://psyche.co/ideas/why-ill-never-forget-the-day-i-met-daniel-kahneman-for-lunch
+  - We don’t want to live a good life. We want to remember having lived a good life.
+  - it is the relationships we maintain that determine how long and how well we each live.
+- https://www.youtube.com/watch?v=qk5hdxFJXg8
+  - 一口气了解全球经济形势
+- https://www.youtube.com/watch?v=--KnsLGfXWM
+  - 【硬核加长版】真正的做空
+- https://www.youtube.com/watch?v=vHUZVwvvP7o
+  - 一口气了解通货膨胀 | 硬核

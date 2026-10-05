@@ -34,8 +34,8 @@ People are serious dudes, and they truly have showed their love.
 ### review DDIA
 
 - The comparison between relational model and NoSQL (JSON) model.
-    - Self-contained data is fit to use NoSQL model, say JSON. The first version of Linked Resume was based on JSON (according to the book?). But as the business model grows, it just becomes not as efficient as before.
-    - Meanwhile, relational model is fit to query data followed by a many-to-many relation.
+  - Self-contained data is fit to use NoSQL model, say JSON. The first version of Linked Resume was based on JSON (according to the book?). But as the business model grows, it just becomes not as efficient as before.
+  - Meanwhile, relational model is fit to query data followed by a many-to-many relation.
 
 ```json
 {
@@ -100,9 +100,9 @@ class Solution:
 
 ### Recommend Articles
 
-- <https://theconversation.com/online-anonymity-study-found-stable-pseudonyms-created-a-more-civil-environment-than-real-user-names-171374>
-    - stable pseudonyms didn't degrade the intention to participate into conversation but also created a more civil environment
-- <https://studyfinds.org/device-breast-cancer-5-seconds/>
+- https://theconversation.com/online-anonymity-study-found-stable-pseudonyms-created-a-more-civil-environment-than-real-user-names-171374
+  - stable pseudonyms didn't degrade the intention to participate into conversation but also created a more civil environment
+- https://studyfinds.org/device-breast-cancer-5-seconds/
 
 ## References
 

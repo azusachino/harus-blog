@@ -29,8 +29,8 @@ still stuck at SAP.
 - when you really are concentrating on something, time simply flies fast
 - It's such a relief to find any question you had never met in the practice exam, because you can learn new things or reinforce your memorization to help you hit a better score in the real exam
 - always considering the underlying cost from each explanation, and this could also apply to real life
-    - can you trust someone's saying while you don't know why that person says that, and with what kind of intentions
-    - and remember, absolutely no one would say things for `world peace`, nothing matters while comparing to my own interests
+  - can you trust someone's saying while you don't know why that person says that, and with what kind of intentions
+  - and remember, absolutely no one would say things for `world peace`, nothing matters while comparing to my own interests
 
 ## Sharing
 

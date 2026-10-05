@@ -65,7 +65,7 @@ If someone is `グイグイ` enough like the protagonist, then that one might be
 
 Links
 
-- <https://www.spreeder.com/app.php>
+- https://www.spreeder.com/app.php
 
 ### How to type faster
 
@@ -77,8 +77,8 @@ Links
 
 Links
 
-- <https://monkeytype.com/>
-- <https://play.typeracer.com/>
+- https://monkeytype.com/
+- https://play.typeracer.com/
 
 ## References
 

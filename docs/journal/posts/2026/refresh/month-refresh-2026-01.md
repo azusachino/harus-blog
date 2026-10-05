@@ -23,7 +23,7 @@ comments: true
 
 - I don't have much to say about the New Year. I didn't go anywhere or do anything special, though the mikan was great.
 - I attended two live events: Lawson-Miku and Sekai 5th Frontier. Comparing the two made it very obvious that Makuhari Messe is not an appropriate venue for live concerts, as it's essentially just a big room rather than a proper stadium.
-    - Lawson-Miku featured so many references to the first Magical Mirai (held at Yokohama Arena in 2013) that it really heated up the whole stadium.
+  - Lawson-Miku featured so many references to the first Magical Mirai (held at Yokohama Arena in 2013) that it really heated up the whole stadium.
 - My knee still hasn't fully recovered, so I can't run or do any strenuous activities.
 - I spent a lot of time playing mobile games and the co-op game _Nobody Saves the World_. It was a great adventure and a nice way to connect with others.
 - Transitioning from Docker Compose to a local k3s server (with help from Gemini and Claude) was a great experience. Using a cronjob shell script for backups turned out to be much better than the custom backup tools I had written previously.
@@ -53,26 +53,26 @@ comments: true
 
 ## sharing
 
-- <https://andrew.grahamyooll.com/blog/Try-to-Take-My-Position/>
-    - The most memorable moment when someone tried to take my position as an engineering manager happened with a more junior engineer on the team. They came to me and said: "I have a proposal on how to lower the number of incidents on this service. The RFC is written up here and I think it'll take me 4 weeks to execute."
-    - Do it for six months, not six days.
+- https://andrew.grahamyooll.com/blog/Try-to-Take-My-Position/
+  - The most memorable moment when someone tried to take my position as an engineering manager happened with a more junior engineer on the team. They came to me and said: "I have a proposal on how to lower the number of incidents on this service. The RFC is written up here and I think it'll take me 4 weeks to execute."
+  - Do it for six months, not six days.
 - 为什么韩国人如此热衷于喝冰美式 [https://www.youtube.com/watch?v=nP00Z71OaBU](https://www.youtube.com/watch?v=nP00Z71OaBU)
 - 为什么西餐里很少有炒菜 [https://www.youtube.com/watch?v=mV02PL2RpGM](https://www.youtube.com/watch?v=mV02PL2RpGM)
 - 英国是如何成为黑暗料理界王者的 [https://www.youtube.com/watch?v=fuDpd_xVNrs](https://www.youtube.com/watch?v=fuDpd_xVNrs)
 - 人民币将大幅升值？人民币的真实购买力【汤山老王】 [https://www.youtube.com/watch?v=wKplgwaCG1c](https://www.youtube.com/watch?v=wKplgwaCG1c)
-    - 廉价产品的侧面是廉价的劳动力
-    - 经济发展的目标应该是生产者与消费者都过上高品质的生活
-- 都是让人上瘾，为啥槟榔没能像茶叶烟草一样风靡世界 <https://www.youtube.com/watch?v=ZKigIJ96L4s>
-- 为什么泛滥成灾的帝王蟹，还能卖上千元一只 <https://www.youtube.com/watch?v=U2o9JxCBc0U>
-- 左宗棠鸡、李鸿章杂碎，为什么美国人爱吃的中餐我们都没听过 <https://www.youtube.com/watch?v=Ul64We3pOfo>
-- 豬籠草的死亡陷阱到底有多恐怖？竟然還能捕獵哺乳動物和鳥類！世界上最大的食肉植物，豬籠草的瘋狂真相 <https://www.youtube.com/watch?v=09CHgpw6QhY>
-- 為什麼說烏魚改寫了台灣歷史？被稱為「烏金」的烏魚子到底有多獨特？我吃過之後的真實評價竟然是 <https://www.youtube.com/watch?v=wO1VVhxcXe4>
-- 黑足貓到底有多誇張？為什麼動物學家們說，它們是世界上最致命的貓科動物 <https://www.youtube.com/watch?v=cpXs4I6ikKU>
-- 临期食品那么便宜，吃下去真的没问题吗 <https://www.youtube.com/watch?v=DyhJ9s8qDuc>
-- 卡皮巴拉把鰐魚當坐騎，帶頭反擊人類社區，世界上最有親和力的動物——水豚capybara <https://www.youtube.com/watch?v=oKkzMJ8ndyU>
-- 主動接近人類，卻不想當寵物，只想做超級英雄的浣熊，已變得難以阻擋 <https://www.youtube.com/watch?v=OP-juK8KLEk>
-- 海兔：像外星生物一樣科幻，啓發了諾貝爾獎，海底的兔子竟如此神奇 <https://www.youtube.com/watch?v=6zZQqUD4PYA>
-- 原产于中国的拉面，为什么会成为日本国民美食 <https://www.youtube.com/watch?v=Hy1U63vhXdc>
+  - 廉价产品的侧面是廉价的劳动力
+  - 经济发展的目标应该是生产者与消费者都过上高品质的生活
+- 都是让人上瘾，为啥槟榔没能像茶叶烟草一样风靡世界 https://www.youtube.com/watch?v=ZKigIJ96L4s
+- 为什么泛滥成灾的帝王蟹，还能卖上千元一只 https://www.youtube.com/watch?v=U2o9JxCBc0U
+- 左宗棠鸡、李鸿章杂碎，为什么美国人爱吃的中餐我们都没听过 https://www.youtube.com/watch?v=Ul64We3pOfo
+- 豬籠草的死亡陷阱到底有多恐怖？竟然還能捕獵哺乳動物和鳥類！世界上最大的食肉植物，豬籠草的瘋狂真相 https://www.youtube.com/watch?v=09CHgpw6QhY
+- 為什麼說烏魚改寫了台灣歷史？被稱為「烏金」的烏魚子到底有多獨特？我吃過之後的真實評價竟然是 https://www.youtube.com/watch?v=wO1VVhxcXe4
+- 黑足貓到底有多誇張？為什麼動物學家們說，它們是世界上最致命的貓科動物 https://www.youtube.com/watch?v=cpXs4I6ikKU
+- 临期食品那么便宜，吃下去真的没问题吗 https://www.youtube.com/watch?v=DyhJ9s8qDuc
+- 卡皮巴拉把鰐魚當坐騎，帶頭反擊人類社區，世界上最有親和力的動物——水豚capybara https://www.youtube.com/watch?v=oKkzMJ8ndyU
+- 主動接近人類，卻不想當寵物，只想做超級英雄的浣熊，已變得難以阻擋 https://www.youtube.com/watch?v=OP-juK8KLEk
+- 海兔：像外星生物一樣科幻，啓發了諾貝爾獎，海底的兔子竟如此神奇 https://www.youtube.com/watch?v=6zZQqUD4PYA
+- 原产于中国的拉面，为什么会成为日本国民美食 https://www.youtube.com/watch?v=Hy1U63vhXdc
 
 ---
 
@@ -90,8 +90,8 @@ comments: true
 
 - **天才的护盾效应：** 只要你能在商业或技术上创造出别人无法替代的价值（比如造出iPhone或回收火箭），社会就会对你的私德无限宽容。他们的才华和远见是他们的“免死金牌”。
 - **普通人的误区：** 对于普通人（哪怕是优秀的工程师或中层管理者）来说，如果我们没有乔布斯那样的“现实扭曲力场”，也没有马斯克那样的亿万身家，而去模仿他们的“暴君行为”或“随心所欲”，结果通常只有一个：**社会性死亡**。
-    - 你若在公司像乔布斯那样辱骂同事，会被HR开除。
-    - 你若像马斯克那样对待伴侣，会众叛亲离，且没有庞大的律师团帮你处理善后。
+  - 你若在公司像乔布斯那样辱骂同事，会被HR开除。
+  - 你若像马斯克那样对待伴侣，会众叛亲离，且没有庞大的律师团帮你处理善后。
 
 **结论：** 只有当你强大到可以制定规则时，你才有资格打破规则。普通人模仿天才的“坏”，就像乞丐模仿皇帝的“狂”，结局是截然不同的。
 
@@ -101,7 +101,7 @@ comments: true
 
 - **失败的混蛋更多：** 在职场和创业圈中，绝大多数性格偏执、人品糟糕的人，并没有成为乔布斯。他们因为无法与人合作、失去信任、众叛亲离，最终死在了半路上。
 - **正派的成功者也很多：** 比如蒂姆·库克（Tim Cook）、萨提亚·纳德拉（Satya Nadella）、沃伦·巴菲特（Warren Buffett）。他们温和、正派、情绪稳定，同样取得了顶级成就。特别是纳德拉，他接手微软后，用同理心和合作精神让微软重回巅峰。
-    - 这证明：**“变坏”不是成功的必要条件，甚至不是充分条件。**
+  - 这证明：**“变坏”不是成功的必要条件，甚至不是充分条件。**
 
 ### 3. 博弈论视角：正派是普通人的“最优算法”
 
@@ -111,8 +111,8 @@ comments: true
 
 - **混蛋策略（Defect）：** 在短期博弈中，欺骗、压榨、不讲武德确实可能获得最大收益（比如割韭菜）。但这种策略会导致你的“信用系统”崩塌。
 - **正派策略（Cooperate）：** 对于没有绝对权力垄断的普通人来说，“正派”其实是一种**降低交易成本的手段**。
-    - 如果你诚实、靠谱、有原则，别人与你合作的风险成本最低。
-    - 在这个高度协作的社会，**“靠谱”**（Trustworthiness）是普通人能积累的最具复利效应的资产。
+  - 如果你诚实、靠谱、有原则，别人与你合作的风险成本最低。
+  - 在这个高度协作的社会，**“靠谱”**（Trustworthiness）是普通人能积累的最具复利效应的资产。
 
 为什么还要坚持正派？
 
@@ -125,7 +125,7 @@ comments: true
 - **必须承认的代价：** 那些为了成就而牺牲人性的人，往往生活在一个极度孤独、充满敌意的世界里。他们必须时刻保持战斗状态，因为他们没有真正的盟友，只有利益相关者。
 
 - **普通人的幸福公式：** 作为一个普通人（即使是高收入的工程师），我们的幸福感很大程度上来源于**良好的人际关系**（家庭、朋友、受人尊敬）。
-    - 如果为了追求所谓的“顶级成就”而众叛亲离，对于非偏执狂的普通人来说，这种“成功”带来的痛苦可能远大于快乐。
+  - 如果为了追求所谓的“顶级成就”而众叛亲离，对于非偏执狂的普通人来说，这种“成功”带来的痛苦可能远大于快乐。
 
 ### 总结
 

@@ -43,11 +43,11 @@ Haru's writing is **candid, intellectually honest, grounded, and arena-focused**
 - **Ruthless Specificity**: Reject generic abstractions. Name real tools, repos, files, books, places, dishes, and physical sensations (e.g. *Gyomu Super Meiji vanilla ice cream*, *6km night run*, *Maimai arm fatigue*, *PGL Wallachia Dota 2*, *Tokyo Immigration Bureau queue*).
 - **Intellectual Honesty**: Admit failures plainly. If a weekend was lost to gaming or sickness, say so without romanticizing it. If 800 commits felt like empty "vibecoding" without real learning, call it out. If a restaurant meal was mediocre, don't sugarcoat it.
 - **Anti-AI Writing Rules**:
-    - No synthetic triads ("In today's fast-paced, dynamic, and ever-changing landscape...").
-    - No hollow cheerleading ("A testament to our passion", "Excited to embark on this journey").
-    - No pseudo-summary bold labels on every sentence (**Key Takeaway:**, **In Conclusion:**).
-    - No forced "not-X-but-Y" clichés ("It's not just about code, it's about connection").
-    - Let rhythm vary: pair short, sharp declarations with rhythmic, reflective sentences.
+  - No synthetic triads ("In today's fast-paced, dynamic, and ever-changing landscape...").
+  - No hollow cheerleading ("A testament to our passion", "Excited to embark on this journey").
+  - No pseudo-summary bold labels on every sentence (**Key Takeaway:**, **In Conclusion:**).
+  - No forced "not-X-but-Y" clichés ("It's not just about code, it's about connection").
+  - Let rhythm vary: pair short, sharp declarations with rhythmic, reflective sentences.
 
 ## Content Archetypes & Patterns
 
@@ -55,9 +55,9 @@ Haru's writing is **candid, intellectually honest, grounded, and arena-focused**
 
 - **`keyword`**: Exactly 3 thematic anchors summarizing tensions or focal shifts (not single generic words).
 - **`journal`**: Structured across:
-    - *Work & Systems*: Production releases, operational incidents, on-call reality.
-    - *Engineering & Craft*: Concrete apps built, SDKs refactored, tools adopted or abandoned.
-    - *Life, Downtime & Culture*: Esports, music, books, food, physical health.
+  - *Work & Systems*: Production releases, operational incidents, on-call reality.
+  - *Engineering & Craft*: Concrete apps built, SDKs refactored, tools adopted or abandoned.
+  - *Life, Downtime & Culture*: Esports, music, books, food, physical health.
 - **`conclusion`**: The core paradox or tension of the month (e.g., human cognitive endurance vs. agent velocity).
 - **`resolution`**: Explicitly measured against the active OKR (O1 Body, O3 Work, O4 Learning), never floating wishes.
 - **`sharing`**: 4–5 curated links with 1–2 sentence personal commentary explaining why it mattered to *your* work.

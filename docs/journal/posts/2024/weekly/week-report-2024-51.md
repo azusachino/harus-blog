@@ -25,9 +25,9 @@ Well, 花了点时间继续玩, 总的来说, 感觉挺受苦的, witch 随从�
 ## Learning
 
 - Two lectures of `Death` from Yale University (Professor Kagan)
-    - 数年前, 已经看完一遍中译版的书, 感觉记忆模糊了, 于是准备重新按照 Online Course 再复习一遍
+  - 数年前, 已经看完一遍中译版的书, 感觉记忆模糊了, 于是准备重新按照 Online Course 再复习一遍
 - ETCD column
-    - 看了几个章节, 虽然知识点都能理解, 但掌握起来比较困难, 究其原因是, 对 ETCD 没有太多实操经验, 这块是接下来的重点, 再回头结合材料进行复习
+  - 看了几个章节, 虽然知识点都能理解, 但掌握起来比较困难, 究其原因是, 对 ETCD 没有太多实操经验, 这块是接下来的重点, 再回头结合材料进行复习
 
 ## life
 
@@ -40,9 +40,9 @@ Well, 花了点时间继续玩, 总的来说, 感觉挺受苦的, witch 随从�
 
 ### learn
 
-- <https://learnk8s.io/troubleshooting-deployments>
-    - a quite thorough way to investigate k8s problem
-- <https://jpetazzo.github.io/2024/05/12/understanding-kubernetes-dns-hostnetwork-dnspolicy-dnsconfigforming/>
+- https://learnk8s.io/troubleshooting-deployments
+  - a quite thorough way to investigate k8s problem
+- https://jpetazzo.github.io/2024/05/12/understanding-kubernetes-dns-hostnetwork-dnspolicy-dnsconfigforming/
 
 if we try to resolve the name hello, here is what will happen:
 
@@ -62,4 +62,4 @@ search example.com example.net
 ### share
 
 - > What most often weighs you down and brings you misery is the past, in the form of unnecessary attachments, repetitions of tired formulas, and the memory of old victories and defeats. You must consciously wage war against the past and force yourself to react to the present moment…Do not repeat the same tired methods. Sometimes you must force yourself to strike out in new directions…Apply no tactic rigidly…Attack problems from new angles, adapting to the landscape and to what you’re given. -- Robert Greene
-- <https://www.scientificamerican.com/article/the-6-cutest-things-we-learned-about-animals-in-2024/>
+- https://www.scientificamerican.com/article/the-6-cutest-things-we-learned-about-animals-in-2024/

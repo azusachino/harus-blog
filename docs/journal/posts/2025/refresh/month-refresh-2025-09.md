@@ -37,12 +37,12 @@ cynicism is easy, but leads to nowhere.
 ## review
 
 - learn and share ✅
-    - 借助 AI, 学习进展很快, 但分享比较匮乏, 对自己的掌握程度没有一个清晰的认识
+  - 借助 AI, 学习进展很快, 但分享比较匮乏, 对自己的掌握程度没有一个清晰的认识
 - run 1 hour / 10 km ✅
-    - 皇居跑道确实不错, 而且跑步的人也不少, 有一定的激励作用
-    - 一周内跑了三个 10KM, 证明能力是够的, 只是心境一直不在线
+  - 皇居跑道确实不错, 而且跑步的人也不少, 有一定的激励作用
+  - 一周内跑了三个 10KM, 证明能力是够的, 只是心境一直不在线
 - residential materials preparation ❌
-    - 还是再等等, 把现有的材料弄出来, 找时间去现场咨询
+  - 还是再等等, 把现有的材料弄出来, 找时间去现场咨询
 
 ## resolution
 
@@ -55,38 +55,38 @@ cynicism is easy, but leads to nowhere.
 ## sharing
 
 - [https://uncloud.run/blog/connect-docker-containers-across-hosts-wireguard](https://uncloud.run/blog/connect-docker-containers-across-hosts-wireguard)
-    - peer2peer VPN
+  - peer2peer VPN
 - [https://www.stochasticlifestyle.com/a-guide-to-gen-ai-llm-vibecoding-for-expert-programmers/](https://www.stochasticlifestyle.com/a-guide-to-gen-ai-llm-vibecoding-for-expert-programmers/)
 - [门票 145 块还要爬 900 级台阶，赛里木湖值不值？](https://sspai.com/post/102157)
 - [年轻的朋友，咱们不要太心急：关于耐心的 3 点思考](https://sspai.com/post/101302)
 - [ヨルシカ - LIVE 2024「前世」](https://youtu.be/Rl1xfaXlrxw)
 - [工作中捅了大篓子怎么办？](https://youtu.be/vR4D8UvbzqU)
-    - 认识篓子
-    - 稳住心态
-    - 评估局面
-    - 解决问题
-    - 反思成因
-    - 重建信任
+  - 认识篓子
+  - 稳住心态
+  - 评估局面
+  - 解决问题
+  - 反思成因
+  - 重建信任
 - [【硬核】一口气了解黄金 | 为什么暴涨? 投资黄金需要注意什么?](https://www.youtube.com/watch?v=B4jIyufgy-s)
-- Druid 连接池调优终极指南 <https://mp.weixin.qq.com/s/j4hp6ZImHnzaut6cjsKxLw>
-    - 权限控制, 监控体系, 安全相关可以参考
-- how to use banana <https://github.com/PicoTrex/Awesome-Nano-Banana-images/blob/main/README_en.md>
-- The Most Dangerous Building in Manhattan <https://www.youtube.com/watch?v=Q56PMJbCFXQ>
-    - the chevron bracing system to make the building lightweight and cost effective
-    - the TMD (tuned mass damper) to reduce oscillations and improve occupant comfort
+- Druid 连接池调优终极指南 https://mp.weixin.qq.com/s/j4hp6ZImHnzaut6cjsKxLw
+  - 权限控制, 监控体系, 安全相关可以参考
+- how to use banana https://github.com/PicoTrex/Awesome-Nano-Banana-images/blob/main/README_en.md
+- The Most Dangerous Building in Manhattan https://www.youtube.com/watch?v=Q56PMJbCFXQ
+  - the chevron bracing system to make the building lightweight and cost effective
+  - the TMD (tuned mass damper) to reduce oscillations and improve occupant comfort
 - [This is the natural disaster to worry about](https://www.youtube.com/watch?v=AFXLZ7FEJc4)
-    - why rubber is the most important factor in the world
-    - and why the natural one is irreplaceable by the synthetics
+  - why rubber is the most important factor in the world
+  - and why the natural one is irreplaceable by the synthetics
 - [Rating 26 years of Java changes](https://neilmadden.blog/2025/09/12/rating-26-years-of-java-changes/)
-    - the good and bad tastes on changes
+  - the good and bad tastes on changes
 - [一口气了解伊朗经济](https://www.youtube.com/watch?v=uQJF5fcjFbg)
-    - 两只不可见的大手 - 实质上都是最高领导背书
-        - “基金会”
-        - 特殊的军队
-    - 来自美国的全方位制裁
-    - 长年高居 30% 的通货膨胀
-    - 出口受限、黑市、走私
-    - 能源出口、内销
+  - 两只不可见的大手 - 实质上都是最高领导背书
+    - “基金会”
+    - 特殊的军队
+  - 来自美国的全方位制裁
+  - 长年高居 30% 的通货膨胀
+  - 出口受限、黑市、走私
+  - 能源出口、内销
 - [Small, Easy Acts of Joy Mean Big Gains in Happiness](https://www.scientificamerican.com/article/how-small-easy-acts-of-joy-improve-happiness-and-well-being/)
   1. laughter
   2. gratitude
@@ -97,17 +97,17 @@ cynicism is easy, but leads to nowhere.
   7. celebration & awe
 - [【ピアノ】初音ミク 39 曲メドレー](https://www.youtube.com/watch?v=dDom2cNkuEk)
 - [數萬精銳近乎覆滅，上億凡人化作塵埃，賭上性命的巴爾決戰！【達奇】戰錘 40K 故事](https://www.youtube.com/watch?v=SaXcfrfLS-c)
-    - 圣血天使子嗣为保卫巴尔的绝命一战
-    - 既然没有完美的生命, 那就向帝皇, 圣吉列斯献上完美的死亡
+  - 圣血天使子嗣为保卫巴尔的绝命一战
+  - 既然没有完美的生命, 那就向帝皇, 圣吉列斯献上完美的死亡
 - [This liquid explodes when shaken](https://www.youtube.com/watch?v=onr80iOoEXs)
-    - the story of Alfred Nobel
-    - the developing stages of nitroglycerine
-    - the man who created the "killing machine" and also nobel prize
+  - the story of Alfred Nobel
+  - the developing stages of nitroglycerine
+  - the man who created the "killing machine" and also nobel prize
 - [米津玄師, 宇多田ヒカル Kenshi Yonezu, Hikaru Utada - JANE DOE](https://www.youtube.com/watch?v=sPLqsLsooJY)
 - [Canon1hour/Instrument Music/Pachelbel /Piano/CANACANA](https://www.youtube.com/watch?v=ZrmqqFUVT8Y)
 - [The Most Beautiful & Relaxing Piano Pieces](https://www.youtube.com/watch?v=DkNddVhKR1I)
 - [一口氣看完《指環王》三部曲，經典之作，120 幀高清精彩解說](https://www.youtube.com/watch?v=UrOpOT3Ojh8)
-    - 花比较少的时间, 获取了最核心的故事情节, 这究竟是福是祸呢
+  - 花比较少的时间, 获取了最核心的故事情节, 这究竟是福是祸呢
 
 ---
 

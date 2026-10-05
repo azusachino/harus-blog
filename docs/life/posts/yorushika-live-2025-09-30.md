@@ -76,4 +76,4 @@ hide:
 
 ## references
 
-- <https://yorushika.com/feature/livetour2025_tousaku>
+- https://yorushika.com/feature/livetour2025_tousaku

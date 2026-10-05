@@ -62,9 +62,9 @@ fire watcher
 - output based learning
 - slow pace of life
 - exploring
-    - places
-    - fields
-    - inner thoughts
+  - places
+  - fields
+  - inner thoughts
 
 ## sharing
 

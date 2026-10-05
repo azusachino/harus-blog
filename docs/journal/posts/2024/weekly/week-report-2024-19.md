@@ -19,15 +19,15 @@ A story for the most cultured of individuals.
 ## Learning
 
 - running tips
-    - slow down
-    - small steps (more efficient and better for your joints)
-    - land on mid- or forefoot
+  - slow down
+  - small steps (more efficient and better for your joints)
+  - land on mid- or forefoot
 - on-call incident steps
-    - triage: find the problem, decide its severity, determine who can fix it
-    - coordination: teams (potentially customers) must be notified of the issue
-    - mitigation: engineers must get things stable as quickly as possible.
-    - resolution: engineers continue to investigate the problem to determine and address underlying issues.
-    - follow-up: an investigation is conducted into the root cause
+  - triage: find the problem, decide its severity, determine who can fix it
+  - coordination: teams (potentially customers) must be notified of the issue
+  - mitigation: engineers must get things stable as quickly as possible.
+  - resolution: engineers continue to investigate the problem to determine and address underlying issues.
+  - follow-up: an investigation is conducted into the root cause
 
 ## life
 
@@ -46,22 +46,22 @@ life is a marathon, not a sprint. Keep learning, happy hacking.
 - 当物体处于静止状态时, 只有在外力作用下, 物体才会运动
 - 当物体处于运动状态时, 只有在外力作用下, 物体才会停止
 - do 10x times as much
-    - <https://www.scotthyoung.com/blog/2024/04/16/procrastination-productive/>
-    - <https://www.scotthyoung.com/blog/2023/09/26/10x-rule-ambitious-goals/>
-- <https://psyche.co/ideas/is-it-better-to-live-in-clock-time-or-event-time>
-    - Clock-timers rely on an external cue to tell them when to start and finish work.
-    - An event-timer might work on a project until it’s done – ending at no predetermined time.
-- <https://t.me/caozsay/852>
-    - 记住一条做人原则，你只代表你自己。也许你能代表一小撮和你品味，价值观相似的人，也许，别太高估自己，最好你能明白，你只代表你自己。代表你自己做出的判断和选择，只要不违法，是你的自由。
-    - 妄图代表所有人，你就是一傻逼。
-- <https://t.me/WebNoteslah/405>
-    - 网络上常见的四大愚昧
-        - 一是对从未见过的人恨之入骨
-        - 二是对从未做过的事引以为傲
-        - 三是对吹捧出来的神纳头就拜
-        - 四是对画而未得的饼感恩戴德
-- <https://www.sahilbloom.com/newsletter/9-ideas-from-a-weekend-with-legends>
-    - 9 Ideas from a Weekend With Legends
+  - https://www.scotthyoung.com/blog/2024/04/16/procrastination-productive/
+  - https://www.scotthyoung.com/blog/2023/09/26/10x-rule-ambitious-goals/
+- https://psyche.co/ideas/is-it-better-to-live-in-clock-time-or-event-time
+  - Clock-timers rely on an external cue to tell them when to start and finish work.
+  - An event-timer might work on a project until it’s done – ending at no predetermined time.
+- https://t.me/caozsay/852
+  - 记住一条做人原则，你只代表你自己。也许你能代表一小撮和你品味，价值观相似的人，也许，别太高估自己，最好你能明白，你只代表你自己。代表你自己做出的判断和选择，只要不违法，是你的自由。
+  - 妄图代表所有人，你就是一傻逼。
+- https://t.me/WebNoteslah/405
+  - 网络上常见的四大愚昧
+    - 一是对从未见过的人恨之入骨
+    - 二是对从未做过的事引以为傲
+    - 三是对吹捧出来的神纳头就拜
+    - 四是对画而未得的饼感恩戴德
+- https://www.sahilbloom.com/newsletter/9-ideas-from-a-weekend-with-legends
+  - 9 Ideas from a Weekend With Legends
     1. go where you don't belong
        1. the feeling of uncertainty, fear, and discomfort is usually a sign of growth
     2. self-awareness is a cheat code for life
@@ -81,9 +81,9 @@ life is a marathon, not a sprint. Keep learning, happy hacking.
 
 ## References
 
-- <https://www.afterbabel.com/p/phone-based-childhood-cause-epidemic>
-    - social media and teenager
-- <https://ohmygit.org/>
-    - an open source game about git
-- <https://www.nature.com/articles/d41586-024-01200-7>
-    - Why is exercise good for you? Scientists are finding answers in our cells
+- https://www.afterbabel.com/p/phone-based-childhood-cause-epidemic
+  - social media and teenager
+- https://ohmygit.org/
+  - an open source game about git
+- https://www.nature.com/articles/d41586-024-01200-7
+  - Why is exercise good for you? Scientists are finding answers in our cells

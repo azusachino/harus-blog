@@ -34,10 +34,10 @@ comments: true
 ## review
 
 - aeron cluster application ✅
-    - the iris-node
+  - the iris-node
 - 2~3 sharing (revise previous contents) ❌
 - running up to 35KM
-    - 月底尝试了夜跑, 效果好多了, 气温不高, 略有微风, 更主要的是, 不需要担心时间不够
+  - 月底尝试了夜跑, 效果好多了, 气温不高, 略有微风, 更主要的是, 不需要担心时间不够
 - conversation-style, writing-style practice ❌
 
 ## resolution
@@ -52,36 +52,36 @@ comments: true
 
 ---
 
-- <https://youtu.be/iGz2uWl-kGc>
-- <https://youtu.be/--KnsLGfXWM>
-    - 有限的收益, 可能无限的亏损
-- <https://www.youtube.com/watch?v=Ylvr5hl6hYo>
-    - 多头/空头之间的资本较量 (1~40 倍杠杆)
-- <https://youtu.be/cBLbDn5RJlw>
-    - 人口
-    - 经济
-    - 利率
-    - 政策
-- <https://www.youtube.com/watch?v=aOwmt39L2IQ>
-    - why alcohol is amazing to certain people
-    - the bad side (alcohol accidents)
-    - the trend of young people stop drinking and the isolation of individual
-    - 视频立意: 都是时代的病?
-- <https://endler.dev/2025/how-to-review-code/>
-    - focus on the big picture
-    - naming is critical
-    - be willing to say no
-    - reviews are iterative communication
-    - focus on “why” not “how”
-    - test the code when possible
-    - maintain professional communication
-    - skip the nitpicking
-- <https://www.seangoedecke.com/good-system-design/>
-    - good design looks underwhelming
-    - minimize stateful components
-    - split fast/slow work appropriately
-    - focus on hot path
-    - log aggressively during error conditions
-    - use boring, well-tested components
-- <https://cheats.rs/>
-- <https://stablecoin.com/guide/>
+- https://youtu.be/iGz2uWl-kGc
+- https://youtu.be/--KnsLGfXWM
+  - 有限的收益, 可能无限的亏损
+- https://www.youtube.com/watch?v=Ylvr5hl6hYo
+  - 多头/空头之间的资本较量 (1~40 倍杠杆)
+- https://youtu.be/cBLbDn5RJlw
+  - 人口
+  - 经济
+  - 利率
+  - 政策
+- https://www.youtube.com/watch?v=aOwmt39L2IQ
+  - why alcohol is amazing to certain people
+  - the bad side (alcohol accidents)
+  - the trend of young people stop drinking and the isolation of individual
+  - 视频立意: 都是时代的病?
+- https://endler.dev/2025/how-to-review-code/
+  - focus on the big picture
+  - naming is critical
+  - be willing to say no
+  - reviews are iterative communication
+  - focus on “why” not “how”
+  - test the code when possible
+  - maintain professional communication
+  - skip the nitpicking
+- https://www.seangoedecke.com/good-system-design/
+  - good design looks underwhelming
+  - minimize stateful components
+  - split fast/slow work appropriately
+  - focus on hot path
+  - log aggressively during error conditions
+  - use boring, well-tested components
+- https://cheats.rs/
+- https://stablecoin.com/guide/

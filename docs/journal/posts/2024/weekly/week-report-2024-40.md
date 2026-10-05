@@ -35,16 +35,16 @@ no big deal
 - 上个月的强制加班期间结束了, 但整体的进度差距还是不小, 晚上还是稍微延长了一点, 尽可能把能做的事情往前推
 - 气温总算有一点秋天的感觉了, 不用担心出汗的感觉还是比较省心的
 - 周末去参加了 miku symphony 2024, 算是我第二次听交响会, 比起上次多了合唱团, 效果还是相当不错的
-    - 但, miku 的歌曲还是太多了, 以至于这次的 setlist 并不是很优秀, 特别是相较于之前 ryo 的
-    - 另外, MC 演出的部分, 又占去了很多演出的时间
-    - 其中的交响诗篇, 有点难以理解, 😢
+  - 但, miku 的歌曲还是太多了, 以至于这次的 setlist 并不是很优秀, 特别是相较于之前 ryo 的
+  - 另外, MC 演出的部分, 又占去了很多演出的时间
+  - 其中的交响诗篇, 有点难以理解, 😢
 
 ## Collectibles
 
 ### share
 
-- <https://blog.nateliason.com/p/prep-trap>
-    - 适当的准备 (学习, 练习阶段), 然后通过实战来获取反馈
-    - 长期处于准备之中, 一方面没有太多收获, 一方面会变成一种自我满足
-- <https://blog.jim-nielsen.com/2023/examples-of-great-urls/>
-    - some fun facts about urls
+- https://blog.nateliason.com/p/prep-trap
+  - 适当的准备 (学习, 练习阶段), 然后通过实战来获取反馈
+  - 长期处于准备之中, 一方面没有太多收获, 一方面会变成一种自我满足
+- https://blog.jim-nielsen.com/2023/examples-of-great-urls/
+  - some fun facts about urls

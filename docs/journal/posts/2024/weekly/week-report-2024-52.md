@@ -37,5 +37,5 @@ probably nothing... you know, holiday season
 
 ### share
 
-- <https://ramsayleung.github.io/zh/post/2024/%E7%BC%96%E7%A8%8B%E5%8D%81%E5%B9%B4%E7%9A%84%E6%84%9F%E6%82%9F/>
-    - 编程十年的感悟 -- 随便读读吧, 也没啥深刻的.
+- https://ramsayleung.github.io/zh/post/2024/%E7%BC%96%E7%A8%8B%E5%8D%81%E5%B9%B4%E7%9A%84%E6%84%9F%E6%82%9F/
+  - 编程十年的感悟 -- 随便读读吧, 也没啥深刻的.

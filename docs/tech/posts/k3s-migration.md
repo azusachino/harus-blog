@@ -140,28 +140,28 @@ I tried **Bitnami Sealed Secrets** initially. It's great for GitOps teams, but a
 
 1. Keep `.env` files locally (gitignored):
 
-    ```bash
-    # postgres.env
-    POSTGRES_PASSWORD=super-secret-password
-    POSTGRES_USER=postgres
-    ```
+   ```bash
+   # postgres.env
+   POSTGRES_PASSWORD=super-secret-password
+   POSTGRES_USER=postgres
+   ```
 
 2. Generate secrets via make:
 
-    ```bash
-    make secret ENV=postgres.env NAME=postgres-secret NS=harus-middleware
-    ```
+   ```bash
+   make secret ENV=postgres.env NAME=postgres-secret NS=harus-middleware
+   ```
 
 3. Reference in manifests:
 
-    ```yaml
-    env:
-      - name: POSTGRES_PASSWORD
-        valueFrom:
-          secretKeyRef:
-            name: postgres-secret
-            key: POSTGRES_PASSWORD
-    ```
+   ```yaml
+   env:
+     - name: POSTGRES_PASSWORD
+       valueFrom:
+         secretKeyRef:
+           name: postgres-secret
+           key: POSTGRES_PASSWORD
+   ```
 
 **Why it works:**
 
@@ -178,28 +178,28 @@ I avoided distributed storage (Ceph, Longhorn) and stuck with K3s's default `loc
 
 1. **Critical data (PersistentVolume + hostPath):**
 
-    ```yaml
-    # /mnt/harus_data/vaultwarden - survives pod restarts
-    hostPath:
-      path: /mnt/harus_data/vaultwarden
-      type: DirectoryOrCreate
-    ```
+   ```yaml
+   # /mnt/harus_data/vaultwarden - survives pod restarts
+   hostPath:
+     path: /mnt/harus_data/vaultwarden
+     type: DirectoryOrCreate
+   ```
 
 2. **Ephemeral/cache (local-path StorageClass):**
 
-    ```yaml
-    # Auto-provisioned at /var/lib/rancher/k3s/storage/pvc-{UUID}
-    storageClassName: local-path
-    ```
+   ```yaml
+   # Auto-provisioned at /var/lib/rancher/k3s/storage/pvc-{UUID}
+   storageClassName: local-path
+   ```
 
 3. **Read-only media (hostPath ReadOnly):**
 
-    ```yaml
-    # Large media libraries (movies, music, books)
-    hostPath:
-      path: /mnt/harus_storage/media
-      type: Directory
-    ```
+   ```yaml
+   # Large media libraries (movies, music, books)
+   hostPath:
+     path: /mnt/harus_storage/media
+     type: Directory
+   ```
 
 **Default storage location:**
 
@@ -309,28 +309,28 @@ containers:
 ### What Worked Immediately
 
 1. **Prometheus first:** I deployed monitoring BEFORE migrating apps. This let me:
-    - Understand baseline resource usage
-    - Catch memory leaks early
-    - Monitor migration progress
+   - Understand baseline resource usage
+   - Catch memory leaks early
+   - Monitor migration progress
 
 2. **Shared databases:** PostgreSQL and MariaDB in `harus-middleware` namespace
-    - Multiple apps share same database instance
-    - Saves ~500MB RAM vs. per-app databases
+   - Multiple apps share same database instance
+   - Saves ~500MB RAM vs. per-app databases
 
 3. **Resource limits everywhere:**
 
-    ```yaml
-    resources:
-      requests:
-        memory: "128Mi"
-        cpu: "100m"
-      limits:
-        memory: "512Mi"
-        cpu: "500m"
-    ```
+   ```yaml
+   resources:
+     requests:
+       memory: "128Mi"
+       cpu: "100m"
+     limits:
+       memory: "512Mi"
+       cpu: "500m"
+   ```
 
-    - Prevents one app from OOMing the node
-    - Kubernetes scheduler makes better decisions
+   - Prevents one app from OOMing the node
+   - Kubernetes scheduler makes better decisions
 
 ### What I Got Wrong (And Fixed)
 

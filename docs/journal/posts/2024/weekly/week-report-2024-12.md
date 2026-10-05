@@ -115,8 +115,8 @@ RUN --mount=type=secret,id=mysecret cat /run/secrets/mysecret
 
 ## References
 
-- <https://anilist.co/manga/85316/>
-- <https://overcast.blog/13-docker-tricks-you-didnt-know-47775a4f678f>
-    - docker tricks seem really useful
-- <https://medium.com/@ricbedin/how-i-landed-4-staff-l6-software-engineering-offers-amazon-meta-stripe-and-braze-cfeed8d3e5a9>
-    - suggestions on applying for FAAG
+- https://anilist.co/manga/85316/
+- https://overcast.blog/13-docker-tricks-you-didnt-know-47775a4f678f
+  - docker tricks seem really useful
+- https://medium.com/@ricbedin/how-i-landed-4-staff-l6-software-engineering-offers-amazon-meta-stripe-and-braze-cfeed8d3e5a9
+  - suggestions on applying for FAAG

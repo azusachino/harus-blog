@@ -49,21 +49,21 @@ set-max-listpack-value 64
 - it's a good idea to go to the game center for both exercise and cooler condition?
 - so tired all the time, summer sluggish period
 - attended the BBQ gathering of TokyoDev, it's far from my expectation
-    - people from all over the world, with different age range were here
-    - but you could only know the three of them, because of the table size
-    - there was no instructions or what, took conversations or just drank
+  - people from all over the world, with different age range were here
+  - but you could only know the three of them, because of the table size
+  - there was no instructions or what, took conversations or just drank
 
 ## Collectibles
 
 ### share
 
 - 不同的提问方式能够 hack 人的心理和答案，也能帮助自己换个身份和角色来思考问题
-- <https://m.okjike.com/originalPosts/6695dca9d40e921a11202579> - 流量, 视角转变
-    - 美人是一个系统。
-    - 任何好的内容，任何好的品牌，任何好的产品，都自成系统。在思想的系统之下，才有商品，才有商品的交换。
-- <https://www.youtube.com/watch?v=lPrjP4A_X4s> - We Need to Rethink Exercise – The Workout Paradox
-- <https://www.sciencealert.com/experts-reveal-the-power-of-exercise-snacking-for-better-health>
+- https://m.okjike.com/originalPosts/6695dca9d40e921a11202579 - 流量, 视角转变
+  - 美人是一个系统。
+  - 任何好的内容，任何好的品牌，任何好的产品，都自成系统。在思想的系统之下，才有商品，才有商品的交换。
+- https://www.youtube.com/watch?v=lPrjP4A_X4s - We Need to Rethink Exercise – The Workout Paradox
+- https://www.sciencealert.com/experts-reveal-the-power-of-exercise-snacking-for-better-health
 
 ## references
 
-- <https://valkey.io/topics/memory-optimization/>
+- https://valkey.io/topics/memory-optimization/

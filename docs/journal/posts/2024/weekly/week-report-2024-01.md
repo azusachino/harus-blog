@@ -29,7 +29,7 @@ IAM Usage:
 - User/Group/Role/IAM Policies
 - Root User shall only be used for managing AWS things
 - Use IAM Roles on AWS Services to restrict access
-    - EC2 with IAM Roles (`awscli`)
+  - EC2 with IAM Roles (`awscli`)
 
 Sample IAM Policy:
 
@@ -64,9 +64,9 @@ Sample IAM Policy:
 
 - stick to gaming life?
 - a dream comes true? the ~~trip~~ to Japan, and the new year `Hatsumōde` which doesn't seem too charming
-    - new year events all end with waiting in line for serval hours
-    - welcome to the fucking real life, kiddos
-    - for a man only living on salary, it's kinda sad to see all others going out for trip or buying `福袋`
+  - new year events all end with waiting in line for serval hours
+  - welcome to the fucking real life, kiddos
+  - for a man only living on salary, it's kinda sad to see all others going out for trip or buying `福袋`
 - nearly did nothing during the holiday season
 - all in all, wish you a better new year of 2024
 
@@ -109,15 +109,15 @@ In 99% of cases, for 99% of people, the answer will be the same:
 ## References
 
 - [壳中人 - 和菜头](https://mp.weixin.qq.com/s/PUq3RxoMOU27Nktdl1DVGg)
-    - 成长就是不断打破认知边界
-    - 尝试去帮助别人打破认知边界是一件吃力不讨好的事情
+  - 成长就是不断打破认知边界
+  - 尝试去帮助别人打破认知边界是一件吃力不讨好的事情
 - [科技爱好者周刊（第 285 期）：为什么 PPT 不如备忘录](https://ruanyifeng.com/blog/2024/01/weekly-issue-285.html)
 - [nassim nicholas taleb](https://twitter.com/nntaleb/status/1741817012534341868)
-    - new year resolution is not important
-    - the critical part is know your destination and go for it right now
+  - new year resolution is not important
+  - the critical part is know your destination and go for it right now
 - [关于阅读理解，我们学的，都是错的](https://mp.weixin.qq.com/s/J8H-w_sTM6bUK0TWg2v39Q)
-    - 演绎与推理
-    - 内行与外行的差距
+  - 演绎与推理
+  - 内行与外行的差距
 - [今天，你又学废了么](https://mp.weixin.qq.com/s/I8s5eTGZq4qLFeWp5O1TZg)
-    - 罗振宇新年演讲的一些感触
+  - 罗振宇新年演讲的一些感触
 - [Everything will be OK](https://t.me/lifeChangingBook/388)

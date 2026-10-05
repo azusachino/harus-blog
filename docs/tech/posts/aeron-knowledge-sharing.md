@@ -81,7 +81,7 @@ this is how the publication from machine-1 gets subscribed by machine-2 with mul
 - exclusivePublication only one publication instance (session)
 - shareablePublication can be held by multiple publication instances
 - a publication could be subscribed multiple times
-    - read data from the same image log-buffer
+  - read data from the same image log-buffer
 
 ![.](/assets/images/2025/topics/aeron/aeron-overview.png)
 
@@ -144,13 +144,13 @@ aeronArchive.startReplay(0, 0, Long.MAX_VALUE, "10.110.0.2:9110", 4939);
 aeron archive file structure.
 
 - {recordingId}-{segmentFileBasePosition}.rec
-    - All the Segment files for a particular Recording have the same fixed length. The length must be a power of 2 between 64 KB and 1 GB inclusive and must hold at least one Term from the Publication being recorded (the default length is **128 MB**).
-    - recordingId was maintained inside `Archive`, `Catalog#addNewRecording`
+  - All the Segment files for a particular Recording have the same fixed length. The length must be a power of 2 between 64 KB and 1 GB inclusive and must hold at least one Term from the Publication being recorded (the default length is **128 MB**).
+  - recordingId was maintained inside `Archive`, `Catalog#addNewRecording`
 - archive.catalog
-    - contains a series of RecordingDescriptor records
-    - [aeron-archive-codecs.xml](https://github.com/real-logic/aeron/blob/master/aeron-archive/src/main/resources/archive/aeron-archive-codecs.xml)
+  - contains a series of RecordingDescriptor records
+  - [aeron-archive-codecs.xml](https://github.com/real-logic/aeron/blob/master/aeron-archive/src/main/resources/archive/aeron-archive-codecs.xml)
 - archive-mark.dat
-    - to guard the archive directory so that only one instance of Aeron Archive can use it at a time
+  - to guard the archive directory so that only one instance of Aeron Archive can use it at a time
 
 ```yaml
 - /data/sakura-node/archive
@@ -199,11 +199,11 @@ sequenceDiagram
 
 - the media driver in Archive
 - archive -- `ArchiveConductor`
-    - recorder
-        - `RecordingSession`
-    - replayer
-        - `ReplaySession`
-    - sessionWorker `Session`
+  - recorder
+    - `RecordingSession`
+  - replayer
+    - `ReplaySession`
+  - sessionWorker `Session`
 - catalog -- keeps details of recorded images, past and present, and used for browsing
 
 ```java
@@ -254,23 +254,23 @@ sequenceDiagram
 aeron cluster consensus module file structure.
 
 - cluster-mark.dat -- essential metadata, `ClusterTool` reads
-    - cluster id
-    - member id
-    - appointed leader id
-    - log position -- current position in the consensus log
-    - timestamp -- when the mark file was last updated
-        - possible leader timeout
-    - cluster members information
+  - cluster id
+  - member id
+  - appointed leader id
+  - log position -- current position in the consensus log
+  - timestamp -- when the mark file was last updated
+    - possible leader timeout
+  - cluster members information
 - node-state.dat
-    - An extensible list of information relating to a specific cluster node.
-        - Raft-related State:
-            - The current term
-            - The votedFor member ID for the current term
-            - Information about the log position and leadership term ID for the last committed entry.
-        - Recovery Pointers: Pointers to the latest snapshot and the position in the replicated log where recovery should start from if the node restarts.
+  - An extensible list of information relating to a specific cluster node.
+    - Raft-related State:
+      - The current term
+      - The votedFor member ID for the current term
+      - Information about the log position and leadership term ID for the last committed entry.
+    - Recovery Pointers: Pointers to the latest snapshot and the position in the replicated log where recovery should start from if the node restarts.
 - recording.log
-    - a sequence of log entries that represent the complete history of the cluster's state machine
-    - it acts as a metadata catalog for the Aeron Archive, saying it contains termId-recordingId which points to `0-{offset}.rec` files
+  - a sequence of log entries that represent the complete history of the cluster's state machine
+  - it acts as a metadata catalog for the Aeron Archive, saying it contains termId-recordingId which points to `0-{offset}.rec` files
 
 ```yaml
 - /data/sakura-node/consensus-module
@@ -402,15 +402,15 @@ media driver
 Archive & Cluster
 
 - ArchiveTool
-    - describe
-    - dump
-    - errors
-    - pid
+  - describe
+  - dump
+  - errors
+  - pid
 - ClusterTool
-    - list-members
-    - recording-log
-    - snapshot
-    - describe
+  - list-members
+  - recording-log
+  - snapshot
+  - describe
 
 ```bash
 # list members
@@ -445,7 +445,7 @@ java --add-opens java.base/jdk.internal.misc=ALL-UNNAMED --add-opens java.base/j
 
 ## references
 
-- <https://raft.github.io/>
-- <https://deepwiki.com/aeron-io/aeron>
-- <https://aeron.io/docs/aeron-cluster/overview/>
-- <https://theaeronfiles.com/>
+- https://raft.github.io/
+- https://deepwiki.com/aeron-io/aeron
+- https://aeron.io/docs/aeron-cluster/overview/
+- https://theaeronfiles.com/

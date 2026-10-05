@@ -22,9 +22,9 @@ comments: true
 
 - a trip to 戦場ヶ原, it's true that you could find scenic views at Japan in various seasons
 - spent quite a lot of time to finish the course of "justice" from professor sandel. -- **to think in frameworks, not dogmas**
-    - Kant's universal law
-    - Rawls's justice as fairness
-    - Aristotle's virtue ethics
+  - Kant's universal law
+  - Rawls's justice as fairness
+  - Aristotle's virtue ethics
 - we ran twice to finish one loop of the yamanote line in the style of half-marathon, as you could see in the front-page. (they were also my first, second half-marathon)
 - I failed to do quite a lot of things, the piano was hardly touched, also the games I bought, and the textbooks stayed at my shelf since ever...
 - but rather, I kept a good sleep routine, 6~7 hours in the night, aside the duration, all other metrics were near full score frequently
@@ -36,15 +36,15 @@ adapt, and be adept.
 ## review
 
 - AI 工具, next level
-    - more experience on claude code
+  - more experience on claude code
 - running, 尝试半马
-    - half marathon twice
+  - half marathon twice
 - 读书, 笔记 & 心得更加完备
-    - failed in every way
+  - failed in every way
 - 工作, 本番上线做好准备
-    - switched to a complete different project
+  - switched to a complete different project
 - 材料, 开始着手打印出现有的部分, 以及日语翻译件查缺补漏
-    - not started yet
+  - not started yet
 
 ## resolution
 
@@ -58,10 +58,10 @@ adapt, and be adept.
 ## sharing
 
 - 汽车产业进入“恒大时刻”？大家的关注点错了【汤山老王】
-    - <https://youtu.be/1PfxP7YVKlw>
+  - https://youtu.be/1PfxP7YVKlw
 - 一房毁三代，高层住宅，没有未来【汤山老王】
-    - <https://youtu.be/7GAIcgdKUiY>
-    - 高價購買了「貧民窟」
+  - https://youtu.be/7GAIcgdKUiY
+  - 高價購買了「貧民窟」
 
 **Happiness is your reality minus your expectations.**
 

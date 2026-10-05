@@ -35,7 +35,7 @@ FE (SG 考完了, 准备下一场, 基本情报)
 
 ### share
 
-- <https://blog.bytebytego.com/p/ep136-the-ultimate-devops-developer>
-    - devops related tech
-    - redis 101 sum-up
-    - 6 software architectures
+- https://blog.bytebytego.com/p/ep136-the-ultimate-devops-developer
+  - devops related tech
+  - redis 101 sum-up
+  - 6 software architectures

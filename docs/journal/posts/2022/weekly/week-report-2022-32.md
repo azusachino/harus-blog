@@ -69,16 +69,16 @@ Envy is one of the great struggles plaguing humanity today and it's only getting
 **You will be envious of those that have reached your desired state, but are not too far removed from it. Those that are too far out will be sources of inspiration, not envy.**
 
 - The Envy Guideline
-    - You once had a shared history with the rival, but now the rival seems to be way ahead of you
-    - A rival's path to success appears easily replicable
-    - The rival seems very relatable to you. You have similar interests, similar outlooks, but the outcomes appear to be wildly different
+  - You once had a shared history with the rival, but now the rival seems to be way ahead of you
+  - A rival's path to success appears easily replicable
+  - The rival seems very relatable to you. You have similar interests, similar outlooks, but the outcomes appear to be wildly different
 
 How to get rid of envy?
 
 - The interplay of three things
-    - A desired good
-    - A rival
-    - A landscape of potential rivals
+  - A desired good
+  - A rival
+  - A landscape of potential rivals
 
 1. Question the desired good
 2. Reframe the (imagined) dynamic you have with your rival
@@ -87,17 +87,17 @@ How to get rid of envy?
 ### 成为专家的四要素
 
 - Valid Environment
-    - 正面 - 象棋，网球，游泳
-    - 反面 - 股市，未来预期
+  - 正面 - 象棋，网球，游泳
+  - 反面 - 股市，未来预期
 - Repeated Experiences
-    - 正面 - 每一局象棋的体验很相似
-    - 反面 - 赌局的结果很难预测
+  - 正面 - 每一局象棋的体验很相似
+  - 反面 - 赌局的结果很难预测
 - Timely Feedback
-    - 正面 - 每一局象棋都会为下一局带来经验值
-    - 反面 - 硬币正反面的概率为 50%，第一次预测和第一百次预测，不会有任何区别
+  - 正面 - 每一局象棋都会为下一局带来经验值
+  - 反面 - 硬币正反面的概率为 50%，第一次预测和第一百次预测，不会有任何区别
 - Deliberately Practice
-    - 10000 小时理论
-    - 离开舒适区
+  - 10000 小时理论
+  - 离开舒适区
 
 1. 一个有充足确定性的领域
 2. 行为有迹可循
@@ -113,9 +113,9 @@ The more you peg your work to some standardized metric, the more you use that me
 - **Anytime progress is standardized, a status game is reinforced**.
 - **Mastery is the quest to improve yourself as an end in itself. Comparisons are not made with other people, but only with prior versions of yourself.**
 - The evidence of Envy
-    - If envy is a recurring problem for you, that means you’re always gauging your progress in relation to the advertised positions of others.
-    - If you use a metric to gauge what you work on next, then you’re allowing the validation of others to dictate your intellectual interests.
-    - If you base the quality of your work on its performance – and not how you felt while creating it – then you will never be confident in your own judgment.
+  - If envy is a recurring problem for you, that means you’re always gauging your progress in relation to the advertised positions of others.
+  - If you use a metric to gauge what you work on next, then you’re allowing the validation of others to dictate your intellectual interests.
+  - If you base the quality of your work on its performance – and not how you felt while creating it – then you will never be confident in your own judgment.
 
 ### 死亡的定义
 
