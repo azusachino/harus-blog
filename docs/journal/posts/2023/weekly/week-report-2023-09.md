@@ -8,7 +8,7 @@ slug: week-report-2023-09
 comments: true
 ---
 
-![](/assets/images/2023/03/PicoVolcano.jpg){ .post-cover }
+![Cover photo: Pico Volcano](/assets/images/2023/03/PicoVolcano.jpg){ .post-cover }
 
 <!-- more -->
 

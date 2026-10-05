@@ -8,7 +8,7 @@ slug: week-report-2023-03
 comments: true
 ---
 
-![](/assets/images/2023/01/IceSailingBalaton.jpg){ .post-cover }
+![Cover photo: Ice Sailing Balaton](/assets/images/2023/01/IceSailingBalaton.jpg){ .post-cover }
 
 <!-- more -->
 

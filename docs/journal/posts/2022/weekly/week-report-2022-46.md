@@ -8,11 +8,11 @@ slug: week-report-2022-46
 comments: true
 ---
 
-![](/assets/images/2022/11/985ca149f06cd03b9f0ed8dfe326afdb.jpg){ .post-cover }
+![Weekly Report 2022.46 cover image](/assets/images/2022/11/985ca149f06cd03b9f0ed8dfe326afdb.jpg){ .post-cover }
 
 <!-- more -->
 
-**你所创造的东西，定义了你是一个什么样的人，而不是你所拥有或消费的东西。**
+> 你所创造的东西，定义了你是一个什么样的人，而不是你所拥有或消费的东西。
 
 所以，习惯了消费「电子产物」的人，究竟有着自己的主人格吗？
 

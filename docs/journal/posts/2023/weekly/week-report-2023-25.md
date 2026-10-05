@@ -8,7 +8,7 @@ slug: week-report-2023-25
 comments: true
 ---
 
-![](/assets/images/2023/06/NhaTrang.jpg){ .post-cover }
+![Cover photo: Nha Trang](/assets/images/2023/06/NhaTrang.jpg){ .post-cover }
 
 <!-- more -->
 

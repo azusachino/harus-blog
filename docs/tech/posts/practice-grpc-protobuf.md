@@ -11,7 +11,7 @@ slug: practice-grpc-protobuf
 comments: true
 ---
 
-![](/assets/images/2021/09/WalhallaOverlook.jpg){ .post-cover }
+![Cover photo: Walhalla Overlook](/assets/images/2021/09/WalhallaOverlook.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -8,7 +8,7 @@ slug: week-report-2022-16
 comments: true
 ---
 
-![](/assets/images/2022/04/NorthernCaracara.jpg){ .post-cover }
+![Cover photo: Northern Caracara](/assets/images/2022/04/NorthernCaracara.jpg){ .post-cover }
 
 <!-- more -->
 

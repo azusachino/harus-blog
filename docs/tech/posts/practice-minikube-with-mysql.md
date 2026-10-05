@@ -11,7 +11,7 @@ slug: practice-minikube-with-mysql
 comments: true
 ---
 
-![](/assets/images/2021/08/VeniceBeach.jpg){ .post-cover }
+![Cover photo: Venice Beach](/assets/images/2021/08/VeniceBeach.jpg){ .post-cover }
 
 <!-- more -->
 

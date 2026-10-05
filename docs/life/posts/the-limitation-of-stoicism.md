@@ -10,7 +10,7 @@ hide:
   - navigation
 ---
 
-![](/assets/images/2025/10-stoicism.png){ .post-cover }
+![Cover photo: 10 stoicism](/assets/images/2025/10-stoicism.png){ .post-cover }
 
 <!-- more -->
 
@@ -252,20 +252,20 @@ See, and then — he doesn't say. Maybe that part is our work to figure out.
 
 ## Explore Further
 
-**Fiction (the case studies)**
+### Fiction (the case studies)
 
 - *Kong Yiji* (孔乙己) and *The True Story of Ah Q* (阿Q正传) — Lu Xun. The two stories this
   essay is built on; short, devastating, widely available in translation.
 - *The Grapes of Wrath* — John Steinbeck. The individual-to-collective arc that Ah Q never
   gets to make.
 
-**The Stoic sources (read them, then read the critique)**
+> The Stoic sources (read them, then read the critique)
 
 - *Meditations* — Marcus Aurelius. Stoicism from the throne — note who is writing.
 - *Discourses* and *Enchiridion* — Epictetus. The former-slave's version, and the closest
   the tradition comes to speaking from below.
 
-**The critique**
+### The critique
 
 - *Pedagogy of the Oppressed* — Paulo Freire. Awakening and collective action instead of
   inner adjustment.
@@ -276,7 +276,7 @@ See, and then — he doesn't say. Maybe that part is our work to figure out.
 - *Motivation and Personality* — Abraham Maslow. Where the hierarchy of needs comes from —
   why virtue presupposes survival.
 
-**Essays, talks & background**
+### Essays, talks & background
 
 - [Stanford Encyclopedia of Philosophy — Stoicism](https://plato.stanford.edu/entries/stoicism/)
   — rigorous overview of what the Stoics actually claimed.

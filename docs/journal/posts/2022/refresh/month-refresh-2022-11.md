@@ -8,7 +8,7 @@ slug: month-refresh-2022-11
 comments: true
 ---
 
-![](/assets/images/2022/11/road-train-landscape-storm-d9b3ae79f2137f7c46b2bc5ed93c07a2.jpg){ .post-cover }
+![Cover photo: road train landscape storm d9b3ae79f2137f7c46b2bc5ed93c07a2](/assets/images/2022/11/road-train-landscape-storm-d9b3ae79f2137f7c46b2bc5ed93c07a2.jpg){ .post-cover }
 
 <!-- more -->
 

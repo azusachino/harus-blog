@@ -8,7 +8,7 @@ slug: month-refresh-2022-08
 comments: true
 ---
 
-![](/assets/images/2022/08/MtTsubakuro.jpg){ .post-cover }
+![Cover photo: Mt Tsubakuro](/assets/images/2022/08/MtTsubakuro.jpg){ .post-cover }
 
 <!-- more -->
 

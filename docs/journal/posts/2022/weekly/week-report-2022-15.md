@@ -8,7 +8,7 @@ slug: week-report-2022-15
 comments: true
 ---
 
-![](/assets/images/2022/04/YellowCrocuses.jpg){ .post-cover }
+![Cover photo: Yellow Crocuses](/assets/images/2022/04/YellowCrocuses.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -8,7 +8,7 @@ slug: week-report-2024-38
 comments: true
 ---
 
-![](/assets/images/2024/09/enoshima.jpg){ .post-cover }
+![Cover photo: enoshima](/assets/images/2024/09/enoshima.jpg){ .post-cover }
 
 <!-- more -->
 

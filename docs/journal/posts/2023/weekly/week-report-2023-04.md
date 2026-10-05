@@ -8,7 +8,7 @@ slug: week-report-2023-04
 comments: true
 ---
 
-![](/assets/images/2023/01/BlackbirdDay.jpg){ .post-cover }
+![Cover photo: Blackbird Day](/assets/images/2023/01/BlackbirdDay.jpg){ .post-cover }
 
 <!-- more -->
 

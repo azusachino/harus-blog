@@ -8,7 +8,7 @@ slug: week-report-2023-15
 comments: true
 ---
 
-![](/assets/images/2023/04/EuropeFromISS.jpg){ .post-cover }
+![Cover photo: Europe From ISS](/assets/images/2023/04/EuropeFromISS.jpg){ .post-cover }
 
 <!-- more -->
 

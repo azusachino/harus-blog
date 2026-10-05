@@ -10,7 +10,7 @@ hide:
   - navigation
 ---
 
-![](/assets/images/2025/10-symphony.png){ .post-cover }
+![Cover photo: 10 symphony](/assets/images/2025/10-symphony.png){ .post-cover }
 
 <!-- more -->
 

@@ -8,7 +8,7 @@ slug: week-report-2023-18
 comments: true
 ---
 
-![](/assets/images/2023/05/Popocatepetl.jpg){ .post-cover }
+![Cover photo: Popocatepetl](/assets/images/2023/05/Popocatepetl.jpg){ .post-cover }
 
 <!-- more -->
 

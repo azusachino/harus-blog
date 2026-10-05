@@ -8,7 +8,7 @@ slug: week-report-2022-31
 comments: true
 ---
 
-![](/assets/images/2022/07/FoxgloveHawkmoth.jpg){ .post-cover }
+![Cover photo: Foxglove Hawkmoth](/assets/images/2022/07/FoxgloveHawkmoth.jpg){ .post-cover }
 
 <!-- more -->
 
@@ -50,7 +50,7 @@ comments: true
 
 医学上有一个首字母缩写词语 NED - No Evidence of Disease，意思是没有证据表明存在疾病；但并不存在一个 END - Evidence of No Disease，即证明没有疾病的证据。
 
-**一个人的死亡是悲剧，100 万人的死亡只是统计学意义上的说法。统计学默默地存在于我们之间。**
+> 一个人的死亡是悲剧，100 万人的死亡只是统计学意义上的说法。统计学默默地存在于我们之间。
 
 ## Recommendation
 
@@ -67,12 +67,12 @@ At each level the expectations of what a software engineer does changes.
 
 ### 大脑是如何进行学习的
 
-**Basic Brain Function**
+### Basic Brain Function
 
 - The function of the brain is to receive signals from the environment, process them and respond effectively to support the well-being and survival of the organism
 - The information about what may be effective in a given situation is retrieved from the long-term memory system that stores knowledge gained from past experiences
 
-**Learning Model**
+### Learning Model
 
 - Know
 - Understand
@@ -86,8 +86,8 @@ The absence of mental stimulation - If there is no external stimulus provoking a
 **Tame longing without any particular object** - Undirected Desire
 
 > It's when you long for something better, without knowing what that "something better" might even be. As a result, you try to satisfy it with various distractions, but without any purposeful pursuit, the cycle of boredom continues.
-
-**Desire's greatest trick is in convincing us that we will be satisfied after we fulfill it**
+>
+> Desire's greatest trick is in convincing us that we will be satisfied after we fulfill it
 
 ### Videos
 

@@ -8,7 +8,7 @@ slug: week-report-2023-07
 comments: true
 ---
 
-![](/assets/images/2023/02/MauiWhale.jpg){ .post-cover }
+![Cover photo: Maui Whale](/assets/images/2023/02/MauiWhale.jpg){ .post-cover }
 
 <!-- more -->
 

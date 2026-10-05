@@ -8,7 +8,7 @@ slug: week-report-2024-26
 comments: true
 ---
 
-![](/assets/images/2024/06/supercell-orchestra.jpeg){ .post-cover }
+![Cover photo: supercell orchestra](/assets/images/2024/06/supercell-orchestra.jpeg){ .post-cover }
 
 <!-- more -->
 

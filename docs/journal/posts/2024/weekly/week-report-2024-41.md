@@ -8,7 +8,7 @@ slug: week-report-2024-41
 comments: true
 ---
 
-![](/assets/images/2024/psn20241011.png){ .post-cover }
+![Cover photo: psn20241011](/assets/images/2024/psn20241011.png){ .post-cover }
 
 <!-- more -->
 

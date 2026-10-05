@@ -8,7 +8,7 @@ slug: month-refresh-2023-05
 comments: true
 ---
 
-![](/assets/images/2023/05/HiddenBeach.jpg){ .post-cover }
+![Cover photo: Hidden Beach](/assets/images/2023/05/HiddenBeach.jpg){ .post-cover }
 
 <!-- more -->
 
@@ -46,12 +46,12 @@ Sapiens 看完了，佳作；HomoDeus 30%左右进度，主要在讨论 ethical 
 
 究竟是 _什么_ 赋予了人类 deity，使其拥有了对其他 XX 的生杀大权。
 
-**学习相关**
+### 学习相关
 
 1. Spring 太强大了，让我不会写 Java 了。
 2. LeetCode Discussion 中的 Solution 都太巧妙了，以至于看了这么多，也没学会做几道题
 
-**生活相关**
+### 生活相关
 
 1. 早醒，但没有早起
 2. 工作，四处碰壁

@@ -8,7 +8,7 @@ slug: week-report-2024-46
 comments: true
 ---
 
-![](/assets/images/2024/momiji-0.jpg){ .post-cover }
+![Cover photo: momiji 0](/assets/images/2024/momiji-0.jpg){ .post-cover }
 
 <!-- more -->
 

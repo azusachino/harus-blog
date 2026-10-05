@@ -8,7 +8,7 @@ slug: week-report-2023-02
 comments: true
 ---
 
-![](/assets/images/2023/01/OHR.Turku.jpg){ .post-cover }
+![Cover photo: OHR.Turku](/assets/images/2023/01/OHR.Turku.jpg){ .post-cover }
 
 <!-- more -->
 

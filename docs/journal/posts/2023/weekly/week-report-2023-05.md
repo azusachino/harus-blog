@@ -8,7 +8,7 @@ slug: week-report-2023-05
 comments: true
 ---
 
-![](/assets/images/2023/02/GroundhogThree.jpg){ .post-cover }
+![Cover photo: Groundhog Three](/assets/images/2023/02/GroundhogThree.jpg){ .post-cover }
 
 <!-- more -->
 

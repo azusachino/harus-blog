@@ -8,7 +8,7 @@ slug: week-report-2024-13
 comments: true
 ---
 
-![](/assets/images/2024/03/WhiteEyes.jpg){ .post-cover }
+![Cover photo: White Eyes](/assets/images/2024/03/WhiteEyes.jpg){ .post-cover }
 
 <!-- more -->
 

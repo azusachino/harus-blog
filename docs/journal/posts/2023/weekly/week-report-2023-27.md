@@ -8,7 +8,7 @@ slug: week-report-2023-27
 comments: true
 ---
 
-![](/assets/images/2023/07/MoselleRiver.jpg){ .post-cover }
+![Cover photo: Moselle River](/assets/images/2023/07/MoselleRiver.jpg){ .post-cover }
 
 <!-- more -->
 

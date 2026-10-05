@@ -8,7 +8,7 @@ slug: week-report-2023-14
 comments: true
 ---
 
-![](/assets/images/2023/04/ArizonaPinkMoon.jpg){ .post-cover }
+![Cover photo: Arizona Pink Moon](/assets/images/2023/04/ArizonaPinkMoon.jpg){ .post-cover }
 
 <!-- more -->
 
@@ -74,7 +74,7 @@ public ListNode mergeK(ListNode[] lists) {
 
 就像三月份，每天加班的下班后能抽出时间去玩游戏一样，本周也抽出了比较多的时间去学习算法、复习 Java 的内容；由于学习和干劲都总是断断续续的，基本上可以认为自己肚子里根本没有什么存货。
 
-**每次都需要从 0 开始学习，~~所以屯了这么多资源是好事咯~~**
+### 每次都需要从 0 开始学习，~~所以屯了这么多资源是好事咯~~
 
 ## Thought
 

@@ -8,7 +8,7 @@ slug: week-report-2023-29
 comments: true
 ---
 
-![](/assets/images/2023/07/HammockDay.jpg){ .post-cover }
+![Cover photo: Hammock Day](/assets/images/2023/07/HammockDay.jpg){ .post-cover }
 
 <!-- more -->
 
@@ -53,8 +53,8 @@ Misfortune weighs most heavily on those who expect nothing but good fortune.
 
 ### 成年与少年
 
-**我们生活在这样一个社会：小孩子像成年人一样老成，而成年人像小孩子一样幼稚。**
-
+> 我们生活在这样一个社会：小孩子像成年人一样老成，而成年人像小孩子一样幼稚。
+>
 > 现在的孩子们比以前更容易接触到成年人的世界，因此他们更早成人化。
 > 从很小的年龄起，他们就在视频网站观看暴力和战争，在社交网络上看到性感和暴露的照片和视频。
 > 然而，当孩子们成年以后，他们往往无法实现经济独立，也没有机会承担足够的责任。

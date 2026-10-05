@@ -8,7 +8,7 @@ slug: week-report-2022-22
 comments: true
 ---
 
-![](/assets/images/2022/05/ApisMellifera.jpg){ .post-cover }
+![Cover photo: Apis Mellifera](/assets/images/2022/05/ApisMellifera.jpg){ .post-cover }
 
 <!-- more -->
 

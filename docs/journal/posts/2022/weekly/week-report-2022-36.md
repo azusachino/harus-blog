@@ -8,7 +8,7 @@ slug: week-report-2022-36
 comments: true
 ---
 
-![](/assets/images/2022/09/CostadaMorte.jpg){ .post-cover }
+![Cover photo: Costada Morte](/assets/images/2022/09/CostadaMorte.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -8,7 +8,7 @@ slug: week-report-2024-30
 comments: true
 ---
 
-![](/assets/images/2024/07/star-rail.png){ .post-cover }
+![Cover photo: star rail](/assets/images/2024/07/star-rail.png){ .post-cover }
 
 <!-- more -->
 

@@ -11,7 +11,7 @@ slug: what-is-live-stream
 comments: true
 ---
 
-![](/assets/images/2022/02/MaldivesHeart.jpg){ .post-cover }
+![Cover photo: Maldives Heart](/assets/images/2022/02/MaldivesHeart.jpg){ .post-cover }
 
 <!-- more -->
 

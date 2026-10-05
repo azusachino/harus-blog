@@ -8,7 +8,7 @@ slug: week-report-2023-22
 comments: true
 ---
 
-![](/assets/images/2023/06/SouthKaibabTrail.jpg){ .post-cover }
+![Cover photo: South Kaibab Trail](/assets/images/2023/06/SouthKaibabTrail.jpg){ .post-cover }
 
 <!-- more -->
 

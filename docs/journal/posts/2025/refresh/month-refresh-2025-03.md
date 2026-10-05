@@ -8,7 +8,7 @@ slug: month-refresh-2025-03
 comments: true
 ---
 
-![](/assets/images/2025/03-services.png){ .post-cover }
+![Cover photo: 03 services](/assets/images/2025/03-services.png){ .post-cover }
 
 <!-- more -->
 

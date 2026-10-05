@@ -8,7 +8,7 @@ slug: week-report-2022-34
 comments: true
 ---
 
-![](/assets/images/2022/08/QiXiFestival.jpg){ .post-cover }
+![Cover photo: Qi Xi Festival](/assets/images/2022/08/QiXiFestival.jpg){ .post-cover }
 
 <!-- more -->
 

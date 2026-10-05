@@ -8,7 +8,7 @@ slug: week-report-2023-01
 comments: true
 ---
 
-![](/assets/images/2023/01/Breckenridge.jpg){ .post-cover }
+![Cover photo: Breckenridge](/assets/images/2023/01/Breckenridge.jpg){ .post-cover }
 
 <!-- more -->
 

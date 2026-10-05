@@ -8,7 +8,7 @@ slug: week-report-2022-17
 comments: true
 ---
 
-![](/assets/images/2022/04/RobinsEgg.jpg){ .post-cover }
+![Cover photo: Robins Egg](/assets/images/2022/04/RobinsEgg.jpg){ .post-cover }
 
 <!-- more -->
 

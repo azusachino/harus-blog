@@ -8,7 +8,7 @@ slug: week-report-2023-16
 comments: true
 ---
 
-![](/assets/images/2023/04/EarthDayFox.jpg){ .post-cover }
+![Cover photo: Earth Day Fox](/assets/images/2023/04/EarthDayFox.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -8,7 +8,7 @@ slug: week-report-2023-19
 comments: true
 ---
 
-![](/assets/images/2023/05/FootballField.jpg){ .post-cover }
+![Cover photo: Football Field](/assets/images/2023/05/FootballField.jpg){ .post-cover }
 
 <!-- more -->
 

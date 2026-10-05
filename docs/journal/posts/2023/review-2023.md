@@ -8,7 +8,7 @@ slug: review-2023
 comments: true
 ---
 
-![](/assets/images/2023/12/SantaPark.jpg){ .post-cover }
+![Cover photo: Santa Park](/assets/images/2023/12/SantaPark.jpg){ .post-cover }
 
 <!-- more -->
 

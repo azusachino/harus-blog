@@ -8,7 +8,7 @@ slug: week-report-2022-27
 comments: true
 ---
 
-![](/assets/images/2022/07/SwallowtailFlower.jpeg){ .post-cover }
+![Cover photo: Swallowtail Flower](/assets/images/2022/07/SwallowtailFlower.jpeg){ .post-cover }
 
 <!-- more -->
 
@@ -26,17 +26,17 @@ comments: true
 
 ### 何为高血压
 
-**血压**
+### 血压
 
 血液在流通过程中对血管壁造成的压力即为血压
 
-**诱因**
+### 诱因
 
 - 心脏过度兴奋
 - 血管变窄变硬
 - 血容量增加
 
-**对策**
+### 对策
 
 - 适当运动
 - 健康饮食

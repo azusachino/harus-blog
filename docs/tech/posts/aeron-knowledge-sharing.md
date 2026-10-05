@@ -10,7 +10,7 @@ slug: aeron-knowledge-sharing
 comments: true
 ---
 
-![](/assets/images/2025/KelpOtter.png){ .post-cover }
+![Cover photo: Kelp Otter](/assets/images/2025/KelpOtter.png){ .post-cover }
 
 <!-- more -->
 

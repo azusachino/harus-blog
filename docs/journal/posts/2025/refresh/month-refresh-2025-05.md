@@ -8,7 +8,7 @@ slug: month-refresh-2025-05
 comments: true
 ---
 
-![](/assets/images/2025/05-mountain.jpeg){ .post-cover }
+![Cover photo: 05 mountain](/assets/images/2025/05-mountain.jpeg){ .post-cover }
 
 <!-- more -->
 

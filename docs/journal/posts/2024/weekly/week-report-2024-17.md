@@ -8,7 +8,7 @@ slug: week-report-2024-17
 comments: true
 ---
 
-![](/assets/images/2024/04/SunsetArchesNP.png){ .post-cover }
+![Cover photo: Sunset Arches NP](/assets/images/2024/04/SunsetArchesNP.png){ .post-cover }
 
 <!-- more -->
 

@@ -8,7 +8,7 @@ slug: week-report-2024-02
 comments: true
 ---
 
-![](/assets/images/2024/01/HanaHighway.png){ .post-cover }
+![Cover photo: Hana Highway](/assets/images/2024/01/HanaHighway.png){ .post-cover }
 
 <!-- more -->
 

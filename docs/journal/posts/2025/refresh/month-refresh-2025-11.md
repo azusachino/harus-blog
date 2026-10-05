@@ -8,7 +8,7 @@ slug: month-refresh-2025-11
 comments: true
 ---
 
-![](/assets/images/2025/11-yamanote.png){ .post-cover }
+![Cover photo: 11 yamanote](/assets/images/2025/11-yamanote.png){ .post-cover }
 
 <!-- more -->
 

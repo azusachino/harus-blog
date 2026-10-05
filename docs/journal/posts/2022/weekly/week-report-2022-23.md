@@ -8,7 +8,7 @@ slug: week-report-2022-23
 comments: true
 ---
 
-![](/assets/images/2022/06/ParrotDay.jpg){ .post-cover }
+![Cover photo: Parrot Day](/assets/images/2022/06/ParrotDay.jpg){ .post-cover }
 
 <!-- more -->
 

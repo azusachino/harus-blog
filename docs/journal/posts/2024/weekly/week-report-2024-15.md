@@ -8,7 +8,7 @@ slug: week-report-2024-15
 comments: true
 ---
 
-![](/assets/images/2024/04/SouthStackLight.png){ .post-cover }
+![Cover photo: South Stack Light](/assets/images/2024/04/SouthStackLight.png){ .post-cover }
 
 <!-- more -->
 

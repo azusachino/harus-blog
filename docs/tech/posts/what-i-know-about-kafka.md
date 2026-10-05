@@ -11,7 +11,7 @@ slug: what-i-know-about-kafka
 comments: true
 ---
 
-![](/assets/images/2025/MonaValePool.png){ .post-cover }
+![Cover photo: Mona Vale Pool](/assets/images/2025/MonaValePool.png){ .post-cover }
 
 <!-- more -->
 

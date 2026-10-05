@@ -8,7 +8,7 @@ slug: week-report-2024-43
 comments: true
 ---
 
-![](/assets/images/2024/psn-tlou2.png){ .post-cover }
+![Cover photo: psn tlou2](/assets/images/2024/psn-tlou2.png){ .post-cover }
 
 <!-- more -->
 

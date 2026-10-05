@@ -8,7 +8,7 @@ slug: month-refresh-2025-10
 comments: true
 ---
 
-![](/assets/images/2025/10-fleurs.jpeg){ .post-cover }
+![Cover photo: 10 fleurs](/assets/images/2025/10-fleurs.jpeg){ .post-cover }
 
 <!-- more -->
 

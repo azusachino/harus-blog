@@ -8,7 +8,7 @@ slug: week-report-2022-11
 comments: true
 ---
 
-![](/assets/images/2022/03/GreatCormorants.jpg){ .post-cover }
+![Cover photo: Great Cormorants](/assets/images/2022/03/GreatCormorants.jpg){ .post-cover }
 
 <!-- more -->
 

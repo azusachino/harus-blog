@@ -8,7 +8,7 @@ slug: week-report-2022-14
 comments: true
 ---
 
-![](/assets/images/2022/04/SquirrelNesting.jpg){ .post-cover }
+![Cover photo: Squirrel Nesting](/assets/images/2022/04/SquirrelNesting.jpg){ .post-cover }
 
 <!-- more -->
 

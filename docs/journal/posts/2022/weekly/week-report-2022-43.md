@@ -8,7 +8,7 @@ slug: week-report-2022-43
 comments: true
 ---
 
-![](/assets/images/2022/10/CherryLaurelMaze.jpg){ .post-cover }
+![Cover photo: Cherry Laurel Maze](/assets/images/2022/10/CherryLaurelMaze.jpg){ .post-cover }
 
 <!-- more -->
 
@@ -26,7 +26,7 @@ comments: true
 
 虽然，但是，很多内容是 Spring MVC 相关的，在用惯了 [[Spring Boot]] 之后，会发现很多问题根本就没有见过。
 
-**Spring Validation**
+### Spring Validation
 
 ```java
 public class User {
@@ -66,25 +66,25 @@ public class Phone {
 
 ### 何为正义
 
-**当一个人觉得自己做了好事之后，**
+> 当一个人觉得自己做了好事之后，
+>
+> 他就会获得一种道德优越感，
+>
+> 仿佛取得了一种“道德许可证”，
+>
+> 所以更容易做出不道德的事情。
 
-**他就会获得一种道德优越感，**
+换句话说：
 
-**仿佛取得了一种“道德许可证”，**
-
-**所以更容易做出不道德的事情。**
-
-**换句话说：**
-
-**当一个人认为自己是好人或者正义使者时，**
-
-**更可能做出坏事。**
-
-**“人在以正义的名义，**
-
-**去实施暴力的时候是非常凶狠的，**
-
-**因为他觉得自己是在捍卫正义。”**
+> 当一个人认为自己是好人或者正义使者时，
+>
+> 更可能做出坏事。
+>
+> “人在以正义的名义，
+>
+> 去实施暴力的时候是非常凶狠的，
+>
+> 因为他觉得自己是在捍卫正义。”
 
 ## References
 

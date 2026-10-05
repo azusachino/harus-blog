@@ -8,7 +8,7 @@ slug: week-report-2023-31
 comments: true
 ---
 
-![](/assets/images/2023/08/StartPointLight.jpg){ .post-cover }
+![Cover photo: Start Point Light](/assets/images/2023/08/StartPointLight.jpg){ .post-cover }
 
 <!-- more -->
 

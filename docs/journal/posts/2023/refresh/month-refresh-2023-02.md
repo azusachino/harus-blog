@@ -8,7 +8,7 @@ slug: month-refresh-2023-02
 comments: true
 ---
 
-![](/assets/images/2023/02/AtraniAmalfi.jpg){ .post-cover }
+![Cover photo: Atrani Amalfi](/assets/images/2023/02/AtraniAmalfi.jpg){ .post-cover }
 
 <!-- more -->
 
@@ -43,13 +43,13 @@ comments: true
 
 ## review 2023.02
 
-**学习相关**
+### 学习相关
 
 1. 对外输出近乎为 0
 2. 忘记学习 Linux 内容了。
 3. 基本上都没看完，计划有误
 
-**生活相关**
+### 生活相关
 
 1. 逐渐开始晚睡了，也没能按时起床
 2. 喝水是个好习惯

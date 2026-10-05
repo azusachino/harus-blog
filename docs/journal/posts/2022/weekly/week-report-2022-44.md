@@ -8,7 +8,7 @@ slug: week-report-2022-44
 comments: true
 ---
 
-![](/assets/images/2022/10/Hippopx.jpg){ .post-cover }
+![Cover photo: Hippopx](/assets/images/2022/10/Hippopx.jpg){ .post-cover }
 
 <!-- more -->
 

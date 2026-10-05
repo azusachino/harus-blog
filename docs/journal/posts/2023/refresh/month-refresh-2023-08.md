@@ -8,7 +8,7 @@ slug: month-refresh-2023-08
 comments: true
 ---
 
-![](/assets/images/2023/08/IronwoodCactus.jpg){ .post-cover }
+![Cover photo: Ironwood Cactus](/assets/images/2023/08/IronwoodCactus.jpg){ .post-cover }
 
 <!-- more -->
 
@@ -30,15 +30,15 @@ TODO
 
 ## review 2023.08
 
-**学习相关**
+### 学习相关
 
 1. 基本上没学习啥，脱离比较固定的工作时间周期之后，很多事情就坚持不下去了。
 
-**读书**
+### 读书
 
 - 《万物发明指南》，还算有趣的一本书，我是说叙事风格，深究其内容的话，不太好评价。
 
-**生活相关**
+### 生活相关
 
 1. 在日本的生活开销确实高
 

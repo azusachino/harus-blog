@@ -8,7 +8,7 @@ slug: month-refresh-2026-08
 comments: true
 ---
 
-![](/assets/images/2026/08-magical-mirai.jpeg){ .post-cover }
+![Cover photo: 08 magical mirai](/assets/images/2026/08-magical-mirai.jpeg){ .post-cover }
 
 <!-- more -->
 

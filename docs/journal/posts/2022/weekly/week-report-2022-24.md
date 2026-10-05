@@ -8,7 +8,7 @@ slug: week-report-2022-24
 comments: true
 ---
 
-![](/assets/images/2022/06/MarovoLagoon.jpg){ .post-cover }
+![Cover photo: Marovo Lagoon](/assets/images/2022/06/MarovoLagoon.jpg){ .post-cover }
 
 <!-- more -->
 

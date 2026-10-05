@@ -12,7 +12,7 @@ slug: practice-spring-webflux-websocket
 comments: true
 ---
 
-![](/assets/images/2022/02/Oymyakon.jpg){ .post-cover }
+![Cover photo: Oymyakon](/assets/images/2022/02/Oymyakon.jpg){ .post-cover }
 
 <!-- more -->
 
@@ -83,7 +83,7 @@ public class EchoWebSocketHandler implements WebSocketHandler {
 
 写完 `WebSocketHandler` 之后，还要与指定的 `Route` 进行绑定，类似于 React-Router 的玩法。
 
-**代码演示：**
+代码演示：
 
 ```java
     @Bean

@@ -8,7 +8,7 @@ slug: month-refresh-2025-06
 comments: true
 ---
 
-![](/assets/images/2025/DelicateArch.png){ .post-cover }
+![Cover photo: Delicate Arch](/assets/images/2025/DelicateArch.png){ .post-cover }
 
 <!-- more -->
 

@@ -10,7 +10,7 @@ slug: rocksdb-knowledge-sharing
 comments: true
 ---
 
-![](/assets/images/2025/DunluceIreland.png){ .post-cover }
+![Cover photo: Dunluce Ireland](/assets/images/2025/DunluceIreland.png){ .post-cover }
 
 <!-- more -->
 

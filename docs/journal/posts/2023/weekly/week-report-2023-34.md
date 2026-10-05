@@ -8,7 +8,7 @@ slug: week-report-2023-34
 comments: true
 ---
 
-![](/assets/images/2023/08/DubrovnikHarbor.jpg){ .post-cover }
+![Cover photo: Dubrovnik Harbor](/assets/images/2023/08/DubrovnikHarbor.jpg){ .post-cover }
 
 <!-- more -->
 

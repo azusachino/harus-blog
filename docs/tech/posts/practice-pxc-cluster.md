@@ -10,7 +10,7 @@ slug: practice-pxc-cluster
 comments: true
 ---
 
-![](/assets/images/2021/04/VeniceBeach.jpg){ .post-cover }
+![Cover photo: Venice Beach](/assets/images/2021/04/VeniceBeach.jpg){ .post-cover }
 
 <!-- more -->
 

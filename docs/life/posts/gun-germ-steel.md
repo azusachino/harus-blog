@@ -10,7 +10,7 @@ hide:
   - navigation
 ---
 
-![](/assets/book/2022/ggs.jpg){ .post-cover }
+![Cover photo: ggs](/assets/book/2022/ggs.jpg){ .post-cover }
 
 <!-- more -->
 

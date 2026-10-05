@@ -8,7 +8,7 @@ slug: week-report-2023-28
 comments: true
 ---
 
-![](/assets/images/2023/07/CastelmazzanoSunrise.jpg){ .post-cover }
+![Cover photo: Castelmazzano Sunrise](/assets/images/2023/07/CastelmazzanoSunrise.jpg){ .post-cover }
 
 <!-- more -->
 

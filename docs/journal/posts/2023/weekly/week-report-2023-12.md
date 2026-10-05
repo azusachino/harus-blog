@@ -8,7 +8,7 @@ slug: week-report-2023-12
 comments: true
 ---
 
-![](/assets/images/2023/03/WildAnza.jpg){ .post-cover }
+![Cover photo: Wild Anza](/assets/images/2023/03/WildAnza.jpg){ .post-cover }
 
 <!-- more -->
 
@@ -48,7 +48,7 @@ comments: true
 
 ### 非对称风险
 
-**生活的不平等就意味着财富分配的零和游戏。**
+> 生活的不平等就意味着财富分配的零和游戏。
 
 社会真的进步了吗？我们可能只是从曾经的信息闭塞，进入到了另一种形式的信息【封闭】。
 

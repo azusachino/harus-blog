@@ -26,7 +26,7 @@ description: 我想要的无非是遵从自己的内心去生活, 为什么竟�
 
 The sum of behavior is to retain a man's own dignity without intruding upon others' liberty.
 
-**假如我最终无法继续战斗下去，假如我放弃了，我堕落了，那么我就比那些从未战斗过的人更为恶劣。**
+> 假如我最终无法继续战斗下去，假如我放弃了，我堕落了，那么我就比那些从未战斗过的人更为恶劣。
 
 **我曾七次鄙视自己的灵魂**:
 

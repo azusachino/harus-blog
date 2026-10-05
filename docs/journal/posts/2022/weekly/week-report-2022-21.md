@@ -8,7 +8,7 @@ slug: week-report-2022-21
 comments: true
 ---
 
-![](/assets/images/2022/05/PawneeOwls.jpg){ .post-cover }
+![Cover photo: Pawnee Owls](/assets/images/2022/05/PawneeOwls.jpg){ .post-cover }
 
 <!-- more -->
 

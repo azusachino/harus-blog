@@ -8,7 +8,7 @@ slug: week-report-2022-04
 comments: true
 ---
 
-![](/assets/images/2022/01/PorcupineWillow.jpg){ .post-cover }
+![Cover photo: Porcupine Willow](/assets/images/2022/01/PorcupineWillow.jpg){ .post-cover }
 
 <!-- more -->
 
@@ -42,7 +42,7 @@ comments: true
 
 ### 边际效用
 
-**每增加（减少）一个单位的商品或服务，它对商品或服务的收益增加（减少）的效用。**
+> 每增加（减少）一个单位的商品或服务，它对商品或服务的收益增加（减少）的效用。
 
 从 0 到 1 的边际效用要远大于从 99 到 100 的边际效用。
 

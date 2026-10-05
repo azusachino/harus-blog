@@ -8,7 +8,7 @@ slug: week-report-2024-07
 comments: true
 ---
 
-![](/assets/images/2024/02/BackyardBird.png){ .post-cover }
+![Cover photo: Backyard Bird](/assets/images/2024/02/BackyardBird.png){ .post-cover }
 
 <!-- more -->
 

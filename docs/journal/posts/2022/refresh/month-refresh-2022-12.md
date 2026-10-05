@@ -8,7 +8,7 @@ slug: month-refresh-2022-12
 comments: true
 ---
 
-![](/assets/images/2022/12/startup-start-up-notebooks-creative-fedea35e07f8fcc6b2a67b2eb0e37e97.jpg){ .post-cover }
+![Cover photo: startup start up notebooks creative fedea35e07f8fcc6b2a67b2eb0e37e97](/assets/images/2022/12/startup-start-up-notebooks-creative-fedea35e07f8fcc6b2a67b2eb0e37e97.jpg){ .post-cover }
 
 <!-- more -->
 
@@ -44,7 +44,7 @@ Blue Archive，挺好玩的？也许吧，就游戏模式来说的话，迟早�
 
 ## Conclusion
 
-**放下助人情结，尊重他人命运。**
+> 放下助人情结，尊重他人命运。
 
 最最最基础的生命，被放在天平上衡量的时候，还是有很多人想不起来，该拿出自己的秤，量一量，究竟是 A 重要，还是 B 更重要。
 

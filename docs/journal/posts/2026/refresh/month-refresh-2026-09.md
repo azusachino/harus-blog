@@ -22,19 +22,19 @@ comments: true
   - Even with agent assistance doing heavy lifting on analysis, production release verification underscored an enduring truth: AI can propose approaches and summarize diffs, but it cannot make decisions for you or substitute for grounded system context.
   - A harsh reminder arrived on 09.24: a production issue fired off right while I was standing in line at the Tokyo Immigration Bureau. Test environments never prepare you for 24/7 reality.
 - The personal project front was an explosion of agent-assisted building across nearly a dozen repos:
-  - **Latte (0.0.1 → 0.2.0)**: Built and shipped an entire native Android image client from scratch in Kotlin and Compose. What started as a simple Yande/Moebooru viewer rapidly grew into a full app with Pixiv OAuth, custom tabs authentication, following feeds, favorite tags, paged downloads, R8 hardening, and signed release APKs.
-  - **The KB Stack (Tsuzuri, Luna, Asobi)**:
+  - **[Latte](https://github.com/azusachino/latte) (0.0.1 → 0.2.0)**: Built and shipped an entire native Android image client from scratch in Kotlin and Compose. What started as a simple Yande/Moebooru viewer rapidly grew into a full app with Pixiv OAuth, custom tabs authentication, following feeds, favorite tags, paged downloads, R8 hardening, and signed release APKs.
+  - **The KB Stack ([Tsuzuri](https://github.com/azusachino/tsuzuri), [Luna](https://github.com/azusachino/luna), [Asobi](https://github.com/azusachino/asobi))**:
     - Renamed and flattened `neiro` into `tsuzuri`, publishing 0.8.0 to npm. Stripped out bloated abstractions in favor of a lean core, an explicit operation permission mask, and bulletproof link-rewriting when moving Markdown files.
     - Reworked `luna` around the `pi-coding-agent` embedding SDK. Went on a wild loop through external knowledge tools—testing Wiki.js, Trilium, and SilverBullet—before realizing local Git/Markdown with custom tools wins every time. Hooked Luna straight into Tsuzuri with guarded Apricot vault permissions and post-write formatting hooks.
     - Cut `asobi` 0.8.0 and 0.8.1: decoupled skills out of the graph, added a daemonized shared server, and implemented task leasing for multi-agent workflows.
-    - Cleaned up the personal infra boundary: migrated domain DNS back from `.icu` to `azusachino.com` via Cloudflare, and automated Asobi server deployments on the k3s cluster.
-  - **Iroha & Felicia**:
+    - Cleaned up the personal infra boundary: migrated domain DNS back from `.icu` to `azusachino.com` via Cloudflare, and automated [Asobi](https://github.com/azusachino/asobi) server deployments on [k3s](https://github.com/azusachino/harus-k3s).
+  - **[Iroha](https://github.com/azusachino/iroha) & [Felicia](https://github.com/azusachino/felicia)**:
     - Rebuilt Iroha's ingestion around Health Auto Export (HAE) HTTP endpoints, completely retiring manual JSON exports and bot uploads. Reshaped Grapher into a consolidated daily activity cockpit with KPI cards and route privacy coordinate-rounding.
     - In Felicia, consolidated SQLite `user_version` migrations, cleaned up legacy ADRs, and established clean server-side journey authoring mask ownership.
   - **Trading & Learning Sandboxes**:
-    - Expanded `dandelion` with a strategy agent fleet, supervisor lifecycle, DCA/Grid runners, and smart order routing (SOR) risk gates ahead of spot-grid deployments.
-    - Refactored `calc` into a hands-on LLM learning repo, implementing manual causal attention and a GPT sliding-window dataset from scratch.
-    - Contributed upstream to `animeko`: landed PR #3451 to display original Japanese/native titles across entries and episodes, and architected PR #3472 for an extensible tracker subsystem with AniList sync.
+    - Expanded [`dandelion`](https://github.com/azusachino/dandelion) with a strategy agent fleet, supervisor lifecycle, DCA/Grid runners, and smart order routing (SOR) risk gates ahead of spot-grid deployments.
+    - Refactored [`calc`](https://github.com/azusachino/calc) into a hands-on LLM learning repo, implementing manual causal attention and a GPT sliding-window dataset from scratch.
+    - Contributed upstream to [`animeko`](https://github.com/open-ani/animeko): landed [PR #3451](https://github.com/open-ani/animeko/pull/3451) to display original Japanese/native titles across entries and episodes, and architected [PR #3472](https://github.com/open-ani/animeko/pull/3472) for an extensible tracker subsystem with AniList sync.
 - Media, downtime, and life outside terminal windows:
   - Late-night streams of Dota 2 tournaments (PGL Wallachia Season 9 and BLAST SLAM, watching LGD, Aurora, and Xtreme Gaming).
   - Background soundtracks: Vaundy's Asia Arena Tour live (*Kaiju no Hanauta*), Yorushika's *Hirutobi*, and lo-fi Study with Miku streams (with the animated Sleeping Miku theme installed on Firefox).

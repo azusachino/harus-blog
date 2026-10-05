@@ -8,7 +8,7 @@ slug: week-report-2023-35
 comments: true
 ---
 
-![](/assets/images/2023/09/ManhattanAerial.jpg){ .post-cover }
+![Cover photo: Manhattan Aerial](/assets/images/2023/09/ManhattanAerial.jpg){ .post-cover }
 
 <!-- more -->
 

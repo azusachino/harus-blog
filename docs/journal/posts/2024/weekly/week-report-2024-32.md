@@ -8,7 +8,7 @@ slug: week-report-2024-32
 comments: true
 ---
 
-![](/assets/images/2024/08/three-day-vacation.png){ .post-cover }
+![Cover photo: three day vacation](/assets/images/2024/08/three-day-vacation.png){ .post-cover }
 
 <!-- more -->
 

@@ -8,7 +8,7 @@ slug: week-report-2024-44
 comments: true
 ---
 
-![](/assets/images/2024/nahida.jpg){ .post-cover }
+![Cover photo: nahida](/assets/images/2024/nahida.jpg){ .post-cover }
 
 <!-- more -->
 

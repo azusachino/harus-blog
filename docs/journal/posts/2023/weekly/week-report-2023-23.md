@@ -8,7 +8,7 @@ slug: week-report-2023-23
 comments: true
 ---
 
-![](/assets/images/2023/06/GoliathHeron.jpg){ .post-cover }
+![Cover photo: Goliath Heron](/assets/images/2023/06/GoliathHeron.jpg){ .post-cover }
 
 <!-- more -->
 
@@ -62,7 +62,7 @@ class Solution:
 
 ### 善良的真谛
 
-**「因为没有人还能认得出善良，所有人都觉得那是退让。」**
+### 「因为没有人还能认得出善良，所有人都觉得那是退让。」
 
 我从未决定不再善良，只是决定不再对谁都善良。
 

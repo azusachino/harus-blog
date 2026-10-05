@@ -8,7 +8,7 @@ slug: week-report-2022-37
 comments: true
 ---
 
-![](/assets/images/2022/09/WinterGrand.jpg){ .post-cover }
+![Cover photo: Winter Grand](/assets/images/2022/09/WinterGrand.jpg){ .post-cover }
 
 <!-- more -->
 

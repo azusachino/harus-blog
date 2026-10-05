@@ -8,7 +8,7 @@ slug: week-report-2022-10
 comments: true
 ---
 
-![](/assets/images/2022/03/IPBDMom.jpg){ .post-cover }
+![Cover photo: IPBDMom](/assets/images/2022/03/IPBDMom.jpg){ .post-cover }
 
 <!-- more -->
 

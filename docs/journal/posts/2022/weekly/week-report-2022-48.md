@@ -8,7 +8,7 @@ slug: week-report-2022-48
 comments: true
 ---
 
-![](/assets/images/2022/11/winter-nature-season-trees-a5a7c7b5891ca2a9cd200a39def27b3b.jpg){ .post-cover }
+![Cover photo: winter nature season trees a5a7c7b5891ca2a9cd200a39def27b3b](/assets/images/2022/11/winter-nature-season-trees-a5a7c7b5891ca2a9cd200a39def27b3b.jpg){ .post-cover }
 
 <!-- more -->
 
@@ -43,7 +43,7 @@ comments: true
 > 愿中国青年都摆脱冷气，只是向上走，不必听自暴自弃者的话，能做事的做事，能发声的发声。有一分热，发一分光，就令萤火一般，也可以在黑暗里发一点光，不必等候炬火。此后如竟没有炬火，我便是唯一的光。
 >
 > \- 鲁迅
-
+>
 > 如果你不愿意走在前面，请你跟着队伍。  
 > 如果你不愿意跟着队伍，请你在路边围观。  
 > 如果你不愿意在路边围观，请你在网上呐喊。  

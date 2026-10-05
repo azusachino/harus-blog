@@ -8,7 +8,7 @@ slug: week-report-2024-08
 comments: true
 ---
 
-![](/assets/images/2024/02/AlbaceteSpain.png){ .post-cover }
+![Cover photo: Albacete Spain](/assets/images/2024/02/AlbaceteSpain.png){ .post-cover }
 
 <!-- more -->
 

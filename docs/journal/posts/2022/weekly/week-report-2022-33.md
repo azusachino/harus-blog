@@ -8,7 +8,7 @@ slug: week-report-2022-33
 comments: true
 ---
 
-![](/assets/images/2022/08/ChannelIslandFox.jpg){ .post-cover }
+![Cover photo: Channel Island Fox](/assets/images/2022/08/ChannelIslandFox.jpg){ .post-cover }
 
 <!-- more -->
 

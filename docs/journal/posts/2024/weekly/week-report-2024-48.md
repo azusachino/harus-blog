@@ -8,7 +8,7 @@ slug: week-report-2024-48
 comments: true
 ---
 
-![](/assets/images/2024/mikus.jpeg){ .post-cover }
+![Hatsune Miku illustration](/assets/images/2024/mikus.jpeg){ .post-cover }
 
 <!-- more -->
 

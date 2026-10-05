@@ -8,7 +8,7 @@ slug: week-report-2022-50
 comments: true
 ---
 
-![](/assets/images/2022/12/mountain-landscape-mountains-landscape-steinweg-3c4a787b5f1473f26f31e3234a764984.jpg){ .post-cover }
+![Cover photo: mountain landscape mountains landscape steinweg 3c4a787b5f1473f26f31e3234a764984](/assets/images/2022/12/mountain-landscape-mountains-landscape-steinweg-3c4a787b5f1473f26f31e3234a764984.jpg){ .post-cover }
 
 <!-- more -->
 

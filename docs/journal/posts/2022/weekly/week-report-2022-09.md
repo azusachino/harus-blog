@@ -8,7 +8,7 @@ slug: week-report-2022-09
 comments: true
 ---
 
-![](/assets/images/2022/02/GreatTits.jpg){ .post-cover }
+![Cover photo: Great Tits](/assets/images/2022/02/GreatTits.jpg){ .post-cover }
 
 <!-- more -->
 
