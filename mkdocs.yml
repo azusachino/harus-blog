@@ -67,7 +67,7 @@ extra:
     - icon: fontawesome/solid/infinity
       link: https://harus-note.notion.site/harusDocs-1737242dc8218043a2e0e2fca24a5cd5
     - icon: fontawesome/solid/person-running
-      link: https://azusachino.github.io/running_page/
+      link: https://iroha.azusachino.com
   analytics:
     provider: google
     property: G-59FEKVM9G5
