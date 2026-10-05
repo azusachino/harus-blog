@@ -1,0 +1,8 @@
+[global]
+# Allow long lines (prose), inline HTML (Material tags/divs), and bare/raw URLs (no auto-wrap <...>)
+disable = ["MD013", "MD033", "MD034"]
+respect-gitignore = true
+
+[MD007]
+indent = 2
+style = "fixed"

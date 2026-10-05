@@ -13,7 +13,7 @@ The goal is to move to **MkDocs Material** with the **blog plugin**, replacing t
 
 ## Target layout
 
-```
+```text
 docs/
   index.md                    # landing page (from content/page/about + sidebar copy)
   about.md  cv.md             # static pages (from content/page/)
@@ -54,6 +54,7 @@ scripts/migrate.py            # one-shot content migration script (committed for
 
 - `theme: material` with features: `navigation.tabs`, `navigation.sections`, `navigation.top`, `navigation.indexes`, `content.code.copy`, `toc.follow`, `search.suggest`, palette toggle (light/dark to match current stack look).
 - **Four blog plugin instances** (Material supports listing `blog` multiple times), one per tab, each with its own `blog_dir` and `post_url_format`:
+
   ```yaml
   plugins:
     - search
@@ -64,6 +65,7 @@ scripts/migrate.py            # one-shot content migration script (committed for
     - blog: { blog_dir: reviews, post_dir: "{blog}/posts" }
     - blog: { blog_dir: life, post_dir: "{blog}/posts" }
   ```
+
 - `hooks: [hooks/shortcodes.py]`.
 - `nav:` defines the tabs; `Tech` nests a `Series` section with the four ordered series; `Home/About/CV` as plain pages.
 - Markdown extensions to replicate Hugo features:

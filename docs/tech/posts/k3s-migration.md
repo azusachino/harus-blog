@@ -74,7 +74,7 @@ env:
 
 **Result:** Access any service via its Kubernetes DNS name:
 
-```
+```text
 http://jellyfin.harus-media.svc.cluster.local
 http://grafana.harus-infrastructure.svc.cluster.local
 ```
@@ -103,7 +103,7 @@ http://192.168.1.100:30283  # Immich
 
 I organized services into logical layers:
 
-```
+```text
 00-foundation/          # Namespaces, Tailscale Subnet Router
 01-infrastructure/      # Prometheus, Grafana, Node Exporter, Kite Dashboard
 02-middleware/          # PostgreSQL, MariaDB, Valkey (shared databases)
@@ -348,7 +348,7 @@ containers:
 **Initial attempt:** Set PVCs to ReadWriteMany (RWX)
 **Error message:**
 
-```
+```text
 failed to provision volume: NodePath only supports ReadWriteOnce
 ```
 
@@ -360,7 +360,7 @@ When building my Obsidian notes static site with Quartz:
 
 **Error:**
 
-```
+```text
 Failed to emit from plugin `CustomOgImages`: codepoint 31-20e3 not found in map
 ```
 
@@ -386,7 +386,7 @@ sed -i 's/Plugin\.CustomOgImages/\/\/ Plugin.CustomOgImages/g' quartz.config.ts
 
 One of my favorite setups is the automated Obsidian notes publishing:
 
-```
+```text
 CouchDB (Obsidian LiveSync)
     ↓ (continuous sync - livesync-bridge)
 PVC (markdown files)

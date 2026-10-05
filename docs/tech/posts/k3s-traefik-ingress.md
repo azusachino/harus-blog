@@ -24,7 +24,7 @@ The dual-access networking from last time worked. Tailscale Subnet Router for re
 
 **Annoyance 1: NodePort is ugly.** Every service meant remembering a random high port:
 
-```
+```text
 http://192.168.1.100:30896  # Jellyfin — was it 896 or 968?
 http://192.168.1.100:30453  # Navidrome
 http://192.168.1.100:30500  # Kavita

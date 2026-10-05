@@ -112,7 +112,6 @@ The more you peg your work to some standardized metric, the more you use that me
 
 - **Anytime progress is standardized, a status game is reinforced**.
 - **Mastery is the quest to improve yourself as an end in itself. Comparisons are not made with other people, but only with prior versions of yourself.**
-
 - The evidence of Envy
   - If envy is a recurring problem for you, that means you’re always gauging your progress in relation to the advertised positions of others.
   - If you use a metric to gauge what you work on next, then you’re allowing the validation of others to dictate your intellectual interests.

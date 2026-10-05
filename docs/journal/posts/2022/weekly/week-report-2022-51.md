@@ -44,7 +44,7 @@ From [[HTTP]](browser) to the server and back, still, there are so many things n
 
 ## Recommendation
 
-### [[How to be a happy nihilist  Psyche Guides]]
+### [[How to be a happy nihilist Psyche Guides]]
 
 > The broadest explanation of nihilism argues that life is meaningless and the systems to which we subscribe to give us a sense of purpose – such as religion, politics, traditional family structures or even the notion of absolute truth itself – are fantastical human constructs; inventions to make the randomness of existence feel a little more orderly.
 

@@ -1,4 +1,4 @@
-.PHONY: help local build migrate check format
+.PHONY: help local build migrate check format fmt fmt-check
 
 # Show help when invoked with no target, instead of running the first one.
 .DEFAULT_GOAL := help
@@ -8,7 +8,7 @@ export NO_MKDOCS_2_WARNING := true
 
 help: ## show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
-		| awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-8s\033[0m %s\n", $$1, $$2}'
+		| awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-10s\033[0m %s\n", $$1, $$2}'
 
 local: ## serve the site locally with live reload
 	uv run mkdocs serve --dev-addr 0.0.0.0:1313
@@ -19,7 +19,14 @@ build: ## build the static site (strict)
 migrate: ## (re)generate docs/ from Hugo content
 	uv run python scripts/migrate.py
 
-check: build ## pre-commit gate
+fmt: ## format markdown with rumdl, configs with prettier
+	bunx prettier --write "**/*.{json,yaml,yml}"
+	rumdl fmt .
 
-format: ## format markdown/config with prettier
-	bunx prettier --write .
+format: fmt ## alias for fmt
+
+fmt-check: ## verify formatting without modifying files
+	bunx prettier --check "**/*.{json,yaml,yml}"
+	rumdl fmt --check .
+
+check: fmt-check build ## pre-commit and CI gate

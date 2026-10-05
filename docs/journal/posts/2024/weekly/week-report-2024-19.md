@@ -45,7 +45,6 @@ life is a marathon, not a sprint. Keep learning, happy hacking.
 
 - 当物体处于静止状态时, 只有在外力作用下, 物体才会运动
 - 当物体处于运动状态时, 只有在外力作用下, 物体才会停止
-
 - do 10x times as much
   - https://www.scotthyoung.com/blog/2024/04/16/procrastination-productive/
   - https://www.scotthyoung.com/blog/2023/09/26/10x-rule-ambitious-goals/

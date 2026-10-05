@@ -1,2 +1,4 @@
 .obsidian
 assets
+*.md
+.rumdl_cache
