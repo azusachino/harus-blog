@@ -1,7 +1,7 @@
 ---
 title: How my agent-assisted workstation took shape
 date: 2026-10-08
-description: The context problems behind my stack, the choices I reversed, what works now, and the workflow I still want to develop.
+description: How I prepare context before a task, choose tools and agent skills, borrow from Spec Kit, and keep the results reviewable.
 categories:
   - practice
 slug: my-workstation-workflow-and-stack
@@ -10,11 +10,11 @@ comments: true
 
 In my [September refresh](../../journal/posts/2026/refresh/month-refresh-2026-09.md), I described an uncomfortable gap: agent-assisted projects were moving quickly, while human verification and understanding struggled to keep up. More code was arriving. That did not mean I understood more of it.
 
-The workstation grew out of that gap. I needed to return to a project and know what was happening without reconstructing its entire history. Along the way, I built some useful tools, adopted others, and removed machinery that made the work harder.
+The workstation grew out of that gap. I needed to return to a project and know what was happening without reconstructing its entire history. That pushed context management to the beginning of the task: settle the outcome, find the relevant evidence, choose the tools and skills, and decide what would prove the result. Along the way, I built some useful tools, adopted others, and removed machinery that made the work harder.
 
 ## TL;DR
 
-I keep independent repositories in one workstation, use Nix/Home Manager for the configured machine environment, and let projects own their toolchains and checks. Markdown holds durable knowledge; Asobi carries live tasks; GitHub holds reviewed changes. Pi, Claude Code and Codex work inside that setup, with Herdr available for separate live sessions. A task can have one agent, bounded subagents or assigned peers. The price is explicit synchronization, handoffs and human review. Next, I want less coordination overhead, better end-to-end evidence, and a useful phone companion without handing it control of agent lifetimes.
+Before a task, I define the outcome and assemble a small, current context: owning instructions, relevant decisions, source and verification criteria. Search tools and structured CLI output help me and the agent inspect the same evidence. Selected skills guide particular phases; Spec Kit contributed clarification and consistency checks rather than a second workflow. Independent repos own their toolchains, Markdown holds durable knowledge, Asobi carries live tasks, and GitHub holds reviewed changes. Nix/Home Manager and mise supply the environment; Pi, Claude Code or Codex handles the session, with Herdr available for assigned peers. The costs remain context upkeep and human review. Next, I want easier resumption and stronger end-to-end evidence.
 
 <!-- more -->
 
@@ -29,6 +29,24 @@ Agents made this more visible. A plausible implementation could arrive before I 
 My response was initially to try more infrastructure. Wiki.js looked like a centralized authoring surface. The repository collection used submodules. Shared tool configuration seemed like something to put in the reusable Nix base. These choices all looked orderly. Each also introduced a place where ownership or synchronization could become ambiguous.
 
 I wanted shared context across projects. I did not want every project to become dependent on a new central system just to read its instructions or run its tests.
+
+## Before any task: build the context
+
+I want the preparation to happen even when the change is small. A typo fix does not need a feature specification, but it still needs the right checkout and a way to check the edit. For a larger change, “make this better” needs to become an observable result before an agent starts implementing its own interpretation.
+
+I start by identifying the owner, the paths in scope and the decisions that need my approval. Then I read the owning instructions, check Git, and find the relevant decisions and current work state. A handoff that names yesterday's commit cannot silently outrank today's checkout. An old architectural summary cannot settle a question that the current source contradicts.
+
+Context has layers. Repository rules persist between tasks. A specification or architectural decision explains this task. Source files show the behavior being changed; test failures and logs update the picture during iteration. Conversation history helps me remember the discussion, but its length does not make it authoritative. I try to load what can change the next decision, with links back to the fuller evidence.
+
+The tool and skill choices follow that scope. A retrieval question needs search and source reading. A bug needs reproduction and diagnosis. A UI change needs a rendered artifact, not just a diff. I also establish the acceptance check and reviewer at the beginning, so a convenient green command does not quietly become the definition of success.
+
+### The terminal helps me choose what to read
+
+My shell configuration makes that inspection fairly direct. `zoxide` gets me back to a project; `fd` finds candidate files. Fish helpers combine `fzf` selection with `bat` previews and open the result in Neovim. The `rgi` helper starts with ripgrep matches and jumps to the selected line. Atuin provides searchable command history. For changes, Git's diff and log, Lazygit and Delta help me inspect the actual work; `gh` brings the issue or PR into the same terminal.
+
+An agent can use the same sources without copying my interactive gestures. It searches with `rg`, reads bounded file ranges, inspects `git diff`, and asks `gh` for JSON rather than waiting in a fuzzy picker. `jq` helps select fields; tools such as `dasel` and `xh` are available when the question involves structured configuration or HTTP. The harness's file-reading tool may be a better fit than invoking a shell viewer. A preferred tool list does not override the repository's commands or the session's permissions.
+
+For example, revisiting Felicia's path-aware CI means reading its workflow conditions and the owning PR. It does not require loading every application file. Before changing those conditions, I want to know which check should run for each kind of change and how I will detect a skipped required check. The eventual project command supplies executable evidence; the search tools merely help locate what to inspect.
 
 ## The decision: give the shared layer a smaller job
 
@@ -58,7 +76,7 @@ harus-workstation/
   .tmp/<task>/         # disposable investigation outputs
 ```
 
-For a Felicia task, the context query is `make context NAMES="felicia" ASOBI=1`. It reports the checkout, instruction files and live task state. I then read the owning instructions and check the actual Git branch and revision.
+For a Felicia task, the context query is `make context NAMES="felicia" ASOBI=1`. It reports the checkout, instruction files and live task state. That gives the preparation above a repeatable entry point; it discovers context rather than dumping every project's documentation into the session.
 
 Felicia still owns its Go, SQLite, Svelte and desktop workflow. The blog still owns its Python/MkDocs build. The workstation does not invent another build system above them.
 
@@ -74,6 +92,28 @@ The October 8 [changelog](https://github.com/azusachino/harus-config/blob/f95550
 
 I gave up the appeal of one installer owning everything. In return, a configured application can keep the dependencies its integrations need, while a standalone utility can have a different update policy.
 
+### Adopt useful skills without importing another workstation
+
+A tool executes an operation. A skill gives the agent instructions for approaching a kind of work, usually through a `SKILL.md` file and supporting material. Neither alone defines the whole task. The local playbook supplies the sequence, and the project keeps its own build commands and acceptance rules.
+
+[Matt Pocock's skills](https://github.com/mattpocock/skills/tree/153fc1b93de6584562765cdce299324e1ff9e661) supplied concrete approaches I wanted to reuse. On September 10, I expanded the selection with `codebase-design`, `domain-modeling`, `research`, `resolving-merge-conflicts` and `tdd`. The current selection also includes diagnosis, review and design-challenging skills. `research` asks for primary-source findings; `tdd` works through behavior at agreed public interfaces, one failing test and minimal implementation at a time. `codebase-design` gives us vocabulary for deciding where a module boundary should go.
+
+I did not install Matt's entire setup. Its ticket/spec setup and triage conventions would introduce another set of agent documents and task conventions. Those jobs already had owners here. Local routing also resolves narrower collisions: a domain-modeling skill cannot replace a project's ADR schema, research must land in the right documentation home, and a merge helper cannot stage independent vendor checkouts into root Git.
+
+The selected sources are declared in the catalog and installed with `make skills`. The agent follows local routing and reads the skill needed for its current phase. Other adopted sources contribute context engineering and spec-driven development, while my own [toolbelt skill](https://github.com/azusachino/harus-skills/blob/8ed59dd2f734f3ea400630b25025fc986382728a/skills/toolbelt/SKILL.md) records preferred CLI choices. Loading all of them before every task would bury the relevant instruction in competing advice.
+
+There was a maintenance cost I initially missed. By September 29, Matt's upstream repository was seventeen commits ahead of the reviewed installation, and an unpinned refresh could bring in new instructions without review. I added full-commit pins for third-party sources. A skill update can change agent behavior, so I want to know which version I am asking it to follow.
+
+### Borrow Spec Kit's checks, keep one workflow
+
+On September 14, I put [GitHub Spec Kit](https://github.com/github/spec-kit) on the read-only reference shelf. Its specification-to-implementation sequence overlapped with my existing playbook, and its generated task file would add a second task ledger. I studied the command templates and folded two checks into the sequence I already had.
+
+The first came from its [clarification template](https://github.com/github/spec-kit/blob/adbd62af15f363cbaf1e69e117eb8444d525a0a0/templates/commands/clarify.md): scan for missing requirements, including data lifecycle, error states, dependency failures and completion evidence. Ask at most five questions that would change the design, record the answers, and make remaining assumptions visible. A testable specification can still omit the failure mode that matters.
+
+The second checks the breakdown before implementation: does any acceptance criterion lack a task, does any task lack a requested outcome, and do the two contradict each other? That catches a plan answering a different question while it is still cheap to revise.
+
+This was selective adoption of ideas, not installation of the `specify` CLI or a `/speckit` command pipeline into the workstation. The useful result was a stronger existing playbook, without another authority for specifications or task state. It also means I own the adaptation and must revisit it when the upstream approach or my projects change.
+
 The resulting stack looks like this. Arrows describe support and access, not an automatic orchestration service:
 
 <figure markdown="1" aria-label="Workstation stack and ownership">
@@ -82,7 +122,7 @@ The resulting stack looks like this. Arrows describe support and access, not an 
 flowchart TD
   accTitle: Workstation stack and ownership
   accDescr: Machine tools and coding sessions support independent repositories. Tasks live in Asobi, reasoning in Markdown, and reviewed changes in GitHub. Deployment is a separate explicit action.
-  N["Nix / HM + mise<br/>environment"] --> W["Workstation<br/>context"]
+  N["Nix / HM + mise<br/>environment"] --> W["Workstation<br/>context + skills"]
   W --> P["Project repos<br/>own Git and commands"]
   H["Herdr sessions<br/>Pi / Claude Code<br/>/ Codex"] --> P
   P --> R["GitHub PR<br/>review"]
@@ -133,9 +173,10 @@ For an ordinary development task, I can now follow a change from request to revi
 ```mermaid
 flowchart TD
   accTitle: A task from request to reviewed result
-  accDescr: Read project context, choose an appropriate agent arrangement, edit and check, then review against the intended result. Preserve evidence and separately authorize any publication.
-  Q["Intended result"] --> X["Read context<br/>check Git"]
-  X --> D{"Agent setup?"}
+  accDescr: Define the outcome, assemble current project context, choose tools and phase skills, and establish checks and a reviewer before acting. Choose an appropriate agent arrangement, edit and check, then review the result. Preserve evidence and separately authorize publication.
+  Q["Intended result"] --> X["Scope + context<br/>check Git"]
+  X --> T["Tools + skills<br/>checks + reviewer"]
+  T --> D{"Agent setup?"}
   D --> O["One agent"]
   D --> S["Lead + subagent"]
   D --> H["Assigned peer<br/>in Herdr"]
@@ -151,7 +192,7 @@ flowchart TD
   P -->|"yes"| B["Authorized release<br/>or deployment<br/>+ verification"]
 ```
 
-<figcaption>A task from request to review, with publication as a separate decision.</figcaption>
+<figcaption>Context, tools and acceptance are prepared before the edit; publication is a separate decision.</figcaption>
 </figure>
 
 That loop is a working shape, not a guarantee that every task follows it correctly. It also costs time: someone must define the result, inspect what the tests prove, and review the actual artifact.
@@ -170,7 +211,7 @@ I can point to better-separated responsibilities and shipped capabilities. I can
 
 The next workflow revision should make the assignment and reviewer explicit without demanding multiple agents by default. I want fewer repeated instructions and fewer handoffs whose only purpose is satisfying a process.
 
-A useful test would be whether another session can resume a real task from its recorded checkout, next action and evidence without reconstructing the old conversation. Counting new rules or spawned agents would tell me very little. That refinement is separate work; writing this post does not change the contract underneath it.
+A useful test would be whether another session can resume a real task from its recorded checkout, next action and evidence without reconstructing the old conversation. I also want to notice when context fails: an outdated instruction, a missing decision, or a skill that sends the agent toward the wrong workflow. Those failures tell me what to improve more directly than counting loaded documents or spawned agents. That refinement is separate work; writing this post does not change the contract underneath it.
 
 ### Finish useful journeys, not just more components
 
@@ -203,4 +244,8 @@ The workstation is still being developed through these frictions. Its useful out
 - [Felicia's agent-and-desktop workflow](https://github.com/azusachino/felicia/blob/693862a776281341672bbf8c6c42ba2c03409ba8/docs/research/agent-and-desktop-workflow.md): the proposed design narrative separating headless intake from human visual authoring; the implemented intake change is linked above.
 - [Herdr](https://herdr.dev): the terminal/session layer behind the peer arrangement.
 - [Home Manager](https://nix-community.github.io/home-manager/) and [mise](https://mise.jdx.dev/): the underlying environment and toolchain systems.
+- [harus-config shell helpers](https://github.com/azusachino/harus-config/blob/f95550740b74203c9ab5f9b898c33d6d8a84fb9c/users/haru/fish.nix): the file, search and Git inspection helpers behind the terminal workflow.
+- [Matt Pocock's skills](https://github.com/mattpocock/skills/tree/153fc1b93de6584562765cdce299324e1ff9e661): the reviewed source version for the selectively installed engineering skills.
+- [Spec Kit command templates](https://github.com/github/spec-kit/tree/adbd62af15f363cbaf1e69e117eb8444d525a0a0/templates/commands): reference material for clarification and spec-to-task consistency, adapted into the existing workflow.
+- [Addy Osmani's agent skills](https://github.com/addyosmani/agent-skills/tree/2686b620fc1fed2e8f60c704839c766b8594c6b6): the source of the selected context-engineering and spec-driven-development guidance.
 - [Cappuccino README](https://github.com/azusachino/cappuccino/blob/36f3afecb26e65fe2c3be12c42b4b64f52aef3e5/README.md): current companion implementation and its unverified or unfinished boundaries.
