@@ -1,164 +1,206 @@
 ---
-title: My workstation workflow and stack
+title: How my agent-assisted workstation took shape
 date: 2026-10-08
-description: Independent repos, a shared Nix environment, local Markdown, and choosing how much agent coordination a task needs.
+description: The context problems behind my stack, the choices I reversed, what works now, and the workflow I still want to develop.
 categories:
   - practice
 slug: my-workstation-workflow-and-stack
 comments: true
 ---
 
-Switching projects means remembering more than the code. Which checkout owns the change? Which toolchain does it expect? Where did the last decision go? What did the previous session actually verify?
+In my [September refresh](../../journal/posts/2026/refresh/month-refresh-2026-09.md), I described an uncomfortable gap: agent-assisted projects were moving quickly, while human verification and understanding struggled to keep up. More code was arriving. That did not mean I understood more of it.
 
-My setup grew around those questions: a workstation repository containing independent projects, a shared machine environment, local Markdown knowledge, and coding agents that work through the same project commands I do. The awkward parts have been ownership and review. Adding another tool has sometimes made both worse.
+The workstation grew out of that gap. I needed to return to a project and know what was happening without reconstructing its entire history. Along the way, I built some useful tools, adopted others, and removed machinery that made the work harder.
+
+## TL;DR
+
+I keep independent repositories in one workstation, use Nix/Home Manager for the configured machine environment, and let projects own their toolchains and checks. Markdown holds durable knowledge; Asobi carries live tasks; GitHub holds reviewed changes. Pi, Claude Code and Codex work inside that setup, with Herdr available for separate live sessions. A task can have one agent, bounded subagents or assigned peers. The price is explicit synchronization, handoffs and human review. Next, I want less coordination overhead, better end-to-end evidence, and a useful phone companion without handing it control of agent lifetimes.
 
 <!-- more -->
 
-This is the setup in October 2026. Some of the boundaries changed as recently as October 8; I expect them to change again when they stop helping.
+## The pain: every project had a second job
 
-## One directory, independent repositories
+The first job was building the application. The second was remembering how to work on it.
 
-`harus-workstation` is the starting directory for work across my projects. It contains a catalog rather than a single application:
+A change might start in an application, require a deployment change elsewhere, and touch shared configuration on another machine. The relevant decision could be in a Markdown file, a PR, a task graph or yesterday's agent conversation. A long conversation supplied context, but it also accumulated old assumptions. Opening another session meant figuring out which parts were still true.
+
+Agents made this more visible. A plausible implementation could arrive before I had settled the acceptance criteria. A passing check could be presented as evidence for a behavior it had never exercised. I could spend the time saved on typing in a much longer review loop.
+
+My response was initially to try more infrastructure. Wiki.js looked like a centralized authoring surface. The repository collection used submodules. Shared tool configuration seemed like something to put in the reusable Nix base. These choices all looked orderly. Each also introduced a place where ownership or synchronization could become ambiguous.
+
+I wanted shared context across projects. I did not want every project to become dependent on a new central system just to read its instructions or run its tests.
+
+## The decision: give the shared layer a smaller job
+
+### Keep the knowledge close to the work
+
+On September 24, I returned operational authoring to local Markdown after the Wiki.js experiment. The files already had search, Git diffs and build checks. Putting routine edits through a service added round trips and split the authoring path.
+
+Today `docs/` in the workstation is harus-kb, rendered with Rspress. Project-specific contracts stay in the project. Apricot holds personal Markdown notes and journals; this blog uses MkDocs and Material. These are separate publication and ownership boundaries, even though all three use Markdown.
+
+[Tsuzuri](https://github.com/azusachino/tsuzuri) provides a CLI and TypeScript SDK over the personal vault. It understands Obsidian links, tags and frontmatter without requiring the Obsidian application or a persistent index. Luna, my Telegram secretary built on Bun, grammY and Pi's embedding SDK, uses that interface to read and edit the vault. It leaves changes local for review.
+
+This buys a direct authoring path and inspectable changes. It does not make synchronization disappear. An unpushed commit stays on its machine, and naming, filing and reviewing notes remain work someone has to do.
+
+### Share a starting directory, not a release cycle
+
+On September 29, I replaced the vendor submodules with ordinary independent clones. We had deliberately ignored their moving pointers because the catalog tracked branches. Maintaining a second set of pointers had no useful job.
+
+The private `harus-workstation` repository now provides a catalog and a common entry point:
 
 ```text
 harus-workstation/
-  platform.toml        # projects and useful groupings
+  platform.toml        # catalog and project groups
   vendor/<project>/    # independent Git repositories
-  refs/<category>/     # read-only repositories for study
-  docs/                # operational knowledge: harus-kb
+  refs/<category>/     # read-only source material for study
+  docs/                # workstation and cross-project knowledge
   .agents/skills/      # reusable agent instructions
   .tmp/<task>/         # disposable investigation outputs
 ```
 
-The catalog describes which repositories belong here. Each project still owns its build, tests, architecture and release process. A Go application and a Markdown blog can share a working directory without sharing a dependency graph or a release cycle.
+For a Felicia task, the context query is `make context NAMES="felicia" ASOBI=1`. It reports the checkout, instruction files and live task state. I then read the owning instructions and check the actual Git branch and revision.
 
-For a task in Felicia, my travel-journal project, the entry point is:
+Felicia still owns its Go, SQLite, Svelte and desktop workflow. The blog still owns its Python/MkDocs build. The workstation does not invent another build system above them.
 
-```sh
-make context NAMES="felicia" ASOBI=1
-git -C vendor/felicia status --short
-git -C vendor/felicia branch --show-current
-git -C vendor/felicia rev-parse HEAD
+The cost is deliberate: a root commit cannot reproduce every vendor checkout. Handoffs must record the actual project revisions. That is more useful to me than a parent pointer that nobody was keeping meaningful.
+
+### Let configured applications keep their dependencies
+
+The machine environment also needed a narrower boundary. My Home Manager configuration defines six profiles across macOS, Linux and WSL. The public [harus-config](https://github.com/azusachino/harus-config) base supplies reusable modules; a private consumer chooses devices and personal configuration.
+
+The October 8 [changelog](https://github.com/azusachino/harus-config/blob/f95550740b74203c9ab5f9b898c33d6d8a84fb9c/CHANGELOG.md) records the revisions within that split. A broad Rust-CLI move to mise was followed by restoring application dependencies and shell integrations to Nix. Eza and Tokei were retained, and Yazi kept its supporting helpers. The initial exact-pin/global-lock approach was revised too.
+
+[Version 0.5.0](https://github.com/azusachino/harus-config/releases/tag/v0.5.0) then moved global mise choices into the consumer. The shared base installs mise and shell integration; the consumer decides its global tools and trust roots. Projects choose their runtime versions and lock policy. Rust toolchains remain rustup-owned, and uv or the project's JavaScript package manager handles project dependencies.
+
+I gave up the appeal of one installer owning everything. In return, a configured application can keep the dependencies its integrations need, while a standalone utility can have a different update policy.
+
+The resulting stack looks like this. Arrows describe support and access, not an automatic orchestration service:
+
+<figure markdown="1" aria-label="Workstation stack and ownership">
+
+```mermaid
+flowchart TD
+  accTitle: Workstation stack and ownership
+  accDescr: Machine tools and coding sessions support independent repositories. Tasks live in Asobi, reasoning in Markdown, and reviewed changes in GitHub. Deployment is a separate explicit action.
+  N["Nix / HM + mise<br/>environment"] --> W["Workstation<br/>context"]
+  W --> P["Project repos<br/>own Git and commands"]
+  H["Herdr sessions<br/>Pi / Claude Code<br/>/ Codex"] --> P
+  P --> R["GitHub PR<br/>review"]
+  P -. "reasoning" .-> K["Markdown<br/>durable docs"]
+  P -. "live work" .-> A["Asobi<br/>tasks"]
+  R -->|"explicit deploy"| D["k3s<br/>Traefik / Tailscale"]
 ```
 
-The context command reports the checkout state and the instruction files to read. `ASOBI=1` adds live task state. Those files still need reading; discovering a filename does not load its instructions. For work spanning an application and its deployment repository, I select both, or use a catalog group.
+<figcaption>The shared workstation supports independently owned projects.</figcaption>
+</figure>
 
-The vendor repositories used to be submodules. On September 29 I changed them to ordinary clones. We were deliberately ignoring the moving submodule pointers because the catalog tracked branches, so the pointers supplied bookkeeping without a useful reproducibility guarantee. The root now ignores `vendor/`. A workstation commit records workstation changes; project changes are committed in the project's own Git repository.
+## The trade-off: someone still has to coordinate
 
-That choice has a cost: the root commit alone cannot reproduce every project checkout. A handoff needs the actual project branch and commit. I prefer that explicit record to a parent pointer nobody was maintaining.
+Local files and independent repos reduce central machinery. They also make it harder to hide unfinished coordination behind a dashboard.
 
-## The machine environment and the project toolchain
+[Asobi](https://github.com/azusachino/asobi) carries my live task state. It is a Rust CLI backed by SQLite, with an optional shared graph server. Small search/graph reads locate relevant entities; `show` loads their observation bodies. Current facts such as branch, commit and next action are separate from the historical trail.
 
-My Home Manager configuration defines six device profiles across macOS, Linux and WSL. The reusable foundation is public [harus-config](https://github.com/azusachino/harus-config); a private consumer holds device choices and personal configuration.
+That makes a handoff portable across sessions, provided it records the right facts. A task claim is ownership, not a process launch. A saved revision can go stale. Finished tasks expire, so durable decisions still need to move into an issue, PR or Markdown document.
 
-The division today looks like this:
+The [Asobi 0.8.1 change](https://github.com/azusachino/asobi/pull/41), released September 29, captures the trade-off well. Remote-configured commands now fail during an outage rather than silently writing to a local fallback graph. Work can be blocked, but it no longer appears shared while updates are actually going into a disconnected copy.
 
-| Layer | Tools | Responsibility |
-| --- | --- | --- |
-| Configured machine environment | Nix and Home Manager | Shell, Git, dotfiles, applications and their supporting tools; default runtimes where selected |
-| Global standalone utilities | mise, configured by the consumer | A selected set of CLI binaries and their update policy |
-| Project runtime and tools | Project `.mise.toml` and its lock policy | The versions that this repository expects |
-| Rust toolchains | rustup | Rust compiler/toolchain selection |
-| Project dependencies | uv, Bun or the project's chosen manager | Dependency resolution under that project's declarations and locks |
-| Daily commands | Make | A discoverable entry point to the owning project's operations |
+### More agents can create more work
 
-The split is less tidy than “Nix for everything,” but it answers who changes a version and what might break with it. A standalone utility has different constraints from a binary used by a configured shell preview or editor.
+A second agent can bring a separate context and a useful role. It also brings an assignment, a result to reconcile, and possibly another writer in the same checkout. Adding agents before defining that role just multiplies exploration.
 
-The [harus-config changelog](https://github.com/azusachino/harus-config/blob/f95550740b74203c9ab5f9b898c33d6d8a84fb9c/CHANGELOG.md) makes that distinction painfully concrete. The October 8 changes first moved a broad collection of Rust CLIs into mise, then restored tools whose application integrations needed Nix ownership. Eza and Tokei stayed in Nix; Yazi kept its supporting helpers. The initial exact-pin/global-lock policy was also revised. Describing that first attempt as the final setup would already be wrong.
+I distinguish three arrangements:
 
-[Version 0.5.0](https://github.com/azusachino/harus-config/releases/tag/v0.5.0), released later that day, clarified another boundary: the shared base installs mise and its shell integration, while each consumer owns its global tool manifest and trust roots. A reusable base should not decide which project directories someone else trusts.
+- **One agent owns the task.** It investigates, edits and runs checks, then gives me a reviewable result. This is enough for a bounded task such as researching and writing this article.
+- **A harness subagent answers a separable question.** For example, it can inspect a dependency while the lead handles the change. Its context, tools and filesystem isolation depend on the harness. A separate conversation alone does not guarantee independence.
+- **A Herdr peer has a separate live session.** [Herdr](https://herdr.dev) can address a named agent, submit work, read its output and wait for a reported state. It helps when a role needs its own visible session or explicitly assigned repository. Separate panes still do not make concurrent writes to one checkout safe.
 
-I reach for `rg` and `fd` to find things, `jq` for JSON, and tools such as `xh`, `ast-grep` and `hyperfine` when the task calls for them. Their presence in a configuration is not proof that every machine has activated the same generation. Project commands remain the authority for project requirements.
+Even this article exposed a mismatch in the written workflow. The agent began setting up a separate researcher because the instructions said to delegate broad exploration. I had assigned the blog task to one agent and intended to review it myself. I asked it to finish that task and leave workflow refinement until afterward.
 
-## Where knowledge goes
+I want agent count to follow the assignment. A policy that makes every task a team exercise creates coordination overhead before it has demonstrated a benefit.
 
-Several stores coexist because they hold different kinds of information:
+## The result: a loop I can inspect
 
-| Information | Home |
-| --- | --- |
-| Active task, claim and handoff | Asobi |
-| Acceptance criteria, delivered change and review | Owning GitHub issue or PR |
-| Workstation and cross-repo operational knowledge | `docs/`, rendered with Rspress |
-| Project contracts and design decisions | The project's own repository |
-| Personal notes and journals | Apricot, an Obsidian-compatible Markdown vault |
-| Public writing | This blog, built with MkDocs and Material |
+There are concrete results behind this setup. Tsuzuri [0.8.0](https://github.com/azusachino/tsuzuri/releases/tag/v0.8.0) shipped file operations, permission masks and optional vault extensions. Asobi 0.8.1 shipped the explicit remote boundary. The shared Nix base now has a clearer consumer seam.
 
-The operational KB and the blog use different renderers because they have different jobs. Both keep Markdown as the authoring source. The public post is a deliberate selection from private working knowledge, not an automatic export of it.
+Running services add another boundary. The homelab uses a single-node k3s cluster, Tailscale for private access and Traefik for HTTP routing. Own-source images can be built locally and imported into the node's containerd. That avoids a registry-distribution problem on one node, while keeping the limitation obvious: a single node does not provide distributed availability. A reviewed source change still needs a separately authorized rollout and runtime check.
 
-I tried putting operational authoring through Wiki.js. On September 24 I returned to the local Markdown workflow. Reading and editing through a service added round trips and put a second authoring boundary beside files that already had search, diffs and build checks. That was a judgment about my workflow, not a benchmark proving hosted wikis are bad.
+The same division is appearing in applications. Felicia's [agent intake change](https://github.com/azusachino/felicia/pull/167) feeds a local workspace through its CLI. The human reviews candidates and authors essays in the desktop studio; explicit publication produces a static reader. A fast importer should not decide which memories deserve an essay.
 
-[Tsuzuri](https://github.com/azusachino/tsuzuri) is the file-access layer for personal Markdown: a TypeScript SDK and CLI that understands Obsidian links, tags and frontmatter without requiring the Obsidian application or a persistent index. Moves can rewrite affected links; deletion moves a note into `.trash`; callers can apply permission masks and preview writes. It does not own Git or run a server.
+For an ordinary development task, I can now follow a change from request to review without making the agent transcript the only record:
 
-Luna, my Telegram secretary, uses Bun, grammY and Pi's embedding SDK. Its Tsuzuri integration gives me another interface to the vault. The files remain authoritative, and vault edits stay local for review. Confirming a particular destructive change is separate from granting the bot general access.
+<figure markdown="1" aria-label="A task from request to reviewed result">
 
-## Asobi carries work in progress
+```mermaid
+flowchart TD
+  accTitle: A task from request to reviewed result
+  accDescr: Read project context, choose an appropriate agent arrangement, edit and check, then review against the intended result. Preserve evidence and separately authorize any publication.
+  Q["Intended result"] --> X["Read context<br/>check Git"]
+  X --> D{"Agent setup?"}
+  D --> O["One agent"]
+  D --> S["Lead + subagent"]
+  D --> H["Assigned peer<br/>in Herdr"]
+  O --> E["Bounded edit<br/>focused feedback"]
+  S --> E
+  H --> E
+  E --> G["Stable checkpoint<br/>project checks"]
+  G --> R["Review against<br/>intended result"]
+  R -->|"revise"| E
+  R -->|"accepted"| K["Keep evidence<br/>PR / issue / docs"]
+  K --> P{"Publish requested?"}
+  P -->|"no"| F["Finish / handoff"]
+  P -->|"yes"| B["Authorized release<br/>or deployment<br/>+ verification"]
+```
 
-[Asobi](https://github.com/azusachino/asobi) is a Rust CLI with local SQLite storage and an optional shared graph server. I use the shared graph for live workstation work.
+<figcaption>A task from request to review, with publication as a separate decision.</figcaption>
+</figure>
 
-Its reading model suits agents: search and graph reads return small summaries, while `show` loads the observation bodies for selected entities. Current facts, such as the branch, commit or next action, are key/value truths. Observations hold the trail of what happened.
+That loop is a working shape, not a guarantee that every task follows it correctly. It also costs time: someone must define the result, inspect what the tests prove, and review the actual artifact.
 
-A task claim records ownership. It does not launch an agent. Likewise, a graph entry saying “verified” cannot replace the command result or review it refers to. Before resuming, I compare the recorded revision with the owning Git checkout.
+Recent CI changes reduce some unrelated repetition. [Tsuzuri](https://github.com/azusachino/tsuzuri/pull/124) gives documentation-only PRs a Markdown/spelling lane while pushes to `main` run the full Node matrix and smoke checks. [Felicia](https://github.com/azusachino/felicia/pull/169) also adopted path-aware CI. These changes alter check selection; they do not establish a measured productivity gain.
 
-The [0.8.1 change](https://github.com/azusachino/asobi/pull/41), released September 29, fixed a dangerous convenience: a remote-configured client now fails if the server is unavailable instead of silently writing to a local fallback graph. Otherwise two sessions could believe they were updating shared state while one was working on a disconnected copy.
+The verification work has supplied less flattering results too. Tsuzuri's 0.8.0 release notes record twenty rejection assertions that previously lacked `await`. A passing test run had not actually checked them. In Felicia, headless desktop-composition tests cover useful behavior without driving the native Wails window. Native acceptance remains a separate question.
 
-Asobi also expires idle or finished tasks. Anything worth keeping must move into a PR, issue or Markdown document. Agent transcripts and private memory can help recover context, but they are poor sole owners of a decision other sessions need.
+My first draft of this article also passed the build and GitHub CI. I rejected it because it read like an internal manual and had no TL;DR. Those checks did their job: the Markdown and site built. They could not decide whether the article had a reason to exist.
 
-## One agent, subagents, or Herdr peers?
+I can point to better-separated responsibilities and shipped capabilities. I cannot honestly claim a measured reduction in my review burden yet.
 
-These are different ways to organize work, and a task does not need all of them.
+## What I want to develop next
 
-### One agent owns the task
+### Refine the workflow around the actual task
 
-A single agent can investigate, edit and run the owning checks, then hand the result to me. This article uses that arrangement: one assigned agent researches and writes; I review the draft.
+The next workflow revision should make the assignment and reviewer explicit without demanding multiple agents by default. I want fewer repeated instructions and fewer handoffs whose only purpose is satisfying a process.
 
-It keeps ownership easy to follow. There is no dispatch brief to maintain, no second writer to serialize, and no peer session to clean up. For a bounded task, introducing more agents can create more coordination work than it saves.
+A useful test would be whether another session can resume a real task from its recorded checkout, next action and evidence without reconstructing the old conversation. Counting new rules or spawned agents would tell me very little. That refinement is separate work; writing this post does not change the contract underneath it.
 
-### A subagent handles a bounded question
+### Finish useful journeys, not just more components
 
-Harness-provided subagents are useful for a separable investigation or review: inspect a module, trace a dependency, or compare a proposal with its source. The lead gives a bounded assignment and consumes the result.
+Felicia has CLI intake, a local authoring workspace and static publication. I want the collection-to-publication journey to feel coherent, including the native interactions that headless checks cannot prove. A merged component or another green fixture should not become shorthand for that whole experience.
 
-The benefit depends on whether the work is genuinely separable. A subagent given “help with everything” duplicates the lead's exploration and returns another pile of context. A precise question and a source-backed answer are easier to reconcile.
+For the workstation, the equivalent is a reviewable end-to-end result: the exact artifact, its provenance, the behavior checked, and the limits of the evidence. Faster focused feedback helps only if the final acceptance remains meaningful.
 
-Subagent behavior varies by harness. I need to know whether it has its own context, which tools it can use, and whether it shares a checkout. A separate conversation does not imply isolated files, independent evidence, or permission to make changes.
+### Make the phone a companion to existing agents
 
-### A Herdr peer is a separate live session
+[Cappuccino](https://github.com/azusachino/cappuccino) is the next interface experiment: native Apple and Android clients for agent sessions that already exist in Herdr. The intended payoff is being able to inspect a conversation and understand where attention is needed away from the desk, without a phone client launching or replacing the agent.
 
-[Herdr](https://herdr.dev) manages terminal workspaces and recognizes agent sessions in panes, including Pi, Claude Code and Codex. Its CLI can address a named agent, submit a prompt, read its output and wait for a reported state. That makes a peer visible and directly addressable outside the lead's internal conversation.
+The [current source](https://github.com/azusachino/cappuccino/blob/36f3afecb26e65fe2c3be12c42b4b64f52aef3e5/README.md) contains native clients and read-only bridge routes, but explicitly leaves prompt delivery and approvals unimplemented. Canonical live Pi transcript/stream behavior remains unverified. I want reconnection and session identity to be reliable before describing this as remote control that works.
 
-A peer may be useful for work that needs a distinct session, an explicitly assigned repository, or a reviewer with fresh context. The assignment still needs an outcome, owned paths, required checks and forbidden actions. Two panes pointing at the same vendor checkout do not create two safe writers.
+That work adds another interface and another failure surface. It earns its place only if checking on an existing task becomes easier without changing that task's lifetime or authority.
 
-Herdr manages sessions; Asobi records live work. Neither decides how many agents a task needs. An idle pane is also not proof that its assignment succeeded: the lead must read the returned evidence and account for any unfinished work.
+### Improve recall only when retrieval actually fails
 
-I want the reviewer chosen explicitly. Sometimes that reviewer is me. Extra agents make sense when their distinct role earns the coordination cost, not because “multi-agent” sounds like a more complete workflow.
+Tsuzuri currently works directly on files, with an in-memory scan. Its [later roadmap](https://github.com/azusachino/tsuzuri/blob/ae27321d47360549788bb5d8cec5bcfd21daf91e/docs/roadmap.md) leaves a derived cache and local multilingual embeddings conditional on real use cases and measurements.
 
-## How a task moves through the setup
+That is a direction worth keeping. A slow cold load can justify a disposable cache; repeated Chinese recall failures can justify semantic retrieval. Neither should turn a derived store into the authority for the notes. I want better access to what I already know before building another knowledge system.
 
-For an ordinary change, the sequence is fairly small:
+The workstation is still being developed through these frictions. Its useful output should be work I understand and can review, with enough context left for the next session. If the machinery starts consuming more attention than it returns, another round of subtraction is warranted.
 
-1. Name the outcome and owning repositories. Search existing decisions before inventing a new plan.
-2. Read project context and inspect Git. If resuming, reconcile the task's branch and commit with the checkout.
-3. Make a bounded change. Use relevant format, type and behavior checks while iterating.
-4. At a stable checkpoint, run the owning project's required acceptance checks and state what they cover.
-5. Put the diff and evidence in a reviewable PR. Keep the reviewer and publication decision explicit.
+## References
 
-Make supplies a common entry point, not a universal implementation. This blog's `make check` runs formatting checks and a strict MkDocs build. Tsuzuri validates its package on Node without Bun and has a separate runtime-parity check. Felicia combines Go, SQLite, Svelte and native desktop composition, so its verification has different requirements.
-
-The recent [Tsuzuri CI change](https://github.com/azusachino/tsuzuri/pull/124) gives documentation-only PRs a lightweight Markdown/spelling lane, while pushes to `main` run the full Node matrix and smoke checks. [Felicia adopted path-aware CI too](https://github.com/azusachino/felicia/pull/169). Those are concrete attempts to avoid doing unrelated work during iteration without pretending a narrow check covers the whole system.
-
-A passing report can still prove less than its label suggests. The [Tsuzuri 0.8.0 release notes](https://github.com/azusachino/tsuzuri/releases/tag/v0.8.0) record twenty rejection assertions that previously lacked `await`; a passing test run had not actually checked them. For browser work, Lightpanda can cover DOM interactions where a project adopts it, but screenshots need a rendering browser such as Chromium. Felicia's headless desktop-composition tests do not drive the native Wails window.
-
-I need the evidence to say which revision, environment and behavior were tested. “All green” is too vague when the claim is about something the tests never exercised.
-
-## Running services is a separate step
-
-The homelab uses a single-node k3s cluster, with Tailscale for private access and Traefik for HTTP routing. Public exposure is selected explicitly. My earlier posts on [k3s](k3s-migration.md) and [Traefik ingress](k3s-traefik-ingress.md) describe that part of the setup.
-
-For my own services, a local build can be imported into the node's containerd without publishing an image to a registry. The deployment repository owns image pins and rollout commands. Updating a pin is not proof that the image exists on the node, and a local source check is not proof that the deployed service works.
-
-A merge, a release and a deployment are separate outcomes. Keeping them separate lets a writing task end at a draft PR, or an application change end at review, without an agent treating a successful check as permission to change a running system.
-
-## What I would keep in a smaller setup
-
-Someone starting with two projects probably does not need my catalog, task graph and homelab. I would start with project-owned commands, Markdown decisions, and a clear place to review changes. Add shared machinery when a repeated problem makes its job obvious.
-
-The parts I would preserve are the ownership boundaries: configured applications keep their dependencies together; a project chooses its toolchain; a note interface leaves files in charge; an agent's output has a named reviewer. Recent changes removed unused submodule pointers and moved a global tool manifest to the repo that actually owns it. I would rather keep doing that kind of subtraction than turn every task into an orchestration exercise.
+- [Monthly refresh, September 2026](../../journal/posts/2026/refresh/month-refresh-2026-09.md): the original reflection on agent velocity, verification and understanding.
+- [harus-config changelog](https://github.com/azusachino/harus-config/blob/f95550740b74203c9ab5f9b898c33d6d8a84fb9c/CHANGELOG.md): the tool-ownership reversals, including the global mise boundary in 0.5.0.
+- [Asobi 0.8.1 PR](https://github.com/azusachino/asobi/pull/41): fail-closed remote behavior, target reporting and the limits of its verification.
+- [Tsuzuri 0.8.0 release](https://github.com/azusachino/tsuzuri/releases/tag/v0.8.0): file operations, host permission masks, portable runtime checks and the corrected assertions.
+- [Felicia's agent-and-desktop workflow](https://github.com/azusachino/felicia/blob/693862a776281341672bbf8c6c42ba2c03409ba8/docs/research/agent-and-desktop-workflow.md): the proposed design narrative separating headless intake from human visual authoring; the implemented intake change is linked above.
+- [Herdr](https://herdr.dev): the terminal/session layer behind the peer arrangement.
+- [Home Manager](https://nix-community.github.io/home-manager/) and [mise](https://mise.jdx.dev/): the underlying environment and toolchain systems.
+- [Cappuccino README](https://github.com/azusachino/cappuccino/blob/36f3afecb26e65fe2c3be12c42b4b64f52aef3e5/README.md): current companion implementation and its unverified or unfinished boundaries.
