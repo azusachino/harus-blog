@@ -22,6 +22,10 @@ const ratio = (a: string, b: string) => {
   return (hi + 0.05) / (lo + 0.05);
 };
 
+// The light footer is 18% --glow over --bg in sRGB, the same mix as Base.astro.
+const mix = (a: string, b: string, t: number) =>
+  '#' + [1, 3, 5].map((i) => Math.round(parseInt(a.slice(i, i + 2), 16) * t + parseInt(b.slice(i, i + 2), 16) * (1 - t)).toString(16).padStart(2, '0')).join('');
+
 const palettes = ['teal', ...[...blocks.keys()].flatMap((s) => /^:root\[data-palette="([\w-]+)"\]$/.exec(s)?.[1] ?? [])];
 const root = blocks.get(':root') ?? {};
 const dark = blocks.get(':root[data-theme="dark"]') ?? {};
@@ -31,19 +35,25 @@ for (const p of palettes) {
   const light = { ...root, ...blocks.get(`:root[data-palette="${p}"]`) };
   const night = { ...root, ...dark, ...blocks.get(`:root[data-palette="${p}"]`), ...blocks.get(`:root[data-theme="dark"][data-palette="${p}"]`) };
   for (const [mode, t] of [['light', light], ['dark', night]] as const) {
+    t.wash = mix(t.glow, t.bg, 0.18);
     const pairs: [string, string, string][] = [
       ['ink', 'bg', 'body text'], ['ink', 'surface', 'card text'],
       ['muted', 'bg', 'meta text'], ['muted', 'surface', 'card meta'],
       ['primary', 'bg', 'links'], ['primary', 'surface', 'card links'],
       ['accent', 'bg', 'badges'], ['accent', 'surface', 'card badges'],
       ['on-accent', 'accent', 'badge label'],
-      // Footer band: ink on glow in light mode, glow on surface in dark.
-      mode === 'light' ? ['on-glow', 'glow', 'footer'] : ['glow', 'surface', 'footer'],
+      // Footer: ink on the glow wash in light mode, ink on surface in dark.
+      mode === 'light' ? ['ink', 'wash', 'footer'] : ['ink', 'surface', 'footer'],
+      mode === 'light' ? ['primary', 'wash', 'footer focus ring'] : ['primary', 'surface', 'footer focus ring'],
     ];
     // The "ID" mark and favicon always use --on-glow ink on --glow, in both modes.
     pairs.push(['on-glow', 'glow', 'ID mark']);
     // Graphics need 3:1 (WCAG 1.4.11): lit piano keys against unlit white keys.
-    const graphics: [string, string, string][] = [['accent', 'key-white', 'lit piano key']];
+    const graphics: [string, string, string][] = [
+      ['accent', 'key-white', 'lit piano key'],
+      // Penlights are --accent on the footer.
+      mode === 'light' ? ['accent', 'wash', 'penlight'] : ['accent', 'surface', 'penlight'],
+    ];
     for (const [list, min] of [[pairs, 4.5], [graphics, 3]] as const) {
       for (const [fg, bg, use] of list) {
         const r = ratio(t[fg], t[bg]);

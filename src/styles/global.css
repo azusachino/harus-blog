@@ -42,50 +42,50 @@
    primary/glow/soft/accent change. `make astro-check` verifies every
    palette against AA in both modes; keep the property names as they are. */
 :root[data-palette="sakura"] {
-  --primary: #a3245e;
-  --glow: #f49ac1;
-  --soft: #f9c9dc;
-  --accent: #2e7d4f;
+  --primary: #9f356a;
+  --glow: #ee99bd;
+  --soft: #fdd0e1;
+  --accent: #018039;
   --on-accent: #ffffff;
 }
 
 :root[data-theme="dark"][data-palette="sakura"] {
-  --primary: #ff9fca;
-  --glow: #f49ac1;
-  --soft: #f9c9dc;
-  --accent: #7ad7a0;
+  --primary: #f995c1;
+  --glow: #ee99bd;
+  --soft: #fdd0e1;
+  --accent: #61cb7c;
   --on-accent: #1b1e21;
 }
 
 :root[data-palette="snow"] {
-  --primary: #1d5b94;
-  --glow: #7cc7f2;
-  --soft: #c3e6fb;
-  --accent: #6a3fc0;
+  --primary: #006b96;
+  --glow: #6ac2f3;
+  --soft: #bce5fe;
+  --accent: #854de7;
   --on-accent: #ffffff;
 }
 
 :root[data-theme="dark"][data-palette="snow"] {
-  --primary: #8fd0ff;
-  --glow: #7cc7f2;
-  --soft: #c3e6fb;
-  --accent: #c4a7ff;
+  --primary: #5dc6ff;
+  --glow: #6ac2f3;
+  --soft: #bce5fe;
+  --accent: #b89ffe;
   --on-accent: #1b1e21;
 }
 
 :root[data-palette="sunset"] {
-  --primary: #9a4300;
-  --glow: #ffa53c;
-  --soft: #ffd29a;
-  --accent: #c2185b;
+  --primary: #8d5300;
+  --glow: #e8a868;
+  --soft: #f8d7b9;
+  --accent: #d7145e;
   --on-accent: #ffffff;
 }
 
 :root[data-theme="dark"][data-palette="sunset"] {
-  --primary: #ffb468;
-  --glow: #ffa53c;
-  --soft: #ffd29a;
-  --accent: #ff6fa8;
+  --primary: #f3a758;
+  --glow: #e8a868;
+  --soft: #f8d7b9;
+  --accent: #ff869f;
   --on-accent: #1b1e21;
 }
 

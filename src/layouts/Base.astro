@@ -91,20 +91,21 @@ const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
 </html>
 
 <style>
-  /* A color band like the next track sliding in: --glow with ink in light
-     mode, charcoal with a glow edge in dark. contrast.ts checks both. */
+  /* A quiet band: a light wash of the palette (18% --glow in the page
+     background) with a --glow edge in light mode, charcoal with the same edge
+     in dark. A full --glow fill made the penlights vibrate. The mix is plain
+     sRGB so contrast.ts can compute the same color. */
   .site-footer {
     text-align: center;
     padding: 1.6rem 1rem 2rem;
     font-size: 0.8rem;
-    background: var(--glow);
-    color: var(--on-glow);
+    background: color-mix(in srgb, var(--glow) 18%, var(--bg));
+    color: var(--ink);
+    border-top: 2px solid var(--glow);
   }
 
   :global(:root[data-theme='dark']) .site-footer {
     background: var(--surface);
-    color: var(--ink);
-    border-top: 2px solid var(--glow);
   }
 
   .site-footer a {
@@ -112,11 +113,7 @@ const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
   }
 
   .site-footer :focus-visible {
-    outline-color: var(--on-glow);
-  }
-
-  :global(:root[data-theme='dark']) .site-footer :focus-visible {
-    outline-color: var(--glow);
+    outline-color: var(--primary);
   }
 
   .sign {

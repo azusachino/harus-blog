@@ -19,15 +19,22 @@ const sticks = 11;
   (() => {
     const lights = document.querySelector('[data-penlights]');
     const status = document.querySelector('[data-call-status]');
+    // The piano answers with the crowd: its chord keys press in time with the sway.
+    const piano = document.querySelector('[data-piano]');
     let timer;
     document.querySelector('[data-call]')?.addEventListener('click', () => {
       lights.classList.remove('on');
+      piano?.removeAttribute('data-playing');
       void lights.offsetWidth; // restart the animation on repeat answers
       lights.classList.add('on');
+      piano?.setAttribute('data-playing', '');
       status.textContent = 'Penlights up!';
       // A timer, not animationend: under reduced motion nothing animates.
       clearTimeout(timer);
-      timer = setTimeout(() => lights.classList.remove('on'), 2900);
+      timer = setTimeout(() => {
+        lights.classList.remove('on');
+        piano?.removeAttribute('data-playing');
+      }, 2900);
     });
   })();
 </script>
@@ -52,8 +59,9 @@ const sticks = 11;
     height: 2.6rem;
     margin-top: 0.4rem;
     border-radius: 4px 4px 2px 2px;
-    background: var(--key-white);
-    --halo: rgb(255 255 255 / 0.75);
+    /* Same look in both modes, and the same --accent as the piano's lit keys. */
+    background: var(--accent);
+    --halo: color-mix(in oklab, var(--accent) 70%, transparent);
     transform: translateY(110%);
     transform-origin: 50% 100%;
   }
@@ -66,11 +74,6 @@ const sticks = 11;
     height: 0.6rem;
     border-radius: 0 0 2px 2px;
     background: var(--on-glow);
-  }
-
-  :global(:root[data-theme='dark']) .penlights i {
-    background: var(--glow);
-    --halo: color-mix(in oklab, var(--glow) 70%, transparent);
   }
 
   /* The halo only while raised, so nothing leaks above the edge at rest. */
