@@ -24,7 +24,7 @@ const posts = (dir: string) =>
 const use = defineCollection({
   loader: file('src/data/use.yaml'),
   schema: z.object({
-    group: z.enum(['dev', 'devices', 'subscriptions']),
+    group: z.enum(['dev', 'devices', 'desk-audio', 'subscriptions']),
     kind: z.string(),
     name: z.string(),
     url: z.url().optional(),
@@ -32,10 +32,11 @@ const use = defineCollection({
   }),
 });
 
-const now = defineCollection({
-  loader: file('src/data/now.yaml'),
+const currently = defineCollection({
+  loader: file('src/data/currently.yaml'),
   schema: z.object({
-    label: z.string(),
+    section: z.enum(['play', 'practice', 'read-watch']),
+    kind: z.string(),
     value: z.string(),
     detail: z.string().optional(),
     url: z.url().optional(),
@@ -66,6 +67,6 @@ export const collections = {
   journal: posts('journal'),
   life: posts('life'),
   use,
-  now,
+  currently,
   playlist,
 };

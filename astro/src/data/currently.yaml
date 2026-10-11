@@ -1,0 +1,33 @@
+# Hand-edited status for /currently, grouped by section (play, practice,
+# read-watch). Listen is the playlist (playlist.yaml); Build is GitHub.
+# Bump `updated` when an entry changes. Seeded from
+# journal/posts/2026/refresh/month-refresh-2026-09.md.
+- id: maimai
+  section: play
+  kind: Arcade
+  value: Maimai
+  detail: An hour at the arcade until the arms give out.
+  updated: 2026-09-30
+- id: genshin
+  section: play
+  kind: Game
+  value: Genshin Impact
+  detail: Fontaine Archon Quest chapter 4 cleared.
+  updated: 2026-09-30
+- id: dota
+  section: play
+  kind: Esports
+  value: Dota 2 tournaments
+  detail: PGL Wallachia Season 9 and BLAST SLAM — LGD, Aurora, Xtreme Gaming.
+  updated: 2026-09-30
+- id: piano
+  section: practice
+  kind: Piano
+  value: Learning
+  updated: 2026-09-30
+- id: manga
+  section: read-watch
+  kind: Manga
+  value: Raw manga
+  detail: Quiet evenings.
+  updated: 2026-09-30

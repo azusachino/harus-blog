@@ -33,8 +33,10 @@ export function day(date: Date) {
 // otherwise guess from the body: more kana than Han -> ja (Chinese posts
 // quoting Japanese lyrics stay zh-CN), mostly Han -> zh-CN.
 export function postLang(post: Post) {
-  if (post.data.lang) return post.data.lang;
-  const body = post.body ?? '';
+  return post.data.lang ?? textLang(post.body ?? '');
+}
+
+export function textLang(body: string) {
   const kana = (body.match(/[぀-ヿ]/g) ?? []).length;
   const han = (body.match(/[㐀-鿿]/g) ?? []).length;
   const words = (body.match(/[A-Za-z]+/g) ?? []).length;

@@ -10,7 +10,10 @@ const lists = await Promise.all(SECTIONS.map(async (s) => ({ section: s, posts: 
 const latest = lists
   .map(({ section, posts }) => ({ section, post: posts[0] }))
   .sort((a, b) => b.post.data.date.getTime() - a.post.data.date.getTime())[0];
-const now = (await getCollection('now')).slice(0, 3);
+// One entry per section for the Home strip.
+const currently = Object.values(
+  Object.fromEntries((await getCollection('currently')).reverse().map((e) => [e.data.section, e])),
+);
 const names = { tech: 'Tech', journal: 'Journal', life: 'Life' };
 ---
 <Base title="Home">
@@ -36,16 +39,16 @@ const names = { tech: 'Tech', journal: 'Journal', life: 'Life' };
     ))}
   </div>
 
-  <div class="now-strip">
+  <div class="currently-strip">
     <section>
-      <h2><a href="/now/">On repeat</a></h2>
+      <h2><a href="/currently/#listen">On repeat</a></h2>
       <Playlist limit={3} />
     </section>
     <section>
-      <h2><a href="/now/">Now</a></h2>
+      <h2><a href="/currently/">Currently</a></h2>
       <ul>
-        {now.map(({ data }) => (
-          <li><span class="eyebrow">{data.label}</span> {data.value}</li>
+        {currently.map(({ data }) => (
+          <li><span class="eyebrow">{data.kind}</span> {data.value}</li>
         ))}
       </ul>
     </section>
@@ -87,7 +90,7 @@ const names = { tech: 'Tech', journal: 'Journal', life: 'Life' };
   }
 
   .sections h2 a,
-  .now-strip h2 a {
+  .currently-strip h2 a {
     color: var(--ink);
     text-decoration: none;
   }
@@ -100,14 +103,14 @@ const names = { tech: 'Tech', journal: 'Journal', life: 'Life' };
     grid-column: 2;
   }
 
-  .now-strip {
+  .currently-strip {
     margin-top: 3.5rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
     gap: 2.5rem;
   }
 
-  .now-strip ul {
+  .currently-strip ul {
     list-style: none;
     padding: 0;
     margin: 0;
