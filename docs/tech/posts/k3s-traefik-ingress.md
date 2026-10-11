@@ -5,9 +5,9 @@ description: The one where I eat my own words about "no fancy ingress."
 categories:
   - practice
 tags:
-  - Kubernetes
-  - Traefik
-  - Tailscale
+  - kubernetes
+  - traefik
+  - tailscale
 slug: k3s-traefik-ingress
 comments: true
 ---
