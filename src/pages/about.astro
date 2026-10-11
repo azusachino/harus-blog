@@ -124,9 +124,11 @@ const reproaches = [
 
   <section class="rules" aria-labelledby="rules">
     <div class="rules-inner">
-      <p class="eyebrow">Life-long rules</p>
-      <h2 id="rules">The sum of behavior is to retain a man's own dignity without intruding upon others' liberty.</h2>
-      <blockquote lang="zh-CN">假如我最终无法继续战斗下去，假如我放弃了，我堕落了，那么我就比那些从未战斗过的人更为恶劣。</blockquote>
+      <h2 id="rules">Life-long rules</h2>
+      <ul class="statements">
+        <li>The sum of behavior is to retain a man's own dignity without intruding upon others' liberty.</li>
+        <li lang="zh-CN">假如我最终无法继续战斗下去，假如我放弃了，我堕落了，那么我就比那些从未战斗过的人更为恶劣。</li>
+      </ul>
       <p class="seven-title" lang="zh-CN">我曾七次鄙视自己的灵魂</p>
       <ol class="seven" lang="zh-CN">
         {reproaches.map((line, i) => (
@@ -292,18 +294,24 @@ const reproaches = [
   }
 
   .rules h2 {
-    font-size: clamp(1.35rem, 1.1rem + 1vw, 1.8rem);
-    line-height: 1.45;
-    margin: 0.4rem 0 1.6rem;
+    margin: 0 0 1.4rem;
   }
 
-  .rules blockquote {
-    margin: 0 0 2.2rem;
-    padding: 0.4rem 0 0.4rem 1.2rem;
-    border-left: 4px solid var(--accent);
-    font-size: 1.2rem;
-    line-height: 1.9;
-    font-weight: 500;
+  /* The two rules: equal weight, one style. */
+  .statements {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2.4rem;
+    display: grid;
+    gap: 1.2rem;
+  }
+
+  .statements li {
+    padding: 0.3rem 0 0.3rem 1.2rem;
+    border-left: 4px solid var(--glow);
+    font-size: clamp(1.15rem, 1rem + 0.6vw, 1.4rem);
+    font-weight: 600;
+    line-height: 1.7;
   }
 
   .seven-title {
@@ -333,7 +341,7 @@ const reproaches = [
   }
 
   .n {
-    color: var(--accent);
+    color: var(--primary);
     font-weight: 700;
   }
 
