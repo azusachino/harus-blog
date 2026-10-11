@@ -26,3 +26,4 @@ __pycache__/
 astro/node_modules/
 astro/dist/
 astro/.astro/
+!astro/public/
