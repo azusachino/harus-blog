@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import Playlist from '../components/Playlist.astro';
 import Sequencer from '../components/Sequencer.astro';
 import Waveform from '../components/Waveform.astro';
 import { githubActivity } from '../lib/github';
@@ -11,9 +12,9 @@ const updated = new Date(Math.max(...entries.map((e) => e.data.updated.getTime()
 const gh = await githubActivity();
 ---
 <Base title="Now" description="What I'm playing, practicing, reading and building right now.">
-  <p class="eyebrow">Now playing · updated {day(updated)}</p>
+  <p class="eyebrow">Status · updated {day(updated)}</p>
   <h1>Now</h1>
-  <p class="muted">手上在玩、在练、在读、在写的东西。</p>
+  <p class="muted">What I'm playing, practicing, reading and building.</p>
   <Waveform seed="now" />
 
   <ul class="deck">
@@ -26,6 +27,11 @@ const gh = await githubActivity();
       </li>
     ))}
   </ul>
+
+  <section class="repeat" aria-labelledby="on-repeat">
+    <h2 id="on-repeat">On repeat</h2>
+    <Playlist />
+  </section>
 
   <section aria-labelledby="building">
     <h2 id="building">Building</h2>
@@ -73,6 +79,11 @@ const gh = await githubActivity();
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
     gap: 1rem;
+  }
+
+  .repeat {
+    max-width: 36rem;
+    margin-bottom: 3rem;
   }
 
   .deck .card {

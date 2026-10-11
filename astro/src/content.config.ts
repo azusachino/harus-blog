@@ -11,6 +11,7 @@ const post = z.object({
   categories: z.array(z.string()).default([]),
   tags: z.array(z.string()).optional(),
   slug: z.string(),
+  lang: z.string().optional(),
   comments: z.boolean().default(false),
 });
 
@@ -27,10 +28,6 @@ const use = defineCollection({
     kind: z.string(),
     name: z.string(),
     url: z.url().optional(),
-    since: z.coerce.date().optional(),
-    price: z.string().optional(),
-    renews: z.string().optional(),
-    until: z.coerce.date().optional(),
     note: z.string().optional(),
   }),
 });
@@ -46,10 +43,29 @@ const now = defineCollection({
   }),
 });
 
+const playlist = defineCollection({
+  loader: file('src/data/playlist.yaml'),
+  schema: z.object({
+    title: z.string(),
+    artist: z.string(),
+    url: z.url().optional(),
+    note: z.string().optional(),
+    added: z.coerce.date(),
+  }),
+});
+
+// Standalone pages (About, CV) rendered as they are.
+const pages = defineCollection({
+  loader: glob({ base: '../docs', pattern: ['about.md', 'cv.md'] }),
+  schema: z.object({ title: z.string(), description: z.string().optional() }),
+});
+
 export const collections = {
+  pages,
   tech: posts('tech'),
   journal: posts('journal'),
   life: posts('life'),
   use,
   now,
+  playlist,
 };

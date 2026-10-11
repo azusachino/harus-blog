@@ -13,7 +13,7 @@ const site = 'Idealistic Daydreamer';
 const full = title === site ? site : `${title} - ${site}`;
 ---
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,7 +35,7 @@ const full = title === site ? site : `${title} - ${site}`;
       <slot />
     </main>
     <footer class="site-footer">
-      <span class="mono">♪ palette gives you the capability, but you're the source of possibility.</span>
+      <span class="mono">♪ Idealistic Daydreamer · haru · <a href="https://github.com/azusachino">GitHub</a></span>
     </footer>
     <script is:inline>
       document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {

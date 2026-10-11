@@ -1,0 +1,28 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Waveform from './Waveform.astro';
+
+interface Props {
+  id: 'about' | 'cv';
+}
+const entry = (await getEntry('pages', Astro.props.id))!;
+const { Content } = await render(entry);
+---
+<Base title={entry.data.title} description={entry.data.description}>
+  <article class="page">
+    <h1>{entry.data.title}</h1>
+    {entry.data.description && <p class="muted">{entry.data.description}</p>}
+    <Waveform seed={entry.data.title} />
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</Base>
+
+<style>
+  .page {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+</style>

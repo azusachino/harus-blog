@@ -10,11 +10,6 @@
   value: Dota 2 tournaments
   detail: PGL Wallachia Season 9 and BLAST SLAM — LGD, Aurora, Xtreme Gaming.
   updated: 2026-09-30
-- id: listening
-  label: Listening
-  value: Vaundy, Yorushika
-  detail: Kaiju no Hanauta (Asia Arena Tour live), Hirutobi, and Study with Miku streams.
-  updated: 2026-09-30
 - id: piano
   label: Piano
   value: Learning

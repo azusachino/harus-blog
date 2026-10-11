@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import Playlist from '../components/Playlist.astro';
 import PostList from '../components/PostList.astro';
 import Waveform from '../components/Waveform.astro';
 import { day, href, published, SECTIONS, trackLength } from '../lib/posts';
@@ -17,11 +18,11 @@ const names = { tech: 'Tech', journal: 'Journal', life: 'Life' };
     <p class="eyebrow">Idealistic Daydreamer</p>
     <h1>palette gives you the capability,<br />but you're the source of possibility.</h1>
     <Waveform seed="idealistic-daydreamer" bars={64} />
-    <p class="muted">99% 的理论 + 1% 的实践 = me</p>
+    <p class="muted" lang="zh-CN">99% 的理论 + 1% 的实践 = me</p>
   </section>
 
-  <a class="playing card" href={href(latest.section, latest.post)}>
-    <span class="eyebrow">▶ Now playing · {names[latest.section]}</span>
+  <a class="release card" href={href(latest.section, latest.post)}>
+    <span class="eyebrow">New release · {names[latest.section]}</span>
     <span class="title">{latest.post.data.title}</span>
     <span class="mono muted">{day(latest.post.data.date)} · ♪ {trackLength(latest.post.body)}</span>
   </a>
@@ -35,14 +36,20 @@ const names = { tech: 'Tech', journal: 'Journal', life: 'Life' };
     ))}
   </div>
 
-  <section class="now-strip">
-    <h2><a href="/now/">Now</a></h2>
-    <ul>
-      {now.map(({ data }) => (
-        <li><span class="eyebrow">{data.label}</span> {data.value}</li>
-      ))}
-    </ul>
-  </section>
+  <div class="now-strip">
+    <section>
+      <h2><a href="/now/">On repeat</a></h2>
+      <Playlist limit={3} />
+    </section>
+    <section>
+      <h2><a href="/now/">Now</a></h2>
+      <ul>
+        {now.map(({ data }) => (
+          <li><span class="eyebrow">{data.label}</span> {data.value}</li>
+        ))}
+      </ul>
+    </section>
+  </div>
 </Base>
 
 <style>
@@ -55,7 +62,7 @@ const names = { tech: 'Tech', journal: 'Journal', life: 'Life' };
     max-width: 34ch;
   }
 
-  .playing {
+  .release {
     display: grid;
     gap: 0.2rem;
     margin: 2rem 0 3rem;
@@ -64,11 +71,11 @@ const names = { tech: 'Tech', journal: 'Journal', life: 'Life' };
     border-left: 4px solid var(--accent);
   }
 
-  .playing:hover {
+  .release:hover {
     border-color: var(--glow);
   }
 
-  .playing .title {
+  .release .title {
     font-size: 1.3rem;
     font-weight: 700;
   }
@@ -95,13 +102,16 @@ const names = { tech: 'Tech', journal: 'Journal', life: 'Life' };
 
   .now-strip {
     margin-top: 3.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    gap: 2.5rem;
   }
 
   .now-strip ul {
     list-style: none;
     padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem 2rem;
+    margin: 0;
+    display: grid;
+    gap: 0.6rem;
   }
 </style>

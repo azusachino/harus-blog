@@ -3,7 +3,7 @@ import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Comments from '../../components/Comments.astro';
 import Waveform from '../../components/Waveform.astro';
-import { day, href, published, SECTIONS, trackLength } from '../../lib/posts';
+import { day, href, postLang, published, SECTIONS, trackLength } from '../../lib/posts';
 
 export async function getStaticPaths() {
   const paths = [];
@@ -26,7 +26,7 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
 const sectionName = section[0].toUpperCase() + section.slice(1);
 ---
 <Base title={post.data.title} description={post.data.description} progress>
-  <article class="post">
+  <article class="post" lang={postLang(post)}>
     <header>
       <p class="eyebrow">
         <a href={`/${section}/`}>{sectionName}</a>
@@ -84,6 +84,13 @@ const sectionName = section[0].toUpperCase() + section.slice(1);
     gap: 0.8rem;
     align-items: baseline;
     margin: 0 0 0.4rem;
+  }
+
+  .post {
+    /* Center body + TOC as one block; otherwise wide screens leave the
+       spare width all on the right. */
+    max-width: calc(var(--measure) + 18rem);
+    margin-inline: auto;
   }
 
   .layout {

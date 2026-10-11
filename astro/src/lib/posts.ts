@@ -28,3 +28,17 @@ export function trackLength(body = '') {
 export function day(date: Date) {
   return date.toISOString().slice(0, 10);
 }
+
+// Article language for the `lang` attribute: frontmatter `lang` wins,
+// otherwise guess from the body: more kana than Han -> ja (Chinese posts
+// quoting Japanese lyrics stay zh-CN), mostly Han -> zh-CN.
+export function postLang(post: Post) {
+  if (post.data.lang) return post.data.lang;
+  const body = post.body ?? '';
+  const kana = (body.match(/[぀-ヿ]/g) ?? []).length;
+  const han = (body.match(/[㐀-鿿]/g) ?? []).length;
+  const words = (body.match(/[A-Za-z]+/g) ?? []).length;
+  if (kana > 20 && kana > han) return 'ja';
+  if (han > words) return 'zh-CN';
+  return 'en';
+}

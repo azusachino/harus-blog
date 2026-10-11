@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content';
+import { readFileSync } from 'node:fs';
+
+interface Props {
+  limit?: number;
+}
+const { limit } = Astro.props;
+// Keep the hand-curated file order (newest first); collections don't
+// guarantee it, and tracks often share an `added` date.
+const order = [...readFileSync('src/data/playlist.yaml', 'utf8').matchAll(/^- id: (\S+)/gm)].map((m) => m[1]);
+const tracks = (await getCollection('playlist'))
+  .sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id))
+  .slice(0, limit);
+---
+<ol class="playlist">
+  {tracks.map(({ data }, i) => (
+    <li>
+      <span class="no mono">{String(i + 1).padStart(2, '0')}</span>
+      <span class="track">
+        {data.url ? <a href={data.url}>{data.title}</a> : <span class="title">{data.title}</span>}
+        <span class="muted"> — {data.artist}</span>
+        {data.note && <span class="note muted">{data.note}</span>}
+      </span>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .playlist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    display: grid;
+    grid-template-columns: 2.2rem 1fr;
+    gap: 0.6rem;
+    padding: 0.45rem 0;
+    border-bottom: 1px dashed var(--line);
+  }
+
+  .no {
+    color: var(--glow);
+    font-size: 0.8rem;
+    padding-top: 0.2rem;
+  }
+
+  .title {
+    font-weight: 500;
+  }
+
+  .note {
+    display: block;
+    font-size: 0.82rem;
+  }
+</style>

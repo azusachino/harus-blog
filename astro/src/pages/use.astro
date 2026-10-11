@@ -2,23 +2,18 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Waveform from '../components/Waveform.astro';
-import { day } from '../lib/posts';
 
 const items = await getCollection('use');
 const groups = [
-  { id: 'dev', title: 'Dev', note: '写代码时每天都在用的' },
-  { id: 'devices', title: 'Devices', note: '数码产品，现役在前，退役灰显' },
-  { id: 'subscriptions', title: 'Subscriptions', note: '数字生活开支' },
+  { id: 'dev', title: 'Dev' },
+  { id: 'devices', title: 'Devices' },
+  { id: 'subscriptions', title: 'Subscriptions' },
 ] as const;
-const byGroup = (id: string) =>
-  items
-    .filter((i) => i.data.group === id)
-    .sort((a, b) => Number(Boolean(a.data.until)) - Number(Boolean(b.data.until)));
 ---
 <Base title="Use" description="Things I use: tools, devices and subscriptions.">
   <p class="eyebrow">Equipment rack</p>
   <h1>Use</h1>
-  <p class="muted">我在用的东西。</p>
+  <p class="muted">Tools, devices and services I actually use.</p>
   <Waveform seed="use" />
 
   <nav class="chips" aria-label="Groups">
@@ -26,25 +21,22 @@ const byGroup = (id: string) =>
   </nav>
 
   {groups.map((g) => {
-    const rows = byGroup(g.id);
+    const rows = items.filter((i) => i.data.group === g.id);
     return (
       <section class="rack" aria-labelledby={g.id}>
-        <h2 id={g.id}>{g.title} <span class="muted note">{g.note}</span></h2>
+        <h2 id={g.id}>{g.title}</h2>
         {rows.length === 0 ? (
           <p class="muted">Nothing here yet.</p>
         ) : (
           <table>
             <thead>
-              <tr><th>Type</th><th>Name</th><th>Since</th><th>Price</th><th>Until</th><th>Note</th></tr>
+              <tr><th>Type</th><th>Name</th><th>Note</th></tr>
             </thead>
             <tbody>
               {rows.map(({ data }) => (
-                <tr class={data.until ? 'past' : undefined}>
+                <tr>
                   <td data-label="Type">{data.kind}</td>
                   <td data-label="Name">{data.url ? <a href={data.url}>{data.name}</a> : data.name}</td>
-                  <td data-label="Since" class:list={['mono', { empty: !data.since }]}>{data.since ? day(data.since) : '—'}</td>
-                  <td data-label="Price" class:list={['mono', { empty: !data.price }]}>{data.price ?? '—'}</td>
-                  <td data-label="Until" class:list={['mono', { empty: !data.until && !data.renews }]}>{data.until ? day(data.until) : data.renews ?? '—'}</td>
                   <td data-label="Note" class:list={['muted', { empty: !data.note }]}>{data.note ?? ''}</td>
                 </tr>
               ))}
@@ -81,12 +73,6 @@ const byGroup = (id: string) =>
     margin-top: 2.5rem;
   }
 
-  .note {
-    font-size: 0.85rem;
-    font-weight: 400;
-    margin-left: 0.6rem;
-  }
-
   table {
     width: 100%;
     border-collapse: collapse;
@@ -111,10 +97,6 @@ const byGroup = (id: string) =>
     text-transform: uppercase;
     color: var(--muted);
     border-bottom: 2px solid var(--glow);
-  }
-
-  tr.past {
-    opacity: 0.55;
   }
 
   @media (max-width: 40rem) {
