@@ -14,7 +14,6 @@ export const NAV = [
   { label: 'Journal', href: '/journal/' },
   { label: 'Life', href: '/life/' },
   { label: 'Currently', href: '/currently/' },
-  { label: 'Use', href: '/use/' },
   { label: 'About', href: '/about/' },
 ];
 
