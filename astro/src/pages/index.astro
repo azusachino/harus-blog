@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import Illustration from '../components/Illustration.astro';
 import Playlist from '../components/Playlist.astro';
 import PostList from '../components/PostList.astro';
 import Waveform from '../components/Waveform.astro';
@@ -18,10 +19,13 @@ const names = { tech: 'Tech', journal: 'Journal', life: 'Life' };
 ---
 <Base title="Home">
   <section class="hero">
-    <p class="eyebrow">Idealistic Daydreamer</p>
-    <h1>palette gives you the capability,<br />but you're the source of possibility.</h1>
-    <Waveform seed="idealistic-daydreamer" bars={64} />
-    <p class="muted" lang="zh-CN">99% 的理论 + 1% 的实践 = me</p>
+    <div>
+      <p class="eyebrow">Idealistic Daydreamer</p>
+      <h1>palette gives you the capability,<br />but you're the source of possibility.</h1>
+      <Waveform seed="idealistic-daydreamer" bars={64} />
+      <p class="muted" lang="zh-CN">99% 的理论 + 1% 的实践 = me</p>
+    </div>
+    <Illustration name="hero" eager />
   </section>
 
   <a class="release card" href={href(latest.section, latest.post)}>
@@ -57,7 +61,17 @@ const names = { tech: 'Tech', journal: 'Journal', life: 'Life' };
 
 <style>
   .hero {
-    padding: 2rem 0 1rem;
+    padding: 1.5rem 0 1rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  @media (max-width: 52rem) {
+    .hero {
+      grid-template-columns: minmax(0, 1fr);
+    }
   }
 
   .hero h1 {

@@ -35,7 +35,11 @@ const full = title === site ? site : `${title} - ${site}`;
       <slot />
     </main>
     <footer class="site-footer">
-      <span class="mono">♪ Idealistic Daydreamer · haru · <a href="https://github.com/azusachino">GitHub</a></span>
+      <p class="mono">♪ Idealistic Daydreamer · haru · <a href="https://github.com/azusachino">GitHub</a></p>
+      <p class="credit">
+        Miku illustrations are AI-generated (ChatGPT) fan art of Hatsune Miku, a character by Crypton Future Media, Inc.,
+        made under the <a href="https://piapro.jp/license/pcl">Piapro Character License</a>. Not an official work.
+      </p>
     </footer>
     <script is:inline>
       document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {
@@ -54,5 +58,15 @@ const full = title === site ? site : `${title} - ${site}`;
     font-size: 0.8rem;
     color: var(--muted);
     border-top: 1px solid var(--line);
+  }
+
+  .site-footer p {
+    margin: 0.3rem auto;
+  }
+
+  .credit {
+    max-width: 44rem;
+    font-size: 0.72rem;
+    line-height: 1.6;
   }
 </style>

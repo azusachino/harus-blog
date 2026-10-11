@@ -1,6 +1,7 @@
 ---
 import { getEntry, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import Illustration from './Illustration.astro';
 import Waveform from './Waveform.astro';
 import { textLang } from '../lib/posts';
 
@@ -15,6 +16,7 @@ const { Content } = await render(entry);
     <h1>{entry.data.title}</h1>
     {entry.data.description && <p class="muted">{entry.data.description}</p>}
     <Waveform seed={entry.data.title} />
+    {Astro.props.id === 'about' && <div class="art"><Illustration name="about" eager /></div>}
     <div class="prose">
       <Content />
     </div>
@@ -25,5 +27,10 @@ const { Content } = await render(entry);
   .page {
     max-width: var(--measure);
     margin-inline: auto;
+  }
+
+  .art {
+    max-width: 30rem;
+    margin: 1.5rem 0 0.5rem;
   }
 </style>

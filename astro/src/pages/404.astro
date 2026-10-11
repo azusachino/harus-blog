@@ -1,13 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
+import Illustration from '../components/Illustration.astro';
 ---
 <Base title="Track not found">
   <section class="lost">
+    <div class="art"><Illustration name="not-found" eager /></div>
     <p class="badge">404</p>
     <h1>Track not found</h1>
-    <svg viewBox="0 0 240 24" width="240" height="24" aria-hidden="true">
-      <line x1="0" y1="12" x2="240" y2="12" />
-    </svg>
     <p class="muted">This track is empty. Maybe it was renamed, maybe it was never recorded.</p>
     <p><a href="/">← back to the playlist</a></p>
     <p class="negi" aria-hidden="true" title="ネギ">🌱</p>
@@ -17,13 +16,12 @@ import Base from '../layouts/Base.astro';
 <style>
   .lost {
     text-align: center;
-    padding: 4rem 0;
+    padding: 1rem 0 3rem;
   }
 
-  svg {
-    stroke: var(--glow);
-    stroke-width: 2;
-    stroke-dasharray: 3 5;
+  .art {
+    max-width: 26rem;
+    margin: 0 auto 1.5rem;
   }
 
   .negi {
