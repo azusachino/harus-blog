@@ -4,6 +4,23 @@ Changes to the site itself, newest first. Posts are not listed here; they are th
 One dated entry per merged change, written in the [Keep a Changelog](https://keepachangelog.com/)
 groups (Added, Changed, Fixed, Removed).
 
+## 2026-10-12 — Footer and Currently
+
+### Changed
+
+- The light-theme footer is a pale wash of the palette with a glow edge instead of a full glow fill,
+  so the penlights stop vibrating against it. Snow, sakura and sunset are retuned to shared
+  lightness per role (contrast checks now cover the footer and penlights).
+- The penlights use the palette accent like the lit piano keys, and the chord presses B-flat, D, F
+  in turn when you answer the call.
+- Currently is refreshed: Genshin Impact, Wuthering Waves, Arknights: Endfield; LLM and agent
+  practice; 亲密关系 and 薬屋の独り言 Season 2.
+- Use is a compact section of Currently (one row per kind); `/use/` redirects to `/currently/#use`.
+
+### Removed
+
+- The Use tab in the header.
+
 ## 2026-10-11 — Diagrams and math
 
 ### Fixed
