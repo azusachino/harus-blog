@@ -39,7 +39,11 @@ split into type-based sections — **no year-wise layout**. The site code is at 
   (`en`/`zh-CN`/`ja`) overrides the detected article language.
 - `date`/`slug` drive ordering and URLs (`/<section>/<slug>/`); future-dated posts are drafts.
 - Posts stay plain CommonMark: no MDX, no attribute markers, no shortcodes. The cover lives in
-  frontmatter; embeds and diagrams get components, not syntax inside posts.
+  frontmatter; embeds get components, not syntax inside posts.
+- Diagrams: ` ```mermaid ` fences, drawn in the browser by `src/components/Mermaid.astro` (loaded
+  only on pages that have one, colored by the palette). Math: `$…$` inline, `$$…$$` or a paragraph
+  holding one formula for display, rendered at build time by KaTeX (`src/lib/math.mjs`). A literal
+  dollar in a paragraph that has another one is written `\$` (prices), or the two pair up as math.
 - Images live in `docs/assets`, never on an external host (a dead CDN cost ten images once). Before
   committing a photo, resize to ≤2000px and strip EXIF/GPS (phone photos carry home coordinates).
 - Giscus comments map threads by page title (`<title> - Idealistic Daydreamer`): never change a

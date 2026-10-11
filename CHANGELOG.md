@@ -4,6 +4,16 @@ Changes to the site itself, newest first. Posts are not listed here; they are th
 One dated entry per merged change, written in the [Keep a Changelog](https://keepachangelog.com/)
 groups (Added, Changed, Fixed, Removed).
 
+## 2026-10-11 — Diagrams and math
+
+### Fixed
+
+- Mermaid diagrams render again (18 diagrams in 6 posts), drawn in the browser with colors from the
+  current palette and mode; the library loads only on pages that have a diagram.
+- Math renders again (5 posts), typeset at build time with KaTeX; a paragraph holding one formula
+  displays as a centered block, as on the MkDocs site.
+- Prices in the k3s migration post are escaped (`\$`) so they no longer pair up as a formula.
+
 ## 2026-10-11 — Astro
 
 The blog moves from MkDocs + Material to Astro, with the same posts at the same URLs.

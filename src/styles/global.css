@@ -333,3 +333,11 @@ img {
     animation-duration: 0.01ms !important;
   }
 }
+
+/* Display math (src/lib/math.mjs): centered, scrolls instead of overflowing. */
+.prose .math-display {
+  margin: 1.4em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  text-align: center;
+}

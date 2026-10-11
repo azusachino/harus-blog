@@ -1,0 +1,89 @@
+---
+// Renders ```mermaid fences. Posts keep plain CommonMark fences; Shiki tags
+// them data-language="mermaid", and this script swaps each for a diagram.
+// The mermaid library loads only on pages that have one, and diagrams take
+// their colors from the site tokens, redrawing on palette or mode change.
+---
+<script>
+  const root = document.documentElement;
+  const blocks = [...document.querySelectorAll<HTMLElement>('pre[data-language="mermaid"]')];
+
+  if (blocks.length) {
+    const figures = blocks.map((pre) => {
+      const figure = document.createElement('figure');
+      figure.className = 'mermaid-diagram';
+      figure.dataset.source = pre.textContent ?? '';
+      pre.replaceWith(figure);
+      return figure;
+    });
+
+    const { default: mermaid } = await import('mermaid');
+    let id = 0;
+
+    const render = async () => {
+      const css = getComputedStyle(root);
+      const token = (name: string) => css.getPropertyValue(name).trim();
+      mermaid.initialize({
+        startOnLoad: false,
+        securityLevel: 'strict',
+        theme: 'base',
+        fontFamily: token('--font-body'),
+        themeVariables: {
+          darkMode: root.dataset.theme === 'dark',
+          background: token('--surface'),
+          primaryColor: token('--surface'),
+          primaryTextColor: token('--ink'),
+          primaryBorderColor: token('--glow'),
+          secondaryColor: token('--bg'),
+          tertiaryColor: token('--bg'),
+          lineColor: token('--muted'),
+          textColor: token('--ink'),
+          clusterBkg: token('--bg'),
+          clusterBorder: token('--line'),
+          edgeLabelBackground: token('--surface'),
+          noteBkgColor: token('--surface'),
+          noteTextColor: token('--ink'),
+          noteBorderColor: token('--glow'),
+          actorBkg: token('--surface'),
+          actorBorder: token('--glow'),
+          actorTextColor: token('--ink'),
+          signalColor: token('--ink'),
+          signalTextColor: token('--ink'),
+        },
+      });
+      for (const figure of figures) {
+        try {
+          const { svg } = await mermaid.render(`mermaid-${id++}`, figure.dataset.source ?? '');
+          figure.innerHTML = svg;
+          figure.classList.remove('failed');
+        } catch {
+          // Keep the source readable if a diagram does not parse.
+          const pre = document.createElement('pre');
+          pre.textContent = figure.dataset.source ?? '';
+          figure.replaceChildren(pre);
+          figure.classList.add('failed');
+        }
+      }
+    };
+
+    await render();
+    new MutationObserver(render).observe(root, { attributes: true, attributeFilter: ['data-theme', 'data-palette'] });
+  }
+</script>
+
+<style is:global>
+  .mermaid-diagram {
+    margin: 1.6em 0;
+    padding: 1rem;
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    text-align: center;
+  }
+
+  .mermaid-diagram svg {
+    max-width: 100%;
+    height: auto;
+  }
+</style>

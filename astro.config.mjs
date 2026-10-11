@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import { satteri } from '@astrojs/markdown-satteri';
+import { math } from './src/lib/math.mjs';
 
 export default defineConfig({
   site: 'https://azusachino.com',
@@ -10,7 +11,7 @@ export default defineConfig({
   trailingSlash: 'ignore',
   devToolbar: { enabled: false },
   markdown: {
-    processor: satteri({ features: { math: true } }),
+    processor: satteri({ mdastPlugins: [math], features: { math: true } }),
     shikiConfig: {
       themes: { light: 'github-light', dark: 'github-dark' },
     },
