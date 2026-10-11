@@ -3,26 +3,51 @@ title: About
 description: 我想要的无非是遵从自己的内心去生活, 为什么竟是如此艰难呢?
 ---
 
-99% 的理论 + 1% 的实践 = me (idealistic daydreamer)
+99% theory + 1% practice = me (idealistic daydreamer)
 
-## Current Resolution
+## What I do
 
-减少周围的矛盾
+Backend engineer by training: Java and Go, distributed systems, years of RTC signaling, logging
+pipelines and the microservices around them. Now I build with LLMs: agents, AI-assisted workflows,
+and the systems that make them dependable.
 
-## Current Status
+## What I like most
 
-试错寻找合适的生活方式
+Building my own apps for my own requirements. Things I run every day, not things I demo once,
+mostly in Rust, Go and SQLite, on a k3s homelab of my own:
 
-## 兴趣爱好
+- [asobi](https://github.com/azusachino/asobi): a knowledge graph CLI that gives AI agents memory
+  across sessions
+- [iroha](https://github.com/azusachino/iroha): a personal data cockpit for my own location and
+  activity data
+- [felicia](https://github.com/azusachino/felicia): a map-based travel journal; the map is the
+  index, the mementos are the stories
+- [daphne](https://github.com/azusachino/daphne): a Telegram bot that turns media links into native
+  Telegram media
+- [nahida](https://github.com/azusachino/nahida): the agent I am building to understand agents
+- this blog, rebuilt on Astro and themed after Hatsune Miku
 
-- Read Manga (Tachiyomi Best APP Ever)
-- Watch Animation (Only Good ones)
-- Read Books (CS, textbook, literature, science, psychology, philosophy and any other interesting category)
-- Gaming (MAIMAI is my favorite now)
-- Learning (Code, Foreign Language, Piano, Drawing for now)
+The rest is on [GitHub](https://github.com/azusachino). Ultimate goal: antifragile.
+
+## Current resolution
+
+Reduce the contradictions around me.
+
+## Current status
+
+Trial and error, looking for a way of living that fits.
+
+## Outside of code
+
+- Manga and anime (only the good ones)
+- Books: CS, textbooks, literature, science, psychology, philosophy, and anything else that
+  catches me
+- Games: Maimai is still the favorite; Dota 2 tournaments late at night
+- Learning: piano (Mozart's K. 333 lately), Japanese, drawing
+- Hatsune Miku concerts, whenever I can
 - Exercise
 
-## life long rules
+## Life-long rules
 
 The sum of behavior is to retain a man's own dignity without intruding upon others' liberty.
 
