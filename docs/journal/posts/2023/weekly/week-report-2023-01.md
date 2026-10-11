@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2023-01
 comments: true
+cover: "/assets/images/2023/01/Breckenridge.jpg"
+cover_alt: "Cover photo: Breckenridge"
 ---
-
-![Cover photo: Breckenridge](/assets/images/2023/01/Breckenridge.jpg){ .post-cover }
 
 <!-- more -->
 

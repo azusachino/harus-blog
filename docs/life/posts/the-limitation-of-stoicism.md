@@ -6,11 +6,9 @@ categories:
   - life
 slug: the-limitation-of-stoicism
 comments: true
-hide:
-  - navigation
+cover: "/assets/images/2025/10-stoicism.png"
+cover_alt: "Cover photo: 10 stoicism"
 ---
-
-![Cover photo: 10 stoicism](/assets/images/2025/10-stoicism.png){ .post-cover }
 
 <!-- more -->
 

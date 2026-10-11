@@ -6,9 +6,8 @@ categories:
   - review
 slug: review-2022
 comments: true
+cover: "/assets/images/2022/12/SMC and the Magellanic Bridge.png"
 ---
-
-![](/assets/images/2022/12/SMC and the Magellanic Bridge.png){ .post-cover }
 
 <!-- more -->
 

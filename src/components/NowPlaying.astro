@@ -1,0 +1,100 @@
+---
+// A small "now playing" pill in the header: the current K. 333 movement and
+// one action, shuffle the palette track (repaints the site; saved per
+// visitor). The piano itself lives in the footer.
+import { PALETTES, PIECE } from '../lib/site';
+---
+<button class="np" type="button" data-shuffle title="Next movement (palette)">
+  <span class="text mono">
+    <span class="label">{PIECE}</span>
+    <span class="name" data-palette-name>{PALETTES[0].name}</span>
+  </span>
+  <svg class="shuffle" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M3 7h3.5c4 0 6 10 10 10H21M3 17h3.5c1.6 0 2.8-1.6 3.9-3.6M13.6 9.6C14.7 8 15.6 7 17 7h4M18 4l3 3-3 3M18 14l3 3-3 3" />
+  </svg>
+  <span class="visually-hidden">Next movement (palette)</span>
+</button>
+
+<script is:inline define:vars={{ palettes: PALETTES }}>
+  (() => {
+    const root = document.documentElement;
+    const button = document.querySelector('[data-shuffle]');
+    const label = document.querySelector('[data-palette-name]');
+    const current = () => palettes.find((p) => p.id === (root.dataset.palette ?? 'teal')) ?? palettes[0];
+    label.textContent = current().name;
+    button.addEventListener('click', () => {
+      const next = palettes[(palettes.indexOf(current()) + 1) % palettes.length];
+      if (next.id === 'teal') delete root.dataset.palette;
+      else root.dataset.palette = next.id;
+      localStorage.setItem('palette', next.id);
+      label.textContent = next.name;
+    });
+  })();
+</script>
+
+<style>
+  .np {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    height: 2.25rem;
+    padding: 0 0.75rem 0 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--bg);
+    color: var(--ink);
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .np:hover {
+    border-color: var(--glow);
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.15;
+  }
+
+  .label {
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* Fixed width (longest title: "III. Allegretto grazioso", 24 chars) so the
+     header does not shift when the movement changes. */
+  .name {
+    width: 24ch;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap;
+    text-align: left;
+  }
+
+  .shuffle {
+    width: 1rem;
+    height: 1rem;
+    fill: none;
+    stroke: var(--primary);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* Phones: just the shuffle icon. */
+  @media (max-width: 40rem) {
+    .np {
+      width: 2.25rem;
+      padding: 0;
+      justify-content: center;
+    }
+
+    .text {
+      display: none;
+    }
+  }
+</style>

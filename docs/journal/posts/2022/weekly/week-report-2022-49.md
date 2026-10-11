@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-49
 comments: true
+cover: "/assets/images/2022/12/old-books-book-old-library-439f37372e52170496faaae4e48d4fda.jpg"
+cover_alt: "Cover photo: old books book old library 439f37372e52170496faaae4e48d4fda"
 ---
-
-![Cover photo: old books book old library 439f37372e52170496faaae4e48d4fda](/assets/images/2022/12/old-books-book-old-library-439f37372e52170496faaae4e48d4fda.jpg){ .post-cover }
 
 <!-- more -->
 

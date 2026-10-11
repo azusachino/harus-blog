@@ -8,9 +8,9 @@ tags:
   - java
 slug: aeron-knowledge-sharing
 comments: true
+cover: "/assets/images/2025/KelpOtter.png"
+cover_alt: "Cover photo: Kelp Otter"
 ---
-
-![Cover photo: Kelp Otter](/assets/images/2025/KelpOtter.png){ .post-cover }
 
 <!-- more -->
 

@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2023-08
 comments: true
+cover: "/assets/images/2023/02/BryceAnniv.jpg"
+cover_alt: "Cover photo: Bryce Anniv"
 ---
-
-![Cover photo: Bryce Anniv](/assets/images/2023/02/BryceAnniv.jpg){ .post-cover }
 
 <!-- more -->
 

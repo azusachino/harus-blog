@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-30
 comments: true
+cover: "/assets/images/2024/07/star-rail.png"
+cover_alt: "Cover photo: star rail"
 ---
-
-![Cover photo: star rail](/assets/images/2024/07/star-rail.png){ .post-cover }
 
 <!-- more -->
 

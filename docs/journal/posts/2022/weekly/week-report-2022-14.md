@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-14
 comments: true
+cover: "/assets/images/2022/04/SquirrelNesting.jpg"
+cover_alt: "Cover photo: Squirrel Nesting"
 ---
-
-![Cover photo: Squirrel Nesting](/assets/images/2022/04/SquirrelNesting.jpg){ .post-cover }
 
 <!-- more -->
 

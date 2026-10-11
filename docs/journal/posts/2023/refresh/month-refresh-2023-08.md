@@ -6,9 +6,9 @@ categories:
   - refresh
 slug: month-refresh-2023-08
 comments: true
+cover: "/assets/images/2023/08/IronwoodCactus.jpg"
+cover_alt: "Cover photo: Ironwood Cactus"
 ---
-
-![Cover photo: Ironwood Cactus](/assets/images/2023/08/IronwoodCactus.jpg){ .post-cover }
 
 <!-- more -->
 

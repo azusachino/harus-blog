@@ -1,0 +1,85 @@
+# Things I use, for /use. Groups: dev, devices, subscriptions.
+# Lists are owner-chosen; keep `note` short (subscriptions: billing cycle).
+- id: fish
+  group: dev
+  kind: Shell
+  name: fish
+  url: https://fishshell.com/
+- id: neovim
+  group: dev
+  kind: Editor
+  name: Neovim
+  url: https://neovim.io/
+- id: vscode
+  group: dev
+  kind: Editor
+  name: Visual Studio Code
+  url: https://code.visualstudio.com/
+- id: claude-code
+  group: dev
+  kind: Coding agent
+  name: Claude Code
+  url: https://claude.com/claude-code
+- id: herdr
+  group: dev
+  kind: Agent multiplexer
+  name: Herdr
+- id: mise
+  group: dev
+  kind: Runtimes
+  name: mise
+  url: https://mise.jdx.dev/
+- id: nix
+  group: dev
+  kind: Machines as code
+  name: Nix + Home Manager
+  url: https://nix-community.github.io/home-manager/
+- id: macbook-pro
+  group: devices
+  kind: Laptop
+  name: MacBook Pro (2021)
+- id: macbook-air
+  group: devices
+  kind: Laptop
+  name: MacBook Air (M2)
+  note: Work machine.
+- id: mac-mini
+  group: devices
+  kind: Desktop
+  name: Mac mini (M4)
+  note: Headless, SSH only.
+- id: harus-mini
+  group: devices
+  kind: Home server
+  name: harus-mini (Ubuntu, k3s)
+  note: The homelab that runs this blog.
+- id: gemini
+  group: subscriptions
+  kind: AI
+  name: Google Gemini
+  note: Yearly
+- id: chatgpt
+  group: subscriptions
+  kind: AI
+  name: ChatGPT
+  note: Monthly
+- id: psn
+  group: subscriptions
+  kind: Games
+  name: PlayStation Plus (JP)
+  note: Yearly
+- id: apple-one
+  group: subscriptions
+  kind: Apple
+  name: Apple One
+  note: Monthly
+- id: amazon-prime
+  group: subscriptions
+  kind: Shopping & video
+  name: Amazon Prime
+  note: Yearly
+- id: telegram-premium
+  group: subscriptions
+  kind: Messaging
+  name: Telegram Premium
+  note: Yearly

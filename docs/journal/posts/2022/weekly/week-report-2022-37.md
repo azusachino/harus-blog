@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-37
 comments: true
+cover: "/assets/images/2022/09/WinterGrand.jpg"
+cover_alt: "Cover photo: Winter Grand"
 ---
-
-![Cover photo: Winter Grand](/assets/images/2022/09/WinterGrand.jpg){ .post-cover }
 
 <!-- more -->
 

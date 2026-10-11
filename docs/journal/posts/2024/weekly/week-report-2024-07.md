@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-07
 comments: true
+cover: "/assets/images/2024/02/BackyardBird.png"
+cover_alt: "Cover photo: Backyard Bird"
 ---
-
-![Cover photo: Backyard Bird](/assets/images/2024/02/BackyardBird.png){ .post-cover }
 
 <!-- more -->
 

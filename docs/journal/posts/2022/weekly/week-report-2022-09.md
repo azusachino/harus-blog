@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-09
 comments: true
+cover: "/assets/images/2022/02/GreatTits.jpg"
+cover_alt: "Cover photo: Great Tits"
 ---
-
-![Cover photo: Great Tits](/assets/images/2022/02/GreatTits.jpg){ .post-cover }
 
 <!-- more -->
 
@@ -29,8 +29,6 @@ comments: true
 ### TLPI (Linux/Unix 系统编程手册)
 
 本周开始看 Linux 相关的内容，主要因为之前学习容器相关知识时，遇到了太多 syscall、线程间的数据交换、ControlGroup 等 Linux 的概念，当时可能就作为名词记下来，但对于不太理解的内容，肯定无法维持长时间的记忆。于是开始学习 Linux 相关的知识，以方便后续理解容器中用到的各种工具。
-
-在学习的过程中，记录了一些笔记，参考[这里](https://note.azusachino.icu/reading/linux-unix-handbook/01.basic-concept.html)
 
 本周主要对通用 I/O 的概念有了一定的了解，针对 open/read/write/close 的 syscall，也知道了基本概念和使用方式。
 

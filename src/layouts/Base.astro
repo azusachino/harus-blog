@@ -1,0 +1,139 @@
+---
+import Header from '../components/Header.astro';
+import Call from '../components/Call.astro';
+import PianoStrip from '../components/PianoStrip.astro';
+import { PALETTES, SITE } from '../lib/site';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  progress?: boolean;
+}
+const { title, description, progress = false } = Astro.props;
+// Same "<page> - <site>" format as Material: Giscus maps comments by title.
+const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{full}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />
+    <meta name="theme-color" content="#39c5bb" />
+    <script is:inline define:vars={{ palettes: PALETTES.map((p) => p.id) }}>
+      (() => {
+        // Apply theme and palette before first paint.
+        const root = document.documentElement;
+        const saved = localStorage.getItem('theme');
+        const dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'dark' : 'light';
+        const palette = localStorage.getItem('palette');
+        if (palette && palette !== 'teal' && palettes.includes(palette)) root.dataset.palette = palette;
+      })();
+    </script>
+  </head>
+  <body>
+    {progress && <div class="piano-progress" aria-hidden="true"></div>}
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <PianoStrip />
+      <Call />
+      <p class="sign mono">♪ {SITE.title} · {SITE.author}</p>
+      <nav class="links mono" aria-label="Elsewhere">
+        <a href="https://github.com/azusachino">GitHub</a>
+        <a href="https://twitter.com/azusachino">X</a>
+        <a href="https://iroha.azusachino.com">iroha</a>
+        <a href="/rss.xml">RSS</a>
+      </nav>
+      <p class="credit">
+        Miku illustrations are AI-generated (ChatGPT) fan art of Hatsune Miku, a character by Crypton Future Media, Inc.,
+        made under the <a href="https://piapro.jp/license/pcl">Piapro Character License</a>. Not an official work.
+      </p>
+    </footer>
+    <script is:inline>
+      // Favicon and browser theme color follow the palette and mode: the same
+      // "ID" mark as public/favicon.svg, repainted with the current --glow.
+      (() => {
+        const root = document.documentElement;
+        const icon = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
+        const meta = document.querySelector('meta[name="theme-color"]');
+        const paint = () => {
+          const css = getComputedStyle(root);
+          const glow = css.getPropertyValue('--glow').trim() || '#39c5bb';
+          const ink = css.getPropertyValue('--on-glow').trim() || '#2b2f32';
+          const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="${glow}"/><path d="M17 15v34M30 15h6a17 17 0 0 1 0 34h-6Z" fill="none" stroke="${ink}" stroke-width="6.5" stroke-linejoin="round" stroke-linecap="round"/></svg>`;
+          icon.href = `data:image/svg+xml,${encodeURIComponent(svg)}`;
+          meta.content = glow;
+        };
+        paint();
+        new MutationObserver(paint).observe(root, { attributes: true, attributeFilter: ['data-palette', 'data-theme'] });
+      })();
+    </script>
+    <script is:inline>
+      document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem('theme', next);
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  /* A color band like the next track sliding in: --glow with ink in light
+     mode, charcoal with a glow edge in dark. contrast.ts checks both. */
+  .site-footer {
+    text-align: center;
+    padding: 1.6rem 1rem 2rem;
+    font-size: 0.8rem;
+    background: var(--glow);
+    color: var(--on-glow);
+  }
+
+  :global(:root[data-theme='dark']) .site-footer {
+    background: var(--surface);
+    color: var(--ink);
+    border-top: 2px solid var(--glow);
+  }
+
+  .site-footer a {
+    color: inherit;
+  }
+
+  .site-footer :focus-visible {
+    outline-color: var(--on-glow);
+  }
+
+  :global(:root[data-theme='dark']) .site-footer :focus-visible {
+    outline-color: var(--glow);
+  }
+
+  .sign {
+    margin: 0.2rem 0 0.6rem;
+    font-weight: 700;
+  }
+
+  .links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.2rem;
+    margin: 0 0 0.8rem;
+  }
+
+  .credit {
+    max-width: 44rem;
+    margin: 0 auto;
+    font-size: 0.72rem;
+    line-height: 1.6;
+  }
+</style>

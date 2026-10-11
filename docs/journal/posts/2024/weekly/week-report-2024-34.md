@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-34
 comments: true
+cover: "/assets/images/2024/08/city-night.jpeg"
+cover_alt: "Cover photo: city night"
 ---
-
-![Cover photo: city night](/assets/images/2024/08/city-night.jpeg){ .post-cover }
 
 <!-- more -->
 

@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-48
 comments: true
+cover: "/assets/images/2022/11/winter-nature-season-trees-a5a7c7b5891ca2a9cd200a39def27b3b.jpg"
+cover_alt: "Cover photo: winter nature season trees a5a7c7b5891ca2a9cd200a39def27b3b"
 ---
-
-![Cover photo: winter nature season trees a5a7c7b5891ca2a9cd200a39def27b3b](/assets/images/2022/11/winter-nature-season-trees-a5a7c7b5891ca2a9cd200a39def27b3b.jpg){ .post-cover }
 
 <!-- more -->
 

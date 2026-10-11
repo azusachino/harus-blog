@@ -1,0 +1,25 @@
+---
+// Tech posts by category, at the same URLs as the MkDocs category pages.
+import Base from '../../../layouts/Base.astro';
+import PostList from '../../../components/PostList.astro';
+import Waveform from '../../../components/Waveform.astro';
+import { published } from '../../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await published('tech');
+  const categories = [...new Set(posts.flatMap((p) => p.data.categories))];
+  return categories.map((category) => ({
+    params: { category },
+    props: { posts: posts.filter((p) => p.data.categories.includes(category)) },
+  }));
+}
+
+const { posts } = Astro.props;
+const { category } = Astro.params;
+---
+<Base title={`Tech: ${category}`}>
+  <p class="eyebrow"><a href="/tech/">Tech</a> · {posts.length} tracks</p>
+  <h1>{category}</h1>
+  <Waveform seed={`tech-${category}`} />
+  <PostList section="tech" posts={posts} />
+</Base>

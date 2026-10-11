@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2023-35
 comments: true
+cover: "/assets/images/2023/09/ManhattanAerial.jpg"
+cover_alt: "Cover photo: Manhattan Aerial"
 ---
-
-![Cover photo: Manhattan Aerial](/assets/images/2023/09/ManhattanAerial.jpg){ .post-cover }
 
 <!-- more -->
 

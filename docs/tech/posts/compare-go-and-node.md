@@ -9,9 +9,9 @@ tags:
   - node
 slug: compare-go-and-node
 comments: true
+cover: "/assets/images/2021/06/Aldeyjarfoss.jpg"
+cover_alt: "Cover photo: Aldeyjarfoss"
 ---
-
-![Cover photo: Aldeyjarfoss](/assets/images/2021/06/Aldeyjarfoss.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2023-03
 comments: true
+cover: "/assets/images/2023/01/IceSailingBalaton.jpg"
+cover_alt: "Cover photo: Ice Sailing Balaton"
 ---
-
-![Cover photo: Ice Sailing Balaton](/assets/images/2023/01/IceSailingBalaton.jpg){ .post-cover }
 
 <!-- more -->
 

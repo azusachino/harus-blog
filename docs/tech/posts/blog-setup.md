@@ -8,9 +8,9 @@ tags:
   - hugo
 slug: blog-setup
 comments: true
+cover: "/assets/images/2021/04/Porcini.jpg"
+cover_alt: "Cover photo: Porcini"
 ---
-
-![Cover photo: Porcini](/assets/images/2021/04/Porcini.jpg){ .post-cover }
 
 <!-- more -->
 
@@ -47,11 +47,11 @@ systemctl enable nginx # 设为开机启动
     server {
         listen       443 ssl;
         # listen       [::]:443 ssl http2 default_server;
-        server_name  azusachino.icu;
+        server_name  azusachino.com;
         root         /usr/share/nginx/html;
 
-        ssl_certificate 1_azusachino.icu_bundle.crt; # nginx.conf相对应的crt路径
-        ssl_certificate_key 2_azusachino.icu.key; # nginx.conf相对应的key路径
+        ssl_certificate 1_azusachino.com_bundle.crt; # nginx.conf相对应的crt路径
+        ssl_certificate_key 2_azusachino.com.key; # nginx.conf相对应的key路径
         # ssl_session_cache shared:SSL:1m;
         ssl_session_timeout  10m;
         ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # 根据证书下载页教程配置

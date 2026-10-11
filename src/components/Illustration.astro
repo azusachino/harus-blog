@@ -1,0 +1,44 @@
+---
+// Miku illustrations: AI-generated fan art (ChatGPT), credited in the footer
+// under the Piapro Character License. Served as resized WebP.
+import { Image } from 'astro:assets';
+import hero from '../assets/miku/hero.png';
+import about from '../assets/miku/about.png';
+import notFound from '../assets/miku/not-found.png';
+
+const art = {
+  hero: { src: hero, alt: 'Chibi Hatsune Miku at a laptop, chin in hand, reaching out toward the reader.' },
+  about: { src: about, alt: 'Chibi Hatsune Miku writing in a notebook next to a laptop, books and a cat plush.' },
+  'not-found': { src: notFound, alt: 'Chibi Hatsune Miku looking puzzled at a browser window showing 404.' },
+};
+
+interface Props {
+  name: keyof typeof art;
+  class?: string;
+  eager?: boolean;
+}
+const { name, class: className, eager = false } = Astro.props;
+const { src, alt } = art[name];
+---
+<Image
+  src={src}
+  alt={alt}
+  widths={[480, 800, 1200]}
+  sizes="(max-width: 40rem) 100vw, 36rem"
+  format="webp"
+  loading={eager ? 'eager' : 'lazy'}
+  class:list={['illustration', className]}
+/>
+
+<style>
+  .illustration {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+  }
+
+  :global(:root[data-theme='dark']) .illustration {
+    filter: brightness(0.9);
+  }
+</style>

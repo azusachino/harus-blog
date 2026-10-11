@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2023-27
 comments: true
+cover: "/assets/images/2023/07/MoselleRiver.jpg"
+cover_alt: "Cover photo: Moselle River"
 ---
-
-![Cover photo: Moselle River](/assets/images/2023/07/MoselleRiver.jpg){ .post-cover }
 
 <!-- more -->
 

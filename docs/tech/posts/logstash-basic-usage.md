@@ -8,9 +8,9 @@ tags:
   - logstash
 slug: logstash-basic-usage
 comments: true
+cover: "/assets/images/2021/05/PortoFlavia.jpg"
+cover_alt: "Cover photo: Porto Flavia"
 ---
-
-![Cover photo: Porto Flavia](/assets/images/2021/05/PortoFlavia.jpg){ .post-cover }
 
 <!-- more -->
 

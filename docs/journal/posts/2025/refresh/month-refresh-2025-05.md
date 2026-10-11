@@ -6,9 +6,9 @@ categories:
   - refresh
 slug: month-refresh-2025-05
 comments: true
+cover: "/assets/images/2025/05-mountain.jpeg"
+cover_alt: "Cover photo: 05 mountain"
 ---
-
-![Cover photo: 05 mountain](/assets/images/2025/05-mountain.jpeg){ .post-cover }
 
 <!-- more -->
 

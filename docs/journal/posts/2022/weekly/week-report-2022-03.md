@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-03
 comments: true
+cover: "/assets/images/2022/01/WinterBison.jpg"
+cover_alt: "Cover photo: Winter Bison"
 ---
-
-![Cover photo: Winter Bison](/assets/images/2022/01/WinterBison.jpg){ .post-cover }
 
 <!-- more -->
 

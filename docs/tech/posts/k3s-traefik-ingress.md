@@ -3,11 +3,11 @@ title: "Boring Kubernetes: A Real Front Door with Traefik"
 date: 2026-07-02
 description: The one where I eat my own words about "no fancy ingress."
 categories:
-  - Practice
+  - practice
 tags:
-  - Kubernetes
-  - Traefik
-  - Tailscale
+  - kubernetes
+  - traefik
+  - tailscale
 slug: k3s-traefik-ingress
 comments: true
 ---
@@ -34,7 +34,7 @@ No TLS, no names, no bookmarks that survive a service redeploy. Fine for a media
 
 **Annoyance 2: chatty HTTP over the subnet router felt sluggish.** The subnet router is great for what it is — raw TCP and low-volume admin access. But every packet to `grafana.harus-infrastructure.svc.cluster.local` took the **router hop**: client → Tailscale → subnet-router pod → CoreDNS → service. For a bulk `postgres:5432` connection you never notice. For an interactive app firing dozens of little XHRs per page, that hop adds up into a spinny, laggy feel even on the same WiFi.
 
-I wanted one thing: type `grafana.h.azusachino.icu` into any device on my tailnet, get a green padlock, and have it feel like localhost.
+I wanted one thing: type `grafana.h.azusachino.com` into any device on my tailnet, get a green padlock, and have it feel like localhost.
 
 ## Anatomy of the slow path
 
@@ -78,7 +78,7 @@ Here's the embarrassing part. When I wrote "no ingress controller," **I was wron
 
 That reframes the whole project. This wasn't "install and operate Traefik." It was "adopt something already running and exposed." No new Deployment, no Helm install, no operator. Just:
 
-1. Teach DNS to point `*.h.azusachino.icu` at the node.
+1. Teach DNS to point `*.h.azusachino.com` at the node.
 2. Give Traefik a trusted wildcard cert.
 3. Drop an `IngressRoute` next to each service.
 
@@ -113,12 +113,12 @@ Same request, but look at what's gone:
 The division of labor is now clean:
 
 - **Traefik** handles all HTTP/L7 — every interactive web app. There's no raw HTTP over the tailnet anymore.
-- **Subnet router** stays for **DNS** — CoreDNS's ClusterIP is still how `*.h.azusachino.icu` itself resolves — plus raw non-HTTP TCP like `postgres:5432`. Exactly the traffic that never minded the hop.
+- **Subnet router** stays for **DNS** — CoreDNS's ClusterIP is still how `*.h.azusachino.com` itself resolves — plus raw non-HTTP TCP like `postgres:5432`. Exactly the traffic that never minded the hop.
 - **NodePorts** are retired entirely.
 
 ## DNS: one wildcard to rule them all
 
-I don't want a DNS record per service. I want `*.h.azusachino.icu` to land on the Traefik entrypoint, and let Traefik sort out routing by `Host` header.
+I don't want a DNS record per service. I want `*.h.azusachino.com` to land on the Traefik entrypoint, and let Traefik sort out routing by `Host` header.
 
 Two pieces make that work. First, K3s CoreDNS auto-imports custom server blocks from a ConfigMap, so I template the whole subdomain to the node's tailnet IP:
 
@@ -131,7 +131,7 @@ metadata:
   namespace: kube-system
 data:
   h-azusachino.server: |
-    h.azusachino.icu {
+    h.azusachino.com {
       template IN A {
         answer "{{ .Name }} 60 IN A 100.89.137.15"
       }
@@ -141,7 +141,7 @@ data:
     }
 ```
 
-Second, a **Tailscale split-DNS** rule (set once in the console) routes `h.azusachino.icu → 10.43.0.10`, the CoreDNS ClusterIP. Now any tailnet device resolving `grafana.h.azusachino.icu` gets `100.89.137.15`, hits Traefik, and Traefik matches the host.
+Second, a **Tailscale split-DNS** rule (set once in the console) routes `h.azusachino.com → 10.43.0.10`, the CoreDNS ClusterIP. Now any tailnet device resolving `grafana.h.azusachino.com` gets `100.89.137.15`, hits Traefik, and Traefik matches the host.
 
 Yes — that DNS lookup *still* crosses the subnet router to reach CoreDNS. The difference is it's a **once-per-name, 60-second-cached** cost, not a per-request one. The *data* path — the thousands of packets that interactive latency is actually made of — now goes straight to the host. That's the whole trade: keep the cheap thing on the router, move the expensive thing off it.
 
@@ -191,8 +191,8 @@ spec:
         defaultGeneratedCert:
           resolver: le
           domain:
-            main: h.azusachino.icu
-            sans: ["*.h.azusachino.icu"]
+            main: h.azusachino.com
+            sans: ["*.h.azusachino.com"]
 ```
 
 Three details worth calling out:
@@ -217,39 +217,39 @@ metadata:
 spec:
   entryPoints: [web, websecure]
   routes:
-    - match: Host(`grafana.h.azusachino.icu`)
+    - match: Host(`grafana.h.azusachino.com`)
       kind: Rule
       services:
         - name: grafana
           port: 80
-  tls: {} # inherits the LE wildcard *.h.azusachino.icu
+  tls: {} # inherits the LE wildcard *.h.azusachino.com
 ```
 
 Apply it, and you can test the route *before* DNS has propagated by faking the `Host` header:
 
 ```sh
-curl -H "Host: grafana.h.azusachino.icu" http://100.89.137.15/
+curl -H "Host: grafana.h.azusachino.com" http://100.89.137.15/
 ```
 
-That's the entire per-service cost now. Two dozen apps — Grafana, Immich, Jellyfin, Vaultwarden, Karakeep, n8n — all follow the identical pattern, each host `<name>.h.azusachino.icu`. Public exposure stays a separate, deliberate concern: only the Cloudflare Tunnel allowlist is reachable off-tailnet.
+That's the entire per-service cost now. Two dozen apps — Grafana, Immich, Jellyfin, Vaultwarden, Karakeep, n8n — all follow the identical pattern, each host `<name>.h.azusachino.com`. Public exposure stays a separate, deliberate concern: only the Cloudflare Tunnel allowlist is reachable off-tailnet.
 
 ## The gotchas
 
 - **Version is chart-managed.** The bundled Traefik tracks the K3s release (currently v3.6.x) and is *not* in my pinning discipline. A K3s upgrade can move it; I just record the observed version with a note rather than fighting it.
-- **Split-DNS is a manual console step.** The `coredns-custom` half is in Git, but the Tailscale `h.azusachino.icu → 10.43.0.10` rule lives in the Tailscale admin console. Easy to forget when rebuilding.
+- **Split-DNS is a manual console step.** The `coredns-custom` half is in Git, but the Tailscale `h.azusachino.com → 10.43.0.10` rule lives in the Tailscale admin console. Easy to forget when rebuilding.
 - **DNS-01 needs the token in the right namespace.** The `SealedSecret` must land in `kube-system` (where Traefik runs), not the app namespace.
 
 ## Was it worth undoing my past self?
 
 The old post's thesis was "boring is good — build it once, let it run." Adopting Traefik didn't betray that; it *extended* it. I didn't add a moving part — I lit up one that was already there and idle. The result is fewer things to remember, not more:
 
-- ✅ Every app at a real name: `<service>.h.azusachino.icu`
+- ✅ Every app at a real name: `<service>.h.azusachino.com`
 - ✅ Green-padlock TLS everywhere, zero per-device trust, zero public exposure
 - ✅ Interactive apps off the subnet-router data path — no more spinny dashboards
 - ✅ NodePort port-roulette retired
 - ✅ New service = one `IngressRoute` with `tls: {}`
 
-The subnet router didn't go away — and its most load-bearing job now is the one that's easiest to miss: **DNS**. Even the shiny Traefik path can't resolve `*.h.azusachino.icu` without it, because those names answer at CoreDNS's ClusterIP, reachable only through the router. Beyond that it still carries raw, non-HTTP TCP (`postgres:5432` and friends) from the tailnet. What it *stopped* carrying is interactive HTTP — that's all Traefik now. It just stopped being the tool for *everything*. That's the real lesson of a boring homelab: it's not that you never change it. It's that when you do, you reach for the thing already on the cluster before you install a new one.
+The subnet router didn't go away — and its most load-bearing job now is the one that's easiest to miss: **DNS**. Even the shiny Traefik path can't resolve `*.h.azusachino.com` without it, because those names answer at CoreDNS's ClusterIP, reachable only through the router. Beyond that it still carries raw, non-HTTP TCP (`postgres:5432` and friends) from the tailnet. What it *stopped* carrying is interactive HTTP — that's all Traefik now. It just stopped being the tool for *everything*. That's the real lesson of a boring homelab: it's not that you never change it. It's that when you do, you reach for the thing already on the cluster before you install a new one.
 
 ## What's next
 

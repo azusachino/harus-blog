@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-08
 comments: true
+cover: "/assets/images/2022/02/FaceOff.jpg"
+cover_alt: "Cover photo: Face Off"
 ---
-
-![Cover photo: Face Off](/assets/images/2022/02/FaceOff.jpg){ .post-cover }
 
 <!-- more -->
 
@@ -18,7 +18,7 @@ Combine theory and practice: Nothing works and don't know why.
 
 ### 经济常识一本通
 
-虽然不能说这本书的内容有多好，但是用来入门还是有一定效用的；也记录了一些[笔记](https://note.azusachino.icu/reading/economy-common-sense/index.html)，以留后续速查。
+虽然不能说这本书的内容有多好，但是用来入门还是有一定效用的。
 
 ## Learning
 

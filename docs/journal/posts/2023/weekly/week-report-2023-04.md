@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2023-04
 comments: true
+cover: "/assets/images/2023/01/BlackbirdDay.jpg"
+cover_alt: "Cover photo: Blackbird Day"
 ---
-
-![Cover photo: Blackbird Day](/assets/images/2023/01/BlackbirdDay.jpg){ .post-cover }
 
 <!-- more -->
 

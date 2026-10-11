@@ -9,9 +9,9 @@ tags:
   - livestream
 slug: what-is-live-stream
 comments: true
+cover: "/assets/images/2022/02/MaldivesHeart.jpg"
+cover_alt: "Cover photo: Maldives Heart"
 ---
-
-![Cover photo: Maldives Heart](/assets/images/2022/02/MaldivesHeart.jpg){ .post-cover }
 
 <!-- more -->
 

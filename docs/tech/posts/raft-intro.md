@@ -8,9 +8,9 @@ tags:
   - raft
 slug: raft-intro
 comments: true
+cover: "/assets/images/2021/10/MackenzieRiver.jpg"
+cover_alt: "Cover photo: Mackenzie River"
 ---
-
-![Cover photo: Mackenzie River](/assets/images/2021/10/MackenzieRiver.jpg){ .post-cover }
 
 <!-- more -->
 

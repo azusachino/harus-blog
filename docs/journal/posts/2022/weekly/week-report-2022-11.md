@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-11
 comments: true
+cover: "/assets/images/2022/03/GreatCormorants.jpg"
+cover_alt: "Cover photo: Great Cormorants"
 ---
-
-![Cover photo: Great Cormorants](/assets/images/2022/03/GreatCormorants.jpg){ .post-cover }
 
 <!-- more -->
 
@@ -31,8 +31,6 @@ comments: true
 > A segmentation fault occurs when your program attempts to access an area of memory that it is not allowed to access.
 
 ![.](/assets/images/2022/03/segmentation-fault.svg)
-
-详细的笔记可以参见[这里](https://note.azusachino.icu/reading/the-linux-programming-interface/07.memory-allocation.html)
 
 ## life
 

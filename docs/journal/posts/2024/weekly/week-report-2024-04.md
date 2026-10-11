@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-04
 comments: true
+cover: "/assets/images/2024/01/PlitviceWinter.png"
+cover_alt: "Cover photo: Plitvice Winter"
 ---
-
-![Cover photo: Plitvice Winter](/assets/images/2024/01/PlitviceWinter.png){ .post-cover }
 
 <!-- more -->
 

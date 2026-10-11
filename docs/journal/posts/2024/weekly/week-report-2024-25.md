@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-25
 comments: true
+cover: "/assets/images/2024/06/shanghai.jpg"
+cover_alt: "Cover photo: shanghai"
 ---
-
-![Cover photo: shanghai](/assets/images/2024/06/shanghai.jpg){ .post-cover }
 
 <!-- more -->
 

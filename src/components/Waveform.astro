@@ -1,0 +1,30 @@
+---
+// A static waveform rule. The bar heights come from the seed string, so
+// every page gets its own stable "track".
+interface Props {
+  seed: string;
+  bars?: number;
+}
+const { seed, bars = 48 } = Astro.props;
+let h = 2166136261;
+for (const ch of seed) h = Math.imul(h ^ ch.codePointAt(0)!, 16777619) >>> 0;
+const heights = Array.from({ length: bars }, (_, i) => {
+  h = Math.imul(h ^ (h >>> 15), 2246822507) >>> 0;
+  const envelope = Math.sin((Math.PI * (i + 0.5)) / bars);
+  return 3 + Math.round(envelope * (4 + (h % 13)));
+});
+const width = bars * 5;
+---
+<svg class="wave" viewBox={`0 0 ${width} 24`} width={width} height="24" aria-hidden="true">
+  {heights.map((v, i) => <rect x={i * 5} y={12 - v / 2} width="3" height={v} rx="1.5" />)}
+</svg>
+
+<style>
+  .wave {
+    display: block;
+    max-width: 100%;
+    margin: 0.9rem 0 0.4rem;
+    fill: var(--glow);
+    opacity: 0.85;
+  }
+</style>

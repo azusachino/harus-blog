@@ -1,0 +1,36 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Illustration from './Illustration.astro';
+import Waveform from './Waveform.astro';
+import { textLang } from '../lib/posts';
+
+interface Props {
+  id: 'about' | 'cv';
+}
+const entry = (await getEntry('pages', Astro.props.id))!;
+const { Content } = await render(entry);
+---
+<Base title={entry.data.title} description={entry.data.description}>
+  <article class="page" lang={textLang(entry.body ?? '')}>
+    <h1>{entry.data.title}</h1>
+    {entry.data.description && <p class="muted">{entry.data.description}</p>}
+    <Waveform seed={entry.data.title} />
+    {Astro.props.id === 'about' && <div class="art"><Illustration name="about" eager /></div>}
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</Base>
+
+<style>
+  .page {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+
+  .art {
+    max-width: 30rem;
+    margin: 1.5rem 0 0.5rem;
+  }
+</style>

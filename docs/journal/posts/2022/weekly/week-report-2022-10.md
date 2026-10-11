@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-10
 comments: true
+cover: "/assets/images/2022/03/IPBDMom.jpg"
+cover_alt: "Cover photo: IPBDMom"
 ---
-
-![Cover photo: IPBDMom](/assets/images/2022/03/IPBDMom.jpg){ .post-cover }
 
 <!-- more -->
 
@@ -30,7 +30,7 @@ comments: true
 
 ### TLPI
 
-I/O 层面上并没有太多新的内容，主要还是读、写、offset 相关内容；进程这块学到了很多，包括进程的组成要素、虚拟内存、堆栈、环境变量等。具体可以参见[这里](https://note.azusachino.icu/reading/the-linux-programming-interface/06.process.html)
+I/O 层面上并没有太多新的内容，主要还是读、写、offset 相关内容；进程这块学到了很多，包括进程的组成要素、虚拟内存、堆栈、环境变量等。
 
 ### Axum Usage
 

@@ -8,9 +8,9 @@ tags:
   - cs
 slug: understand-how-computer-run
 comments: true
+cover: "/assets/images/2022/02/WinterHalo.jpg"
+cover_alt: "Cover photo: Winter Halo"
 ---
-
-![Cover photo: Winter Halo](/assets/images/2022/02/WinterHalo.jpg){ .post-cover }
 
 <!-- more -->
 

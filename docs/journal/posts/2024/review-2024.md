@@ -6,9 +6,9 @@ categories:
   - review
 slug: review-2024
 comments: true
+cover: "/assets/images/2024/miku_fanart_board.jpeg"
+cover_alt: "Cover photo: miku fanart board"
 ---
-
-![Cover photo: miku fanart board](/assets/images/2024/miku_fanart_board.jpeg){ .post-cover }
 
 <!-- more -->
 

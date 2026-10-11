@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2023-20
 comments: true
+cover: "/assets/images/2023/05/miku.jpg"
+cover_alt: "Hatsune Miku illustration"
 ---
-
-![Hatsune Miku illustration](/assets/images/2023/05/miku.jpg){ .post-cover }
 
 <!-- more -->
 

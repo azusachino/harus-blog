@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-36
 comments: true
+cover: "/assets/images/2022/09/CostadaMorte.jpg"
+cover_alt: "Cover photo: Costada Morte"
 ---
-
-![Cover photo: Costada Morte](/assets/images/2022/09/CostadaMorte.jpg){ .post-cover }
 
 <!-- more -->
 

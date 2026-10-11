@@ -9,9 +9,9 @@ tags:
   - protobuf
 slug: practice-grpc-protobuf
 comments: true
+cover: "/assets/images/2021/09/WalhallaOverlook.jpg"
+cover_alt: "Cover photo: Walhalla Overlook"
 ---
-
-![Cover photo: Walhalla Overlook](/assets/images/2021/09/WalhallaOverlook.jpg){ .post-cover }
 
 <!-- more -->
 

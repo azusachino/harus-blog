@@ -1,0 +1,46 @@
+---
+// Giscus maps threads by page <title>; keep these values identical to the
+// MkDocs site so existing discussions stay attached.
+---
+<section class="comments" aria-labelledby="comments-title">
+  <h2 id="comments-title">Comments</h2>
+  <div class="giscus"></div>
+</section>
+<script is:inline>
+  (() => {
+    const theme = () => (document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light');
+    const attrs = {
+      'data-repo': 'azusachino/idealistic-daydreamer',
+      'data-repo-id': 'MDEwOlJlcG9zaXRvcnkzNTgxOTk2MjU=',
+      'data-category': 'General',
+      'data-category-id': 'DIC_kwDOFVmxSc4CON34',
+      'data-mapping': 'title',
+      'data-strict': '0',
+      'data-reactions-enabled': '1',
+      'data-emit-metadata': '0',
+      'data-input-position': 'top',
+      'data-theme': theme(),
+      'data-lang': 'en',
+      'data-loading': 'lazy',
+    };
+    const script = document.createElement('script');
+    script.src = 'https://giscus.app/client.js';
+    for (const [k, v] of Object.entries(attrs)) script.setAttribute(k, v);
+    script.crossOrigin = 'anonymous';
+    script.async = true;
+    document.querySelector('.giscus').appendChild(script);
+    new MutationObserver(() => {
+      document.querySelector('.giscus-frame')?.contentWindow.postMessage(
+        { giscus: { setConfig: { theme: theme() } } },
+        'https://giscus.app',
+      );
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  })();
+</script>
+
+<style>
+  .comments {
+    margin-top: 4rem;
+    max-width: var(--measure);
+  }
+</style>

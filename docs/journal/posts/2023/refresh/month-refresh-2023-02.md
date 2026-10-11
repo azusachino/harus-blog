@@ -6,9 +6,9 @@ categories:
   - refresh
 slug: month-refresh-2023-02
 comments: true
+cover: "/assets/images/2023/02/AtraniAmalfi.jpg"
+cover_alt: "Cover photo: Atrani Amalfi"
 ---
-
-![Cover photo: Atrani Amalfi](/assets/images/2023/02/AtraniAmalfi.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-36
 comments: true
+cover: "/assets/images/2024/09/aeron-overview.png"
+cover_alt: "Cover photo: aeron overview"
 ---
-
-![Cover photo: aeron overview](/assets/images/2024/09/aeron-overview.png){ .post-cover }
 
 <!-- more -->
 

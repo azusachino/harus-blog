@@ -6,8 +6,6 @@ categories:
   - life
 slug: the-limitation-of-cynicism
 comments: true
-hide:
-  - navigation
 ---
 
 <!-- more -->

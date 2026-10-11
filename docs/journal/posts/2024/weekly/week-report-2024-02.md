@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-02
 comments: true
+cover: "/assets/images/2024/01/HanaHighway.png"
+cover_alt: "Cover photo: Hana Highway"
 ---
-
-![Cover photo: Hana Highway](/assets/images/2024/01/HanaHighway.png){ .post-cover }
 
 <!-- more -->
 
@@ -35,7 +35,7 @@ If someone is `グイグイ` enough like the protagonist, then that one might be
 
 ## life
 
-- Focusing on learning [AWS](https://note.azusachino.icu/tags/aws/)
+- Focusing on learning AWS
 - `Grats` on not missing daily exercises
 - Finished one season of animation in one steak
 

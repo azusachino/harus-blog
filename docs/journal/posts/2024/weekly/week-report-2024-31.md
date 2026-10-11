@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-31
 comments: true
+cover: "/assets/images/2024/08/teachable.png"
+cover_alt: "Cover photo: teachable"
 ---
-
-![Cover photo: teachable](/assets/images/2024/08/teachable.png){ .post-cover }
 
 <!-- more -->
 

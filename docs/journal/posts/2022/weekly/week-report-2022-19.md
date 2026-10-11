@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-19
 comments: true
+cover: "/assets/images/2022/05/DuckHen.jpg"
+cover_alt: "Cover photo: Duck Hen"
 ---
-
-![Cover photo: Duck Hen](/assets/images/2022/05/DuckHen.jpg){ .post-cover }
 
 <!-- more -->
 

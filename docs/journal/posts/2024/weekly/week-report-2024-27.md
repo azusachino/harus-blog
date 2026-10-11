@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-27
 comments: true
+cover: "/assets/images/2024/07/weekend-life.png"
+cover_alt: "Cover photo: weekend life"
 ---
-
-![Cover photo: weekend life](/assets/images/2024/07/weekend-life.png){ .post-cover }
 
 <!-- more -->
 

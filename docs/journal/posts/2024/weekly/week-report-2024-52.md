@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-52
 comments: true
+cover: "/assets/images/2024/ayumi.png"
+cover_alt: "Cover photo: ayumi"
 ---
-
-![Cover photo: ayumi](/assets/images/2024/ayumi.png){ .post-cover }
 
 <!-- more -->
 

@@ -9,9 +9,9 @@ tags:
   - opentracing
 slug: practice-grpc-opentracing
 comments: true
+cover: "/assets/images/2021/09/PetitMinou.jpg"
+cover_alt: "Cover photo: Petit Minou"
 ---
-
-![Cover photo: Petit Minou](/assets/images/2021/09/PetitMinou.jpg){ .post-cover }
 
 <!-- more -->
 

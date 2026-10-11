@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2023-11
 comments: true
+cover: "/assets/images/2023/03/MarsTars.jpg"
+cover_alt: "Cover photo: Mars Tars"
 ---
-
-![Cover photo: Mars Tars](/assets/images/2023/03/MarsTars.jpg){ .post-cover }
 
 <!-- more -->
 

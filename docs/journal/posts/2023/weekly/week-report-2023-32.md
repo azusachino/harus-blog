@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2023-32
 comments: true
+cover: "/assets/images/2023/08/KeyWestBridge.jpg"
+cover_alt: "Cover photo: Key West Bridge"
 ---
-
-![Cover photo: Key West Bridge](/assets/images/2023/08/KeyWestBridge.jpg){ .post-cover }
 
 <!-- more -->
 

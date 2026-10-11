@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-17
 comments: true
+cover: "/assets/images/2024/04/SunsetArchesNP.png"
+cover_alt: "Cover photo: Sunset Arches NP"
 ---
-
-![Cover photo: Sunset Arches NP](/assets/images/2024/04/SunsetArchesNP.png){ .post-cover }
 
 <!-- more -->
 

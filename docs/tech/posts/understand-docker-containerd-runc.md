@@ -9,9 +9,9 @@ tags:
   - runc
 slug: understand-docker-containerd-runc
 comments: true
+cover: "/assets/images/2021/12/SiberianSunset.jpg"
+cover_alt: "Cover photo: Siberian Sunset"
 ---
-
-![Cover photo: Siberian Sunset](/assets/images/2021/12/SiberianSunset.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-41
 comments: true
+cover: "/assets/images/2024/psn20241011.png"
+cover_alt: "Cover photo: psn20241011"
 ---
-
-![Cover photo: psn20241011](/assets/images/2024/psn20241011.png){ .post-cover }
 
 <!-- more -->
 

@@ -6,11 +6,9 @@ categories:
   - life
 slug: plato-and-platypus
 comments: true
-hide:
-  - navigation
+cover: "/assets/book/2021/plato-and-platypus.jpg"
+cover_alt: "Cover photo: plato and platypus"
 ---
-
-![Cover photo: plato and platypus](/assets/book/2021/plato-and-platypus.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -1,0 +1,43 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Article from '../../components/Article.astro';
+import { day, href, postLang, published, SECTIONS, trackLength } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const section of SECTIONS) {
+    const posts = await published(section);
+    posts.forEach((post, i) => {
+      paths.push({
+        params: { section, slug: post.data.slug },
+        // Lists are newest first: "next" is the newer post.
+        props: { section, post, newer: posts[i - 1], older: posts[i + 1], number: posts.length - i },
+      });
+    });
+  }
+  return paths;
+}
+
+const { section, post, newer, older, number } = Astro.props;
+const { Content, headings } = await render(post);
+const link = (p?: typeof post) => p && { href: href(section, p), title: p.data.title };
+---
+<Base title={post.data.title} description={post.data.description} progress>
+  <Article
+    lang={postLang(post)}
+    back={{ href: `/${section}/`, label: section[0].toUpperCase() + section.slice(1) }}
+    badge={`#${String(number).padStart(3, '0')}`}
+    title={post.data.title}
+    date={day(post.data.date)}
+    length={trackLength(post.body)}
+    tags={[...post.data.categories, ...(post.data.tags ?? [])]}
+    headings={headings}
+    prev={link(older)}
+    next={link(newer)}
+    comments={post.data.comments}
+    cover={post.data.cover ? { src: post.data.cover, alt: post.data.cover_alt } : undefined}
+  >
+    <Content />
+  </Article>
+</Base>

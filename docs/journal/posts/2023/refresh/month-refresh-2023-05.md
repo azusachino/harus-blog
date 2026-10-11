@@ -6,9 +6,9 @@ categories:
   - refresh
 slug: month-refresh-2023-05
 comments: true
+cover: "/assets/images/2023/05/HiddenBeach.jpg"
+cover_alt: "Cover photo: Hidden Beach"
 ---
-
-![Cover photo: Hidden Beach](/assets/images/2023/05/HiddenBeach.jpg){ .post-cover }
 
 <!-- more -->
 

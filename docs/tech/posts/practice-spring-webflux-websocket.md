@@ -10,9 +10,9 @@ tags:
   - websocket
 slug: practice-spring-webflux-websocket
 comments: true
+cover: "/assets/images/2022/02/Oymyakon.jpg"
+cover_alt: "Cover photo: Oymyakon"
 ---
-
-![Cover photo: Oymyakon](/assets/images/2022/02/Oymyakon.jpg){ .post-cover }
 
 <!-- more -->
 

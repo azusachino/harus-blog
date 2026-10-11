@@ -6,9 +6,9 @@ categories:
   - refresh
 slug: month-refresh-2023-04
 comments: true
+cover: "/assets/images/2023/04/JTNPMilkyWay.jpg"
+cover_alt: "Cover photo: JTNPMilky Way"
 ---
-
-![Cover photo: JTNPMilky Way](/assets/images/2023/04/JTNPMilkyWay.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-47
 comments: true
+cover: "/assets/images/2024/nahida-1.png"
+cover_alt: "Cover photo: nahida 1"
 ---
-
-![Cover photo: nahida 1](/assets/images/2024/nahida-1.png){ .post-cover }
 
 <!-- more -->
 

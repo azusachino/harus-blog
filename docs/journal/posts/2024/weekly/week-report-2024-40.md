@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-40
 comments: true
+cover: "/assets/images/2024/miku-symphony.jpg"
+cover_alt: "Cover photo: miku symphony"
 ---
-
-![Cover photo: miku symphony](/assets/images/2024/miku-symphony.jpg){ .post-cover }
 
 <!-- more -->
 

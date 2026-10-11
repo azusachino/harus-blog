@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2023-18
 comments: true
+cover: "/assets/images/2023/05/Popocatepetl.jpg"
+cover_alt: "Cover photo: Popocatepetl"
 ---
-
-![Cover photo: Popocatepetl](/assets/images/2023/05/Popocatepetl.jpg){ .post-cover }
 
 <!-- more -->
 

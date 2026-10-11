@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-21
 comments: true
+cover: "/assets/images/2022/05/PawneeOwls.jpg"
+cover_alt: "Cover photo: Pawnee Owls"
 ---
-
-![Cover photo: Pawnee Owls](/assets/images/2022/05/PawneeOwls.jpg){ .post-cover }
 
 <!-- more -->
 

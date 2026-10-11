@@ -6,9 +6,9 @@ categories:
   - refresh
 slug: month-refresh-2025-09
 comments: true
+cover: "/assets/images/2025/09-running.png"
+cover_alt: "Cover photo: 09 running"
 ---
-
-![Cover photo: 09 running](/assets/images/2025/09-running.png){ .post-cover }
 
 <!-- more -->
 

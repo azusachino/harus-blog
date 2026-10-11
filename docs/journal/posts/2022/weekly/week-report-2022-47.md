@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-47
 comments: true
+cover: "/assets/images/2022/11/1013e493a83c1e0eecc202a767e5b833.jpg"
+cover_alt: "Weekly Report 2022.47 cover image"
 ---
-
-![Weekly Report 2022.47 cover image](/assets/images/2022/11/1013e493a83c1e0eecc202a767e5b833.jpg){ .post-cover }
 
 <!-- more -->
 

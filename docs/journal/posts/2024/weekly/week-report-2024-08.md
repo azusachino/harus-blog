@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-08
 comments: true
+cover: "/assets/images/2024/02/AlbaceteSpain.png"
+cover_alt: "Cover photo: Albacete Spain"
 ---
-
-![Cover photo: Albacete Spain](/assets/images/2024/02/AlbaceteSpain.png){ .post-cover }
 
 <!-- more -->
 

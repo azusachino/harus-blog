@@ -2,32 +2,35 @@
 
 > 假如我最终无法继续战斗下去，假如我放弃了，我堕落了，那么我就比那些从未战斗过的人更为恶劣。
 
-Personal blog, built with [MkDocs](https://www.mkdocs.org/) + [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/).
+Personal blog, built with [Astro](https://astro.build/) and themed after Hatsune Miku.
 
 ## Layout
 
-Content lives in `docs/`, split into type-based tabs (no year-wise layout):
-
-- **Tech** — `docs/tech/` (blog) + `docs/tech/series/` (ordered tutorials)
-- **Journal** — `docs/journal/` (weekly reports + monthly refresh)
-- **Reviews** — `docs/reviews/` (yearly reviews, flat nav)
-- **Life** — `docs/life/` (life / books / thoughts, flat nav)
-
-Images live under `docs/assets/images/` and `docs/assets/book/`.
+- `docs/` — the posts, plain Markdown: `tech/posts/`, `tech/series/<name>/`, `journal/posts/<year>/`,
+  `life/posts/`, plus `about.md`, `cv.md` and images under `docs/assets/`.
+- `src/` — the site: pages, components, styles, and the data pages in `src/data/` (Currently, On
+  repeat, Use).
+- `scripts/` — the gates run by `make check`: palette contrast, frontmatter contract, URL parity.
+- `public/` — favicon and touch icon; `public/assets` links to `docs/assets`.
 
 ## Tasks
 
-Tooling is managed by `mise` (runtimes) + `uv` (Python deps); `make` is the task runner:
+Tooling is pinned by `mise` (bun, rumdl); `make` is the task runner:
 
 ```bash
-make local     # serve with live reload at :1313
-make build     # build the static site (strict)
-make migrate   # regenerate docs/ from legacy Hugo content (one-shot, see scripts/migrate.py)
-make format    # prettier
+make local   # dev server with live reload at :4321
+make build   # static site into dist/
+make fmt     # prettier + rumdl
+make check   # the gate: formatting, then contrast, frontmatter, build and URL parity
 ```
 
-## Notes
+## Writing and changing
 
-- Comments: Giscus, configured in `overrides/partials/comments.html`.
-- Legacy Hugo shortcodes (`youtube`/`bilibili`/`douban`/`ppt`) still render via `hooks/shortcodes.py`.
-- Posts dated in the future are treated as drafts (`draft_if_future_date`).
+Rules for posts, images, components and palettes are in [CLAUDE.md](CLAUDE.md); the step-by-step
+for a new post is [.claude/skills/new-post/SKILL.md](.claude/skills/new-post/SKILL.md). Site
+changes are recorded in [CHANGELOG.md](CHANGELOG.md).
+
+## Deployment
+
+Built nightly on the harus-k3s cluster (`03-core/harus-blog`) into atomic releases and served by
+Caddy.

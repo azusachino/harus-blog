@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-16
 comments: true
+cover: "/assets/images/2022/04/NorthernCaracara.jpg"
+cover_alt: "Cover photo: Northern Caracara"
 ---
-
-![Cover photo: Northern Caracara](/assets/images/2022/04/NorthernCaracara.jpg){ .post-cover }
 
 <!-- more -->
 

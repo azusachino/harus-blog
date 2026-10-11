@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-43
 comments: true
+cover: "/assets/images/2022/10/CherryLaurelMaze.jpg"
+cover_alt: "Cover photo: Cherry Laurel Maze"
 ---
-
-![Cover photo: Cherry Laurel Maze](/assets/images/2022/10/CherryLaurelMaze.jpg){ .post-cover }
 
 <!-- more -->
 

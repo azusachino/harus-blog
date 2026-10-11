@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2023-05
 comments: true
+cover: "/assets/images/2023/02/GroundhogThree.jpg"
+cover_alt: "Cover photo: Groundhog Three"
 ---
-
-![Cover photo: Groundhog Three](/assets/images/2023/02/GroundhogThree.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-11
 comments: true
+cover: "/assets/images/2024/03/BryceSnow.jpg"
+cover_alt: "Cover photo: Bryce Snow"
 ---
-
-![Cover photo: Bryce Snow](/assets/images/2024/03/BryceSnow.jpg){ .post-cover }
 
 <!-- more -->
 

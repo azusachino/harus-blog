@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-07
 comments: true
+cover: "/assets/images/2022/02/MexicoMonarchs.jpg"
+cover_alt: "Cover photo: Mexico Monarchs"
 ---
-
-![Cover photo: Mexico Monarchs](/assets/images/2022/02/MexicoMonarchs.jpg){ .post-cover }
 
 <!-- more -->
 

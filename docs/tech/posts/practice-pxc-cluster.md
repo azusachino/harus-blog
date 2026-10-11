@@ -8,9 +8,9 @@ tags:
   - mysql
 slug: practice-pxc-cluster
 comments: true
+cover: "/assets/images/2021/04/VeniceBeach.jpg"
+cover_alt: "Cover photo: Venice Beach"
 ---
-
-![Cover photo: Venice Beach](/assets/images/2021/04/VeniceBeach.jpg){ .post-cover }
 
 <!-- more -->
 

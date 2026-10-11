@@ -8,9 +8,9 @@ tags:
   - db
 slug: rocksdb-knowledge-sharing
 comments: true
+cover: "/assets/images/2025/DunluceIreland.png"
+cover_alt: "Cover photo: Dunluce Ireland"
 ---
-
-![Cover photo: Dunluce Ireland](/assets/images/2025/DunluceIreland.png){ .post-cover }
 
 <!-- more -->
 

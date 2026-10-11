@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-25
 comments: true
+cover: "/assets/images/2022/06/IndigoBunting.jpg"
+cover_alt: "Cover photo: Indigo Bunting"
 ---
-
-![Cover photo: Indigo Bunting](/assets/images/2022/06/IndigoBunting.jpg){ .post-cover }
 
 <!-- more -->
 

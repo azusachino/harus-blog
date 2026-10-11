@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-49
 comments: true
+cover: "/assets/images/2024/workplace.png"
+cover_alt: "Cover photo: workplace"
 ---
-
-![Cover photo: workplace](/assets/images/2024/workplace.png){ .post-cover }
 
 <!-- more -->
 

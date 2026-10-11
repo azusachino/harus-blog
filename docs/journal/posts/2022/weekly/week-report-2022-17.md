@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-17
 comments: true
+cover: "/assets/images/2022/04/RobinsEgg.jpg"
+cover_alt: "Cover photo: Robins Egg"
 ---
-
-![Cover photo: Robins Egg](/assets/images/2022/04/RobinsEgg.jpg){ .post-cover }
 
 <!-- more -->
 

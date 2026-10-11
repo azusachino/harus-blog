@@ -1,0 +1,134 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Illustration from '../components/Illustration.astro';
+import Playlist from '../components/Playlist.astro';
+import PostList from '../components/PostList.astro';
+import Waveform from '../components/Waveform.astro';
+import { day, href, published, SECTIONS, trackLength } from '../lib/posts';
+
+const lists = await Promise.all(SECTIONS.map(async (s) => ({ section: s, posts: await published(s) })));
+const latest = lists
+  .map(({ section, posts }) => ({ section, post: posts[0] }))
+  .sort((a, b) => b.post.data.date.getTime() - a.post.data.date.getTime())[0];
+// One entry per section for the Home strip.
+const currently = Object.values(
+  Object.fromEntries((await getCollection('currently')).reverse().map((e) => [e.data.section, e])),
+);
+const names = { tech: 'Tech', journal: 'Journal', life: 'Life' };
+---
+<Base title="Home">
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Idealistic Daydreamer</p>
+      <h1>A palette gives you the capability;<br />you are the source of possibility.</h1>
+      <Waveform seed="idealistic-daydreamer" bars={64} />
+      <p class="muted">99% theory + 1% practice = me</p>
+    </div>
+    <Illustration name="hero" eager />
+  </section>
+
+  <a class="release card" href={href(latest.section, latest.post)}>
+    <span class="eyebrow">New release · {names[latest.section]}</span>
+    <span class="title">{latest.post.data.title}</span>
+    <span class="mono muted">{day(latest.post.data.date)} · ♪ {trackLength(latest.post.body)}</span>
+  </a>
+
+  <div class="sections">
+    {lists.map(({ section, posts }) => (
+      <section>
+        <h2><a href={`/${section}/`}>{names[section]}</a></h2>
+        <PostList section={section} posts={posts.slice(0, 4)} total={posts.length} />
+      </section>
+    ))}
+  </div>
+
+  <div class="currently-strip">
+    <section>
+      <h2><a href="/currently/#listen">On repeat</a></h2>
+      <Playlist limit={3} />
+    </section>
+    <section>
+      <h2><a href="/currently/">Currently</a></h2>
+      <ul>
+        {currently.map(({ data }) => (
+          <li><span class="eyebrow">{data.kind}</span> {data.value}</li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .hero {
+    padding: 1.5rem 0 1rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  @media (max-width: 52rem) {
+    .hero {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .hero h1 {
+    font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.2rem);
+    max-width: 34ch;
+  }
+
+  .release {
+    display: grid;
+    gap: 0.2rem;
+    margin: 2rem 0 3rem;
+    text-decoration: none;
+    color: var(--ink);
+    border-left: 4px solid var(--accent);
+  }
+
+  .release:hover {
+    border-color: var(--glow);
+  }
+
+  .release .title {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+  .sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    gap: 2.5rem;
+  }
+
+  .sections h2 a,
+  .currently-strip h2 a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .sections :global(li) {
+    grid-template-columns: 3rem 1fr;
+  }
+
+  .sections :global(.meta) {
+    grid-column: 2;
+  }
+
+  .currently-strip {
+    margin-top: 3.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    gap: 2.5rem;
+  }
+
+  .currently-strip ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.6rem;
+  }
+</style>

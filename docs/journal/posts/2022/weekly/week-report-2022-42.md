@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-42
 comments: true
+cover: "/assets/images/2022/10/MulberryArtificialHarbour.jpg"
+cover_alt: "Cover photo: Mulberry Artificial Harbour"
 ---
-
-![Cover photo: Mulberry Artificial Harbour](/assets/images/2022/10/MulberryArtificialHarbour.jpg){ .post-cover }
 
 <!-- more -->
 

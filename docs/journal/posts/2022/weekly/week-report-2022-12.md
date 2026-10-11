@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-12
 comments: true
+cover: "/assets/images/2022/03/PeacockNagarahole.jpg"
+cover_alt: "Cover photo: Peacock Nagarahole"
 ---
-
-![Cover photo: Peacock Nagarahole](/assets/images/2022/03/PeacockNagarahole.jpg){ .post-cover }
 
 <!-- more -->
 

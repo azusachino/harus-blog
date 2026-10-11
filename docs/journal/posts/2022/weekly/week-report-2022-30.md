@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-30
 comments: true
+cover: "/assets/images/2022/07/AmericanGoldfinch.jpg"
+cover_alt: "Cover photo: American Goldfinch"
 ---
-
-![Cover photo: American Goldfinch](/assets/images/2022/07/AmericanGoldfinch.jpg){ .post-cover }
 
 <!-- more -->
 

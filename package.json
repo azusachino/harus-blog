@@ -1,0 +1,15 @@
+{
+  "name": "harus-blog-astro",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "verify": "bun scripts/contrast.ts && bun scripts/frontmatter.ts && bunx --bun astro build && bun scripts/url-parity.ts"
+  },
+  "dependencies": {
+    "@astrojs/markdown-satteri": "0.4.2",
+    "astro": "7.3.5"
+  }
+}

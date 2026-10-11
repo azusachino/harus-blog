@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-13
 comments: true
+cover: "/assets/images/2024/03/WhiteEyes.jpg"
+cover_alt: "Cover photo: White Eyes"
 ---
-
-![Cover photo: White Eyes](/assets/images/2024/03/WhiteEyes.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-43
 comments: true
+cover: "/assets/images/2024/psn-tlou2.png"
+cover_alt: "Cover photo: psn tlou2"
 ---
-
-![Cover photo: psn tlou2](/assets/images/2024/psn-tlou2.png){ .post-cover }
 
 <!-- more -->
 

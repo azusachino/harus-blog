@@ -6,9 +6,9 @@ categories:
   - review
 slug: review-2023
 comments: true
+cover: "/assets/images/2023/12/SantaPark.jpg"
+cover_alt: "Cover photo: Santa Park"
 ---
-
-![Cover photo: Santa Park](/assets/images/2023/12/SantaPark.jpg){ .post-cover }
 
 <!-- more -->
 
