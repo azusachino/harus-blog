@@ -27,6 +27,7 @@ const link = (c?: typeof chapter) => c && { href: seriesHref(c.id), title: c.dat
     headings={headings}
     prev={link(prev)}
     next={link(next)}
+    cover={chapter.data.cover ? { src: chapter.data.cover, alt: chapter.data.cover_alt } : undefined}
   >
     <Content />
   </Article>

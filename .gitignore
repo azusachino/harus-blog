@@ -1,29 +1,12 @@
-# macos dogshit
+# macOS
 ._*
 .DS_Store
-
-# generated
-public/
-resources/
-jsconfig.json
 
 # env
 .env
 
-# build
-build/
-site/
-
-# python / mkdocs
-.venv/
-__pycache__/
-*.pyc
-.cache/
+# dependencies and build output
+node_modules/
+dist/
+.astro/
 .rumdl_cache/
-
-
-# Astro prototype
-astro/node_modules/
-astro/dist/
-astro/.astro/
-!astro/public/

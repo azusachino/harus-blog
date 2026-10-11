@@ -5,11 +5,11 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "verify": "bun scripts/contrast.ts && bun scripts/frontmatter.ts && bunx --bun astro build && bun scripts/url-parity.ts"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "0.4.2",
-    "astro": "7.3.5",
-    "satteri": "0.10.5"
+    "astro": "7.3.5"
   }
 }

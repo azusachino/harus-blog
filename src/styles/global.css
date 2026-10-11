@@ -11,6 +11,8 @@
   --accent: #d01f78;
   --on-accent: #ffffff;
   --key-white: #ffffff;
+  /* Ink used on the --glow band (footer, ID mark) in both modes. */
+  --on-glow: #2b2f32;
   --key-black: #373b3e;
 
   --font-body: "Noto Sans SC", "Noto Sans JP", "PingFang SC", "Hiragino Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;

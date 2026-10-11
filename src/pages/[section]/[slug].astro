@@ -36,6 +36,7 @@ const link = (p?: typeof post) => p && { href: href(section, p), title: p.data.t
     prev={link(older)}
     next={link(newer)}
     comments={post.data.comments}
+    cover={post.data.cover ? { src: post.data.cover, alt: post.data.cover_alt } : undefined}
   >
     <Content />
   </Article>

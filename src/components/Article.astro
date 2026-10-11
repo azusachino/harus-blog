@@ -20,8 +20,9 @@ interface Props {
   prev?: Link;
   next?: Link;
   comments?: boolean;
+  cover?: { src: string; alt?: string };
 }
-const { lang, back, badge, title, date, length, tags = [], headings, prev, next, comments = false } = Astro.props;
+const { lang, back, badge, title, date, length, tags = [], headings, prev, next, comments = false, cover } = Astro.props;
 const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
 ---
 <article class="post" lang={lang}>
@@ -41,6 +42,7 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
 
   <div class="layout">
     <div class="prose">
+      {cover && <img class="post-cover" src={encodeURI(cover.src)} alt={cover.alt ?? ''} />}
       <slot />
     </div>
     {toc.length > 0 && (

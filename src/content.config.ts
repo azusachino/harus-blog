@@ -3,7 +3,7 @@ import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
 // The universal post frontmatter (see ../CLAUDE.md). Posts stay plain
-// Markdown under ../docs so the content outlives this framework.
+// Markdown under docs/ so the content outlives this framework.
 const post = z.object({
   title: z.string(),
   date: z.coerce.date(),
@@ -15,11 +15,14 @@ const post = z.object({
   slug: z.string(),
   lang: z.string().optional(),
   comments: z.boolean().default(false),
+  // Cover image shown above the post (a /assets/... path) and its alt text.
+  cover: z.string().optional(),
+  cover_alt: z.string().optional(),
 });
 
 const posts = (dir: string) =>
   defineCollection({
-    loader: glob({ base: `../docs/${dir}/posts`, pattern: '**/*.md' }),
+    loader: glob({ base: `docs/${dir}/posts`, pattern: '**/*.md' }),
     schema: post,
   });
 
@@ -61,17 +64,27 @@ const playlist = defineCollection({
 // path (Chinese filenames included) so URLs match the MkDocs site exactly.
 const series = defineCollection({
   loader: glob({
-    base: '../docs/tech/series',
+    base: 'docs/tech/series',
     pattern: '**/*.md',
     generateId: ({ entry }) => entry.replace(/\.md$/, ''),
   }),
-  schema: z.object({ title: z.string(), description: z.string().optional() }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    cover: z.string().optional(),
+    cover_alt: z.string().optional(),
+  }),
 });
 
 // Standalone pages (About, CV) rendered as they are.
 const pages = defineCollection({
-  loader: glob({ base: '../docs', pattern: ['about.md', 'cv.md'] }),
-  schema: z.object({ title: z.string(), description: z.string().optional() }),
+  loader: glob({ base: 'docs', pattern: ['about.md', 'cv.md'] }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    cover: z.string().optional(),
+    cover_alt: z.string().optional(),
+  }),
 });
 
 export const collections = {

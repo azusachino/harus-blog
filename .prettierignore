@@ -2,3 +2,7 @@
 assets
 *.md
 .rumdl_cache
+node_modules
+dist
+.astro
+bun.lock

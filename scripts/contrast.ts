@@ -38,11 +38,10 @@ for (const p of palettes) {
       ['accent', 'bg', 'badges'], ['accent', 'surface', 'card badges'],
       ['on-accent', 'accent', 'badge label'],
       // Footer band: ink on glow in light mode, glow on surface in dark.
-      mode === 'light' ? ['ink', 'glow', 'footer'] : ['glow', 'surface', 'footer'],
+      mode === 'light' ? ['on-glow', 'glow', 'footer'] : ['glow', 'surface', 'footer'],
     ];
-    // The "ID" mark and favicon always use dark ink on --glow, in both modes.
-    t['mark-ink'] = '#2b2f32';
-    pairs.push(['mark-ink', 'glow', 'ID mark']);
+    // The "ID" mark and favicon always use --on-glow ink on --glow, in both modes.
+    pairs.push(['on-glow', 'glow', 'ID mark']);
     // Graphics need 3:1 (WCAG 1.4.11): lit piano keys against unlit white keys.
     const graphics: [string, string, string][] = [['accent', 'key-white', 'lit piano key']];
     for (const [list, min] of [[pairs, 4.5], [graphics, 3]] as const) {

@@ -1,23 +1,20 @@
-.PHONY: help local build migrate check format fmt fmt-check astro-local astro-build astro-check
+.PHONY: help install local build check format fmt fmt-check
 
 # Show help when invoked with no target, instead of running the first one.
 .DEFAULT_GOAL := help
-
-# Material for MkDocs prints an unsolicited MkDocs-2.0 notice to stderr; opt out.
-export NO_MKDOCS_2_WARNING := true
 
 help: ## show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
 		| awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-10s\033[0m %s\n", $$1, $$2}'
 
-local: ## serve the site locally with live reload
-	uv run mkdocs serve --dev-addr 0.0.0.0:1313
+install: ## install locked dependencies
+	bun install --frozen-lockfile
 
-build: ## build the static site (strict)
-	uv run mkdocs build --strict
+local: install ## serve the site with live reload on :4321
+	bunx --bun astro dev --host 0.0.0.0 --port 4321
 
-migrate: ## (re)generate docs/ from Hugo content
-	uv run python scripts/migrate.py
+build: install ## build the static site into dist/
+	bunx --bun astro build
 
 fmt: ## format markdown with rumdl, configs with prettier
 	bunx prettier --write "**/*.{json,yaml,yml}"
@@ -29,13 +26,5 @@ fmt-check: ## verify formatting without modifying files
 	bunx prettier --check "**/*.{json,yaml,yml}"
 	rumdl fmt --check .
 
-check: fmt-check build ## pre-commit and CI gate
-
-astro-local: ## serve the Astro prototype with live reload (astro/)
-	cd astro && bun install --frozen-lockfile && bunx --bun astro dev --host 0.0.0.0 --port 4321
-
-astro-build: ## build the Astro prototype into astro/dist
-	cd astro && bun install --frozen-lockfile && bunx --bun astro build
-
-astro-check: ## Astro gate: palette contrast (AA), build, URL parity with MkDocs
-	cd astro && bun install --frozen-lockfile && bun scripts/contrast.ts && bunx --bun astro build && bun scripts/url-parity.ts
+check: fmt-check install ## pre-commit and CI gate: formatting, then bun run verify (contrast, frontmatter, build, URL parity)
+	bun run verify

@@ -67,8 +67,10 @@ const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
         const icon = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
         const meta = document.querySelector('meta[name="theme-color"]');
         const paint = () => {
-          const glow = getComputedStyle(root).getPropertyValue('--glow').trim() || '#39c5bb';
-          const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="${glow}"/><path d="M17 15v34M30 15h6a17 17 0 0 1 0 34h-6Z" fill="none" stroke="#2b2f32" stroke-width="6.5" stroke-linejoin="round" stroke-linecap="round"/></svg>`;
+          const css = getComputedStyle(root);
+          const glow = css.getPropertyValue('--glow').trim() || '#39c5bb';
+          const ink = css.getPropertyValue('--on-glow').trim() || '#2b2f32';
+          const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="${glow}"/><path d="M17 15v34M30 15h6a17 17 0 0 1 0 34h-6Z" fill="none" stroke="${ink}" stroke-width="6.5" stroke-linejoin="round" stroke-linecap="round"/></svg>`;
           icon.href = `data:image/svg+xml,${encodeURIComponent(svg)}`;
           meta.content = glow;
         };
@@ -94,7 +96,7 @@ const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
     padding: 1.6rem 1rem 2rem;
     font-size: 0.8rem;
     background: var(--glow);
-    color: #2b2f32;
+    color: var(--on-glow);
   }
 
   :global(:root[data-theme='dark']) .site-footer {
@@ -108,7 +110,7 @@ const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
   }
 
   .site-footer :focus-visible {
-    outline-color: #2b2f32;
+    outline-color: var(--on-glow);
   }
 
   :global(:root[data-theme='dark']) .site-footer :focus-visible {

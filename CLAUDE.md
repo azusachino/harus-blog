@@ -1,39 +1,66 @@
 # Project: Idealistic Daydreamer (blog)
 
-Personal blog built with **MkDocs + Material for MkDocs**. Content is in `docs/`, split into
-type-based tabs — **no year-wise layout**.
+Personal blog built with **Astro**, themed after Hatsune Miku. Posts are plain Markdown in `docs/`,
+split into type-based sections — **no year-wise layout**. The site code is at the repo root
+(`src/`, `scripts/`, `public/`). Served by Caddy on harus-k3s (`03-core/harus-blog`), built nightly.
 
 ## Stack & tooling
 
-- `mise` manages runtimes; `uv` manages Python deps; **`make` is the task runner**.
-- `make local` (serve :1313) · `make build` (strict) · `make migrate` · `make format`.
-- Material blog plugin, one instance per tab. Giscus comments via `overrides/partials/comments.html`.
+- `mise` pins bun and rumdl; **`make` is the task runner**; bun runs everything (no Python).
+- `make local` (dev server :4321) · `make build` (`dist/`) · `make fmt` · `make check` (the gate).
+- `make check` = prettier + rumdl, then `bun run verify`: palette contrast (`scripts/contrast.ts`),
+  frontmatter contract (`scripts/frontmatter.ts`), `astro build`, URL parity with the old MkDocs
+  site (`scripts/url-parity.ts` + `scripts/mkdocs-urls.txt`). CI and the cluster builder run the same.
+- On this network installs need `BUN_CONFIG_REGISTRY=https://registry.npmmirror.com/`; strip mirror
+  URLs from `bun.lock` afterwards. New packages wait 7 days (bun cooldown).
+- The dev server runs as a background daemon: after changing `astro.config.mjs`, a collection or a
+  Markdown plugin, `bunx --bun astro dev stop`, delete `node_modules/.astro`, and start again —
+  the content cache does not notice those changes.
+- `CHANGELOG.md` records site changes (not posts): one dated entry per merged change.
 
 ## Content layout
 
-- **Tech** — `docs/tech/posts/` (blog) + `docs/tech/series/<name>/NN.*.md` (ordered tutorials, in nav).
-- **Journal** — `docs/journal/posts/` (blog): weekly reports + monthly refresh + yearly reviews
-  (`review-YYYY`), all under the same By-year archive.
-- **Life** — `docs/life/posts/` (blog): books, concerts, essays.
-- Images: `docs/assets/images/`, `docs/assets/book/`.
+- **Tech** — `docs/tech/posts/` + `docs/tech/series/<name>/NN.<title>.md` (ordered tutorials; the
+  filename is the URL: `/tech/series/<name>/NN.<title>/`).
+- **Journal** — `docs/journal/posts/<YYYY>/…`: weekly reports, monthly refreshes, yearly reviews.
+- **Life** — `docs/life/posts/`: books, concerts, essays.
+- **About / CV** — `docs/about.md`, `docs/cv.md`.
+- **Data pages** — `src/data/*.yaml`: `currently.yaml` (Play/Practice/Read & watch), `playlist.yaml`
+  (On repeat, file order), `use.yaml` (Dev/Devices/Subscriptions). Lists are the owner's; ask before
+  adding entries.
+- Images: `docs/assets/images/<YYYY>/<MM>/…`, `docs/assets/book/`. Served at `/assets/…`.
 
 ## Conventions
 
-- Universal frontmatter — **every** content post uses the same keys in this order: `title`, `date`,
-  `description`, `categories`, `slug`, `comments: true` (optional `tags` go after `categories`).
-  Every tab (Tech/Journal/Life) is a blog-plugin instance, so `date`/`slug` drive post ordering and
-  URLs. Categories are **lowercase** (`research`/`practice`, `weekly`/`refresh`/`review`, `life`).
-  Nav landing pages (`index.md`, `about.md`, `cv.md`) are exempt.
-- `hooks/frontmatter.py` fails the strict build if a post drifts from that order; `hooks/autonav.py`
-  auto-generates the `Series` nav subtree — so **no `mkdocs.yml` nav edit is ever needed** for new content.
-- Life is a blog with no series/archive, so its posts + `life/index.md` carry `hide: [navigation]`
-  (last frontmatter key) to drop the otherwise-empty left sidebar.
-- `scripts/normalize_frontmatter.py` reorders keys in place without touching values; rerun if drift creeps in.
-- Cover image = first `![](...){ .post-cover }` line; blog posts put it before `<!-- more -->` so it
-  shows on the index card.
-- Future-dated posts are drafts (`draft_if_future_date: true`) — excluded from `make build`.
-- Legacy Hugo shortcodes still render via `hooks/shortcodes.py`.
-- `scripts/migrate.py` was the one-shot Hugo→MkDocs migration (kept for reference only).
+- Frontmatter contract, enforced by the build: `title`, `date`, `description`, `categories`,
+  optional `tags`, `slug`, `comments: true`, optional `cover` + `cover_alt` — in that order.
+  Series chapters need only `title` + `description` (optional `cover`). Categories and tags are
+  **lowercase** (`research`/`practice`, `weekly`/`refresh`/`review`, `life`). Optional `lang`
+  (`en`/`zh-CN`/`ja`) overrides the detected article language.
+- `date`/`slug` drive ordering and URLs (`/<section>/<slug>/`); future-dated posts are drafts.
+- Posts stay plain CommonMark: no MDX, no attribute markers, no shortcodes. The cover lives in
+  frontmatter; embeds and diagrams get components, not syntax inside posts.
+- Images live in `docs/assets`, never on an external host (a dead CDN cost ten images once). Before
+  committing a photo, resize to ≤2000px and strip EXIF/GPS (phone photos carry home coordinates).
+- Giscus comments map threads by page title (`<title> - Idealistic Daydreamer`): never change a
+  published post's title or the title format.
+- URLs of published pages never change; `scripts/url-parity.ts` fails the build if one disappears.
+
+## Adding UI (pages, components, palettes)
+
+- Pages in `src/pages/`, components in `src/components/`, shared logic in `src/lib/`. Reuse
+  `Base` (layout), `Article` (post-like pages), `Waveform`, `PostList` before writing new ones.
+- Colors come only from the tokens in `src/styles/global.css` (`--primary`, `--glow`, `--accent`, …),
+  never hex in components. A new palette is a `[data-palette]` block plus an entry in
+  `src/lib/site.ts`; `scripts/contrast.ts` must pass (text 4.5:1, lit keys 3:1).
+- Every animation has a `prefers-reduced-motion` path that still makes sense without motion (the
+  global rule shortens animations to 0.01ms, so timed effects need their own fallback).
+- Keyboard focus stays visible on every background; new controls get accessible names.
+- Decoration does one thing. The footer music player was cut for having too many controls.
+- Miku: colors and motifs are free to use; illustrations follow the Piapro Character License
+  (non-commercial, credited, not official-looking, no promotion). Never quote song lyrics.
+- External data is fetched at build time only (GitHub is the only source); a new source needs the
+  owner's decision. No third-party analytics.
 
 ## Tone & Voice Manifesto (The Idealistic Daydreamer)
 
