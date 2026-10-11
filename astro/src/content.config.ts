@@ -24,7 +24,7 @@ const posts = (dir: string) =>
 const use = defineCollection({
   loader: file('src/data/use.yaml'),
   schema: z.object({
-    group: z.enum(['dev', 'devices', 'desk-audio', 'subscriptions']),
+    group: z.enum(['dev', 'devices', 'subscriptions']),
     kind: z.string(),
     name: z.string(),
     url: z.url().optional(),
