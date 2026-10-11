@@ -14,8 +14,6 @@ hide:
 
 <!-- more -->
 
-![百日紅](https://cdn.azusachino.icu/uploads/original/8d/37/c42131fd76af029361d1e9544093.png)
-
 ## thoughts
 
 百日红, 无疑是这出演唱会中出现过最多的字眼, 朗诵的内容, 歌词.
@@ -70,9 +68,9 @@ hide:
 
 ## 横浜
 
-![k arena](https://cdn.azusachino.icu/uploads/original/8a/cd/bc02effc2e4b4b82378cd8aef1fc.jpeg)
+![k arena](/assets/images/2025/09/yorushika-k-arena.jpg)
 
-![ocean side](https://cdn.azusachino.icu/uploads/original/98/ff/8ef56ea200539d4425cdbf62a0d2.jpeg)
+![ocean side](/assets/images/2025/09/yorushika-ocean-side.jpg)
 
 ## references
 
