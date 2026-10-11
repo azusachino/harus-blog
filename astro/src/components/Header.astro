@@ -8,7 +8,7 @@ const path = Astro.url.pathname;
 <header class="site-header" id="top">
   <div class="bar">
     <a class="brand" href="/">
-      <span class="mark mono" aria-hidden="true">01</span>
+      <span class="mark mono" aria-hidden="true">ID</span>
       <span>Idealistic Daydreamer</span>
     </a>
     <nav aria-label="Main">
@@ -49,10 +49,12 @@ const path = Astro.url.pathname;
     text-decoration: none;
   }
 
+  /* Same as the favicon: ink "ID" on the current palette's --glow. */
   .mark {
     font-size: 0.75rem;
-    color: var(--on-accent);
-    background: var(--accent);
+    font-weight: 700;
+    color: #2b2f32;
+    background: var(--glow);
     padding: 0.05rem 0.35rem;
     border-radius: 4px;
   }
