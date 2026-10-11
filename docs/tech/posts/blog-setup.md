@@ -43,7 +43,7 @@ systemctl enable nginx # 设为开机启动
 
 首先下载证书（具体从哪下载，需要看是谁给你签发的），然后把整套证书文件中 `Nginx` 目录下的 `.crt` 和 `.key` 上传到服务器上，你可以直接放到 `nginx` 的安装目录里，最后在 `nginx.conf` 中启用 `ssl` 的配置就好了，如：
 
-```conf
+```nginx
     server {
         listen       443 ssl;
         # listen       [::]:443 ssl http2 default_server;
@@ -133,7 +133,7 @@ vim /etc/ssh/sshd_config
 
 启用以下的几个配置，并确保 ssh 配置文件的路径与上述一致。
 
-```s
+```diff
 + PermitRootLogin yes # 允许root登录
 + PubkeyAuthentication yes # 允许通过公钥验证用户
 + RSAAuthentication yes # 通过RSA算法验证

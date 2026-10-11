@@ -1,0 +1,60 @@
+---
+// Back to top: appears once the header has scrolled out of view. A plain
+// link to #top (works without JavaScript); the script only toggles visibility.
+---
+<a class="to-top" href="#top" aria-label="Back to top" data-to-top hidden>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" /></svg>
+</a>
+
+<script>
+  const button = document.querySelector<HTMLElement>('[data-to-top]');
+  const header = document.querySelector('#top');
+  if (button && header) {
+    button.hidden = false;
+    new IntersectionObserver(([entry]) => button.classList.toggle('shown', !entry.isIntersecting)).observe(header);
+  }
+</script>
+
+<style>
+  .to-top {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 30;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    background: var(--glow);
+    color: var(--on-glow);
+    box-shadow: 0 4px 14px rgb(0 0 0 / 0.18);
+    opacity: 0;
+    transform: translateY(0.6rem);
+    pointer-events: none;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .to-top.shown {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  .to-top:focus-visible {
+    opacity: 1;
+    outline-color: var(--ink);
+  }
+
+  .to-top svg {
+    width: 1.3rem;
+    height: 1.3rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+</style>

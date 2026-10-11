@@ -333,3 +333,24 @@ img {
     animation-duration: 0.01ms !important;
   }
 }
+
+/* Display math (src/lib/math.mjs): centered, scrolls instead of overflowing. */
+.prose .math-display {
+  margin: 1.4em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  text-align: center;
+}
+
+/* Smooth in-page jumps (back to top, table of contents) unless motion is reduced. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Full-bleed sections use 100vw, which includes a visible scrollbar; never let
+   that create a horizontal scroll. */
+main {
+  overflow-x: clip;
+}

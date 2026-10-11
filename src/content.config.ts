@@ -2,7 +2,7 @@ import { defineCollection } from 'astro:content';
 import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
-// The universal post frontmatter (see ../CLAUDE.md). Posts stay plain
+// The universal post frontmatter (see ../AGENTS.md). Posts stay plain
 // Markdown under docs/ so the content outlives this framework.
 const post = z.object({
   title: z.string(),
@@ -76,9 +76,9 @@ const series = defineCollection({
   }),
 });
 
-// Standalone pages (About, CV) rendered as they are.
+// The CV, rendered as it is (About is a component page, src/pages/about.astro).
 const pages = defineCollection({
-  loader: glob({ base: 'docs', pattern: ['about.md', 'cv.md'] }),
+  loader: glob({ base: 'docs', pattern: ['cv.md'] }),
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),

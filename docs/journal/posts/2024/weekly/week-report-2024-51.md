@@ -51,7 +51,7 @@ if we try to resolve the name hello, here is what will happen:
 - if that name doesn't exist, we look for `hello`
 - if that name doesn't exist, we report an error (like `Name or service not known`)
 
-```conf
+```text
 nameserver 192.168.1.1
 nameserver 192.168.1.2
 search example.com example.net

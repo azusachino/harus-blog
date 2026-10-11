@@ -7,7 +7,7 @@ Personal blog, built with [Astro](https://astro.build/) and themed after Hatsune
 ## Layout
 
 - `docs/` — the posts, plain Markdown: `tech/posts/`, `tech/series/<name>/`, `journal/posts/<year>/`,
-  `life/posts/`, plus `about.md`, `cv.md` and images under `docs/assets/`.
+  `life/posts/`, plus `cv.md` and images under `docs/assets/` (About is `src/pages/about.astro`).
 - `src/` — the site: pages, components, styles, and the data pages in `src/data/` (Currently, On
   repeat, Use).
 - `scripts/` — the gates run by `make check`: palette contrast, frontmatter contract, URL parity.
@@ -26,8 +26,8 @@ make check   # the gate: formatting, then contrast, frontmatter, build and URL p
 
 ## Writing and changing
 
-Rules for posts, images, components and palettes are in [CLAUDE.md](CLAUDE.md); the step-by-step
-for a new post is [.claude/skills/new-post/SKILL.md](.claude/skills/new-post/SKILL.md). Site
+Rules for posts, images, components and palettes are in [AGENTS.md](AGENTS.md) (read as CLAUDE.md by Claude Code); the step-by-step
+for a new post is [.agents/skills/new-post/SKILL.md](.agents/skills/new-post/SKILL.md) (linked from `.claude/skills`). Site
 changes are recorded in [CHANGELOG.md](CHANGELOG.md).
 
 ## Deployment

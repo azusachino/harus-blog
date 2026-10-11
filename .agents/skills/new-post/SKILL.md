@@ -78,6 +78,9 @@ When unsure between practice/research, ask the user rather than guessing.
   `sharp(src).rotate().resize(2000, 2000, { fit: 'inside' }).jpeg({ quality: 82, mozjpeg: true })`.
 - **Markdown** — plain CommonMark: no `{ .class }` attribute markers, no shortcodes, no MDX. Put a
   `<!-- more -->` after the opening paragraph when the post has a hook.
+- **Diagrams and math** — diagrams are ` ```mermaid ` fences. Math is `$…$` inline and `$$…$$` (or
+  a paragraph holding only one formula) for display. Write a price or other literal dollar as `\$`
+  when its paragraph contains another `$`, otherwise the two become a formula.
 - **Typos** — fix clear spelling/grammar/Markdown mistakes only. Do **not** rewrite voice,
   translate, restructure, or alter code blocks.
 

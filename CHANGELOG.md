@@ -4,6 +4,29 @@ Changes to the site itself, newest first. Posts are not listed here; they are th
 One dated entry per merged change, written in the [Keep a Changelog](https://keepachangelog.com/)
 groups (Added, Changed, Fixed, Removed).
 
+## 2026-10-11 — Diagrams and math
+
+### Fixed
+
+- Mermaid diagrams render again (18 diagrams in 6 posts), drawn in the browser with colors from the
+  current palette and mode; the library loads only on pages that have a diagram.
+- Math renders again (5 posts), typeset at build time with KaTeX; a paragraph holding one formula
+  displays as a centered block, as on the MkDocs site.
+- Prices in the k3s migration post are escaped (`\$`) so they no longer pair up as a formula.
+
+### Added
+
+- Back-to-top button (bottom right) once the header scrolls out of view; smooth in-page scrolling
+  unless reduced motion is set.
+
+### Changed
+
+- About is a component page (`src/pages/about.astro`): a before/now role comparison, project
+  cards, "Outside of code" with exact names from the journals, and the life-long rules as a
+  full-width section.
+- Agent files are harness-neutral: instructions in `AGENTS.md` (`CLAUDE.md` links to it) and
+  skills in `.agents/skills/` (`.claude/skills` links to it).
+
 ## 2026-10-11 — Astro
 
 The blog moves from MkDocs + Material to Astro, with the same posts at the same URLs.
