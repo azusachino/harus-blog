@@ -20,6 +20,20 @@
   kind: Coding agent
   name: Claude Code
   url: https://claude.com/claude-code
+- id: pi
+  group: dev
+  kind: Coding agent
+  name: Pi
+- id: gemini-cli
+  group: dev
+  kind: Coding agent
+  name: Gemini CLI
+  url: https://github.com/google-gemini/gemini-cli
+- id: codex
+  group: dev
+  kind: Coding agent
+  name: Codex
+  url: https://github.com/openai/codex
 - id: herdr
   group: dev
   kind: Agent multiplexer
