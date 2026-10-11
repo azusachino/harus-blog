@@ -40,11 +40,15 @@ for (const p of palettes) {
       // Footer band: ink on glow in light mode, glow on surface in dark.
       mode === 'light' ? ['ink', 'glow', 'footer'] : ['glow', 'surface', 'footer'],
     ];
-    for (const [fg, bg, use] of pairs) {
-      const r = ratio(t[fg], t[bg]);
-      if (r < 4.5) {
-        failures++;
-        console.error(`FAIL ${p}/${mode}: ${use} --${fg} ${t[fg]} on --${bg} ${t[bg]} = ${r.toFixed(2)}`);
+    // Graphics need 3:1 (WCAG 1.4.11): lit piano keys against unlit white keys.
+    const graphics: [string, string, string][] = [['accent', 'key-white', 'lit piano key']];
+    for (const [list, min] of [[pairs, 4.5], [graphics, 3]] as const) {
+      for (const [fg, bg, use] of list) {
+        const r = ratio(t[fg], t[bg]);
+        if (r < min) {
+          failures++;
+          console.error(`FAIL ${p}/${mode}: ${use} --${fg} ${t[fg]} on --${bg} ${t[bg]} = ${r.toFixed(2)} (< ${min})`);
+        }
       }
     }
   }

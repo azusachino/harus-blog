@@ -19,9 +19,12 @@ export const NAV = [
 
 // Palette "tracks": the same layout, repainted. Values live in global.css
 // under [data-palette]; every one is contrast-checked in both modes.
+// Named after the movements of Mozart's Piano Sonata No. 13 in B-flat
+// major, K. 333, in playing order; the finale's cadenza is the fourth track.
+export const PIECE = 'Mozart · K. 333';
 export const PALETTES = [
-  { id: 'teal', name: '39 Teal' },
-  { id: 'sakura', name: 'Sakura' },
-  { id: 'snow', name: 'Snow' },
-  { id: 'sunset', name: 'Mirai Sunset' },
+  { id: 'teal', name: 'I. Allegro' },
+  { id: 'snow', name: 'II. Andante cantabile' },
+  { id: 'sakura', name: 'III. Allegretto grazioso' },
+  { id: 'sunset', name: 'Cadenza' },
 ];

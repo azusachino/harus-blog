@@ -1,6 +1,6 @@
 ---
 import Header from '../components/Header.astro';
-import Waveform from '../components/Waveform.astro';
+import PianoStrip from '../components/PianoStrip.astro';
 import { PALETTES, SITE } from '../lib/site';
 import '../styles/global.css';
 
@@ -44,7 +44,7 @@ const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
       <slot />
     </main>
     <footer class="site-footer">
-      <div class="footer-wave"><Waveform seed={title} bars={56} /></div>
+      <PianoStrip />
       <p class="sign mono">♪ {SITE.title} · {SITE.author}</p>
       <nav class="links mono" aria-label="Elsewhere">
         <a href="https://github.com/azusachino">GitHub</a>
@@ -94,16 +94,6 @@ const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
 
   :global(:root[data-theme='dark']) .site-footer :focus-visible {
     outline-color: var(--glow);
-  }
-
-  .footer-wave {
-    display: flex;
-    justify-content: center;
-  }
-
-  /* On the glow band the waveform is drawn in ink; in dark mode it keeps glow. */
-  :global(:root[data-theme='light']) .footer-wave {
-    --glow: #2b2f32;
   }
 
   .sign {

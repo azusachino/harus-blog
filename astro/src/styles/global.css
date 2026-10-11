@@ -31,7 +31,7 @@
   --soft: #86cecb;
   --accent: #ff4fa3;
   --on-accent: #1b1e21;
-  --key-white: #d9e1e6;
+  --key-white: #3a4045;
   --key-black: #1b1e21;
   color-scheme: dark;
 }
@@ -224,7 +224,7 @@ img {
     height: 6px;
     z-index: 20;
     background:
-      repeating-linear-gradient(90deg, transparent 0 13px, var(--line) 13px 14px),
+      repeating-linear-gradient(90deg, transparent 0 13px, var(--key-black) 13px 14px),
       var(--key-white);
   }
 

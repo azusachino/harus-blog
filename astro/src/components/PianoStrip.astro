@@ -1,0 +1,58 @@
+---
+// Two octaves (C3-B4) with K. 333's tonic chord lit: B-flat 3, D 4, F 4.
+// Positions are computed from real keyboard layout, so B-flat is a black key.
+const W = 20; // white key width
+const octaves = 2;
+const blackAfter = [0, 1, 3, 4, 5]; // C#, D#, F#, G#, A# follow these white keys
+const whites = Array.from({ length: 7 * octaves }, (_, i) => i);
+const blacks = Array.from({ length: octaves }, (_, o) => blackAfter.map((b) => o * 7 + b)).flat();
+const lit = { white: new Set([8, 10]), black: new Set([5]) }; // D4, F4; A#3 = B-flat 3
+---
+<figure class="piano">
+  <svg viewBox={`0 0 ${W * whites.length} 64`} role="img" aria-label="Piano keyboard with the B-flat major chord lit">
+    {whites.map((i) => (
+      <rect class:list={['white', { lit: lit.white.has(i) }]} x={i * W + 0.5} y="0.5" width={W - 1} height="63" rx="2.5" />
+    ))}
+    {blacks.map((i) => (
+      <rect class:list={['black', { lit: lit.black.has(i) }]} x={(i + 1) * W - 6} y="0.5" width="12" height="38" rx="1.5" />
+    ))}
+  </svg>
+  <figcaption class="mono">B♭ · D · F — K. 333</figcaption>
+</figure>
+
+<style>
+  .piano {
+    margin: 0 auto 0.6rem;
+    width: min(100%, 17.5rem);
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .white {
+    fill: var(--key-white);
+    stroke: #2b2f32;
+    stroke-width: 1;
+  }
+
+  .black {
+    fill: var(--key-black);
+  }
+
+  .lit {
+    fill: var(--accent);
+  }
+
+  :global(:root[data-theme='dark']) .white {
+    stroke: var(--bg);
+  }
+
+  figcaption {
+    margin-top: 0.35rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+  }
+</style>
