@@ -3,7 +3,7 @@ title: "Boring Kubernetes: A Real Front Door with Traefik"
 date: 2026-07-02
 description: The one where I eat my own words about "no fancy ingress."
 categories:
-  - Practice
+  - practice
 tags:
   - Kubernetes
   - Traefik
