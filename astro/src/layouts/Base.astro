@@ -1,16 +1,30 @@
 ---
 import Header from '../components/Header.astro';
+import MiniPlayer, { type Track } from '../components/MiniPlayer.astro';
+import { NAV, PALETTES, SITE } from '../lib/site';
 import '../styles/global.css';
 
 interface Props {
   title: string;
   description?: string;
   progress?: boolean;
+  track?: Track;
 }
 const { title, description, progress = false } = Astro.props;
-const site = 'Idealistic Daydreamer';
 // Same "<page> - <site>" format as Material: Giscus maps comments by title.
-const full = title === site ? site : `${title} - ${site}`;
+const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
+
+// Non-post pages play as an album in navigation order.
+const path = Astro.url.pathname;
+const at = NAV.findIndex((n) => (n.href === '/' ? path === '/' : path.startsWith(n.href)));
+const track: Track = Astro.props.track ?? {
+  title,
+  sub: `${SITE.author} · ${SITE.title}`,
+  number: at + 1 || 1,
+  total: NAV.length,
+  prev: at > 0 ? { href: NAV[at - 1].href, title: NAV[at - 1].label } : undefined,
+  next: at >= 0 && at < NAV.length - 1 ? { href: NAV[at + 1].href, title: NAV[at + 1].label } : undefined,
+};
 ---
 <!doctype html>
 <html lang="en">
@@ -22,12 +36,17 @@ const full = title === site ? site : `${title} - ${site}`;
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />
     <meta name="theme-color" content="#39c5bb" />
-    <script is:inline>
+    <script is:inline define:vars={{ palettes: PALETTES.map((p) => p.id) }}>
       (() => {
+        // Apply theme and palette before first paint.
+        const root = document.documentElement;
         const saved = localStorage.getItem('theme');
         const dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+        root.dataset.theme = dark ? 'dark' : 'light';
+        const palette = localStorage.getItem('palette');
+        if (palette && palette !== 'teal' && palettes.includes(palette)) root.dataset.palette = palette;
       })();
     </script>
   </head>
@@ -37,17 +56,20 @@ const full = title === site ? site : `${title} - ${site}`;
     <main>
       <slot />
     </main>
-    <footer class="site-footer">
-      <p class="mono">♪ Idealistic Daydreamer · haru</p>
-      <nav class="links mono" aria-label="Elsewhere">
-        <a href="https://github.com/azusachino">GitHub</a>
-        <a href="https://twitter.com/azusachino">X</a>
-        <a href="https://iroha.azusachino.com">iroha</a>
-      </nav>
-      <p class="credit">
-        Miku illustrations are AI-generated (ChatGPT) fan art of Hatsune Miku, a character by Crypton Future Media, Inc.,
-        made under the <a href="https://piapro.jp/license/pcl">Piapro Character License</a>. Not an official work.
-      </p>
+    <footer>
+      <MiniPlayer track={track} />
+      <div class="site-footer">
+        <nav class="links mono" aria-label="Elsewhere">
+          <a href="https://github.com/azusachino">GitHub</a>
+          <a href="https://twitter.com/azusachino">X</a>
+          <a href="https://iroha.azusachino.com">iroha</a>
+          <a href="/rss.xml">RSS</a>
+        </nav>
+        <p class="credit">
+          Miku illustrations are AI-generated (ChatGPT) fan art of Hatsune Miku, a character by Crypton Future Media, Inc.,
+          made under the <a href="https://piapro.jp/license/pcl">Piapro Character License</a>. Not an official work.
+        </p>
+      </div>
     </footer>
     <script is:inline>
       document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {
@@ -62,14 +84,9 @@ const full = title === site ? site : `${title} - ${site}`;
 <style>
   .site-footer {
     text-align: center;
-    padding: 2rem 1rem 2.5rem;
+    padding: 1.4rem 1rem 2rem;
     font-size: 0.8rem;
     color: var(--muted);
-    border-top: 1px solid var(--line);
-  }
-
-  .site-footer p {
-    margin: 0.3rem auto;
   }
 
   .links {
@@ -77,11 +94,12 @@ const full = title === site ? site : `${title} - ${site}`;
     justify-content: center;
     flex-wrap: wrap;
     gap: 0.4rem 1.2rem;
-    margin: 0.6rem 0 0.9rem;
+    margin: 0 0 0.7rem;
   }
 
   .credit {
     max-width: 44rem;
+    margin: 0 auto;
     font-size: 0.72rem;
     line-height: 1.6;
   }

@@ -13,19 +13,33 @@ export async function getStaticPaths() {
       paths.push({
         params: { section, slug: post.data.slug },
         // Lists are newest first: "next" is the newer post.
-        props: { section, post, newer: posts[i - 1], older: posts[i + 1], number: posts.length - i },
+        props: { section, post, newer: posts[i - 1], older: posts[i + 1], number: posts.length - i, total: posts.length },
       });
     });
   }
   return paths;
 }
 
-const { section, post, newer, older, number } = Astro.props;
+const { section, post, newer, older, number, total } = Astro.props;
 const { Content, headings } = await render(post);
 const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
 const sectionName = section[0].toUpperCase() + section.slice(1);
 ---
-<Base title={post.data.title} description={post.data.description} progress>
+<Base
+  title={post.data.title}
+  description={post.data.description}
+  progress
+  track={{
+    title: post.data.title,
+    sub: `haru · ${sectionName}`,
+    number,
+    total,
+    length: trackLength(post.body),
+    prev: older && { href: href(section, older), title: older.data.title },
+    next: newer && { href: href(section, newer), title: newer.data.title },
+    comments: post.data.comments,
+  }}
+>
   <article class="post" lang={postLang(post)}>
     <header>
       <p class="eyebrow">

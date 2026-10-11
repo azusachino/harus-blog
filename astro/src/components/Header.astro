@@ -1,15 +1,10 @@
 ---
-const nav = [
-  ['Tech', '/tech/'],
-  ['Journal', '/journal/'],
-  ['Life', '/life/'],
-  ['Currently', '/currently/'],
-  ['Use', '/use/'],
-  ['About', '/about/'],
-];
+import { NAV } from '../lib/site';
+
+const nav = NAV.filter((n) => n.href !== '/').map((n) => [n.label, n.href]);
 const path = Astro.url.pathname;
 ---
-<header class="site-header">
+<header class="site-header" id="top">
   <div class="bar">
     <a class="brand" href="/">
       <span class="mark mono" aria-hidden="true">01</span>

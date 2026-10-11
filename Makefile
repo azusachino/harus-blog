@@ -1,4 +1,4 @@
-.PHONY: help local build migrate check format fmt fmt-check astro-local astro-build
+.PHONY: help local build migrate check format fmt fmt-check astro-local astro-build astro-check
 
 # Show help when invoked with no target, instead of running the first one.
 .DEFAULT_GOAL := help
@@ -36,3 +36,6 @@ astro-local: ## serve the Astro prototype with live reload (astro/)
 
 astro-build: ## build the Astro prototype into astro/dist
 	cd astro && bun install --frozen-lockfile && bunx --bun astro build
+
+astro-check: ## Astro prototype gate: palette contrast (AA), then build
+	cd astro && bun install --frozen-lockfile && bun scripts/contrast.ts && bunx --bun astro build

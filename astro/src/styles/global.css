@@ -36,6 +36,66 @@
   color-scheme: dark;
 }
 
+/* Palette "tracks" (see src/lib/site.ts). Same layout, repainted: only
+   primary/glow/soft/accent change. `make astro-check` verifies every
+   palette against AA in both modes; keep the property names as they are. */
+:root[data-palette="sakura"] {
+  --primary: #a3245e;
+  --glow: #f49ac1;
+  --soft: #f9c9dc;
+  --accent: #2e7d4f;
+  --on-accent: #ffffff;
+}
+
+:root[data-theme="dark"][data-palette="sakura"] {
+  --primary: #ff9fca;
+  --glow: #f49ac1;
+  --soft: #f9c9dc;
+  --accent: #7ad7a0;
+  --on-accent: #1b1e21;
+}
+
+:root[data-palette="snow"] {
+  --primary: #1d5b94;
+  --glow: #7cc7f2;
+  --soft: #c3e6fb;
+  --accent: #6a3fc0;
+  --on-accent: #ffffff;
+}
+
+:root[data-theme="dark"][data-palette="snow"] {
+  --primary: #8fd0ff;
+  --glow: #7cc7f2;
+  --soft: #c3e6fb;
+  --accent: #c4a7ff;
+  --on-accent: #1b1e21;
+}
+
+:root[data-palette="sunset"] {
+  --primary: #9a4300;
+  --glow: #ffa53c;
+  --soft: #ffd29a;
+  --accent: #c2185b;
+  --on-accent: #ffffff;
+}
+
+:root[data-theme="dark"][data-palette="sunset"] {
+  --primary: #ffb468;
+  --glow: #ffa53c;
+  --soft: #ffd29a;
+  --accent: #ff6fa8;
+  --on-accent: #1b1e21;
+}
+
+/* Palette changes repaint smoothly, like the next track sliding in. */
+body,
+.site-header,
+.player {
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
+}
+
 *,
 *::before,
 *::after {
