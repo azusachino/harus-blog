@@ -28,9 +28,9 @@ comments: true
 - I spent a lot of time playing mobile games and the co-op game _Nobody Saves the World_. It was a great adventure and a nice way to connect with others.
 - Transitioning from Docker Compose to a local k3s server (with help from Gemini and Claude) was a great experience. Using a cronjob shell script for backups turned out to be much better than the custom backup tools I had written previously.
 
-![lawson-miku](https://cdn.azusachino.icu/uploads/original/c9/34/18e5f476c7e4af183f1adb6d9a2f.png)
+![lawson-miku](/assets/images/2026/01/lawson-miku.jpg)
 
-![sekai-miku](https://cdn.azusachino.icu/uploads/original/d1/7b/0dff3b4d8d83f51b7d889e99868e.png)
+![sekai-miku](/assets/images/2026/01/sekai-miku.jpg)
 
 ## review
 
