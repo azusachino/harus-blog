@@ -10,6 +10,9 @@ export default defineConfig({
   // so a typo still lands on the 404 page instead of the framework's error page.
   trailingSlash: 'ignore',
   devToolbar: { enabled: false },
+  // Mermaid's chunks (~650 KB) load only on pages with a diagram, so Vite's
+  // 500 KB warning is expected; keep the build log quiet for real warnings.
+  vite: { build: { chunkSizeWarningLimit: 1024 } },
   markdown: {
     processor: satteri({ mdastPlugins: [math], features: { math: true } }),
     shikiConfig: {
