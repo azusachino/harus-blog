@@ -14,6 +14,11 @@ groups (Added, Changed, Fixed, Removed).
   displays as a centered block, as on the MkDocs site.
 - Prices in the k3s migration post are escaped (`\$`) so they no longer pair up as a formula.
 
+### Added
+
+- Back-to-top button (bottom right) once the header scrolls out of view; smooth in-page scrolling
+  unless reduced motion is set.
+
 ## 2026-10-11 — Astro
 
 The blog moves from MkDocs + Material to Astro, with the same posts at the same URLs.
