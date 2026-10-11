@@ -1,0 +1,132 @@
+---
+// Concert call and response in the footer: the stage asks "準備OK？", the
+// reader answers "Yes!", and a row of penlights rises and sways once.
+// Inspired by the calls in "39みゅーじっく!" (mikitoP); no lyrics are quoted.
+const sticks = 11;
+---
+<div class="call">
+  <div class="penlights" aria-hidden="true" data-penlights>
+    {Array.from({ length: sticks }, (_, i) => <i style={`--i: ${Math.abs(i - (sticks - 1) / 2)}`}></i>)}
+  </div>
+  <p class="line">
+    <span class="ask mono" lang="ja">準備OK？</span>
+    <button class="yes mono" type="button" data-call>Yes!</button>
+  </p>
+  <p class="visually-hidden" aria-live="polite" data-call-status></p>
+</div>
+
+<script is:inline>
+  (() => {
+    const lights = document.querySelector('[data-penlights]');
+    const status = document.querySelector('[data-call-status]');
+    let timer;
+    document.querySelector('[data-call]')?.addEventListener('click', () => {
+      lights.classList.remove('on');
+      void lights.offsetWidth; // restart the animation on repeat answers
+      lights.classList.add('on');
+      status.textContent = 'Penlights up!';
+      // A timer, not animationend: under reduced motion nothing animates.
+      clearTimeout(timer);
+      timer = setTimeout(() => lights.classList.remove('on'), 2900);
+    });
+  })();
+</script>
+
+<style>
+  .call {
+    margin: 0.2rem auto 0.9rem;
+  }
+
+  /* Sticks wait below the edge and rise only when the crowd answers. */
+  .penlights {
+    display: flex;
+    justify-content: center;
+    gap: 0.7rem;
+    height: 3rem;
+    overflow: hidden;
+  }
+
+  .penlights i {
+    position: relative;
+    width: 7px;
+    height: 2.6rem;
+    margin-top: 0.4rem;
+    border-radius: 4px 4px 2px 2px;
+    background: #fff;
+    --halo: rgb(255 255 255 / 0.75);
+    transform: translateY(110%);
+    transform-origin: 50% 100%;
+  }
+
+  /* Grip */
+  .penlights i::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0;
+    height: 0.6rem;
+    border-radius: 0 0 2px 2px;
+    background: #2b2f32;
+  }
+
+  :global(:root[data-theme='dark']) .penlights i {
+    background: var(--glow);
+    --halo: color-mix(in oklab, var(--glow) 70%, transparent);
+  }
+
+  /* The halo only while raised, so nothing leaks above the edge at rest. */
+  .penlights.on i {
+    box-shadow: 0 0 11px 2px var(--halo);
+    animation: wave 2.4s ease-in-out calc(var(--i) * 45ms) both;
+  }
+
+  @keyframes wave {
+    0% { transform: translateY(110%) rotate(0deg); }
+    14% { transform: translateY(0) rotate(-14deg); }
+    32% { transform: translateY(0) rotate(14deg); }
+    50% { transform: translateY(0) rotate(-14deg); }
+    68% { transform: translateY(0) rotate(14deg); }
+    86% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(110%) rotate(0deg); }
+  }
+
+  .line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 0.3rem 0 0;
+  }
+
+  .ask {
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  .yes {
+    font: inherit;
+    font-weight: 700;
+    color: inherit;
+    background: none;
+    border: 2px solid currentColor;
+    border-radius: 999px;
+    padding: 0.15rem 0.9rem;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+  }
+
+  .yes:hover {
+    transform: scale(1.06);
+  }
+
+  .yes:active {
+    transform: scale(0.96);
+  }
+
+  /* Reduced motion: the lights simply show, still, until the timer lowers them. */
+  @media (prefers-reduced-motion: reduce) {
+    .penlights.on i {
+      animation: none;
+      transform: none;
+    }
+  }
+</style>

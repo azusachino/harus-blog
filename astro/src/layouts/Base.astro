@@ -1,5 +1,6 @@
 ---
 import Header from '../components/Header.astro';
+import Call from '../components/Call.astro';
 import PianoStrip from '../components/PianoStrip.astro';
 import { PALETTES, SITE } from '../lib/site';
 import '../styles/global.css';
@@ -45,6 +46,7 @@ const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
     </main>
     <footer class="site-footer">
       <PianoStrip />
+      <Call />
       <p class="sign mono">♪ {SITE.title} · {SITE.author}</p>
       <nav class="links mono" aria-label="Elsewhere">
         <a href="https://github.com/azusachino">GitHub</a>
