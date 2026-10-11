@@ -21,3 +21,8 @@ __pycache__/
 .cache/
 .rumdl_cache/
 
+
+# Astro prototype
+astro/node_modules/
+astro/dist/
+astro/.astro/

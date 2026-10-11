@@ -1,4 +1,4 @@
-.PHONY: help local build migrate check format fmt fmt-check
+.PHONY: help local build migrate check format fmt fmt-check astro-local astro-build
 
 # Show help when invoked with no target, instead of running the first one.
 .DEFAULT_GOAL := help
@@ -30,3 +30,9 @@ fmt-check: ## verify formatting without modifying files
 	rumdl fmt --check .
 
 check: fmt-check build ## pre-commit and CI gate
+
+astro-local: ## serve the Astro prototype with live reload (astro/)
+	cd astro && bun install --frozen-lockfile && bunx --bun astro dev --host 0.0.0.0 --port 4321
+
+astro-build: ## build the Astro prototype into astro/dist
+	cd astro && bun install --frozen-lockfile && bunx --bun astro build

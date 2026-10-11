@@ -1,0 +1,41 @@
+# Things I use, for /use. Add `until:` to retire an item (sold, cancelled);
+# it then moves to "past". Device prices/dates and subscriptions: owner to fill.
+- id: fish
+  group: dev
+  kind: Shell
+  name: fish
+  url: https://fishshell.com/
+- id: neovim
+  group: dev
+  kind: Editor
+  name: Neovim
+  url: https://neovim.io/
+- id: claude-code
+  group: dev
+  kind: Coding agent
+  name: Claude Code
+  url: https://claude.com/claude-code
+- id: herdr
+  group: dev
+  kind: Agent multiplexer
+  name: Herdr
+- id: mise
+  group: dev
+  kind: Runtimes
+  name: mise
+  url: https://mise.jdx.dev/
+- id: nix
+  group: dev
+  kind: Machines as code
+  name: Nix + Home Manager
+  url: https://nix-community.github.io/home-manager/
+- id: harus-mini
+  group: devices
+  kind: Home server
+  name: harus-mini (x86_64 Linux, k3s)
+  note: Runs this blog.
+- id: mac-mini
+  group: devices
+  kind: Desktop
+  name: Mac mini (Apple silicon)
+  note: Headless, SSH only.

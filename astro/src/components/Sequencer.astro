@@ -1,0 +1,88 @@
+---
+// GitHub activity as a step sequencer: one step per day, brightness relative
+// to the busiest day, which alone gets the accent. Days older than the
+// events API reaches are shown as "no data", not as zero.
+import type { Activity } from '../lib/github';
+
+interface Props {
+  days: Activity['days'];
+}
+const { days } = Astro.props;
+const known = days.filter((d) => d.count !== null) as { date: string; count: number }[];
+const total = known.reduce((n, d) => n + d.count, 0);
+const max = Math.max(1, ...known.map((d) => d.count));
+const busiest = known.find((d) => d.count === max);
+const level = (n: number | null) => {
+  if (n === null) return 'none';
+  if (n === 0) return 'l0';
+  if (n === max) return 'peak';
+  return n / max <= 0.25 ? 'l1' : n / max <= 0.6 ? 'l2' : 'l3';
+};
+const since = known[0]?.date;
+---
+<figure class="seq">
+  <div class="steps" aria-hidden="true" style={`--n: ${days.length}`}>
+    {days.map((d, i) => (
+      <span class={`step ${level(d.count)}${i % 4 === 0 ? ' beat' : ''}`} title={`${d.date}: ${d.count ?? 'no data'}`}></span>
+    ))}
+  </div>
+  <figcaption class="mono muted">
+    <span>{days[0].date}</span>
+    <span>
+      {total} public events{busiest && ` · busiest ${busiest.date} (${busiest.count})`}
+      {since && since !== days[0].date && ` · API history starts ${since}`}
+    </span>
+    <span>{days.at(-1)!.date}</span>
+  </figcaption>
+</figure>
+
+<style>
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(var(--n), 1fr);
+    gap: 4px;
+  }
+
+  .step {
+    height: 2.6rem;
+    border-radius: 3px;
+    background: var(--line);
+  }
+
+  .step.beat {
+    box-shadow: inset 0 -3px 0 color-mix(in oklab, var(--ink) 18%, transparent);
+  }
+
+  .none {
+    background: repeating-linear-gradient(135deg, var(--line) 0 3px, transparent 3px 6px);
+  }
+
+  .l1 {
+    background: color-mix(in oklab, var(--glow) 35%, var(--line));
+  }
+
+  .l2 {
+    background: color-mix(in oklab, var(--glow) 70%, var(--line));
+  }
+
+  .l3 {
+    background: var(--glow);
+  }
+
+  .peak {
+    background: var(--accent);
+  }
+
+  figcaption {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  figure {
+    margin: 0;
+  }
+</style>

@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import Waveform from '../../components/Waveform.astro';
+import { published, SECTIONS, type Section } from '../../lib/posts';
+
+export function getStaticPaths() {
+  return SECTIONS.map((section) => ({ params: { section } }));
+}
+
+const section = Astro.params.section as Section;
+const posts = await published(section);
+const titles: Record<Section, [string, string]> = {
+  tech: ['Tech', '技术笔记与系列'],
+  journal: ['Journal', '周报、月度刷新与年度回顾'],
+  life: ['Life', '生活、阅读与随想'],
+};
+const [title, subtitle] = titles[section];
+---
+<Base title={title}>
+  <p class="eyebrow">{posts.length} tracks</p>
+  <h1>{title}</h1>
+  <p class="muted">{subtitle}</p>
+  <Waveform seed={section} />
+  <PostList section={section} posts={posts} />
+</Base>

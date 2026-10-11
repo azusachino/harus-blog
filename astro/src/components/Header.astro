@@ -1,0 +1,126 @@
+---
+const nav = [
+  ['Tech', '/tech/'],
+  ['Journal', '/journal/'],
+  ['Life', '/life/'],
+  ['Now', '/now/'],
+  ['Use', '/use/'],
+  ['About', '/about/'],
+];
+const path = Astro.url.pathname;
+---
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="/">
+      <span class="mark mono" aria-hidden="true">01</span>
+      <span>Idealistic Daydreamer</span>
+    </a>
+    <nav aria-label="Main">
+      {nav.map(([label, to]) => (
+        <a href={to} aria-current={path.startsWith(to) ? 'page' : undefined}>{label}</a>
+      ))}
+    </nav>
+    <button class="theme" type="button" aria-label="Toggle dark mode" data-theme-toggle>
+      <span aria-hidden="true">◐</span>
+    </button>
+  </div>
+  <div class="tails" aria-hidden="true"></div>
+</header>
+
+<style>
+  .site-header {
+    position: relative;
+    background: var(--surface);
+  }
+
+  .bar {
+    width: min(100% - 2.5rem, 72rem);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.85rem 0;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .mark {
+    font-size: 0.75rem;
+    color: var(--on-accent);
+    background: var(--accent);
+    padding: 0.05rem 0.35rem;
+    border-radius: 4px;
+  }
+
+  nav {
+    display: flex;
+    gap: 1.1rem;
+    margin-left: auto;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 0.2rem 0;
+    border-bottom: 2px solid transparent;
+  }
+
+  nav a:hover,
+  nav a[aria-current="page"] {
+    color: var(--ink);
+    border-bottom-color: var(--glow);
+  }
+
+  .theme {
+    font: inherit;
+    color: var(--ink);
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    width: 2.25rem;
+    height: 2.25rem;
+    cursor: pointer;
+  }
+
+  /* Twin tails: two teal lines framing the header. */
+  .tails {
+    height: 6px;
+    background:
+      linear-gradient(var(--glow), var(--glow)) 0 0 / 100% 2px no-repeat,
+      linear-gradient(var(--soft), var(--soft)) 0 4px / 100% 1px no-repeat;
+  }
+</style>
+
+<style>
+  @media (max-width: 40rem) {
+    .bar {
+      gap: 0.4rem 1rem;
+    }
+
+    .brand {
+      margin-right: auto;
+    }
+
+    .theme {
+      order: 2;
+    }
+
+    nav {
+      order: 3;
+      width: 100%;
+      margin-left: 0;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+  }
+</style>

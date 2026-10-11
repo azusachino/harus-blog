@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Track not found">
+  <section class="lost">
+    <p class="badge">404</p>
+    <h1>Track not found</h1>
+    <svg viewBox="0 0 240 24" width="240" height="24" aria-hidden="true">
+      <line x1="0" y1="12" x2="240" y2="12" />
+    </svg>
+    <p class="muted">这一轨是空的。也许它被改名了，也许它从来没录过。</p>
+    <p><a href="/">← back to the playlist</a></p>
+    <p class="negi" aria-hidden="true" title="ネギ">🌱</p>
+  </section>
+</Base>
+
+<style>
+  .lost {
+    text-align: center;
+    padding: 4rem 0;
+  }
+
+  svg {
+    stroke: var(--glow);
+    stroke-width: 2;
+    stroke-dasharray: 3 5;
+  }
+
+  .negi {
+    opacity: 0.35;
+    font-size: 0.9rem;
+  }
+</style>

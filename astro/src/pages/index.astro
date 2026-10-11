@@ -1,0 +1,107 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PostList from '../components/PostList.astro';
+import Waveform from '../components/Waveform.astro';
+import { day, href, published, SECTIONS, trackLength } from '../lib/posts';
+
+const lists = await Promise.all(SECTIONS.map(async (s) => ({ section: s, posts: await published(s) })));
+const latest = lists
+  .map(({ section, posts }) => ({ section, post: posts[0] }))
+  .sort((a, b) => b.post.data.date.getTime() - a.post.data.date.getTime())[0];
+const now = (await getCollection('now')).slice(0, 3);
+const names = { tech: 'Tech', journal: 'Journal', life: 'Life' };
+---
+<Base title="Home">
+  <section class="hero">
+    <p class="eyebrow">Idealistic Daydreamer</p>
+    <h1>palette gives you the capability,<br />but you're the source of possibility.</h1>
+    <Waveform seed="idealistic-daydreamer" bars={64} />
+    <p class="muted">99% 的理论 + 1% 的实践 = me</p>
+  </section>
+
+  <a class="playing card" href={href(latest.section, latest.post)}>
+    <span class="eyebrow">▶ Now playing · {names[latest.section]}</span>
+    <span class="title">{latest.post.data.title}</span>
+    <span class="mono muted">{day(latest.post.data.date)} · ♪ {trackLength(latest.post.body)}</span>
+  </a>
+
+  <div class="sections">
+    {lists.map(({ section, posts }) => (
+      <section>
+        <h2><a href={`/${section}/`}>{names[section]}</a></h2>
+        <PostList section={section} posts={posts.slice(0, 4)} total={posts.length} />
+      </section>
+    ))}
+  </div>
+
+  <section class="now-strip">
+    <h2><a href="/now/">Now</a></h2>
+    <ul>
+      {now.map(({ data }) => (
+        <li><span class="eyebrow">{data.label}</span> {data.value}</li>
+      ))}
+    </ul>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding: 2rem 0 1rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.2rem);
+    max-width: 34ch;
+  }
+
+  .playing {
+    display: grid;
+    gap: 0.2rem;
+    margin: 2rem 0 3rem;
+    text-decoration: none;
+    color: var(--ink);
+    border-left: 4px solid var(--accent);
+  }
+
+  .playing:hover {
+    border-color: var(--glow);
+  }
+
+  .playing .title {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+  .sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    gap: 2.5rem;
+  }
+
+  .sections h2 a,
+  .now-strip h2 a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .sections :global(li) {
+    grid-template-columns: 3rem 1fr;
+  }
+
+  .sections :global(.meta) {
+    grid-column: 2;
+  }
+
+  .now-strip {
+    margin-top: 3.5rem;
+  }
+
+  .now-strip ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem 2rem;
+  }
+</style>
