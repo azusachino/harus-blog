@@ -3,7 +3,7 @@ export const SITE = {
   title: 'Idealistic Daydreamer',
   author: 'haru',
   url: 'https://azusachino.com',
-  description: "palette gives you the capability, but you're the source of possibility.",
+  description: 'A palette gives you the capability; you are the source of possibility.',
 };
 
 // Main navigation, in display order.

@@ -44,6 +44,10 @@ Comments are matched to pages by title. If the new site renders `Boring Kubernet
 
 The worst one was not about Astro at all. `cdn.azusachino.icu` no longer resolves. Ten images across three posts, including the photos from the Miku Symphony and the Yorushika live, had been broken on the live site for who knows how long. I only noticed because the new build rendered them as empty boxes. The concert photos are the part of those posts I would actually miss.
 
+The Wayback Machine had never archived a single one of them. Nine came back from my phone's photo library as HEIC files, and every one of them carried GPS coordinates, including the photo of the fuwamiku plushies, taken at home. They went back up as plain JPEGs with all metadata stripped. The tenth, a 百日紅 image from the Yorushika post, is gone, so the post now does without it.
+
+The same dead domain hid two smaller things. Old posts still pointed readers to `note.azusachino.icu` for my reading notes, a site that no longer exists anywhere. I removed those "see my notes here" lines rather than repoint them; I did not like how they read anymore. The homelab hostnames in the Traefik post still said `.icu` while the cluster now lives on `.com`, so they moved too.
+
 ## The rule I took away
 
 Posts stay plain Markdown. Covers move into frontmatter, attribute markers go, and only the pages that need components get them. The next migration should be a copy, not a rewrite.
@@ -54,4 +58,14 @@ Images live next to the posts. A CDN on a domain I stopped paying attention to i
 
 It is themed after Hatsune Miku now, which it half was already: the teal was there in the MkDocs CSS. Reading progress is a strip of piano keys. Reading time is shown as a track length. Posts are numbered like tracks, and a missing page says "Track not found". The illustrations on the home page, the about page and the 404 page are AI-generated fan art, credited under the Piapro Character License in the footer.
 
-There is also a "Currently" page: Maimai, Genshin, Dota 2 tournaments, piano, what is on repeat, and a strip of my public GitHub activity. GitHub's public events feed stops at 300 events. On a busy week that covers seven days, which says more about how I spent October than I would like.
+There is also a "Currently" page, split into Play, Practice, Listen, Read & watch and Build: Maimai, Genshin, Dota 2 tournaments, piano, what is on repeat, and a strip of my public GitHub activity. GitHub's public events feed stops at 300 events. On a busy week that covers seven days, which says more about how I spent October than I would like.
+
+## The detour through a music player
+
+The footer was the plainest part of the site, so I went looking for energy and found it in a twenty-second YouTube Short, *mikumikuplaylist*, almost twenty-nine million views. It is one phone music player that never moves while everything around it does: every second a new full-screen color, a new cover, a new track. The elapsed time never changes from `0:39`.
+
+My first answer was to build that player into the footer, with previous and next buttons, a progress bar, a heart for comments, a plus for the feed. Every control did something real. It was also too big, and its controls were confusing. Decoration that needs a manual has failed at being decoration.
+
+What survived is small. The header has a pill that reads "Mozart · K. 333" over the current movement, because the Piano Sonata No. 13 in B-flat major is what I keep returning to lately. Clicking it moves to the next movement and repaints the whole site: I. Allegro in teal, II. Andante cantabile in snow blue, III. Allegretto grazioso in sakura pink, and the finale's cadenza in sunset orange. The footer is a band of the current color with two octaves of keyboard on it, B-flat, D and F lit.
+
+The keyboard caught one more bug before anyone saw it. In dark mode the lit keys sat on near-white keys, and in the sakura palette the difference was 1.32 to 1, which is to say invisible. The site now has a script that reads the stylesheet and fails the build when any text falls under WCAG AA or a lit key under 3 to 1. It is the least romantic part of the redesign and the one I trust most.
