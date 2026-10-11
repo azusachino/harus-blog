@@ -1,4 +1,4 @@
-// The frontmatter contract (see ../CLAUDE.md); it predates Astro (it was an
+// The frontmatter contract (see ../AGENTS.md); it predates Astro (it was an
 // MkDocs build hook). The content-collection schema checks types and
 // lowercase categories/tags; this checks presence and key order.
 // Usage: bun scripts/frontmatter.ts  (exits 1 and lists every problem)

@@ -24,6 +24,8 @@ groups (Added, Changed, Fixed, Removed).
 - About is a component page (`src/pages/about.astro`): a before/now role comparison, project
   cards, "Outside of code" with exact names from the journals, and the life-long rules as a
   full-width section.
+- Agent files are harness-neutral: instructions in `AGENTS.md` (`CLAUDE.md` links to it) and
+  skills in `.agents/skills/` (`.claude/skills` links to it).
 
 ## 2026-10-11 — Astro
 

@@ -2,7 +2,7 @@ import { defineCollection } from 'astro:content';
 import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
-// The universal post frontmatter (see ../CLAUDE.md). Posts stay plain
+// The universal post frontmatter (see ../AGENTS.md). Posts stay plain
 // Markdown under docs/ so the content outlives this framework.
 const post = z.object({
   title: z.string(),

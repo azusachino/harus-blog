@@ -26,8 +26,8 @@ make check   # the gate: formatting, then contrast, frontmatter, build and URL p
 
 ## Writing and changing
 
-Rules for posts, images, components and palettes are in [CLAUDE.md](CLAUDE.md); the step-by-step
-for a new post is [.claude/skills/new-post/SKILL.md](.claude/skills/new-post/SKILL.md). Site
+Rules for posts, images, components and palettes are in [AGENTS.md](AGENTS.md) (read as CLAUDE.md by Claude Code); the step-by-step
+for a new post is [.agents/skills/new-post/SKILL.md](.agents/skills/new-post/SKILL.md) (linked from `.claude/skills`). Site
 changes are recorded in [CHANGELOG.md](CHANGELOG.md).
 
 ## Deployment
