@@ -32,8 +32,6 @@ comments: true
 
 ![.](/assets/images/2022/03/segmentation-fault.svg)
 
-详细的笔记可以参见[这里](https://note.azusachino.icu/reading/the-linux-programming-interface/07.memory-allocation.html)
-
 ## life
 
 一直以为，待到自己各方面素质都足够高的时候，就能过上自己想要的生活了；但是，最近发现，完全没有从实际的角度上想过：如何提高各方面的素质，或者说，一切“设想”都太过于理想化了，真不愧是 `idealistic daydreamer`。

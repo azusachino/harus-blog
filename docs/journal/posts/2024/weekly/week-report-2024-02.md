@@ -35,7 +35,7 @@ If someone is `グイグイ` enough like the protagonist, then that one might be
 
 ## life
 
-- Focusing on learning [AWS](https://note.azusachino.icu/tags/aws/)
+- Focusing on learning AWS
 - `Grats` on not missing daily exercises
 - Finished one season of animation in one steak
 
