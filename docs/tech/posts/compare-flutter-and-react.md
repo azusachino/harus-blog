@@ -106,7 +106,7 @@ class App extends React.Component {
               <Footer>
                 Iris React ©2021 Built by
                 <a
-                  href="https://azusachino.icu"
+                  href="https://azusachino.com"
                   target="_blank"
                   rel="noreferrer"
                 >
