@@ -15,11 +15,11 @@ groups (Added, Changed, Fixed, Removed).
   in turn when you answer the call.
 - Currently is refreshed: Genshin Impact, Wuthering Waves, Arknights: Endfield; LLM and agent
   practice; 亲密关系 and 薬屋の独り言 Season 2.
-- Use is a compact section of Currently (one row per kind); `/use/` redirects to `/currently/#use`.
+- Use is a compact section of Currently (one row per kind).
 
 ### Removed
 
-- The Use tab in the header.
+- The Use tab and page in the header.
 
 ## 2026-10-11 — Diagrams and math
 
