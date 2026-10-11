@@ -6,11 +6,9 @@ categories:
   - life
 slug: yorushika-live-2025-09-30
 comments: true
-hide:
-  - navigation
+cover: "/assets/images/2025/10-live.jpeg"
+cover_alt: "Cover photo: 10 live"
 ---
-
-![Cover photo: 10 live](/assets/images/2025/10-live.jpeg){ .post-cover }
 
 <!-- more -->
 

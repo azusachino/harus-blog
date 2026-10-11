@@ -6,9 +6,9 @@ categories:
   - refresh
 slug: month-refresh-2022-10
 comments: true
+cover: "/assets/images/2022/10/sky-clouds-sunlight-dark-e3e45ad8c5ae22995c2fd77a994dfc61.jpg"
+cover_alt: "Cover photo: sky clouds sunlight dark e3e45ad8c5ae22995c2fd77a994dfc61"
 ---
-
-![Cover photo: sky clouds sunlight dark e3e45ad8c5ae22995c2fd77a994dfc61](/assets/images/2022/10/sky-clouds-sunlight-dark-e3e45ad8c5ae22995c2fd77a994dfc61.jpg){ .post-cover }
 
 <!-- more -->
 

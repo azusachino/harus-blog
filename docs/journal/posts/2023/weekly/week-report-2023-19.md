@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2023-19
 comments: true
+cover: "/assets/images/2023/05/FootballField.jpg"
+cover_alt: "Cover photo: Football Field"
 ---
-
-![Cover photo: Football Field](/assets/images/2023/05/FootballField.jpg){ .post-cover }
 
 <!-- more -->
 

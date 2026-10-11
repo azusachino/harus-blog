@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-28
 comments: true
+cover: "/assets/images/2024/07/vision.png"
+cover_alt: "Cover photo: vision"
 ---
-
-![Cover photo: vision](/assets/images/2024/07/vision.png){ .post-cover }
 
 <!-- more -->
 

@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2023-21
 comments: true
+cover: "/assets/images/2023/05/AloeDichotomum.jpg"
+cover_alt: "Cover photo: Aloe Dichotomum"
 ---
-
-![Cover photo: Aloe Dichotomum](/assets/images/2023/05/AloeDichotomum.jpg){ .post-cover }
 
 <!-- more -->
 

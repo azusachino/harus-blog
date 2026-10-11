@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-13
 comments: true
+cover: "/assets/images/2022/03/PandaDay.jpg"
+cover_alt: "Cover photo: Panda Day"
 ---
-
-![Cover photo: Panda Day](/assets/images/2022/03/PandaDay.jpg){ .post-cover }
 
 <!-- more -->
 

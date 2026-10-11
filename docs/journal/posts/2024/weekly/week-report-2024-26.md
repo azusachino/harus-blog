@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-26
 comments: true
+cover: "/assets/images/2024/06/supercell-orchestra.jpeg"
+cover_alt: "Cover photo: supercell orchestra"
 ---
-
-![Cover photo: supercell orchestra](/assets/images/2024/06/supercell-orchestra.jpeg){ .post-cover }
 
 <!-- more -->
 

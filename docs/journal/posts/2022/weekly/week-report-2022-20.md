@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-20
 comments: true
+cover: "/assets/images/2022/05/MaasaiGiraffe.jpg"
+cover_alt: "Cover photo: Maasai Giraffe"
 ---
-
-![Cover photo: Maasai Giraffe](/assets/images/2022/05/MaasaiGiraffe.jpg){ .post-cover }
 
 <!-- more -->
 

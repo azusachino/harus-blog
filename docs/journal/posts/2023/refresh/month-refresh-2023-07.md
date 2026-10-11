@@ -6,9 +6,9 @@ categories:
   - refresh
 slug: month-refresh-2023-07
 comments: true
+cover: "/assets/images/2023/07/PalouseHills.jpg"
+cover_alt: "Cover photo: Palouse Hills"
 ---
-
-![Cover photo: Palouse Hills](/assets/images/2023/07/PalouseHills.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2023-25
 comments: true
+cover: "/assets/images/2023/06/NhaTrang.jpg"
+cover_alt: "Cover photo: Nha Trang"
 ---
-
-![Cover photo: Nha Trang](/assets/images/2023/06/NhaTrang.jpg){ .post-cover }
 
 <!-- more -->
 

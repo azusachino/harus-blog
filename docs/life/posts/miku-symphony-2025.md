@@ -6,11 +6,9 @@ categories:
   - life
 slug: miku-symphony-2025
 comments: true
-hide:
-  - navigation
+cover: "/assets/images/2025/10-symphony.png"
+cover_alt: "Cover photo: 10 symphony"
 ---
-
-![Cover photo: 10 symphony](/assets/images/2025/10-symphony.png){ .post-cover }
 
 <!-- more -->
 

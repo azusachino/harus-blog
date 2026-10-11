@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-33
 comments: true
+cover: "/assets/images/2022/08/ChannelIslandFox.jpg"
+cover_alt: "Cover photo: Channel Island Fox"
 ---
-
-![Cover photo: Channel Island Fox](/assets/images/2022/08/ChannelIslandFox.jpg){ .post-cover }
 
 <!-- more -->
 

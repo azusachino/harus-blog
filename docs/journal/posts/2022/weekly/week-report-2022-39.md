@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-39
 comments: true
+cover: "/assets/images/2022/09/EmeraldYoho.jpg"
+cover_alt: "Cover photo: Emerald Yoho"
 ---
-
-![Cover photo: Emerald Yoho](/assets/images/2022/09/EmeraldYoho.jpg){ .post-cover }
 
 <!-- more -->
 

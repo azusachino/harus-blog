@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2023-26
 comments: true
+cover: "/assets/images/2023/07/HalfwayBoats.jpg"
+cover_alt: "Cover photo: Halfway Boats"
 ---
-
-![Cover photo: Halfway Boats](/assets/images/2023/07/HalfwayBoats.jpg){ .post-cover }
 
 <!-- more -->
 

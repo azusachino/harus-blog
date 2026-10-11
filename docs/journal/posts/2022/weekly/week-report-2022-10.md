@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-10
 comments: true
+cover: "/assets/images/2022/03/IPBDMom.jpg"
+cover_alt: "Cover photo: IPBDMom"
 ---
-
-![Cover photo: IPBDMom](/assets/images/2022/03/IPBDMom.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-09
 comments: true
+cover: "/assets/images/2022/02/GreatTits.jpg"
+cover_alt: "Cover photo: Great Tits"
 ---
-
-![Cover photo: Great Tits](/assets/images/2022/02/GreatTits.jpg){ .post-cover }
 
 <!-- more -->
 

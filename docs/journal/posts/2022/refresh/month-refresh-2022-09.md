@@ -6,9 +6,9 @@ categories:
   - refresh
 slug: month-refresh-2022-09
 comments: true
+cover: "/assets/images/2022/09/ZaanseSchans.jpg"
+cover_alt: "Cover photo: Zaanse Schans"
 ---
-
-![Cover photo: Zaanse Schans](/assets/images/2022/09/ZaanseSchans.jpg){ .post-cover }
 
 <!-- more -->
 

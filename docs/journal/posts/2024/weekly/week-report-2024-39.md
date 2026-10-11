@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-39
 comments: true
+cover: "/assets/images/2024/09/tgs2024.jpg"
+cover_alt: "Cover photo: tgs2024"
 ---
-
-![Cover photo: tgs2024](/assets/images/2024/09/tgs2024.jpg){ .post-cover }
 
 <!-- more -->
 

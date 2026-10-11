@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-18
 comments: true
+cover: "/assets/images/2022/05/MuteSwan.jpg"
+cover_alt: "Cover photo: Mute Swan"
 ---
-
-![Cover photo: Mute Swan](/assets/images/2022/05/MuteSwan.jpg){ .post-cover }
 
 <!-- more -->
 

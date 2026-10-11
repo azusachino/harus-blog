@@ -8,9 +8,9 @@ tags:
   - java
 slug: java-file-reading
 comments: true
+cover: "/assets/images/2021/05/HouseboatKerala.jpg"
+cover_alt: "Cover photo: Houseboat Kerala"
 ---
-
-![Cover photo: Houseboat Kerala](/assets/images/2021/05/HouseboatKerala.jpg){ .post-cover }
 
 <!-- more -->
 

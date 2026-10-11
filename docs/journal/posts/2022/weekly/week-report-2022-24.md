@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-24
 comments: true
+cover: "/assets/images/2022/06/MarovoLagoon.jpg"
+cover_alt: "Cover photo: Marovo Lagoon"
 ---
-
-![Cover photo: Marovo Lagoon](/assets/images/2022/06/MarovoLagoon.jpg){ .post-cover }
 
 <!-- more -->
 

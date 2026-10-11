@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-05
 comments: true
+cover: "/assets/images/2022/01/GrahamAdelie.jpg"
+cover_alt: "Cover photo: Graham Adelie"
 ---
-
-![Cover photo: Graham Adelie](/assets/images/2022/01/GrahamAdelie.jpg){ .post-cover }
 
 <!-- more -->
 

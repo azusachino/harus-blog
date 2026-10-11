@@ -8,9 +8,9 @@ tags:
   - hugo
 slug: blog-setup
 comments: true
+cover: "/assets/images/2021/04/Porcini.jpg"
+cover_alt: "Cover photo: Porcini"
 ---
-
-![Cover photo: Porcini](/assets/images/2021/04/Porcini.jpg){ .post-cover }
 
 <!-- more -->
 

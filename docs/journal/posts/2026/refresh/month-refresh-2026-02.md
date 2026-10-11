@@ -6,9 +6,9 @@ categories:
   - refresh
 slug: month-refresh-2026-02
 comments: true
+cover: "/assets/images/2026/02-deco-miku.png"
+cover_alt: "Cover photo: 02 deco miku"
 ---
-
-![Cover photo: 02 deco miku](/assets/images/2026/02-deco-miku.png){ .post-cover }
 
 <!-- more -->
 

@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-40
 comments: true
+cover: "/assets/images/2022/10/JohnstonWater.jpg"
+cover_alt: "Cover photo: Johnston Water"
 ---
-
-![Cover photo: Johnston Water](/assets/images/2022/10/JohnstonWater.jpg){ .post-cover }
 
 <!-- more -->
 

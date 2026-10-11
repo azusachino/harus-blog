@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-41
 comments: true
+cover: "/assets/images/2022/10/BlumenwieseNRW.jpg"
+cover_alt: "Cover photo: Blumenwiese NRW"
 ---
-
-![Cover photo: Blumenwiese NRW](/assets/images/2022/10/BlumenwieseNRW.jpg){ .post-cover }
 
 <!-- more -->
 

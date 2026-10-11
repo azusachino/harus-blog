@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-50
 comments: true
+cover: "/assets/images/2024/poe2.png"
+cover_alt: "Cover photo: poe2"
 ---
-
-![Cover photo: poe2](/assets/images/2024/poe2.png){ .post-cover }
 
 <!-- more -->
 

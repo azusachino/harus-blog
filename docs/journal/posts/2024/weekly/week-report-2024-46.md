@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-46
 comments: true
+cover: "/assets/images/2024/momiji-0.jpg"
+cover_alt: "Cover photo: momiji 0"
 ---
-
-![Cover photo: momiji 0](/assets/images/2024/momiji-0.jpg){ .post-cover }
 
 <!-- more -->
 

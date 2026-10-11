@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-01
 comments: true
+cover: "/assets/images/2022/01/JonesBeachHarpSeal.jpg"
+cover_alt: "Cover photo: Jones Beach Harp Seal"
 ---
-
-![Cover photo: Jones Beach Harp Seal](/assets/images/2022/01/JonesBeachHarpSeal.jpg){ .post-cover }
 
 <!-- more -->
 

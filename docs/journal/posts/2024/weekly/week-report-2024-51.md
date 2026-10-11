@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-51
 comments: true
+cover: "/assets/images/2024/yomi.png"
+cover_alt: "Cover photo: yomi"
 ---
-
-![Cover photo: yomi](/assets/images/2024/yomi.png){ .post-cover }
 
 <!-- more -->
 

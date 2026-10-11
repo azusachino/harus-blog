@@ -6,8 +6,6 @@ categories:
   - life
 slug: third-engine-same-posts
 comments: true
-hide:
-  - navigation
 ---
 
 This blog has outlived every engine I built it on. Hugo first, then MkDocs, now Astro. The posts are the only part that stayed, so they are the only part I should design for.

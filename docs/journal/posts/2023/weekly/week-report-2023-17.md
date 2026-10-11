@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2023-17
 comments: true
+cover: "/assets/images/2023/04/SouthPadre.jpg"
+cover_alt: "Cover photo: South Padre"
 ---
-
-![Cover photo: South Padre](/assets/images/2023/04/SouthPadre.jpg){ .post-cover }
 
 <!-- more -->
 

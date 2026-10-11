@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-12
 comments: true
+cover: "/assets/images/2024/03/StFiniansBay.jpg"
+cover_alt: "Cover photo: St Finians Bay"
 ---
-
-![Cover photo: St Finians Bay](/assets/images/2024/03/StFiniansBay.jpg){ .post-cover }
 
 <!-- more -->
 

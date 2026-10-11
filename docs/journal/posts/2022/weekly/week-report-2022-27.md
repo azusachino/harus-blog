@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-27
 comments: true
+cover: "/assets/images/2022/07/SwallowtailFlower.jpeg"
+cover_alt: "Cover photo: Swallowtail Flower"
 ---
-
-![Cover photo: Swallowtail Flower](/assets/images/2022/07/SwallowtailFlower.jpeg){ .post-cover }
 
 <!-- more -->
 

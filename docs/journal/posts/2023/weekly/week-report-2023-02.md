@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2023-02
 comments: true
+cover: "/assets/images/2023/01/OHR.Turku.jpg"
+cover_alt: "Cover photo: OHR.Turku"
 ---
-
-![Cover photo: OHR.Turku](/assets/images/2023/01/OHR.Turku.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -8,9 +8,9 @@ tags:
   - runc
 slug: runc-intro
 comments: true
+cover: "/assets/images/2022/01/KjellHenriksen.jpg"
+cover_alt: "Cover photo: Kjell Henriksen"
 ---
-
-![Cover photo: Kjell Henriksen](/assets/images/2022/01/KjellHenriksen.jpg){ .post-cover }
 
 <!-- more -->
 

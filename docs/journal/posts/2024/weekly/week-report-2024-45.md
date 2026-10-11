@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-45
 comments: true
+cover: "/assets/images/2024/yoasobi.jpg"
+cover_alt: "Cover photo: yoasobi"
 ---
-
-![Cover photo: yoasobi](/assets/images/2024/yoasobi.jpg){ .post-cover }
 
 <!-- more -->
 

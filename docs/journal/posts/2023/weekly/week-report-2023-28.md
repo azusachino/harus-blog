@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2023-28
 comments: true
+cover: "/assets/images/2023/07/CastelmazzanoSunrise.jpg"
+cover_alt: "Cover photo: Castelmazzano Sunrise"
 ---
-
-![Cover photo: Castelmazzano Sunrise](/assets/images/2023/07/CastelmazzanoSunrise.jpg){ .post-cover }
 
 <!-- more -->
 

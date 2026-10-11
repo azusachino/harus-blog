@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-18
 comments: true
+cover: "/assets/images/2024/05/YellowstoneGeyser.png"
+cover_alt: "Cover photo: Yellowstone Geyser"
 ---
-
-![Cover photo: Yellowstone Geyser](/assets/images/2024/05/YellowstoneGeyser.png){ .post-cover }
 
 <!-- more -->
 

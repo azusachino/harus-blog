@@ -6,9 +6,9 @@ categories:
   - refresh
 slug: month-refresh-2026-01
 comments: true
+cover: "/assets/images/2026/01-lawson-miku.png"
+cover_alt: "Cover photo: 01 lawson miku"
 ---
-
-![Cover photo: 01 lawson miku](/assets/images/2026/01-lawson-miku.png){ .post-cover }
 
 <!-- more -->
 

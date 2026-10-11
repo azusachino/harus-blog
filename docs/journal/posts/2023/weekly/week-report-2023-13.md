@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2023-13
 comments: true
+cover: "/assets/images/2023/04/JavaBromo.jpg"
+cover_alt: "Cover photo: Java Bromo"
 ---
-
-![Cover photo: Java Bromo](/assets/images/2023/04/JavaBromo.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-02
 comments: true
+cover: "/assets/images/2024/01/HanaHighway.png"
+cover_alt: "Cover photo: Hana Highway"
 ---
-
-![Cover photo: Hana Highway](/assets/images/2024/01/HanaHighway.png){ .post-cover }
 
 <!-- more -->
 

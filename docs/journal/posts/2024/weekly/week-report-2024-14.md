@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-14
 comments: true
+cover: "/assets/images/2024/04/HangRaiVietnam.png"
+cover_alt: "Cover photo: Hang Rai Vietnam"
 ---
-
-![Cover photo: Hang Rai Vietnam](/assets/images/2024/04/HangRaiVietnam.png){ .post-cover }
 
 <!-- more -->
 

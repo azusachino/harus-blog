@@ -6,11 +6,9 @@ categories:
   - life
 slug: goodbye-sif
 comments: true
-hide:
-  - navigation
+cover: "/assets/images/2021/12/sif-main.jpg"
+cover_alt: "Cover photo: sif main"
 ---
-
-![Cover photo: sif main](/assets/images/2021/12/sif-main.jpg){ .post-cover }
 
 <!-- more -->
 

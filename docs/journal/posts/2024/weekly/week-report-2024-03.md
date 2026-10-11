@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-03
 comments: true
+cover: "/assets/images/2024/01/LakeLouise.png"
+cover_alt: "Cover photo: Lake Louise"
 ---
-
-![Cover photo: Lake Louise](/assets/images/2024/01/LakeLouise.png){ .post-cover }
 
 <!-- more -->
 

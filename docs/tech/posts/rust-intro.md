@@ -8,9 +8,9 @@ tags:
   - rust
 slug: rust-intro
 comments: true
+cover: "/assets/images/2021/12/LittleBirds.jpg"
+cover_alt: "Cover photo: Little Birds"
 ---
-
-![Cover photo: Little Birds](/assets/images/2021/12/LittleBirds.jpg){ .post-cover }
 
 <!-- more -->
 

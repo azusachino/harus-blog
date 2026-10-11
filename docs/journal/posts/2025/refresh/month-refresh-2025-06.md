@@ -6,9 +6,9 @@ categories:
   - refresh
 slug: month-refresh-2025-06
 comments: true
+cover: "/assets/images/2025/DelicateArch.png"
+cover_alt: "Cover photo: Delicate Arch"
 ---
-
-![Cover photo: Delicate Arch](/assets/images/2025/DelicateArch.png){ .post-cover }
 
 <!-- more -->
 

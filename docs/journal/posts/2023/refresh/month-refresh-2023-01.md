@@ -6,9 +6,9 @@ categories:
   - refresh
 slug: month-refresh-2023-01
 comments: true
+cover: "/assets/images/2023/01/YearRabbit.jpg"
+cover_alt: "Cover photo: Year Rabbit"
 ---
-
-![Cover photo: Year Rabbit](/assets/images/2023/01/YearRabbit.jpg){ .post-cover }
 
 <!-- more -->
 

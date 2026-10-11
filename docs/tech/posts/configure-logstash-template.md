@@ -8,9 +8,9 @@ tags:
   - logstash
 slug: configure-logstash-template
 comments: true
+cover: "/assets/images/2021/06/AsianElephants.jpg"
+cover_alt: "Cover photo: Asian Elephants"
 ---
-
-![Cover photo: Asian Elephants](/assets/images/2021/06/AsianElephants.jpg){ .post-cover }
 
 <!-- more -->
 

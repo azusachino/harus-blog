@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-44
 comments: true
+cover: "/assets/images/2022/10/Hippopx.jpg"
+cover_alt: "Cover photo: Hippopx"
 ---
-
-![Cover photo: Hippopx](/assets/images/2022/10/Hippopx.jpg){ .post-cover }
 
 <!-- more -->
 

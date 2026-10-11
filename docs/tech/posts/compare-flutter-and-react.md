@@ -9,9 +9,9 @@ tags:
   - flutter
 slug: compare-flutter-and-react
 comments: true
+cover: "/assets/images/2021/06/HowgillFells.jpg"
+cover_alt: "Cover photo: Howgill Fells"
 ---
-
-![Cover photo: Howgill Fells](/assets/images/2021/06/HowgillFells.jpg){ .post-cover }
 
 <!-- more -->
 

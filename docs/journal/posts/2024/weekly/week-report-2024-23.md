@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-23
 comments: true
+cover: "/assets/images/2024/06/tanoc-live-2024.png"
+cover_alt: "Cover photo: tanoc live 2024"
 ---
-
-![Cover photo: tanoc live 2024](/assets/images/2024/06/tanoc-live-2024.png){ .post-cover }
 
 <!-- more -->
 

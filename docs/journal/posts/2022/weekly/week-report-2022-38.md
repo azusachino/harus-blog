@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-38
 comments: true
+cover: "/assets/images/2022/09/PyreneesPark.jpg"
+cover_alt: "Cover photo: Pyrenees Park"
 ---
-
-![Cover photo: Pyrenees Park](/assets/images/2022/09/PyreneesPark.jpg){ .post-cover }
 
 <!-- more -->
 

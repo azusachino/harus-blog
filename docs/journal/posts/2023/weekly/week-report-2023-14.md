@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2023-14
 comments: true
+cover: "/assets/images/2023/04/ArizonaPinkMoon.jpg"
+cover_alt: "Cover photo: Arizona Pink Moon"
 ---
-
-![Cover photo: Arizona Pink Moon](/assets/images/2023/04/ArizonaPinkMoon.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2023-07
 comments: true
+cover: "/assets/images/2023/02/MauiWhale.jpg"
+cover_alt: "Cover photo: Maui Whale"
 ---
-
-![Cover photo: Maui Whale](/assets/images/2023/02/MauiWhale.jpg){ .post-cover }
 
 <!-- more -->
 

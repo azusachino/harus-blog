@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2023-12
 comments: true
+cover: "/assets/images/2023/03/WildAnza.jpg"
+cover_alt: "Cover photo: Wild Anza"
 ---
-
-![Cover photo: Wild Anza](/assets/images/2023/03/WildAnza.jpg){ .post-cover }
 
 <!-- more -->
 

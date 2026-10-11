@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-38
 comments: true
+cover: "/assets/images/2024/09/enoshima.jpg"
+cover_alt: "Cover photo: enoshima"
 ---
-
-![Cover photo: enoshima](/assets/images/2024/09/enoshima.jpg){ .post-cover }
 
 <!-- more -->
 

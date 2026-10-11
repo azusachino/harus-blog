@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-28
 comments: true
+cover: "/assets/images/2022/07/SummerDogs.jpeg"
+cover_alt: "Cover photo: Summer Dogs"
 ---
-
-![Cover photo: Summer Dogs](/assets/images/2022/07/SummerDogs.jpeg){ .post-cover }
 
 <!-- more -->
 

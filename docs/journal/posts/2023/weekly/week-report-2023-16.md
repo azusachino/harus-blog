@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2023-16
 comments: true
+cover: "/assets/images/2023/04/EarthDayFox.jpg"
+cover_alt: "Cover photo: Earth Day Fox"
 ---
-
-![Cover photo: Earth Day Fox](/assets/images/2023/04/EarthDayFox.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-26
 comments: true
+cover: "/assets/images/2022/06/OkavangoElephant.jpg"
+cover_alt: "Cover photo: Okavango Elephant"
 ---
-
-![Cover photo: Okavango Elephant](/assets/images/2022/06/OkavangoElephant.jpg){ .post-cover }
 
 <!-- more -->
 

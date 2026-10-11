@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-42
 comments: true
+cover: "/assets/images/2024/jp-sg-exam.png"
+cover_alt: "Cover photo: jp sg exam"
 ---
-
-![Cover photo: jp sg exam](/assets/images/2024/jp-sg-exam.png){ .post-cover }
 
 <!-- more -->
 

@@ -6,9 +6,9 @@ categories:
   - review
 slug: review-2021
 comments: true
+cover: "/assets/images/2021/12/SalzburgKrampus.jpg"
+cover_alt: "Cover photo: Salzburg Krampus"
 ---
-
-![Cover photo: Salzburg Krampus](/assets/images/2021/12/SalzburgKrampus.jpg){ .post-cover }
 
 <!-- more -->
 

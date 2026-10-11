@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-29
 comments: true
+cover: "/assets/images/2022/07/UhuRLP.jpg"
+cover_alt: "Cover photo: Uhu RLP"
 ---
-
-![Cover photo: Uhu RLP](/assets/images/2022/07/UhuRLP.jpg){ .post-cover }
 
 <!-- more -->
 

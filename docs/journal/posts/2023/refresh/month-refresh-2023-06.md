@@ -6,9 +6,9 @@ categories:
   - refresh
 slug: month-refresh-2023-06
 comments: true
+cover: "/assets/images/2023/06/PeruAmazon.jpg"
+cover_alt: "Cover photo: Peru Amazon"
 ---
-
-![Cover photo: Peru Amazon](/assets/images/2023/06/PeruAmazon.jpg){ .post-cover }
 
 <!-- more -->
 

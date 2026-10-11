@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2024-05
 comments: true
+cover: "/assets/images/2024/02/MacaroniPenguins.png"
+cover_alt: "Cover photo: Macaroni Penguins"
 ---
-
-![Cover photo: Macaroni Penguins](/assets/images/2024/02/MacaroniPenguins.png){ .post-cover }
 
 <!-- more -->
 

@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-06
 comments: true
+cover: "/assets/images/2022/02/WinteringFowl.jpg"
+cover_alt: "Cover photo: Wintering Fowl"
 ---
-
-![Cover photo: Wintering Fowl](/assets/images/2022/02/WinteringFowl.jpg){ .post-cover }
 
 <!-- more -->
 

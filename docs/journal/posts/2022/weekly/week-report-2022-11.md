@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-11
 comments: true
+cover: "/assets/images/2022/03/GreatCormorants.jpg"
+cover_alt: "Cover photo: Great Cormorants"
 ---
-
-![Cover photo: Great Cormorants](/assets/images/2022/03/GreatCormorants.jpg){ .post-cover }
 
 <!-- more -->
 

@@ -6,9 +6,9 @@ categories:
   - review
 slug: review-2025
 comments: true
+cover: "/assets/images/2025/ordinary-life.jpg"
+cover_alt: "Cover photo: ordinary life"
 ---
-
-![Cover photo: ordinary life](/assets/images/2025/ordinary-life.jpg){ .post-cover }
 
 <!-- more -->
 

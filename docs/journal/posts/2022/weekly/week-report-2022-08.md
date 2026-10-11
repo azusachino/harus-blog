@@ -6,9 +6,9 @@ categories:
   - weekly
 slug: week-report-2022-08
 comments: true
+cover: "/assets/images/2022/02/FaceOff.jpg"
+cover_alt: "Cover photo: Face Off"
 ---
-
-![Cover photo: Face Off](/assets/images/2022/02/FaceOff.jpg){ .post-cover }
 
 <!-- more -->
 

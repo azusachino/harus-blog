@@ -6,11 +6,9 @@ categories:
   - life
 slug: how-to-read-a-book
 comments: true
-hide:
-  - navigation
+cover: "/assets/book/2021/how-to-read-a-book.jpg"
+cover_alt: "Cover photo: how to read a book"
 ---
-
-![Cover photo: how to read a book](/assets/book/2021/how-to-read-a-book.jpg){ .post-cover }
 
 <!-- more -->
 

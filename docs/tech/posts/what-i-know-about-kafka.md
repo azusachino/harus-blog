@@ -9,9 +9,9 @@ tags:
   - middleware
 slug: what-i-know-about-kafka
 comments: true
+cover: "/assets/images/2025/MonaValePool.png"
+cover_alt: "Cover photo: Mona Vale Pool"
 ---
-
-![Cover photo: Mona Vale Pool](/assets/images/2025/MonaValePool.png){ .post-cover }
 
 <!-- more -->
 
