@@ -37,5 +37,5 @@ astro-local: ## serve the Astro prototype with live reload (astro/)
 astro-build: ## build the Astro prototype into astro/dist
 	cd astro && bun install --frozen-lockfile && bunx --bun astro build
 
-astro-check: ## Astro prototype gate: palette contrast (AA), then build
-	cd astro && bun install --frozen-lockfile && bun scripts/contrast.ts && bunx --bun astro build
+astro-check: ## Astro gate: palette contrast (AA), build, URL parity with MkDocs
+	cd astro && bun install --frozen-lockfile && bun scripts/contrast.ts && bunx --bun astro build && bun scripts/url-parity.ts

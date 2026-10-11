@@ -1,8 +1,7 @@
 ---
 import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import Comments from '../../components/Comments.astro';
-import Waveform from '../../components/Waveform.astro';
+import Article from '../../components/Article.astro';
 import { day, href, postLang, published, SECTIONS, trackLength } from '../../lib/posts';
 
 export async function getStaticPaths() {
@@ -22,153 +21,22 @@ export async function getStaticPaths() {
 
 const { section, post, newer, older, number } = Astro.props;
 const { Content, headings } = await render(post);
-const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
-const sectionName = section[0].toUpperCase() + section.slice(1);
+const link = (p?: typeof post) => p && { href: href(section, p), title: p.data.title };
 ---
 <Base title={post.data.title} description={post.data.description} progress>
-  <article class="post" lang={postLang(post)}>
-    <header>
-      <p class="eyebrow">
-        <a href={`/${section}/`}>{sectionName}</a>
-        <span class="badge">#{String(number).padStart(3, '0')}</span>
-      </p>
-      <h1>{post.data.title}</h1>
-      <p class="meta mono muted">
-        <time datetime={day(post.data.date)}>{day(post.data.date)}</time>
-        <span>♪ {trackLength(post.body)}</span>
-        {[...post.data.categories, ...(post.data.tags ?? [])].map((t) => <span>#{t}</span>)}
-      </p>
-      <Waveform seed={post.data.title} />
-    </header>
-
-    <div class="layout">
-      <div class="prose">
-        <Content />
-      </div>
-      {toc.length > 0 && (
-        <nav class="toc" aria-label="On this page">
-          <p class="eyebrow">On this page</p>
-          <ul>
-            {toc.map((h) => (
-              <li class={`d${h.depth}`}><a href={`#${h.slug}`}>{h.text}</a></li>
-            ))}
-          </ul>
-        </nav>
-      )}
-    </div>
-
-    <nav class="prevnext" aria-label="More posts">
-      {older ? (
-        <a href={href(section, older)}><span class="eyebrow">← previous track</span>{older.data.title}</a>
-      ) : <span />}
-      {newer && (
-        <a class="next" href={href(section, newer)}><span class="eyebrow">next track →</span>{newer.data.title}</a>
-      )}
-    </nav>
-
-    {post.data.comments && <Comments />}
-  </article>
+  <Article
+    lang={postLang(post)}
+    back={{ href: `/${section}/`, label: section[0].toUpperCase() + section.slice(1) }}
+    badge={`#${String(number).padStart(3, '0')}`}
+    title={post.data.title}
+    date={day(post.data.date)}
+    length={trackLength(post.body)}
+    tags={[...post.data.categories, ...(post.data.tags ?? [])]}
+    headings={headings}
+    prev={link(older)}
+    next={link(newer)}
+    comments={post.data.comments}
+  >
+    <Content />
+  </Article>
 </Base>
-
-<style>
-  .meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem 1rem;
-    font-size: 0.82rem;
-    margin: 0.6rem 0 0;
-  }
-
-  header .eyebrow {
-    display: flex;
-    gap: 0.8rem;
-    align-items: baseline;
-    margin: 0 0 0.4rem;
-  }
-
-  .post {
-    /* Center body + TOC as one block; otherwise wide screens leave the
-       spare width all on the right. */
-    max-width: calc(var(--measure) + 18rem);
-    margin-inline: auto;
-  }
-
-  .layout {
-    display: grid;
-    grid-template-columns: minmax(0, var(--measure)) 15rem;
-    gap: 3rem;
-    margin-top: 1.5rem;
-  }
-
-  .toc {
-    position: sticky;
-    top: 1.5rem;
-    align-self: start;
-    font-size: 0.85rem;
-    border-left: 2px solid var(--line);
-    padding-left: 1rem;
-  }
-
-  .toc ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .toc li {
-    margin: 0.35rem 0;
-    line-height: 1.5;
-  }
-
-  .toc .d3 {
-    padding-left: 0.9rem;
-  }
-
-  .toc a {
-    color: var(--muted);
-    text-decoration: none;
-  }
-
-  .toc a:hover {
-    color: var(--primary);
-  }
-
-  .prevnext {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-top: 3.5rem;
-    max-width: var(--measure);
-  }
-
-  .prevnext a {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-    padding: 1rem 1.2rem;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    background: var(--surface);
-    color: var(--ink);
-    text-decoration: none;
-  }
-
-  .prevnext a:hover {
-    border-color: var(--glow);
-  }
-
-  .prevnext .next {
-    text-align: right;
-    grid-column: 2;
-  }
-
-  @media (max-width: 60rem) {
-    .layout {
-      grid-template-columns: minmax(0, 1fr);
-    }
-
-    .toc {
-      display: none;
-    }
-  }
-</style>

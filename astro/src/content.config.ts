@@ -8,7 +8,9 @@ const post = z.object({
   title: z.string(),
   date: z.coerce.date(),
   description: z.string(),
-  categories: z.array(z.string()).default([]),
+  // Lowercase, as the frontmatter contract requires (also keeps category
+  // URLs from colliding on case-insensitive filesystems).
+  categories: z.array(z.string().regex(/^[a-z0-9-]+$/, 'categories must be lowercase')).default([]),
   tags: z.array(z.string()).optional(),
   slug: z.string(),
   lang: z.string().optional(),
@@ -55,6 +57,17 @@ const playlist = defineCollection({
   }),
 });
 
+// Ordered tutorials: tech/series/<name>/NN.<title>.md. The id keeps the raw
+// path (Chinese filenames included) so URLs match the MkDocs site exactly.
+const series = defineCollection({
+  loader: glob({
+    base: '../docs/tech/series',
+    pattern: '**/*.md',
+    generateId: ({ entry }) => entry.replace(/\.md$/, ''),
+  }),
+  schema: z.object({ title: z.string(), description: z.string().optional() }),
+});
+
 // Standalone pages (About, CV) rendered as they are.
 const pages = defineCollection({
   loader: glob({ base: '../docs', pattern: ['about.md', 'cv.md'] }),
@@ -62,6 +75,7 @@ const pages = defineCollection({
 });
 
 export const collections = {
+  series,
   pages,
   tech: posts('tech'),
   journal: posts('journal'),

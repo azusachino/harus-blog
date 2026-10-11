@@ -1,0 +1,25 @@
+---
+// Journal by year, at the same URLs as the MkDocs archive.
+import Base from '../../../layouts/Base.astro';
+import PostList from '../../../components/PostList.astro';
+import Waveform from '../../../components/Waveform.astro';
+import { published } from '../../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await published('journal');
+  const years = [...new Set(posts.map((p) => p.data.date.getUTCFullYear()))];
+  return years.map((year) => ({
+    params: { year: String(year) },
+    props: { posts: posts.filter((p) => p.data.date.getUTCFullYear() === year) },
+  }));
+}
+
+const { posts } = Astro.props;
+const { year } = Astro.params;
+---
+<Base title={`Journal ${year}`}>
+  <p class="eyebrow"><a href="/journal/">Journal</a> · {posts.length} tracks</p>
+  <h1>{year}</h1>
+  <Waveform seed={`journal-${year}`} />
+  <PostList section="journal" posts={posts} />
+</Base>

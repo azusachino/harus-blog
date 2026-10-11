@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import PostList from '../../components/PostList.astro';
 import Waveform from '../../components/Waveform.astro';
-import { published, SECTIONS, type Section } from '../../lib/posts';
+import { published, SECTIONS, seriesAlbums, seriesHref, type Section } from '../../lib/posts';
 
 export function getStaticPaths() {
   return SECTIONS.map((section) => ({ params: { section } }));
@@ -16,11 +16,87 @@ const titles: Record<Section, [string, string]> = {
   life: ['Life', 'Books, concerts and essays'],
 };
 const [title, subtitle] = titles[section];
+const albums = section === 'tech' ? await seriesAlbums() : [];
+const years = section === 'journal' ? [...new Set(posts.map((p) => p.data.date.getUTCFullYear()))] : [];
+const categories = section === 'tech' ? [...new Set(posts.flatMap((p) => p.data.categories))].sort() : [];
 ---
 <Base title={title}>
   <p class="eyebrow">{posts.length} tracks</p>
   <h1>{title}</h1>
   <p class="muted">{subtitle}</p>
   <Waveform seed={section} />
+
+  {(years.length > 0 || categories.length > 0) && (
+    <nav class="chips" aria-label={years.length ? 'Years' : 'Categories'}>
+      {years.map((y) => <a href={`/journal/archive/${y}/`}>{y}</a>)}
+      {categories.map((c) => <a href={`/tech/category/${c}/`}>{c}</a>)}
+    </nav>
+  )}
+
+  {albums.length > 0 && (
+    <section class="albums" aria-labelledby="series">
+      <h2 id="series">Series</h2>
+      <div class="grid">
+        {albums.map((album) => (
+          <div class="card">
+            <p class="eyebrow">{album.chapters.length} tracks</p>
+            <h3>{album.name}</h3>
+            <ol>
+              {album.chapters.map((c) => (
+                <li><a href={seriesHref(c.id)}>{c.data.title.replace(/^.*?\d+\s*-\s*/, '')}</a></li>
+              ))}
+            </ol>
+          </div>
+        ))}
+      </div>
+      <h2>Posts</h2>
+    </section>
+  )}
+
   <PostList section={section} posts={posts} />
 </Base>
+
+<style>
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.2rem 0 1.5rem;
+  }
+
+  .chips a {
+    padding: 0.2rem 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    text-decoration: none;
+    font-size: 0.88rem;
+  }
+
+  .chips a:hover {
+    border-color: var(--glow);
+  }
+
+  .albums .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .albums h3 {
+    margin: 0.2rem 0 0.6rem;
+    font-size: 1.05rem;
+  }
+
+  .albums .eyebrow {
+    margin: 0;
+  }
+
+  .albums ol {
+    margin: 0;
+    padding-left: 1.4rem;
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+</style>

@@ -44,3 +44,23 @@ export function textLang(body: string) {
   if (han > words) return 'zh-CN';
   return 'en';
 }
+
+// Series ("albums"): chapters grouped by directory, in filename order.
+export async function seriesAlbums() {
+  const chapters = (await getCollection('series')).sort((a, b) => a.id.localeCompare(b.id));
+  const albums = new Map<string, typeof chapters>();
+  for (const c of chapters) {
+    const dir = c.id.split('/')[0];
+    albums.set(dir, [...(albums.get(dir) ?? []), c]);
+  }
+  return [...albums].map(([dir, list]) => ({
+    dir,
+    // "K8S学习笔记 01 - 初见" -> "K8S学习笔记"
+    name: list[0].data.title.replace(/\s*\d+\s*-.*$/, ''),
+    chapters: list,
+  }));
+}
+
+export function seriesHref(id: string) {
+  return `/tech/series/${id}/`;
+}

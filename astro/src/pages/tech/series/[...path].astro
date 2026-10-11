@@ -1,0 +1,33 @@
+---
+import { render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Article from '../../../components/Article.astro';
+import { seriesAlbums, seriesHref, textLang, trackLength } from '../../../lib/posts';
+
+export async function getStaticPaths() {
+  return (await seriesAlbums()).flatMap((album) =>
+    album.chapters.map((chapter, i) => ({
+      params: { path: chapter.id },
+      props: { album, chapter, prev: album.chapters[i - 1], next: album.chapters[i + 1], number: i + 1 },
+    })),
+  );
+}
+
+const { album, chapter, prev, next, number } = Astro.props;
+const { Content, headings } = await render(chapter);
+const link = (c?: typeof chapter) => c && { href: seriesHref(c.id), title: c.data.title };
+---
+<Base title={chapter.data.title} description={chapter.data.description} progress>
+  <Article
+    lang={textLang(chapter.body ?? '')}
+    back={{ href: '/tech/#series', label: `Tech · ${album.name}` }}
+    badge={`${String(number).padStart(2, '0')}/${String(album.chapters.length).padStart(2, '0')}`}
+    title={chapter.data.title}
+    length={trackLength(chapter.body)}
+    headings={headings}
+    prev={link(prev)}
+    next={link(next)}
+  >
+    <Content />
+  </Article>
+</Base>
