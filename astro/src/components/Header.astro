@@ -1,4 +1,5 @@
 ---
+import NowPlaying from './NowPlaying.astro';
 import { NAV } from '../lib/site';
 
 const nav = NAV.filter((n) => n.href !== '/').map((n) => [n.label, n.href]);
@@ -15,6 +16,7 @@ const path = Astro.url.pathname;
         <a href={to} aria-current={path.startsWith(to) ? 'page' : undefined}>{label}</a>
       ))}
     </nav>
+    <div class="np-slot"><NowPlaying /></div>
     <button class="theme" type="button" aria-label="Toggle dark mode" data-theme-toggle>
       <span aria-hidden="true">◐</span>
     </button>
@@ -98,13 +100,14 @@ const path = Astro.url.pathname;
 <style>
   @media (max-width: 40rem) {
     .bar {
-      gap: 0.4rem 1rem;
+      gap: 0.4rem 0.5rem;
     }
 
     .brand {
       margin-right: auto;
     }
 
+    .np-slot,
     .theme {
       order: 2;
     }
@@ -116,6 +119,15 @@ const path = Astro.url.pathname;
       flex-wrap: nowrap;
       overflow-x: auto;
       scrollbar-width: none;
+    }
+  }
+</style>
+
+<style>
+  @media (max-width: 25rem) {
+    .brand {
+      font-size: 0.9rem;
+      gap: 0.45rem;
     }
   }
 </style>

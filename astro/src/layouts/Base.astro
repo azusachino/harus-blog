@@ -1,30 +1,17 @@
 ---
 import Header from '../components/Header.astro';
-import MiniPlayer, { type Track } from '../components/MiniPlayer.astro';
-import { NAV, PALETTES, SITE } from '../lib/site';
+import Waveform from '../components/Waveform.astro';
+import { PALETTES, SITE } from '../lib/site';
 import '../styles/global.css';
 
 interface Props {
   title: string;
   description?: string;
   progress?: boolean;
-  track?: Track;
 }
 const { title, description, progress = false } = Astro.props;
 // Same "<page> - <site>" format as Material: Giscus maps comments by title.
 const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
-
-// Non-post pages play as an album in navigation order.
-const path = Astro.url.pathname;
-const at = NAV.findIndex((n) => (n.href === '/' ? path === '/' : path.startsWith(n.href)));
-const track: Track = Astro.props.track ?? {
-  title,
-  sub: `${SITE.author} · ${SITE.title}`,
-  number: at + 1 || 1,
-  total: NAV.length,
-  prev: at > 0 ? { href: NAV[at - 1].href, title: NAV[at - 1].label } : undefined,
-  next: at >= 0 && at < NAV.length - 1 ? { href: NAV[at + 1].href, title: NAV[at + 1].label } : undefined,
-};
 ---
 <!doctype html>
 <html lang="en">
@@ -56,20 +43,19 @@ const track: Track = Astro.props.track ?? {
     <main>
       <slot />
     </main>
-    <footer>
-      <MiniPlayer track={track} />
-      <div class="site-footer">
-        <nav class="links mono" aria-label="Elsewhere">
-          <a href="https://github.com/azusachino">GitHub</a>
-          <a href="https://twitter.com/azusachino">X</a>
-          <a href="https://iroha.azusachino.com">iroha</a>
-          <a href="/rss.xml">RSS</a>
-        </nav>
-        <p class="credit">
-          Miku illustrations are AI-generated (ChatGPT) fan art of Hatsune Miku, a character by Crypton Future Media, Inc.,
-          made under the <a href="https://piapro.jp/license/pcl">Piapro Character License</a>. Not an official work.
-        </p>
-      </div>
+    <footer class="site-footer">
+      <div class="footer-wave"><Waveform seed={title} bars={56} /></div>
+      <p class="sign mono">♪ {SITE.title} · {SITE.author}</p>
+      <nav class="links mono" aria-label="Elsewhere">
+        <a href="https://github.com/azusachino">GitHub</a>
+        <a href="https://twitter.com/azusachino">X</a>
+        <a href="https://iroha.azusachino.com">iroha</a>
+        <a href="/rss.xml">RSS</a>
+      </nav>
+      <p class="credit">
+        Miku illustrations are AI-generated (ChatGPT) fan art of Hatsune Miku, a character by Crypton Future Media, Inc.,
+        made under the <a href="https://piapro.jp/license/pcl">Piapro Character License</a>. Not an official work.
+      </p>
     </footer>
     <script is:inline>
       document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {
@@ -82,11 +68,47 @@ const track: Track = Astro.props.track ?? {
 </html>
 
 <style>
+  /* A color band like the next track sliding in: --glow with ink in light
+     mode, charcoal with a glow edge in dark. contrast.ts checks both. */
   .site-footer {
     text-align: center;
-    padding: 1.4rem 1rem 2rem;
+    padding: 1.6rem 1rem 2rem;
     font-size: 0.8rem;
-    color: var(--muted);
+    background: var(--glow);
+    color: #2b2f32;
+  }
+
+  :global(:root[data-theme='dark']) .site-footer {
+    background: var(--surface);
+    color: var(--ink);
+    border-top: 2px solid var(--glow);
+  }
+
+  .site-footer a {
+    color: inherit;
+  }
+
+  .site-footer :focus-visible {
+    outline-color: #2b2f32;
+  }
+
+  :global(:root[data-theme='dark']) .site-footer :focus-visible {
+    outline-color: var(--glow);
+  }
+
+  .footer-wave {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* On the glow band the waveform is drawn in ink; in dark mode it keeps glow. */
+  :global(:root[data-theme='light']) .footer-wave {
+    --glow: #2b2f32;
+  }
+
+  .sign {
+    margin: 0.2rem 0 0.6rem;
+    font-weight: 700;
   }
 
   .links {
@@ -94,7 +116,7 @@ const track: Track = Astro.props.track ?? {
     justify-content: center;
     flex-wrap: wrap;
     gap: 0.4rem 1.2rem;
-    margin: 0 0 0.7rem;
+    margin: 0 0 0.8rem;
   }
 
   .credit {

@@ -1,0 +1,138 @@
+---
+// A small "now playing" pill in the header. Decorative equalizer bars and
+// one action: shuffle the palette track (repaints the site; saved per visitor).
+import { PALETTES } from '../lib/site';
+---
+<button class="np" type="button" data-shuffle title="Shuffle palette">
+  <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+  <span class="text mono">
+    <span class="label">Now playing</span>
+    <span class="name" data-palette-name>{PALETTES[0].name}</span>
+  </span>
+  <svg class="shuffle" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M3 7h3.5c4 0 6 10 10 10H21M3 17h3.5c1.6 0 2.8-1.6 3.9-3.6M13.6 9.6C14.7 8 15.6 7 17 7h4M18 4l3 3-3 3M18 14l3 3-3 3" />
+  </svg>
+  <span class="visually-hidden">Shuffle palette</span>
+</button>
+
+<script is:inline define:vars={{ palettes: PALETTES }}>
+  (() => {
+    const root = document.documentElement;
+    const button = document.querySelector('[data-shuffle]');
+    const label = document.querySelector('[data-palette-name]');
+    const current = () => palettes.find((p) => p.id === (root.dataset.palette ?? 'teal')) ?? palettes[0];
+    label.textContent = current().name;
+    button.addEventListener('click', () => {
+      const next = palettes[(palettes.indexOf(current()) + 1) % palettes.length];
+      if (next.id === 'teal') delete root.dataset.palette;
+      else root.dataset.palette = next.id;
+      localStorage.setItem('palette', next.id);
+      label.textContent = next.name;
+    });
+  })();
+</script>
+
+<style>
+  .np {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    height: 2.25rem;
+    padding: 0 0.75rem 0 0.7rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--bg);
+    color: var(--ink);
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .np:hover {
+    border-color: var(--glow);
+  }
+
+  .eq {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 14px;
+  }
+
+  .eq i {
+    width: 3px;
+    height: 100%;
+    border-radius: 1px;
+    background: var(--glow);
+    transform-origin: bottom;
+    animation: eq 1.1s ease-in-out infinite;
+  }
+
+  .eq i:nth-child(2) {
+    animation-delay: -0.35s;
+  }
+
+  .eq i:nth-child(3) {
+    animation-delay: -0.7s;
+  }
+
+  .eq i:nth-child(4) {
+    animation-delay: -0.15s;
+  }
+
+  @keyframes eq {
+    0%,
+    100% {
+      transform: scaleY(0.3);
+    }
+    50% {
+      transform: scaleY(1);
+    }
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.15;
+  }
+
+  .label {
+    font-size: 0.55rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .name {
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .shuffle {
+    width: 1rem;
+    height: 1rem;
+    fill: none;
+    stroke: var(--primary);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  @media (max-width: 40rem) {
+    .np {
+      padding: 0 0.6rem;
+      gap: 0.4rem;
+    }
+
+    .text {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .eq i {
+      animation: none;
+      transform: scaleY(0.7);
+    }
+  }
+</style>

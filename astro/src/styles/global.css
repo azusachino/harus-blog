@@ -90,7 +90,7 @@
 /* Palette changes repaint smoothly, like the next track sliding in. */
 body,
 .site-header,
-.player {
+.site-footer {
   transition:
     background-color 0.35s ease,
     color 0.35s ease;

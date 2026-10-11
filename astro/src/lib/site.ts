@@ -1,4 +1,4 @@
-// Site-wide constants shared by the header, the footer player and the feed.
+// Site-wide constants shared by the layout, header and feed.
 export const SITE = {
   title: 'Idealistic Daydreamer',
   author: 'haru',
@@ -6,7 +6,7 @@ export const SITE = {
   description: "palette gives you the capability, but you're the source of possibility.",
 };
 
-// Navigation order doubles as the "album" order for non-post pages.
+// Main navigation, in display order.
 export const NAV = [
   { label: 'Home', href: '/' },
   { label: 'Tech', href: '/tech/' },

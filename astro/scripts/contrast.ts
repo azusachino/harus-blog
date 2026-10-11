@@ -37,8 +37,8 @@ for (const p of palettes) {
       ['primary', 'bg', 'links'], ['primary', 'surface', 'card links'],
       ['accent', 'bg', 'badges'], ['accent', 'surface', 'card badges'],
       ['on-accent', 'accent', 'badge label'],
-      // Footer player: a glow band with ink in light mode, glow on surface in dark.
-      mode === 'light' ? ['ink', 'glow', 'player'] : ['glow', 'surface', 'player'],
+      // Footer band: ink on glow in light mode, glow on surface in dark.
+      mode === 'light' ? ['ink', 'glow', 'footer'] : ['glow', 'surface', 'footer'],
     ];
     for (const [fg, bg, use] of pairs) {
       const r = ratio(t[fg], t[bg]);
