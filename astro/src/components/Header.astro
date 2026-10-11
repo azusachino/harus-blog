@@ -4,6 +4,8 @@ import { NAV } from '../lib/site';
 
 const nav = NAV.filter((n) => n.href !== '/').map((n) => [n.label, n.href]);
 const path = Astro.url.pathname;
+// The most specific match wins, so /tech/series/ highlights Series, not Tech.
+const active = nav.map(([, to]) => to).filter((to) => path.startsWith(to)).sort((a, b) => b.length - a.length)[0];
 ---
 <header class="site-header" id="top">
   <div class="bar">
@@ -13,7 +15,7 @@ const path = Astro.url.pathname;
     </a>
     <nav aria-label="Main">
       {nav.map(([label, to]) => (
-        <a href={to} aria-current={path.startsWith(to) ? 'page' : undefined}>{label}</a>
+        <a href={to} aria-current={to === active ? 'page' : undefined}>{label}</a>
       ))}
     </nav>
     <div class="np-slot"><NowPlaying /></div>

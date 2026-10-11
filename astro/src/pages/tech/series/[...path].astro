@@ -20,7 +20,7 @@ const link = (c?: typeof chapter) => c && { href: seriesHref(c.id), title: c.dat
 <Base title={chapter.data.title} description={chapter.data.description} progress>
   <Article
     lang={textLang(chapter.body ?? '')}
-    back={{ href: '/tech/#series', label: `Tech · ${album.name}` }}
+    back={{ href: '/tech/series/', label: `Series · ${album.name}` }}
     badge={`${String(number).padStart(2, '0')}/${String(album.chapters.length).padStart(2, '0')}`}
     title={chapter.data.title}
     length={trackLength(chapter.body)}

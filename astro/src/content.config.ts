@@ -11,7 +11,7 @@ const post = z.object({
   // Lowercase, as the frontmatter contract requires (also keeps category
   // URLs from colliding on case-insensitive filesystems).
   categories: z.array(z.string().regex(/^[a-z0-9-]+$/, 'categories must be lowercase')).default([]),
-  tags: z.array(z.string()).optional(),
+  tags: z.array(z.string().regex(/^[a-z0-9-]+$/, 'tags must be lowercase')).optional(),
   slug: z.string(),
   lang: z.string().optional(),
   comments: z.boolean().default(false),

@@ -1,0 +1,58 @@
+---
+// Series as albums: each tutorial set with its chapters in order.
+import Base from '../../../layouts/Base.astro';
+import Waveform from '../../../components/Waveform.astro';
+import { seriesAlbums, seriesHref } from '../../../lib/posts';
+
+const albums = await seriesAlbums();
+const tracks = albums.reduce((n, a) => n + a.chapters.length, 0);
+---
+<Base title="Series" description="Ordered tutorial series, read like albums.">
+  <p class="eyebrow">{albums.length} albums · {tracks} tracks</p>
+  <h1>Series</h1>
+  <p class="muted">Ordered tutorials, read like albums.</p>
+  <Waveform seed="series" />
+
+  <div class="grid">
+    {albums.map((album) => (
+      <section class="card" aria-labelledby={album.dir}>
+        <p class="eyebrow">{album.chapters.length} tracks</p>
+        <h2 id={album.dir}>{album.name}</h2>
+        <ol>
+          {album.chapters.map((c) => (
+            <li><a href={seriesHref(c.id)}>{c.data.title.replace(/^.*?\d+\s*-\s*/, '')}</a></li>
+          ))}
+        </ol>
+      </section>
+    ))}
+  </div>
+</Base>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .card {
+    border-top: 3px solid var(--glow);
+  }
+
+  .eyebrow {
+    margin: 0;
+  }
+
+  h2 {
+    margin: 0.2rem 0 0.6rem;
+    font-size: 1.1rem;
+  }
+
+  ol {
+    margin: 0;
+    padding-left: 1.4rem;
+    font-size: 0.92rem;
+    line-height: 1.75;
+  }
+</style>
