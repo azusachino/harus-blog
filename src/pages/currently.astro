@@ -10,19 +10,31 @@ import { day } from '../lib/posts';
 const entries = await getCollection('currently');
 const updated = new Date(Math.max(...entries.map((e) => e.data.updated.getTime())));
 const gh = await githubActivity();
+// Use: one compact row per kind ("Coding agent: Claude Code · Pi · ..."), grouped as in use.yaml.
+const gear = await getCollection('use');
+const useGroups = [
+  { id: 'dev', title: 'Dev' },
+  { id: 'devices', title: 'Devices' },
+  { id: 'subscriptions', title: 'Subscriptions' },
+].map((g) => {
+  const rows = new Map<string, typeof gear>();
+  for (const i of gear.filter((i) => i.data.group === g.id)) rows.set(i.data.kind, [...(rows.get(i.data.kind) ?? []), i]);
+  return { ...g, rows: [...rows] };
+});
 const of = (section: string) => entries.filter((e) => e.data.section === section);
 const sections = [
   { id: 'play', title: 'Play', items: of('play') },
   { id: 'practice', title: 'Practice', items: of('practice') },
   { id: 'listen', title: 'Listen' },
   { id: 'read-watch', title: 'Read & watch', items: of('read-watch') },
+  { id: 'use', title: 'Use' },
   { id: 'build', title: 'Build' },
 ];
 ---
-<Base title="Currently" description="What I'm playing, practicing, listening to, reading and building.">
+<Base title="Currently" description="What I'm playing, practicing, listening to, reading, using and building.">
   <p class="eyebrow">Updated {day(updated)}</p>
   <h1>Currently</h1>
-  <p class="muted">What I'm playing, practicing, listening to, reading and building.</p>
+  <p class="muted">What I'm playing, practicing, listening to, reading, using and building.</p>
   <Waveform seed="currently" />
 
   <nav class="chips" aria-label="Sections">
@@ -47,6 +59,30 @@ const sections = [
       ))}
 
       {s.id === 'listen' && <div class="repeat"><p class="eyebrow">On repeat</p><Playlist /></div>}
+
+      {s.id === 'use' && (
+        <div class="use">
+          {useGroups.map((g) => (
+            <dl>
+              <dt class="eyebrow group">{g.title}</dt>
+              {g.rows.map(([kind, list]) => (
+                <>
+                  <dt class="mono kind">{kind}</dt>
+                  <dd>
+                    {list.map(({ data }, n) => (
+                      <>
+                        {n > 0 && ' · '}
+                        {data.url ? <a href={data.url}>{data.name}</a> : data.name}
+                        {data.note && <span class="muted"> ({data.note.replace(/\.$/, '')})</span>}
+                      </>
+                    ))}
+                  </dd>
+                </>
+              ))}
+            </dl>
+          ))}
+        </div>
+      )}
 
       {s.id === 'build' && (gh ? (
         <>
@@ -141,6 +177,37 @@ const sections = [
   .stamp {
     font-size: 0.72rem;
     margin-top: 0.6rem !important;
+  }
+
+  .use {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 1.5rem 2.5rem;
+    margin-top: 1rem;
+  }
+
+  .use dl {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .use dt.group {
+    margin: 0 0 0.4rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid var(--glow);
+  }
+
+  .use .kind {
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .use dd {
+    margin: 0;
   }
 
   .repeat {
