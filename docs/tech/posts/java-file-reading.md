@@ -155,7 +155,7 @@ public class FileRead {
 
 简单地比较之后，Stream 的数据最好看，而且代码很简单，所以就采取这个方案了。
 
-```output
+```text
 14:59:04.292 [main] INFO cn.az.code.file.FileRead - StopWatch '1': running time = 703973100 ns
 ---------------------------------------------
 ns         %     Task name

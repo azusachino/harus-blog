@@ -26,7 +26,7 @@ Nature Selection vs. Human Design
 
 koko eats banana
 
-```py3
+```python
 class Solution:
     def eatsBanana(self, piles: List[int], h: int) -> int:
         def feasible(bite):

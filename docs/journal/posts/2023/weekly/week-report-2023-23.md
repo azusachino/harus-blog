@@ -26,7 +26,7 @@ cover_alt: "Cover photo: Goliath Heron"
 
 判断两个以上的点是否在一条直线上。
 
-```py3
+```python
 class Solution:
   def sameLine(self, nums) -> bool:
     (x1, y1), (x2, y2) = nums[:2]

@@ -108,7 +108,7 @@ export DOCKER_BUILDKIT=1
 docker build --secret id=mysecret,src=/path/to/secret/file.txt -t myapp:latest .
 ```
 
-```Dockerfile
+```dockerfile
 FROM alpine
 RUN --mount=type=secret,id=mysecret cat /run/secrets/mysecret
 ```
