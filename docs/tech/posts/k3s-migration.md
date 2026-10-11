@@ -595,9 +595,9 @@ kubectl describe pod  # Shows events and why
 
 ## Costs
 
-**Hardware:** $300 Mini PC (one-time)
-**Electricity:** ~$5/month (60W idle)
-**Backups:** $1.60/month (Cloudflare R2)
+**Hardware:** \$300 Mini PC (one-time)
+**Electricity:** ~\$5/month (60W idle)
+**Backups:** \$1.60/month (Cloudflare R2)
 **Tailscale:** Free (personal use)
 **Cloudflare Tunnel:** Free
 
