@@ -19,6 +19,12 @@ groups (Added, Changed, Fixed, Removed).
 - Back-to-top button (bottom right) once the header scrolls out of view; smooth in-page scrolling
   unless reduced motion is set.
 
+### Changed
+
+- About is a component page (`src/pages/about.astro`): a before/now role comparison, project
+  cards, "Outside of code" with exact names from the journals, and the life-long rules as a
+  full-width section.
+
 ## 2026-10-11 — Astro
 
 The blog moves from MkDocs + Material to Astro, with the same posts at the same URLs.

@@ -24,7 +24,8 @@ split into type-based sections — **no year-wise layout**. The site code is at 
   filename is the URL: `/tech/series/<name>/NN.<title>/`).
 - **Journal** — `docs/journal/posts/<YYYY>/…`: weekly reports, monthly refreshes, yearly reviews.
 - **Life** — `docs/life/posts/`: books, concerts, essays.
-- **About / CV** — `docs/about.md`, `docs/cv.md`.
+- **About** — `src/pages/about.astro`, a component page; its wordings are the owner's (ask before
+  changing them). **CV** — `docs/cv.md`.
 - **Data pages** — `src/data/*.yaml`: `currently.yaml` (Play/Practice/Read & watch), `playlist.yaml`
   (On repeat, file order), `use.yaml` (Dev/Devices/Subscriptions). Lists are the owner's; ask before
   adding entries.

@@ -1,4 +1,359 @@
 ---
-import PageDoc from '../components/PageDoc.astro';
+// About: a component page (not a post), so it can use layout beyond prose.
+// Wordings are the owner's: the GitHub profile, journals and the old About.
+import Base from '../layouts/Base.astro';
+import Illustration from '../components/Illustration.astro';
+import Waveform from '../components/Waveform.astro';
+
+const role = {
+  before: {
+    label: 'Before',
+    title: 'Backend engineer',
+    text: 'Java and Go, distributed systems: RTC signaling, logging pipelines and the microservices around them.',
+  },
+  now: {
+    label: 'Now',
+    title: 'Building with LLMs',
+    text: 'Agents, AI-assisted workflows, and the systems that make them dependable.',
+  },
+};
+
+const projects = [
+  { name: 'asobi', lang: 'Rust', text: 'A knowledge graph CLI that gives AI agents memory across sessions.' },
+  { name: 'iroha', lang: 'Go', text: 'A personal data cockpit for my own location and activity data.' },
+  { name: 'felicia', lang: 'Go', text: 'A map-based travel journal: the map is the index, the mementos are the stories.' },
+  { name: 'daphne', lang: 'Python', text: 'A Telegram bot that turns media links into native Telegram media.' },
+  { name: 'nahida', lang: 'Rust', text: 'The agent I am building to understand agents.' },
+  { name: 'harus-blog', lang: 'Astro', text: 'This blog, rebuilt on Astro and themed after Hatsune Miku.' },
+];
+
+// Exact names from the journals (2026-08 to 2026-09), no generic categories.
+const outside = [
+  { kind: 'Watching', items: ['Dota 2: TI', 'PGL Wallachia', 'BLAST SLAM'] },
+  { kind: 'Concerts', items: ['Magical Mirai', { text: '初音ミクシンフォニー2025', href: '/life/miku-symphony-2025/' }, { text: 'ヨルシカ 盗作再演', href: '/life/yorushika-live-2025-09-30/' }] },
+  { kind: 'Playing', items: ['MAIMAI', 'Genshin Impact'] },
+  { kind: 'Reading', items: ['the pi agent book', 'LLM books'] },
+  { kind: 'Listening', items: ['Mozart K. 333', 'Vaundy', 'Yorushika', 'Study with Miku'] },
+  { kind: 'Practicing', items: ['Piano'] },
+];
+
+const reproaches = [
+  '当它本可进取时，却故作谦卑',
+  '当它空虚时，用爱欲来填充',
+  '在困难和容易之间，它选择了容易',
+  '它犯了错，却借由别人也会犯错来宽慰自己',
+  '它自由软弱，却把它认为是生命的坚韧',
+  '当它鄙夷一张丑恶的嘴脸时，却不知那正是自己面具中的一副',
+  '它侧身于生活的污泥中虽不甘心，却又畏首畏尾',
+];
 ---
-<PageDoc id="about" />
+<Base title="About" description="我想要的无非是遵从自己的内心去生活, 为什么竟是如此艰难呢?">
+  <article class="about" lang="en">
+    <header class="intro">
+      <div>
+        <p class="eyebrow">About</p>
+        <h1>haru</h1>
+        <p class="muted" lang="zh-CN">我想要的无非是遵从自己的内心去生活, 为什么竟是如此艰难呢?</p>
+        <Waveform seed="about" />
+        <p class="motto mono">99% theory + 1% practice = me <span class="muted">(idealistic daydreamer)</span></p>
+      </div>
+      <div class="art"><Illustration name="about" eager /></div>
+    </header>
+
+    <section aria-labelledby="what-i-do">
+      <h2 id="what-i-do">What I do</h2>
+      <div class="compare">
+        <div class="side before">
+          <p class="eyebrow">{role.before.label}</p>
+          <p class="title">{role.before.title}</p>
+          <p class="muted">{role.before.text}</p>
+        </div>
+        <span class="arrow" aria-hidden="true">→</span>
+        <div class="side now">
+          <p class="eyebrow">{role.now.label}</p>
+          <p class="title">{role.now.title}</p>
+          <p>{role.now.text}</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="like-most">
+      <h2 id="like-most">What I like most</h2>
+      <p class="lead">
+        Building my own apps for my own requirements. Things I run every day, not things I demo once.
+      </p>
+      <ul class="projects">
+        {projects.map((p) => (
+          <li class="card">
+            <p class="eyebrow">{p.lang}</p>
+            <a class="name" href={`https://github.com/azusachino/${p.name}`}>{p.name}</a>
+            <p class="muted">{p.text}</p>
+          </li>
+        ))}
+      </ul>
+      <p class="goal mono">Ultimate goal: <strong>antifragile</strong>. The rest is on <a href="https://github.com/azusachino">GitHub</a>.</p>
+    </section>
+
+    <section class="pair" aria-label="Current resolution and status">
+      <div class="card">
+        <p class="eyebrow">Current resolution</p>
+        <p class="title">Reduce the contradictions around me.</p>
+      </div>
+      <div class="card">
+        <p class="eyebrow">Current status</p>
+        <p class="title">Trial and error, looking for a way of living that fits.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="outside">
+      <h2 id="outside">Outside of code</h2>
+      <dl class="outside">
+        {outside.map((row) => (
+          <div class="row">
+            <dt class="eyebrow">{row.kind}</dt>
+            <dd>
+              {row.items.map((item) =>
+                typeof item === "string" ? <span class="chip">{item}</span> : <a class="chip" href={item.href} lang="ja">{item.text}</a>,
+              )}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  </article>
+
+  <section class="rules" aria-labelledby="rules">
+    <div class="rules-inner">
+      <p class="eyebrow">Life-long rules</p>
+      <h2 id="rules">The sum of behavior is to retain a man's own dignity without intruding upon others' liberty.</h2>
+      <blockquote lang="zh-CN">假如我最终无法继续战斗下去，假如我放弃了，我堕落了，那么我就比那些从未战斗过的人更为恶劣。</blockquote>
+      <p class="seven-title" lang="zh-CN">我曾七次鄙视自己的灵魂</p>
+      <ol class="seven" lang="zh-CN">
+        {reproaches.map((line, i) => (
+          <li><span class="n mono">{String(i + 1).padStart(2, '0')}</span><span>{line}</span></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .about {
+    max-width: 60rem;
+    margin-inline: auto;
+  }
+
+  .about section {
+    margin-top: 3rem;
+  }
+
+  .intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .intro h1 {
+    margin: 0.2rem 0;
+  }
+
+  .motto {
+    font-size: 0.95rem;
+  }
+
+  .eyebrow {
+    margin: 0;
+  }
+
+  .title {
+    margin: 0.25rem 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+
+  /* Before → now, as two lines side by side. */
+  .compare {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .side {
+    padding: 1.2rem 1.4rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+  }
+
+  .side p {
+    margin: 0.2rem 0 0;
+  }
+
+  .before {
+    background: var(--bg);
+  }
+
+  .now {
+    background: var(--surface);
+    border-color: var(--glow);
+    box-shadow: inset 4px 0 0 var(--glow);
+  }
+
+  .arrow {
+    align-self: center;
+    font-size: 1.6rem;
+    color: var(--primary);
+  }
+
+  .lead {
+    font-size: 1.15rem;
+    font-weight: 500;
+    max-width: 44rem;
+  }
+
+  .projects {
+    list-style: none;
+    padding: 0;
+    margin: 1.2rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: 1rem;
+  }
+
+  .projects .card {
+    border-top: 3px solid var(--glow);
+  }
+
+  .projects p {
+    margin: 0.2rem 0 0;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .name {
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+
+  .goal {
+    margin-top: 1.2rem;
+  }
+
+  .pair {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1rem;
+  }
+
+  .outside {
+    margin: 1rem 0 0;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 7.5rem minmax(0, 1fr);
+    gap: 1rem;
+    align-items: baseline;
+    padding: 0.7rem 0;
+    border-bottom: 1px dashed var(--line);
+  }
+
+  .row dd {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .chip {
+    padding: 0.15rem 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    font-size: 0.92rem;
+  }
+
+  /* Life-long rules: the page's anchor, a full-width band. */
+  .rules {
+    /* Full bleed: break out of main's width to span the viewport. */
+    margin-inline: calc(50% - 50vw);
+    margin-top: 4.5rem;
+    padding: 3.5rem 0 3rem;
+    border-top: 3px solid var(--glow);
+    background: var(--surface);
+  }
+
+  .rules-inner {
+    max-width: 52rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  .rules h2 {
+    font-size: clamp(1.35rem, 1.1rem + 1vw, 1.8rem);
+    line-height: 1.45;
+    margin: 0.4rem 0 1.6rem;
+  }
+
+  .rules blockquote {
+    margin: 0 0 2.2rem;
+    padding: 0.4rem 0 0.4rem 1.2rem;
+    border-left: 4px solid var(--accent);
+    font-size: 1.2rem;
+    line-height: 1.9;
+    font-weight: 500;
+  }
+
+  .seven-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin: 0 0 0.8rem;
+  }
+
+  .seven {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 0.7rem;
+  }
+
+  .seven li {
+    display: grid;
+    grid-template-columns: 2.4rem minmax(0, 1fr);
+    gap: 0.6rem;
+    align-items: baseline;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--bg);
+  }
+
+  .n {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  @media (max-width: 48rem) {
+    .intro {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .compare {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .arrow {
+      justify-self: center;
+      transform: rotate(90deg);
+    }
+
+    .row {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.4rem;
+    }
+  }
+</style>

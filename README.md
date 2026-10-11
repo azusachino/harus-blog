@@ -7,7 +7,7 @@ Personal blog, built with [Astro](https://astro.build/) and themed after Hatsune
 ## Layout
 
 - `docs/` — the posts, plain Markdown: `tech/posts/`, `tech/series/<name>/`, `journal/posts/<year>/`,
-  `life/posts/`, plus `about.md`, `cv.md` and images under `docs/assets/`.
+  `life/posts/`, plus `cv.md` and images under `docs/assets/` (About is `src/pages/about.astro`).
 - `src/` — the site: pages, components, styles, and the data pages in `src/data/` (Currently, On
   repeat, Use).
 - `scripts/` — the gates run by `make check`: palette contrast, frontmatter contract, URL parity.

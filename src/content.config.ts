@@ -76,9 +76,9 @@ const series = defineCollection({
   }),
 });
 
-// Standalone pages (About, CV) rendered as they are.
+// The CV, rendered as it is (About is a component page, src/pages/about.astro).
 const pages = defineCollection({
-  loader: glob({ base: 'docs', pattern: ['about.md', 'cv.md'] }),
+  loader: glob({ base: 'docs', pattern: ['cv.md'] }),
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),

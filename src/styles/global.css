@@ -348,3 +348,9 @@ img {
     scroll-behavior: smooth;
   }
 }
+
+/* Full-bleed sections use 100vw, which includes a visible scrollbar; never let
+   that create a horizontal scroll. */
+main {
+  overflow-x: clip;
+}
