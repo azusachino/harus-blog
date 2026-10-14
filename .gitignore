@@ -10,3 +10,7 @@ node_modules/
 dist/
 .astro/
 .rumdl_cache/
+
+# retired MkDocs build output (Astro builds to dist/) and its hook caches
+/site/
+__pycache__/
