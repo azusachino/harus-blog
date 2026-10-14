@@ -12,7 +12,11 @@ export default defineConfig({
   devToolbar: { enabled: false },
   // Mermaid's chunks (~650 KB) load only on pages with a diagram, so Vite's
   // 500 KB warning is expected; keep the build log quiet for real warnings.
-  vite: { build: { chunkSizeWarningLimit: 1024 } },
+  vite: {
+    build: { chunkSizeWarningLimit: 1024 },
+    server: { allowedHosts: ['harus-mini', 'harus-mini.talpidae-beta.ts.net', 'harus-macmini', 'harus-macmini.talpidae-beta.ts.net'] },
+    preview: { allowedHosts: ['harus-mini', 'harus-mini.talpidae-beta.ts.net', 'harus-macmini', 'harus-macmini.talpidae-beta.ts.net'] },
+  },
   markdown: {
     processor: satteri({ mdastPlugins: [math], features: { math: true } }),
     shikiConfig: {
