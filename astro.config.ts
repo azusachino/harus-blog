@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import { satteri } from '@astrojs/markdown-satteri';
-import { math } from './src/lib/math.mjs';
+import { math } from './src/lib/math';
 
 export default defineConfig({
   site: 'https://azusachino.com',
