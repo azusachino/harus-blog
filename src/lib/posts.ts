@@ -9,8 +9,8 @@ export async function published(section: Section): Promise<Post[]> {
   const now = Date.now();
   const all = await getCollection(section);
   return all
-    .filter((p) => p.data.date.getTime() <= now)
-    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+    .filter((p: { data: { date: Date } }) => p.data.date.getTime() <= now)
+    .sort((a: { data: { date: Date } }, b: { data: { date: Date } }) => b.data.date.getTime() - a.data.date.getTime());
 }
 
 export function href(section: Section, post: Post) {
@@ -47,7 +47,7 @@ export function textLang(body: string) {
 
 // Series ("albums"): chapters grouped by directory, in filename order.
 export async function seriesAlbums() {
-  const chapters = (await getCollection('series')).sort((a, b) => a.id.localeCompare(b.id));
+  const chapters = (await getCollection("series")).sort((a: { id: string }, b: { id: string }) => a.id.localeCompare(b.id));
   const albums = new Map<string, typeof chapters>();
   for (const c of chapters) {
     const dir = c.id.split('/')[0];

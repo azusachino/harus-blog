@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "verify": "bun scripts/contrast.ts && bun scripts/frontmatter.ts && bunx --bun astro build && bun scripts/url-parity.ts"
+    "typecheck": "astro sync && tsc -p tsconfig.json",
+    "verify": "bun run typecheck && bun scripts/contrast.ts && bun scripts/frontmatter.ts && bunx --bun astro build && bun scripts/url-parity.ts"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "0.4.2",
@@ -14,5 +15,9 @@
     "katex": "0.19.0",
     "mermaid": "11.17.2",
     "satteri": "0.10.5"
+  },
+  "devDependencies": {
+    "@types/bun": "1.4.3",
+    "typescript": "7.0.2"
   }
 }

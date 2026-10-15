@@ -13,7 +13,7 @@ split into type-based sections — **no year-wise layout**. The site code is at 
   site (`scripts/url-parity.ts` + `scripts/mkdocs-urls.txt`). CI and the cluster builder run the same.
 - On this network installs need `BUN_CONFIG_REGISTRY=https://registry.npmmirror.com/`; strip mirror
   URLs from `bun.lock` afterwards. New packages wait 7 days (bun cooldown).
-- The dev server runs as a background daemon: after changing `astro.config.mjs`, a collection or a
+- The dev server runs as a background daemon: after changing `astro.config.ts`, a collection or a
   Markdown plugin, `bunx --bun astro dev stop`, delete `node_modules/.astro`, and start again —
   the content cache does not notice those changes.
 - `CHANGELOG.md` records site changes (not posts): one dated entry per merged change.
@@ -43,7 +43,7 @@ split into type-based sections — **no year-wise layout**. The site code is at 
   frontmatter; embeds get components, not syntax inside posts.
 - Diagrams: ` ```mermaid ` fences, drawn in the browser by `src/components/Mermaid.astro` (loaded
   only on pages that have one, colored by the palette). Math: `$…$` inline, `$$…$$` or a paragraph
-  holding one formula for display, rendered at build time by KaTeX (`src/lib/math.mjs`). A literal
+  holding one formula for display, rendered at build time by KaTeX (`src/lib/math.ts`). A literal
   dollar in a paragraph that has another one is written `\$` (prices), or the two pair up as math.
 - Images live in `docs/assets`, never on an external host (a dead CDN cost ten images once). Before
   committing a photo, resize to ≤2000px and strip EXIF/GPS (phone photos carry home coordinates).

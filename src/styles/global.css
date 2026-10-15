@@ -334,7 +334,7 @@ img {
   }
 }
 
-/* Display math (src/lib/math.mjs): centered, scrolls instead of overflowing. */
+/* Display math (src/lib/math.ts): centered, scrolls instead of overflowing. */
 .prose .math-display {
   margin: 1.4em 0;
   overflow-x: auto;
