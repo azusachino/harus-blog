@@ -1,16 +1,36 @@
 # Hand-curated "On repeat" playlist for Home and /currently. Newest first.
 # `url` is optional (YouTube, Bilibili, Apple Music...). Seeded from
-# journal/posts/2026/refresh/month-refresh-2026-09.md.
+# journal/posts/2026/refresh/month-refresh-2026-08.md and 2026-09.md.
 - id: kaiju-no-hanauta-live
   title: Kaiju no Hanauta (Asia Arena Tour live)
   artist: Vaundy
+  note: Late-night coding soundtrack.
   added: 2026-09-30
 - id: hirutobi
   title: Hirutobi
   artist: Yorushika
+  note: Post-concert replay after 盗作再演.
   added: 2026-09-30
 - id: study-with-miku
   title: Study with Miku (lo-fi stream)
   artist: Hatsune Miku
   note: With the Sleeping Miku theme on Firefox.
   added: 2026-09-30
+- id: 39-music
+  title: 39みゅーじっく！ (39 Music!)
+  artist: Mikito-P feat. Hatsune Miku
+  url: https://www.youtube.com/watch?v=de29756jjZw
+  note: Highlight from attending two days of Magical Mirai 2026.
+  added: 2026-09-02
+- id: hero-mm
+  title: HERO
+  artist: Ayase feat. Hatsune Miku
+  url: https://www.youtube.com/watch?v=o4AxMk7S0VI
+  note: Magical Mirai 2023 theme, heard live on stage at MM 2026.
+  added: 2026-09-02
+- id: lustrous-mm
+  title: ラストラス (Lustrous)
+  artist: "*Luna feat. Hatsune Miku"
+  url: https://www.youtube.com/watch?v=c1bKT34-a4A
+  note: Magical Mirai 2025 theme, live encore memory at MM 2026.
+  added: 2026-09-02

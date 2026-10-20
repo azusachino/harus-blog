@@ -16,25 +16,49 @@ const concerts = posts.filter((p) => isConcert(p));
 const books = posts.filter((p) => isBook(p));
 const essays = posts.filter((p) => !isBook(p) && !isConcert(p));
 
+const tickets = [
+  {
+    stub: 'MM-2026 · 2 DAYS',
+    venue: 'Magical Mirai 2026',
+    date: '2026-08',
+    title: '初音ミク「マジカルミライ 2026」',
+    note: '39みゅーじっく！ · HERO · ラストラス',
+    href: '/journal/month-refresh-2026-08/',
+    cover: '/assets/images/2026/08-magical-mirai.jpeg',
+    alt: 'Magical Mirai 2026 stage photo',
+  },
+  ...concerts.map((post, i) => ({
+    stub: `LIVE-${String(concerts.length - i).padStart(2, '0')} · ♪ ${trackLength(post.body)}`,
+    venue: post.data.slug.includes('symphony') ? 'Yokohama · Orchestra' : 'Live Tour · Plagiarism',
+    date: day(post.data.date),
+    title: post.data.title,
+    note: post.data.description,
+    href: href('life', post),
+    cover: post.data.cover,
+    alt: post.data.cover_alt ?? post.data.title,
+  })),
+];
+
 const mirai = (await getCollection('magicalMirai')).sort((a, b) => b.id.localeCompare(a.id));
 ---
 <div class="shelves">
   <section class="shelf" aria-labelledby="shelf-live">
     <div class="shelf-head">
       <h2 id="shelf-live">Live &amp; Stage</h2>
-      <span class="mono muted">{concerts.length} concert notes</span>
+      <span class="mono muted">{tickets.length} ticket stubs</span>
     </div>
     <ul class="concert-grid">
-      {concerts.map((post) => (
+      {tickets.map((t) => (
         <li class="concert-card">
-          <a href={href('life', post)} class="concert-link">
-            {post.data.cover && (
-              <img src={post.data.cover} alt={post.data.cover_alt ?? post.data.title} loading="lazy" />
-            )}
+          <a href={t.href} class="concert-link">
+            {t.cover && <img src={t.cover} alt={t.alt} loading="lazy" />}
+            <div class="ticket-stub mono">
+              <span class="stub-code">{t.stub}</span>
+              <span class="muted">{t.venue} · {t.date}</span>
+            </div>
             <div class="concert-body">
-              <span class="mono muted">{day(post.data.date)} · ♪ {trackLength(post.body)}</span>
-              <span class="title">{post.data.title}</span>
-              {post.data.description && <span class="desc muted">{post.data.description}</span>}
+              <span class="title">{t.title}</span>
+              {t.note && <span class="desc muted">{t.note}</span>}
             </div>
           </a>
         </li>
@@ -166,6 +190,23 @@ const mirai = (await getCollection('magicalMirai')).sort((a, b) => b.id.localeCo
     object-fit: cover;
     display: block;
     background: var(--line);
+  }
+
+  .ticket-stub {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.72rem;
+    border-bottom: 1px dashed var(--line);
+    background: var(--bg);
+  }
+
+  .stub-code {
+    color: var(--primary);
+    font-weight: 700;
+    letter-spacing: 0.06em;
   }
 
   .concert-body {

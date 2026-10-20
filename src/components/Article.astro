@@ -38,7 +38,7 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
     <p class="meta mono muted">
       {date && <time datetime={date}>{date}</time>}
       <span>♪ {length}</span>
-      {tags.map((t) => <span>#{t}</span>)}
+      {tags.map((t) => <a class="tag" href={`/tags/${t}/`}>#{t}</a>)}
     </p>
     <Waveform seed={title} />
   </header>
@@ -80,6 +80,16 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
     gap: 0.4rem 1rem;
     font-size: 0.82rem;
     margin: 0.6rem 0 0;
+  }
+
+  .meta .tag {
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .meta .tag:hover {
+    color: var(--primary);
+    text-decoration: underline;
   }
 
   header .eyebrow {

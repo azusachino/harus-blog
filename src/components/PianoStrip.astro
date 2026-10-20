@@ -103,9 +103,47 @@ const beat = (kind: 'white' | 'black', i: number) => (kind === 'black' ? 0 : i =
         }
       });
     });
+    const strikeKeyVisual = (note, delayMs = 0) => {
+      const el = piano.querySelector(`[data-note="${note}"]`);
+      if (!el) return;
+      setTimeout(() => {
+        el.setAttribute('data-struck', '');
+        setTimeout(() => el.removeAttribute('data-struck'), 200);
+      }, delayMs);
+    };
     piano.addEventListener('piano:arpeggio', () => {
-      ['A#3', 'D4', 'F4'].forEach((n, idx) => strike(n, idx * 0.35));
+      ['A#3', 'D4', 'F4'].forEach((n, idx) => {
+        strike(n, idx * 0.35);
+        strikeKeyVisual(n, idx * 350);
+      });
       if (caption) caption.textContent = '♪ B♭ · D · F — K. 333';
+    });
+    piano.addEventListener('piano:phrase', (e) => {
+      const detail = e.detail || {};
+      const notes = detail.notes || ['A#3', 'D4', 'F4'];
+      const step = detail.step ?? 0.2;
+      notes.forEach((n, idx) => {
+        strike(n, idx * step);
+        strikeKeyVisual(n, idx * step * 1000);
+      });
+      if (caption && detail.label) caption.textContent = detail.label;
+    });
+    let prevKey = '';
+    window.addEventListener('keydown', (e) => {
+      const tag = document.activeElement?.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || document.activeElement?.isContentEditable) return;
+      if (prevKey === '3' && e.key === '9') {
+        piano.dispatchEvent(
+          new CustomEvent('piano:phrase', {
+            detail: {
+              notes: ['A#3', 'D4', 'F4', 'A4'],
+              step: 0.14,
+              label: '♪ 39! Thank You — Hatsune Miku (B♭maj7)',
+            },
+          }),
+        );
+      }
+      prevKey = e.key;
     });
   })();
 </script>

@@ -1,0 +1,74 @@
+---
+// Crate-digging tag index across Tech, Journal, and Life.
+import Base from '../../layouts/Base.astro';
+import Waveform from '../../components/Waveform.astro';
+import { published, SECTIONS } from '../../lib/posts';
+
+const counts = new Map<string, number>();
+let totalPosts = 0;
+for (const section of SECTIONS) {
+  const posts = await published(section);
+  totalPosts += posts.length;
+  for (const p of posts) {
+    for (const t of p.data.tags ?? []) {
+      counts.set(t, (counts.get(t) ?? 0) + 1);
+    }
+  }
+}
+const tags = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+---
+<Base title="Tags" description="Record-crate tag index across Tech, Journal, and Life.">
+  <p class="eyebrow">{tags.length} tags · {totalPosts} tracks</p>
+  <h1>Tags</h1>
+  <p class="muted">Browse posts across Tech, Journal, and Life by topic tag.</p>
+  <Waveform seed="tags-crate" />
+
+  <ul class="crate">
+    {tags.map(([tag, count]) => (
+      <li>
+        <a href={`/tags/${tag}/`}>
+          <span class="name mono">#{tag}</span>
+          <span class="count mono muted">{count}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</Base>
+
+<style>
+  .crate {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .crate a {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.45rem;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.88rem;
+    transition: border-color 0.15s ease;
+  }
+
+  .crate a:hover,
+  .crate a:focus-visible {
+    border-color: var(--glow);
+  }
+
+  .name {
+    font-weight: 600;
+  }
+
+  .count {
+    font-size: 0.75rem;
+  }
+</style>

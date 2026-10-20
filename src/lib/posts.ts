@@ -18,11 +18,18 @@ export function href(section: Section, post: Post) {
 }
 
 // Reading time as a track length: CJK characters at ~400/min, Latin words at ~220/min.
-export function trackLength(body = '') {
+export function trackSeconds(body = '') {
   const cjk = (body.match(/[぀-ヿ㐀-鿿]/g) ?? []).length;
   const words = (body.replace(/[぀-ヿ㐀-鿿]/g, ' ').match(/[A-Za-z0-9]+/g) ?? []).length;
-  const seconds = Math.max(60, Math.round((cjk / 400 + words / 220) * 60));
+  return Math.max(60, Math.round((cjk / 400 + words / 220) * 60));
+}
+
+export function formatSeconds(seconds: number) {
   return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
+}
+
+export function trackLength(body = '') {
+  return formatSeconds(trackSeconds(body));
 }
 
 export function day(date: Date) {
@@ -53,12 +60,16 @@ export async function seriesAlbums() {
     const dir = c.id.split('/')[0];
     albums.set(dir, [...(albums.get(dir) ?? []), c]);
   }
-  return [...albums].map(([dir, list]) => ({
-    dir,
-    // "K8S学习笔记 01 - 初见" -> "K8S学习笔记"
-    name: list[0].data.title.replace(/\s*\d+\s*-.*$/, ''),
-    chapters: list,
-  }));
+  return [...albums].map(([dir, list]) => {
+    const totalSeconds = list.reduce((sum: number, c: { body?: string }) => sum + trackSeconds(c.body), 0);
+    return {
+      dir,
+      // "K8S学习笔记 01 - 初见" -> "K8S学习笔记"
+      name: list[0].data.title.replace(/\s*\d+\s*-.*$/, ''),
+      totalLength: formatSeconds(totalSeconds),
+      chapters: list,
+    };
+  });
 }
 
 export function seriesHref(id: string) {
