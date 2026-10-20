@@ -17,7 +17,7 @@ const currently = Object.values(
 );
 const names = { tech: 'Tech', journal: 'Journal', life: 'Life' };
 ---
-<Base title="Home">
+<Base title="Home" rails={false}>
   <section class="hero">
     <div>
       <p class="eyebrow">Idealistic Daydreamer</p>
@@ -32,6 +32,7 @@ const names = { tech: 'Tech', journal: 'Journal', life: 'Life' };
     <span class="eyebrow">New release · {names[latest.section]}</span>
     <span class="title">{latest.post.data.title}</span>
     <span class="mono muted">{day(latest.post.data.date)} · ♪ {trackLength(latest.post.body)}</span>
+    <Waveform seed={latest.post.data.title} bars={48} />
   </a>
 
   <div class="sections">
@@ -90,6 +91,28 @@ const names = { tech: 'Tech', journal: 'Journal', life: 'Life' };
 
   .release:hover {
     border-color: var(--glow);
+  }
+
+  /* On hover the release card's waveform "plays": a stepped scale pulse.
+     Reduced motion keeps the static rule. */
+  .release:hover :global(.wave) {
+    animation: play 0.9s steps(4) infinite alternate;
+  }
+
+  @keyframes play {
+    from {
+      transform: scaleY(1);
+    }
+
+    to {
+      transform: scaleY(1.6);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .release:hover :global(.wave) {
+      animation: none;
+    }
   }
 
   .release .title {

@@ -47,6 +47,44 @@ const { section, posts, total = posts.length } = Astro.props;
     color: var(--primary);
   }
 
+  /* The row lights up like the playing track: a glow wash, the number turns
+     accent and the title nudges right. Motion is only a nudge, so reduced
+     motion keeps the color change alone. */
+  li {
+    transition: background-color 0.2s ease;
+  }
+
+  li:hover,
+  li:focus-within {
+    background-color: color-mix(in srgb, var(--glow) 14%, transparent);
+  }
+
+  li:hover .badge,
+  li:focus-within .badge {
+    color: var(--accent);
+  }
+
+  li a {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+
+  li:hover a,
+  li:focus-within a {
+    transform: translateX(0.35rem);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    li a {
+      transition: none;
+    }
+
+    li:hover a,
+    li:focus-within a {
+      transform: none;
+    }
+  }
+
   .meta {
     display: flex;
     gap: 1rem;

@@ -1,0 +1,203 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Two octaves from C4 to B5. Eight white keys sit on the home row (a s d f g h j k),
+// the first octave's black keys on the row above (w e t y u).
+const whites = ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5', 'D5', 'E5', 'F5', 'G5', 'A5', 'B5'];
+const blacks = [
+  { note: 'C#4', after: 0, key: 'w' },
+  { note: 'D#4', after: 1, key: 'e' },
+  { note: 'F#4', after: 3, key: 't' },
+  { note: 'G#4', after: 4, key: 'y' },
+  { note: 'A#4', after: 5, key: 'u' },
+  { note: 'C#5', after: 7, key: '' },
+  { note: 'D#5', after: 8, key: '' },
+  { note: 'F#5', after: 10, key: '' },
+  { note: 'G#5', after: 11, key: '' },
+  { note: 'A#5', after: 12, key: '' },
+];
+const homeRow = ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k'];
+---
+<Base title="Keys" description="A playable keyboard in the browser. Press the keys, or tab to them.">
+  <header class="intro">
+    <p class="eyebrow">Two octaves · tone synthesised in the page</p>
+    <h1>Keys</h1>
+    <p class="muted">
+      Click a key or play it: <span class="mono">a s d f g h j k</span> for the white keys,{' '}
+      <span class="mono">w e t y u</span> for the black ones. The chord button plays K. 333's tonic, B♭ major.
+    </p>
+  </header>
+
+  <div class="board" data-board>
+    <div class="whites">
+      {whites.map((note, i) => (
+        <button type="button" class="white" data-note={note} data-key={homeRow[i] ?? ''} aria-label={note}>
+          {homeRow[i] && <kbd class="mono">{homeRow[i]}</kbd>}
+        </button>
+      ))}
+    </div>
+    {blacks.map((b) => (
+      <button type="button" class="black" style={`--at: ${b.after}`} data-note={b.note} data-key={b.key} aria-label={b.note}>
+        {b.key && <kbd class="mono">{b.key}</kbd>}
+      </button>
+    ))}
+  </div>
+
+  <div class="controls">
+    <p class="readout mono" id="keys-readout" aria-live="polite">Press a key to begin.</p>
+    <button type="button" class="chord mono" id="keys-chord">▶ B♭ · D · F</button>
+  </div>
+
+  <script>
+    // Each note is a sine with a short attack and a soft release, so it reads
+    // as a struck key. The AudioContext is made on the first press (browsers
+    // need a user gesture before they will play sound).
+    let ctx: AudioContext | null = null;
+    const readout = document.getElementById('keys-readout')!;
+    const freq = (note: string) => {
+      const names = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+      const m = note.match(/^([A-G]#?)(\d)$/)!;
+      const midi = 12 * (Number(m[2]) + 1) + names.indexOf(m[1]);
+      return 440 * 2 ** ((midi - 69) / 12);
+    };
+    const strike = (note: string, at = 0) => {
+      ctx ??= new AudioContext();
+      const t = ctx.currentTime + at;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.frequency.value = freq(note);
+      gain.gain.setValueAtTime(0, t);
+      gain.gain.linearRampToValueAtTime(0.18, t + 0.01);
+      gain.gain.exponentialRampToValueAtTime(0.001, t + 1.2);
+      osc.connect(gain).connect(ctx.destination);
+      osc.start(t);
+      osc.stop(t + 1.25);
+    };
+
+    const press = (el: HTMLElement) => {
+      const note = el.dataset.note!;
+      strike(note);
+      readout.textContent = `♪ ${note}`;
+      el.classList.add('down');
+      setTimeout(() => el.classList.remove('down'), 160);
+    };
+
+    document.querySelectorAll<HTMLElement>('[data-board] button').forEach((el) => el.addEventListener('pointerdown', () => press(el)));
+
+    const byKey = new Map<string, HTMLElement>();
+    document.querySelectorAll<HTMLElement>('[data-board] button[data-key]').forEach((el) => {
+      if (el.dataset.key) byKey.set(el.dataset.key, el);
+    });
+    addEventListener('keydown', (e) => {
+      if (e.repeat || e.metaKey || e.ctrlKey || e.altKey) return;
+      const el = byKey.get(e.key.toLowerCase());
+      if (el) press(el);
+    });
+
+    // The tonic of K. 333: B♭3, D4, F4 as an arpeggio.
+    document.getElementById('keys-chord')!.addEventListener('click', () => {
+      ['A#3', 'D4', 'F4'].forEach((n, i) => strike(n, i * 0.18));
+      readout.textContent = '♪ B♭ major · K. 333';
+    });
+  </script>
+</Base>
+
+<style>
+  .intro {
+    padding: 1.5rem 0 1rem;
+  }
+
+  .board {
+    position: relative;
+    max-width: 52rem;
+    margin: 0 auto;
+    user-select: none;
+  }
+
+  .whites {
+    display: flex;
+    gap: 3px;
+    height: 16rem;
+  }
+
+  button {
+    font: inherit;
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+  }
+
+  .white {
+    flex: 1;
+    background: var(--key-white);
+    border: 1px solid var(--on-glow);
+    border-radius: 0 0 6px 6px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 0.6rem;
+  }
+
+  .black {
+    position: absolute;
+    top: 0;
+    width: calc((100% - 13 * 3px) / 14 * 0.6);
+    height: 60%;
+    left: calc(((100% - 13 * 3px) / 14 + 3px) * (var(--at) + 1) - (100% - 13 * 3px) / 14 * 0.3);
+    background: var(--key-black);
+    border-radius: 0 0 4px 4px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 0.4rem;
+    color: var(--on-accent);
+  }
+
+  .white.down {
+    background: var(--glow);
+  }
+
+  .black.down {
+    background: var(--accent);
+  }
+
+  kbd {
+    font-size: 0.75rem;
+    opacity: 0.7;
+  }
+
+  button:focus-visible {
+    outline: 3px solid var(--glow);
+    outline-offset: 2px;
+  }
+
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    max-width: 52rem;
+    margin: 1.4rem auto 2rem;
+  }
+
+  .readout {
+    min-height: 1.5em;
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--ink);
+  }
+
+  .chord {
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    font-size: 0.8rem;
+  }
+
+  .chord:hover {
+    background: color-mix(in srgb, var(--glow) 14%, var(--surface));
+  }
+</style>

@@ -60,6 +60,16 @@ const playlist = defineCollection({
   }),
 });
 
+// Magical Mirai theme songs, one per year (see src/data/magical-mirai.yaml).
+const magicalMirai = defineCollection({
+  loader: file('src/data/magical-mirai.yaml'),
+  schema: z.object({
+    title: z.string(),
+    producer: z.string(),
+    youtube: z.string().optional(),
+  }),
+});
+
 // Ordered tutorials: tech/series/<name>/NN.<title>.md. The id keeps the raw
 // path (Chinese filenames included) so URLs match the MkDocs site exactly.
 const series = defineCollection({
@@ -96,4 +106,5 @@ export const collections = {
   use,
   currently,
   playlist,
+  magicalMirai,
 };
