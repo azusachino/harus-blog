@@ -1,6 +1,7 @@
 ---
 // Journal by year, at the same URLs as the MkDocs archive.
 import Base from '../../../layouts/Base.astro';
+import PianoRoll from '../../../components/PianoRoll.astro';
 import PostList from '../../../components/PostList.astro';
 import Waveform from '../../../components/Waveform.astro';
 import { published } from '../../../lib/posts';
@@ -21,5 +22,6 @@ const { year } = Astro.params;
   <p class="eyebrow"><a href="/journal/">Journal</a> · {posts.length} tracks</p>
   <h1>{year}</h1>
   <Waveform seed={`journal-${year}`} />
+  <PianoRoll year={Number(year)} posts={posts} />
   <PostList section="journal" posts={posts} />
 </Base>

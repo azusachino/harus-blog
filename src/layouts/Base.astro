@@ -50,6 +50,7 @@ const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
       <Call />
       <p class="sign mono">♪ {SITE.title} · {SITE.author}</p>
       <nav class="links mono" aria-label="Elsewhere">
+        <a href="/tags/">Tags</a>
         <a href="https://github.com/azusachino">GitHub</a>
         <a href="https://twitter.com/azusachino">X</a>
         <a href="https://iroha.azusachino.com">iroha</a>
@@ -61,7 +62,7 @@ const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
       </p>
     </footer>
     <BackToTop />
-    <script is:inline>
+    <script is:inline data-astro-rerun>
       // Favicon and browser theme color follow the palette and mode: the same
       // "ID" mark as public/favicon.svg, repainted with the current --glow.
       (() => {
@@ -80,7 +81,7 @@ const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
         new MutationObserver(paint).observe(root, { attributes: true, attributeFilter: ['data-palette', 'data-theme'] });
       })();
     </script>
-    <script is:inline>
+    <script is:inline data-astro-rerun>
       document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {
         const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
         document.documentElement.dataset.theme = next;

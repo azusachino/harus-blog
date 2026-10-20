@@ -1,0 +1,56 @@
+# Magical Mirai theme songs, one per year, newest first. Titles and producers
+# are as written on the Japanese Wikipedia page (マジカルミライ). 2013 is left out:
+# that page says the year had no theme song. `youtube` is the video ID; the
+# thumbnail is docs/assets/magical-mirai/<id>.jpg.
+- id: "2026"
+  title: 空に免じて
+  youtube: m8PbMlflLPM
+  producer: 傘村トータ
+- id: "2025"
+  title: ラストラス
+  producer: "*Luna"
+  youtube: gdmLEu5fVz4
+- id: "2024"
+  title: アンテナ39
+  producer: 柊マグネタイト
+  youtube: 7yJRsFFRoQY
+- id: "2023"
+  title: HERO
+  producer: Ayase
+  youtube: o4AxMk3SGUY
+- id: "2022"
+  title: フューチャー・イヴ
+  producer: sasakure.UK＋有形ランペイジ
+  youtube: 7j0mQH0BtEU
+- id: "2021"
+  title: 初音天地開闢神話
+  producer: CosMo@暴走P
+  youtube: 8J6SMoVd5BY
+- id: "2020"
+  title: 愛されなくても君がいる
+  producer: ピノキオピー
+  youtube: ygY2qObZv24
+- id: "2019"
+  title: ブレス・ユア・ブレス
+  producer: 和田たけあき
+  youtube: a-Nf3QUFkOU
+- id: "2018"
+  title: グリーンライツ・セレナーデ
+  producer: Omoi
+  youtube: XSLhsjepelI
+- id: "2017"
+  title: 砂の惑星
+  producer: ハチ
+  youtube: AS4q9yaWJkI
+- id: "2016"
+  title: 39みゅーじっく！
+  producer: みきとP
+  youtube: OuLZlZ18APQ
+- id: "2015"
+  title: Hand in Hand
+  producer: kz-livetune
+  youtube: RKtoreimcQ8
+- id: "2014"
+  title: ネクストネスト
+  producer: さつき が てんこもり
+  youtube: ajlDAQeWQKE

@@ -1,0 +1,361 @@
+---
+// Curated shelves for /life/: Live & Concerts (with the Magical Mirai theme
+// anthology strip), Bookshelf (real jacket covers), and Essays.
+import { getCollection } from 'astro:content';
+import { day, href, trackLength, type Post } from '../lib/posts';
+
+interface Props {
+  posts: Post[];
+}
+const { posts } = Astro.props;
+
+const isBook = (p: Post) => Boolean(p.data.cover?.startsWith('/assets/book/'));
+const isConcert = (p: Post) => /symphony|live|concert|mirai/i.test(p.data.slug);
+
+const concerts = posts.filter((p) => isConcert(p));
+const books = posts.filter((p) => isBook(p));
+const essays = posts.filter((p) => !isBook(p) && !isConcert(p));
+
+const tickets = [
+  {
+    stub: 'MM-2026 · 2 DAYS',
+    venue: 'Magical Mirai 2026',
+    date: '2026-08',
+    title: '初音ミク「マジカルミライ 2026」',
+    note: '39みゅーじっく！ · HERO · ラストラス',
+    href: '/journal/month-refresh-2026-08/',
+    cover: '/assets/images/2026/08-magical-mirai.jpeg',
+    alt: 'Magical Mirai 2026 stage photo',
+  },
+  ...concerts.map((post, i) => ({
+    stub: `LIVE-${String(concerts.length - i).padStart(2, '0')} · ♪ ${trackLength(post.body)}`,
+    venue: post.data.slug.includes('symphony') ? 'Yokohama · Orchestra' : 'Live Tour · Plagiarism',
+    date: day(post.data.date),
+    title: post.data.title,
+    note: post.data.description,
+    href: href('life', post),
+    cover: post.data.cover,
+    alt: post.data.cover_alt ?? post.data.title,
+  })),
+];
+
+const mirai = (await getCollection('magicalMirai')).sort((a, b) => b.id.localeCompare(a.id));
+---
+<div class="shelves">
+  <section class="shelf" aria-labelledby="shelf-live">
+    <div class="shelf-head">
+      <h2 id="shelf-live">Live &amp; Stage</h2>
+      <span class="mono muted">{tickets.length} ticket stubs</span>
+    </div>
+    <ul class="concert-grid">
+      {tickets.map((t) => (
+        <li class="concert-card">
+          <a href={t.href} class="concert-link">
+            {t.cover && <img src={t.cover} alt={t.alt} loading="lazy" />}
+            <div class="ticket-stub mono">
+              <span class="stub-code">{t.stub}</span>
+              <span class="muted">{t.venue} · {t.date}</span>
+            </div>
+            <div class="concert-body">
+              <span class="title">{t.title}</span>
+              {t.note && <span class="desc muted">{t.note}</span>}
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <details class="mirai-anthology" open>
+      <summary class="mono">
+        <span class="eyebrow">Magical Mirai Theme Anthology (2014–2026)</span>
+        <span class="muted">{mirai.length} official themes</span>
+      </summary>
+      <ol class="mirai-strip">
+        {mirai.map(({ id, data }) => (
+          <li>
+            <span class="year mono">{id}</span>
+            {data.youtube ? (
+              <a
+                class="song"
+                href={`https://www.youtube.com/watch?v=${data.youtube}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {data.title}
+              </a>
+            ) : (
+              <span class="song">{data.title}</span>
+            )}
+            <span class="producer muted">{data.producer}</span>
+          </li>
+        ))}
+      </ol>
+    </details>
+  </section>
+
+  <section class="shelf" aria-labelledby="shelf-books">
+    <div class="shelf-head">
+      <h2 id="shelf-books">Bookshelf</h2>
+      <span class="mono muted">{books.length} reading notes</span>
+    </div>
+    <ul class="book-grid">
+      {books.map((post) => (
+        <li class="book-card">
+          <a href={href('life', post)}>
+            {post.data.cover && (
+              <img src={post.data.cover} alt={post.data.cover_alt ?? post.data.title} loading="lazy" />
+            )}
+            <span class="book-title">{post.data.title}</span>
+            <span class="mono muted">{day(post.data.date)} · ♪ {trackLength(post.body)}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="shelf" aria-labelledby="shelf-essays">
+    <div class="shelf-head">
+      <h2 id="shelf-essays">Essays</h2>
+      <span class="mono muted">{essays.length} tracks</span>
+    </div>
+    <ul class="essay-list">
+      {essays.map((post) => (
+        <li>
+          <a href={href('life', post)} class="essay-title">{post.data.title}</a>
+          {post.data.description && <p class="desc muted">{post.data.description}</p>}
+          <p class="mono muted meta">{day(post.data.date)} · ♪ {trackLength(post.body)}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+</div>
+
+<style>
+  .shelves {
+    display: grid;
+    gap: 2.4rem;
+    margin: 1.4rem 0 2.4rem;
+  }
+
+  .shelf-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .shelf-head h2 {
+    margin: 0;
+    font-size: 1.15rem;
+  }
+
+  .shelf-head span {
+    font-size: 0.8rem;
+  }
+
+  .concert-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    gap: 1rem;
+  }
+
+  .concert-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color 0.18s ease;
+  }
+
+  .concert-card:hover,
+  .concert-card:focus-within {
+    border-color: var(--glow);
+  }
+
+  .concert-link {
+    display: grid;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .concert-link img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+    background: var(--line);
+  }
+
+  .ticket-stub {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.72rem;
+    border-bottom: 1px dashed var(--line);
+    background: var(--bg);
+  }
+
+  .stub-code {
+    color: var(--primary);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  .concert-body {
+    padding: 0.75rem 0.9rem;
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  .concert-body .title {
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .concert-body .desc {
+    font-size: 0.85rem;
+  }
+
+  .mirai-anthology {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 0.75rem 0.95rem;
+  }
+
+  .mirai-anthology summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+  }
+
+  .mirai-strip {
+    list-style: none;
+    padding: 0.65rem 0 0;
+    margin: 0.6rem 0 0;
+    border-top: 1px dashed var(--line);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr));
+    gap: 0.45rem 1rem;
+    font-size: 0.84rem;
+  }
+
+  .mirai-strip li {
+    display: grid;
+    grid-template-columns: 2.6rem 1fr;
+    column-gap: 0.45rem;
+    align-items: baseline;
+  }
+
+  .mirai-strip .year {
+    color: var(--accent);
+    font-size: 0.76rem;
+    font-weight: 700;
+  }
+
+  .mirai-strip .song {
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .mirai-strip a.song:hover {
+    color: var(--primary);
+  }
+
+  .mirai-strip .producer {
+    grid-column: 2;
+    font-size: 0.75rem;
+  }
+
+  .book-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+    gap: 1rem;
+  }
+
+  .book-card a {
+    display: grid;
+    gap: 0.35rem;
+    padding: 0.65rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    color: inherit;
+    text-decoration: none;
+    height: 100%;
+    transition: border-color 0.18s ease;
+  }
+
+  .book-card a:hover,
+  .book-card a:focus-visible {
+    border-color: var(--glow);
+  }
+
+  .book-card img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 4px;
+    background: var(--line);
+  }
+
+  .book-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    line-height: 1.35;
+  }
+
+  .book-card .mono {
+    font-size: 0.75rem;
+  }
+
+  .essay-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .essay-list li {
+    padding: 0.7rem 0.9rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+
+  .essay-title {
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .essay-title:hover {
+    color: var(--primary);
+  }
+
+  .essay-list .desc {
+    margin: 0.2rem 0 0;
+    font-size: 0.88rem;
+  }
+
+  .essay-list .meta {
+    margin: 0.25rem 0 0;
+    font-size: 0.78rem;
+  }
+</style>

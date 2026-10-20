@@ -1,8 +1,9 @@
 ---
-// Series as albums: each tutorial set with its chapters in order.
+// Series as albums: each tutorial set with its chapters in order, styled like
+// a CD/vinyl record back cover with track numbers and durations.
 import Base from '../../../layouts/Base.astro';
 import Waveform from '../../../components/Waveform.astro';
-import { seriesAlbums, seriesHref } from '../../../lib/posts';
+import { seriesAlbums, seriesHref, trackLength } from '../../../lib/posts';
 
 const albums = await seriesAlbums();
 const tracks = albums.reduce((n, a) => n + a.chapters.length, 0);
@@ -10,17 +11,27 @@ const tracks = albums.reduce((n, a) => n + a.chapters.length, 0);
 <Base title="Series" description="Ordered tutorial series, read like albums.">
   <p class="eyebrow">{albums.length} albums · {tracks} tracks</p>
   <h1>Series</h1>
-  <p class="muted">Ordered tutorials, read like albums.</p>
+  <p class="muted">Ordered tutorials, sequenced like albums with chapter runtimes.</p>
   <Waveform seed="series" />
 
   <div class="grid">
-    {albums.map((album) => (
-      <section class="card" aria-labelledby={album.dir}>
-        <p class="eyebrow">{album.chapters.length} tracks</p>
-        <h2 id={album.dir}>{album.name}</h2>
-        <ol>
-          {album.chapters.map((c) => (
-            <li><a href={seriesHref(c.id)}>{c.data.title.replace(/^.*?\d+\s*-\s*/, '')}</a></li>
+    {albums.map((album, idx) => (
+      <section class="card album" aria-labelledby={album.dir}>
+        <header class="album-head">
+          <p class="eyebrow">
+            <span>DISC {String(idx + 1).padStart(2, '0')}</span>
+            <span class="mono muted">{album.chapters.length} tracks · ∑ ♪ {album.totalLength}</span>
+          </p>
+          <h2 id={album.dir}>{album.name}</h2>
+          <Waveform seed={album.dir} bars={28} />
+        </header>
+        <ol class="tracklist">
+          {album.chapters.map((c, i) => (
+            <li>
+              <span class="no mono">{String(i + 1).padStart(2, '0')}</span>
+              <a href={seriesHref(c.id)}>{c.data.title.replace(/^.*?\d+\s*-\s*/, '')}</a>
+              <span class="dur mono muted">{trackLength(c.body)}</span>
+            </li>
           ))}
         </ol>
       </section>
@@ -31,28 +42,66 @@ const tracks = albums.reduce((n, a) => n + a.chapters.length, 0);
 <style>
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+    gap: 1.25rem;
     margin-top: 2rem;
   }
 
-  .card {
+  .album {
     border-top: 3px solid var(--glow);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
   }
 
-  .eyebrow {
+  .album-head .eyebrow {
     margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
   }
 
   h2 {
-    margin: 0.2rem 0 0.6rem;
-    font-size: 1.1rem;
+    margin: 0.25rem 0 0.4rem;
+    font-size: 1.15rem;
   }
 
-  ol {
+  .tracklist {
+    list-style: none;
     margin: 0;
-    padding-left: 1.4rem;
-    font-size: 0.92rem;
-    line-height: 1.75;
+    padding: 0;
+    font-size: 0.88rem;
+  }
+
+  .tracklist li {
+    display: grid;
+    grid-template-columns: 1.8rem minmax(0, 1fr) auto;
+    gap: 0.4rem;
+    align-items: baseline;
+    padding: 0.32rem 0;
+    border-bottom: 1px dashed var(--line);
+  }
+
+  .tracklist li:last-child {
+    border-bottom: none;
+  }
+
+  .tracklist .no {
+    color: var(--glow);
+    font-size: 0.75rem;
+  }
+
+  .tracklist a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .tracklist a:hover {
+    color: var(--primary);
+  }
+
+  .tracklist .dur {
+    font-size: 0.74rem;
   }
 </style>

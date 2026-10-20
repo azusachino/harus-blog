@@ -1,5 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
+import LifeShelves from '../../components/LifeShelves.astro';
+import PianoRoll from '../../components/PianoRoll.astro';
 import PostList from '../../components/PostList.astro';
 import Waveform from '../../components/Waveform.astro';
 import { published, SECTIONS, type Section } from '../../lib/posts';
@@ -17,6 +19,8 @@ const titles: Record<Section, [string, string]> = {
 };
 const [title, subtitle] = titles[section];
 const years = section === 'journal' ? [...new Set(posts.map((p) => p.data.date.getUTCFullYear()))] : [];
+const latestYear = years[0];
+const latestYearPosts = latestYear ? posts.filter((p) => p.data.date.getUTCFullYear() === latestYear) : [];
 const categories = section === 'tech' ? [...new Set(posts.flatMap((p) => p.data.categories))].sort() : [];
 ---
 <Base title={title}>
@@ -32,6 +36,9 @@ const categories = section === 'tech' ? [...new Set(posts.flatMap((p) => p.data.
       {section === 'tech' && <a class="series" href="/tech/series/">series →</a>}
     </nav>
   )}
+
+  {section === 'journal' && latestYear && <PianoRoll year={latestYear} posts={latestYearPosts} />}
+  {section === 'life' && <LifeShelves posts={posts} />}
 
   <PostList section={section} posts={posts} />
 </Base>

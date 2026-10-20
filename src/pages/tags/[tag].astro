@@ -1,0 +1,125 @@
+---
+import Base from '../../layouts/Base.astro';
+import Waveform from '../../components/Waveform.astro';
+import { day, href, postLang, published, SECTIONS, trackLength, type Post, type Section } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const byTag = new Map<string, { section: Section; post: Post }[]>();
+  for (const section of SECTIONS) {
+    const posts = await published(section);
+    for (const post of posts) {
+      for (const tag of post.data.tags ?? []) {
+        byTag.set(tag, [...(byTag.get(tag) ?? []), { section, post }]);
+      }
+    }
+  }
+  return [...byTag.entries()].map(([tag, items]) => ({
+    params: { tag },
+    props: {
+      tag,
+      items: items.sort((a, b) => b.post.data.date.getTime() - a.post.data.date.getTime()),
+    },
+  }));
+}
+
+const { tag, items } = Astro.props;
+const names: Record<Section, string> = { tech: 'Tech', journal: 'Journal', life: 'Life' };
+---
+<Base title={`#${tag}`} description={`Posts tagged #${tag}.`}>
+  <p class="eyebrow">
+    <a href="/tags/">Tags</a>
+    <span class="mono muted">{items.length} tracks</span>
+  </p>
+  <h1>#{tag}</h1>
+  <Waveform seed={`tag-${tag}`} />
+
+  <ol class="tracks">
+    {items.map(({ section, post }, i) => (
+      <li lang={postLang(post)}>
+        <span class="no mono">{String(items.length - i).padStart(2, '0')}</span>
+        <div class="main">
+          <a class="title" href={href(section, post)}>{post.data.title}</a>
+          {post.data.description && <p class="desc muted">{post.data.description}</p>}
+        </div>
+        <span class="meta mono muted">
+          <span class="sec">{names[section]}</span>
+          <time datetime={day(post.data.date)}>{day(post.data.date)}</time>
+          <span>♪ {trackLength(post.body)}</span>
+        </span>
+      </li>
+    ))}
+  </ol>
+</Base>
+
+<style>
+  .eyebrow {
+    display: flex;
+    gap: 0.8rem;
+    align-items: baseline;
+  }
+
+  .tracks {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+  }
+
+  .tracks li {
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+    gap: 0.25rem 1rem;
+    align-items: baseline;
+    padding: 0.85rem 0.6rem;
+    margin-inline: -0.6rem;
+    border-radius: 6px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .tracks li:hover {
+    background: var(--surface);
+  }
+
+  .no {
+    color: var(--glow);
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .title {
+    color: var(--ink);
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-decoration: none;
+  }
+
+  .title:hover {
+    color: var(--primary);
+  }
+
+  .desc {
+    margin: 0.2rem 0 0;
+    font-size: 0.9rem;
+  }
+
+  .meta {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+
+  .sec {
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  @media (max-width: 40rem) {
+    .tracks li {
+      grid-template-columns: 2.2rem minmax(0, 1fr);
+    }
+
+    .meta {
+      grid-column: 2;
+    }
+  }
+</style>

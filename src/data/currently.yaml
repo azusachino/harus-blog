@@ -1,10 +1,17 @@
 # Hand-edited status for /currently, grouped by section (play, practice,
 # read-watch). Listen is the playlist (playlist.yaml); Use is use.yaml;
 # Build is GitHub. Bump `updated` when an entry changes.
+- id: maimai
+  section: play
+  kind: Rhythm arcade
+  value: MAIMAI
+  detail: One-hour arcade sessions until my arms give out.
+  updated: 2026-10-12
 - id: genshin
   section: play
   kind: Game
   value: Genshin Impact
+  detail: Cleared Fontaine Archon Quest Chapter 4.
   updated: 2026-10-12
 - id: wuthering-waves
   section: play
@@ -16,15 +23,24 @@
   kind: Game
   value: "Arknights: Endfield"
   updated: 2026-10-12
+- id: piano
+  section: practice
+  kind: Piano bench
+  value: Mozart — Sonata in B♭, K. 333
+  detail: Practicing movements I–III and learning orchestral voicing after Miku Symphony.
+  updated: 2026-10-12
 - id: llm
   section: practice
   kind: Learning
-  value: LLMs
+  value: LLMs from scratch (calc)
+  detail: Writing manual causal attention and sliding-window token datasets by hand.
+  url: https://github.com/azusachino/calc
   updated: 2026-10-12
 - id: agents
   section: practice
   kind: Practice
-  value: Agents
+  value: Agent harnesses (nahida & asobi)
+  detail: Human-in-the-loop boundaries, shared recall, and local Markdown ownership.
   updated: 2026-10-12
 - id: intimate-relationships
   section: read-watch

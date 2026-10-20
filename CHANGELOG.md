@@ -4,6 +4,24 @@ Changes to the site itself, newest first. Posts are not listed here; they are th
 One dated entry per merged change, written in the [Keep a Changelog](https://keepachangelog.com/)
 groups (Added, Changed, Fixed, Removed).
 
+## 2026-10-20 — Journal piano roll, Life shelves, and playable footer keys
+
+### Added
+
+- Journal piano roll (`PianoRoll.astro`) on `/journal/` and `/journal/archive/<year>/`: a 53-week
+  CSS grid across `review`, `refresh` and `weekly` lanes with live note readout.
+- Life shelves (`LifeShelves.astro`) on `/life/`: Live & Stage concert cards, a collapsible
+  Magical Mirai theme anthology (2014–2026, from `src/data/magical-mirai.yaml`), a Bookshelf with
+  jacket covers, and Essays.
+- Web Audio synthesis on the footer `<PianoStrip />`: clicking or pressing Enter/Space on any key
+  plays its pitch, and answering `準備OK？` plays the B-flat major arpeggio (`B♭3 · D4 · F4`).
+- Hover and focus highlight on the post list; the newest release card's waveform pulses on hover.
+
+### Changed
+
+- Site config and math helper moved to TypeScript (`astro.config.ts`, `src/lib/math.ts`), with
+  `bun run typecheck` gated in `bun run verify`.
+
 ## 2026-10-12 — Footer and Currently
 
 ### Changed
