@@ -1,0 +1,241 @@
+---
+// DAW piano-roll view for a single journal year: 53 weekly columns across
+// three lanes (review, refresh, weekly). Pure CSS grid, zero client libraries.
+import { day, href, trackLength, type Post } from '../lib/posts';
+
+interface Props {
+  year: number;
+  posts: Post[];
+}
+const { year, posts } = Astro.props;
+
+type LaneId = 'review' | 'refresh' | 'weekly';
+const LANES: { id: LaneId; label: string; span: number }[] = [
+  { id: 'review', label: 'Review', span: 4 },
+  { id: 'refresh', label: 'Refresh', span: 3 },
+  { id: 'weekly', label: 'Weekly', span: 1 },
+];
+
+function weekColumn(post: Post): number {
+  const slug = post.data.slug;
+  const weekMatch = slug.match(/week-report-\d{4}-(\d{1,2})/);
+  if (weekMatch) return Math.min(53, Math.max(1, Number(weekMatch[1])));
+  const monthMatch = slug.match(/month-refresh-\d{4}-(\d{1,2})/);
+  if (monthMatch) return Math.min(50, Math.max(1, Math.round((Number(monthMatch[1]) - 1) * 4.35) + 1));
+  if (slug.includes('-mid')) return 26;
+  const d = post.data.date;
+  const start = Date.UTC(d.getUTCFullYear(), 0, 1);
+  const diffDays = Math.floor((d.getTime() - start) / 86_400_000);
+  return Math.min(53, Math.max(1, Math.ceil((diffDays + 1) / 7)));
+}
+
+function laneOf(post: Post): LaneId {
+  const cats = post.data.categories;
+  if (cats.includes('review')) return 'review';
+  if (cats.includes('refresh')) return 'refresh';
+  return 'weekly';
+}
+
+const notes = [...posts]
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime())
+  .map((post) => {
+    const lane = laneOf(post);
+    const col = weekColumn(post);
+    const len = trackLength(post.body);
+    return {
+      lane,
+      col,
+      span: LANES.find((l) => l.id === lane)!.span,
+      title: post.data.title,
+      date: day(post.data.date),
+      len,
+      url: href('journal', post),
+    };
+  });
+
+const latest = notes.at(-1);
+---
+<figure class="piano-roll" data-piano-roll>
+  <div class="roll-head mono muted">
+    <span>{year} piano roll · {notes.length} notes</span>
+    <span class="legend">
+      <i class="swatch review"></i>review
+      <i class="swatch refresh"></i>refresh
+      <i class="swatch weekly"></i>weekly
+    </span>
+  </div>
+  <div class="roll-grid" role="region" aria-label={`${year} journal piano roll`}>
+    {LANES.map((lane) => {
+      const laneNotes = notes.filter((n) => n.lane === lane.id);
+      return (
+        <div class="lane-row">
+          <span class="lane-label mono muted">{lane.label}</span>
+          <div class="lane-track">
+            {laneNotes.map((n) => (
+              <a
+                href={n.url}
+                class={`note ${n.lane}`}
+                style={`--col: ${n.col}; --span: ${Math.min(n.span, 54 - n.col)}`}
+                title={`${n.title} (${n.date} · ♪ ${n.len})`}
+                aria-label={`${n.title}, ${n.date}, length ${n.len}`}
+                data-roll-info={`♪ ${n.title} · ${n.date} · ${n.len}`}
+              />
+            ))}
+          </div>
+        </div>
+      );
+    })}
+    <div class="lane-row ticks" aria-hidden="true">
+      <span class="lane-label"></span>
+      <div class="tick-row mono muted">
+        <span>Q1</span>
+        <span>Q2</span>
+        <span>Q3</span>
+        <span>Q4</span>
+      </div>
+    </div>
+  </div>
+  <figcaption class="readout mono muted" aria-live="polite" data-roll-readout>
+    {latest ? `♪ ${latest.title} · ${latest.date} · ${latest.len}` : 'Hover or tab through a note.'}
+  </figcaption>
+</figure>
+
+<script is:inline>
+  (() => {
+    document.querySelectorAll('[data-piano-roll]').forEach((roll) => {
+      const out = roll.querySelector('[data-roll-readout]');
+      if (!out) return;
+      roll.querySelectorAll('[data-roll-info]').forEach((el) => {
+        const show = () => {
+          out.textContent = el.getAttribute('data-roll-info') || '';
+        };
+        el.addEventListener('pointerenter', show);
+        el.addEventListener('focus', show);
+      });
+    });
+  })();
+</script>
+
+<style>
+  .piano-roll {
+    margin: 1rem 0 1.8rem;
+    padding: 0.9rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+
+  .roll-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.78rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .legend {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .swatch {
+    display: inline-block;
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 2px;
+    margin-left: 0.35rem;
+  }
+
+  .swatch.review,
+  .note.review {
+    background: var(--accent);
+  }
+
+  .swatch.refresh,
+  .note.refresh {
+    background: var(--glow);
+  }
+
+  .swatch.weekly,
+  .note.weekly {
+    background: var(--primary);
+  }
+
+  .roll-grid {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .lane-row {
+    display: grid;
+    grid-template-columns: 4.2rem 1fr;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .lane-label {
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .lane-track {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(53, minmax(0, 1fr));
+    height: 1.5rem;
+    background:
+      repeating-linear-gradient(
+        to right,
+        color-mix(in oklab, var(--line) 85%, transparent) 0 1px,
+        transparent 1px calc(100% / 4)
+      ),
+      color-mix(in oklab, var(--bg) 65%, var(--surface));
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 2px;
+    align-items: stretch;
+  }
+
+  .note {
+    grid-column: var(--col) / span var(--span);
+    grid-row: 1;
+    border-radius: 2px;
+    min-width: 5px;
+    opacity: 0.9;
+    transition: transform 0.12s ease, opacity 0.12s ease;
+  }
+
+  .note:hover,
+  .note:focus-visible {
+    opacity: 1;
+    transform: scaleY(1.18);
+    z-index: 2;
+  }
+
+  .tick-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    font-size: 0.7rem;
+    padding-top: 0.1rem;
+  }
+
+  .readout {
+    margin-top: 0.55rem;
+    font-size: 0.78rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .note {
+      transition: none;
+    }
+
+    .note:hover,
+    .note:focus-visible {
+      transform: none;
+    }
+  }
+</style>

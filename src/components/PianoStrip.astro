@@ -3,23 +3,112 @@
 // Positions are computed from real keyboard layout, so B-flat is a black key.
 const W = 20; // white key width
 const octaves = 2;
-const blackAfter = [0, 1, 3, 4, 5]; // C#, D#, F#, G#, A# follow these white keys
-const whites = Array.from({ length: 7 * octaves }, (_, i) => i);
-const blacks = Array.from({ length: octaves }, (_, o) => blackAfter.map((b) => o * 7 + b)).flat();
+const whiteNames = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+const blackAfter: [number, string][] = [
+  [0, 'C#'],
+  [1, 'D#'],
+  [3, 'F#'],
+  [4, 'G#'],
+  [5, 'A#'],
+];
+const whites = Array.from({ length: 7 * octaves }, (_, i) => ({
+  i,
+  note: `${whiteNames[i % 7]}${3 + Math.floor(i / 7)}`,
+}));
+const blacks = Array.from({ length: octaves }, (_, o) =>
+  blackAfter.map(([b, name]) => ({
+    i: o * 7 + b,
+    note: `${name}${3 + o}`,
+  })),
+).flat();
 const lit = { white: new Set([8, 10]), black: new Set([5]) }; // D4, F4; A#3 = B-flat 3
 const beat = (kind: 'white' | 'black', i: number) => (kind === 'black' ? 0 : i === 8 ? 1 : 2); // B-flat, D, F
 ---
 <figure class="piano" data-piano>
-  <svg viewBox={`0 0 ${W * whites.length} 64`} role="img" aria-label="Piano keyboard with the B-flat major chord lit">
-    {whites.map((i) => (
-      <rect class:list={['white', { lit: lit.white.has(i) }]} style={lit.white.has(i) ? `--beat: ${beat('white', i)}` : undefined} x={i * W + 0.5} y="0.5" width={W - 1} height="63" rx="2.5" />
+  <svg viewBox={`0 0 ${W * whites.length} 64`} role="group" aria-label="Playable two-octave piano keyboard with the B-flat major chord lit">
+    {whites.map(({ i, note }) => (
+      <rect
+        class:list={['white', { lit: lit.white.has(i) }]}
+        style={lit.white.has(i) ? `--beat: ${beat('white', i)}` : undefined}
+        x={i * W + 0.5}
+        y="0.5"
+        width={W - 1}
+        height="63"
+        rx="2.5"
+        data-note={note}
+        tabindex="0"
+        role="button"
+        aria-label={`Play ${note}`}
+      />
     ))}
-    {blacks.map((i) => (
-      <rect class:list={['black', { lit: lit.black.has(i) }]} style={lit.black.has(i) ? `--beat: ${beat('black', i)}` : undefined} x={(i + 1) * W - 6} y="0.5" width="12" height="38" rx="1.5" />
+    {blacks.map(({ i, note }) => (
+      <rect
+        class:list={['black', { lit: lit.black.has(i) }]}
+        style={lit.black.has(i) ? `--beat: ${beat('black', i)}` : undefined}
+        x={(i + 1) * W - 6}
+        y="0.5"
+        width="12"
+        height="38"
+        rx="1.5"
+        data-note={note}
+        tabindex="0"
+        role="button"
+        aria-label={`Play ${note === 'A#3' ? 'B♭3' : note}`}
+      />
     ))}
   </svg>
-  <figcaption class="mono">B♭ · D · F — K. 333</figcaption>
+  <figcaption class="mono" data-piano-caption>B♭ · D · F — K. 333</figcaption>
 </figure>
+
+<script is:inline>
+  (() => {
+    const piano = document.querySelector('[data-piano]');
+    const caption = document.querySelector('[data-piano-caption]');
+    if (!piano) return;
+    const names = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+    let ctx = null;
+    const strike = (note, delay = 0) => {
+      const m = note.match(/^([A-G]#?)(\d)$/);
+      if (!m) return;
+      ctx ??= new AudioContext();
+      if (ctx.state === 'suspended') ctx.resume();
+      const midi = 12 * (Number(m[2]) + 1) + names.indexOf(m[1]);
+      const freq = 440 * Math.pow(2, (midi - 69) / 12);
+      const t = ctx.currentTime + delay;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, t);
+      gain.gain.setValueAtTime(0.0001, t);
+      gain.gain.linearRampToValueAtTime(0.16, t + 0.012);
+      gain.gain.exponentialRampToValueAtTime(0.0008, t + 1.1);
+      osc.connect(gain).connect(ctx.destination);
+      osc.start(t);
+      osc.stop(t + 1.15);
+    };
+    const triggerKey = (el) => {
+      const note = el.getAttribute('data-note');
+      if (!note) return;
+      strike(note);
+      if (caption) caption.textContent = `♪ ${note === 'A#3' ? 'B♭3' : note} — B♭ · D · F (K. 333)`;
+      el.setAttribute('data-struck', '');
+      setTimeout(() => el.removeAttribute('data-struck'), 180);
+    };
+    piano.querySelectorAll('[data-note]').forEach((el) => {
+      el.addEventListener('pointerdown', () => triggerKey(el));
+      el.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          triggerKey(el);
+        }
+      });
+    });
+    piano.addEventListener('piano:arpeggio', () => {
+      ['A#3', 'D4', 'F4'].forEach((n, idx) => strike(n, idx * 0.35));
+      if (caption) caption.textContent = '♪ B♭ · D · F — K. 333';
+    });
+  })();
+</script>
 
 <style>
   .piano {
@@ -43,8 +132,19 @@ const beat = (kind: 'white' | 'black', i: number) => (kind === 'black' ? 0 : i =
     fill: var(--key-black);
   }
 
-  .lit {
+  .lit,
+  rect[data-struck] {
     fill: var(--accent);
+  }
+
+  rect[data-note] {
+    cursor: pointer;
+    transform-box: fill-box;
+    transition: transform 0.12s ease;
+  }
+
+  rect[data-struck] {
+    transform: translateY(2px);
   }
 
   :global(:root[data-theme='dark']) .white {

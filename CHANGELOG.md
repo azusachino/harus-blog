@@ -4,22 +4,23 @@ Changes to the site itself, newest first. Posts are not listed here; they are th
 One dated entry per merged change, written in the [Keep a Changelog](https://keepachangelog.com/)
 groups (Added, Changed, Fixed, Removed).
 
-## 2026-10-20 — Side rail and music pages
+## 2026-10-20 — Journal piano roll, Life shelves, and playable footer keys
 
 ### Added
 
-- A Magical Mirai rail on wide screens (1600px and up): the theme song of each year, with the
-  original title, producer, a thumbnail and a link to the video. The list lives in
-  `src/data/magical-mirai.yaml`; thumbnails are in `docs/assets/magical-mirai/`.
-- Setlist (`/setlist/`): every post on one timeline, one lane per section, bar height is track length.
-- Constellation (`/constellation/`): posts as stars, linked when their titles share a topic word.
-- Keys (`/keys/`): a playable two-octave keyboard, tones synthesised in the page.
-- Hover and focus highlight on the post list; the newest release card's waveform moves on hover.
+- Journal piano roll (`PianoRoll.astro`) on `/journal/` and `/journal/archive/<year>/`: a 53-week
+  CSS grid across `review`, `refresh` and `weekly` lanes with live note readout.
+- Life shelves (`LifeShelves.astro`) on `/life/`: Live & Stage concert cards, a collapsible
+  Magical Mirai theme anthology (2014–2026, from `src/data/magical-mirai.yaml`), a Bookshelf with
+  jacket covers, and Essays.
+- Web Audio synthesis on the footer `<PianoStrip />`: clicking or pressing Enter/Space on any key
+  plays its pitch, and answering `準備OK？` plays the B-flat major arpeggio (`B♭3 · D4 · F4`).
+- Hover and focus highlight on the post list; the newest release card's waveform pulses on hover.
 
 ### Changed
 
-- Page changes use the Astro view-transition router, and the rail persists across pages.
-- The home page has no rail; its content is unchanged.
+- Site config and math helper moved to TypeScript (`astro.config.ts`, `src/lib/math.ts`), with
+  `bun run typecheck` gated in `bun run verify`.
 
 ## 2026-10-12 — Footer and Currently
 

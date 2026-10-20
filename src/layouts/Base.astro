@@ -3,8 +3,6 @@ import BackToTop from '../components/BackToTop.astro';
 import Header from '../components/Header.astro';
 import Call from '../components/Call.astro';
 import PianoStrip from '../components/PianoStrip.astro';
-import Rail from '../components/Rail.astro';
-import { ClientRouter } from 'astro:transitions';
 import { PALETTES, SITE } from '../lib/site';
 import '../styles/global.css';
 
@@ -12,17 +10,14 @@ interface Props {
   title: string;
   description?: string;
   progress?: boolean;
-  // Side rails on wide screens; the home page turns them off (it repeats their content).
-  rails?: boolean;
 }
-const { title, description, progress = false, rails = true } = Astro.props;
+const { title, description, progress = false } = Astro.props;
 // Same "<page> - <site>" format as Material: Giscus maps comments by title.
 const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
 ---
 <!doctype html>
 <html lang="en">
   <head>
-    <ClientRouter />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{full}</title>
@@ -47,12 +42,9 @@ const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
   <body>
     {progress && <div class="piano-progress" aria-hidden="true"></div>}
     <Header />
-    <div class:list={['frame', { 'with-rail': rails }]}>
-      <main>
-        <slot />
-      </main>
-      {rails && <Rail />}
-    </div>
+    <main>
+      <slot />
+    </main>
     <footer class="site-footer">
       <PianoStrip />
       <Call />
@@ -60,9 +52,6 @@ const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
       <nav class="links mono" aria-label="Elsewhere">
         <a href="https://github.com/azusachino">GitHub</a>
         <a href="https://twitter.com/azusachino">X</a>
-        <a href="/setlist/">Setlist</a>
-        <a href="/constellation/">Constellation</a>
-        <a href="/keys/">Keys</a>
         <a href="https://iroha.azusachino.com">iroha</a>
         <a href="/rss.xml">RSS</a>
       </nav>
@@ -102,39 +91,6 @@ const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
 </html>
 
 <style>
-  /* Below 1600px the frame is one column and the rails stay hidden. From 1600px
-     a row holds the rail, then the reading column (up to 72rem), centred.
-     Media queries measure rem at 16px, so the breakpoint is in px. The rails keep
-     their DOM position after main; CSS orders them. */
-  .frame :global(.rail) {
-    display: none;
-  }
-
-  @media (min-width: 1600px) {
-    .frame {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-    }
-
-    .frame :global(.rail) {
-      display: block;
-      flex: 0 0 13rem;
-    }
-
-    /* Empty gutter on the left, the width of the rail's column, so the reading column stays centred. */
-    .frame.with-rail::before {
-      content: "";
-      flex: 0 0 14.75rem;
-    }
-
-    main {
-      flex: 1 1 0;
-      min-width: 0;
-      max-width: 72rem;
-    }
-  }
-
   /* A quiet band: a light wash of the palette (18% --glow in the page
      background) with a --glow edge in light mode, charcoal with the same edge
      in dark. A full --glow fill made the penlights vibrate. The mix is plain

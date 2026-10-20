@@ -28,6 +28,7 @@ const sticks = 11;
       void lights.offsetWidth; // restart the animation on repeat answers
       lights.classList.add('on');
       piano?.setAttribute('data-playing', '');
+      piano?.dispatchEvent(new CustomEvent('piano:arpeggio'));
       status.textContent = 'Penlights up!';
       // A timer, not animationend: under reduced motion nothing animates.
       clearTimeout(timer);
