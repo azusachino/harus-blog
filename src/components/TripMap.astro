@@ -1,0 +1,174 @@
+---
+import { projectJourney } from '../lib/geo';
+
+interface Props {
+  features: Array<any>;
+  width?: number;
+  height?: number;
+  compact?: boolean;
+}
+
+const { features, width = 800, height = 480, compact = false } = Astro.props;
+const projected = projectJourney(features, width, height, compact ? 24 : 40);
+---
+
+<div class:list={['trip-map-container', { compact }]}>
+  <svg
+    viewBox={projected.viewBox}
+    class="trip-map"
+    role="img"
+    aria-label="Travel route and key memento locations map"
+  >
+    <defs>
+      <linearGradient id="route-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.8" />
+        <stop offset="100%" stop-color="var(--glow)" stop-opacity="1" />
+      </linearGradient>
+      <filter id="marker-glow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="var(--accent)" flood-opacity="0.4" />
+      </filter>
+    </defs>
+
+    <!-- Grid / border styling -->
+    <rect width="100%" height="100%" class="map-bg" rx="8" />
+
+    <!-- Route polyline -->
+    {projected.routePath && (
+      <path
+        d={projected.routePath}
+        class="map-route"
+        fill="none"
+        stroke="url(#route-gradient)"
+      />
+    )}
+
+    <!-- Stops -->
+    {projected.stops.map((stop) => (
+      <g class="map-stop">
+        <circle cx={stop.x} cy={stop.y} r={compact ? 4 : 5} class="stop-dot" />
+        {!compact && stop.label && (
+          <text
+            x={stop.x + 8}
+            y={stop.y + 4}
+            class="stop-label"
+          >
+            {stop.label}
+          </text>
+        )}
+      </g>
+    ))}
+
+    <!-- Mementos as linked anchors -->
+    {projected.mementos.map((m) => (
+      <a
+        href={`#memento-${m.id}`}
+        class="memento-marker-link"
+        aria-label={`Jump to memento ${m.seq}: ${m.title}`}
+      >
+        <g class="memento-marker">
+          <circle cx={m.x} cy={m.y} r={compact ? 7 : 9} class="memento-halo" />
+          <circle cx={m.x} cy={m.y} r={compact ? 5 : 7} class="memento-dot" />
+          <text
+            x={m.x}
+            y={m.y}
+            class="memento-number"
+            dominant-baseline="central"
+            text-anchor="middle"
+          >
+            {m.seq}
+          </text>
+        </g>
+      </a>
+    ))}
+  </svg>
+</div>
+
+<style>
+  .trip-map-container {
+    width: 100%;
+    margin: 1.5rem 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--line);
+  }
+
+  .trip-map {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 800 / 480;
+  }
+
+  .trip-map-container.compact .trip-map {
+    aspect-ratio: 800 / 380;
+  }
+
+  .map-bg {
+    fill: var(--surface);
+  }
+
+  .map-route {
+    stroke-width: 3.5px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 0 4px rgba(57, 197, 187, 0.25));
+  }
+
+  .stop-dot {
+    fill: var(--surface);
+    stroke: var(--primary);
+    stroke-width: 2px;
+  }
+
+  .stop-label {
+    font-size: 11px;
+    font-family: var(--font-body);
+    fill: var(--muted);
+    user-select: none;
+  }
+
+  .memento-marker-link {
+    cursor: pointer;
+    outline: none;
+  }
+
+  .memento-halo {
+    fill: var(--accent);
+    opacity: 0.2;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    transform-origin: center;
+  }
+
+  .memento-dot {
+    fill: var(--accent);
+    stroke: var(--surface);
+    stroke-width: 1.5px;
+  }
+
+  .memento-number {
+    font-size: 9px;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    fill: var(--on-accent);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .memento-marker-link:hover .memento-halo,
+  .memento-marker-link:focus-visible .memento-halo {
+    opacity: 0.45;
+    transform: scale(1.3);
+  }
+
+  .memento-marker-link:hover .memento-dot,
+  .memento-marker-link:focus-visible .memento-dot {
+    stroke: var(--glow);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .memento-halo {
+      transition: none;
+    }
+  }
+</style>

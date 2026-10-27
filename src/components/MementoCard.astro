@@ -1,0 +1,249 @@
+---
+import { resolveAsset } from '../lib/immich';
+
+interface Props {
+  memento: {
+    id: string;
+    stopKey: string;
+    seq: number;
+    kind: string;
+    occurredAt: string;
+    title: string;
+    place?: string;
+    essay: string;
+    kind_data?: Record<string, any>;
+    media: Array<{
+      immich_asset_id: string;
+      caption: string;
+      seq: number;
+    }>;
+  };
+}
+
+const { memento } = Astro.props;
+
+// Resolve media using D14 asset resolver
+const resolvedMedia = await Promise.all(
+  (memento.media || []).map((m) => resolveAsset(m.immich_asset_id, m.caption))
+);
+
+// Format date
+const dateStr = memento.occurredAt
+  ? new Date(memento.occurredAt).toLocaleString('ja-JP', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    })
+  : '';
+---
+
+<article id={`memento-${memento.id}`} class="memento-card">
+  <div class="memento-header">
+    <div class="memento-badge">
+      <span class="memento-seq">{memento.seq}</span>
+      <span class="memento-kind">{memento.kind}</span>
+    </div>
+    <div class="memento-meta">
+      {memento.place && <span class="memento-place">📍 {memento.place}</span>}
+      {dateStr && <time class="memento-time">{dateStr}</time>}
+    </div>
+  </div>
+
+  <h3 class="memento-title">{memento.title}</h3>
+
+  {memento.essay && <p class="memento-essay">{memento.essay}</p>}
+
+  {memento.kind_data?.price && (
+    <div class="ticket-info">
+      <span class="ticket-label">Fare:</span>
+      <span class="ticket-price">
+        {memento.kind_data.price.currency === 'JPY' ? '¥' : ''}
+        {memento.kind_data.price.amount}
+      </span>
+      {memento.kind_data.ticket_type && (
+        <span class="ticket-type">({memento.kind_data.ticket_type})</span>
+      )}
+    </div>
+  )}
+
+  {resolvedMedia.length > 0 && (
+    <div class="memento-gallery">
+      {resolvedMedia.map((photo) => (
+        <figure class="memento-figure">
+          {photo.isPlaceholder ? (
+            <div class="photo-placeholder" role="img" aria-label={`Photo placeholder for ${photo.caption}`}>
+              <div class="placeholder-icon">📷</div>
+              <div class="placeholder-text">
+                <span class="placeholder-caption">{photo.caption}</span>
+                <span class="placeholder-note">Immich Asset Preview</span>
+              </div>
+            </div>
+          ) : (
+            <img src={photo.src} alt={photo.caption} class="memento-img" loading="lazy" />
+          )}
+          <figcaption class="memento-caption">{photo.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  )}
+</article>
+
+<style>
+  .memento-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    scroll-margin-top: 5rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .memento-card:target {
+    border-color: var(--glow);
+    box-shadow: 0 0 0 2px var(--glow);
+  }
+
+  .memento-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .memento-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .memento-seq {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--on-accent);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .memento-kind {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    color: var(--primary);
+    background: var(--bg);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+  }
+
+  .memento-meta {
+    display: inline-flex;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .memento-title {
+    margin: 0.25rem 0 0.75rem 0;
+    font-size: 1.25rem;
+    color: var(--ink);
+  }
+
+  .memento-essay {
+    color: var(--ink);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  .ticket-info {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    background: var(--bg);
+    padding: 0.4rem 0.75rem;
+    border-radius: var(--radius);
+    border: 1px dashed var(--line);
+    margin-bottom: 1rem;
+  }
+
+  .ticket-label {
+    color: var(--muted);
+  }
+
+  .ticket-price {
+    font-weight: 700;
+    font-family: var(--font-mono);
+    color: var(--primary);
+  }
+
+  .ticket-type {
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  .memento-gallery {
+    margin-top: 1rem;
+  }
+
+  .memento-figure {
+    margin: 0;
+  }
+
+  .memento-img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+  }
+
+  .photo-placeholder {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    background: var(--bg);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius);
+  }
+
+  .placeholder-icon {
+    font-size: 2rem;
+    opacity: 0.6;
+  }
+
+  .placeholder-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .placeholder-caption {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .placeholder-note {
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: var(--muted);
+  }
+
+  .memento-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-align: center;
+  }
+</style>
