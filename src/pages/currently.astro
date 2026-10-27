@@ -136,6 +136,11 @@ const sections = [
     background: var(--surface);
     text-decoration: none;
     font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  p.muted {
+    text-wrap: pretty;
   }
 
   .chips a:hover {
@@ -167,16 +172,19 @@ const sections = [
     font-size: 1.2rem;
     font-weight: 700;
     margin: 0.2rem 0 !important;
+    text-wrap: balance;
   }
 
   .detail {
     font-size: 0.9rem;
     line-height: 1.65;
+    text-wrap: pretty;
   }
 
   .stamp {
     font-size: 0.72rem;
     margin-top: 0.6rem !important;
+    white-space: nowrap;
   }
 
   .use {
@@ -235,11 +243,13 @@ const sections = [
   .plain .mono {
     font-size: 0.75rem;
     margin-left: 0.6rem;
+    white-space: nowrap;
   }
 
   .small {
     font-size: 0.85rem;
     margin: 0.2rem 0 0;
     line-height: 1.6;
+    text-wrap: pretty;
   }
 </style>

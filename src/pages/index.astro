@@ -64,7 +64,7 @@ const names = { tech: 'Tech', journal: 'Journal', life: 'Life' };
   .hero {
     padding: 1.5rem 0 1rem;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
     gap: 2.5rem;
     align-items: center;
   }
@@ -76,8 +76,8 @@ const names = { tech: 'Tech', journal: 'Journal', life: 'Life' };
   }
 
   .hero h1 {
-    font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.2rem);
-    max-width: 34ch;
+    font-size: clamp(1.4rem, 1rem + 1.4vw, 2.05rem);
+    text-wrap: balance;
   }
 
   .release {
@@ -118,6 +118,11 @@ const names = { tech: 'Tech', journal: 'Journal', life: 'Life' };
   .release .title {
     font-size: 1.3rem;
     font-weight: 700;
+    text-wrap: balance;
+  }
+
+  .release .mono {
+    white-space: nowrap;
   }
 
   .sections {

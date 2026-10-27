@@ -56,7 +56,12 @@ const tags = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeComp
     color: var(--ink);
     text-decoration: none;
     font-size: 0.88rem;
+    white-space: nowrap;
     transition: border-color 0.15s ease;
+  }
+
+  p.muted {
+    text-wrap: pretty;
   }
 
   .crate a:hover,

@@ -219,6 +219,7 @@ const reproaches = [
     font-size: 1.15rem;
     font-weight: 500;
     max-width: 44rem;
+    text-wrap: pretty;
   }
 
   .projects {
@@ -238,6 +239,7 @@ const reproaches = [
     margin: 0.2rem 0 0;
     font-size: 0.92rem;
     line-height: 1.6;
+    text-wrap: pretty;
   }
 
   .name {
@@ -275,12 +277,17 @@ const reproaches = [
     gap: 0.5rem;
   }
 
+  .row dt {
+    white-space: nowrap;
+  }
+
   .chip {
     padding: 0.15rem 0.75rem;
     border: 1px solid var(--line);
     border-radius: 999px;
     background: var(--surface);
     font-size: 0.92rem;
+    white-space: nowrap;
   }
 
   /* Life-long rules: the page's anchor, a full-width band. */
