@@ -113,6 +113,7 @@ const mapId = `map-${Math.random().toString(36).slice(2, 9)}`;
       // Key-free raster style backed by OpenStreetMap tiles (matching iroha's solution, no API key needed).
       const map = L.map(el, {
         scrollWheelZoom: true,
+        zoomControl: false,
         attributionControl: true,
       });
 
@@ -125,6 +126,47 @@ const mapId = `map-${Math.random().toString(36).slice(2, 9)}`;
       // Route
       const routeFeature = features.find((f: any) => f.properties?.role === 'route');
       let bounds: L.LatLngBounds | null = null;
+
+      // Custom Zoom & Reset Control
+      const controlsContainer = L.DomUtil.create('div', 'leaflet-bar custom-trip-controls');
+
+      const zoomInBtn = L.DomUtil.create('a', 'custom-zoom-btn', controlsContainer);
+      zoomInBtn.innerHTML = '+';
+      zoomInBtn.href = '#';
+      zoomInBtn.title = 'Zoom in';
+      zoomInBtn.setAttribute('role', 'button');
+      zoomInBtn.onclick = (e) => {
+        e.preventDefault();
+        map.zoomIn();
+      };
+
+      const zoomOutBtn = L.DomUtil.create('a', 'custom-zoom-btn', controlsContainer);
+      zoomOutBtn.innerHTML = '−';
+      zoomOutBtn.href = '#';
+      zoomOutBtn.title = 'Zoom out';
+      zoomOutBtn.setAttribute('role', 'button');
+      zoomOutBtn.onclick = (e) => {
+        e.preventDefault();
+        map.zoomOut();
+      };
+
+      const resetBtn = L.DomUtil.create('a', 'custom-zoom-btn reset-btn', controlsContainer);
+      resetBtn.innerHTML = '⟲';
+      resetBtn.href = '#';
+      resetBtn.title = 'Fit route';
+      resetBtn.setAttribute('role', 'button');
+      resetBtn.onclick = (e) => {
+        e.preventDefault();
+        if (bounds && bounds.isValid()) {
+          map.flyToBounds(bounds, { padding: [40, 40], duration: 1.2 });
+        }
+      };
+
+      const CustomControl = L.Control.extend({
+        options: { position: 'topright' },
+        onAdd: () => controlsContainer,
+      });
+      new CustomControl().addTo(map);
 
       if (routeFeature) {
         const routeLayer = L.geoJSON(routeFeature, {
@@ -331,5 +373,45 @@ const mapId = `map-${Math.random().toString(36).slice(2, 9)}`;
 
   :global(.leaflet-control-attribution a) {
     color: #eee !important;
+  }
+
+  /* Custom Zoom & Reset Controls */
+  :global(.custom-trip-controls) {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--line) !important;
+    border-radius: var(--radius) !important;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  :global(.custom-zoom-btn) {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 32px !important;
+    height: 32px !important;
+    background: var(--surface) !important;
+    color: var(--ink) !important;
+    font-family: var(--font-mono) !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid var(--line) !important;
+    transition: background 0.15s ease !important;
+    cursor: pointer !important;
+  }
+
+  :global(.custom-zoom-btn:last-child) {
+    border-bottom: none !important;
+  }
+
+  :global(.custom-zoom-btn:hover) {
+    background: var(--bg) !important;
+    color: var(--primary) !important;
+  }
+
+  :global(.custom-zoom-btn.reset-btn) {
+    font-size: 14px !important;
   }
 </style>

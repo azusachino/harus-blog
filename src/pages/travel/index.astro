@@ -1,57 +1,282 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Waveform from '../../components/Waveform.astro';
-import TripMap from '../../components/TripMap.astro';
+import AtlasOverviewMap from '../../components/AtlasOverviewMap.astro';
 import { getCollection } from 'astro:content';
 
 const trips = await getCollection('trips');
 trips.sort((a, b) => b.data.properties.date_start.localeCompare(a.data.properties.date_start));
+
+// Calculate aggregate stats across all trips
+const totalJourneys = trips.length;
+const allCountries = new Set<string>();
+const allRegions = new Set<string>();
+let totalStops = 0;
+let totalMementos = 0;
+let totalCalendarDays = 0;
+let totalLoggedChapters = 0;
+
+for (const trip of trips) {
+  const p = trip.data.properties;
+  p.country.split('·').forEach((c) => allCountries.add(c.trim()));
+  p.region.split('·').forEach((r) => allRegions.add(r.trim()));
+
+  const stops = trip.data.features.filter((f: any) => f.properties?.role === 'stop');
+  const mementos = trip.data.features.filter((f: any) => f.properties?.role === 'memento');
+  totalStops += stops.length;
+  totalMementos += mementos.length;
+
+  const d1 = new Date(p.date_start).getTime();
+  const d2 = new Date(p.date_end).getTime();
+  const span = Math.round((d2 - d1) / (1000 * 60 * 60 * 24)) + 1;
+  totalCalendarDays += Math.max(1, span);
+  totalLoggedChapters += p.days ? p.days.length : span;
+}
+
+// Curated highlights, route trails, and narrative synopses
+const TRIP_METADATA: Record<
+  string,
+  {
+    season: string;
+    flag: string;
+    synopsis: string;
+    routeTrail: string[];
+    highlights: string[];
+  }
+> = {
+  'home-sweet-home-2026-10-16': {
+    season: 'Autumn 2026',
+    flag: '🇯🇵 🇨🇳',
+    synopsis:
+      'An international crossing from Tokyo across the sea to Shanghai Pudong, racing 300 km/h along the Yangtze delta to the unhurried rhythms of the Huai River basin, with an autumn interlude through Hefei.',
+    routeTrail: [
+      'Tokyo Narita',
+      'Shanghai Pudong',
+      'Huainan / Huai River',
+      'Hefei Interlude',
+      'Shanghai',
+      'Tokyo Haneda',
+    ],
+    highlights: [
+      '✈️ Trans-Sea Flight',
+      '🚄 300 km/h High-Speed Rail',
+      '🍜 Huai River Basin',
+      '🏙️ Hefei Interlude',
+      '🏠 Autumn Homecoming',
+    ],
+  },
+  'izu-trip-2026-08-01': {
+    season: 'Summer 2026',
+    flag: '🇯🇵',
+    synopsis:
+      'From the urban grid of Tokyo down coastal Route 135 to the bright waters of Kujuppama, ascending Mount Omuro\'s volcanic rim for a 360° Pacific panorama, and walking the suspension bridge over Jogasaki\'s jagged coastal cliffs.',
+    routeTrail: [
+      'Tokyo',
+      'Coastal Route 135',
+      'Kujuppama Beach',
+      'Mount Omuro Rim',
+      'Jogasaki Suspension Bridge',
+    ],
+    highlights: [
+      '🌊 Coastal Drive',
+      '🏖️ Kujuppama Cove',
+      '🌋 Omuroyama Single-Chair Lift',
+      '🌉 Jogasaki Suspension Bridge',
+      '🥩 Summer Beach BBQ',
+    ],
+  },
+};
 ---
 
-<Base title="Travel Atlas" description="Where I've been: travel journeys, routes, and curated memories.">
-  <p class="eyebrow">{trips.length} {trips.length === 1 ? 'journey' : 'journeys'}</p>
-  <h1>Travel Atlas</h1>
-  <p class="muted">Where I've been: routes, stops, and collected moments along the way.</p>
-  <Waveform seed="travel-atlas" />
+<Base title="Travel Atlas" description="Where I've been: curated journeys, GPS routes, and collected moments along the way.">
+  <header class="atlas-header">
+    <p class="eyebrow mono">EXPEDITION ARCHIVE · VOL. 2026</p>
+    <h1>Travel Atlas</h1>
+    <p class="atlas-desc muted">
+      Cartographic log of routes, waypoints, and collected moments along the way.
+    </p>
+    <Waveform seed="travel-atlas" bars={64} />
+  </header>
 
-  <div class="trips-grid">
-    {trips.map((trip) => {
-      const p = trip.data.properties;
-      const stopsCount = trip.data.features.filter((f: any) => f.properties?.role === 'stop').length;
-      const mementosCount = trip.data.features.filter((f: any) => f.properties?.role === 'memento').length;
+  <!-- Atlas Field Ledger / Overview Stats -->
+  <section class="atlas-ledger-section" aria-label="Atlas Summary Metrics">
+    <div class="ledger-grid">
+      <div class="ledger-card">
+        <span class="ledger-icon" aria-hidden="true">🗺️</span>
+        <div class="ledger-content">
+          <span class="ledger-num mono">{totalJourneys}</span>
+          <span class="ledger-label">Expeditions</span>
+          <span class="ledger-sub mono muted">2026 Season</span>
+        </div>
+      </div>
 
-      return (
-        <article class="trip-card">
-          <header class="trip-card-head">
-            <div class="trip-meta">
-              <span class="trip-dates mono">{p.date_start} ~ {p.date_end}</span>
-              <span class="trip-place">📍 {p.place}, {p.region}</span>
+      <div class="ledger-card">
+        <span class="ledger-icon" aria-hidden="true">🌏</span>
+        <div class="ledger-content">
+          <span class="ledger-num mono">{allCountries.size} Countries</span>
+          <span class="ledger-label">{allRegions.size} Regions Visited</span>
+          <span class="ledger-sub mono muted">{Array.from(allCountries).join(' · ')}</span>
+        </div>
+      </div>
+
+      <div class="ledger-card">
+        <span class="ledger-icon" aria-hidden="true">🗓️</span>
+        <div class="ledger-content">
+          <span class="ledger-num mono">{totalCalendarDays} Days</span>
+          <span class="ledger-label">On the Road</span>
+          <span class="ledger-sub mono muted">{totalLoggedChapters} Chapters Logged</span>
+        </div>
+      </div>
+
+      <div class="ledger-card">
+        <span class="ledger-icon" aria-hidden="true">📍</span>
+        <div class="ledger-content">
+          <span class="ledger-num mono">{totalStops} Waypoints</span>
+          <span class="ledger-label">{totalMementos} Curated Mementos</span>
+          <span class="ledger-sub mono muted">GPS Tracks & Stories</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Master Interactive Route Explorer -->
+  <section class="master-map-section" aria-label="Master Route Map">
+    <AtlasOverviewMap trips={trips} />
+  </section>
+
+  <!-- Journeys List -->
+  <section class="journeys-section" aria-label="Expedition Logs">
+    <div class="section-title-bar">
+      <div>
+        <h2 class="section-title">Journeys & Field Logs</h2>
+        <p class="section-sub muted">
+          Chronological travelogues with full interactive route maps, waypoints, and personal reflections.
+        </p>
+      </div>
+    </div>
+
+    <div class="trips-grid">
+      {trips.map((trip) => {
+        const p = trip.data.properties;
+        const meta = TRIP_METADATA[p.slug] || {
+          season: '2026',
+          flag: '📍',
+          synopsis: p.place,
+          routeTrail: [],
+          highlights: [],
+        };
+        const stopsCount = trip.data.features.filter((f: any) => f.properties?.role === 'stop').length;
+        const mementos = trip.data.features.filter((f: any) => f.properties?.role === 'memento');
+
+        return (
+          <article class="expedition-card">
+            <div class="card-inner">
+              <header class="card-head">
+                <div class="badges-row">
+                  <span class="region-pill mono">{meta.flag} {p.region}</span>
+                  <span class="season-pill mono">{meta.season}</span>
+                  <span class="duration-pill mono muted">
+                    {p.days?.length || 1} {p.days?.length === 1 ? 'day' : 'days'}
+                  </span>
+                </div>
+
+                <h3 class="card-title">
+                  <a href={`/travel/${p.slug}/`}>{p.title}</a>
+                </h3>
+
+                <div class="card-meta mono muted">
+                  <span>📅 {p.date_start} ~ {p.date_end}</span>
+                  <span class="dot-sep" aria-hidden="true">·</span>
+                  <span>📍 {p.place}</span>
+                </div>
+              </header>
+
+              <p class="card-synopsis">
+                {meta.synopsis}
+              </p>
+
+              {meta.routeTrail.length > 0 && (
+                <div class="route-trail-box">
+                  <span class="trail-heading mono">WAYPOINTS</span>
+                  <div class="route-trail-flow">
+                    {meta.routeTrail.map((node, i) => (
+                      <span class="trail-step">
+                        <span class="trail-name">{node}</span>
+                        {i < meta.routeTrail.length - 1 && (
+                          <span class="trail-arrow" aria-hidden="true">➔</span>
+                        )}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {meta.highlights.length > 0 && (
+                <div class="highlights-row">
+                  {meta.highlights.map((h) => (
+                    <span class="highlight-chip">{h}</span>
+                  ))}
+                </div>
+              )}
+
+              {mementos.length > 0 ? (
+                <div class="mementos-preview-box">
+                  <span class="preview-heading mono">FIELD MEMENTOS ({mementos.length})</span>
+                  <div class="chips-row">
+                    {mementos.map((m: any) => (
+                      <a href={`/travel/${p.slug}/#memento-${m.id}`} class="memento-preview-chip">
+                        <span class="chip-num mono">{m.properties?.seq}</span>
+                        <span class="chip-text">{m.properties?.title}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div class="route-log-status">
+                  <span class="status-badge mono">ROUTE LOG</span>
+                  <span class="status-desc muted">5-day field log recorded · Photos and stories in progress</span>
+                </div>
+              )}
+
+              <footer class="card-actions">
+                <a href={`/travel/${p.slug}/`} class="btn-primary">
+                  <span>Explore Journey & Log</span>
+                  <span class="btn-arrow" aria-hidden="true">→</span>
+                </a>
+                <button
+                  type="button"
+                  class="btn-secondary"
+                  data-focus-trip={p.slug}
+                  aria-label={`Focus ${p.title} on Master Map`}
+                >
+                  <span>Focus on Map</span>
+                  <span class="btn-arrow" aria-hidden="true">↗</span>
+                </button>
+              </footer>
             </div>
-            <h2 class="trip-title">
-              <a href={`/travel/${p.slug}/`}>{p.title}</a>
-            </h2>
-            <p class="trip-stats mono muted">
-              {stopsCount} {stopsCount === 1 ? 'stop' : 'stops'} · {mementosCount > 0 ? `${mementosCount} ${mementosCount === 1 ? 'memento' : 'mementos'}` : 'route log'}
-            </p>
-          </header>
-
-          <a href={`/travel/${p.slug}/`} class="map-link" aria-label={`View map and memories for ${p.title}`}>
-            <TripMap features={trip.data.features} compact={true} />
-          </a>
-        </article>
-      );
-    })}
-  </div>
+          </article>
+        );
+      })}
+    </div>
+  </section>
 </Base>
 
 <style>
+  .atlas-header {
+    margin-bottom: 2rem;
+  }
+
   .eyebrow {
-    font-family: var(--font-mono);
     font-size: 0.85rem;
     color: var(--primary);
-    text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 0.25rem;
+  }
+
+  .atlas-desc {
+    font-size: 1.1rem;
+    max-width: 60ch;
+    margin-bottom: 1rem;
   }
 
   .muted {
@@ -62,63 +287,390 @@ trips.sort((a, b) => b.data.properties.date_start.localeCompare(a.data.propertie
     font-family: var(--font-mono);
   }
 
-  .trips-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-    margin-top: 2rem;
+  /* Ledger Grid */
+  .atlas-ledger-section {
+    margin: 2rem 0;
   }
 
-  .trip-card {
+  .ledger-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 1rem;
+  }
+
+  .ledger-card {
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: var(--radius);
-    padding: 1.75rem;
-    transition: border-color 0.2s ease;
-  }
-
-  .trip-card:hover {
-    border-color: var(--glow);
-  }
-
-  .trip-card-head {
-    margin-bottom: 1rem;
-  }
-
-  .trip-meta {
+    padding: 1.1rem 1.25rem;
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
+    align-items: center;
+    gap: 1rem;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .ledger-card:hover {
+    border-color: var(--glow);
+    transform: translateY(-2px);
+  }
+
+  .ledger-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+  }
+
+  .ledger-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .ledger-num {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .ledger-label {
     font-size: 0.85rem;
-    color: var(--muted);
-    margin-bottom: 0.4rem;
+    color: var(--ink);
+    font-weight: 500;
   }
 
-  .trip-dates {
-    color: var(--primary);
+  .ledger-sub {
+    font-size: 0.75rem;
+  }
+
+  /* Master Map Section */
+  .master-map-section {
+    margin: 2.5rem 0 3.5rem 0;
+  }
+
+  /* Journeys List */
+  .journeys-section {
+    margin-top: 3rem;
+  }
+
+  .section-title-bar {
+    margin-bottom: 1.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+    margin: 0 0 0.35rem 0;
+    color: var(--ink);
+  }
+
+  .section-sub {
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .trips-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  /* Expedition Card */
+  .expedition-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+    border-left: 4px solid var(--glow);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .expedition-card:hover {
+    border-color: var(--glow);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+  }
+
+  .card-inner {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .card-head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .badges-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .region-pill {
+    font-size: 0.75rem;
     font-weight: 600;
+    color: var(--primary);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
   }
 
-  .trip-title {
-    margin: 0.25rem 0 0.5rem 0;
-    font-size: 1.5rem;
+  .season-pill {
+    font-size: 0.75rem;
+    color: var(--ink);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
   }
 
-  .trip-title a {
+  .duration-pill {
+    font-size: 0.75rem;
+    margin-left: auto;
+  }
+
+  .card-title {
+    font-size: 1.45rem;
+    margin: 0.2rem 0 0.1rem 0;
+    line-height: 1.3;
+  }
+
+  .card-title a {
     color: var(--ink);
     text-decoration: none;
+    transition: color 0.15s ease;
   }
 
-  .trip-title a:hover {
+  .card-title a:hover {
     color: var(--primary);
   }
 
-  .trip-stats {
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    flex-wrap: wrap;
+  }
+
+  .dot-sep {
+    opacity: 0.5;
+  }
+
+  .card-synopsis {
+    margin: 0;
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  /* Route Trail Box */
+  .route-trail-box {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 0.85rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .trail-heading {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .route-trail-flow {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+  }
+
+  .trail-step {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .trail-name {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .trail-arrow {
+    color: var(--glow);
     font-size: 0.8rem;
   }
 
-  .map-link {
-    display: block;
+  /* Highlights */
+  .highlights-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .highlight-chip {
+    font-size: 0.8rem;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    padding: 0.25rem 0.65rem;
+    border-radius: 6px;
+  }
+
+  /* Mementos Preview */
+  .mementos-preview-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .preview-heading {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .chips-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .memento-preview-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.2rem 0.65rem;
     text-decoration: none;
+    font-size: 0.8rem;
+    color: var(--ink);
+    transition: all 0.15s ease;
+  }
+
+  .memento-preview-chip:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: scale(1.02);
+  }
+
+  .chip-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    background: var(--accent);
+    color: var(--on-accent);
+    border-radius: 50%;
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+
+  .chip-text {
+    font-weight: 500;
+  }
+
+  .route-log-status {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg);
+    border: 1px dashed var(--line);
+    border-radius: 6px;
+  }
+
+  .status-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  .status-desc {
+    font-size: 0.8rem;
+  }
+
+  /* Actions */
+  .card-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--primary);
+    color: var(--on-accent);
+    padding: 0.55rem 1.1rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+
+  .btn-primary:hover {
+    background: var(--glow);
+    color: var(--ink);
+    transform: translateY(-1px);
+  }
+
+  .btn-primary:active {
+    transform: scale(0.96);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--surface);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    padding: 0.55rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--glow);
+    color: var(--primary);
+  }
+
+  .btn-secondary:active {
+    transform: scale(0.96);
+  }
+
+  .btn-arrow {
+    transition: transform 0.15s ease;
+  }
+
+  .btn-primary:hover .btn-arrow,
+  .btn-secondary:hover .btn-arrow {
+    transform: translateX(2px);
   }
 </style>
