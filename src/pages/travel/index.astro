@@ -31,7 +31,7 @@ trips.sort((a, b) => b.data.properties.date_start.localeCompare(a.data.propertie
               <a href={`/travel/${p.slug}/`}>{p.title}</a>
             </h2>
             <p class="trip-stats mono muted">
-              {stopsCount} {stopsCount === 1 ? 'stop' : 'stops'} · {mementosCount} {mementosCount === 1 ? 'memento' : 'mementos'}
+              {stopsCount} {stopsCount === 1 ? 'stop' : 'stops'} · {mementosCount > 0 ? `${mementosCount} ${mementosCount === 1 ? 'memento' : 'mementos'}` : 'route log'}
             </p>
           </header>
 

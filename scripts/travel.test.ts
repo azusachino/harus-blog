@@ -41,6 +41,18 @@ test('travel validation catches negative cases', () => {
     fs.writeFileSync(tmpFile, JSON.stringify(base));
     expect(validateTravelGeoJSON(tmpFile)).toEqual([]);
 
+    // 1b. Route-only case (0 mementos)
+    const routeOnly = JSON.parse(JSON.stringify(base));
+    routeOnly.features = [routeOnly.features[0]]; // only stop-1
+    fs.writeFileSync(tmpFile, JSON.stringify(routeOnly));
+    expect(validateTravelGeoJSON(tmpFile)).toEqual([]);
+
+    // 1c. Deferred assets (media: [])
+    const deferredAssets = JSON.parse(JSON.stringify(base));
+    deferredAssets.features[1].properties.media = [];
+    fs.writeFileSync(tmpFile, JSON.stringify(deferredAssets));
+    expect(validateTravelGeoJSON(tmpFile)).toEqual([]);
+
     // 2. Too many decimal places (>4)
     const invalidCoords = JSON.parse(JSON.stringify(base));
     invalidCoords.features[0].geometry.coordinates = [139.123456, 35.1234];

@@ -101,9 +101,7 @@ export function validateTravelGeoJSON(filePath: string): string[] {
         seqSet.add(seq);
       }
 
-      if (!Array.isArray(media) || media.length === 0) {
-        errors.push(`${prefix}: memento must have at least one media entry`);
-      } else {
+      if (Array.isArray(media) && media.length > 0) {
         media.forEach((item: any, mIdx: number) => {
           if (!item.immich_asset_id || typeof item.immich_asset_id !== 'string') {
             errors.push(`${prefix}.media[${mIdx}]: missing immich_asset_id (D12/D15 rule)`);

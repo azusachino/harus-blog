@@ -90,14 +90,27 @@ const mementos = trip.data.features
   )}
 
   <!-- Mementos -->
-  <section class="mementos-section">
-    <h2 class="section-heading">Mementos & Stories</h2>
-    <div class="mementos-list">
-      {mementos.map((m: any) => (
-        <MementoCard memento={m} />
-      ))}
-    </div>
-  </section>
+  {mementos.length > 0 ? (
+    <section class="mementos-section">
+      <h2 class="section-heading">Mementos & Stories</h2>
+      <div class="mementos-list">
+        {mementos.map((m: any) => (
+          <MementoCard memento={m} />
+        ))}
+      </div>
+    </section>
+  ) : (
+    <section class="mementos-section deferred-section">
+      <h2 class="section-heading">Mementos & Stories</h2>
+      <div class="deferred-card">
+        <span class="deferred-icon" aria-hidden="true">🗺️</span>
+        <div class="deferred-content">
+          <p class="deferred-title">Route log recorded</p>
+          <p class="deferred-note muted">Stories, memories, and curated photos are currently in progress.</p>
+        </div>
+      </div>
+    </section>
+  )}
 </Base>
 
 <style>
@@ -199,5 +212,39 @@ const mementos = trip.data.features
 
   .mementos-list {
     margin-top: 1.5rem;
+  }
+
+  .deferred-card {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .deferred-icon {
+    font-size: 2rem;
+    opacity: 0.8;
+  }
+
+  .deferred-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .deferred-title {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .deferred-note {
+    font-size: 0.9rem;
+    margin: 0;
   }
 </style>

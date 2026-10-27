@@ -44,12 +44,31 @@ async function main() {
       throw new Error(`Expected title to include "Travel Atlas", got "${title}"`);
     }
 
-    const tripLink = page.getByRole('link', { name: 'Izu Trip — August 2026', exact: true });
-    await tripLink.waitFor({ state: 'visible', timeout: 5000 });
+    const izuLink = page.getByRole('link', { name: 'Izu Trip — August 2026', exact: true });
+    await izuLink.waitFor({ state: 'visible', timeout: 5000 });
     console.log('Found Izu Trip card on /travel/');
 
-    console.log('Clicking into trip detail page...');
-    await tripLink.click();
+    const homeLink = page.getByRole('link', { name: 'Home Sweet Home — October 2026', exact: true });
+    await homeLink.waitFor({ state: 'visible', timeout: 5000 });
+    console.log('Found Home Sweet Home card on /travel/');
+
+    // Test route-only trip
+    console.log('Navigating to /travel/home-sweet-home-2026-10-16/ ...');
+    await homeLink.click();
+    await page.waitForURL('**/travel/home-sweet-home-2026-10-16/');
+    await page.screenshot({ path: '/home/haru/.gemini/antigravity-cli/brain/2c52ca65-5abd-47e4-9a97-69d3fbbad88e/trip-home-sweet-home.png', fullPage: true });
+
+    const homeH1 = page.getByRole('heading', { level: 1, name: 'Home Sweet Home — October 2026' });
+    await homeH1.waitFor({ state: 'visible', timeout: 5000 });
+    console.log('Home Sweet Home detail page loaded.');
+
+    const deferredNote = page.getByText('Route log recorded');
+    await deferredNote.waitFor({ state: 'visible', timeout: 5000 });
+    console.log('Verified deferred mementos state displayed.');
+
+    // Return to atlas and test Izu trip
+    await page.goto('http://localhost:4322/travel/');
+    await izuLink.click();
     await page.waitForURL('**/travel/izu-trip-2026-08-01/');
     await page.screenshot({ path: '/home/haru/.gemini/antigravity-cli/brain/2c52ca65-5abd-47e4-9a97-69d3fbbad88e/trip-detail.png', fullPage: true });
 
