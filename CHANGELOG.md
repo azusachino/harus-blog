@@ -8,6 +8,7 @@ groups (Added, Changed, Fixed, Removed).
 
 ### Added
 
+- Header navigation, footer links, and `/life/` chip entry pointing to `/travel/`.
 - Travel Atlas at `/travel/`: an interactive catalog of journeys with responsive SVG route maps, metadata cards, and chronological stats.
 - Trip detail view at `/travel/<slug>/`: equirectangular map projection, structured daily logs & reflections, interactive stops timeline, and narrative mementos with coordinate linking.
 - GeoJSON content collection (`src/content.config.ts`) and validation gate (`scripts/travel.ts`) in `bun run verify` enforcing schema constraints, coordinate precision (≤4 decimals), and referential integrity (Decision D15).

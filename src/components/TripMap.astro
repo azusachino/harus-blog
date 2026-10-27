@@ -10,64 +10,47 @@ interface Props {
 
 const { features, width = 800, height = 480, compact = false } = Astro.props;
 const projected = projectJourney(features, width, height, compact ? 24 : 40);
+const mapId = `map-${Math.random().toString(36).slice(2, 9)}`;
 ---
 
 <div class:list={['trip-map-container', { compact }]}>
-  <svg
-    viewBox={projected.viewBox}
-    class="trip-map"
-    role="img"
-    aria-label="Travel route and key memento locations map"
-  >
-    <defs>
-      <linearGradient id="route-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.8" />
-        <stop offset="100%" stop-color="var(--glow)" stop-opacity="1" />
-      </linearGradient>
-      <filter id="marker-glow" x="-20%" y="-20%" width="140%" height="140%">
-        <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="var(--accent)" flood-opacity="0.4" />
-      </filter>
-    </defs>
+  {compact ? (
+    <svg
+      viewBox={projected.viewBox}
+      class="trip-map"
+      role="img"
+      aria-label="Travel route preview map"
+    >
+      <defs>
+        <linearGradient id="route-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.8" />
+          <stop offset="100%" stop-color="var(--glow)" stop-opacity="1" />
+        </linearGradient>
+      </defs>
 
-    <!-- Grid / border styling -->
-    <rect width="100%" height="100%" class="map-bg" rx="8" />
+      <!-- Grid / border styling -->
+      <rect width="100%" height="100%" class="map-bg" rx="8" />
 
-    <!-- Route polyline -->
-    {projected.routePath && (
-      <path
-        d={projected.routePath}
-        class="map-route"
-        fill="none"
-        stroke="url(#route-gradient)"
-      />
-    )}
+      <!-- Route polyline -->
+      {projected.routePath && (
+        <path
+          d={projected.routePath}
+          class="map-route"
+          fill="none"
+          stroke="url(#route-gradient)"
+        />
+      )}
 
-    <!-- Stops -->
-    {projected.stops.map((stop) => (
-      <g class="map-stop">
-        <circle cx={stop.x} cy={stop.y} r={compact ? 4 : 5} class="stop-dot" />
-        {!compact && stop.label && (
-          <text
-            x={stop.x + 8}
-            y={stop.y + 4}
-            class="stop-label"
-          >
-            {stop.label}
-          </text>
-        )}
-      </g>
-    ))}
+      <!-- Stops -->
+      {projected.stops.map((stop) => (
+        <circle cx={stop.x} cy={stop.y} r={4} class="stop-dot" />
+      ))}
 
-    <!-- Mementos as linked anchors -->
-    {projected.mementos.map((m) => (
-      <a
-        href={`#memento-${m.id}`}
-        class="memento-marker-link"
-        aria-label={`Jump to memento ${m.seq}: ${m.title}`}
-      >
+      <!-- Mementos -->
+      {projected.mementos.map((m) => (
         <g class="memento-marker">
-          <circle cx={m.x} cy={m.y} r={compact ? 7 : 9} class="memento-halo" />
-          <circle cx={m.x} cy={m.y} r={compact ? 5 : 7} class="memento-dot" />
+          <circle cx={m.x} cy={m.y} r={7} class="memento-halo" />
+          <circle cx={m.x} cy={m.y} r={5} class="memento-dot" />
           <text
             x={m.x}
             y={m.y}
@@ -78,10 +61,148 @@ const projected = projectJourney(features, width, height, compact ? 24 : 40);
             {m.seq}
           </text>
         </g>
-      </a>
-    ))}
-  </svg>
+      ))}
+    </svg>
+  ) : (
+    <div
+      id={mapId}
+      class="interactive-map"
+      data-features={JSON.stringify(features)}
+      aria-label="Interactive travel route map with pan and zoom"
+    >
+      <noscript>
+        <svg
+          viewBox={projected.viewBox}
+          class="trip-map"
+          role="img"
+          aria-label="Travel route map fallback"
+        >
+          <rect width="100%" height="100%" class="map-bg" rx="8" />
+          {projected.routePath && (
+            <path
+              d={projected.routePath}
+              class="map-route"
+              fill="none"
+              stroke="var(--glow)"
+            />
+          )}
+        </svg>
+      </noscript>
+    </div>
+  )}
 </div>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+
+  function initMaps() {
+    const containers = document.querySelectorAll<HTMLElement>('.interactive-map:not([data-initialized])');
+    containers.forEach((el) => {
+      el.setAttribute('data-initialized', 'true');
+      const rawFeatures = el.dataset.features;
+      if (!rawFeatures) return;
+
+      let features: any[];
+      try {
+        features = JSON.parse(rawFeatures);
+      } catch {
+        return;
+      }
+
+      const isDark = document.documentElement.dataset.theme === 'dark';
+      const getTileUrl = (dark: boolean) =>
+        dark
+          ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+          : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+
+      const map = L.map(el, {
+        scrollWheelZoom: true,
+        attributionControl: true,
+      });
+
+      const tileLayer = L.tileLayer(getTileUrl(isDark), {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>',
+        maxZoom: 19,
+      }).addTo(map);
+
+      // Theme toggle observer
+      const themeObserver = new MutationObserver(() => {
+        const dark = document.documentElement.dataset.theme === 'dark';
+        tileLayer.setUrl(getTileUrl(dark));
+      });
+      themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+      // Route
+      const routeFeature = features.find((f: any) => f.properties?.role === 'route');
+      let bounds: L.LatLngBounds | null = null;
+
+      if (routeFeature) {
+        const routeLayer = L.geoJSON(routeFeature, {
+          style: {
+            color: '#39c5bb',
+            weight: 4.5,
+            opacity: 0.9,
+            lineCap: 'round',
+            lineJoin: 'round',
+          },
+        }).addTo(map);
+        bounds = routeLayer.getBounds();
+      }
+
+      // Stops
+      const stops = features.filter((f: any) => f.properties?.role === 'stop');
+      stops.forEach((s: any) => {
+        if (!s.geometry?.coordinates) return;
+        const [lng, lat] = s.geometry.coordinates;
+        const label = s.properties?.label || 'Stop';
+
+        const stopIcon = L.divIcon({
+          className: 'stop-pin-icon',
+          html: `<div class="stop-pin-marker" title="${label}"></div>`,
+          iconSize: [12, 12],
+          iconAnchor: [6, 6],
+        });
+
+        const marker = L.marker([lat, lng], { icon: stopIcon }).addTo(map);
+        marker.bindTooltip(label, { direction: 'top', offset: [0, -6] });
+      });
+
+      // Mementos
+      const mementos = features.filter((f: any) => f.properties?.role === 'memento');
+      mementos.forEach((mem: any) => {
+        if (!mem.geometry?.coordinates) return;
+        const [lng, lat] = mem.geometry.coordinates;
+        const seq = mem.properties?.seq ?? '';
+        const title = mem.properties?.title || '';
+        const id = mem.id || '';
+
+        const mementoIcon = L.divIcon({
+          className: 'memento-pin-icon',
+          html: `<a href="#memento-${id}" class="memento-pin-badge" aria-label="Memento ${seq}: ${title}"><span>${seq}</span></a>`,
+          iconSize: [26, 26],
+          iconAnchor: [13, 13],
+          popupAnchor: [0, -13],
+        });
+
+        const marker = L.marker([lat, lng], { icon: mementoIcon }).addTo(map);
+        marker.bindPopup(`<strong>Memento ${seq}</strong><br />${title}<br /><a href="#memento-${id}">Read story ↓</a>`);
+      });
+
+      if (bounds && bounds.isValid()) {
+        map.fitBounds(bounds, { padding: [40, 40] });
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMaps);
+  } else {
+    initMaps();
+  }
+  document.addEventListener('astro:page-load', initMaps);
+</script>
 
 <style>
   .trip-map-container {
@@ -91,16 +212,20 @@ const projected = projectJourney(features, width, height, compact ? 24 : 40);
     overflow: hidden;
     background: var(--surface);
     border: 1px solid var(--line);
+    position: relative;
+  }
+
+  .interactive-map {
+    width: 100%;
+    height: 480px;
+    background: var(--surface);
+    z-index: 1;
   }
 
   .trip-map {
     display: block;
     width: 100%;
     height: auto;
-    aspect-ratio: 800 / 480;
-  }
-
-  .trip-map-container.compact .trip-map {
     aspect-ratio: 800 / 380;
   }
 
@@ -121,23 +246,9 @@ const projected = projectJourney(features, width, height, compact ? 24 : 40);
     stroke-width: 2px;
   }
 
-  .stop-label {
-    font-size: 11px;
-    font-family: var(--font-body);
-    fill: var(--muted);
-    user-select: none;
-  }
-
-  .memento-marker-link {
-    cursor: pointer;
-    outline: none;
-  }
-
   .memento-halo {
     fill: var(--accent);
     opacity: 0.2;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-    transform-origin: center;
   }
 
   .memento-dot {
@@ -155,20 +266,77 @@ const projected = projectJourney(features, width, height, compact ? 24 : 40);
     user-select: none;
   }
 
-  .memento-marker-link:hover .memento-halo,
-  .memento-marker-link:focus-visible .memento-halo {
-    opacity: 0.45;
-    transform: scale(1.3);
+  /* Custom Leaflet Controls and Pin Styling */
+  :global(.stop-pin-icon),
+  :global(.memento-pin-icon) {
+    background: transparent;
+    border: none;
   }
 
-  .memento-marker-link:hover .memento-dot,
-  .memento-marker-link:focus-visible .memento-dot {
-    stroke: var(--glow);
+  :global(.stop-pin-marker) {
+    width: 12px;
+    height: 12px;
+    background: var(--surface);
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .memento-halo {
-      transition: none;
-    }
+  :global(.memento-pin-badge) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: var(--accent);
+    color: var(--on-accent);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    border: 2px solid var(--surface);
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+    text-decoration: none;
+    transition: transform 0.15s ease, background-color 0.15s ease;
+  }
+
+  :global(.memento-pin-badge:hover) {
+    transform: scale(1.2);
+    background: var(--glow);
+    color: var(--ink);
+  }
+
+  :global(.leaflet-popup-content-wrapper) {
+    background: var(--surface);
+    color: var(--ink);
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+  }
+
+  :global(.leaflet-popup-tip) {
+    background: var(--surface);
+  }
+
+  :global(.leaflet-bar a) {
+    background-color: var(--surface) !important;
+    color: var(--ink) !important;
+    border-bottom: 1px solid var(--line) !important;
+  }
+
+  :global(.leaflet-bar a:hover) {
+    background-color: var(--soft) !important;
+  }
+
+  :global(.leaflet-control-attribution) {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    color: #ccc !important;
+    font-size: 10px !important;
+  }
+
+  :global(.leaflet-control-attribution a) {
+    color: #eee !important;
   }
 </style>
