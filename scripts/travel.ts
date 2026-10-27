@@ -54,6 +54,17 @@ export function validateTravelGeoJSON(filePath: string): string[] {
   if (!props.date_start || !props.date_end) {
     errors.push('Missing properties.date_start or properties.date_end');
   }
+  if (props.days) {
+    if (!Array.isArray(props.days)) {
+      errors.push('properties.days must be an array');
+    } else {
+      props.days.forEach((d: any, dIdx: number) => {
+        if (typeof d.day !== 'number') errors.push(`properties.days[${dIdx}]: missing day number`);
+        if (!d.date || typeof d.date !== 'string') errors.push(`properties.days[${dIdx}]: missing date`);
+        if (!d.title || typeof d.title !== 'string') errors.push(`properties.days[${dIdx}]: missing title`);
+      });
+    }
+  }
 
   const features = Array.isArray(data.features) ? data.features : [];
   if (features.length === 0) {

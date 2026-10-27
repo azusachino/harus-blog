@@ -44,11 +44,11 @@ async function main() {
       throw new Error(`Expected title to include "Travel Atlas", got "${title}"`);
     }
 
-    const izuLink = page.getByRole('link', { name: 'Izu Trip — August 2026', exact: true });
+    const izuLink = page.getByRole('link', { name: 'Izu Peninsula: The Sea and the Volcanic Ridge', exact: true });
     await izuLink.waitFor({ state: 'visible', timeout: 5000 });
     console.log('Found Izu Trip card on /travel/');
 
-    const homeLink = page.getByRole('link', { name: 'Home Sweet Home — October 2026', exact: true });
+    const homeLink = page.getByRole('link', { name: 'Home Sweet Home: The Autumn Crossing', exact: true });
     await homeLink.waitFor({ state: 'visible', timeout: 5000 });
     console.log('Found Home Sweet Home card on /travel/');
 
@@ -58,7 +58,7 @@ async function main() {
     await page.waitForURL('**/travel/home-sweet-home-2026-10-16/');
     await page.screenshot({ path: '/home/haru/.gemini/antigravity-cli/brain/2c52ca65-5abd-47e4-9a97-69d3fbbad88e/trip-home-sweet-home.png', fullPage: true });
 
-    const homeH1 = page.getByRole('heading', { level: 1, name: 'Home Sweet Home — October 2026' });
+    const homeH1 = page.getByRole('heading', { level: 1, name: 'Home Sweet Home: The Autumn Crossing' });
     await homeH1.waitFor({ state: 'visible', timeout: 5000 });
     console.log('Home Sweet Home detail page loaded.');
 
@@ -72,7 +72,7 @@ async function main() {
     await page.waitForURL('**/travel/izu-trip-2026-08-01/');
     await page.screenshot({ path: '/home/haru/.gemini/antigravity-cli/brain/2c52ca65-5abd-47e4-9a97-69d3fbbad88e/trip-detail.png', fullPage: true });
 
-    const tripH1 = await page.getByRole('heading', { level: 1, name: 'Izu Trip — August 2026' });
+    const tripH1 = await page.getByRole('heading', { level: 1, name: 'Izu Peninsula: The Sea and the Volcanic Ridge' });
     await tripH1.waitFor({ state: 'visible', timeout: 5000 });
     console.log('Trip detail page loaded with correct heading.');
 
@@ -95,9 +95,9 @@ async function main() {
     await memento1.waitFor({ state: 'visible', timeout: 5000 });
     console.log('Memento 1 card visible on page.');
 
-    const placeholder = page.getByRole('img', { name: 'Photo placeholder for Kujuppama Beach' });
-    await placeholder.waitFor({ state: 'visible', timeout: 5000 });
-    console.log('Photo captioned placeholder rendered per D14.');
+    const essay = page.getByText('The first beach stop gave our team a bright pause by the water');
+    await essay.waitFor({ state: 'visible', timeout: 5000 });
+    console.log('Memento essay rendered cleanly in asset-deferred state.');
 
     if (errors.length > 0) {
       throw new Error(`Browser reported errors:\n${errors.join('\n')}`);

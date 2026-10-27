@@ -4,12 +4,44 @@
   "generator": "dawarich-export-to-geojson (slice-1 asset-defer mvp)",
   "properties": {
     "slug": "home-sweet-home-2026-10-16",
-    "title": "Home Sweet Home — October 2026",
+    "title": "Home Sweet Home: The Autumn Crossing",
     "place": "Tokyo · Shanghai · Anhui",
     "country": "Japan · China",
     "region": "Tokyo · Shanghai · Anhui",
     "date_start": "2026-10-16",
-    "date_end": "2026-10-26"
+    "date_end": "2026-10-26",
+    "days": [
+      {
+        "day": 1,
+        "date": "2026-10-16",
+        "title": "Across the Sea to the Huai River Valley",
+        "description": "An early departure from Tokyo out to Narita, a smooth flight into Shanghai Pudong, and an immediate transfer to the high-speed rail inland. Watching the flat Jiangsu farmland blur past at 300 km/h in the evening dusk, finally arriving in the Huai River basin by nightfall."
+      },
+      {
+        "day": 2,
+        "date": "2026-10-17 ~ 2026-10-21",
+        "title": "Unrushed Rhythms along the Basin",
+        "description": "Slow mornings, home cooking, familiar streetscapes, and the warmth of local dialect. Stepping away from server consoles and screen glare into the grounding tempo of everyday family life."
+      },
+      {
+        "day": 3,
+        "date": "2026-10-22 ~ 2026-10-23",
+        "title": "Hefei Interlude",
+        "description": "A short hop south to Hefei for conversation, wide tree-lined boulevards, and a glimpse of the rapid technological shifts across the provincial capital."
+      },
+      {
+        "day": 4,
+        "date": "2026-10-24",
+        "title": "High-Speed Rail back to Shanghai",
+        "description": "Retracing the rail tracks east across the Yangtze delta towards the coast, watching neon lights replace open fields as the train pulls back into Shanghai."
+      },
+      {
+        "day": 5,
+        "date": "2026-10-25 ~ 2026-10-26",
+        "title": "Return to Haneda and the Tokyo Desk",
+        "description": "Taking off from Pudong in the afternoon and descending into Tokyo Haneda in the crisp autumn evening. Heading home, unpacking, and returning to the workstation ready to build."
+      }
+    ]
   },
   "features": [
     {

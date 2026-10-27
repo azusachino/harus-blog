@@ -19,6 +19,7 @@ interface Props {
 
 const { trip } = Astro.props;
 const p = trip.data.properties;
+const days = p.days || [];
 
 // Separate features by role
 const stops = trip.data.features
@@ -65,6 +66,25 @@ const mementos = trip.data.features
   <section class="map-section" aria-label="Interactive Route Map">
     <TripMap features={trip.data.features} />
   </section>
+
+  <!-- Daily Logs & Reflections -->
+  {days.length > 0 && (
+    <section class="days-section">
+      <h2 class="section-heading">Daily Logs & Reflections</h2>
+      <div class="days-list">
+        {days.map((d: any) => (
+          <article class="day-card">
+            <header class="day-header">
+              <span class="day-num mono">DAY {String(d.day).padStart(2, '0')}</span>
+              <span class="day-date mono muted">{d.date}</span>
+            </header>
+            <h3 class="day-title">{d.title}</h3>
+            {d.description && <p class="day-desc">{d.description}</p>}
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
 
   <!-- Stops Timeline -->
   {stops.length > 0 && (
@@ -167,6 +187,51 @@ const mementos = trip.data.features
     margin: 2.5rem 0 1.25rem 0;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--line);
+  }
+
+  .days-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .day-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    border-left: 4px solid var(--primary);
+  }
+
+  .day-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .day-num {
+    background: var(--bg);
+    color: var(--primary);
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+  }
+
+  .day-title {
+    margin: 0.2rem 0 0.6rem 0;
+    font-size: 1.15rem;
+    color: var(--ink);
+  }
+
+  .day-desc {
+    margin: 0;
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 0.95rem;
   }
 
   .stops-timeline {

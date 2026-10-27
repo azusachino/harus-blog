@@ -123,6 +123,16 @@ const trips = defineCollection({
       region: z.string(),
       date_start: z.string(),
       date_end: z.string(),
+      days: z
+        .array(
+          z.object({
+            day: z.number(),
+            date: z.string(),
+            title: z.string(),
+            description: z.string().optional(),
+          })
+        )
+        .optional(),
     }),
     features: z.array(z.any()),
   }),
