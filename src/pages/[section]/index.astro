@@ -29,11 +29,12 @@ const categories = section === 'tech' ? [...new Set(posts.flatMap((p) => p.data.
   <p class="muted">{subtitle}</p>
   <Waveform seed={section} />
 
-  {(years.length > 0 || categories.length > 0) && (
-    <nav class="chips" aria-label={years.length ? 'Years' : 'Categories'}>
+  {(years.length > 0 || categories.length > 0 || section === 'life') && (
+    <nav class="chips" aria-label={years.length ? 'Years' : categories.length ? 'Categories' : 'Explore'}>
       {years.map((y) => <a href={`/journal/archive/${y}/`}>{y}</a>)}
       {categories.map((c) => <a href={`/tech/category/${c}/`}>{c}</a>)}
       {section === 'tech' && <a class="series" href="/tech/series/">series →</a>}
+      {section === 'life' && <a class="series" href="/travel/">travel atlas →</a>}
     </nav>
   )}
 
