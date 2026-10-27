@@ -41,6 +41,7 @@ const { section, posts, total = posts.length } = Astro.props;
     color: var(--ink);
     text-decoration: none;
     font-weight: 500;
+    text-wrap: balance;
   }
 
   li a:hover {
@@ -85,10 +86,15 @@ const { section, posts, total = posts.length } = Astro.props;
     }
   }
 
+  .badge {
+    white-space: nowrap;
+  }
+
   .meta {
     display: flex;
     gap: 1rem;
     font-size: 0.8rem;
+    white-space: nowrap;
   }
 
   @media (max-width: 40rem) {

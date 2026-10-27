@@ -49,6 +49,7 @@ const active = nav.map(([, to]) => to).filter((to) => path.startsWith(to)).sort(
     font-weight: 700;
     color: var(--ink);
     text-decoration: none;
+    white-space: nowrap;
   }
 
   /* Same as the favicon: ink "ID" on the current palette's --glow. */
@@ -73,6 +74,7 @@ const active = nav.map(([, to]) => to).filter((to) => path.startsWith(to)).sort(
     text-decoration: none;
     padding: 0.2rem 0;
     border-bottom: 2px solid transparent;
+    white-space: nowrap;
   }
 
   nav a:hover,

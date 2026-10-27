@@ -218,10 +218,12 @@ const mirai = (await getCollection('magicalMirai')).sort((a, b) => b.id.localeCo
   .concert-body .title {
     font-weight: 700;
     color: var(--ink);
+    text-wrap: balance;
   }
 
   .concert-body .desc {
     font-size: 0.85rem;
+    text-wrap: pretty;
   }
 
   .mirai-anthology {
@@ -318,10 +320,12 @@ const mirai = (await getCollection('magicalMirai')).sort((a, b) => b.id.localeCo
     font-weight: 600;
     font-size: 0.9rem;
     line-height: 1.35;
+    text-wrap: balance;
   }
 
   .book-card .mono {
     font-size: 0.75rem;
+    white-space: nowrap;
   }
 
   .essay-list {
@@ -343,6 +347,7 @@ const mirai = (await getCollection('magicalMirai')).sort((a, b) => b.id.localeCo
     font-weight: 600;
     color: var(--ink);
     text-decoration: none;
+    text-wrap: balance;
   }
 
   .essay-title:hover {
@@ -352,10 +357,14 @@ const mirai = (await getCollection('magicalMirai')).sort((a, b) => b.id.localeCo
   .essay-list .desc {
     margin: 0.2rem 0 0;
     font-size: 0.88rem;
+    text-wrap: pretty;
   }
 
   .essay-list .meta {
     margin: 0.25rem 0 0;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
     font-size: 0.78rem;
   }
 </style>

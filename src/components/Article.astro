@@ -85,6 +85,12 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
   .meta .tag {
     color: var(--muted);
     text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .meta time,
+  .meta span {
+    white-space: nowrap;
   }
 
   .meta .tag:hover {
@@ -164,6 +170,7 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
     background: var(--surface);
     color: var(--ink);
     text-decoration: none;
+    text-wrap: balance;
   }
 
   .prevnext a:hover {

@@ -62,9 +62,14 @@ const tracks = albums.reduce((n, a) => n + a.chapters.length, 0);
     gap: 0.5rem;
   }
 
+  .album-head .eyebrow span {
+    white-space: nowrap;
+  }
+
   h2 {
     margin: 0.25rem 0 0.4rem;
     font-size: 1.15rem;
+    text-wrap: balance;
   }
 
   .tracklist {
@@ -90,11 +95,13 @@ const tracks = albums.reduce((n, a) => n + a.chapters.length, 0);
   .tracklist .no {
     color: var(--glow);
     font-size: 0.75rem;
+    white-space: nowrap;
   }
 
   .tracklist a {
     color: var(--ink);
     text-decoration: none;
+    text-wrap: balance;
   }
 
   .tracklist a:hover {
@@ -103,5 +110,6 @@ const tracks = albums.reduce((n, a) => n + a.chapters.length, 0);
 
   .tracklist .dur {
     font-size: 0.74rem;
+    white-space: nowrap;
   }
 </style>

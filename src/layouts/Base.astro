@@ -121,6 +121,7 @@ const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
   .sign {
     margin: 0.2rem 0 0.6rem;
     font-weight: 700;
+    white-space: nowrap;
   }
 
   .links {
@@ -131,10 +132,15 @@ const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
     margin: 0 0 0.8rem;
   }
 
+  .links a {
+    white-space: nowrap;
+  }
+
   .credit {
     max-width: 44rem;
     margin: 0 auto;
     font-size: 0.72rem;
     line-height: 1.6;
+    text-wrap: pretty;
   }
 </style>
