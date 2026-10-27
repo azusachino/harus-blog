@@ -110,33 +110,63 @@ const mapId = `map-${Math.random().toString(36).slice(2, 9)}`;
         return;
       }
 
-      const isDark = document.documentElement.dataset.theme === 'dark';
-      const getTileUrl = (dark: boolean) =>
-        dark
-          ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-          : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
-
+      // Key-free raster style backed by OpenStreetMap tiles (matching iroha's solution, no API key needed).
       const map = L.map(el, {
         scrollWheelZoom: true,
+        zoomControl: false,
         attributionControl: true,
       });
 
-      const tileLayer = L.tileLayer(getTileUrl(isDark), {
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>',
+          '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
         maxZoom: 19,
       }).addTo(map);
-
-      // Theme toggle observer
-      const themeObserver = new MutationObserver(() => {
-        const dark = document.documentElement.dataset.theme === 'dark';
-        tileLayer.setUrl(getTileUrl(dark));
-      });
-      themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
       // Route
       const routeFeature = features.find((f: any) => f.properties?.role === 'route');
       let bounds: L.LatLngBounds | null = null;
+
+      // Custom Zoom & Reset Control
+      const controlsContainer = L.DomUtil.create('div', 'leaflet-bar custom-trip-controls');
+
+      const zoomInBtn = L.DomUtil.create('a', 'custom-zoom-btn', controlsContainer);
+      zoomInBtn.innerHTML = '+';
+      zoomInBtn.href = '#';
+      zoomInBtn.title = 'Zoom in';
+      zoomInBtn.setAttribute('role', 'button');
+      zoomInBtn.onclick = (e) => {
+        e.preventDefault();
+        map.zoomIn();
+      };
+
+      const zoomOutBtn = L.DomUtil.create('a', 'custom-zoom-btn', controlsContainer);
+      zoomOutBtn.innerHTML = '−';
+      zoomOutBtn.href = '#';
+      zoomOutBtn.title = 'Zoom out';
+      zoomOutBtn.setAttribute('role', 'button');
+      zoomOutBtn.onclick = (e) => {
+        e.preventDefault();
+        map.zoomOut();
+      };
+
+      const resetBtn = L.DomUtil.create('a', 'custom-zoom-btn reset-btn', controlsContainer);
+      resetBtn.innerHTML = '⟲';
+      resetBtn.href = '#';
+      resetBtn.title = 'Fit route';
+      resetBtn.setAttribute('role', 'button');
+      resetBtn.onclick = (e) => {
+        e.preventDefault();
+        if (bounds && bounds.isValid()) {
+          map.flyToBounds(bounds, { padding: [40, 40], duration: 1.2 });
+        }
+      };
+
+      const CustomControl = L.Control.extend({
+        options: { position: 'topright' },
+        onAdd: () => controlsContainer,
+      });
+      new CustomControl().addTo(map);
 
       if (routeFeature) {
         const routeLayer = L.geoJSON(routeFeature, {
@@ -220,6 +250,11 @@ const mapId = `map-${Math.random().toString(36).slice(2, 9)}`;
     height: 480px;
     background: var(--surface);
     z-index: 1;
+  }
+
+  /* Dark mode tile filtering for key-free OpenStreetMap tiles */
+  :global([data-theme="dark"]) .interactive-map :global(.leaflet-tile-pane) {
+    filter: brightness(0.65) invert(1) contrast(2.5) hue-rotate(190deg) saturate(0.35);
   }
 
   .trip-map {
@@ -338,5 +373,45 @@ const mapId = `map-${Math.random().toString(36).slice(2, 9)}`;
 
   :global(.leaflet-control-attribution a) {
     color: #eee !important;
+  }
+
+  /* Custom Zoom & Reset Controls */
+  :global(.custom-trip-controls) {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--line) !important;
+    border-radius: var(--radius) !important;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  :global(.custom-zoom-btn) {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 32px !important;
+    height: 32px !important;
+    background: var(--surface) !important;
+    color: var(--ink) !important;
+    font-family: var(--font-mono) !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid var(--line) !important;
+    transition: background 0.15s ease !important;
+    cursor: pointer !important;
+  }
+
+  :global(.custom-zoom-btn:last-child) {
+    border-bottom: none !important;
+  }
+
+  :global(.custom-zoom-btn:hover) {
+    background: var(--bg) !important;
+    color: var(--primary) !important;
+  }
+
+  :global(.custom-zoom-btn.reset-btn) {
+    font-size: 14px !important;
   }
 </style>
