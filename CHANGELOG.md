@@ -4,6 +4,14 @@ Changes to the site itself, newest first. Posts are not listed here; they are th
 One dated entry per merged change, written in the [Keep a Changelog](https://keepachangelog.com/)
 groups (Added, Changed, Fixed, Removed).
 
+## 2026-10-27 — Travel Atlas and trip routes
+
+### Added
+
+- Travel Atlas at `/travel/`: an interactive catalog of journeys with responsive SVG route maps, metadata cards, and chronological stats.
+- Trip detail view at `/travel/<slug>/`: equirectangular map projection, structured daily logs & reflections, interactive stops timeline, and narrative mementos with coordinate linking.
+- GeoJSON content collection (`src/content.config.ts`) and validation gate (`scripts/travel.ts`) in `bun run verify` enforcing schema constraints, coordinate precision (≤4 decimals), and referential integrity (Decision D15).
+
 ## 2026-10-20 — Journal piano roll, Life shelves, and playable footer keys
 
 ### Added
