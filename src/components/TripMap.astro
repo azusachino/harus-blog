@@ -110,29 +110,17 @@ const mapId = `map-${Math.random().toString(36).slice(2, 9)}`;
         return;
       }
 
-      const isDark = document.documentElement.dataset.theme === 'dark';
-      const getTileUrl = (dark: boolean) =>
-        dark
-          ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-          : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
-
+      // Key-free raster style backed by OpenStreetMap tiles (matching iroha's solution, no API key needed).
       const map = L.map(el, {
         scrollWheelZoom: true,
         attributionControl: true,
       });
 
-      const tileLayer = L.tileLayer(getTileUrl(isDark), {
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>',
+          '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
         maxZoom: 19,
       }).addTo(map);
-
-      // Theme toggle observer
-      const themeObserver = new MutationObserver(() => {
-        const dark = document.documentElement.dataset.theme === 'dark';
-        tileLayer.setUrl(getTileUrl(dark));
-      });
-      themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
       // Route
       const routeFeature = features.find((f: any) => f.properties?.role === 'route');
@@ -220,6 +208,11 @@ const mapId = `map-${Math.random().toString(36).slice(2, 9)}`;
     height: 480px;
     background: var(--surface);
     z-index: 1;
+  }
+
+  /* Dark mode tile filtering for key-free OpenStreetMap tiles */
+  :global([data-theme="dark"]) .interactive-map :global(.leaflet-tile-pane) {
+    filter: brightness(0.65) invert(1) contrast(2.5) hue-rotate(190deg) saturate(0.35);
   }
 
   .trip-map {
