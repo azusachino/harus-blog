@@ -1,0 +1,203 @@
+---
+import Base from '../../layouts/Base.astro';
+import Waveform from '../../components/Waveform.astro';
+import TripMap from '../../components/TripMap.astro';
+import MementoCard from '../../components/MementoCard.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const trips = await getCollection('trips');
+  return trips.map((trip) => ({
+    params: { slug: trip.data.properties.slug },
+    props: { trip },
+  }));
+}
+
+interface Props {
+  trip: CollectionEntry<'trips'>;
+}
+
+const { trip } = Astro.props;
+const p = trip.data.properties;
+
+// Separate features by role
+const stops = trip.data.features
+  .filter((f: any) => f.properties?.role === 'stop')
+  .map((s: any) => ({
+    id: s.id || '',
+    label: s.properties.label || '',
+    arrive: s.properties.arrive || '',
+    depart: s.properties.depart || '',
+  }));
+
+const mementos = trip.data.features
+  .filter((f: any) => f.properties?.role === 'memento')
+  .map((m: any) => ({
+    id: m.id || '',
+    stopKey: m.properties.stop_key || '',
+    seq: m.properties.seq || 0,
+    kind: m.properties.kind || '',
+    occurredAt: m.properties.occurred_at || '',
+    title: m.properties.title || '',
+    place: m.properties.place || '',
+    essay: m.properties.essay || '',
+    kind_data: m.properties.kind_data || {},
+    media: m.properties.media || [],
+  }))
+  .sort((a: any, b: any) => a.seq - b.seq);
+---
+
+<Base title={p.title} description={`${p.title} — ${p.place}, ${p.country}`}>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/travel/">Travel Atlas</a>
+    <span class="sep" aria-hidden="true">/</span>
+    <span class="current">{p.title}</span>
+  </nav>
+
+  <header class="trip-header">
+    <p class="eyebrow mono">{p.date_start} ~ {p.date_end}</p>
+    <h1>{p.title}</h1>
+    <p class="trip-loc muted">📍 {p.place}, {p.region}, {p.country}</p>
+    <Waveform seed={p.slug} />
+  </header>
+
+  <!-- Interactive / Anchor-linked Map -->
+  <section class="map-section" aria-label="Interactive Route Map">
+    <TripMap features={trip.data.features} />
+  </section>
+
+  <!-- Stops Timeline -->
+  {stops.length > 0 && (
+    <section class="stops-section">
+      <h2 class="section-heading">Stops</h2>
+      <div class="stops-timeline">
+        {stops.map((stop: any, idx: number) => {
+          const time = stop.arrive
+            ? new Date(stop.arrive).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })
+            : '';
+          return (
+            <div class="stop-item">
+              <span class="stop-dot"></span>
+              <div class="stop-details">
+                <span class="stop-time mono">{time}</span>
+                <span class="stop-name">{stop.label || `Stop ${idx + 1}`}</span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  )}
+
+  <!-- Mementos -->
+  <section class="mementos-section">
+    <h2 class="section-heading">Mementos & Stories</h2>
+    <div class="mementos-list">
+      {mementos.map((m: any) => (
+        <MementoCard memento={m} />
+      ))}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .breadcrumb {
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .breadcrumb a {
+    color: var(--primary);
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+
+  .breadcrumb .sep {
+    margin: 0 0.5rem;
+    color: var(--line);
+  }
+
+  .breadcrumb .current {
+    color: var(--ink);
+  }
+
+  .eyebrow {
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .trip-loc {
+    margin-top: 0.25rem;
+    font-size: 1rem;
+  }
+
+  .muted {
+    color: var(--muted);
+  }
+
+  .mono {
+    font-family: var(--font-mono);
+  }
+
+  .map-section {
+    margin: 2rem 0;
+  }
+
+  .section-heading {
+    font-size: 1.4rem;
+    margin: 2.5rem 0 1.25rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .stops-timeline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 1rem 0;
+  }
+
+  .stop-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 0.5rem 0.85rem;
+    border-radius: var(--radius);
+  }
+
+  .stop-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--primary);
+  }
+
+  .stop-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .stop-time {
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .stop-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .mementos-list {
+    margin-top: 1.5rem;
+  }
+</style>

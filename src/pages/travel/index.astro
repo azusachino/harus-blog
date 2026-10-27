@@ -1,0 +1,124 @@
+---
+import Base from '../../layouts/Base.astro';
+import Waveform from '../../components/Waveform.astro';
+import TripMap from '../../components/TripMap.astro';
+import { getCollection } from 'astro:content';
+
+const trips = await getCollection('trips');
+trips.sort((a, b) => b.data.properties.date_start.localeCompare(a.data.properties.date_start));
+---
+
+<Base title="Travel Atlas" description="Where I've been: travel journeys, routes, and curated memories.">
+  <p class="eyebrow">{trips.length} {trips.length === 1 ? 'journey' : 'journeys'}</p>
+  <h1>Travel Atlas</h1>
+  <p class="muted">Where I've been: routes, stops, and collected moments along the way.</p>
+  <Waveform seed="travel-atlas" />
+
+  <div class="trips-grid">
+    {trips.map((trip) => {
+      const p = trip.data.properties;
+      const stopsCount = trip.data.features.filter((f: any) => f.properties?.role === 'stop').length;
+      const mementosCount = trip.data.features.filter((f: any) => f.properties?.role === 'memento').length;
+
+      return (
+        <article class="trip-card">
+          <header class="trip-card-head">
+            <div class="trip-meta">
+              <span class="trip-dates mono">{p.date_start} ~ {p.date_end}</span>
+              <span class="trip-place">📍 {p.place}, {p.region}</span>
+            </div>
+            <h2 class="trip-title">
+              <a href={`/travel/${p.slug}/`}>{p.title}</a>
+            </h2>
+            <p class="trip-stats mono muted">
+              {stopsCount} {stopsCount === 1 ? 'stop' : 'stops'} · {mementosCount} {mementosCount === 1 ? 'memento' : 'mementos'}
+            </p>
+          </header>
+
+          <a href={`/travel/${p.slug}/`} class="map-link" aria-label={`View map and memories for ${p.title}`}>
+            <TripMap features={trip.data.features} compact={true} />
+          </a>
+        </article>
+      );
+    })}
+  </div>
+</Base>
+
+<style>
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+  }
+
+  .muted {
+    color: var(--muted);
+  }
+
+  .mono {
+    font-family: var(--font-mono);
+  }
+
+  .trips-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    margin-top: 2rem;
+  }
+
+  .trip-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    transition: border-color 0.2s ease;
+  }
+
+  .trip-card:hover {
+    border-color: var(--glow);
+  }
+
+  .trip-card-head {
+    margin-bottom: 1rem;
+  }
+
+  .trip-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .trip-dates {
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  .trip-title {
+    margin: 0.25rem 0 0.5rem 0;
+    font-size: 1.5rem;
+  }
+
+  .trip-title a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .trip-title a:hover {
+    color: var(--primary);
+  }
+
+  .trip-stats {
+    font-size: 0.8rem;
+  }
+
+  .map-link {
+    display: block;
+    text-decoration: none;
+  }
+</style>

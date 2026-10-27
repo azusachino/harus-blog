@@ -7,7 +7,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "typecheck": "astro sync && tsc -p tsconfig.json",
-    "verify": "bun run typecheck && bun scripts/contrast.ts && bun scripts/frontmatter.ts && bunx --bun astro build && bun scripts/url-parity.ts"
+    "verify": "bun run typecheck && bun scripts/contrast.ts && bun scripts/frontmatter.ts && bun scripts/travel.ts && bunx --bun astro build && bun scripts/url-parity.ts"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "0.4.2",
