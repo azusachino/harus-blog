@@ -29,9 +29,11 @@ const names = { tech: 'Tech', journal: 'Journal', life: 'Life' };
   </section>
 
   <a class="release card" href={href(latest.section, latest.post)}>
-    <span class="eyebrow">New release · {names[latest.section]}</span>
+    <div class="release-header">
+      <span class="release-pill mono">New release · {names[latest.section]}</span>
+      <span class="mono muted release-meta">{day(latest.post.data.date)} · ♪ {trackLength(latest.post.body)}</span>
+    </div>
     <span class="title">{latest.post.data.title}</span>
-    <span class="mono muted">{day(latest.post.data.date)} · ♪ {trackLength(latest.post.body)}</span>
     <Waveform seed={latest.post.data.title} bars={48} />
   </a>
 
@@ -76,21 +78,54 @@ const names = { tech: 'Tech', journal: 'Journal', life: 'Life' };
   }
 
   .hero h1 {
-    font-size: clamp(1.4rem, 1rem + 1.4vw, 2.05rem);
+    font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.2rem);
+    line-height: 1.35;
+    letter-spacing: -0.01em;
     text-wrap: balance;
+    max-width: 34ch;
   }
 
   .release {
     display: grid;
-    gap: 0.2rem;
+    gap: 0.5rem;
     margin: 2rem 0 3rem;
+    padding: 1.4rem 1.6rem;
     text-decoration: none;
     color: var(--ink);
-    border-left: 4px solid var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
+    border-radius: var(--radius);
+    background: color-mix(in srgb, var(--accent) 4%, var(--surface));
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   }
 
   .release:hover {
-    border-color: var(--glow);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px color-mix(in srgb, var(--accent) 14%, transparent);
+  }
+
+  .release-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .release-pill {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--accent) 15%, var(--surface));
+    color: var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  }
+
+  .release-meta {
+    font-size: 0.82rem;
   }
 
   /* On hover the release card's waveform "plays": a stepped scale pulse.
@@ -116,8 +151,10 @@ const names = { tech: 'Tech', journal: 'Journal', life: 'Life' };
   }
 
   .release .title {
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     font-weight: 700;
+    line-height: 1.4;
+    color: var(--ink);
     text-wrap: balance;
   }
 

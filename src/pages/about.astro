@@ -19,10 +19,12 @@ const role = {
 };
 
 const projects = [
+  { name: 'cappuccino', lang: 'Swift', text: 'A native Apple companion for conversations and approvals with remote Herdr/Pi agents.' },
   { name: 'asobi', lang: 'Rust', text: 'A knowledge graph CLI that gives AI agents memory across sessions.' },
   { name: 'iroha', lang: 'Go', text: 'A personal data cockpit for my own location and activity data.' },
   { name: 'felicia', lang: 'Go', text: 'A map-based travel journal: the map is the index, the mementos are the stories.' },
-  { name: 'daphne', lang: 'Python', text: 'A Telegram bot that turns media links into native Telegram media.' },
+  { name: 'drifter', lang: 'Rust', text: 'A headless reading companion bridging WeRead and Kindle Unlimited to Hardcover.' },
+  { name: 'latte', lang: 'Kotlin', text: 'A native Android image-board client for browsing and saving Yande-compatible illustrations.' },
   { name: 'nahida', lang: 'Rust', text: 'The agent I am building to understand agents.' },
   { name: 'harus-blog', lang: 'Astro', text: 'This blog, rebuilt on Astro and themed after Hatsune Miku.' },
 ];
@@ -70,13 +72,13 @@ const reproaches = [
       <h2 id="what-i-do">What I do</h2>
       <div class="compare">
         <div class="side before">
-          <p class="eyebrow">{role.before.label}</p>
+          <span class="badge muted-badge">{role.before.label}</span>
           <p class="title">{role.before.title}</p>
           <p class="muted">{role.before.text}</p>
         </div>
         <span class="arrow" aria-hidden="true">→</span>
         <div class="side now">
-          <p class="eyebrow">{role.now.label}</p>
+          <span class="badge now-badge">{role.now.label}</span>
           <p class="title">{role.now.title}</p>
           <p>{role.now.text}</p>
         </div>
@@ -90,9 +92,14 @@ const reproaches = [
       </p>
       <ul class="projects">
         {projects.map((p) => (
-          <li class="card">
-            <p class="eyebrow">{p.lang}</p>
-            <a class="name" href={`https://github.com/azusachino/${p.name}`}>{p.name}</a>
+          <li class="card project-card">
+            <div class="card-head">
+              <a class="name" href={`https://github.com/azusachino/${p.name}`}>
+                {p.name}
+                <span class="ext-arrow" aria-hidden="true">↗</span>
+              </a>
+              <span class="lang-tag mono">{p.lang}</span>
+            </div>
             <p class="muted">{p.text}</p>
           </li>
         ))}
@@ -181,7 +188,7 @@ const reproaches = [
     line-height: 1.5;
   }
 
-  /* Before → now, as two lines side by side. */
+  /* Before → now, as two cards side by side. */
   .compare {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
@@ -190,9 +197,32 @@ const reproaches = [
   }
 
   .side {
-    padding: 1.2rem 1.4rem;
+    padding: 1.3rem 1.5rem;
     border-radius: var(--radius);
     border: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .badge {
+    align-self: flex-start;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    margin-bottom: 0.4rem;
+  }
+
+  .muted-badge {
+    background: color-mix(in srgb, var(--muted) 15%, var(--surface));
+    color: var(--muted);
+  }
+
+  .now-badge {
+    background: color-mix(in srgb, var(--glow) 20%, var(--surface));
+    color: var(--primary);
   }
 
   .side p {
@@ -204,9 +234,8 @@ const reproaches = [
   }
 
   .now {
-    background: var(--surface);
-    border-color: var(--glow);
-    box-shadow: inset 4px 0 0 var(--glow);
+    background: color-mix(in srgb, var(--glow) 4%, var(--surface));
+    border-color: color-mix(in srgb, var(--primary) 50%, var(--line));
   }
 
   .arrow {
@@ -231,8 +260,64 @@ const reproaches = [
     gap: 1rem;
   }
 
-  .projects .card {
-    border-top: 3px solid var(--glow);
+  .project-card {
+    padding: 1.2rem 1.3rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background: var(--surface);
+    transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 12%, transparent);
+  }
+
+  .card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--ink);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .name:hover {
+    color: var(--primary);
+    text-decoration: underline;
+  }
+
+  .ext-arrow {
+    font-size: 0.85rem;
+    color: var(--muted);
+    transition: transform 0.15s ease;
+  }
+
+  .project-card:hover .ext-arrow {
+    transform: translate(2px, -2px);
+    color: var(--primary);
+  }
+
+  .lang-tag {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.1rem 0.5rem;
+    border-radius: 4px;
+    background: color-mix(in srgb, var(--primary) 10%, var(--surface));
+    color: var(--primary);
+    border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent);
   }
 
   .projects p {
@@ -240,11 +325,6 @@ const reproaches = [
     font-size: 0.92rem;
     line-height: 1.6;
     text-wrap: pretty;
-  }
-
-  .name {
-    font-weight: 700;
-    font-size: 1.05rem;
   }
 
   .goal {
@@ -320,17 +400,44 @@ const reproaches = [
   }
 
   .statements li {
-    padding: 0.3rem 0 0.3rem 1.2rem;
-    border-left: 2px solid var(--glow);
-    font-size: clamp(1.15rem, 1rem + 0.6vw, 1.4rem);
+    padding: 1rem 1.4rem;
+    border: 1px solid color-mix(in srgb, var(--glow) 30%, var(--line));
+    border-radius: var(--radius);
+    background: color-mix(in srgb, var(--glow) 5%, var(--surface));
+    font-size: clamp(1.15rem, 1rem + 0.6vw, 1.35rem);
     font-weight: 600;
     line-height: 1.7;
+    position: relative;
+  }
+
+  .statements li::before {
+    content: "“";
+    position: absolute;
+    top: -0.2rem;
+    left: 0.4rem;
+    font-size: 2.2rem;
+    color: color-mix(in srgb, var(--primary) 40%, transparent);
+    font-family: serif;
+    pointer-events: none;
   }
 
   .seven-title {
     font-weight: 700;
-    font-size: 1.1rem;
-    margin: 0 0 0.8rem;
+    font-size: 1.15rem;
+    margin: 0 0 1rem;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .seven-title::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 18px;
+    border-radius: 3px;
+    background: var(--glow);
   }
 
   .seven {
@@ -339,23 +446,34 @@ const reproaches = [
     margin: 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-    gap: 0.7rem;
+    gap: 0.8rem;
   }
 
   .seven li {
     display: grid;
     grid-template-columns: 2.4rem minmax(0, 1fr);
-    gap: 0.6rem;
-    align-items: baseline;
-    padding: 0.8rem 1rem;
+    gap: 0.7rem;
+    align-items: center;
+    padding: 0.9rem 1.1rem;
     border: 1px solid var(--line);
     border-radius: var(--radius);
-    background: var(--bg);
+    background: var(--surface);
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .seven li:hover {
+    border-color: color-mix(in srgb, var(--primary) 40%, var(--line));
+    background: color-mix(in srgb, var(--glow) 4%, var(--surface));
   }
 
   .n {
     color: var(--primary);
     font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.15rem 0.35rem;
+    border-radius: 4px;
+    background: color-mix(in srgb, var(--primary) 10%, var(--surface));
+    text-align: center;
   }
 
   @media (max-width: 48rem) {

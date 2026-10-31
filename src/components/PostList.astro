@@ -33,8 +33,10 @@ const { section, posts, total = posts.length } = Astro.props;
     grid-template-columns: 3.4rem 1fr auto;
     align-items: baseline;
     gap: 0.75rem;
-    padding: 0.6rem 0;
+    padding: 0.65rem 0.6rem;
+    border-radius: 6px;
     border-bottom: 1px dashed var(--line);
+    transition: background-color 0.2s ease;
   }
 
   li a {
@@ -51,13 +53,9 @@ const { section, posts, total = posts.length } = Astro.props;
   /* The row lights up like the playing track: a glow wash, the number turns
      accent and the title nudges right. Motion is only a nudge, so reduced
      motion keeps the color change alone. */
-  li {
-    transition: background-color 0.2s ease;
-  }
-
   li:hover,
   li:focus-within {
-    background-color: color-mix(in srgb, var(--glow) 14%, transparent);
+    background-color: color-mix(in srgb, var(--glow) 12%, var(--surface));
   }
 
   li:hover .badge,

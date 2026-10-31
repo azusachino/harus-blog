@@ -274,24 +274,47 @@ img {
 }
 
 .prose blockquote {
-  margin: 1.5em 0;
-  padding: 0.2em 1.2em;
+  margin: 1.8em 0;
+  padding: 0.8rem 1.4rem;
   border-left: 2px solid var(--glow);
+  background: color-mix(in srgb, var(--glow) 5%, var(--surface));
   color: var(--muted);
+}
+
+.prose blockquote p:first-child {
+  margin-top: 0;
+}
+
+.prose blockquote p:last-child {
+  margin-bottom: 0;
 }
 
 .prose :not(pre) > code {
   background: color-mix(in oklab, var(--glow) 14%, transparent);
-  padding: 0.1em 0.35em;
+  padding: 0.15em 0.4em;
   border-radius: 4px;
+  font-size: 0.9em;
+  border: 1px solid color-mix(in srgb, var(--glow) 20%, transparent);
 }
 
 .prose pre {
-  padding: 1rem 1.2rem;
+  padding: 1.1rem 1.3rem;
   border-radius: var(--radius);
   border: 1px solid var(--line);
+  background: var(--surface);
   overflow-x: auto;
-  line-height: 1.6;
+  line-height: 1.65;
+  font-size: 0.9em;
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.8rem 1.1rem;
+  margin: 1.6em 0;
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--glow) 3%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
 }
 
 .prose table {

@@ -29,19 +29,33 @@
   value: Mozart — Sonata in B♭, K. 333
   detail: Practicing movements I–III and learning orchestral voicing after Miku Symphony.
   updated: 2026-10-12
+- id: cappuccino
+  section: practice
+  kind: Apple companion
+  value: Cappuccino
+  detail: Native Apple companion for Herdr/Pi agents, wiring Iroh P2P relays, topbar redesign, and local action approvals.
+  url: https://github.com/azusachino/cappuccino
+  updated: 2026-10-31
+- id: drifter
+  section: practice
+  kind: Reading companion
+  value: Drifter v0.1.0
+  detail: Headless companion bridging WeRead & Kindle Unlimited to Hardcover with assisted book matching.
+  url: https://github.com/azusachino/drifter
+  updated: 2026-10-31
 - id: llm
   section: practice
   kind: Learning
   value: LLMs from scratch (calc)
   detail: Writing manual causal attention and sliding-window token datasets by hand.
   url: https://github.com/azusachino/calc
-  updated: 2026-10-12
+  updated: 2026-10-31
 - id: agents
   section: practice
   kind: Practice
   value: Agent harnesses (nahida & asobi)
   detail: Human-in-the-loop boundaries, shared recall, and local Markdown ownership.
-  updated: 2026-10-12
+  updated: 2026-10-31
 - id: intimate-relationships
   section: read-watch
   kind: Book
