@@ -21,11 +21,11 @@ colors:
   dark-accent: "#ff4fa3"
 typography:
   body:
-    fontFamily: '"Noto Sans SC", "Noto Sans JP", "PingFang SC", "Hiragino Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
-    fontSize: "16px"
-    lineHeight: 1.75
+    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", "Segoe UI", Roboto, "Helvetica Neue", "PingFang SC", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans SC", "Noto Sans JP", "Microsoft YaHei", sans-serif'
+    fontSize: "17px"
+    lineHeight: 1.8
   mono:
-    fontFamily: '"JetBrains Mono", "SF Mono", Menlo, Consolas, monospace'
+    fontFamily: '"JetBrains Mono", "SF Mono", Menlo, Monaco, Consolas, monospace'
   measure: "70ch"
 rounded:
   sm: "4px"
