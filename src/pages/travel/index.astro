@@ -377,11 +377,10 @@ const TRIP_METADATA: Record<
   /* Expedition Card */
   .expedition-card {
     background: var(--surface);
-    border: 1px solid var(--line);
+    border: 1px solid color-mix(in srgb, var(--glow) 35%, var(--line));
     border-radius: var(--radius);
     overflow: hidden;
     position: relative;
-    border-left: 4px solid var(--glow);
     transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   }
 

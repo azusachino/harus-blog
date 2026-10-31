@@ -163,18 +163,21 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
   .prevnext a {
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
-    padding: 1rem 1.2rem;
+    gap: 0.35rem;
+    padding: 1.1rem 1.3rem;
     border: 1px solid var(--line);
     border-radius: var(--radius);
     background: var(--surface);
     color: var(--ink);
     text-decoration: none;
     text-wrap: balance;
+    transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
   }
 
   .prevnext a:hover {
     border-color: var(--glow);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--glow) 12%, transparent);
   }
 
   .prevnext .next {
