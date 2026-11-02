@@ -106,7 +106,7 @@ components:
 
 - Reference CSS variables from `src/styles/global.css` for all component colors.
 - Ensure all animations include a `prefers-reduced-motion` alternative.
-- Keep all post URLs stable and compliant with `scripts/url-parity.ts`.
+- Keep all post URLs stable.
 
 ### Don't
 

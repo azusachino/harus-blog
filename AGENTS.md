@@ -9,8 +9,7 @@ split into type-based sections — **no year-wise layout**. The site code is at 
 - `mise` pins bun and rumdl; **`make` is the task runner**; bun runs everything (no Python).
 - `make local` (dev server :4321) · `make build` (`dist/`) · `make fmt` · `make check` (the gate).
 - `make check` = prettier + rumdl, then `bun run verify`: palette contrast (`scripts/contrast.ts`),
-  frontmatter contract (`scripts/frontmatter.ts`), `astro build`, URL parity with the old MkDocs
-  site (`scripts/url-parity.ts` + `scripts/mkdocs-urls.txt`). CI and the cluster builder run the same.
+  frontmatter contract (`scripts/frontmatter.ts`), and `astro build`. CI and the cluster builder run the same.
 - On this network installs need `BUN_CONFIG_REGISTRY=https://registry.npmmirror.com/`; strip mirror
   URLs from `bun.lock` afterwards. New packages wait 7 days (bun cooldown).
 - The dev server runs as a background daemon: after changing `astro.config.ts`, a collection or a
@@ -49,7 +48,7 @@ split into type-based sections — **no year-wise layout**. The site code is at 
   committing a photo, resize to ≤2000px and strip EXIF/GPS (phone photos carry home coordinates).
 - Giscus comments map threads by page title (`<title> - Idealistic Daydreamer`): never change a
   published post's title or the title format.
-- URLs of published pages never change; `scripts/url-parity.ts` fails the build if one disappears.
+- URLs of published pages never change.
 
 ## Adding UI (pages, components, palettes)
 
