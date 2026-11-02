@@ -15,7 +15,7 @@ Proof of Work rests on one asymmetry: the proof is expensive to produce and chea
 
 ## TL;DR
 
-Before agents, a long merge request was weak evidence that someone had thought hard. Now it costs a prompt to write and an afternoon to review, so the effort of verification lands on whoever approves it. In a team with one tech lead approving features and breaking changes for about ten people, that person became the place where the whole team's unchecked work piled up. I answer it with a work loop around the agent loop: background, goal and non-goals, plan, dispatch, tests, a dev-environment run, evidence collected against the plan, and a merge request that carries all of it, with a TL;DR on top for readers with less time. Real effort is the verification you absorb before handing work to someone else, and you can see it by checking which stages of that loop left an artifact.
+Before agents, a long merge request was weak evidence that someone had thought hard. Now it costs a prompt to write and an afternoon to review, so the effort of verification lands on whoever approves it. In a team with one tech lead approving features and breaking changes for about ten people, that person became the place where the whole team's unchecked work piled up. I answer it with a work loop around the agent loop: background, goal and non-goals, plan, dispatch, tests, a dev-environment run, evidence collected against the plan, and a merge request that carries all of it, with a TL;DR on top for readers with less time. Real effort is the verification you absorb before handing work to someone else, and you can see it by checking which stages of that loop left an artifact. The post ends with practical advice for authors, reviewers and anyone evaluating effort.
 
 <!-- more -->
 
@@ -98,5 +98,51 @@ Typing is free now, so counting what someone produced tells me almost nothing. A
 Much of that is visible without surveillance. A change that went through the work loop has a non-goals section, a test that fails without the fix, a dev-environment run and an evidence index. A change that skipped the loop is missing those stages, and you can see the gaps in the merge request itself. Other signals take longer to see: how often someone's changes bounce, how long the reviewer spends on them, whether defects escape later, whether the author can explain the change in five minutes without reopening the agent, and how useful their reviews of other people's work are.
 
 None of this should become a scoreboard. It is material for an honest conversation about who is carrying the verification, and it gives credit to the person whose work no longer shows up as code: the reviewer, who now does the most important work on the team and has the least visible output.
+
+## Practical advice
+
+Proof of effort only works if it stays cheap to check, the way a Hashcash stamp is. Everything below is aimed at that: the author pays the cost, and the reviewer verifies in minutes.
+
+### Before you ask for review
+
+1. Write the goal and non-goals in a document anyone can open, with a TL;DR a busy reader can stop after.
+2. Map every acceptance criterion to its evidence, and mark the rows where you are least sure.
+3. Show each new test failing without the fix, then passing with it.
+4. Say what you did not verify. An honest gap is worth more than a claimed full coverage nobody can check.
+5. Note what the agent did and what you did, so the reviewer knows where to look hard.
+6. Make sure you can explain the change in five minutes without reopening the session.
+
+This fits in a merge request template short enough that people actually fill it in:
+
+```markdown
+## TL;DR
+
+## Goal / non-goals
+
+## Evidence
+
+| Criterion | Evidence | Risk |
+| --------- | -------- | ---- |
+
+## Not verified
+
+## Agent vs. me
+```
+
+### When you review
+
+1. No evidence, no review. Send it back with a link to the template instead of reading the diff. A fast, cheap rejection puts the cost back on the author.
+2. For features and breaking changes, approve the one-page plan before any code exists.
+3. Read the evidence index, check the high-risk rows yourself, and spot-check one low-risk row so the index stays honest.
+4. Ask one "why this and not X?" question. The answer tells you whether the author or the agent made the decision.
+5. Turn every bounce reason into a line in the template, so the same mistake does not reach you twice.
+
+### When you evaluate people
+
+1. Look at which stages of the loop left artifacts, not at how many MRs someone opened.
+2. Track bounce rate and escaped defects over months, not per change. One bad week says little.
+3. Put a peer reviewer before the tech lead. It spreads the verification load, and it shows who understands the code, because nobody can review well by pressing "continue".
+4. Count reviews and approvals as real work in performance conversations. If verification earns no credit, nobody will want to do it.
+5. Use all of this to start a conversation, never as a score. The moment it becomes a KPI, people will fill in evidence tables with nothing behind them.
 
 Agents took the typing away. The checking is still there, and someone does it in every change that ships. I would rather it be me, in my own loop, before I ask anyone to approve my work.
