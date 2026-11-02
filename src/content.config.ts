@@ -83,6 +83,7 @@ const series = defineCollection({
   }),
   schema: z.object({
     title: z.string(),
+    date: z.coerce.date().optional(),
     description: z.string().optional(),
     cover: z.string().optional(),
     cover_alt: z.string().optional(),
@@ -143,6 +144,7 @@ const pages = defineCollection({
   loader: glob({ base: 'docs', pattern: ['cv.md'] }),
   schema: z.object({
     title: z.string(),
+    date: z.coerce.date().optional(),
     description: z.string().optional(),
     cover: z.string().optional(),
     cover_alt: z.string().optional(),
