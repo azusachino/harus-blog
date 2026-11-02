@@ -73,8 +73,7 @@ const magicalMirai = defineCollection({
   }),
 });
 
-// Ordered tutorials: tech/series/<name>/NN.<slug>.md with English filenames.
-// Historical MkDocs Chinese URLs are redirected via astro.config.ts.
+// Ordered tutorials: tech/series/<name>/NN.<slug>.md.
 const series = defineCollection({
   loader: glob({
     base: 'docs/tech/series',
