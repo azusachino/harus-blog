@@ -73,8 +73,8 @@ const magicalMirai = defineCollection({
   }),
 });
 
-// Ordered tutorials: tech/series/<name>/NN.<title>.md. The id keeps the raw
-// path (Chinese filenames included) so URLs match the MkDocs site exactly.
+// Ordered tutorials: tech/series/<name>/NN.<slug>.md with English filenames.
+// Historical MkDocs Chinese URLs are redirected via astro.config.ts.
 const series = defineCollection({
   loader: glob({
     base: 'docs/tech/series',
