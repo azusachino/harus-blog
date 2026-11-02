@@ -1,9 +1,9 @@
 ---
 title: Proof of effort when agents do the typing
-date: 2026-11-08
+date: 2026-11-03
 description: Agents made producing work cheap and left verifying it expensive. How the effort moved to our reviewer, and the work loop I use to carry my share of it.
 categories:
-  - practice
+  - discussion
 tags:
   - agents
   - review
