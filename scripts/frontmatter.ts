@@ -10,7 +10,7 @@ const CONTENT_DIRS = ['tech/posts', 'tech/series', 'journal', 'life'];
 const REQUIRED = ['title', 'date', 'description', 'categories', 'slug', 'comments'];
 // Optional keys still have a fixed place: after comments.
 const ORDER = [...REQUIRED, 'cover', 'cover_alt'];
-const SERIES_REQUIRED = ['title', 'description'];
+const SERIES_REQUIRED = ['title', 'date', 'description'];
 const EXEMPT = new Set(['index.md', 'about.md', 'cv.md']);
 
 function check(rel: string): string[] {

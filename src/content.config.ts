@@ -82,7 +82,7 @@ const series = defineCollection({
   }),
   schema: z.object({
     title: z.string(),
-    date: z.coerce.date().optional(),
+    date: z.coerce.date(),
     description: z.string().optional(),
     cover: z.string().optional(),
     cover_alt: z.string().optional(),
