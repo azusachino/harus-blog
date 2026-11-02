@@ -52,6 +52,15 @@ export function textLang(body: string) {
   return 'en';
 }
 
+// Pinned order for tutorial series albums, latest series first (descending).
+export const PINNED_SERIES: string[] = [
+  'llm-from-scratch',
+  'network',
+  'more-effective-cpp',
+  'k8s',
+  'effective-cpp',
+];
+
 // Series ("albums"): chapters grouped by directory, in filename order.
 export async function seriesAlbums() {
   const chapters = (await getCollection("series")).sort((a: { id: string }, b: { id: string }) => a.id.localeCompare(b.id));
@@ -60,16 +69,22 @@ export async function seriesAlbums() {
     const dir = c.id.split('/')[0];
     albums.set(dir, [...(albums.get(dir) ?? []), c]);
   }
-  return [...albums].map(([dir, list]) => {
-    const totalSeconds = list.reduce((sum: number, c: { body?: string }) => sum + trackSeconds(c.body), 0);
-    return {
-      dir,
-      // "K8S学习笔记 01 - 初见" -> "K8S学习笔记"
-      name: list[0].data.title.replace(/\s*\d+\s*-.*$/, ''),
-      totalLength: formatSeconds(totalSeconds),
-      chapters: list,
-    };
-  });
+  const order = (dir: string) => {
+    const idx = PINNED_SERIES.indexOf(dir);
+    return idx === -1 ? 999 : idx;
+  };
+  return [...albums]
+    .sort(([a], [b]) => order(a) - order(b))
+    .map(([dir, list]) => {
+      const totalSeconds = list.reduce((sum: number, c: { body?: string }) => sum + trackSeconds(c.body), 0);
+      return {
+        dir,
+        // "K8S学习笔记 01 - 初见" -> "K8S学习笔记"
+        name: list[0].data.title.replace(/\s*\d+\s*-.*$/, ''),
+        totalLength: formatSeconds(totalSeconds),
+        chapters: list,
+      };
+    });
 }
 
 export function seriesHref(id: string) {

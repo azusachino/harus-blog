@@ -73,8 +73,7 @@ const magicalMirai = defineCollection({
   }),
 });
 
-// Ordered tutorials: tech/series/<name>/NN.<title>.md. The id keeps the raw
-// path (Chinese filenames included) so URLs match the MkDocs site exactly.
+// Ordered tutorials: tech/series/<name>/NN.<slug>.md.
 const series = defineCollection({
   loader: glob({
     base: 'docs/tech/series',
@@ -83,6 +82,7 @@ const series = defineCollection({
   }),
   schema: z.object({
     title: z.string(),
+    date: z.coerce.date(),
     description: z.string().optional(),
     cover: z.string().optional(),
     cover_alt: z.string().optional(),
@@ -143,6 +143,7 @@ const pages = defineCollection({
   loader: glob({ base: 'docs', pattern: ['cv.md'] }),
   schema: z.object({
     title: z.string(),
+    date: z.coerce.date().optional(),
     description: z.string().optional(),
     cover: z.string().optional(),
     cover_alt: z.string().optional(),
