@@ -52,11 +52,13 @@ POE cannot guarantee PoW's cost asymmetry. A good engineer might produce strong 
 
 More of the developer's work becomes defining acceptance and checking results, work we often associate with QA. Design and implementation remain part of the job, along with understanding how the result behaves. An agent producing the code leaves the developer responsible for establishing whether it solves the problem.
 
-That complexity has to be taken on somewhere. If the author leaves it unresolved, it reaches the tech lead as unanswered design questions, the reviewer as an investigation, or the stakeholders as uncertainty about whether the feature meets their needs. The author's job is to work through it and make the remaining decisions clear.
+That complexity has to be taken on somewhere. If the author leaves it unresolved, it reaches the tech lead as unanswered design questions, the reviewer as an investigation, or the stakeholders as uncertainty about whether the feature meets their needs. The author's job is to resolve what they reasonably can and make the remaining decisions clear, including who needs to make them. The tech lead still owns the technical decisions that require their approval; stakeholders still need to settle unclear product expectations.
 
 Each reader needs a different view of the same result. The tech lead needs the design tradeoffs, compatibility risks and rollout plan. The reviewer needs a comprehensible diff and checks tied to its claims. Stakeholders need to see the agreed behaviour demonstrated against their acceptance criteria, with the limitations stated. Test logs alone will not answer all of those questions.
 
 A good merge request lets each person find what they need to approve, inspect the supporting evidence and challenge the unresolved parts. Approval becomes easier because the author has already done the investigation and exposed the remaining uncertainty. A risky change can still deserve a long review or a rejection.
+
+The acceptance claims need scrutiny too. An expired-token check might correctly return `401` while nobody has agreed what should happen when a token is revoked or the identity provider is unavailable. The developer should raise those gaps with the relevant owners before treating passing tests as sufficient. Evidence can establish a narrow contract faithfully and still miss what users need.
 
 ## Where the effort went
 
@@ -112,7 +114,9 @@ These rows illustrate the shape; they are not results from an actual change:
 
 Calling CLI changes a non-goal, or observing that no CLI module changed, would not establish the last claim. Shared configuration or dependencies can still affect flag parsing.
 
-The reviewer reads the table, checks the high-risk rows himself and samples the rest. His time goes where judgement is needed.
+Risk labels need a reason. The author should explain the potential impact, affected users and assumptions behind the label. A rollback that succeeds on a small dev dataset leaves production volume, locks and concurrent writes unresolved; those may determine whether the release is safe.
+
+The reviewer can sample routine checks where that judgement is justified. Critical assumptions need direct scrutiny regardless of the row's label. The evidence index helps locate that work; it cannot decide which risks are acceptable.
 
 Tests need their own proof. An agent that writes both the implementation and its tests can produce tests that pass because they mirror the code. The author needs to decide what to test, especially the regression cases. For a bug fix, show the relevant test failing on the base revision for the expected reason and passing on the proposed revision. That establishes that the check detects the reproduced bug; the reviewer still needs to assess its assertions and coverage. Other changes may need different evidence.
 
@@ -151,16 +155,18 @@ I would start with a short merge request template:
 
 ## Evidence
 
-| Acceptance claim | Reproducible check and result | Risk / limitation |
-| ---------------- | ----------------------------- | ----------------- |
+| Acceptance claim | Reproducible check and result | Risk, basis and limitation |
+| ---------------- | ----------------------------- | -------------------------- |
 
 ## Not verified
 
 ## Author decisions and checks / agent assistance
 ```
 
-If I were the one approving, I would allow myself to be rude in one specific way. A change with no evidence goes back with a link to the template, unread. That rejection can be quick, although checking submitted evidence will still take judgement. For features and breaking changes I would ask to see the one-page plan before any code exists, then at the end read the evidence table, check the risky rows myself, and spot-check one row marked safe, so that marking a row safe never becomes a shortcut. Asking "why this and not X?" can expose assumptions worth examining. A polished answer still needs to hold up against the code and the requirements.
+For routine work, once the team shares the expectations, I would return a change that makes unsupported claims and ask for the missing checks before a full review. A new colleague may need help choosing those checks. Exploratory work may produce a reproduction or an unanswered question as its result. During an incident, the team may need to act with limited evidence; the handoff should record what was checked, who accepted the remaining risk and who will follow up.
 
-For judging people, I would put a peer reviewer in front of the tech lead. It spreads the load and gives people practice evaluating changes. Peer reviews need the same scrutiny: an agent can generate a convincing review too. I would look at bounce rates and escaped defects over months, not per change, since anyone can have a bad week. And I would want reviews and approvals to count in performance conversations as real work. If verification earns no credit, the people who do it will eventually stop, and the queue will only grow.
+For features and breaking changes I would ask to see the one-page plan before implementation, then review the evidence and the basis for its risk labels. Sampling a routine row can catch careless claims, while critical assumptions deserve direct inspection. Asking "why this and not X?" can expose assumptions worth examining. A polished answer still needs to hold up against the code and the requirements.
+
+For judging people, I would put a peer reviewer in front of the tech lead. It spreads the load and gives people practice evaluating changes. Peer reviews need the same scrutiny: an agent can generate a convincing review too. I would use bounce rates and escaped defects to look for recurring process problems, with the difficulty of the assignments and the review conditions alongside them. A person handling risky migrations will face different outcomes from someone making routine changes; even a long observation period does not make those counts a fair ranking. And I would want reviews and approvals to count in performance conversations as real work. If verification earns no credit, the people who do it will eventually stop, and the queue will only grow.
 
 Agents took the typing away. The checking is still there, and someone does it in every change that ships. I would rather it be me, in my own loop, before I ask anyone to approve my work.
