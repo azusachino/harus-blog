@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2023-31
 comments: true
-cover: "/assets/images/2023/08/StartPointLight.jpg"
+cover: "/assets/images/2023/08/StartPointLight.webp"
 cover_alt: "Cover photo: Start Point Light"
 ---
 

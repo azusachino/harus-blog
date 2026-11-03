@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2022-21
 comments: true
-cover: "/assets/images/2022/05/PawneeOwls.jpg"
+cover: "/assets/images/2022/05/PawneeOwls.webp"
 cover_alt: "Cover photo: Pawnee Owls"
 ---
 
@@ -26,7 +26,7 @@ cover_alt: "Cover photo: Pawnee Owls"
 
 ### CSAPP: Linking
 
-![.](/assets/images/2022/05/compile.png)
+![.](/assets/images/2022/05/compile.webp)
 
 ## life
 

@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2024-03
 comments: true
-cover: "/assets/images/2024/01/LakeLouise.png"
+cover: "/assets/images/2024/01/LakeLouise.webp"
 cover_alt: "Cover photo: Lake Louise"
 ---
 
@@ -47,7 +47,7 @@ And as a AWS professional, we also have to remember the approximate price of AWS
   - in the next stage, I will focus on example exam, and those concepts I can't recall when I first see
 - the blue archive 3rd year event
   - kinda sad, I'm not familiar with events, got the shopping-ticket too late, didn't make it to buy `shiroko`'s scarf
-  - ![.](/assets/images/2024/01/20240120-mika.png)
+  - ![.](/assets/images/2024/01/20240120-mika.webp)
 
 ## Sharing
 

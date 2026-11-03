@@ -6,7 +6,7 @@ categories:
   - review
 slug: review-2021
 comments: true
-cover: "/assets/images/2021/12/SalzburgKrampus.jpg"
+cover: "/assets/images/2021/12/SalzburgKrampus.webp"
 cover_alt: "Cover photo: Salzburg Krampus"
 ---
 
@@ -41,13 +41,13 @@ cover_alt: "Cover photo: Salzburg Krampus"
 
 虽然看着很勤快，但都是记录性质的 Commit，希望 22 年能在开源社区多活跃一点。
 
-![GitHub logo](/assets/images/2021/12/github.png)
+![GitHub logo](/assets/images/2021/12/github.webp)
 
 ### Leetcode
 
 其实今年没有好好学习算法，每日一题大多都是抄答案，还需要精进。
 
-![LeetCode logo](/assets/images/2021/12/lc.png)
+![LeetCode logo](/assets/images/2021/12/lc.webp)
 
 ## 关于读书
 

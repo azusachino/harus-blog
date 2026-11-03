@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2024-42
 comments: true
-cover: "/assets/images/2024/jp-sg-exam.png"
+cover: "/assets/images/2024/jp-sg-exam.webp"
 cover_alt: "Cover photo: jp sg exam"
 ---
 

@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2022-31
 comments: true
-cover: "/assets/images/2022/07/FoxgloveHawkmoth.jpg"
+cover: "/assets/images/2022/07/FoxgloveHawkmoth.webp"
 cover_alt: "Cover photo: Foxglove Hawkmoth"
 ---
 

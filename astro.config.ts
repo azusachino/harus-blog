@@ -2,6 +2,21 @@
 import { defineConfig } from 'astro/config';
 import { satteri } from '@astrojs/markdown-satteri';
 import { math } from './src/lib/math';
+import { archify } from './src/lib/archify';
+
+const nativeImport = new Function('specifier', 'return import(specifier)') as (specifier: string) => Promise<any>;
+
+function archifyIntegration() {
+  return {
+    name: 'archify',
+    hooks: {
+      'astro:config:setup': async () => {
+        const { renderArchify } = await nativeImport(new URL('./scripts/archify.ts', import.meta.url).href);
+        await renderArchify();
+      },
+    },
+  };
+}
 
 export default defineConfig({
   site: 'https://azusachino.com',
@@ -10,6 +25,7 @@ export default defineConfig({
   // so a typo still lands on the 404 page instead of the framework's error page.
   trailingSlash: 'ignore',
   devToolbar: { enabled: false },
+  integrations: [archifyIntegration()],
   // Mermaid's chunks (~650 KB) load only on pages with a diagram, so Vite's
   // 500 KB warning is expected; keep the build log quiet for real warnings.
   vite: {
@@ -18,7 +34,7 @@ export default defineConfig({
     preview: { allowedHosts: ['harus-mini', 'harus-mini.talpidae-beta.ts.net', 'harus-macmini', 'harus-macmini.talpidae-beta.ts.net'] },
   },
   markdown: {
-    processor: satteri({ mdastPlugins: [math], features: { math: true } }),
+    processor: satteri({ mdastPlugins: [math, archify], features: { math: true } }),
     shikiConfig: {
       themes: { light: 'github-light', dark: 'github-dark' },
     },

@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2023-32
 comments: true
-cover: "/assets/images/2023/08/KeyWestBridge.jpg"
+cover: "/assets/images/2023/08/KeyWestBridge.webp"
 cover_alt: "Cover photo: Key West Bridge"
 ---
 
@@ -30,7 +30,7 @@ cover_alt: "Cover photo: Key West Bridge"
 
 顺便展示一下，近十年的打机记录。
 
-![games](/assets/images/2023/08/photo_2023-08-21_11-37-34.jpg)
+![games](/assets/images/2023/08/photo_2023-08-21_11-37-34.webp)
 
 ## Thought
 

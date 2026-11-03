@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2022-14
 comments: true
-cover: "/assets/images/2022/04/SquirrelNesting.jpg"
+cover: "/assets/images/2022/04/SquirrelNesting.webp"
 cover_alt: "Cover photo: Squirrel Nesting"
 ---
 
@@ -14,7 +14,7 @@ cover_alt: "Cover photo: Squirrel Nesting"
 
 本周的心情，大概就是下图这样。
 
-![the-same-future](/assets/images/2022/04/no-future.jpg)
+![the-same-future](/assets/images/2022/04/no-future.webp)
 
 就连这张梗图，也是被别人吃碎嚼烂后的产物，真是讽刺。
 

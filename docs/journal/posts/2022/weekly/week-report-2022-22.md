@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2022-22
 comments: true
-cover: "/assets/images/2022/05/ApisMellifera.jpg"
+cover: "/assets/images/2022/05/ApisMellifera.webp"
 cover_alt: "Cover photo: Apis Mellifera"
 ---
 

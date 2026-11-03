@@ -14,8 +14,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Checkout Archify
+        uses: actions/checkout@v4
+        with:
+          repository: azusachino/archify
+          path: .archify
+
       - name: Set up tools with mise
         uses: jdx/mise-action@v5
 
       - name: Format check, contrast, frontmatter, build and URL parity
         run: make check
+        env:
+          ARCHIFY_RENDER: ${{ github.workspace }}/.archify/archify/lib/render.mjs

@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2023-24
 comments: true
-cover: "/assets/images/2023/06/SurfSanDiego.jpg"
+cover: "/assets/images/2023/06/SurfSanDiego.webp"
 cover_alt: "Cover photo: Surf San Diego"
 ---
 

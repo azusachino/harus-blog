@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2024-04
 comments: true
-cover: "/assets/images/2024/01/PlitviceWinter.png"
+cover: "/assets/images/2024/01/PlitviceWinter.webp"
 cover_alt: "Cover photo: Plitvice Winter"
 ---
 
@@ -18,7 +18,7 @@ cover_alt: "Cover photo: Plitvice Winter"
 
 First and best live ever.
 
-![.](/assets/images/2024/01/yoasobi-zepp-haneda.png)
+![.](/assets/images/2024/01/yoasobi-zepp-haneda.webp)
 
 ## Learning
 

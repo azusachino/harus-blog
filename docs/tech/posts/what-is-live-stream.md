@@ -9,7 +9,7 @@ tags:
   - livestream
 slug: what-is-live-stream
 comments: true
-cover: "/assets/images/2022/02/MaldivesHeart.jpg"
+cover: "/assets/images/2022/02/MaldivesHeart.webp"
 cover_alt: "Cover photo: Maldives Heart"
 ---
 
@@ -33,13 +33,13 @@ Live Streaming is streaming media simultaneously recorded and broadcast in real-
 
 云直播（Cloud Streaming Services）为您提供极速、稳定、专业的直播云端处理服务，根据业务中不同直播场景的需求，云直播提供标准直播、快直播、慢直播和云导播台服务，分别针对大规模实时观看、高并发推流录制及超低延时的直播场景，配合移动直播 SDK，为您提供一站式的音视频直播解决方案。
 
-![.](/assets/images/2022/02/tx-live-arch.png)
+![.](/assets/images/2022/02/tx-live-arch.webp)
 
 ### 阿里云的直播架构
 
 视频直播服务（ApsaraVideo Live）是基于领先的内容接入与分发网络和大规模分布式实时转码技术打造的音视频直播平台，提供便捷接入、高清流畅、低延迟、高并发的音视频直播服务。
 
-![.](/assets/images/2022/02/ali-live-arch.png)
+![.](/assets/images/2022/02/ali-live-arch.webp)
 
 ## 我们可以从中学到什么
 

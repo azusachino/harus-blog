@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2022-38
 comments: true
-cover: "/assets/images/2022/09/PyreneesPark.jpg"
+cover: "/assets/images/2022/09/PyreneesPark.webp"
 cover_alt: "Cover photo: Pyrenees Park"
 ---
 
@@ -67,9 +67,9 @@ cover_alt: "Cover photo: Pyrenees Park"
 
 来欣赏宇宙之美。
 
-![Majestic Sombrero Galaxy](/assets/images/2022/09/majestic-sombrero-galaxy.png)
+![Majestic Sombrero Galaxy](/assets/images/2022/09/majestic-sombrero-galaxy.webp)
 
-![SMC and the Magellanic Bridge](/assets/images/2022/09/SMC-and-the-Magellanic-Bridge.png)
+![SMC and the Magellanic Bridge](/assets/images/2022/09/SMC-and-the-Magellanic-Bridge.webp)
 
 ## A question for you
 

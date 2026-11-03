@@ -8,7 +8,7 @@ tags:
   - db
 slug: rocksdb-knowledge-sharing
 comments: true
-cover: "/assets/images/2025/DunluceIreland.png"
+cover: "/assets/images/2025/DunluceIreland.webp"
 cover_alt: "Cover photo: Dunluce Ireland"
 ---
 
@@ -98,7 +98,7 @@ The fundamental components of RocksDB are the MemTable, SSTable, and Write-Ahead
 2. WAL
 3. compaction
 
-![overview](/assets/images/2025/topics/rocksdb-overview.png)
+![overview](/assets/images/2025/topics/rocksdb-overview.webp)
 
 ## signature work flow
 

@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "End-to-End Internet Packet Journey & Access Network Flow",
+    "quality_profile": "standard",
+    "output": "internet-access-journey.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "client",
+      "type": "frontend",
+      "label": "Client Host",
+      "sublabel": "Browser / TCP Stack"
+    },
+    {
+      "id": "router",
+      "type": "security",
+      "label": "Home Gateway",
+      "sublabel": "NAPT / PPPoE Client"
+    },
+    {
+      "id": "pon",
+      "type": "backend",
+      "label": "FTTH PON Access",
+      "sublabel": "ONU + Splitter + OLT"
+    },
+    {
+      "id": "bas",
+      "type": "cloud",
+      "label": "ISP BAS / RADIUS",
+      "sublabel": "Broadband Access Server"
+    },
+    {
+      "id": "backbone",
+      "type": "cloud",
+      "label": "Core Backbone & IX",
+      "sublabel": "DWDM / MPLS / BGP"
+    },
+    {
+      "id": "server",
+      "type": "external",
+      "label": "Target Server",
+      "sublabel": "Nginx / Web Service"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 245,
+      "label": "1. LAN Framing & NAPT Translation"
+    },
+    {
+      "from": 255,
+      "to": 360,
+      "label": "2. FTTH Optical Network & PPPoE Termination"
+    },
+    {
+      "from": 370,
+      "to": 450,
+      "label": "3. Backbone Routing (MPLS / IX / Peering)"
+    },
+    {
+      "from": 460,
+      "to": 555,
+      "label": "4. Server Response Return & NAPT Inbound Restore"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "client",
+      "to": "router",
+      "y": 175,
+      "label": "1. Ethernet Frame (TCP SYN, Dest IP: 93.184.215.14, Src: 192.168.1.100)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "router",
+      "to": "pon",
+      "y": 210,
+      "label": "2. NAPT Translation (Src: 203.0.113.15:60001, MSS clamped to 1452)",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "pon",
+      "to": "bas",
+      "y": 275,
+      "label": "3. Optical Uplink (ONU 1310nm -> Optical Splitter -> OLT Central Office)",
+      "variant": "default"
+    },
+    {
+      "id": "m4",
+      "from": "bas",
+      "to": "backbone",
+      "y": 320,
+      "label": "4. Terminate PPPoE (Strip PPP header, RADIUS verify, inject to IP Backbone)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m5",
+      "from": "backbone",
+      "to": "server",
+      "y": 385,
+      "label": "5. DWDM Optical / MPLS Label Forwarding -> Internet Exchange (IX) -> Server AS",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m6",
+      "from": "server",
+      "to": "backbone",
+      "y": 420,
+      "label": "6. Server TCP Stack Process -> Send SYN+ACK / HTTP 200 OK",
+      "variant": "return"
+    },
+    {
+      "id": "m7",
+      "from": "backbone",
+      "to": "bas",
+      "y": 475,
+      "label": "7. Backbone BGP Routing to User's ISP BAS IP",
+      "variant": "return"
+    },
+    {
+      "id": "m8",
+      "from": "bas",
+      "to": "pon",
+      "y": 505,
+      "label": "8. PPPoE Encapsulation -> PON Downstream 1490nm Broadcast to ONU",
+      "variant": "default"
+    },
+    {
+      "id": "m9",
+      "from": "router",
+      "to": "client",
+      "y": 535,
+      "label": "9. Inbound NAPT Reverse Lookup -> Deliver to Client Socket (192.168.1.100:51234)",
+      "variant": "emphasis"
+    }
+  ]
+}

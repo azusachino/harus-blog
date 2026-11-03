@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2024-48
 comments: true
-cover: "/assets/images/2024/mikus.jpeg"
+cover: "/assets/images/2024/mikus.webp"
 cover_alt: "Hatsune Miku illustration"
 ---
 
@@ -16,7 +16,7 @@ cover_alt: "Hatsune Miku illustration"
 
 ### Sapporo
 
-![.](/assets/images/2024/miku-1.jpeg)
+![.](/assets/images/2024/miku-1.webp)
 
 ## Learning
 
@@ -29,13 +29,13 @@ None, But finished FE exam
 - 在小樽的时候, 沿着港口一直走, 在大雪中穿行, 温度其实也蛮适宜的, 算是一次偏离日常的体验吧
 - 在新千岁机场, 偶然才知道有个 snow miku skytown, 来自全国各地的不同粉丝的爱心, 我全都接收到啦
 
-![.](/assets/images/2024/miku-2.jpg)
-![.](/assets/images/2024/miku-3.jpg)
-![.](/assets/images/2024/miku-4.jpg)
-![.](/assets/images/2024/miku-5.jpg)
-![.](/assets/images/2024/miku-6.jpg)
-![.](/assets/images/2024/miku-7.jpg)
-![.](/assets/images/2024/miku-8.jpg)
+![.](/assets/images/2024/miku-2.webp)
+![.](/assets/images/2024/miku-3.webp)
+![.](/assets/images/2024/miku-4.webp)
+![.](/assets/images/2024/miku-5.webp)
+![.](/assets/images/2024/miku-6.webp)
+![.](/assets/images/2024/miku-7.webp)
+![.](/assets/images/2024/miku-8.webp)
 
 ## Collectibles
 

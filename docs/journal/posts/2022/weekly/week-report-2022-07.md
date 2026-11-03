@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2022-07
 comments: true
-cover: "/assets/images/2022/02/MexicoMonarchs.jpg"
+cover: "/assets/images/2022/02/MexicoMonarchs.webp"
 cover_alt: "Cover photo: Mexico Monarchs"
 ---
 
@@ -46,7 +46,7 @@ Also, Download GraalVM from the [GraalVM releases page](https://github.com/graal
 
 本周主要花时间在学习云直播的架构上了，无论是腾讯云还是阿里云，整体架构都基本一致，除了个别名词有所区别。这里展示一下阿里云直播的基础架构。
 
-![.](/assets/images/2022/02/ali-live-arch.png)
+![.](/assets/images/2022/02/ali-live-arch.webp)
 
 云直播的重点在于保证直播可靠性的同时，更加贴近真实场景。针对实时性比较强的场景可以采用 RTC 协议，普通直播场景使用 RTMP+FLV/HLS 协议，物联网场景主要依靠 CDN 的能力。
 

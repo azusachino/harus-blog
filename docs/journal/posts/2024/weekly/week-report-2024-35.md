@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2024-35
 comments: true
-cover: "/assets/images/2024/08/mm2024.png"
+cover: "/assets/images/2024/08/mm2024.webp"
 cover_alt: "Cover photo: mm2024"
 ---
 

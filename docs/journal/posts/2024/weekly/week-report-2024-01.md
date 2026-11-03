@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2024-01
 comments: true
-cover: "/assets/images/2024/01/BukhansanSeoul.png"
+cover: "/assets/images/2024/01/BukhansanSeoul.webp"
 cover_alt: "Cover photo: Bukhansan Seoul"
 ---
 

@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2024-15
 comments: true
-cover: "/assets/images/2024/04/SouthStackLight.png"
+cover: "/assets/images/2024/04/SouthStackLight.webp"
 cover_alt: "Cover photo: South Stack Light"
 ---
 

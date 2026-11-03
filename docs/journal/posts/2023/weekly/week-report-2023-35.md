@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2023-35
 comments: true
-cover: "/assets/images/2023/09/ManhattanAerial.jpg"
+cover: "/assets/images/2023/09/ManhattanAerial.webp"
 cover_alt: "Cover photo: Manhattan Aerial"
 ---
 
@@ -20,12 +20,12 @@ cover_alt: "Cover photo: Manhattan Aerial"
 
 ライブのティケットないのため、展覧会に行って見た。幕張メッセで、ミクいっぱいあります。
 
-![1](/assets/images/2023/09/photo_2023-09-04_11-20-58.jpg)
-![2](/assets/images/2023/09/photo_2023-09-04_11-21-07.jpg)
-![3](/assets/images/2023/09/photo_2023-09-04_11-21-12.jpg)
-![4](/assets/images/2023/09/photo_2023-09-04_11-21-19.jpg)
-![5](/assets/images/2023/09/photo_2023-09-04_11-21-30.jpg)
-![6](/assets/images/2023/09/photo_2023-09-04_11-21-25.jpg)
+![1](/assets/images/2023/09/photo_2023-09-04_11-20-58.webp)
+![2](/assets/images/2023/09/photo_2023-09-04_11-21-07.webp)
+![3](/assets/images/2023/09/photo_2023-09-04_11-21-12.webp)
+![4](/assets/images/2023/09/photo_2023-09-04_11-21-19.webp)
+![5](/assets/images/2023/09/photo_2023-09-04_11-21-30.webp)
+![6](/assets/images/2023/09/photo_2023-09-04_11-21-25.webp)
 
 ## Learning
 

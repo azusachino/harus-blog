@@ -6,7 +6,7 @@ categories:
   - refresh
 slug: month-refresh-2026-04
 comments: true
-cover: "/assets/images/2026/04-tottori.png"
+cover: "/assets/images/2026/04-tottori.webp"
 cover_alt: "Cover photo: 04 tottori"
 ---
 

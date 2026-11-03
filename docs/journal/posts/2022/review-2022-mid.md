@@ -6,7 +6,7 @@ categories:
   - review
 slug: review-2022-mid
 comments: true
-cover: "/assets/images/2022/07/Vulpes.jpg"
+cover: "/assets/images/2022/07/Vulpes.webp"
 cover_alt: "Cover photo: Vulpes"
 ---
 

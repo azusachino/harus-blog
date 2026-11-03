@@ -6,7 +6,7 @@ categories:
   - refresh
 slug: month-refresh-2026-10
 comments: true
-cover: "/assets/images/2026/10/shanghai-mercedes-benz-arena.jpg"
+cover: "/assets/images/2026/10/shanghai-mercedes-benz-arena.webp"
 cover_alt: "Shanghai's Mercedes-Benz Arena beneath a blue sky, with steps and a globe sculpture in the foreground"
 ---
 
@@ -54,7 +54,7 @@ The following week was mostly people and places: a walk around Longhu Park in Hu
 
 On October 25, I spent a long day around the Huangpu River. Shanghai gave me more to look at than I had expected. I also ran into the Snow Miku collaboration at DQ and tried it for the first time. That is a perfectly adequate reason to buy an ice cream.
 
-![A small Snow Miku plush with blue earmuffs and a red spoon, held in front of a larger Miku plush](/assets/images/2026/10/snow-miku-plush.jpg)
+![A small Snow Miku plush with blue earmuffs and a red spoon, held in front of a larger Miku plush](/assets/images/2026/10/snow-miku-plush.webp)
 
 There were game quests and seasonal events around the trip, including an unusually lucky Arknights banner. Running stayed sporadic: [Iroha](https://iroha.azusachino.com/) logged five runs totaling about 20km, well short of the three-runs-a-week habit I wanted. The trip brought some walking and cycling too.
 

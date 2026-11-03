@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2024-27
 comments: true
-cover: "/assets/images/2024/07/weekend-life.png"
+cover: "/assets/images/2024/07/weekend-life.webp"
 cover_alt: "Cover photo: weekend life"
 ---
 
@@ -26,7 +26,7 @@ And the setting of the map was tricky as well, I had to check a lot of videos to
 
 ### knowledge management
 
-![.](/assets/images/2024/07/knowledge-management.png)
+![.](/assets/images/2024/07/knowledge-management.webp)
 
 ## life
 

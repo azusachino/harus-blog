@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2023-09
 comments: true
-cover: "/assets/images/2023/03/PicoVolcano.jpg"
+cover: "/assets/images/2023/03/PicoVolcano.webp"
 cover_alt: "Cover photo: Pico Volcano"
 ---
 
@@ -36,7 +36,7 @@ cover_alt: "Cover photo: Pico Volcano"
 
 周末花了一天去打 MAIMAI，状态尚可，涨了 12 分，其中最满意的是这个
 
-![.](/assets/images/2023/03/photo_6064158853613859634_y.jpg)
+![.](/assets/images/2023/03/photo_6064158853613859634_y.webp)
 
 ## Thought
 

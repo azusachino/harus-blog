@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2022-32
 comments: true
-cover: "/assets/images/2022/08/FourTigresses.jpg"
+cover: "/assets/images/2022/08/FourTigresses.webp"
 cover_alt: "Cover photo: Four Tigresses"
 ---
 

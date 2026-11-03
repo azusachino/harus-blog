@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2023-06
 comments: true
-cover: "/assets/images/2023/02/DarkSkiesDV.jpg"
+cover: "/assets/images/2023/02/DarkSkiesDV.webp"
 cover_alt: "Cover photo: Dark Skies DV"
 ---
 

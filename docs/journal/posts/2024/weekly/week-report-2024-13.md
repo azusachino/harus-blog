@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2024-13
 comments: true
-cover: "/assets/images/2024/03/WhiteEyes.jpg"
+cover: "/assets/images/2024/03/WhiteEyes.webp"
 cover_alt: "Cover photo: White Eyes"
 ---
 
@@ -21,13 +21,13 @@ cover_alt: "Cover photo: White Eyes"
 
 People are serious dudes, and they truly have showed their love.
 
-![.](/assets/images/2024/03/chino.jpg)
-![.](/assets/images/2024/03/shinamiku.jpg)
-![.](/assets/images/2024/03/miku.jpg)
-![.](/assets/images/2024/03/lovelive.jpg)
-![.](/assets/images/2024/03/kon-mio.jpg)
-![.](/assets/images/2024/03/kon.jpg)
-![.](/assets/images/2024/03/kon-azusa.jpg)
+![.](/assets/images/2024/03/chino.webp)
+![.](/assets/images/2024/03/shinamiku.webp)
+![.](/assets/images/2024/03/miku.webp)
+![.](/assets/images/2024/03/lovelive.webp)
+![.](/assets/images/2024/03/kon-mio.webp)
+![.](/assets/images/2024/03/kon.webp)
+![.](/assets/images/2024/03/kon-azusa.webp)
 
 ## Learning
 

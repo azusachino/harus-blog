@@ -8,7 +8,7 @@ tags:
   - react
 slug: practice-react
 comments: true
-cover: "/assets/images/2021/05/BirnbeckPier.jpg"
+cover: "/assets/images/2021/05/BirnbeckPier.webp"
 cover_alt: "Cover photo: Birnbeck Pier"
 ---
 

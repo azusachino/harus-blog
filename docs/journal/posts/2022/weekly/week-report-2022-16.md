@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2022-16
 comments: true
-cover: "/assets/images/2022/04/NorthernCaracara.jpg"
+cover: "/assets/images/2022/04/NorthernCaracara.webp"
 cover_alt: "Cover photo: Northern Caracara"
 ---
 
@@ -24,7 +24,7 @@ cover_alt: "Cover photo: Northern Caracara"
 
 我又是在期待着什么样的展开呢？大概是这样:
 
-![.](/assets/images/2022/04/garfield.jpg)
+![.](/assets/images/2022/04/garfield.webp)
 
 ## Learning
 

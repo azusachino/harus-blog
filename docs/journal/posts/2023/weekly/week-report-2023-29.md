@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2023-29
 comments: true
-cover: "/assets/images/2023/07/HammockDay.jpg"
+cover: "/assets/images/2023/07/HammockDay.webp"
 cover_alt: "Cover photo: Hammock Day"
 ---
 

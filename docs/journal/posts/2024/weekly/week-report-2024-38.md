@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2024-38
 comments: true
-cover: "/assets/images/2024/09/enoshima.jpg"
+cover: "/assets/images/2024/09/enoshima.webp"
 cover_alt: "Cover photo: enoshima"
 ---
 
@@ -32,7 +32,7 @@ nah.
   - and inside the whole seafood-bowl, maguro (tuna) was the only one which suited my taste
   - the sea breeze was satisfying, but the wave was strong and kinda terrifying (if anyone got captured by it)
 
-![.](/assets/images/2024/09/the-wave.jpg)
+![.](/assets/images/2024/09/the-wave.webp)
 
 ## Collectibles
 

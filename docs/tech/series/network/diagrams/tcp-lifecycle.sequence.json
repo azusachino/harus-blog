@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "TCP Connection Lifecycle & State Machine",
+    "quality_profile": "standard",
+    "output": "tcp-lifecycle.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "client",
+      "type": "frontend",
+      "label": "Client Host",
+      "sublabel": "Active Closer"
+    },
+    {
+      "id": "server",
+      "type": "backend",
+      "label": "Server Host",
+      "sublabel": "LISTEN / Passive Closer"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 265,
+      "label": "1. Three-way Handshake (ESTABLISHED)"
+    },
+    {
+      "from": 275,
+      "to": 360,
+      "label": "2. Sliding Window Data Transfer (MSS=1460)"
+    },
+    {
+      "from": 370,
+      "to": 540,
+      "label": "3. Four-way Handshake & TIME_WAIT (2MSL)"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "client",
+      "to": "server",
+      "y": 175,
+      "label": "SYN (Seq=x, MSS=1460, Win=65535)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "server",
+      "to": "client",
+      "y": 210,
+      "label": "SYN + ACK (Seq=y, Ack=x+1, Win=65535)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m3",
+      "from": "client",
+      "to": "server",
+      "y": 245,
+      "label": "ACK (Seq=x+1, Ack=y+1) -> ESTABLISHED",
+      "variant": "default"
+    },
+    {
+      "id": "m4",
+      "from": "client",
+      "to": "server",
+      "y": 290,
+      "label": "HTTP Request Data (Seq=x+1, Len=512)",
+      "variant": "default"
+    },
+    {
+      "id": "m5",
+      "from": "server",
+      "to": "client",
+      "y": 325,
+      "label": "ACK (Ack=x+513) + HTTP Response Data (Seq=y+1, Len=1460)",
+      "variant": "return"
+    },
+    {
+      "id": "m6",
+      "from": "client",
+      "to": "server",
+      "y": 385,
+      "label": "1. FIN (Seq=u, Ack=v) -> FIN_WAIT_1",
+      "variant": "security"
+    },
+    {
+      "id": "m7",
+      "from": "server",
+      "to": "client",
+      "y": 420,
+      "label": "2. ACK (Ack=u+1) -> Client enters FIN_WAIT_2 / Server CLOSE_WAIT",
+      "variant": "default"
+    },
+    {
+      "id": "m8",
+      "from": "server",
+      "to": "client",
+      "y": 460,
+      "label": "3. FIN (Seq=w, Ack=u+1) -> Server enters LAST_ACK",
+      "variant": "security"
+    },
+    {
+      "id": "m9",
+      "from": "client",
+      "to": "server",
+      "y": 495,
+      "label": "4. ACK (Ack=w+1) -> Server CLOSED / Client enters TIME_WAIT (2MSL)",
+      "variant": "emphasis"
+    }
+  ]
+}

@@ -8,7 +8,7 @@ tags:
   - raft
 slug: raft-intro
 comments: true
-cover: "/assets/images/2021/10/MackenzieRiver.jpg"
+cover: "/assets/images/2021/10/MackenzieRiver.webp"
 cover_alt: "Cover photo: Mackenzie River"
 ---
 
@@ -66,7 +66,7 @@ Raft implements consensus by first electing a distinguished leader, then giving 
 
 ### Raft Node State
 
-![.](/assets/images/2021/10/raft-state.png)
+![.](/assets/images/2021/10/raft-state.webp)
 
 **persistent on all servers**:
 
@@ -97,6 +97,8 @@ If a follower receives no communication over a period of time called the `electi
 ### Log Replication
 
 Each client request contains a command to be executed by the replicated state machines. The leader appends the command to its log as a new entry, then issues AppendEntries RPCs in parallel to each of the other servers to replicate the entry. When the entry has been safely replicated, the leader applies the entry to its state machine and returns the result of that execution to the client. If followers crash or run slowly, or if network packets are lost, the leader retries AppendEntries Rpcs indefinitely (even after it has respond to the client) until all followers eventually store all log entry.
+
+<Archify src="./diagrams/raft-consensus.sequence.json" />
 
 ### Safety
 

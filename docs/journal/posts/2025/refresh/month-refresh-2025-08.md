@@ -6,7 +6,7 @@ categories:
   - refresh
 slug: month-refresh-2025-08
 comments: true
-cover: "/assets/images/2025/08-magical.jpeg"
+cover: "/assets/images/2025/08-magical.webp"
 cover_alt: "Cover photo: 08 magical"
 ---
 

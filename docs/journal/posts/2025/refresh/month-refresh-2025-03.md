@@ -6,7 +6,7 @@ categories:
   - refresh
 slug: month-refresh-2025-03
 comments: true
-cover: "/assets/images/2025/03-services.png"
+cover: "/assets/images/2025/03-services.webp"
 cover_alt: "Cover photo: 03 services"
 ---
 

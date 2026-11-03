@@ -9,7 +9,7 @@ tags:
   - mysql
 slug: practice-minikube-with-mysql
 comments: true
-cover: "/assets/images/2021/08/VeniceBeach.jpg"
+cover: "/assets/images/2021/08/VeniceBeach.webp"
 cover_alt: "Cover photo: Venice Beach"
 ---
 

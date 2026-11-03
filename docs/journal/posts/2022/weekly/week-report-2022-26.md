@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2022-26
 comments: true
-cover: "/assets/images/2022/06/OkavangoElephant.jpg"
+cover: "/assets/images/2022/06/OkavangoElephant.webp"
 cover_alt: "Cover photo: Okavango Elephant"
 ---
 
@@ -35,7 +35,7 @@ Get Ready for Personal Knowledge Management
 - 笔记内容需要以自己的“口吻”展开，并做好双链跳转 [保证记录的是自己真正理解的内容]
 - 善用底部的 Reference
 
-![.](/assets/images/2022/06/complete-zettel.png)
+![.](/assets/images/2022/06/complete-zettel.webp)
 
 ## life
 

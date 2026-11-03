@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2024-16
 comments: true
-cover: "/assets/images/2024/04/BeaverDenali.png"
+cover: "/assets/images/2024/04/BeaverDenali.webp"
 cover_alt: "Cover photo: Beaver Denali"
 ---
 

@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2024-33
 comments: true
-cover: "/assets/images/2024/08/reol-budoukan.jpeg"
+cover: "/assets/images/2024/08/reol-budoukan.webp"
 cover_alt: "Cover photo: reol budoukan"
 ---
 
@@ -22,7 +22,7 @@ It's my first time to be at butoukan, the scale was really great than any theath
 
 and, here comes the lucky number.
 
-![.](/assets/images/2024/08/reol-39.jpeg)
+![.](/assets/images/2024/08/reol-39.webp)
 
 ## Learning
 

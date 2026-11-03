@@ -8,7 +8,7 @@ tags:
   - hugo
 slug: blog-setup
 comments: true
-cover: "/assets/images/2021/04/Porcini.jpg"
+cover: "/assets/images/2021/04/Porcini.webp"
 cover_alt: "Cover photo: Porcini"
 ---
 
@@ -183,7 +183,7 @@ jobs:
 
 然后我们需要在 Github 的项目页配置 secrets，具体见下图：
 
-![github-secrets](/assets/images/2021/04/github-secrets.png)
+![github-secrets](/assets/images/2021/04/github-secrets.webp)
 
 然后就可以推送代码，看 actions 的执行情况了，祝好运。
 

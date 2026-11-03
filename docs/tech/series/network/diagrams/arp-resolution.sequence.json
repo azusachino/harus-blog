@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "ARP Address Resolution Protocol & Frame Encapsulation",
+    "quality_profile": "standard",
+    "output": "arp-resolution.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "host_a",
+      "type": "frontend",
+      "label": "Host A (Sender)",
+      "sublabel": "192.168.1.10 / MAC_A"
+    },
+    {
+      "id": "switch",
+      "type": "backend",
+      "label": "L2 Switch",
+      "sublabel": "Broadcast Domain"
+    },
+    {
+      "id": "host_b",
+      "type": "backend",
+      "label": "Host B (Neighbor)",
+      "sublabel": "192.168.1.20 / MAC_B"
+    },
+    {
+      "id": "gateway",
+      "type": "security",
+      "label": "Default Gateway",
+      "sublabel": "192.168.1.1 / MAC_GW"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 310,
+      "label": "1. L2 Broadcast Flood (ARP Request)"
+    },
+    {
+      "from": 320,
+      "to": 430,
+      "label": "2. L2 Unicast Response & ARP Cache Storage"
+    },
+    {
+      "from": 440,
+      "to": 520,
+      "label": "3. Ethernet Data Frame Forwarding to Next Hop"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "host_a",
+      "to": "switch",
+      "y": 175,
+      "label": "1. ARP Request: Who has 192.168.1.1? Tell 192.168.1.10 (Dest: FF:FF:FF:FF:FF:FF)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "switch",
+      "to": "host_b",
+      "y": 215,
+      "label": "Flood Broadcast: Who has 192.168.1.1?",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "switch",
+      "to": "gateway",
+      "y": 250,
+      "label": "Flood Broadcast: Who has 192.168.1.1?",
+      "variant": "default"
+    },
+    {
+      "id": "m4",
+      "from": "host_b",
+      "to": "switch",
+      "y": 285,
+      "label": "IP Unmatched (192.168.1.20 != 192.168.1.1) -> Silent Drop",
+      "variant": "return"
+    },
+    {
+      "id": "m5",
+      "from": "gateway",
+      "to": "switch",
+      "y": 340,
+      "label": "2. ARP Reply: 192.168.1.1 is at MAC_GW (Unicast to MAC_A)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m6",
+      "from": "switch",
+      "to": "host_a",
+      "y": 380,
+      "label": "Forward Unicast ARP Reply directly to Host A's port",
+      "variant": "return"
+    },
+    {
+      "id": "m7",
+      "from": "host_a",
+      "to": "switch",
+      "y": 455,
+      "label": "3. Transmit Frame (Dest MAC: MAC_GW, Dest IP: Target Public IP, EtherType: 0x0800)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m8",
+      "from": "switch",
+      "to": "gateway",
+      "y": 490,
+      "label": "Forward Frame to Gateway (MAC matched in L2 table)",
+      "variant": "default"
+    }
+  ]
+}

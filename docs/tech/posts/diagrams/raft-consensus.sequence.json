@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Raft Log Replication and Quorum Commit Flow",
+    "quality_profile": "standard",
+    "output": "raft-consensus.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "client",
+      "type": "frontend",
+      "label": "Client Application",
+      "sublabel": "Write Request"
+    },
+    {
+      "id": "leader",
+      "type": "backend",
+      "label": "Raft Leader",
+      "sublabel": "Term 1 / State Machine"
+    },
+    {
+      "id": "f_a",
+      "type": "backend",
+      "label": "Follower A",
+      "sublabel": "Quorum member"
+    },
+    {
+      "id": "f_b",
+      "type": "backend",
+      "label": "Follower B",
+      "sublabel": "Quorum member"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 265,
+      "label": "1. Periodic Heartbeat & Leader Authority"
+    },
+    {
+      "from": 275,
+      "to": 435,
+      "label": "2. Client Proposal & Parallel Log Replication"
+    },
+    {
+      "from": 445,
+      "to": 540,
+      "label": "3. Quorum Majority Commit & Client Response"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "leader",
+      "to": "f_a",
+      "y": 175,
+      "label": "1. AppendEntries (Term=1, Heartbeat, commitIndex=4)",
+      "variant": "default"
+    },
+    {
+      "id": "m2",
+      "from": "leader",
+      "to": "f_b",
+      "y": 205,
+      "label": "AppendEntries (Term=1, Heartbeat, commitIndex=4)",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "f_a",
+      "to": "leader",
+      "y": 240,
+      "label": "AppendEntries Response (Success=true, Term=1)",
+      "variant": "return"
+    },
+    {
+      "id": "m4",
+      "from": "client",
+      "to": "leader",
+      "y": 290,
+      "label": "2. Client Command: SET x = 42",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m5",
+      "from": "leader",
+      "to": "f_a",
+      "y": 330,
+      "label": "3. AppendEntries (Index=5, Term=1, Command='SET x = 42')",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m6",
+      "from": "leader",
+      "to": "f_b",
+      "y": 365,
+      "label": "AppendEntries (Index=5, Term=1, Command='SET x = 42')",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m7",
+      "from": "f_a",
+      "to": "leader",
+      "y": 405,
+      "label": "AppendEntries Reply: Index 5 stored (Success=true)",
+      "variant": "return"
+    },
+    {
+      "id": "m8",
+      "from": "leader",
+      "to": "client",
+      "y": 460,
+      "label": "4. Quorum (2/3) reached -> Advance commitIndex=5, Reply Client OK",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m9",
+      "from": "leader",
+      "to": "f_a",
+      "y": 500,
+      "label": "Next Heartbeat notifies commitIndex=5 -> Apply to State Machine",
+      "variant": "default"
+    }
+  ]
+}

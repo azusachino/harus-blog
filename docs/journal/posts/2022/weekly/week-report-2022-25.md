@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2022-25
 comments: true
-cover: "/assets/images/2022/06/IndigoBunting.jpg"
+cover: "/assets/images/2022/06/IndigoBunting.webp"
 cover_alt: "Cover photo: Indigo Bunting"
 ---
 
@@ -41,7 +41,7 @@ Don’t tell anybody what your next move is. Just do it and shock them. And afte
 
 自登山活动以来，倍感身体素质下降许多；于是“又”再次拾起了跑步一事，希望后续坚持下去。
 
-![one week trial](/assets/images/2022/06/running.jpg)
+![one week trial](/assets/images/2022/06/running.webp)
 
 对于长距离的跑步来说，你跑的越多，离终点越近，离起点越远；但如果想要在中途放弃，那么需要付出的代价也会越来越多。
 

@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2021-52
 comments: true
-cover: "/assets/images/2021/12/SalehurstChurch.jpg"
+cover: "/assets/images/2021/12/SalehurstChurch.webp"
 cover_alt: "Cover photo: Salehurst Church"
 ---
 

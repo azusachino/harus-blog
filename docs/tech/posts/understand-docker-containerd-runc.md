@@ -9,7 +9,7 @@ tags:
   - runc
 slug: understand-docker-containerd-runc
 comments: true
-cover: "/assets/images/2021/12/SiberianSunset.jpg"
+cover: "/assets/images/2021/12/SiberianSunset.webp"
 cover_alt: "Cover photo: Siberian Sunset"
 ---
 
@@ -17,11 +17,13 @@ cover_alt: "Cover photo: Siberian Sunset"
 
 From the graph below, I think everyone could gain a good understanding about container-related stuffs. Thanks tutorial works, please check reference.
 
-![docker relation](/assets/images/2021/12/docker-relation.jpg)
+![docker relation](/assets/images/2021/12/docker-relation.webp)
 
 Both Docker & Kubernetes are classical C/S architectures, e.g. (docker-cli -> docker-daemon, kubernetes-cli -> kube-apiserver)
 
-![docker](/assets/images/2021/12/docker.png)
+![docker](/assets/images/2021/12/docker.webp)
+
+<Archify src="./diagrams/container-runtime-lifecycle.sequence.json" />
 
 If you like, we can use runc bare in metal to run a container, also it's not recommended.
 

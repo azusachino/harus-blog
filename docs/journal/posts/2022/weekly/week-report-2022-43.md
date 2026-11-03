@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2022-43
 comments: true
-cover: "/assets/images/2022/10/CherryLaurelMaze.jpg"
+cover: "/assets/images/2022/10/CherryLaurelMaze.webp"
 cover_alt: "Cover photo: Cherry Laurel Maze"
 ---
 
@@ -62,7 +62,7 @@ public class Phone {
 
 ### The Web 3.0
 
-![the-web-revolution](/assets/images/2022/10/the-web-revolution.png)
+![the-web-revolution](/assets/images/2022/10/the-web-revolution.webp)
 
 ### 何为正义
 

@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2024-26
 comments: true
-cover: "/assets/images/2024/06/supercell-orchestra.jpeg"
+cover: "/assets/images/2024/06/supercell-orchestra.webp"
 cover_alt: "Cover photo: supercell orchestra"
 ---
 
@@ -18,9 +18,9 @@ cover_alt: "Cover photo: supercell orchestra"
 
 No need extra depiction, best concert ever.
 
-![.](/assets/images/2024/06/supercell-1.jpeg)
+![.](/assets/images/2024/06/supercell-1.webp)
 
-![.](/assets/images/2024/06/supercell-2.jpeg)
+![.](/assets/images/2024/06/supercell-2.webp)
 
 ## life
 

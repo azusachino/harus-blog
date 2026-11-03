@@ -8,7 +8,7 @@ tags:
   - java
 slug: aeron-knowledge-sharing
 comments: true
-cover: "/assets/images/2025/KelpOtter.png"
+cover: "/assets/images/2025/KelpOtter.webp"
 cover_alt: "Cover photo: Kelp Otter"
 ---
 
@@ -83,7 +83,7 @@ this is how the publication from machine-1 gets subscribed by machine-2 with mul
 - a publication could be subscribed multiple times
   - read data from the same image log-buffer
 
-![.](/assets/images/2025/topics/aeron/aeron-overview.png)
+![.](/assets/images/2025/topics/aeron/aeron-overview.webp)
 
 ```java
 // machine-1, exclusive publication
@@ -139,7 +139,7 @@ aeronArchive.startRecording("10.110.0.2:9010", 3939, SourceLocation.LOCAL);
 aeronArchive.startReplay(0, 0, Long.MAX_VALUE, "10.110.0.2:9110", 4939);
 ```
 
-![.](/assets/images/2025/topics/aeron/aeron-archive-overview.png)
+![.](/assets/images/2025/topics/aeron/aeron-archive-overview.webp)
 
 aeron archive file structure.
 

@@ -6,7 +6,7 @@ categories:
   - review
 slug: review-2023
 comments: true
-cover: "/assets/images/2023/12/SantaPark.jpg"
+cover: "/assets/images/2023/12/SantaPark.webp"
 cover_alt: "Cover photo: Santa Park"
 ---
 
