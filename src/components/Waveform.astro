@@ -1,6 +1,7 @@
 ---
-// A static waveform rule. The bar heights come from the seed string, so
-// every page gets its own stable "track".
+// An audio waveform track rule. The bar heights come from the seed string, so
+// every page gets its own stable "track". Animated with a smooth continuous
+// wave crest propagation across the bars.
 interface Props {
   seed: string;
   bars?: number;
@@ -15,16 +16,61 @@ const heights = Array.from({ length: bars }, (_, i) => {
 });
 const width = bars * 5;
 ---
-<svg class="wave" viewBox={`0 0 ${width} 24`} width={width} height="24" aria-hidden="true">
-  {heights.map((v, i) => <rect x={i * 5} y={12 - v / 2} width="3" height={v} rx="1.5" />)}
+<svg
+  class="wave"
+  viewBox={`0 0 ${width} 24`}
+  width={width}
+  height="24"
+  aria-hidden="true"
+  style={`--total: ${bars};`}
+>
+  {heights.map((v, i) => (
+    <rect
+      x={i * 5}
+      y={12 - v / 2}
+      width="3"
+      height={v}
+      rx="1.5"
+      style={`--i: ${i};`}
+    />
+  ))}
 </svg>
 
 <style>
   .wave {
     display: block;
     max-width: 100%;
-    margin: 0.9rem 0 0.4rem;
+    margin: 0.75rem 0 0.25rem;
     fill: var(--glow);
-    opacity: 0.85;
+    opacity: 0.9;
+    overflow: visible;
+  }
+
+  .wave rect {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: waveMotion 2.4s ease-in-out infinite;
+    animation-delay: calc((var(--i) / var(--total)) * -2.4s);
+    will-change: transform, opacity;
+  }
+
+  @keyframes waveMotion {
+    0%,
+    100% {
+      transform: scaleY(0.4);
+      opacity: 0.5;
+    }
+    50% {
+      transform: scaleY(1.2);
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wave rect {
+      animation: none;
+      transform: none;
+      opacity: 0.85;
+    }
   }
 </style>
