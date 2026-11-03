@@ -8,9 +8,12 @@ groups (Added, Changed, Fixed, Removed).
 
 ### Changed
 
-- The footer call and response now cycles through the authentic concert call phrases of "39みゅーじっく！" (mikitoP) on each click: `準備OK？` → `Yes!`, `大サービス！` → `Oh Yeah!`, `大熱唱！` → `Hey!`, `未体験Night！` → `Oh Yeah!`, and `もう一度名前呼んで！` → `初音ミク！`.
-- Each response plays the authentic song audio clip from the track and raises swaying penlights, replacing synthesized piano oscillator notes.
-- `<PianoStrip />` phrase listener supports discrete `{ note, delay }` timed events, dynamically striking individual keys in sync with fast musical rhythms.
+- The footer call and response now plays the full 5-section concert sequence of "39みゅーじっく！" (mikitoP) seamlessly in one click: `準備OK？` → `Yes!` → `大サービス！` → `Oh Yeah!` → `大熱唱！` → `Hey!` → `未体験Night！` → `Oh Yeah!` → `もう一度名前呼んで！` → `初音ミク！`.
+- Penlights continuously sway to the 130 BPM rhythm throughout the entire sequence, and retract once the finale completes.
+
+### Removed
+
+- Removed the footer `<PianoStrip />` keyboard, clearing space for future 3D Miku additions.
 
 ## 2026-11-03 — CV page and PDF
 ## 2026-11-03 — Headless browser checks

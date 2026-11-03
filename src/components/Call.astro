@@ -1,9 +1,9 @@
 ---
-// Concert call and response in the footer: cycles through the authentic
-// call-and-response vocal phrases from "39みゅーじっく！" (mikitoP).
+// Concert call and response in the footer: one click triggers the full
+// 5-section call-and-response sequence from "39みゅーじっく！" (mikitoP).
 // The stage calls ("準備OK？", "大サービス！", "大熱唱！", "未体験Night！", "もう一度名前呼んで！"),
-// the reader answers ("Yes!", "Oh Yeah!", "Hey!", "Oh Yeah!", "初音ミク！"),
-// original song audio plays, and penlights sway.
+// the audience answers ("Yes!", "Oh Yeah!", "Hey!", "Oh Yeah!", "初音ミク！"),
+// original song audio plays seamlessly, and penlights sway continuously.
 const sticks = 11;
 ---
 <div class="call">
@@ -23,68 +23,64 @@ const sticks = 11;
     const status = document.querySelector('[data-call-status]');
     const askEl = document.querySelector('[data-call-ask]');
     const btnEl = document.querySelector('[data-call]');
-    const caption = document.querySelector('[data-piano-caption]');
     if (!btnEl || !askEl) return;
 
-    // Authentic concert call-and-response audio clips from "39みゅーじっく！" (mikitoP)
+    // The 5 authentic concert call-and-response vocal clips from "39みゅーじっく！" (mikitoP)
     const calls = [
       {
         ask: '準備OK？',
         response: 'Yes!',
         lang: 'en',
-        label: '♪ 準備OK？ — Yes! (39みゅーじっく！)',
         status: '準備OK？ Yes! Penlights up!',
         audioSrc: '/audio/39-music/call1-junbi-ok.mp3',
-        durationMs: 1520,
       },
       {
         ask: '大サービス！',
         response: 'Oh Yeah!',
         lang: 'en',
-        label: '♪ 大サービス！ — Oh Yeah! (39みゅーじっく！)',
-        status: '大サービス！ Oh Yeah! Penlights up!',
+        status: '大サービス！ Oh Yeah!',
         audioSrc: '/audio/39-music/call2-dai-service.mp3',
-        durationMs: 2500,
       },
       {
         ask: '大熱唱！',
         response: 'Hey!',
         lang: 'en',
-        label: '♪ 大熱唱！ — Hey! (39みゅーじっく！)',
-        status: '大熱唱！ Hey! Penlights up!',
+        status: '大熱唱！ Hey!',
         audioSrc: '/audio/39-music/call3-dai-nesshou.mp3',
-        durationMs: 2200,
       },
       {
         ask: '未体験Night！',
         response: 'Oh Yeah!',
         lang: 'en',
-        label: '♪ 未体験Night！ — Oh Yeah! (39みゅーじっく！)',
-        status: '未体験Night！ Oh Yeah! Penlights up!',
+        status: '未体験Night！ Oh Yeah!',
         audioSrc: '/audio/39-music/call4-mitaiken-night.mp3',
-        durationMs: 2150,
       },
       {
         ask: 'もう一度名前呼んで！',
         response: '初音ミク！',
         lang: 'ja',
-        label: '♪ もう一度名前呼んで！ — 初音ミク！ (39みゅーじっく！)',
-        status: 'もう一度名前呼んで！ 初音ミク！ Penlights up!',
+        status: 'もう一度名前呼んで！ 初音ミク！',
         audioSrc: '/audio/39-music/call5-miku.mp3',
-        durationMs: 3850,
       },
     ];
 
     let current = 0;
-    let animTimer;
-    let advanceTimer;
-    let pendingNext = false;
+    let isPlaying = false;
     let currentAudio = null;
 
-    // Preload audio instances for immediate playback on click
-    const audios = calls.map((c) => {
+    // Preload audio objects and wire the continuous chain
+    const audios = calls.map((c, i) => {
       const a = new Audio(c.audioSrc);
       a.preload = 'auto';
+      a.addEventListener('ended', () => {
+        if (!isPlaying) return;
+        const next = i + 1;
+        if (next < calls.length) {
+          playStep(next);
+        } else {
+          stopConcert();
+        }
+      });
       return a;
     });
 
@@ -96,54 +92,46 @@ const sticks = 11;
       else btnEl.removeAttribute('lang');
     };
 
-    const advance = () => {
-      clearTimeout(advanceTimer);
-      current = (current + 1) % calls.length;
-      setCall(current);
-      pendingNext = false;
+    const playStep = (idx) => {
+      current = idx;
+      setCall(idx);
+      const item = calls[idx];
+      if (status) status.textContent = item.status;
+      const audio = audios[idx];
+      if (audio) {
+        currentAudio = audio;
+        audio.currentTime = 0;
+        audio.play().catch(() => {});
+      }
     };
 
-    btnEl.addEventListener('click', () => {
-      if (pendingNext) {
-        advance();
-      }
+    const startConcert = () => {
+      isPlaying = true;
+      lights?.classList.add('on');
+      btnEl.setAttribute('aria-pressed', 'true');
+      playStep(0);
+    };
 
-      const activeCall = calls[current];
-
-      // Stop previous phrase audio if still playing
+    const stopConcert = () => {
+      isPlaying = false;
       if (currentAudio) {
         currentAudio.pause();
         currentAudio.currentTime = 0;
       }
+      currentAudio = null;
+      lights?.classList.remove('on');
+      btnEl.removeAttribute('aria-pressed');
+      current = 0;
+      setCall(0);
+      if (status) status.textContent = 'Concert call complete.';
+    };
 
-      // Play original song audio
-      const audio = audios[current];
-      if (audio) {
-        audio.currentTime = 0;
-        audio.play().catch(() => {});
-        currentAudio = audio;
+    btnEl.addEventListener('click', () => {
+      if (isPlaying) {
+        stopConcert();
+      } else {
+        startConcert();
       }
-
-      // Wave penlights
-      if (lights) {
-        lights.classList.remove('on');
-        void lights.offsetWidth; // restart animation on repeat clicks
-        lights.classList.add('on');
-      }
-
-      if (caption) caption.textContent = activeCall.label;
-      if (status) status.textContent = activeCall.status;
-
-      // Keep penlights up for the phrase duration
-      clearTimeout(animTimer);
-      const penlightDuration = Math.max(activeCall.durationMs + 500, 2400);
-      animTimer = setTimeout(() => {
-        lights?.classList.remove('on');
-      }, penlightDuration);
-
-      pendingNext = true;
-      clearTimeout(advanceTimer);
-      advanceTimer = setTimeout(advance, activeCall.durationMs);
     });
   })();
 </script>
@@ -153,7 +141,7 @@ const sticks = 11;
     margin: 0.2rem auto 0.9rem;
   }
 
-  /* Sticks wait below the edge and rise only when the crowd answers. */
+  /* Sticks wait below the edge and rise when the concert starts. */
   .penlights {
     display: flex;
     justify-content: center;
@@ -168,11 +156,11 @@ const sticks = 11;
     height: 2.6rem;
     margin-top: 0.4rem;
     border-radius: 4px 4px 2px 2px;
-    /* Same look in both modes, and the same --accent as the piano's lit keys. */
     background: var(--accent);
     --halo: color-mix(in oklab, var(--accent) 70%, transparent);
     transform: translateY(110%);
     transform-origin: 50% 100%;
+    transition: transform 0.35s ease-out;
   }
 
   /* Grip */
@@ -186,20 +174,15 @@ const sticks = 11;
     background: var(--on-glow);
   }
 
-  /* The halo only while raised, so nothing leaks above the edge at rest. */
+  /* The halo and continuous sway while the concert plays through. */
   .penlights.on i {
     box-shadow: 0 0 11px 2px var(--halo);
-    animation: wave 2.4s ease-in-out calc(var(--i) * 45ms) both;
+    animation: sway 1.85s ease-in-out calc(var(--i) * 55ms) infinite alternate;
   }
 
-  @keyframes wave {
-    0% { transform: translateY(110%) rotate(0deg); }
-    14% { transform: translateY(0) rotate(-14deg); }
-    32% { transform: translateY(0) rotate(14deg); }
-    50% { transform: translateY(0) rotate(-14deg); }
-    68% { transform: translateY(0) rotate(14deg); }
-    86% { transform: translateY(0) rotate(0deg); }
-    100% { transform: translateY(110%) rotate(0deg); }
+  @keyframes sway {
+    0% { transform: translateY(0) rotate(-14deg); }
+    100% { transform: translateY(0) rotate(14deg); }
   }
 
   .line {
@@ -224,7 +207,7 @@ const sticks = 11;
     border-radius: 999px;
     padding: 0.15rem 0.9rem;
     cursor: pointer;
-    transition: transform 0.15s ease;
+    transition: transform 0.15s ease, background 0.15s ease;
   }
 
   .yes:hover {
@@ -235,11 +218,17 @@ const sticks = 11;
     transform: scale(0.96);
   }
 
-  /* Reduced motion: the lights simply show, still, until the timer lowers them. */
+  .yes[aria-pressed='true'] {
+    background: var(--accent);
+    color: var(--on-glow);
+    border-color: var(--accent);
+  }
+
+  /* Reduced motion: penlights simply raise and stay still while playing. */
   @media (prefers-reduced-motion: reduce) {
     .penlights.on i {
       animation: none;
-      transform: none;
+      transform: translateY(0);
     }
   }
 </style>
