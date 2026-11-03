@@ -25,7 +25,7 @@ const sticks = 11;
     const btnEl = document.querySelector('[data-call]');
     if (!btnEl || !askEl) return;
 
-    // Time-synchronized cues aligned to the exact song word timestamps
+    // Time-synchronized cues aligned to the exact song word timestamps from 1:19
     const cues = [
       {
         start: 0,
@@ -35,42 +35,42 @@ const sticks = 11;
         status: '39みゅーじっく！ Music! Penlights up!',
       },
       {
-        start: 1.5,
+        start: 1.9,
         ask: '大サービス！',
         response: 'Oh Yeah!',
         lang: 'en',
         status: '大サービス！ Oh Yeah!',
       },
       {
-        start: 5.2,
+        start: 5.4,
         ask: '大熱唱！',
         response: 'Hey!',
         lang: 'en',
         status: '大熱唱！ Hey!',
       },
       {
-        start: 8.0,
+        start: 8.3,
         ask: '未体験Night！',
         response: 'Oh Yeah!',
         lang: 'en',
         status: '未体験Night！ Oh Yeah!',
       },
       {
-        start: 12.6,
+        start: 12.5,
         ask: '準備OK？',
         response: 'Yes!',
         lang: 'en',
         status: 'さぁ 日は出づるぞ 準備OK？ Yes!',
       },
       {
-        start: 15.2,
+        start: 15.5,
         ask: '満場一致だ！',
         response: 'Yeah!',
         lang: 'en',
         status: '満場一致だ！',
       },
       {
-        start: 27.5,
+        start: 27.8,
         ask: 'もう一度名前呼んで！',
         response: '初音ミク！',
         lang: 'ja',
@@ -78,7 +78,7 @@ const sticks = 11;
       },
     ];
 
-    const audio = new Audio('/audio/39-music/39-music-concert-call.mp3');
+    const audio = new Audio('/audio/39-music/39-music-concert-call.mp3?v=119');
     audio.preload = 'auto';
 
     let isPlaying = false;

@@ -16,6 +16,22 @@ groups (Added, Changed, Fixed, Removed).
 - Removed the footer `<PianoStrip />` keyboard, clearing space for future 3D Miku additions.
 
 ## 2026-11-03 — CV page and PDF
+
+### Added
+
+- The CV lives in `src/data/cv.yaml`, the one source for both outputs: `/cv/` is a component page
+  in the blog's style (roles as a tracklist that expands, an "Updated" date, a PDF download), and
+  `assets/cv/cv.typ` renders the formal PDF with a "Last updated" footer; `make cv` writes
+  `public/cv.pdf`. Typst is pinned in `mise.toml`.
+
+### Removed
+
+- `docs/cv.md` and the `PageDoc` component, replaced by `src/data/cv.yaml` and `src/pages/cv.astro`.
+
+### Fixed
+
+- The header navigation and the footer link to `/cv/` again; the entry was lost in the move from MkDocs.
+
 ## 2026-11-03 — Headless browser checks
 
 ### Added
