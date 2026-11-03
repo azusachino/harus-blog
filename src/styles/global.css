@@ -265,6 +265,12 @@ img {
   overflow-wrap: break-word;
 }
 
+.prose > :first-child,
+.prose > h2:first-child,
+.prose > h3:first-child {
+  margin-top: 0;
+}
+
 .prose h2 {
   margin-top: 2.4em;
   padding-bottom: 0.3em;

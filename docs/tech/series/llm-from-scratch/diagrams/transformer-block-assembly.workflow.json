@@ -1,0 +1,122 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Transformer Decoder Block Assembly & Pre-Norm Residual Flow",
+    "quality_profile": "standard",
+    "output": "transformer-block-assembly.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "stream_lane",
+      "label": "Residual Stream (Identity Highway)"
+    },
+    {
+      "id": "attn_lane",
+      "label": "Attention Stage (Norm & MHA)"
+    },
+    {
+      "id": "ffn_lane",
+      "label": "Feed-Forward Stage (Norm & SwiGLU)"
+    },
+    {
+      "id": "head_lane",
+      "label": "Final Output Head"
+    }
+  ],
+  "mainPath": ["stream_in", "attn_add", "ffn_add", "lm_head"],
+  "nodes": [
+    {
+      "id": "stream_in",
+      "lane": "stream_lane",
+      "col": 0,
+      "label": "Block Input x",
+      "sublabel": "Tensor shape [B, T, D]",
+      "type": "frontend"
+    },
+    {
+      "id": "attn_stage",
+      "lane": "attn_lane",
+      "col": 1,
+      "label": "Attention Sublayer",
+      "sublabel": "Pre-RMSNorm -> Causal MHA",
+      "type": "backend"
+    },
+    {
+      "id": "attn_add",
+      "lane": "stream_lane",
+      "col": 2,
+      "label": "Attention Residual Add",
+      "sublabel": "x = x + Attn(Norm(x))",
+      "type": "backend"
+    },
+    {
+      "id": "ffn_stage",
+      "lane": "ffn_lane",
+      "col": 3,
+      "label": "Feed-Forward Sublayer",
+      "sublabel": "Pre-RMSNorm -> SwiGLU MLP",
+      "type": "backend"
+    },
+    {
+      "id": "ffn_add",
+      "lane": "stream_lane",
+      "col": 4,
+      "label": "FFN Residual Add",
+      "sublabel": "x = x + FFN(Norm(x))",
+      "type": "backend"
+    },
+    {
+      "id": "lm_head",
+      "lane": "head_lane",
+      "col": 5,
+      "label": "Vocabulary Projection",
+      "sublabel": "Final Norm -> Linear(D, V) -> Logits",
+      "type": "database"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "stream_in",
+      "to": "attn_stage",
+      "label": "1. Normalized branch"
+    },
+    {
+      "id": "e2",
+      "from": "stream_in",
+      "to": "attn_add",
+      "label": "2. Identity highway"
+    },
+    {
+      "id": "e3",
+      "from": "attn_stage",
+      "to": "attn_add",
+      "label": "3. Attended delta"
+    },
+    {
+      "id": "e4",
+      "from": "attn_add",
+      "to": "ffn_stage",
+      "label": "4. Normalized branch"
+    },
+    {
+      "id": "e5",
+      "from": "attn_add",
+      "to": "ffn_add",
+      "label": "5. Second highway"
+    },
+    {
+      "id": "e6",
+      "from": "ffn_stage",
+      "to": "ffn_add",
+      "label": "6. Non-linear delta"
+    },
+    {
+      "id": "e7",
+      "from": "ffn_add",
+      "to": "lm_head",
+      "label": "7. Stack N layers -> Logits"
+    }
+  ]
+}
