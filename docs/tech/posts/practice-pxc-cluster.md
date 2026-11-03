@@ -8,7 +8,7 @@ tags:
   - mysql
 slug: practice-pxc-cluster
 comments: true
-cover: "/assets/images/2021/04/VeniceBeach.jpg"
+cover: "/assets/images/2021/04/VeniceBeach.webp"
 cover_alt: "Cover photo: Venice Beach"
 ---
 
@@ -29,7 +29,7 @@ cover_alt: "Cover photo: Venice Beach"
 
 PXC 集群的架构图如下：
 
-![架构图](/assets/images/2021/04/pxc-struct.jpg)
+![架构图](/assets/images/2021/04/pxc-struct.webp)
 
 ## 开始部署
 
@@ -177,7 +177,7 @@ wsrep_sst_auth="xtrabackup:pass"
 
 登录 mysql 之后，`show status like 'wsrep%';`，结果如下：
 
-![集群状态](/assets/images/2021/04/pxc-status.png)
+![集群状态](/assets/images/2021/04/pxc-status.webp)
 
 ### 多台机器
 

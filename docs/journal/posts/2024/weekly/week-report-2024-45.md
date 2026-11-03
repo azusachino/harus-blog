@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2024-45
 comments: true
-cover: "/assets/images/2024/yoasobi.jpg"
+cover: "/assets/images/2024/yoasobi.webp"
 cover_alt: "Cover photo: yoasobi"
 ---
 
@@ -20,11 +20,11 @@ cover_alt: "Cover photo: yoasobi"
 
 最高だ。
 
-![.](/assets/images/2024/yoasobi-1.jpg)
-![.](/assets/images/2024/yoasobi-2.jpg)
-![.](/assets/images/2024/yoasobi-3.jpg)
-![.](/assets/images/2024/yoasobi-4.jpg)
-![.](/assets/images/2024/yoasobi-5.jpg)
+![.](/assets/images/2024/yoasobi-1.webp)
+![.](/assets/images/2024/yoasobi-2.webp)
+![.](/assets/images/2024/yoasobi-3.webp)
+![.](/assets/images/2024/yoasobi-4.webp)
+![.](/assets/images/2024/yoasobi-5.webp)
 
 ## Learning
 

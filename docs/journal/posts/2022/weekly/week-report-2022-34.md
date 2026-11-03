@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2022-34
 comments: true
-cover: "/assets/images/2022/08/QiXiFestival.jpg"
+cover: "/assets/images/2022/08/QiXiFestival.webp"
 cover_alt: "Cover photo: Qi Xi Festival"
 ---
 

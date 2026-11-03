@@ -6,7 +6,7 @@ categories:
   - refresh
 slug: month-refresh-2022-08
 comments: true
-cover: "/assets/images/2022/08/MtTsubakuro.jpg"
+cover: "/assets/images/2022/08/MtTsubakuro.webp"
 cover_alt: "Cover photo: Mt Tsubakuro"
 ---
 

@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2023-30
 comments: true
-cover: "/assets/images/2023/07/SanBlasIslands.jpg"
+cover: "/assets/images/2023/07/SanBlasIslands.webp"
 cover_alt: "Cover photo: San Blas Islands"
 ---
 

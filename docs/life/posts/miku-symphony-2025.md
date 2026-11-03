@@ -6,7 +6,7 @@ categories:
   - life
 slug: miku-symphony-2025
 comments: true
-cover: "/assets/images/2025/10-symphony.png"
+cover: "/assets/images/2025/10-symphony.webp"
 cover_alt: "Cover photo: 10 symphony"
 ---
 
@@ -26,16 +26,16 @@ Rella 先生、wowaka さん、 ヒトリエの皆さん、指揮の栗田さん
 
 接下来好好学习乐理, 多听交响, 希望明年能够有更多收获.
 
-![.](/assets/images/2025/10/miku-symphony-01.jpg)
+![.](/assets/images/2025/10/miku-symphony-01.webp)
 
-![.](/assets/images/2025/10/miku-symphony-02.jpg)
+![.](/assets/images/2025/10/miku-symphony-02.webp)
 
 ## todays yokohama
 
-![.](/assets/images/2025/10/miku-symphony-03.jpg)
+![.](/assets/images/2025/10/miku-symphony-03.webp)
 
-![.](/assets/images/2025/10/miku-symphony-04.jpg)
+![.](/assets/images/2025/10/miku-symphony-04.webp)
 
 ## fuwamikus
 
-![.](/assets/images/2025/10/miku-symphony-05.jpg)
+![.](/assets/images/2025/10/miku-symphony-05.webp)

@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2023-02
 comments: true
-cover: "/assets/images/2023/01/OHR.Turku.jpg"
+cover: "/assets/images/2023/01/OHR.Turku.webp"
 cover_alt: "Cover photo: OHR.Turku"
 ---
 
@@ -36,7 +36,7 @@ cover_alt: "Cover photo: OHR.Turku"
 
 操作系统做任务切换，可以发生在任何一条**CPU 指令**执行完，而不是高级语言里的一条语句。
 
-![java-thread-switch-problem.png](/assets/images/2023/01/java-thread-switch-problem.png)
+![java-thread-switch-problem.png](/assets/images/2023/01/java-thread-switch-problem.webp)
 
 ## life
 

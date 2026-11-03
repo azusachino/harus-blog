@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2024-06
 comments: true
-cover: "/assets/images/2024/02/MaldivesAtolls.png"
+cover: "/assets/images/2024/02/MaldivesAtolls.webp"
 cover_alt: "Cover photo: Maldives Atolls"
 ---
 
@@ -32,7 +32,7 @@ well, nothing important to point out.
 - and who would like the emotional damage from the ones you are familiar; only the ones you care can hurt you more deeply
 - `wagyu` was really GOOD
 
-![wagyu](/assets/images/2024/01/wagyu-20240209.png)
+![wagyu](/assets/images/2024/01/wagyu-20240209.webp)
 
 ## Sharing
 

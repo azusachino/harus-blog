@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2024-09
 comments: true
-cover: "/assets/images/2024/03/PeakDistrictNP.png"
+cover: "/assets/images/2024/03/PeakDistrictNP.webp"
 cover_alt: "Cover photo: Peak District NP"
 ---
 

@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2023-34
 comments: true
-cover: "/assets/images/2023/08/DubrovnikHarbor.jpg"
+cover: "/assets/images/2023/08/DubrovnikHarbor.webp"
 cover_alt: "Cover photo: Dubrovnik Harbor"
 ---
 

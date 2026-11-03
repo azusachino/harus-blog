@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2022-04
 comments: true
-cover: "/assets/images/2022/01/PorcupineWillow.jpg"
+cover: "/assets/images/2022/01/PorcupineWillow.webp"
 cover_alt: "Cover photo: Porcupine Willow"
 ---
 

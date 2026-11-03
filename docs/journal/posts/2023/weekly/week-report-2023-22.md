@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2023-22
 comments: true
-cover: "/assets/images/2023/06/SouthKaibabTrail.jpg"
+cover: "/assets/images/2023/06/SouthKaibabTrail.webp"
 cover_alt: "Cover photo: South Kaibab Trail"
 ---
 

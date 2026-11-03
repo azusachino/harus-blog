@@ -6,7 +6,7 @@ categories:
   - life
 slug: amusing-ourselves-to-death
 comments: true
-cover: "/assets/book/2021/amusing-ourselves-to-death.jpg"
+cover: "/assets/book/2021/amusing-ourselves-to-death.webp"
 cover_alt: "Cover photo: amusing ourselves to death"
 ---
 

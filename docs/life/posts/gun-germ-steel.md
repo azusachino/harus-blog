@@ -6,7 +6,7 @@ categories:
   - life
 slug: gun-germ-steel
 comments: true
-cover: "/assets/book/2022/ggs.jpg"
+cover: "/assets/book/2022/ggs.webp"
 cover_alt: "Cover photo: ggs"
 ---
 

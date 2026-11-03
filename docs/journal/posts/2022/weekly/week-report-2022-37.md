@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2022-37
 comments: true
-cover: "/assets/images/2022/09/WinterGrand.jpg"
+cover: "/assets/images/2022/09/WinterGrand.webp"
 cover_alt: "Cover photo: Winter Grand"
 ---
 
@@ -32,7 +32,7 @@ cover_alt: "Cover photo: Winter Grand"
 1. 编译执行：直接将所有语句都编译成了机器语言，并且保存成可执行的机器码。执行的时候，是直接进行执行机器语言，不需要再进行解释/编译。
 2. 解释执行：在执行程序时，解释器将中间码（Java 的字节码通过 JVM 解释成机器码）一行行的解释成机器再码进行执行。
 
-![different-way-of-execution](/assets/images/2022/09/different-way-of-execution.png)
+![different-way-of-execution](/assets/images/2022/09/different-way-of-execution.webp)
 
 ## life
 

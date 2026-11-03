@@ -9,7 +9,7 @@ tags:
   - spring
 slug: practice-spring-cloud-gateway
 comments: true
-cover: "/assets/images/2022/05/GlassBridge.jpg"
+cover: "/assets/images/2022/05/GlassBridge.webp"
 cover_alt: "Cover photo: Glass Bridge"
 ---
 

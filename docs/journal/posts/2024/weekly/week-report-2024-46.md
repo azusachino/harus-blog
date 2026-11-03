@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2024-46
 comments: true
-cover: "/assets/images/2024/momiji-0.jpg"
+cover: "/assets/images/2024/momiji-0.webp"
 cover_alt: "Cover photo: momiji 0"
 ---
 
@@ -31,6 +31,6 @@ FE contents
 
 ## Collectibles
 
-![.](/assets/images/2024/momiji-1.jpeg)
-![.](/assets/images/2024/momiji-2.jpeg)
-![.](/assets/images/2024/momiji-3.jpeg)
+![.](/assets/images/2024/momiji-1.webp)
+![.](/assets/images/2024/momiji-2.webp)
+![.](/assets/images/2024/momiji-3.webp)

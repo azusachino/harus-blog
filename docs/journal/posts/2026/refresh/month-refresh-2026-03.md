@@ -6,7 +6,7 @@ categories:
   - refresh
 slug: month-refresh-2026-03
 comments: true
-cover: "/assets/images/2026/03-poke-miku.png"
+cover: "/assets/images/2026/03-poke-miku.webp"
 cover_alt: "Cover photo: 03 poke miku"
 ---
 

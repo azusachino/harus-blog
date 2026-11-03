@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2022-02
 comments: true
-cover: "/assets/images/2022/01/OreamnosAmericanus.jpg"
+cover: "/assets/images/2022/01/OreamnosAmericanus.webp"
 cover_alt: "Cover photo: Oreamnos Americanus"
 ---
 

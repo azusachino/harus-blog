@@ -6,7 +6,7 @@ categories:
   - refresh
 slug: month-refresh-2025-05
 comments: true
-cover: "/assets/images/2025/05-mountain.jpeg"
+cover: "/assets/images/2025/05-mountain.webp"
 cover_alt: "Cover photo: 05 mountain"
 ---
 

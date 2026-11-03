@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2022-51
 comments: true
-cover: "/assets/images/2022/12/481f8af553dcb82986416462f8b0c921.jpg"
+cover: "/assets/images/2022/12/481f8af553dcb82986416462f8b0c921.webp"
 cover_alt: "Weekly Report 2022.51 cover image"
 ---
 
@@ -20,7 +20,7 @@ cover_alt: "Weekly Report 2022.51 cover image"
 
 From [[HTTP]](browser) to the server and back, still, there are so many things need to be figured out.
 
-![network-progresses.png](/assets/images/2022/12/network-progresses.png)
+![network-progresses.png](/assets/images/2022/12/network-progresses.webp)
 
 ## life
 

@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2022-15
 comments: true
-cover: "/assets/images/2022/04/YellowCrocuses.jpg"
+cover: "/assets/images/2022/04/YellowCrocuses.webp"
 cover_alt: "Cover photo: Yellow Crocuses"
 ---
 

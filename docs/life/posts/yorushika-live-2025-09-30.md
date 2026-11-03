@@ -6,7 +6,7 @@ categories:
   - life
 slug: yorushika-live-2025-09-30
 comments: true
-cover: "/assets/images/2025/10-live.jpeg"
+cover: "/assets/images/2025/10-live.webp"
 cover_alt: "Cover photo: 10 live"
 ---
 
@@ -66,9 +66,9 @@ cover_alt: "Cover photo: 10 live"
 
 ## 横浜
 
-![k arena](/assets/images/2025/09/yorushika-k-arena.jpg)
+![k arena](/assets/images/2025/09/yorushika-k-arena.webp)
 
-![ocean side](/assets/images/2025/09/yorushika-ocean-side.jpg)
+![ocean side](/assets/images/2025/09/yorushika-ocean-side.webp)
 
 ## references
 

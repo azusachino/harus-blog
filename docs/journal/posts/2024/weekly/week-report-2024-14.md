@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2024-14
 comments: true
-cover: "/assets/images/2024/04/HangRaiVietnam.png"
+cover: "/assets/images/2024/04/HangRaiVietnam.webp"
 cover_alt: "Cover photo: Hang Rai Vietnam"
 ---
 
@@ -67,7 +67,7 @@ public:
 
 ## life
 
-![.](/assets/images/2024/04/mt-fuji.png)
+![.](/assets/images/2024/04/mt-fuji.webp)
 
 - a trip to Mt. FUJI
 - casusual working days, but still find it hard to solve leetcode problem by my own.

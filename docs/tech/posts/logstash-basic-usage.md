@@ -8,7 +8,7 @@ tags:
   - logstash
 slug: logstash-basic-usage
 comments: true
-cover: "/assets/images/2021/05/PortoFlavia.jpg"
+cover: "/assets/images/2021/05/PortoFlavia.webp"
 cover_alt: "Cover photo: Porto Flavia"
 ---
 

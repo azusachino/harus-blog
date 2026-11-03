@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2022-50
 comments: true
-cover: "/assets/images/2022/12/mountain-landscape-mountains-landscape-steinweg-3c4a787b5f1473f26f31e3234a764984.jpg"
+cover: "/assets/images/2022/12/mountain-landscape-mountains-landscape-steinweg-3c4a787b5f1473f26f31e3234a764984.webp"
 cover_alt: "Cover photo: mountain landscape mountains landscape steinweg 3c4a787b5f1473f26f31e3234a764984"
 ---
 

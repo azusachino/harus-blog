@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2023-20
 comments: true
-cover: "/assets/images/2023/05/miku.jpg"
+cover: "/assets/images/2023/05/miku.webp"
 cover_alt: "Hatsune Miku illustration"
 ---
 
@@ -93,7 +93,7 @@ func main() {
 
 ## life
 
-![.](/assets/images/2023/05/running_1314.jpg)
+![.](/assets/images/2023/05/running_1314.webp)
 
 ## Thought
 

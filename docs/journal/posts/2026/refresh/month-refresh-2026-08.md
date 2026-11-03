@@ -6,7 +6,7 @@ categories:
   - refresh
 slug: month-refresh-2026-08
 comments: true
-cover: "/assets/images/2026/08-magical-mirai.jpeg"
+cover: "/assets/images/2026/08-magical-mirai.webp"
 cover_alt: "Cover photo: 08 magical mirai"
 ---
 

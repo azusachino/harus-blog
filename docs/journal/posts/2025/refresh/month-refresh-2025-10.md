@@ -6,7 +6,7 @@ categories:
   - refresh
 slug: month-refresh-2025-10
 comments: true
-cover: "/assets/images/2025/10-fleurs.jpeg"
+cover: "/assets/images/2025/10-fleurs.webp"
 cover_alt: "Cover photo: 10 fleurs"
 ---
 

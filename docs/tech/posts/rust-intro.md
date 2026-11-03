@@ -8,7 +8,7 @@ tags:
   - rust
 slug: rust-intro
 comments: true
-cover: "/assets/images/2021/12/LittleBirds.jpg"
+cover: "/assets/images/2021/12/LittleBirds.webp"
 cover_alt: "Cover photo: Little Birds"
 ---
 

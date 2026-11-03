@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2023-15
 comments: true
-cover: "/assets/images/2023/04/EuropeFromISS.jpg"
+cover: "/assets/images/2023/04/EuropeFromISS.webp"
 cover_alt: "Cover photo: Europe From ISS"
 ---
 

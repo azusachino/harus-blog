@@ -9,7 +9,7 @@ tags:
   - flutter
 slug: compare-flutter-and-react
 comments: true
-cover: "/assets/images/2021/06/HowgillFells.jpg"
+cover: "/assets/images/2021/06/HowgillFells.webp"
 cover_alt: "Cover photo: Howgill Fells"
 ---
 
@@ -26,7 +26,7 @@ cover_alt: "Cover photo: Howgill Fells"
 
 注意：flutter 中的`lib`对应 react 中的`src`。
 
-![src](/assets/images/2021/06/folder-layout.png)
+![src](/assets/images/2021/06/folder-layout.webp)
 
 我们可以清晰看到目录结构十分相似，大致上都包括了 API 层，Service 层，View 层，状态管理(provider 和 redux)，main 入口文件。
 

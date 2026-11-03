@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2023-10
 comments: true
-cover: "/assets/images/2023/03/LongWharf.jpg"
+cover: "/assets/images/2023/03/LongWharf.webp"
 cover_alt: "Cover photo: Long Wharf"
 ---
 

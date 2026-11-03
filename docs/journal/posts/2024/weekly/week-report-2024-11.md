@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2024-11
 comments: true
-cover: "/assets/images/2024/03/BryceSnow.jpg"
+cover: "/assets/images/2024/03/BryceSnow.webp"
 cover_alt: "Cover photo: Bryce Snow"
 ---
 
@@ -22,7 +22,7 @@ It's my first time to go the ski-jo, and I think I actually did a good job?
 
 We stayed two days, and I'm able to complete a 2-km route without falling down once. Even though, It's still hard for me to slide stright without intending to slow down, because of the fear of high speed, which might make me out of speed and maybe fall down heavily.
 
-![.](/assets/images/2024/03/snowboard.jpeg)
+![.](/assets/images/2024/03/snowboard.webp)
 
 ## Learning
 

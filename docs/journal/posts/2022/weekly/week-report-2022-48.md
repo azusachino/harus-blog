@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2022-48
 comments: true
-cover: "/assets/images/2022/11/winter-nature-season-trees-a5a7c7b5891ca2a9cd200a39def27b3b.jpg"
+cover: "/assets/images/2022/11/winter-nature-season-trees-a5a7c7b5891ca2a9cd200a39def27b3b.webp"
 cover_alt: "Cover photo: winter nature season trees a5a7c7b5891ca2a9cd200a39def27b3b"
 ---
 
@@ -26,7 +26,7 @@ cover_alt: "Cover photo: winter nature season trees a5a7c7b5891ca2a9cd200a39def2
 
 跟着 iximiuz 学习了 [[Kubernetes]] API 相关的内容，也终于上手了 kubernetes-client-go，算是开始领略到 k8s 开发究竟是一件多么复杂的事情。
 
-![kubernetes-api-structure.png](/assets/images/2022/11/kubernetes-api-structure.png)
+![kubernetes-api-structure.png](/assets/images/2022/11/kubernetes-api-structure.webp)
 
 ## life
 

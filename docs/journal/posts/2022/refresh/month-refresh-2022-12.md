@@ -6,7 +6,7 @@ categories:
   - refresh
 slug: month-refresh-2022-12
 comments: true
-cover: "/assets/images/2022/12/startup-start-up-notebooks-creative-fedea35e07f8fcc6b2a67b2eb0e37e97.jpg"
+cover: "/assets/images/2022/12/startup-start-up-notebooks-creative-fedea35e07f8fcc6b2a67b2eb0e37e97.webp"
 cover_alt: "Cover photo: startup start up notebooks creative fedea35e07f8fcc6b2a67b2eb0e37e97"
 ---
 

@@ -6,7 +6,7 @@ categories:
   - refresh
 slug: month-refresh-2025-11
 comments: true
-cover: "/assets/images/2025/11-yamanote.png"
+cover: "/assets/images/2025/11-yamanote.webp"
 cover_alt: "Cover photo: 11 yamanote"
 ---
 

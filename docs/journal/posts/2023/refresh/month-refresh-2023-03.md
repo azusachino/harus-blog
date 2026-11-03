@@ -6,7 +6,7 @@ categories:
   - refresh
 slug: month-refresh-2023-03
 comments: true
-cover: "/assets/images/2023/03/MWDolomites.jpg"
+cover: "/assets/images/2023/03/MWDolomites.webp"
 cover_alt: "Cover photo: MWDolomites"
 ---
 

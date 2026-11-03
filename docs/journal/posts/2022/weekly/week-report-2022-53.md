@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2022-53
 comments: true
-cover: "/assets/images/2022/12/miku.jpg"
+cover: "/assets/images/2022/12/miku.webp"
 cover_alt: "Hatsune Miku illustration"
 ---
 
@@ -32,7 +32,7 @@ cover_alt: "Hatsune Miku illustration"
 
 也在网上找到一个不错的流程图，在此推荐一波。
 
-![.](/assets/images/2022/12/netty-server-flowchart.png)
+![.](/assets/images/2022/12/netty-server-flowchart.webp)
 
 ## life
 

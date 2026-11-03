@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2022-23
 comments: true
-cover: "/assets/images/2022/06/ParrotDay.jpg"
+cover: "/assets/images/2022/06/ParrotDay.webp"
 cover_alt: "Cover photo: Parrot Day"
 ---
 

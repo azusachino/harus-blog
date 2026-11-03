@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2024-32
 comments: true
-cover: "/assets/images/2024/08/three-day-vacation.png"
+cover: "/assets/images/2024/08/three-day-vacation.webp"
 cover_alt: "Cover photo: three day vacation"
 ---
 

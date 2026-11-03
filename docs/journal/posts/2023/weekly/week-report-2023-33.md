@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2023-33
 comments: true
-cover: "/assets/images/2023/08/AvatarMountain.jpg"
+cover: "/assets/images/2023/08/AvatarMountain.webp"
 cover_alt: "Cover photo: Avatar Mountain"
 ---
 

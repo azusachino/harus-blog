@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2022-46
 comments: true
-cover: "/assets/images/2022/11/985ca149f06cd03b9f0ed8dfe326afdb.jpg"
+cover: "/assets/images/2022/11/985ca149f06cd03b9f0ed8dfe326afdb.webp"
 cover_alt: "Weekly Report 2022.46 cover image"
 ---
 

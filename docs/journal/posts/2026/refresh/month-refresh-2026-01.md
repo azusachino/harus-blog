@@ -6,7 +6,7 @@ categories:
   - refresh
 slug: month-refresh-2026-01
 comments: true
-cover: "/assets/images/2026/01-lawson-miku.png"
+cover: "/assets/images/2026/01-lawson-miku.webp"
 cover_alt: "Cover photo: 01 lawson miku"
 ---
 
@@ -28,9 +28,9 @@ cover_alt: "Cover photo: 01 lawson miku"
 - I spent a lot of time playing mobile games and the co-op game _Nobody Saves the World_. It was a great adventure and a nice way to connect with others.
 - Transitioning from Docker Compose to a local k3s server (with help from Gemini and Claude) was a great experience. Using a cronjob shell script for backups turned out to be much better than the custom backup tools I had written previously.
 
-![lawson-miku](/assets/images/2026/01/lawson-miku.jpg)
+![lawson-miku](/assets/images/2026/01/lawson-miku.webp)
 
-![sekai-miku](/assets/images/2026/01/sekai-miku.jpg)
+![sekai-miku](/assets/images/2026/01/sekai-miku.webp)
 
 ## review
 

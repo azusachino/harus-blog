@@ -6,7 +6,7 @@ categories:
   - weekly
 slug: week-report-2023-23
 comments: true
-cover: "/assets/images/2023/06/GoliathHeron.jpg"
+cover: "/assets/images/2023/06/GoliathHeron.webp"
 cover_alt: "Cover photo: Goliath Heron"
 ---
 
