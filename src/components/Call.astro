@@ -19,7 +19,7 @@ const sticks = 11;
   (() => {
     const lights = document.querySelector('[data-penlights]');
     const status = document.querySelector('[data-call-status]');
-    // The piano answers with the crowd: its chord keys press in time with the sway.
+    // The piano answers with the crowd: playing the iconic theme of 39 Music! (mikitoP).
     const piano = document.querySelector('[data-piano]');
     let timer;
     document.querySelector('[data-call]')?.addEventListener('click', () => {
@@ -28,7 +28,21 @@ const sticks = 11;
       void lights.offsetWidth; // restart the animation on repeat answers
       lights.classList.add('on');
       piano?.setAttribute('data-playing', '');
-      piano?.dispatchEvent(new CustomEvent('piano:arpeggio'));
+      piano?.dispatchEvent(
+        new CustomEvent('piano:phrase', {
+          detail: {
+            notes: [
+              { note: 'F#4', delay: 0 },
+              { note: 'F#4', delay: 0.23 },
+              { note: 'D4', delay: 0.46 },
+              { note: 'A4', delay: 0.92 },
+              { note: 'B4', delay: 1.38 },
+              { note: 'B3', delay: 1.38 },
+            ],
+            label: '♪ 39みゅーじっく！ — mikitoP',
+          },
+        }),
+      );
       status.textContent = 'Penlights up!';
       // A timer, not animationend: under reduced motion nothing animates.
       clearTimeout(timer);

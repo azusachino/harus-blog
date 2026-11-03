@@ -4,23 +4,14 @@ Changes to the site itself, newest first. Posts are not listed here; they are th
 One dated entry per merged change, written in the [Keep a Changelog](https://keepachangelog.com/)
 groups (Added, Changed, Fixed, Removed).
 
+## 2026-11-03 — 39 Music footer call response
+
+### Changed
+
+- The footer `準備OK？` / `Yes!` call and response now references "39みゅーじっく！" (mikitoP) in rhythm and melody, playing its signature hook (`F#4 · F#4 · D4 · A4 · B4`) rather than the Mozart K. 333 B-flat classical arpeggio.
+- `<PianoStrip />` phrase listener supports discrete `{ note, delay }` timed events, dynamically striking individual keys in sync with fast musical rhythms.
+
 ## 2026-11-03 — CV page and PDF
-
-### Added
-
-- The CV lives in `src/data/cv.yaml`, the one source for both outputs: `/cv/` is a component page
-  in the blog's style (roles as a tracklist that expands, an "Updated" date, a PDF download), and
-  `assets/cv/cv.typ` renders the formal PDF with a "Last updated" footer; `make cv` writes
-  `public/cv.pdf`. Typst is pinned in `mise.toml`.
-
-### Removed
-
-- `docs/cv.md` and the `PageDoc` component, replaced by `src/data/cv.yaml` and `src/pages/cv.astro`.
-
-### Fixed
-
-- The header navigation and the footer link to `/cv/` again; the entry was lost in the move from MkDocs.
-
 ## 2026-11-03 — Headless browser checks
 
 ### Added

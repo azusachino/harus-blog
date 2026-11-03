@@ -122,9 +122,12 @@ const beat = (kind: 'white' | 'black', i: number) => (kind === 'black' ? 0 : i =
       const detail = e.detail || {};
       const notes = detail.notes || ['A#3', 'D4', 'F4'];
       const step = detail.step ?? 0.2;
-      notes.forEach((n, idx) => {
-        strike(n, idx * step);
-        strikeKeyVisual(n, idx * step * 1000);
+      notes.forEach((item, idx) => {
+        const isObj = typeof item === 'object' && item !== null;
+        const n = isObj ? item.note : item;
+        const delay = isObj && typeof item.delay === 'number' ? item.delay : idx * step;
+        strike(n, delay);
+        strikeKeyVisual(n, delay * 1000);
       });
       if (caption && detail.label) caption.textContent = detail.label;
     });
@@ -187,19 +190,6 @@ const beat = (kind: 'white' | 'black', i: number) => (kind === 'black' ? 0 : i =
 
   :global(:root[data-theme='dark']) .white {
     stroke: var(--bg);
-  }
-
-  /* Set by Call.astro while the penlights are up: the chord is played as an
-     arpeggio, B-flat, D, F, one soft press each. Under reduced motion the
-     global rule ends it at once and the keys stay as they are. */
-  [data-playing] .lit {
-    transform-box: fill-box;
-    animation: press 0.8s ease-in-out calc(var(--beat) * 0.35s) both;
-  }
-
-  @keyframes press {
-    0%, 100% { transform: translateY(0); }
-    35% { transform: translateY(2.5px); }
   }
 
   figcaption {
