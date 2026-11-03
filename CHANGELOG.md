@@ -8,7 +8,8 @@ groups (Added, Changed, Fixed, Removed).
 
 ### Changed
 
-- The footer `準備OK？` / `Yes!` call and response now references "39みゅーじっく！" (mikitoP) in rhythm and melody, playing its signature hook (`F#4 · F#4 · D4 · A4 · B4`) rather than the Mozart K. 333 B-flat classical arpeggio.
+- The footer call and response now cycles through the authentic concert call phrases of "39みゅーじっく！" (mikitoP, 130 BPM, B minor) on each click: `準備OK？` → `Yes!`, `大サービス！` → `Oh Yeah!`, `大熱唱！` → `Hey!`, `未体験Night！` → `Oh Yeah!`, and `もう一度名前呼んで！` → `初音ミク！`.
+- Each response triggers matching Web Audio rock chord stabs and rhythm hits (`Bm`, `G`, `A`) across the footer `<PianoStrip />` and raises swaying penlights, replacing the Mozart K. 333 B-flat classical arpeggio.
 - `<PianoStrip />` phrase listener supports discrete `{ note, delay }` timed events, dynamically striking individual keys in sync with fast musical rhythms.
 
 ## 2026-11-03 — CV page and PDF

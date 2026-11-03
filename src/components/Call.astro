@@ -1,7 +1,9 @@
 ---
-// Concert call and response in the footer: the stage asks "準備OK？", the
-// reader answers "Yes!", and a row of penlights rises and sways once.
-// Inspired by the calls in "39みゅーじっく!" (mikitoP); no lyrics are quoted.
+// Concert call and response in the footer: cycles through the authentic
+// call-and-response phrases in "39みゅーじっく！" (mikitoP).
+// The stage calls ("準備OK？", "大サービス！", "大熱唱！", "未体験Night！", "もう一度名前呼んで！"),
+// the reader answers ("Yes!", "Oh Yeah!", "Hey!", "Oh Yeah!", "初音ミク！"),
+// the piano fires the matching 130 BPM chord stabs, and penlights sway.
 const sticks = 11;
 ---
 <div class="call">
@@ -9,7 +11,7 @@ const sticks = 11;
     {Array.from({ length: sticks }, (_, i) => <i style={`--i: ${Math.abs(i - (sticks - 1) / 2)}`}></i>)}
   </div>
   <p class="line">
-    <span class="ask mono" lang="ja">準備OK？</span>
+    <span class="ask mono" lang="ja" data-call-ask>準備OK？</span>
     <button class="yes mono" type="button" data-call>Yes!</button>
   </p>
   <p class="visually-hidden" aria-live="polite" data-call-status></p>
@@ -19,37 +21,163 @@ const sticks = 11;
   (() => {
     const lights = document.querySelector('[data-penlights]');
     const status = document.querySelector('[data-call-status]');
-    // The piano answers with the crowd: playing the iconic theme of 39 Music! (mikitoP).
+    const askEl = document.querySelector('[data-call-ask]');
+    const btnEl = document.querySelector('[data-call]');
     const piano = document.querySelector('[data-piano]');
-    let timer;
-    document.querySelector('[data-call]')?.addEventListener('click', () => {
-      lights.classList.remove('on');
-      piano?.removeAttribute('data-playing');
-      void lights.offsetWidth; // restart the animation on repeat answers
-      lights.classList.add('on');
-      piano?.setAttribute('data-playing', '');
-      piano?.dispatchEvent(
-        new CustomEvent('piano:phrase', {
-          detail: {
-            notes: [
-              { note: 'F#4', delay: 0 },
-              { note: 'F#4', delay: 0.23 },
-              { note: 'D4', delay: 0.46 },
-              { note: 'A4', delay: 0.92 },
-              { note: 'B4', delay: 1.38 },
-              { note: 'B3', delay: 1.38 },
-            ],
-            label: '♪ 39みゅーじっく！ — mikitoP',
-          },
-        }),
-      );
-      status.textContent = 'Penlights up!';
-      // A timer, not animationend: under reduced motion nothing animates.
-      clearTimeout(timer);
-      timer = setTimeout(() => {
+    if (!btnEl || !askEl) return;
+
+    // Authentic concert call-and-response phrases from "39みゅーじっく！" (mikitoP, 130 BPM, B minor)
+    const calls = [
+      {
+        ask: '準備OK？',
+        response: 'Yes!',
+        lang: 'en',
+        label: '♪ 準備OK？ — Yes! (39みゅーじっく！)',
+        status: '準備OK？ Yes! Penlights up!',
+        notes: [
+          { note: 'A3', delay: 0 },
+          { note: 'C#4', delay: 0 },
+          { note: 'E4', delay: 0 },
+          { note: 'B3', delay: 0.18 },
+          { note: 'D4', delay: 0.18 },
+          { note: 'F#4', delay: 0.18 },
+          { note: 'B4', delay: 0.18 },
+        ],
+      },
+      {
+        ask: '大サービス！',
+        response: 'Oh Yeah!',
+        lang: 'en',
+        label: '♪ 大サービス！ — Oh Yeah! (39みゅーじっく！)',
+        status: '大サービス！ Oh Yeah! Penlights up!',
+        notes: [
+          { note: 'G3', delay: 0 },
+          { note: 'B3', delay: 0 },
+          { note: 'D4', delay: 0 },
+          { note: 'A3', delay: 0.22 },
+          { note: 'C#4', delay: 0.22 },
+          { note: 'E4', delay: 0.22 },
+          { note: 'B3', delay: 0.44 },
+          { note: 'D4', delay: 0.44 },
+          { note: 'F#4', delay: 0.44 },
+          { note: 'B4', delay: 0.44 },
+        ],
+      },
+      {
+        ask: '大熱唱！',
+        response: 'Hey!',
+        lang: 'en',
+        label: '♪ 大熱唱！ — Hey! (39みゅーじっく！)',
+        status: '大熱唱！ Hey! Penlights up!',
+        notes: [
+          { note: 'A3', delay: 0 },
+          { note: 'C#4', delay: 0 },
+          { note: 'E4', delay: 0 },
+          { note: 'B3', delay: 0.16 },
+          { note: 'D4', delay: 0.16 },
+          { note: 'F#4', delay: 0.16 },
+          { note: 'B4', delay: 0.16 },
+        ],
+      },
+      {
+        ask: '未体験Night！',
+        response: 'Oh Yeah!',
+        lang: 'en',
+        label: '♪ 未体験Night！ — Oh Yeah! (39みゅーじっく！)',
+        status: '未体験Night！ Oh Yeah! Penlights up!',
+        notes: [
+          { note: 'F#3', delay: 0 },
+          { note: 'D4', delay: 0 },
+          { note: 'G3', delay: 0.2 },
+          { note: 'B3', delay: 0.2 },
+          { note: 'D4', delay: 0.2 },
+          { note: 'A3', delay: 0.4 },
+          { note: 'C#4', delay: 0.4 },
+          { note: 'E4', delay: 0.4 },
+          { note: 'B3', delay: 0.6 },
+          { note: 'D4', delay: 0.6 },
+          { note: 'F#4', delay: 0.6 },
+          { note: 'B4', delay: 0.6 },
+        ],
+      },
+      {
+        ask: 'もう一度名前呼んで！',
+        response: '初音ミク！',
+        lang: 'ja',
+        label: '♪ もう一度名前呼んで！ — 初音ミク！ (39みゅーじっく！)',
+        status: 'もう一度名前呼んで！ 初音ミク！ Penlights up!',
+        notes: [
+          { note: 'B3', delay: 0 },
+          { note: 'F#4', delay: 0 },
+          { note: 'D4', delay: 0.22 },
+          { note: 'F#4', delay: 0.22 },
+          { note: 'F#4', delay: 0.44 },
+          { note: 'A4', delay: 0.44 },
+          { note: 'B3', delay: 0.66 },
+          { note: 'D4', delay: 0.66 },
+          { note: 'F#4', delay: 0.66 },
+          { note: 'B4', delay: 0.66 },
+        ],
+      },
+    ];
+
+    let current = 0;
+    let animTimer;
+    let advanceTimer;
+    let pendingNext = false;
+
+    const setCall = (idx) => {
+      const item = calls[idx];
+      askEl.textContent = item.ask;
+      btnEl.textContent = item.response;
+      if (item.lang) btnEl.setAttribute('lang', item.lang);
+      else btnEl.removeAttribute('lang');
+    };
+
+    const advance = () => {
+      clearTimeout(advanceTimer);
+      current = (current + 1) % calls.length;
+      setCall(current);
+      pendingNext = false;
+    };
+
+    btnEl.addEventListener('click', () => {
+      if (pendingNext) {
+        advance();
+      }
+
+      const activeCall = calls[current];
+
+      if (lights) {
         lights.classList.remove('on');
         piano?.removeAttribute('data-playing');
+        void lights.offsetWidth; // restart animation on repeat clicks
+        lights.classList.add('on');
+      }
+
+      if (piano) {
+        piano.setAttribute('data-playing', '');
+        piano.dispatchEvent(
+          new CustomEvent('piano:phrase', {
+            detail: {
+              notes: activeCall.notes,
+              label: activeCall.label,
+            },
+          }),
+        );
+      }
+
+      if (status) status.textContent = activeCall.status;
+
+      clearTimeout(animTimer);
+      animTimer = setTimeout(() => {
+        lights?.classList.remove('on');
+        piano?.removeAttribute('data-playing');
       }, 2900);
+
+      pendingNext = true;
+      clearTimeout(advanceTimer);
+      advanceTimer = setTimeout(advance, 800);
     });
   })();
 </script>
