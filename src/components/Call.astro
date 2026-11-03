@@ -1,7 +1,9 @@
 ---
-// Concert call and response in the footer: the stage asks "準備OK？", the
-// reader answers "Yes!", and a row of penlights rises and sways once.
-// Inspired by the calls in "39みゅーじっく!" (mikitoP); no lyrics are quoted.
+// Concert call and response in the footer: one click plays the authentic,
+// uncut 39 Music! call-and-response section ("39みゅーじっく！" by mikitoP).
+// The stage and crowd call in full song audio: "39みゅーじっく！", "大サービス！" (Oh Yeah!),
+// "大熱唱！" (Hey!), "未体験Night！" (Oh Yeah!), "準備OK？" (Yes!), and
+// "もう一度名前呼んで！" (初音ミク!), with continuous swaying penlights.
 const sticks = 11;
 ---
 <div class="call">
@@ -9,7 +11,7 @@ const sticks = 11;
     {Array.from({ length: sticks }, (_, i) => <i style={`--i: ${Math.abs(i - (sticks - 1) / 2)}`}></i>)}
   </div>
   <p class="line">
-    <span class="ask mono" lang="ja">準備OK？</span>
+    <span class="ask mono" lang="ja" data-call-ask>準備OK？</span>
     <button class="yes mono" type="button" data-call>Yes!</button>
   </p>
   <p class="visually-hidden" aria-live="polite" data-call-status></p>
@@ -19,23 +21,120 @@ const sticks = 11;
   (() => {
     const lights = document.querySelector('[data-penlights]');
     const status = document.querySelector('[data-call-status]');
-    // The piano answers with the crowd: its chord keys press in time with the sway.
-    const piano = document.querySelector('[data-piano]');
-    let timer;
-    document.querySelector('[data-call]')?.addEventListener('click', () => {
-      lights.classList.remove('on');
-      piano?.removeAttribute('data-playing');
-      void lights.offsetWidth; // restart the animation on repeat answers
-      lights.classList.add('on');
-      piano?.setAttribute('data-playing', '');
-      piano?.dispatchEvent(new CustomEvent('piano:arpeggio'));
-      status.textContent = 'Penlights up!';
-      // A timer, not animationend: under reduced motion nothing animates.
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        lights.classList.remove('on');
-        piano?.removeAttribute('data-playing');
-      }, 2900);
+    const askEl = document.querySelector('[data-call-ask]');
+    const btnEl = document.querySelector('[data-call]');
+    if (!btnEl || !askEl) return;
+
+    // Time-synchronized cues aligned to the exact song word timestamps from 1:19
+    const cues = [
+      {
+        start: 0,
+        ask: '39みゅーじっく！',
+        response: 'Music!',
+        lang: 'en',
+        status: '39みゅーじっく！ Music! Penlights up!',
+      },
+      {
+        start: 1.9,
+        ask: '大サービス！',
+        response: 'Oh Yeah!',
+        lang: 'en',
+        status: '大サービス！ Oh Yeah!',
+      },
+      {
+        start: 5.4,
+        ask: '大熱唱！',
+        response: 'Hey!',
+        lang: 'en',
+        status: '大熱唱！ Hey!',
+      },
+      {
+        start: 8.3,
+        ask: '未体験Night！',
+        response: 'Oh Yeah!',
+        lang: 'en',
+        status: '未体験Night！ Oh Yeah!',
+      },
+      {
+        start: 12.5,
+        ask: '準備OK？',
+        response: 'Yes!',
+        lang: 'en',
+        status: 'さぁ 日は出づるぞ 準備OK？ Yes!',
+      },
+      {
+        start: 15.5,
+        ask: '満場一致だ！',
+        response: 'Yeah!',
+        lang: 'en',
+        status: '満場一致だ！',
+      },
+      {
+        start: 27.8,
+        ask: 'もう一度名前呼んで！',
+        response: '初音ミク！',
+        lang: 'ja',
+        status: 'もう一度名前呼んで！ 初音ミク！',
+      },
+    ];
+
+    const audio = new Audio('/audio/39-music/39-music-concert-call.mp3?v=119');
+    audio.preload = 'auto';
+
+    let isPlaying = false;
+    let currentCue = -1;
+
+    const setCue = (cue) => {
+      askEl.textContent = cue.ask;
+      btnEl.textContent = cue.response;
+      if (cue.lang) btnEl.setAttribute('lang', cue.lang);
+      else btnEl.removeAttribute('lang');
+      if (status) status.textContent = cue.status;
+    };
+
+    audio.addEventListener('timeupdate', () => {
+      if (!isPlaying) return;
+      const t = audio.currentTime;
+      let cueIndex = 0;
+      for (let i = cues.length - 1; i >= 0; i--) {
+        if (t >= cues[i].start) {
+          cueIndex = i;
+          break;
+        }
+      }
+      if (cueIndex !== currentCue) {
+        currentCue = cueIndex;
+        setCue(cues[cueIndex]);
+      }
+    });
+
+    const stopConcert = () => {
+      isPlaying = false;
+      audio.pause();
+      audio.currentTime = 0;
+      currentCue = -1;
+      lights?.classList.remove('on');
+      btnEl.removeAttribute('aria-pressed');
+      askEl.textContent = '準備OK？';
+      btnEl.textContent = 'Yes!';
+      btnEl.setAttribute('lang', 'en');
+      if (status) status.textContent = 'Concert call complete.';
+    };
+
+    audio.addEventListener('ended', stopConcert);
+
+    btnEl.addEventListener('click', () => {
+      if (isPlaying) {
+        stopConcert();
+      } else {
+        isPlaying = true;
+        lights?.classList.add('on');
+        btnEl.setAttribute('aria-pressed', 'true');
+        currentCue = 0;
+        setCue(cues[0]);
+        audio.currentTime = 0;
+        audio.play().catch(() => {});
+      }
     });
   })();
 </script>
@@ -45,7 +144,7 @@ const sticks = 11;
     margin: 0.2rem auto 0.9rem;
   }
 
-  /* Sticks wait below the edge and rise only when the crowd answers. */
+  /* Sticks wait below the edge and rise when the concert starts. */
   .penlights {
     display: flex;
     justify-content: center;
@@ -60,11 +159,11 @@ const sticks = 11;
     height: 2.6rem;
     margin-top: 0.4rem;
     border-radius: 4px 4px 2px 2px;
-    /* Same look in both modes, and the same --accent as the piano's lit keys. */
     background: var(--accent);
     --halo: color-mix(in oklab, var(--accent) 70%, transparent);
     transform: translateY(110%);
     transform-origin: 50% 100%;
+    transition: transform 0.35s ease-out;
   }
 
   /* Grip */
@@ -78,20 +177,15 @@ const sticks = 11;
     background: var(--on-glow);
   }
 
-  /* The halo only while raised, so nothing leaks above the edge at rest. */
+  /* The halo and continuous sway while the concert plays through. */
   .penlights.on i {
     box-shadow: 0 0 11px 2px var(--halo);
-    animation: wave 2.4s ease-in-out calc(var(--i) * 45ms) both;
+    animation: sway 1.85s ease-in-out calc(var(--i) * 55ms) infinite alternate;
   }
 
-  @keyframes wave {
-    0% { transform: translateY(110%) rotate(0deg); }
-    14% { transform: translateY(0) rotate(-14deg); }
-    32% { transform: translateY(0) rotate(14deg); }
-    50% { transform: translateY(0) rotate(-14deg); }
-    68% { transform: translateY(0) rotate(14deg); }
-    86% { transform: translateY(0) rotate(0deg); }
-    100% { transform: translateY(110%) rotate(0deg); }
+  @keyframes sway {
+    0% { transform: translateY(0) rotate(-14deg); }
+    100% { transform: translateY(0) rotate(14deg); }
   }
 
   .line {
@@ -116,7 +210,7 @@ const sticks = 11;
     border-radius: 999px;
     padding: 0.15rem 0.9rem;
     cursor: pointer;
-    transition: transform 0.15s ease;
+    transition: transform 0.15s ease, background 0.15s ease;
   }
 
   .yes:hover {
@@ -127,11 +221,17 @@ const sticks = 11;
     transform: scale(0.96);
   }
 
-  /* Reduced motion: the lights simply show, still, until the timer lowers them. */
+  .yes[aria-pressed='true'] {
+    background: var(--accent);
+    color: var(--on-glow);
+    border-color: var(--accent);
+  }
+
+  /* Reduced motion: penlights simply raise and stay still while playing. */
   @media (prefers-reduced-motion: reduce) {
     .penlights.on i {
       animation: none;
-      transform: none;
+      transform: translateY(0);
     }
   }
 </style>

@@ -4,6 +4,17 @@ Changes to the site itself, newest first. Posts are not listed here; they are th
 One dated entry per merged change, written in the [Keep a Changelog](https://keepachangelog.com/)
 groups (Added, Changed, Fixed, Removed).
 
+## 2026-11-03 — 39 Music footer call response
+
+### Changed
+
+- The footer call and response now plays the authentic, uncut concert call section of "39みゅーじっく！" (mikitoP) in one continuous single-click sequence: `準備OK？` → `Yes!` launches the full master track section (`39みゅーじっく！` → `大サービス！ (Oh Yeah!)` → `大熱唱！ (Hey!)` → `未体験Night！ (Oh Yeah!)` → `準備OK？ (Yes!)` → `もう一度名前呼んで！ (初音ミク!)`).
+- Penlights continuously sway to the 130 BPM rhythm throughout the entire section, synchronized with `timeupdate` cue transitions, and retract when the section completes.
+
+### Removed
+
+- Removed the footer `<PianoStrip />` keyboard, clearing space for future 3D Miku additions.
+
 ## 2026-11-03 — CV page and PDF
 
 ### Added
