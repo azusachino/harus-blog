@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2023.28
-date: 2023-07-16
+created: 2023-07-16
 description: 一个人的伟大征程?
 categories:
   - weekly

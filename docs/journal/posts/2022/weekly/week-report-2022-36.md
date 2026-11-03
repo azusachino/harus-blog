@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2022.36
-date: 2022-09-04
+created: 2022-09-04
 description: 生命线
 categories:
   - weekly

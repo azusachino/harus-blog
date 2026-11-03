@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2022.45
-date: 2022-11-06
+created: 2022-11-06
 description: 欲張り
 categories:
   - weekly

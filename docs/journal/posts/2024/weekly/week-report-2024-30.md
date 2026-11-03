@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.30
-date: 2024-07-28
+created: 2024-07-28
 description: hot days continued
 categories:
   - weekly

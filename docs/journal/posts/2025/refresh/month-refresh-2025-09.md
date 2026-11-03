@@ -1,6 +1,6 @@
 ---
 title: Monthly Refresh 2025.09
-date: 2025-09-28
+created: 2025-09-28
 description: today is a good day to start
 categories:
   - refresh

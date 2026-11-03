@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.41
-date: 2024-10-13
+created: 2024-10-13
 description: know your restrictions
 categories:
   - weekly

@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2023.08
-date: 2023-02-26
+created: 2023-02-26
 description: ゲーム脳
 categories:
   - weekly

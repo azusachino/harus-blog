@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.29
-date: 2024-07-21
+created: 2024-07-21
 description: life continues
 categories:
   - weekly

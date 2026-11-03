@@ -1,6 +1,6 @@
 ---
 title: 枪炮病菌与钢铁
-date: 2024-04-08
+created: 2024-04-08
 description: 历史进程中，最重要的那部分因素
 categories:
   - life

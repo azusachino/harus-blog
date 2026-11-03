@@ -1,6 +1,6 @@
 ---
 title: Monthly Refresh 2023.06
-date: 2023-06-30
+created: 2023-06-30
 description: 时代的局限
 categories:
   - refresh

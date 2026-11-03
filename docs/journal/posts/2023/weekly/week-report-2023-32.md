@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2023.32
-date: 2023-08-13
+created: 2023-08-13
 description: 在家的日子
 categories:
   - weekly

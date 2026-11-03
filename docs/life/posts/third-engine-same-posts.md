@@ -1,6 +1,6 @@
 ---
 title: Third Engine, Same Posts
-date: 2026-10-11
+created: 2026-10-11
 description: moving the blog from MkDocs to Astro, and what the move dug up
 categories:
   - life

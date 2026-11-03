@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2023.23
-date: 2023-06-11
+created: 2023-06-11
 description: Walking on the Edge
 categories:
   - weekly

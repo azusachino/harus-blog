@@ -1,6 +1,6 @@
 ---
 title: Monthly Refresh 2026.10
-date: 2026-10-31
+created: 2026-10-31
 description: a trip home, another rewrite, and the same unfinished learning
 categories:
   - refresh

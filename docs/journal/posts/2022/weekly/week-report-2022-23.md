@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2022.23
-date: 2022-06-05
+created: 2022-06-05
 description: Round-a-Round Merry-go-round
 categories:
   - weekly

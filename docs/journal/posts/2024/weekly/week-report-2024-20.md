@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.20
-date: 2024-05-19
+created: 2024-05-19
 description: focus, focus
 categories:
   - weekly

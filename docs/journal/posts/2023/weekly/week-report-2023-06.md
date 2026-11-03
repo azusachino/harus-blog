@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2023.06
-date: 2023-02-12
+created: 2023-02-12
 description: Entertainment
 categories:
   - weekly

@@ -30,7 +30,7 @@ const tickets = [
   ...concerts.map((post, i) => ({
     stub: `LIVE-${String(concerts.length - i).padStart(2, '0')} · ♪ ${trackLength(post.body)}`,
     venue: post.data.slug.includes('symphony') ? 'Yokohama · Orchestra' : 'Live Tour · Plagiarism',
-    date: day(post.data.date),
+    date: day(post.data.created),
     title: post.data.title,
     note: post.data.description,
     href: href('life', post),
@@ -106,7 +106,7 @@ const mirai = (await getCollection('magicalMirai')).sort((a, b) => b.id.localeCo
               <img src={post.data.cover} alt={post.data.cover_alt ?? post.data.title} loading="lazy" />
             )}
             <span class="book-title">{post.data.title}</span>
-            <span class="mono muted">{day(post.data.date)} · ♪ {trackLength(post.body)}</span>
+            <span class="mono muted">{day(post.data.created)} · ♪ {trackLength(post.body)}</span>
           </a>
         </li>
       ))}
@@ -123,7 +123,7 @@ const mirai = (await getCollection('magicalMirai')).sort((a, b) => b.id.localeCo
         <li>
           <a href={href('life', post)} class="essay-title">{post.data.title}</a>
           {post.data.description && <p class="desc muted">{post.data.description}</p>}
-          <p class="mono muted meta">{day(post.data.date)} · ♪ {trackLength(post.body)}</p>
+          <p class="mono muted meta">{day(post.data.created)} · ♪ {trackLength(post.body)}</p>
         </li>
       ))}
     </ul>

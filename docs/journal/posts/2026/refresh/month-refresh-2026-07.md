@@ -1,6 +1,6 @@
 ---
 title: Monthly Refresh 2026.07
-date: 2026-08-03
+created: 2026-08-03
 description: the same gap, a week apart
 categories:
   - refresh

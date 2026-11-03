@@ -1,6 +1,6 @@
 ---
 title: Monthly Refresh 2026.09
-date: 2026-10-01
+created: 2026-10-01
 description: vibecoding, harnesses, and the human boundary
 categories:
   - refresh

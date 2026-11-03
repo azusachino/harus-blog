@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.11
-date: 2024-03-17
+created: 2024-03-17
 description: a wonderful week
 categories:
   - weekly

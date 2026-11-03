@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2022.24
-date: 2022-06-12
+created: 2022-06-12
 description: うみより海底譚
 categories:
   - weekly

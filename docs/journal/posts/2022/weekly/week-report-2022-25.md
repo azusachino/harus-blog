@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2022.25
-date: 2022-06-19
+created: 2022-06-19
 description: そらから宇宙論
 categories:
   - weekly

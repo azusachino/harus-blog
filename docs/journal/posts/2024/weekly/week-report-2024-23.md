@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.23
-date: 2024-06-09
+created: 2024-06-09
 description: understand your situation
 categories:
   - weekly

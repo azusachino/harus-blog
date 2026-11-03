@@ -1,6 +1,6 @@
 ---
 title: Review 2025
-date: 2025-12-31
+created: 2025-12-31
 description: cynicism is easy, but leads to nowhere
 categories:
   - review

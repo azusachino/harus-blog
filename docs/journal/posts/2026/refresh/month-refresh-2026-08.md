@@ -1,6 +1,6 @@
 ---
 title: Monthly Refresh 2026.08
-date: 2026-09-02
+created: 2026-09-02
 description: a
 categories:
   - refresh

@@ -1,6 +1,6 @@
 ---
 title: How my agent-assisted workstation took shape
-date: 2026-10-08
+created: 2026-10-08
 description: How I prepare context before a task, choose tools and agent skills, borrow from Spec Kit, and keep the results reviewable.
 categories:
   - practice

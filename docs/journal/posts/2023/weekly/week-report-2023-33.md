@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2023.33
-date: 2023-08-20
+created: 2023-08-20
 description: 逐渐消退的新鲜感
 categories:
   - weekly

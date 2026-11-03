@@ -9,7 +9,8 @@ import path from 'node:path';
 // Markdown under docs/ so the content outlives this framework.
 const post = z.object({
   title: z.string(),
-  date: z.coerce.date(),
+  created: z.coerce.date(),
+  modified: z.coerce.date().optional(),
   description: z.string(),
   // Lowercase, as the frontmatter contract requires (also keeps category
   // URLs from colliding on case-insensitive filesystems).
@@ -82,7 +83,8 @@ const series = defineCollection({
   }),
   schema: z.object({
     title: z.string(),
-    date: z.coerce.date(),
+    created: z.coerce.date(),
+    modified: z.coerce.date().optional(),
     description: z.string().optional(),
     cover: z.string().optional(),
     cover_alt: z.string().optional(),

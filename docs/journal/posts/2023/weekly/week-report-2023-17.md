@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2023.17
-date: 2023-04-30
+created: 2023-04-30
 description: True Picture of life
 categories:
   - weekly

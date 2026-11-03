@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.45
-date: 2024-11-10
+created: 2024-11-10
 description: surrealism?
 categories:
   - weekly

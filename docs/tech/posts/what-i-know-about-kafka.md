@@ -1,6 +1,6 @@
 ---
 title: "Inside Kafka: Architecture and Replica Management"
-date: 2025-06-01
+created: 2025-06-01
 description: an unease trip
 categories:
   - research

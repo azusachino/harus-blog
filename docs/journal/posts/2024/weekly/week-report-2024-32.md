@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.32
-date: 2024-08-11
+created: 2024-08-11
 description: lives were so different
 categories:
   - weekly

@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.39
-date: 2024-09-29
+created: 2024-09-29
 description: start to realize the real life
 categories:
   - weekly

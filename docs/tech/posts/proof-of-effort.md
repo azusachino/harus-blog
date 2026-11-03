@@ -1,6 +1,6 @@
 ---
 title: Proof of effort when agents do the typing
-date: 2026-11-03
+created: 2026-11-03
 description: Agents made producing work cheap and left verifying it expensive. Proof of effort records what the author checked before handing work to a reviewer.
 categories:
   - discussion

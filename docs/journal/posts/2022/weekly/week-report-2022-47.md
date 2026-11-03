@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2022.47
-date: 2022-11-20
+created: 2022-11-20
 description: 始于极限，终于庸俗
 categories:
   - weekly

@@ -1,6 +1,6 @@
 ---
 title: "Understanding Aeron: Low-Latency Transport, Archive, and Cluster"
-date: 2025-06-11
+created: 2025-06-11
 description: consistency and persistency
 categories:
   - research

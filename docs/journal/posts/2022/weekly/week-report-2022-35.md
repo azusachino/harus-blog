@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2022.35
-date: 2022-08-28
+created: 2022-08-28
 description: 强大的信念才是立身之本
 categories:
   - weekly

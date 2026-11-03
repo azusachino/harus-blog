@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.33
-date: 2024-08-18
+created: 2024-08-18
 description: what comes, what doesnt
 categories:
   - weekly

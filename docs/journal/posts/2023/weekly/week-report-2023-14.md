@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2023.14
-date: 2023-04-09
+created: 2023-04-09
 description: The meaning of life
 categories:
   - weekly

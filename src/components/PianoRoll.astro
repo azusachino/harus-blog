@@ -23,7 +23,7 @@ function weekColumn(post: Post): number {
   const monthMatch = slug.match(/month-refresh-\d{4}-(\d{1,2})/);
   if (monthMatch) return Math.min(50, Math.max(1, Math.round((Number(monthMatch[1]) - 1) * 4.35) + 1));
   if (slug.includes('-mid')) return 26;
-  const d = post.data.date;
+  const d = post.data.created;
   const start = Date.UTC(d.getUTCFullYear(), 0, 1);
   const diffDays = Math.floor((d.getTime() - start) / 86_400_000);
   return Math.min(53, Math.max(1, Math.ceil((diffDays + 1) / 7)));
@@ -37,7 +37,7 @@ function laneOf(post: Post): LaneId {
 }
 
 const notes = [...posts]
-  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime())
+  .sort((a, b) => a.data.created.getTime() - b.data.created.getTime())
   .map((post) => {
     const lane = laneOf(post);
     const col = weekColumn(post);
@@ -47,7 +47,7 @@ const notes = [...posts]
       col,
       span: LANES.find((l) => l.id === lane)!.span,
       title: post.data.title,
-      date: day(post.data.date),
+      date: day(post.data.created),
       len,
       url: href('journal', post),
     };

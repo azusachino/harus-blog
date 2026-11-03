@@ -14,7 +14,7 @@ const { section, posts, total = posts.length } = Astro.props;
       <span class="badge">#{String(total - i).padStart(3, '0')}</span>
       <a href={href(section, post)}>{post.data.title}</a>
       <span class="meta mono muted">
-        <time datetime={day(post.data.date)}>{day(post.data.date)}</time>
+        <time datetime={day(post.data.created)}>{day(post.data.created)}</time>
         <span>♪ {trackLength(post.body)}</span>
       </span>
     </li>

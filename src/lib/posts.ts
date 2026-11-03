@@ -9,8 +9,8 @@ export async function published(section: Section): Promise<Post[]> {
   const now = Date.now();
   const all = await getCollection(section);
   return all
-    .filter((p: { data: { date: Date } }) => p.data.date.getTime() <= now)
-    .sort((a: { data: { date: Date } }, b: { data: { date: Date } }) => b.data.date.getTime() - a.data.date.getTime());
+    .filter((p: { data: { created: Date } }) => p.data.created.getTime() <= now)
+    .sort((a: { data: { created: Date } }, b: { data: { created: Date } }) => b.data.created.getTime() - a.data.created.getTime());
 }
 
 export function href(section: Section, post: Post) {

@@ -8,10 +8,10 @@ import { published } from '../../../lib/posts';
 
 export async function getStaticPaths() {
   const posts = await published('journal');
-  const years = [...new Set(posts.map((p) => p.data.date.getUTCFullYear()))];
+  const years = [...new Set(posts.map((p) => p.data.created.getUTCFullYear()))];
   return years.map((year) => ({
     params: { year: String(year) },
-    props: { posts: posts.filter((p) => p.data.date.getUTCFullYear() === year) },
+    props: { posts: posts.filter((p) => p.data.created.getUTCFullYear() === year) },
   }));
 }
 

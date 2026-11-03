@@ -1,6 +1,6 @@
 ---
 title: Monthly Refresh 2025.08
-date: 2025-08-31
+created: 2025-08-31
 description: yet days pass by
 categories:
   - refresh

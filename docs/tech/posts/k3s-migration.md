@@ -1,6 +1,6 @@
 ---
 title: Boring Kubernetes
-date: 2026-01-22
+created: 2026-01-22
 description: A Private, Production-Ready Homelab with K3s & Tailscale
 categories:
   - practice

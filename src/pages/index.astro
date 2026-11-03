@@ -10,7 +10,7 @@ import { day, href, published, SECTIONS, trackLength } from '../lib/posts';
 const lists = await Promise.all(SECTIONS.map(async (s) => ({ section: s, posts: await published(s) })));
 const latest = lists
   .map(({ section, posts }) => ({ section, post: posts[0] }))
-  .sort((a, b) => b.post.data.date.getTime() - a.post.data.date.getTime())[0];
+  .sort((a, b) => b.post.data.created.getTime() - a.post.data.created.getTime())[0];
 // One entry per section for the Home strip.
 const currently = Object.values(
   Object.fromEntries((await getCollection('currently')).reverse().map((e) => [e.data.section, e])),
@@ -31,7 +31,7 @@ const names = { tech: 'Tech', journal: 'Journal', life: 'Life' };
   <a class="release card" href={href(latest.section, latest.post)}>
     <div class="release-header">
       <span class="release-pill mono">New release · {names[latest.section]}</span>
-      <span class="mono muted release-meta">{day(latest.post.data.date)} · ♪ {trackLength(latest.post.body)}</span>
+      <span class="mono muted release-meta">{day(latest.post.data.created)} · ♪ {trackLength(latest.post.body)}</span>
     </div>
     <span class="title">{latest.post.data.title}</span>
     <Waveform seed={latest.post.data.title} bars={48} />

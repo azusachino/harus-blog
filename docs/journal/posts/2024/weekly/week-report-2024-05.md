@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.05
-date: 2024-02-04
+created: 2024-02-04
 description: 不可解な
 categories:
   - weekly

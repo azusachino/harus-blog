@@ -17,7 +17,8 @@ interface Props {
   back: { href: string; label: string };
   badge?: string;
   title: string;
-  date?: string;
+  created?: string;
+  modified?: string;
   length: string;
   tags?: string[];
   headings: { depth: number; slug: string; text: string }[];
@@ -26,7 +27,7 @@ interface Props {
   comments?: boolean;
   cover?: { src: string; alt?: string };
 }
-const { lang, back, badge, title, date, length, tags = [], headings, prev, next, comments = false, cover } = Astro.props;
+const { lang, back, badge, title, created, modified, length, tags = [], headings, prev, next, comments = false, cover } = Astro.props;
 const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
 ---
 <article class="post" lang={lang}>
@@ -37,7 +38,12 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
     </p>
     <h1>{title}</h1>
     <p class="meta mono muted">
-      {date && <time datetime={date}>{date}</time>}
+      {created && (
+        <time datetime={created}>
+          {created}
+          {modified && modified !== created && <span class="modified"> (updated {modified})</span>}
+        </time>
+      )}
       <span>♪ {length}</span>
       {tags.map((t) => <a class="tag" href={`/tags/${t}/`}>#{t}</a>)}
     </p>
