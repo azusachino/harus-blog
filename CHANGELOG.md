@@ -15,6 +15,18 @@ groups (Added, Changed, Fixed, Removed).
 
 - Removed the footer `<PianoStrip />` keyboard, clearing space for future 3D Miku additions.
 
+## 2026-11-03 — CI preparation and redundant work
+
+### Changed
+
+- CI cancels superseded PR runs while preserving every main push, and skips PRs changing only
+  explicitly listed root documentation. Blog posts and diagrams retain the complete gate.
+- CI installs only Bun and rumdl with mise's built-in cache and checks out only Archify's skill
+  directory. Installation, formatting and validation have separate timing steps.
+- Removed the standalone diagram render before verification: Astro's integration still renders
+  and validates every diagram during both type sync and the site build.
+- The 50-run baseline and measured follow-up are recorded in `CI_PERFORMANCE.md`.
+
 ## 2026-11-03 — CV page and PDF
 
 ### Added
