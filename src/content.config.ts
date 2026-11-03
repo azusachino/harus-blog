@@ -138,21 +138,42 @@ const trips = defineCollection({
   }),
 });
 
-// The CV, rendered as it is (About is a component page, src/pages/about.astro).
-const pages = defineCollection({
-  loader: glob({ base: 'docs', pattern: ['cv.md'] }),
-  schema: z.object({
-    title: z.string(),
-    date: z.coerce.date().optional(),
-    description: z.string().optional(),
-    cover: z.string().optional(),
-    cover_alt: z.string().optional(),
-  }),
+// The CV (src/data/cv.yaml): one entry per top-level key, rendered by
+// src/pages/cv.astro and read by assets/cv/cv.typ for the PDF.
+const link = z.object({ text: z.string(), href: z.url() });
+const bullet = z.union([z.string(), z.object({ text: z.string(), link })]);
+const project = z.object({ name: z.string(), tag: z.string(), href: z.url().optional(), text: z.string() });
+const cv = defineCollection({
+  loader: file('src/data/cv.yaml'),
+  schema: z.union([
+    z.object({
+      updated: z.string(),
+      name: z.string(),
+      headline: z.string(),
+      email: z.email(),
+      phones: z.array(z.string()),
+      born: z.string(),
+      github: z.url(),
+      linkedin: z.url(),
+      summary: z.string(),
+    }),
+    z.object({
+      title: z.string(),
+      roles: z.array(
+        z.object({ title: z.string(), org: z.string(), period: z.string(), bullets: z.array(bullet) }),
+      ),
+    }),
+    z.object({ title: z.string(), projects: z.array(project) }),
+    z.object({
+      title: z.string(),
+      rows: z.array(z.object({ label: z.string(), value: z.string(), href: z.url().optional() })),
+    }),
+  ]),
 });
 
 export const collections = {
   series,
-  pages,
+  cv,
   trips,
   tech: posts('tech'),
   journal: posts('journal'),

@@ -11,7 +11,7 @@ const REQUIRED = ['title', 'date', 'description', 'categories', 'slug', 'comment
 // Optional keys still have a fixed place: after comments.
 const ORDER = [...REQUIRED, 'cover', 'cover_alt'];
 const SERIES_REQUIRED = ['title', 'date', 'description'];
-const EXEMPT = new Set(['index.md', 'about.md', 'cv.md']);
+const EXEMPT = new Set(['index.md', 'about.md']);
 
 function check(rel: string): string[] {
   const text = readFileSync(DOCS + rel, 'utf8');

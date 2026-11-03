@@ -16,6 +16,7 @@ export const NAV = [
   { label: 'Travel', href: '/travel/' },
   { label: 'Currently', href: '/currently/' },
   { label: 'About', href: '/about/' },
+  { label: 'CV', href: '/cv/' },
 ];
 
 // Palette "tracks": the same layout, repainted. Values live in global.css

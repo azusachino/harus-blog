@@ -24,7 +24,7 @@ split into type-based sections — **no year-wise layout**. The site code is at 
 - **Journal** — `docs/journal/posts/<YYYY>/…`: weekly reports, monthly refreshes, yearly reviews.
 - **Life** — `docs/life/posts/`: books, concerts, essays.
 - **About** — `src/pages/about.astro`, a component page; its wordings are the owner's (ask before
-  changing them). **CV** — `docs/cv.md`.
+  changing them). **CV** — `src/data/cv.yaml`, rendered by `src/pages/cv.astro` and by `assets/cv/cv.typ` (`make cv` → `public/cv.pdf`; commit the PDF with the YAML).
 - **Data pages** — `src/data/*.yaml`: `currently.yaml` (Play/Practice/Read & watch), `playlist.yaml`
   (On repeat, file order), `use.yaml` (Dev/Devices/Subscriptions). Lists are the owner's; ask before
   adding entries.
