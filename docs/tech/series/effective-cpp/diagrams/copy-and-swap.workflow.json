@@ -1,0 +1,130 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Copy-and-Swap Idiom: Strong Exception Safety Workflow",
+    "quality_profile": "standard",
+    "output": "copy-and-swap.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "caller_lane",
+      "label": "Original Object (*this)"
+    },
+    {
+      "id": "staging_lane",
+      "label": "Shadow Working Copy"
+    },
+    {
+      "id": "commit_lane",
+      "label": "Atomic Commit (noexcept swap)"
+    },
+    {
+      "id": "unwind_lane",
+      "label": "Exception Boundary & Cleanup",
+      "variant": "exception"
+    }
+  ],
+  "mainPath": [
+    "invoke_op",
+    "clone_state",
+    "apply_changes",
+    "atomic_swap",
+    "reclaim_old"
+  ],
+  "nodes": [
+    {
+      "id": "invoke_op",
+      "lane": "caller_lane",
+      "col": 0,
+      "label": "Mutate Request",
+      "sublabel": "operator= / changeState()",
+      "type": "frontend"
+    },
+    {
+      "id": "clone_state",
+      "lane": "staging_lane",
+      "col": 1,
+      "label": "Deep Copy State",
+      "sublabel": "Create temp copy on stack",
+      "type": "backend"
+    },
+    {
+      "id": "apply_changes",
+      "lane": "staging_lane",
+      "col": 2,
+      "label": "Perform High-Risk Operations",
+      "sublabel": "Allocate memory, parse input, write data",
+      "type": "backend"
+    },
+    {
+      "id": "throw_check",
+      "lane": "unwind_lane",
+      "col": 2,
+      "label": "Exception Thrown?",
+      "sublabel": "Allocation fails or bad data",
+      "type": "security"
+    },
+    {
+      "id": "unwind_discard",
+      "lane": "unwind_lane",
+      "col": 3,
+      "label": "Rollback: Destroy Temp",
+      "sublabel": "*this untouched (strong safety)",
+      "type": "external"
+    },
+    {
+      "id": "atomic_swap",
+      "lane": "commit_lane",
+      "col": 3,
+      "label": "std::swap(*this, temp)",
+      "sublabel": "Pointers swapped with noexcept",
+      "type": "backend"
+    },
+    {
+      "id": "reclaim_old",
+      "lane": "caller_lane",
+      "col": 4,
+      "label": "Reclaim Old State",
+      "sublabel": "temp destructor releases old buffers",
+      "type": "backend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "invoke_op",
+      "to": "clone_state",
+      "label": "1. Isolate copy"
+    },
+    {
+      "id": "e2",
+      "from": "clone_state",
+      "to": "apply_changes",
+      "label": "2. Modify copy"
+    },
+    {
+      "id": "e3",
+      "from": "apply_changes",
+      "to": "throw_check"
+    },
+    {
+      "id": "e4",
+      "from": "throw_check",
+      "to": "unwind_discard",
+      "label": "Throw exception"
+    },
+    {
+      "id": "e5",
+      "from": "apply_changes",
+      "to": "atomic_swap",
+      "label": "3. Success"
+    },
+    {
+      "id": "e6",
+      "from": "atomic_swap",
+      "to": "reclaim_old",
+      "label": "4. Scope exit"
+    }
+  ]
+}

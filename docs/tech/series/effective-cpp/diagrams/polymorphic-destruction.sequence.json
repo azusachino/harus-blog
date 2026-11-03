@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Polymorphic Destruction: Non-Virtual vs Virtual Destructor Dispatch",
+    "quality_profile": "standard",
+    "output": "polymorphic-destruction.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "caller",
+      "type": "frontend",
+      "label": "Caller Code",
+      "sublabel": "Base* p = new Derived()"
+    },
+    {
+      "id": "derived",
+      "type": "backend",
+      "label": "Derived Component",
+      "sublabel": "Derived resources & vtable"
+    },
+    {
+      "id": "base",
+      "type": "backend",
+      "label": "Base Subobject",
+      "sublabel": "Base slice & vtable"
+    },
+    {
+      "id": "heap",
+      "type": "database",
+      "label": "Heap Allocator",
+      "sublabel": "operator delete"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 280,
+      "label": "Case A: Non-Virtual Base Destructor (Partial Deletion Leak)"
+    },
+    {
+      "from": 330,
+      "to": 460,
+      "label": "Case B: Virtual Destructor (Polymorphic Dynamic Dispatch)"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "caller",
+      "to": "base",
+      "y": 180,
+      "label": "1. delete p (Static type resolution to Base::~Base)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "base",
+      "to": "heap",
+      "y": 215,
+      "label": "2. Base destructor runs and frees base members only",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "base",
+      "to": "derived",
+      "y": 250,
+      "label": "3. [BUG] ~Derived() skipped; derived members leaked",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m4",
+      "from": "caller",
+      "to": "derived",
+      "y": 350,
+      "label": "4. delete p (Dynamic dispatch via vptr -> ~Derived)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m5",
+      "from": "derived",
+      "to": "base",
+      "y": 385,
+      "label": "5. ~Derived() frees own resources, then chains to ~Base()",
+      "variant": "default"
+    },
+    {
+      "id": "m6",
+      "from": "base",
+      "to": "heap",
+      "y": 420,
+      "label": "6. ~Base() finishes; allocator frees complete object",
+      "variant": "emphasis"
+    }
+  ]
+}

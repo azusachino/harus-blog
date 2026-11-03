@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Non-Virtual Interface (NVI) Idiom & Template Method Pattern",
+    "quality_profile": "standard",
+    "output": "nvi-template-method.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "client",
+      "type": "frontend",
+      "label": "Client Code",
+      "sublabel": "shape->draw()"
+    },
+    {
+      "id": "base_interface",
+      "type": "backend",
+      "label": "Base Class (NVI)",
+      "sublabel": "public non-virtual draw()"
+    },
+    {
+      "id": "derived_impl",
+      "type": "backend",
+      "label": "Derived Class",
+      "sublabel": "private virtual doDraw()"
+    },
+    {
+      "id": "audit_monitor",
+      "type": "security",
+      "label": "Invariant Guard",
+      "sublabel": "Pre/Post Checks & Mutex Locks"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 260,
+      "label": "Phase 1: Public Non-Virtual Invariant Check & Setup"
+    },
+    {
+      "from": 285,
+      "to": 375,
+      "label": "Phase 2: Polymorphic Custom Virtual Hook Execution"
+    },
+    {
+      "from": 405,
+      "to": 495,
+      "label": "Phase 3: Post-Condition Validation & Cleanup"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "client",
+      "to": "base_interface",
+      "y": 175,
+      "label": "1. shape->draw() (Calls public non-virtual interface)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "base_interface",
+      "to": "audit_monitor",
+      "y": 215,
+      "label": "2. Verify pre-conditions, lock mutex, validate arguments",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "base_interface",
+      "to": "derived_impl",
+      "y": 305,
+      "label": "3. Invoke private virtual hook: doDraw()",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m4",
+      "from": "derived_impl",
+      "to": "base_interface",
+      "y": 345,
+      "label": "4. Derived custom rendering logic returns",
+      "variant": "default"
+    },
+    {
+      "id": "m5",
+      "from": "base_interface",
+      "to": "audit_monitor",
+      "y": 425,
+      "label": "5. Check post-conditions, unlock mutex, audit state",
+      "variant": "default"
+    },
+    {
+      "id": "m6",
+      "from": "base_interface",
+      "to": "client",
+      "y": 460,
+      "label": "6. Method completes, returning control safely to caller",
+      "variant": "emphasis"
+    }
+  ]
+}
