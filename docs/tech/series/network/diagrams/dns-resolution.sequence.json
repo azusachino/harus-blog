@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Hierarchical DNS Resolution Flow",
+    "quality_profile": "standard",
+    "output": "dns-resolution.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "client",
+      "type": "frontend",
+      "label": "Client / Browser",
+      "sublabel": "gethostbyname / socket"
+    },
+    {
+      "id": "local_dns",
+      "type": "backend",
+      "label": "Local DNS Server",
+      "sublabel": "Recursive Resolver"
+    },
+    {
+      "id": "root_dns",
+      "type": "cloud",
+      "label": "Root DNS Server",
+      "sublabel": "Root (.) Zone"
+    },
+    {
+      "id": "tld_dns",
+      "type": "cloud",
+      "label": "TLD DNS Server",
+      "sublabel": ".com Zone"
+    },
+    {
+      "id": "auth_dns",
+      "type": "external",
+      "label": "Authoritative DNS",
+      "sublabel": "example.com Zone"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "client",
+      "to": "local_dns",
+      "y": 160,
+      "label": "1. Query A: www.example.com (Recursive)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "local_dns",
+      "to": "root_dns",
+      "y": 195,
+      "label": "2. Query A: www.example.com (Iterative)",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "root_dns",
+      "to": "local_dns",
+      "y": 230,
+      "label": "3. Referral: .com NS + Glue IP",
+      "variant": "return"
+    },
+    {
+      "id": "m4",
+      "from": "local_dns",
+      "to": "tld_dns",
+      "y": 265,
+      "label": "4. Query A: www.example.com",
+      "variant": "default"
+    },
+    {
+      "id": "m5",
+      "from": "tld_dns",
+      "to": "local_dns",
+      "y": 300,
+      "label": "5. Referral: example.com NS + Glue IP",
+      "variant": "return"
+    },
+    {
+      "id": "m6",
+      "from": "local_dns",
+      "to": "auth_dns",
+      "y": 335,
+      "label": "6. Query A: www.example.com",
+      "variant": "default"
+    },
+    {
+      "id": "m7",
+      "from": "auth_dns",
+      "to": "local_dns",
+      "y": 370,
+      "label": "7. Answer: 93.184.215.14 (TTL=300)",
+      "variant": "return"
+    },
+    {
+      "id": "m8",
+      "from": "local_dns",
+      "to": "client",
+      "y": 405,
+      "label": "8. Return IP: 93.184.215.14 (Cache stored)",
+      "variant": "emphasis"
+    }
+  ]
+}

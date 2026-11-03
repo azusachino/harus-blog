@@ -1,0 +1,97 @@
+---
+// Handles client-side enhancement of Archify diagram iframes:
+// 1. Synchronizes theme (light/dark) dynamically with documentElement.
+// 2. Adjusts iframe height based on embedded SVG viewBox aspect ratio.
+---
+<script>
+  const root = document.documentElement;
+  const frames = [...document.querySelectorAll<HTMLIFrameElement>('iframe[data-archify]')];
+
+  if (frames.length) {
+    for (const frame of frames) {
+      if (frame.dataset.embed !== 'true') continue;
+      let observer: ResizeObserver | undefined;
+
+      frame.addEventListener('load', () => {
+        observer?.disconnect();
+        const doc = frame.contentDocument;
+        const svg = doc?.querySelector('svg');
+        if (!svg) return;
+
+        const resize = () => {
+          const viewBox = svg.viewBox.baseVal;
+          if (viewBox && viewBox.width > 0 && viewBox.height > 0) {
+            const ratio = viewBox.height / viewBox.width;
+            if (Number.isFinite(ratio) && ratio > 0) {
+              frame.style.height = `${Math.max(240, Math.min(840, Math.round(frame.clientWidth * ratio + 24)))}px`;
+            }
+          }
+        };
+
+        observer = new ResizeObserver(() => requestAnimationFrame(resize));
+        observer.observe(frame);
+        resize();
+      });
+    }
+
+    const syncTheme = () => {
+      const theme = root.dataset.theme ?? 'light';
+      for (const frame of frames) {
+        const basePath = frame.dataset.archify;
+        if (!basePath) continue;
+        const targetUrl = `${basePath}?theme=${theme}${frame.dataset.embed === 'true' ? '&embed=1' : ''}`;
+        if (frame.getAttribute('src') !== targetUrl) {
+          frame.src = targetUrl;
+        }
+      }
+    };
+
+    syncTheme();
+    new MutationObserver(syncTheme).observe(root, {
+      attributes: true,
+      attributeFilter: ['data-theme', 'data-palette'],
+    });
+  }
+</script>
+
+<style is:global>
+  .archify {
+    position: relative;
+    margin: 1.6rem 0;
+  }
+
+  .archify iframe {
+    display: block;
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    transition: height 0.15s ease-out;
+  }
+
+  .archify-expand {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    background: var(--surface);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+    font-size: 1.1rem;
+    line-height: 1;
+    opacity: 0.8;
+    transition: opacity 0.15s, border-color 0.15s, background-color 0.15s;
+    z-index: 2;
+  }
+
+  .archify-expand:hover {
+    opacity: 1;
+    border-color: var(--glow);
+    background: var(--bg);
+  }
+</style>

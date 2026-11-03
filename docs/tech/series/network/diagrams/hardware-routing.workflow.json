@@ -1,0 +1,151 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Packet Forwarding across Hubs, Switches, and Routers",
+    "quality_profile": "standard",
+    "output": "hardware-routing.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "l1",
+      "label": "Layer 1: Hub & Physical"
+    },
+    {
+      "id": "flood",
+      "label": "L2 Flooding & Broadcast",
+      "variant": "exception"
+    },
+    {
+      "id": "l2",
+      "label": "Layer 2: Switch & MAC Bridge"
+    },
+    {
+      "id": "l3",
+      "label": "Layer 3: Router & IP Gateway"
+    }
+  ],
+  "mainPath": ["signal_in", "mac_learn", "mac_lookup", "switch_unicast", "router_rx", "route_match", "nat_tx"],
+  "nodes": [
+    {
+      "id": "signal_in",
+      "lane": "l1",
+      "col": 0,
+      "label": "PHY Signal Reception",
+      "sublabel": "Differential pair / RJ-45",
+      "type": "backend"
+    },
+    {
+      "id": "hub_broadcast",
+      "lane": "l1",
+      "col": 1,
+      "label": "Hub Bit Repeater",
+      "sublabel": "Shared collision domain",
+      "type": "external"
+    },
+    {
+      "id": "mac_learn",
+      "lane": "l2",
+      "col": 1,
+      "label": "Learn Source MAC",
+      "sublabel": "Record [Port -> Src MAC, Age]",
+      "type": "backend"
+    },
+    {
+      "id": "mac_lookup",
+      "lane": "l2",
+      "col": 2,
+      "label": "Lookup Dest MAC",
+      "sublabel": "Is Dest MAC in table?",
+      "type": "security"
+    },
+    {
+      "id": "switch_flood",
+      "lane": "flood",
+      "col": 2,
+      "label": "Flood to All Ports",
+      "sublabel": "Broadcast / Unknown unicast",
+      "type": "external"
+    },
+    {
+      "id": "switch_unicast",
+      "lane": "l2",
+      "col": 3,
+      "label": "Unicast Forwarding",
+      "sublabel": "Send only to mapped port",
+      "type": "backend"
+    },
+    {
+      "id": "router_rx",
+      "lane": "l3",
+      "col": 3,
+      "label": "Router Interface Rx",
+      "sublabel": "Verify FCS, strip old L2 MAC",
+      "type": "backend"
+    },
+    {
+      "id": "route_match",
+      "lane": "l3",
+      "col": 4,
+      "label": "Longest Prefix Match",
+      "sublabel": "Lookup Route Table & TTL - 1",
+      "type": "security"
+    },
+    {
+      "id": "nat_tx",
+      "lane": "l3",
+      "col": 5,
+      "label": "NAPT & Frame Tx",
+      "sublabel": "Rewrite IP:Port, next MAC, FCS",
+      "type": "backend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "signal_in",
+      "to": "hub_broadcast",
+      "label": "Half Duplex"
+    },
+    {
+      "id": "e2",
+      "from": "signal_in",
+      "to": "mac_learn",
+      "label": "Full Duplex"
+    },
+    {
+      "id": "e3",
+      "from": "mac_learn",
+      "to": "mac_lookup"
+    },
+    {
+      "id": "e4",
+      "from": "mac_lookup",
+      "to": "switch_unicast",
+      "label": "Cache Hit"
+    },
+    {
+      "id": "e5",
+      "from": "mac_lookup",
+      "to": "switch_flood",
+      "label": "Cache Miss"
+    },
+    {
+      "id": "e6",
+      "from": "switch_unicast",
+      "to": "router_rx",
+      "label": "To Gateway"
+    },
+    {
+      "id": "e7",
+      "from": "router_rx",
+      "to": "route_match"
+    },
+    {
+      "id": "e8",
+      "from": "route_match",
+      "to": "nat_tx",
+      "label": "Forwarding"
+    }
+  ]
+}
