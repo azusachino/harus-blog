@@ -1,0 +1,102 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Tensor Transformation Flow: Token IDs to High-Dimensional Embeddings",
+    "quality_profile": "standard",
+    "output": "embedding-tensor-flow.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "discrete_lane",
+      "label": "Discrete Input Space"
+    },
+    {
+      "id": "tok_lane",
+      "label": "Token Vocabulary Embedding"
+    },
+    {
+      "id": "pos_lane",
+      "label": "Positional Representation (Absolute / RoPE)"
+    },
+    {
+      "id": "fusion_lane",
+      "label": "Residual Stream Vector Space"
+    }
+  ],
+  "mainPath": ["token_tensor", "w_token", "add_fusion"],
+  "nodes": [
+    {
+      "id": "token_tensor",
+      "lane": "discrete_lane",
+      "col": 0,
+      "label": "Token Index Batch",
+      "sublabel": "Tensor shape [B, T] (int64)",
+      "type": "frontend"
+    },
+    {
+      "id": "w_token",
+      "lane": "tok_lane",
+      "col": 1,
+      "label": "Token Embedding Matrix",
+      "sublabel": "W_E in R^{V x D} -> [B, T, D]",
+      "type": "database"
+    },
+    {
+      "id": "w_pos",
+      "lane": "pos_lane",
+      "col": 1,
+      "label": "Position Embedding Matrix",
+      "sublabel": "W_pos in R^{T_max x D} -> [1, T, D]",
+      "type": "database"
+    },
+    {
+      "id": "add_fusion",
+      "lane": "fusion_lane",
+      "col": 2,
+      "label": "Vector Summation",
+      "sublabel": "x = x_tok + x_pos -> [B, T, D]",
+      "type": "backend"
+    },
+    {
+      "id": "rope_rot",
+      "lane": "pos_lane",
+      "col": 3,
+      "label": "RoPE Polar Rotation",
+      "sublabel": "Direct Q/K rotation in attention heads",
+      "type": "security"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "token_tensor",
+      "to": "w_token",
+      "label": "1. Row lookup by token ID"
+    },
+    {
+      "id": "e2",
+      "from": "token_tensor",
+      "to": "w_pos",
+      "label": "2. arange(T) position indices"
+    },
+    {
+      "id": "e3",
+      "from": "w_token",
+      "to": "add_fusion",
+      "label": "3. Token feature vectors"
+    },
+    {
+      "id": "e4",
+      "from": "w_pos",
+      "to": "add_fusion",
+      "label": "4. Broadcasted position features"
+    },
+    {
+      "id": "e5",
+      "from": "add_fusion",
+      "to": "rope_rot",
+      "label": "5. Alternate: relative angular encoding"
+    }
+  ]
+}

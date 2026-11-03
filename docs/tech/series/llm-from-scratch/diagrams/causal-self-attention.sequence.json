@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Causal Self-Attention: QKV Projections, Causal Masking & Weighted Aggregation",
+    "quality_profile": "standard",
+    "output": "causal-self-attention.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "stream",
+      "type": "frontend",
+      "label": "Residual Stream",
+      "sublabel": "Tensor x in [B, T, D]"
+    },
+    {
+      "id": "qkv_proj",
+      "type": "backend",
+      "label": "QKV Linear Projections",
+      "sublabel": "Fused W_qkv: D -> 3*D"
+    },
+    {
+      "id": "score_engine",
+      "type": "backend",
+      "label": "Dot-Product Scorer",
+      "sublabel": "scores = (Q @ K^T) / sqrt(d_k)"
+    },
+    {
+      "id": "softmax_attn",
+      "type": "security",
+      "label": "Causal Mask & Softmax",
+      "sublabel": "masked_fill(triu, -inf)"
+    },
+    {
+      "id": "weighted_v",
+      "type": "database",
+      "label": "Output Projector",
+      "sublabel": "weights @ V -> W_proj"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 250,
+      "label": "Phase 1: Feature Projection into Query, Key, Value Subspaces"
+    },
+    {
+      "from": 280,
+      "to": 370,
+      "label": "Phase 2: Scaled Dot-Product & Causal Future Masking"
+    },
+    {
+      "from": 400,
+      "to": 490,
+      "label": "Phase 3: Normalized Attention Weighting & Out Projection"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "stream",
+      "to": "qkv_proj",
+      "y": 180,
+      "label": "1. Feed layer-normed token vectors [B, T, D]",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "qkv_proj",
+      "to": "score_engine",
+      "y": 215,
+      "label": "2. Split heads & project into Q, K, V matrices"
+    },
+    {
+      "id": "m3",
+      "from": "score_engine",
+      "to": "softmax_attn",
+      "y": 300,
+      "label": "3. Scaled dot-product scores: (Q @ K^T) / sqrt(d_k)"
+    },
+    {
+      "id": "m4",
+      "from": "softmax_attn",
+      "to": "weighted_v",
+      "y": 350,
+      "label": "4. Apply causal mask (triu=-inf) & softmax normalization"
+    },
+    {
+      "id": "m5",
+      "from": "weighted_v",
+      "to": "stream",
+      "y": 440,
+      "label": "5. Context aggregation (weights @ V) & linear output projection",
+      "variant": "emphasis"
+    }
+  ]
+}
