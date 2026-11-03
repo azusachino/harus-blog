@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Kubernetes Control Plane: Declarative Reconciliation Flow",
+    "quality_profile": "standard",
+    "output": "k8s-apiserver-reconcile.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "client",
+      "type": "frontend",
+      "label": "Client / kubectl",
+      "sublabel": "kubectl apply -f app.yaml"
+    },
+    {
+      "id": "apiserver",
+      "type": "backend",
+      "label": "kube-apiserver",
+      "sublabel": "Auth, CEL & REST Gateway"
+    },
+    {
+      "id": "etcd",
+      "type": "database",
+      "label": "etcd Store",
+      "sublabel": "Raft Consensus & MVCC"
+    },
+    {
+      "id": "ctrl_mgr",
+      "type": "backend",
+      "label": "Controller-Manager",
+      "sublabel": "Informer & Reconciliation"
+    },
+    {
+      "id": "scheduler",
+      "type": "backend",
+      "label": "kube-scheduler",
+      "sublabel": "Filter & Score Algorithm"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 260,
+      "label": "Phase 1: Admission Pipeline & etcd Persistence"
+    },
+    {
+      "from": 290,
+      "to": 385,
+      "label": "Phase 2: Controller State Reconciliation"
+    },
+    {
+      "from": 415,
+      "to": 505,
+      "label": "Phase 3: Two-Phase Scheduling & Node Binding"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "client",
+      "to": "apiserver",
+      "y": 175,
+      "label": "1. POST /apis/apps/v1/namespaces/default/deployments",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "apiserver",
+      "to": "etcd",
+      "y": 215,
+      "label": "2. RBAC & CEL ValidatingAdmission pass -> writes spec to etcd",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "etcd",
+      "to": "ctrl_mgr",
+      "y": 305,
+      "label": "3. Watch stream triggers DeploymentController informer cache",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m4",
+      "from": "ctrl_mgr",
+      "to": "apiserver",
+      "y": 345,
+      "label": "4. Reconcile creates ReplicaSet and unbound Pods (nodeName=\"\")",
+      "variant": "default"
+    },
+    {
+      "id": "m5",
+      "from": "apiserver",
+      "to": "scheduler",
+      "y": 430,
+      "label": "5. Scheduler informer notices unbound Pod in active queue",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m6",
+      "from": "scheduler",
+      "to": "apiserver",
+      "y": 465,
+      "label": "6. Filtering + scoring picks node -> writes Binding subresource",
+      "variant": "emphasis"
+    }
+  ]
+}

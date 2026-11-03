@@ -1,0 +1,102 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Gateway API Routing & Role Separation Architecture",
+    "quality_profile": "standard",
+    "output": "k8s-gateway-routing.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "client_lane",
+      "label": "External Client"
+    },
+    {
+      "id": "operator_lane",
+      "label": "Cluster Operator: Gateway (VIP & TLS)"
+    },
+    {
+      "id": "developer_lane",
+      "label": "Application Developer: HTTPRoute"
+    },
+    {
+      "id": "backend_lane",
+      "label": "Cluster Fabric & Pod Workloads"
+    }
+  ],
+  "mainPath": [
+    "client_req",
+    "gateway_bind",
+    "route_match",
+    "service_vip",
+    "pod_endpoint"
+  ],
+  "nodes": [
+    {
+      "id": "client_req",
+      "lane": "client_lane",
+      "col": 0,
+      "label": "HTTPS Request",
+      "sublabel": "api.example.com/v2/orders",
+      "type": "frontend"
+    },
+    {
+      "id": "gateway_bind",
+      "lane": "operator_lane",
+      "col": 1,
+      "label": "Gateway Listener",
+      "sublabel": "Terminates TLS via Secret & SNI",
+      "type": "security"
+    },
+    {
+      "id": "route_match",
+      "lane": "developer_lane",
+      "col": 2,
+      "label": "HTTPRoute Matching",
+      "sublabel": "Prefix: /v2/orders & header filter",
+      "type": "backend"
+    },
+    {
+      "id": "service_vip",
+      "lane": "backend_lane",
+      "col": 3,
+      "label": "Service ClusterIP",
+      "sublabel": "nftables / eBPF load balance",
+      "type": "backend"
+    },
+    {
+      "id": "pod_endpoint",
+      "lane": "backend_lane",
+      "col": 4,
+      "label": "Pod Container",
+      "sublabel": "Direct veth delivery (10.42.x.x)",
+      "type": "database"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "client_req",
+      "to": "gateway_bind",
+      "label": "1. External TLS"
+    },
+    {
+      "id": "e2",
+      "from": "gateway_bind",
+      "to": "route_match",
+      "label": "2. Attached Route"
+    },
+    {
+      "id": "e3",
+      "from": "route_match",
+      "to": "service_vip",
+      "label": "3. backendRef"
+    },
+    {
+      "id": "e4",
+      "from": "service_vip",
+      "to": "pod_endpoint",
+      "label": "4. Local Endpoint"
+    }
+  ]
+}
