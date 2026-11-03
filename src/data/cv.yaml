@@ -1,0 +1,151 @@
+# The CV: one source for the /cv page (src/pages/cv.astro) and the PDF
+# (assets/cv/cv.typ, `make cv`). English only, no CJK text. Public: no
+# infrastructure counts, hostnames or access paths, and generic names for
+# employers' internal systems. Bump `updated` when anything changes.
+#
+# A bullet is a string, or { text, link: { text, href } } where link.text is
+# the part of text that becomes the link.
+
+profile:
+  updated: "2026-11-03"
+  name: Yinchun Pang
+  headline: Backend Engineer · Trading Systems · Agent-driven Engineering
+  email: azusa146@gmail.com
+  phones: ["+81 9018110554", "+86 13265423108"]
+  born: "1996.09.09"
+  github: https://github.com/azusachino
+  linkedin: https://www.linkedin.com/in/azusachino/
+  summary: >-
+    Backend engineer with seven years of experience, now on the 24/7 on-call
+    trading team of a regulated Japanese crypto asset exchange, where
+    correctness and uptime come first. I led the team's move to agent-driven
+    engineering and proposed how agent-written work gets verified before
+    review. I run my own projects the same way, and build the Rust tooling
+    that gives agents memory and code intelligence.
+
+experience:
+  title: Experience
+  roles:
+    - title: Backend Engineer, Trading Team
+      org: OKCoin Japan K.K. (OKJ)
+      period: 2023.08 – Present
+      bullets:
+        - text: >-
+            Led the team's move to agent-driven engineering: built the team's
+            knowledge base on how our systems work, with reviewed narratives,
+            runbooks for research, plans, reviews, audits and incidents, and
+            agent skills for the daily workflows. When agent-written changes
+            piled up in the tech lead's approval queue, proposed proof of
+            effort: every merge request ties its claims to reproducible checks
+            before anyone reviews it.
+          link:
+            text: proof of effort
+            href: https://azusachino.com/tech/proof-of-effort/
+        - >-
+          On the 24/7 on-call rotation for the order and matching core: handled
+          its production incidents, including recovering a failed node of its
+          consensus cluster.
+        - >-
+          Designed and built the Kubernetes deployment layer for the
+          platform's move to Amazon EKS, led by the tech lead: a cdk8s construct
+          library and an Argo CD repository of ApplicationSets, projects and
+          per-environment overlays, which colleagues now reuse to add new
+          services, delivered through a self-hosted Argo CD. Helped take it to
+          production.
+        - >-
+          Run the platform's Kubernetes operations: CVE patching, cluster and
+          component upgrades, and Kubernetes operators for internal systems.
+        - >-
+          Present regularly at the team's weekly technical sessions: the
+          systems we operate, computer science fundamentals and LLMs.
+    - title: Backend Engineer, Audio & Video Research Team
+      org: iFLYTEK Co., Ltd
+      period: 2021.01 – 2023.08
+      bullets:
+        - >-
+          Wrote the server-side SDK that let users run the platform from their
+          own servers; one process can stand in for hundreds of clients.
+        - >-
+          Helped implement the signaling service, led by the tech lead, that
+          sets up every call: peer-to-peer connections, group chats and
+          multi-party meetings.
+        - >-
+          Built the client logging system, so problems that only happened on
+          users' devices could be searched and diagnosed from one console, next
+          to metrics and signaling events.
+        - >-
+          Connected WeChat Mini Program clients, which cannot speak the
+          platform's media protocol, through a dedicated gateway.
+        - >-
+          Turned the research platform into a shippable product: SDKs plus an
+          installable infrastructure bundle.
+    - title: Backend Engineer
+      org: Hefei Dingfeng Digital Technology Co., Ltd
+      period: 2019.01 – 2020.12
+      bullets:
+        - >-
+          Developed a financial content management system end to end, from the
+          Java backend to the JSP front end.
+
+agents:
+  title: Agent-driven Engineering
+  projects:
+    - name: Multi-repository agent workstation
+      tag: private
+      text: >-
+        One working tree over my repositories, adapted from the knowledge base
+        I built at work, so an agent sees a job that spans several
+        repositories as one context. Claude Code, Codex and pi agents follow a
+        written contract: tiered process, playbooks, decision records, local
+        gates before every commit, and pushes only with my approval.
+    - name: asobi
+      tag: Rust
+      href: https://github.com/azusachino/asobi
+      text: >-
+        Knowledge-graph CLI and server that lets agents pick up tasks,
+        decisions and known pitfalls across sessions and machines instead of
+        rediscovering them.
+    - name: ochna
+      tag: Rust
+      href: https://github.com/azusachino/ochna
+      text: >-
+        Indexes Rust, Go, Java, C, C++ and Zig code into a symbol and call
+        graph, so agents can answer "who calls this?" without reading whole
+        files.
+
+systems:
+  title: Systems & Infrastructure
+  projects:
+    - name: harus-aeron-rs
+      tag: private · Rust
+      text: >-
+        Reimplementation of Aeron's media driver, Archive and Cluster
+        foundations, written to learn the messaging layer my trading work runs
+        on; a real Java Aeron client exchanges ordered messages with the Rust
+        media driver in an end-to-end interop test.
+    - name: Homelab
+      tag: private
+      text: >-
+        Single-node k3s cluster that runs my own services, with my machines
+        provisioned from one Nix flake.
+
+skills:
+  title: Skills
+  rows:
+    - label: Programming
+      value: Java, Rust, Python, Go, TypeScript
+    - label: Backend
+      value: Spring Boot, Netty, gRPC, Kafka, Aeron Cluster, MySQL, Redis, ELK
+    - label: Infrastructure
+      value: AWS (CDK, EKS), Kubernetes (cdk8s, Argo CD), Nix, Prometheus, Grafana
+    - label: Agents
+      value: Claude Code, Codex, pi; instructions, skills, delegation and review workflows
+    - label: Certification
+      value: AWS Certified Solutions Architect – Professional
+      href: https://www.credly.com/badges/5dd714e3-6476-4389-925e-6b61bfa668fd
+    - label: Languages spoken
+      value: Chinese (native), Japanese (JLPT N1), English
+    - label: Education
+      value: >-
+        B.Sc. Information Management and Information System, Changsha
+        University of Science and Technology (2014.09 – 2018.06)

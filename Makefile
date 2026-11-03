@@ -1,4 +1,4 @@
-.PHONY: help install local build check format fmt fmt-check
+.PHONY: help install local build check format fmt fmt-check cv
 
 # Show help when invoked with no target, instead of running the first one.
 .DEFAULT_GOAL := help
@@ -21,6 +21,9 @@ fmt: ## format markdown with rumdl, configs with prettier
 	rumdl fmt .
 
 format: fmt ## alias for fmt
+
+cv: ## compile the Typst CV into public/cv.pdf (committed; served at /cv.pdf)
+	typst compile --root . assets/cv/cv.typ public/cv.pdf
 
 fmt-check: ## verify formatting without modifying files
 	bunx prettier --check "**/*.{json,yaml,yml}"
