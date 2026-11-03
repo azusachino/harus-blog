@@ -1,0 +1,136 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Stateful Blueprint: High-Availability Database Architecture on Kubernetes",
+    "quality_profile": "standard",
+    "output": "k8s-database-ha.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "policy_lane",
+      "label": "Placement Guard (Topology Spread & PDB)"
+    },
+    {
+      "id": "control_lane",
+      "label": "Active Database Topology (Multi-AZ)"
+    },
+    {
+      "id": "storage_lane",
+      "label": "Storage Fabric & CSI Snapshots"
+    },
+    {
+      "id": "failover_lane",
+      "label": "Consensus Failover Engine",
+      "variant": "exception"
+    }
+  ],
+  "mainPath": [
+    "spec_invariants",
+    "primary_node",
+    "sync_standby",
+    "async_standby"
+  ],
+  "nodes": [
+    {
+      "id": "spec_invariants",
+      "lane": "policy_lane",
+      "col": 0,
+      "label": "Scheduling Invariants",
+      "sublabel": "Hard Anti-Affinity & PDB (minAvailable: 2)",
+      "type": "security"
+    },
+    {
+      "id": "primary_node",
+      "lane": "control_lane",
+      "col": 1,
+      "label": "Primary Instance (pg-0)",
+      "sublabel": "Zone us-east-1a (Read / Write)",
+      "type": "database"
+    },
+    {
+      "id": "sync_standby",
+      "lane": "control_lane",
+      "col": 2,
+      "label": "Sync Standby (pg-1)",
+      "sublabel": "Zone us-east-1b (Zero data loss)",
+      "type": "database"
+    },
+    {
+      "id": "async_standby",
+      "lane": "control_lane",
+      "col": 3,
+      "label": "Async Standby (pg-2)",
+      "sublabel": "Zone us-east-1c (Disaster recovery)",
+      "type": "database"
+    },
+    {
+      "id": "csi_snapshot",
+      "lane": "storage_lane",
+      "col": 2,
+      "label": "CSI Volume Snapshot",
+      "sublabel": "Point-in-time snapshot & S3 WAL ship",
+      "type": "backend"
+    },
+    {
+      "id": "health_failover",
+      "lane": "failover_lane",
+      "col": 1,
+      "label": "Primary Heartbeat Failure",
+      "sublabel": "Kernel panic or host network partition",
+      "type": "external"
+    },
+    {
+      "id": "quorum_promotion",
+      "lane": "failover_lane",
+      "col": 2,
+      "label": "Quorum Election",
+      "sublabel": "Promote pg-1 to Primary & update Service VIP",
+      "type": "backend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "spec_invariants",
+      "to": "primary_node",
+      "label": "Enforce anti-affinity"
+    },
+    {
+      "id": "e2",
+      "from": "primary_node",
+      "to": "sync_standby",
+      "label": "Sync WAL stream"
+    },
+    {
+      "id": "e3",
+      "from": "sync_standby",
+      "to": "async_standby",
+      "label": "Async replicate"
+    },
+    {
+      "id": "e4",
+      "from": "primary_node",
+      "to": "csi_snapshot",
+      "label": "Periodic snapshot"
+    },
+    {
+      "id": "e5",
+      "from": "primary_node",
+      "to": "health_failover",
+      "label": "Heartbeat lost"
+    },
+    {
+      "id": "e6",
+      "from": "health_failover",
+      "to": "quorum_promotion",
+      "label": "Consensus vote"
+    },
+    {
+      "id": "e7",
+      "from": "quorum_promotion",
+      "to": "sync_standby",
+      "label": "Promote to RW"
+    }
+  ]
+}
