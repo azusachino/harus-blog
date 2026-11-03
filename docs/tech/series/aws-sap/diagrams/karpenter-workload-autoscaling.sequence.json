@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Amazon EKS Karpenter Just-In-Time Workload-Aware Autoscaling Flow",
+    "quality_profile": "standard",
+    "output": "karpenter-workload-autoscaling.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "app_pod",
+      "type": "frontend",
+      "label": "Workload Pod Spec",
+      "sublabel": "Requests arm64 Spot instance"
+    },
+    {
+      "id": "kube_sched",
+      "type": "backend",
+      "label": "Kubernetes Scheduler",
+      "sublabel": "Detects Unschedulable pod"
+    },
+    {
+      "id": "karpenter",
+      "type": "backend",
+      "label": "Karpenter Controller",
+      "sublabel": "JIT bin-packing decision"
+    },
+    {
+      "id": "ec2_fleet",
+      "type": "cloud",
+      "label": "Amazon EC2 Fleet API",
+      "sublabel": "Direct launch bypassing ASGs"
+    },
+    {
+      "id": "eks_node",
+      "type": "database",
+      "label": "Provisioned EKS Node",
+      "sublabel": "Kubelet registers in <45s"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 250,
+      "label": "Phase 1: Pod Scheduling Failure & Unschedulable Event"
+    },
+    {
+      "from": 280,
+      "to": 370,
+      "label": "Phase 2: JIT Bin-Packing & Direct EC2 Fleet Provisioning"
+    },
+    {
+      "from": 400,
+      "to": 490,
+      "label": "Phase 3: Rapid Node Registration & Workload Execution"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "app_pod",
+      "to": "kube_sched",
+      "y": 180,
+      "label": "1. Deploy pod spec with nodeSelector: arch=arm64, capacity=spot",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "kube_sched",
+      "to": "karpenter",
+      "y": 220,
+      "label": "2. Emits PodScheduled=False (Unschedulable event detected)"
+    },
+    {
+      "id": "m3",
+      "from": "karpenter",
+      "to": "ec2_fleet",
+      "y": 300,
+      "label": "3. Direct EC2 Fleet launch for optimal c7g.xlarge Spot instance"
+    },
+    {
+      "id": "m4",
+      "from": "ec2_fleet",
+      "to": "eks_node",
+      "y": 345,
+      "label": "4. Rapid VM initialization via optimized EKS AMI (< 45s)"
+    },
+    {
+      "id": "m5",
+      "from": "eks_node",
+      "to": "kube_sched",
+      "y": 415,
+      "label": "5. NodeReady event & kubelet registers to API server"
+    },
+    {
+      "id": "m6",
+      "from": "kube_sched",
+      "to": "app_pod",
+      "y": 455,
+      "label": "6. Pod successfully bound and transitioned to Running state",
+      "variant": "emphasis"
+    }
+  ]
+}

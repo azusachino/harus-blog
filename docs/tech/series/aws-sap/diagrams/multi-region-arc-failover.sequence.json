@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Amazon Route 53 ARC Multi-Region Automated Failover Execution Flow",
+    "quality_profile": "standard",
+    "output": "multi-region-arc-failover.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "client_traffic",
+      "type": "frontend",
+      "label": "Global Traffic / Clients",
+      "sublabel": "Accesses apex domain"
+    },
+    {
+      "id": "arc_control",
+      "type": "backend",
+      "label": "Route 53 ARC Control",
+      "sublabel": "Readiness checks & safety"
+    },
+    {
+      "id": "r53_dns",
+      "type": "cloud",
+      "label": "Route 53 DNS Data Plane",
+      "sublabel": "5 redundant regional cells"
+    },
+    {
+      "id": "primary_region",
+      "type": "database",
+      "label": "Primary Region (us-east-1)",
+      "sublabel": "Impaired active stack"
+    },
+    {
+      "id": "secondary_region",
+      "type": "database",
+      "label": "Secondary Region (us-west-2)",
+      "sublabel": "Standby warm capacity"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 250,
+      "label": "Phase 1: Impairment Detection & Readiness Assessment"
+    },
+    {
+      "from": 280,
+      "to": 370,
+      "label": "Phase 2: ARC Routing Control State Flip & Cell Redirection"
+    },
+    {
+      "from": 400,
+      "to": 490,
+      "label": "Phase 3: Global DNS Steering & Traffic Evacuation"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "client_traffic",
+      "to": "primary_region",
+      "y": 180,
+      "label": "1. Normal live traffic routed to active us-east-1 endpoint",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "primary_region",
+      "to": "arc_control",
+      "y": 220,
+      "label": "2. Regional impairment triggers ARC Readiness Check failure alarm"
+    },
+    {
+      "id": "m3",
+      "from": "arc_control",
+      "to": "r53_dns",
+      "y": 300,
+      "label": "3. Automated safety rule disengages us-east-1 routing control",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m4",
+      "from": "arc_control",
+      "to": "r53_dns",
+      "y": 345,
+      "label": "4. Regional routing control engages us-west-2 secondary cell"
+    },
+    {
+      "id": "m5",
+      "from": "r53_dns",
+      "to": "secondary_region",
+      "y": 415,
+      "label": "5. DNS records updated across global edge locations with 0s TTL"
+    },
+    {
+      "id": "m6",
+      "from": "client_traffic",
+      "to": "secondary_region",
+      "y": 455,
+      "label": "6. Client requests re-routed to healthy us-west-2 stack (RTO < 60s)",
+      "variant": "emphasis"
+    }
+  ]
+}

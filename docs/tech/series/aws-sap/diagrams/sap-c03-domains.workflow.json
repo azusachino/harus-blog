@@ -1,0 +1,117 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "AWS SAP-C03 Five-Domain Architectural Synthesis & Evaluation Flow",
+    "quality_profile": "standard",
+    "output": "sap-c03-domains.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "eval_lane",
+      "label": "Architectural Evaluation Vector"
+    },
+    {
+      "id": "core_arch_lane",
+      "label": "Domain 1: Cloud-Native Architecture (25%)"
+    },
+    {
+      "id": "security_lane",
+      "label": "Domain 2: Security & Governance (25%)"
+    },
+    {
+      "id": "resilience_lane",
+      "label": "Domains 3-5: Cost, Resilience & Automation (50%)"
+    }
+  ],
+  "mainPath": [
+    "scenario_input",
+    "domain1_mesh",
+    "domain2_gov",
+    "domain3_finops",
+    "domain4_dr",
+    "domain5_ops"
+  ],
+  "nodes": [
+    {
+      "id": "scenario_input",
+      "lane": "eval_lane",
+      "col": 0,
+      "label": "Enterprise Problem Statement",
+      "sublabel": "Identify determining constraints",
+      "type": "frontend"
+    },
+    {
+      "id": "domain1_mesh",
+      "lane": "core_arch_lane",
+      "col": 1,
+      "label": "Cloud-Native Infrastructure",
+      "sublabel": "Bedrock AI, VPC Lattice, Karpenter on EKS",
+      "type": "backend"
+    },
+    {
+      "id": "domain2_gov",
+      "lane": "security_lane",
+      "col": 2,
+      "label": "Governance & Boundary Defense",
+      "sublabel": "SCP + RCP guardrails, IAM Identity Center, KMS MRK",
+      "type": "security"
+    },
+    {
+      "id": "domain3_finops",
+      "lane": "resilience_lane",
+      "col": 3,
+      "label": "FinOps & Cost Architecture",
+      "sublabel": "Compute Optimizer, S3 Lifecycle, Spot/Savings Plans",
+      "type": "database"
+    },
+    {
+      "id": "domain4_dr",
+      "lane": "resilience_lane",
+      "col": 4,
+      "label": "Resilience & Migration Factory",
+      "sublabel": "Route 53 ARC, Resilience Hub, FIS chaos, MGN",
+      "type": "database"
+    },
+    {
+      "id": "domain5_ops",
+      "lane": "resilience_lane",
+      "col": 5,
+      "label": "Operational Excellence",
+      "sublabel": "Cross-account logs, ADOT & SSM",
+      "type": "cloud"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "scenario_input",
+      "to": "domain1_mesh",
+      "label": "1. Map functional workload needs"
+    },
+    {
+      "id": "e2",
+      "from": "domain1_mesh",
+      "to": "domain2_gov",
+      "label": "2. Apply zero-trust guardrails"
+    },
+    {
+      "id": "e3",
+      "from": "domain2_gov",
+      "to": "domain3_finops",
+      "label": "3. Enforce budget & storage tiers"
+    },
+    {
+      "id": "e4",
+      "from": "domain3_finops",
+      "to": "domain4_dr",
+      "label": "4. Multi-region RTO/RPO design"
+    },
+    {
+      "id": "e5",
+      "from": "domain4_dr",
+      "to": "domain5_ops",
+      "label": "5. Automated telemetry & CI/CD"
+    }
+  ]
+}

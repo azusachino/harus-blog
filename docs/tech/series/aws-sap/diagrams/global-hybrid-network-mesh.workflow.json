@@ -1,0 +1,117 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Global Hybrid Backbone, Central Inspection & VPC Lattice Service Mesh",
+    "quality_profile": "standard",
+    "output": "global-hybrid-network-mesh.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "onprem_lane",
+      "label": "Enterprise On-Premises & Edge"
+    },
+    {
+      "id": "transit_lane",
+      "label": "Global Transit Backbone"
+    },
+    {
+      "id": "inspection_lane",
+      "label": "Centralized Inspection VPC"
+    },
+    {
+      "id": "workload_lane",
+      "label": "Workload Fabric & VPC Lattice"
+    }
+  ],
+  "mainPath": [
+    "onprem_dc",
+    "dx_gateway",
+    "cloud_wan",
+    "gwlb_inspect",
+    "app_vpc",
+    "vpc_lattice"
+  ],
+  "nodes": [
+    {
+      "id": "onprem_dc",
+      "lane": "onprem_lane",
+      "col": 0,
+      "label": "Enterprise Data Center",
+      "sublabel": "Dual Direct Connect & BGP",
+      "type": "external"
+    },
+    {
+      "id": "dx_gateway",
+      "lane": "transit_lane",
+      "col": 1,
+      "label": "Direct Connect Gateway",
+      "sublabel": "Global multi-region router",
+      "type": "cloud"
+    },
+    {
+      "id": "cloud_wan",
+      "lane": "transit_lane",
+      "col": 2,
+      "label": "AWS Cloud WAN Core",
+      "sublabel": "Policy-based segmentation",
+      "type": "cloud"
+    },
+    {
+      "id": "gwlb_inspect",
+      "lane": "inspection_lane",
+      "col": 3,
+      "label": "Gateway Load Balancer",
+      "sublabel": "GENEVE inline firewall pool",
+      "type": "security"
+    },
+    {
+      "id": "app_vpc",
+      "lane": "workload_lane",
+      "col": 4,
+      "label": "Workload VPC Subnets",
+      "sublabel": "Private application tier",
+      "type": "backend"
+    },
+    {
+      "id": "vpc_lattice",
+      "lane": "workload_lane",
+      "col": 5,
+      "label": "Amazon VPC Lattice",
+      "sublabel": "Zero-trust service mesh",
+      "type": "database"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "onprem_dc",
+      "to": "dx_gateway",
+      "label": "1. 10Gbps dedicated DX link"
+    },
+    {
+      "id": "e2",
+      "from": "dx_gateway",
+      "to": "cloud_wan",
+      "label": "2. Core network edge attachment"
+    },
+    {
+      "id": "e3",
+      "from": "cloud_wan",
+      "to": "gwlb_inspect",
+      "label": "3. Forward to inspection segment"
+    },
+    {
+      "id": "e4",
+      "from": "gwlb_inspect",
+      "to": "app_vpc",
+      "label": "4. Routed clean traffic"
+    },
+    {
+      "id": "e5",
+      "from": "app_vpc",
+      "to": "vpc_lattice",
+      "label": "5. IAM-authenticated service call"
+    }
+  ]
+}
