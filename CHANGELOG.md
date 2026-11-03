@@ -25,6 +25,8 @@ groups (Added, Changed, Fixed, Removed).
   directory. Installation, formatting and validation have separate timing steps.
 - Diagram rendering runs once during the site build instead of repeating in standalone verification
   and type sync. The build still renders and validates every diagram; dev-mode generation is retained.
+- The combined gate validates content, builds once (including Astro's type generation), then runs
+  TypeScript against those generated types instead of running a second content/type sync first.
 - The 50-run baseline and measured follow-up are recorded in `CI_PERFORMANCE.md`.
 
 ## 2026-11-03 — CV page and PDF
