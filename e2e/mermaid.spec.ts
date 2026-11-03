@@ -1,16 +1,16 @@
-// The proof-of-effort post's work-loop diagram draws client-side; the figure
-// then becomes a zoom viewport. These checks follow a reader's hands: the
-// diagram renders fitted, wheel zooms toward the pointer, dragging pans,
-// double-click resets, and a theme redraw starts from the fitted view again.
+// The proof-of-effort post's work-loop diagram draws client-side after the
+// load event. This check follows a reader's expectations: the fence becomes a
+// rendered figure whose drawing sits fully inside the figure's border, and a
+// palette or mode redraw keeps it that way. Diagrams zoom with the browser's
+// own zoom; the component deliberately adds no zoom of its own.
 import { expect, test, type Page } from "@playwright/test"
 
 const ROUTE = "/tech/proof-of-effort/"
-const FIGURE_NAME = /pinch to zoom/
-const IDENTITY = "matrix(1, 0, 0, 1, 0, 0)"
+// The figure gets no accessible name from the component, so the spec falls
+// back to the component's own test id.
+const figure = (page: Page) => page.getByTestId("mermaid-diagram")
 // E2E_SHOT_DIR optionally receives figure screenshots as review evidence.
 const SHOT_DIR = process.env.E2E_SHOT_DIR
-const shot = (figure: ReturnType<Page["getByRole"]>, name: string) =>
-  SHOT_DIR ? figure.screenshot({ path: `${SHOT_DIR}/${name}.png` }) : Promise.resolve()
 
 const collectErrors = (page: Page) => {
   const errors: string[] = []
@@ -21,66 +21,32 @@ const collectErrors = (page: Page) => {
   return errors
 }
 
-const svgTransform = (page: Page) =>
-  page
-    .getByRole("figure", { name: FIGURE_NAME })
-    .evaluate((figure) => {
+// The drawn diagram must sit inside the figure's border box: no clipped or
+// overflowing drawing, in the fitted state or after a redraw.
+const fitsInBorder = (page: Page) =>
+  figure(page).evaluate((figure) => {
       const svg = figure.querySelector("svg")
-      return svg ? getComputedStyle(svg).transform : "missing"
+      if (!svg) return false
+      const f = figure.getBoundingClientRect()
+      const s = svg.getBoundingClientRect()
+      return s.top >= f.top && s.left >= f.left && s.bottom <= f.bottom && s.right <= f.right
     })
 
-async function zoomIn(page: Page) {
-  const figure = page.getByRole("figure", { name: FIGURE_NAME })
-  await figure.hover()
-  await page.mouse.wheel(0, -600)
-  await expect.poll(() => svgTransform(page), { timeout: 5_000 }).not.toBe(IDENTITY)
-}
-
-test("diagram renders fitted, zooms, pans, and double-click resets", async ({ page }) => {
+test("diagram renders inside its figure and survives a theme redraw", async ({ page }) => {
   const errors = collectErrors(page)
   await page.goto(ROUTE)
 
-  // Mermaid draws after the load event: the accessible name only exists once
-  // the fence has been swapped for a rendered, zoomable figure.
-  const figure = page.getByRole("figure", { name: FIGURE_NAME })
-  await expect(figure).toBeVisible()
-  expect(await svgTransform(page)).toBe(IDENTITY)
-  await shot(figure, "diagram-fitted")
+  // Mermaid draws after the load event: the test-id figure only carries an
+  // svg once the fence has been swapped for a rendered diagram.
+  const fig = figure(page)
+  await expect(fig).toBeVisible()
+  await expect.poll(() => fitsInBorder(page)).toBe(true)
+  if (SHOT_DIR) await fig.screenshot({ path: `${SHOT_DIR}/diagram-fitted.png` })
 
-  // Wheel zooms in around the pointer; the viewport keeps its fitted height.
-  const heightBefore = await figure.evaluate((el) => el.clientHeight)
-  await zoomIn(page)
-  await expect.poll(() => svgTransform(page)).toMatch(/matrix\((\d+(\.\d+)?)/)
-  expect(await figure.evaluate((el) => el.clientHeight)).toBe(heightBefore)
-  await shot(figure, "diagram-zoomed")
-
-  // Dragging pans the zoomed diagram inside its viewport.
-  const before = await svgTransform(page)
-  await page.mouse.down()
-  await page.mouse.move(760, 420, { steps: 5 })
-  await page.mouse.up()
-  await expect.poll(() => svgTransform(page)).not.toBe(before)
-
-  // Double-click returns to the fitted view.
-  await figure.dblclick()
-  await expect.poll(() => svgTransform(page)).toBe(IDENTITY)
-  expect(errors).toEqual([])
-})
-
-test("theme redraw restarts the diagram from the fitted view", async ({ page }) => {
-  const errors = collectErrors(page)
-  await page.goto(ROUTE)
-
-  const figure = page.getByRole("figure", { name: FIGURE_NAME })
-  await expect(figure).toBeVisible()
-  await zoomIn(page)
-
-  // The redraw replaces the svg; the replaced figure comes back fitted.
   await page.evaluate(() => {
     document.documentElement.dataset.theme = "dark"
   })
-  await expect.poll(() => svgTransform(page), { timeout: 10_000 }).toBe(IDENTITY)
-  await expect(figure).toBeVisible()
-  await shot(figure, "diagram-dark")
+  await expect(fig).toBeVisible()
+  await expect.poll(() => fitsInBorder(page), { timeout: 10_000 }).toBe(true)
   expect(errors).toEqual([])
 })

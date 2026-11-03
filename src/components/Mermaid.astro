@@ -3,9 +3,6 @@
 // them data-language="mermaid", and this script swaps each for a diagram.
 // The mermaid library loads only on pages that have one, and diagrams take
 // their colors from the site tokens, redrawing on palette or mode change.
-// A drawn diagram becomes a viewport: wheel or pinch zooms toward the
-// pointer, dragging pans, double-click resets, and a theme redraw starts
-// from the fitted view.
 ---
 <script>
   const root = document.documentElement;
@@ -23,130 +20,6 @@
 
     const { default: mermaid } = await import('mermaid');
     let id = 0;
-
-    // A redraw replaces the svg, so zoom state restarts; the controller drops
-    // the previous listeners instead of stacking a second set on the figure.
-    const zooms = new WeakMap<HTMLElement, AbortController>();
-
-    const makeZoomable = (figure: HTMLElement) => {
-      zooms.get(figure)?.abort();
-      const el = figure.querySelector('svg');
-      if (!el) return;
-      const ac = new AbortController();
-      zooms.set(figure, ac);
-      const { signal } = ac;
-
-      let scale = 1;
-      let tx = 0;
-      let ty = 0;
-      let fitW = 0;
-      let fitH = 0;
-
-      const clamp = () => {
-        tx = scale === 1 ? 0 : Math.min(0, Math.max(fitW * (1 - scale), tx));
-        ty = scale === 1 ? 0 : Math.min(0, Math.max(fitH * (1 - scale), ty));
-      };
-      const apply = () => {
-        el.style.transformOrigin = '0 0';
-        el.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
-      };
-      const refit = () => {
-        el.style.transform = 'none';
-        const rect = el.getBoundingClientRect();
-        fitW = rect.width;
-        fitH = rect.height;
-        figure.style.height = `${fitH}px`;
-        clamp();
-        apply();
-      };
-      const zoomAt = (px: number, py: number, factor: number) => {
-        const next = Math.min(4, Math.max(1, scale * factor));
-        if (next === scale) return;
-        const k = next / scale;
-        tx = px - (px - tx) * k;
-        ty = py - (py - ty) * k;
-        scale = next;
-        clamp();
-        apply();
-      };
-
-      figure.classList.add('zoomable');
-      figure.title = 'Wheel or pinch to zoom, drag to pan, double-click to reset';
-      refit();
-
-      const pointers = new Map<number, { x: number; y: number }>();
-      let drag: { x: number; y: number; tx: number; ty: number } | null = null;
-      let pinch = 0;
-
-      figure.addEventListener(
-        'wheel',
-        (e) => {
-          e.preventDefault();
-          const rect = figure.getBoundingClientRect();
-          zoomAt(e.clientX - rect.left, e.clientY - rect.top, Math.exp(-e.deltaY * 0.0015));
-        },
-        { passive: false, signal },
-      );
-      figure.addEventListener(
-        'pointerdown',
-        (e) => {
-          figure.setPointerCapture(e.pointerId);
-          pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
-          if (pointers.size === 1) {
-            drag = { x: e.clientX, y: e.clientY, tx, ty };
-          } else if (pointers.size === 2) {
-            drag = null;
-            const [a, b] = [...pointers.values()];
-            pinch = Math.hypot(a.x - b.x, a.y - b.y);
-          }
-        },
-        { signal },
-      );
-      figure.addEventListener(
-        'pointermove',
-        (e) => {
-          if (!pointers.has(e.pointerId)) return;
-          pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
-          if (drag && pointers.size === 1) {
-            tx = drag.tx + e.clientX - drag.x;
-            ty = drag.ty + e.clientY - drag.y;
-            clamp();
-            apply();
-          } else if (pointers.size === 2) {
-            const [a, b] = [...pointers.values()];
-            const dist = Math.hypot(a.x - b.x, a.y - b.y);
-            if (pinch > 0) {
-              const rect = figure.getBoundingClientRect();
-              zoomAt((a.x + b.x) / 2 - rect.left, (a.y + b.y) / 2 - rect.top, dist / pinch);
-            }
-            pinch = dist;
-          }
-        },
-        { signal },
-      );
-      const release = (e: PointerEvent) => {
-        pointers.delete(e.pointerId);
-        pinch = 0;
-        const rest = [...pointers.values()];
-        drag = rest.length === 1 ? { x: rest[0].x, y: rest[0].y, tx, ty } : null;
-      };
-      figure.addEventListener('pointerup', release, { signal });
-      figure.addEventListener('pointercancel', release, { signal });
-      figure.addEventListener(
-        'dblclick',
-        () => {
-          scale = 1;
-          tx = 0;
-          ty = 0;
-          apply();
-        },
-        { signal },
-      );
-
-      const ro = new ResizeObserver(refit);
-      ro.observe(figure);
-      signal.addEventListener('abort', () => ro.disconnect());
-    };
 
     const render = async () => {
       const css = getComputedStyle(root);
@@ -184,7 +57,6 @@
           const { svg } = await mermaid.render(`mermaid-${id++}`, figure.dataset.source ?? '');
           figure.innerHTML = svg;
           figure.classList.remove('failed');
-          makeZoomable(figure);
         } catch {
           // Keep the source readable if a diagram does not parse.
           const pre = document.createElement('pre');
@@ -214,21 +86,5 @@
   .mermaid-diagram svg {
     max-width: 100%;
     height: auto;
-  }
-
-  .mermaid-diagram.zoomable {
-    position: relative;
-    overflow: hidden;
-    touch-action: none;
-    user-select: none;
-    cursor: grab;
-  }
-
-  .mermaid-diagram.zoomable:active {
-    cursor: grabbing;
-  }
-
-  .mermaid-diagram.zoomable svg {
-    display: block;
   }
 </style>
