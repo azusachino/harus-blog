@@ -7,8 +7,10 @@ const DOCS_ROOT = join(BLOG_ROOT, 'docs');
 const OUT_ROOT = join(BLOG_ROOT, 'public', 'archify');
 const CANDIDATES = [
   process.env.ARCHIFY_RENDER,
+  resolve(BLOG_ROOT, '.archify', 'archify', 'lib', 'render.mjs'),
   resolve(BLOG_ROOT, '.archify', 'lib', 'render.mjs'),
   resolve(BLOG_ROOT, '..', '..', '.agents', 'skills', 'archify', 'lib', 'render.mjs'),
+  resolve(BLOG_ROOT, '..', 'archify', 'archify', 'lib', 'render.mjs'),
   resolve(BLOG_ROOT, '..', 'archify', 'lib', 'render.mjs'),
 ].filter(Boolean) as string[];
 
