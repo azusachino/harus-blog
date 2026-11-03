@@ -25,7 +25,7 @@ const sticks = 11;
     const btnEl = document.querySelector('[data-call]');
     if (!btnEl || !askEl) return;
 
-    // Time-synchronized cues matching the uncut original song section
+    // Time-synchronized cues aligned to the exact song word timestamps
     const cues = [
       {
         start: 0,
@@ -35,35 +35,42 @@ const sticks = 11;
         status: '39みゅーじっく！ Music! Penlights up!',
       },
       {
-        start: 2.1,
+        start: 1.5,
         ask: '大サービス！',
         response: 'Oh Yeah!',
         lang: 'en',
         status: '大サービス！ Oh Yeah!',
       },
       {
-        start: 6.2,
+        start: 5.2,
         ask: '大熱唱！',
         response: 'Hey!',
         lang: 'en',
         status: '大熱唱！ Hey!',
       },
       {
-        start: 11.0,
+        start: 8.0,
         ask: '未体験Night！',
         response: 'Oh Yeah!',
         lang: 'en',
         status: '未体験Night！ Oh Yeah!',
       },
       {
-        start: 19.8,
+        start: 12.6,
         ask: '準備OK？',
         response: 'Yes!',
         lang: 'en',
-        status: '準備OK？ Yes!',
+        status: 'さぁ 日は出づるぞ 準備OK？ Yes!',
       },
       {
-        start: 30.6,
+        start: 15.2,
+        ask: '満場一致だ！',
+        response: 'Yeah!',
+        lang: 'en',
+        status: '満場一致だ！',
+      },
+      {
+        start: 27.5,
         ask: 'もう一度名前呼んで！',
         response: '初音ミク！',
         lang: 'ja',
