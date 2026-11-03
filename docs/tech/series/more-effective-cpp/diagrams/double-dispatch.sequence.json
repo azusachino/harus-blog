@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Double Dispatch: Multi-Polymorphic Collision Resolution",
+    "quality_profile": "standard",
+    "output": "double-dispatch.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "engine",
+      "type": "frontend",
+      "label": "Physics Engine",
+      "sublabel": "collide(GameObject&, GameObject&)"
+    },
+    {
+      "id": "ship",
+      "type": "backend",
+      "label": "SpaceShip Instance",
+      "sublabel": "Virtual Dispatch 1"
+    },
+    {
+      "id": "asteroid",
+      "type": "backend",
+      "label": "Asteroid Instance",
+      "sublabel": "Virtual Dispatch 2"
+    },
+    {
+      "id": "resolver",
+      "type": "security",
+      "label": "Collision Dispatcher",
+      "sublabel": "Exact Type Pair Resolution"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 260,
+      "label": "Dispatch 1: Resolve First Dynamic Type (SpaceShip)"
+    },
+    {
+      "from": 285,
+      "to": 375,
+      "label": "Dispatch 2: Resolve Second Dynamic Type (Asteroid)"
+    },
+    {
+      "from": 400,
+      "to": 490,
+      "label": "Dispatch 3: Execute Concrete Interaction Handler"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "engine",
+      "to": "ship",
+      "y": 175,
+      "label": "1. obj1.collide(obj2) [Resolves SpaceShip::collide]",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "ship",
+      "to": "asteroid",
+      "y": 300,
+      "label": "2. obj2.collideWithSpaceShip(*this) [Inverts call with concrete type]",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m3",
+      "from": "asteroid",
+      "to": "resolver",
+      "y": 415,
+      "label": "3. Invokes handleCollision(SpaceShip&, Asteroid&)",
+      "variant": "default"
+    },
+    {
+      "id": "m4",
+      "from": "resolver",
+      "to": "engine",
+      "y": 455,
+      "label": "4. Physics impulse & damage applied; returns status to engine",
+      "variant": "emphasis"
+    }
+  ]
+}
