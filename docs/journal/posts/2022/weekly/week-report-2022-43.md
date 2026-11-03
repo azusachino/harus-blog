@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2022.43
-date: 2022-10-23
+created: 2022-10-23
 description: Pursue the Truth, or Enjoy the life
 categories:
   - weekly

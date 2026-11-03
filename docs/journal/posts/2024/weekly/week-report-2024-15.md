@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.15
-date: 2024-04-14
+created: 2024-04-14
 description: the learning curve
 categories:
   - weekly

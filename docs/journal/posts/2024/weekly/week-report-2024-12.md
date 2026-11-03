@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.12
-date: 2024-03-24
+created: 2024-03-24
 description: long lasting recovery
 categories:
   - weekly

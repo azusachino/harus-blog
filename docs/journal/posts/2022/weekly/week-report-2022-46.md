@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2022.46
-date: 2022-11-13
+created: 2022-11-13
 description: PinPoint
 categories:
   - weekly

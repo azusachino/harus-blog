@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.09
-date: 2024-03-03
+created: 2024-03-03
 description: the frustration
 categories:
   - weekly

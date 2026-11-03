@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Node Runtime: Kubelet to CRI, Shim and cgroups v2",
+    "quality_profile": "standard",
+    "output": "k8s-node-runtime.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "kubelet",
+      "type": "frontend",
+      "label": "Kubelet Daemon",
+      "sublabel": "PLEG & SyncPod Loop"
+    },
+    {
+      "id": "cri",
+      "type": "backend",
+      "label": "containerd (CRI)",
+      "sublabel": "containerd.sock gRPC"
+    },
+    {
+      "id": "shim",
+      "type": "backend",
+      "label": "containerd-shim-v2",
+      "sublabel": "Isolated Subreaper"
+    },
+    {
+      "id": "kernel",
+      "type": "database",
+      "label": "Linux Kernel",
+      "sublabel": "cgroups v2 & Namespaces"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 260,
+      "label": "Phase 1: Pod Sandbox Creation (NetNS & IPC)"
+    },
+    {
+      "from": 290,
+      "to": 385,
+      "label": "Phase 2: OCI Spec & Container Process Spawning"
+    },
+    {
+      "from": 415,
+      "to": 505,
+      "label": "Phase 3: cgroup v2 Accounting & Health Probing"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "kubelet",
+      "to": "cri",
+      "y": 175,
+      "label": "1. RunPodSandbox(PodSandboxConfig via gRPC)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "cri",
+      "to": "kernel",
+      "y": 215,
+      "label": "2. Creates NetNS, invokes CNI plugin for veth pair & IP",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "kubelet",
+      "to": "cri",
+      "y": 305,
+      "label": "3. CreateContainer() & StartContainer()",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m4",
+      "from": "cri",
+      "to": "shim",
+      "y": 345,
+      "label": "4. Spawns shim-v2 -> executes runc/crun create & start",
+      "variant": "default"
+    },
+    {
+      "id": "m5",
+      "from": "shim",
+      "to": "kernel",
+      "y": 430,
+      "label": "5. Enforces cgroups v2 resource limits (CPU CFS & memory.max)",
+      "variant": "default"
+    },
+    {
+      "id": "m6",
+      "from": "kernel",
+      "to": "kubelet",
+      "y": 465,
+      "label": "6. PLEG detects container running; executes startup/readiness probes",
+      "variant": "emphasis"
+    }
+  ]
+}

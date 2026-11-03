@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2023.01
-date: 2023-01-08
+created: 2023-01-08
 description: 不害人、又乐己，何不躺平
 categories:
   - weekly

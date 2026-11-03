@@ -1,6 +1,6 @@
 ---
 title: "Understanding RocksDB: An Embedded Key-Value Store"
-date: 2025-06-12
+created: 2025-06-12
 description: disk efficiency hack
 categories:
   - research

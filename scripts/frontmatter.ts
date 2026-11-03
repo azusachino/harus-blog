@@ -7,10 +7,10 @@ import { Glob } from 'bun';
 
 const DOCS = new URL('../docs/', import.meta.url).pathname;
 const CONTENT_DIRS = ['tech/posts', 'tech/series', 'journal', 'life'];
-const REQUIRED = ['title', 'date', 'description', 'categories', 'slug', 'comments'];
-// Optional keys still have a fixed place: after comments.
-const ORDER = [...REQUIRED, 'cover', 'cover_alt'];
-const SERIES_REQUIRED = ['title', 'date', 'description'];
+const REQUIRED = ['title', 'created', 'description', 'categories', 'slug', 'comments'];
+// Optional keys still have a fixed place in canonical sequence.
+const ORDER = ['title', 'created', 'modified', 'description', 'categories', 'tags', 'slug', 'lang', 'comments', 'cover', 'cover_alt'];
+const SERIES_REQUIRED = ['title', 'created', 'description'];
 const EXEMPT = new Set(['index.md', 'about.md']);
 
 function check(rel: string): string[] {

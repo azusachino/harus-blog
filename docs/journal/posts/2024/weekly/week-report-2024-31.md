@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.31
-date: 2024-08-04
+created: 2024-08-04
 description: consistency is the key, again
 categories:
   - weekly

@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.01
-date: 2024-01-07
+created: 2024-01-07
 description: Gaming life a little bit
 categories:
   - weekly

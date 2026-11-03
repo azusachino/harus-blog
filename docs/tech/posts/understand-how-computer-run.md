@@ -1,6 +1,6 @@
 ---
 title: 计算机是怎样跑起来的：从冯诺伊曼模型说起
-date: 2022-02-03
+created: 2022-02-03
 description: 计算机并不复杂
 categories:
   - research

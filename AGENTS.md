@@ -32,12 +32,12 @@ split into type-based sections — **no year-wise layout**. The site code is at 
 
 ## Conventions
 
-- Frontmatter contract, enforced by the build: `title`, `date`, `description`, `categories`,
-  optional `tags`, `slug`, `comments: true`, optional `cover` + `cover_alt` — in that order.
-  Series chapters need only `title` + `description` (optional `cover`). Categories and tags are
-  **lowercase** (`research`/`practice`, `weekly`/`refresh`/`review`, `life`). Optional `lang`
+- Frontmatter contract, enforced by the build: `title`, `created`, optional `modified`,
+  `description`, `categories`, optional `tags`, `slug`, `comments: true`, optional `cover` + `cover_alt`
+  — in that order. Series chapters need only `title` + `created` + `description` (optional `modified`, `cover`).
+  Categories and tags are **lowercase** (`research`/`practice`, `weekly`/`refresh`/`review`, `life`). Optional `lang`
   (`en`/`zh-CN`/`ja`) overrides the detected article language.
-- `date`/`slug` drive ordering and URLs (`/<section>/<slug>/`); future-dated posts are drafts.
+- `created`/`slug` drive ordering and URLs (`/<section>/<slug>/`); future-dated posts are drafts.
 - Posts stay plain CommonMark: no MDX, no attribute markers, no shortcodes. The cover lives in
   frontmatter; embeds get components, not syntax inside posts.
 - Diagrams: ` ```mermaid ` fences, drawn in the browser by `src/components/Mermaid.astro` (loaded

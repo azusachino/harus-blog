@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2023.21
-date: 2023-05-28
+created: 2023-05-28
 description: ASAP
 categories:
   - weekly

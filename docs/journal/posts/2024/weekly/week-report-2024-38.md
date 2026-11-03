@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.38
-date: 2024-09-22
+created: 2024-09-22
 description: refreshing weekend
 categories:
   - weekly

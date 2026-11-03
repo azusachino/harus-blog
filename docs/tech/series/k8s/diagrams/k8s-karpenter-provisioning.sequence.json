@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Karpenter Just-In-Time Node Provisioning Sequence on AWS EKS",
+    "quality_profile": "standard",
+    "output": "k8s-karpenter-provisioning.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "pending_pod",
+      "type": "frontend",
+      "label": "Pending Pod",
+      "sublabel": "Resource / Arch Constraints"
+    },
+    {
+      "id": "karpenter",
+      "type": "backend",
+      "label": "Karpenter Controller",
+      "sublabel": "NodePool Bin-Packing"
+    },
+    {
+      "id": "aws_ec2",
+      "type": "cloud",
+      "label": "AWS EC2 Fleet API",
+      "sublabel": "CreateFleet (Spot / Graviton)"
+    },
+    {
+      "id": "node_host",
+      "type": "backend",
+      "label": "New EC2 Instance",
+      "sublabel": "containerd & kubelet"
+    },
+    {
+      "id": "apiserver",
+      "type": "backend",
+      "label": "kube-apiserver",
+      "sublabel": "Node Register & Binding"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 255,
+      "label": "Phase 1: Pending Pod Discovery & Bin-Packing"
+    },
+    {
+      "from": 285,
+      "to": 380,
+      "label": "Phase 2: JIT Direct EC2 Fleet Provisioning"
+    },
+    {
+      "from": 410,
+      "to": 500,
+      "label": "Phase 3: Node Bootstrap & Rapid Pod Binding"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "pending_pod",
+      "to": "karpenter",
+      "y": 175,
+      "label": "1. Pod enters Pending state; cannot fit on existing cluster nodes",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "karpenter",
+      "to": "aws_ec2",
+      "y": 215,
+      "label": "2. Solves bin-packing constraints; calls ec2:CreateFleet for optimal Spot/On-Demand",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m3",
+      "from": "aws_ec2",
+      "to": "node_host",
+      "y": 300,
+      "label": "3. AWS allocates VM (e.g. c7g.xlarge Graviton) and triggers user-data script",
+      "variant": "default"
+    },
+    {
+      "id": "m4",
+      "from": "node_host",
+      "to": "apiserver",
+      "y": 340,
+      "label": "4. Node boots and kubelet self-registers Ready status in <35 seconds",
+      "variant": "default"
+    },
+    {
+      "id": "m5",
+      "from": "karpenter",
+      "to": "apiserver",
+      "y": 425,
+      "label": "5. Binds pending Pod directly to newly registered Node without ASG lag",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m6",
+      "from": "apiserver",
+      "to": "node_host",
+      "y": 460,
+      "label": "6. Kubelet pulls image and starts workload (zero node idle waste)",
+      "variant": "default"
+    }
+  ]
+}

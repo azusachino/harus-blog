@@ -29,7 +29,8 @@ const link = (p?: typeof post) => p && { href: href(section, p), title: p.data.t
     back={{ href: `/${section}/`, label: section[0].toUpperCase() + section.slice(1) }}
     badge={`#${String(number).padStart(3, '0')}`}
     title={post.data.title}
-    date={day(post.data.date)}
+    created={day(post.data.created)}
+    modified={post.data.modified ? day(post.data.modified) : undefined}
     length={trackLength(post.body)}
     tags={[...post.data.categories, ...(post.data.tags ?? [])]}
     headings={headings}

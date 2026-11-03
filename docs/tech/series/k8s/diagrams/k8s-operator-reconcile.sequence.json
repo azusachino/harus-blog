@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Kubernetes Operator Pattern & Informer Reconcile Sequence",
+    "quality_profile": "standard",
+    "output": "k8s-operator-reconcile.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "client",
+      "type": "frontend",
+      "label": "Cluster Operator",
+      "sublabel": "kubectl apply -f cr.yaml"
+    },
+    {
+      "id": "apiserver",
+      "type": "backend",
+      "label": "kube-apiserver",
+      "sublabel": "CRD REST Validation"
+    },
+    {
+      "id": "informer",
+      "type": "backend",
+      "label": "Informer & Queue",
+      "sublabel": "Reflector & WorkQueue"
+    },
+    {
+      "id": "reconciler",
+      "type": "backend",
+      "label": "Operator Reconciler",
+      "sublabel": "Reconcile(ctx, req)"
+    },
+    {
+      "id": "child_res",
+      "type": "database",
+      "label": "Managed State",
+      "sublabel": "StatefulSet, PVC & Secret"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 255,
+      "label": "Phase 1: Custom Resource Admission & Queueing"
+    },
+    {
+      "from": 285,
+      "to": 380,
+      "label": "Phase 2: Informer Cache Sync & Reconcile Loop"
+    },
+    {
+      "from": 410,
+      "to": 500,
+      "label": "Phase 3: Child Resource Convergence & Status Patch"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "client",
+      "to": "apiserver",
+      "y": 175,
+      "label": "1. Apply Custom Resource (e.g. PostgresCluster spec)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "apiserver",
+      "to": "informer",
+      "y": 215,
+      "label": "2. CRD schema validated -> watch stream pushes event to WorkQueue",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "informer",
+      "to": "reconciler",
+      "y": 300,
+      "label": "3. Worker pops key -> invokes Reconcile(ctx, req)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m4",
+      "from": "reconciler",
+      "to": "child_res",
+      "y": 340,
+      "label": "4. Reconcile loop ensures child StatefulSet and Service match spec",
+      "variant": "default"
+    },
+    {
+      "id": "m5",
+      "from": "child_res",
+      "to": "reconciler",
+      "y": 425,
+      "label": "5. Child resources report healthy status (3/3 nodes in sync)",
+      "variant": "default"
+    },
+    {
+      "id": "m6",
+      "from": "reconciler",
+      "to": "apiserver",
+      "y": 460,
+      "label": "6. Patches CR status subresource: phase=Ready, primary=pg-0",
+      "variant": "emphasis"
+    }
+  ]
+}

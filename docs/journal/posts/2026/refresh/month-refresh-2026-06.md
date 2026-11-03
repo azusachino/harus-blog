@@ -1,6 +1,6 @@
 ---
 title: Monthly Refresh 2026.06
-date: 2026-06-28
+created: 2026-06-28
 description: practice plus feedback is the key
 categories:
   - refresh

@@ -23,7 +23,8 @@ const link = (c?: typeof chapter) => c && { href: seriesHref(c.id), title: c.dat
     back={{ href: '/tech/series/', label: `Series · ${album.name}` }}
     badge={`${String(number).padStart(2, '0')}/${String(album.chapters.length).padStart(2, '0')}`}
     title={chapter.data.title}
-    date={day(chapter.data.date)}
+    created={day(chapter.data.created)}
+    modified={chapter.data.modified ? day(chapter.data.modified) : undefined}
     length={trackLength(chapter.body)}
     headings={headings}
     prev={link(prev)}

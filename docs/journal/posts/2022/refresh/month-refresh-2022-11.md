@@ -1,6 +1,6 @@
 ---
 title: Monthly Refresh 2022.11
-date: 2022-11-30
+created: 2022-11-30
 description: 时事造人
 categories:
   - refresh

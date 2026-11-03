@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Native Sidecar Container Lifecycle in Modern Kubernetes",
+    "quality_profile": "standard",
+    "output": "k8s-pod-lifecycle.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "kubelet",
+      "type": "frontend",
+      "label": "Kubelet Pod Worker",
+      "sublabel": "Pod Lifecycle Controller"
+    },
+    {
+      "id": "init_cont",
+      "type": "backend",
+      "label": "Standard Init Container",
+      "sublabel": "Runs sequentially to exit 0"
+    },
+    {
+      "id": "sidecar",
+      "type": "backend",
+      "label": "Native Sidecar Container",
+      "sublabel": "restartPolicy: Always"
+    },
+    {
+      "id": "app_cont",
+      "type": "backend",
+      "label": "Application Container",
+      "sublabel": "Primary business workload"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 255,
+      "label": "Phase 1: Sequential Init Execution"
+    },
+    {
+      "from": 285,
+      "to": 380,
+      "label": "Phase 2: Native Sidecar Startup & Readiness Block"
+    },
+    {
+      "from": 410,
+      "to": 500,
+      "label": "Phase 3: Primary Workload Execution & Graceful Shutdown"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "kubelet",
+      "to": "init_cont",
+      "y": 175,
+      "label": "1. Starts schema migration init container",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "init_cont",
+      "to": "kubelet",
+      "y": 215,
+      "label": "2. Migration finishes (exits 0); kubelet proceeds to next stage",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "kubelet",
+      "to": "sidecar",
+      "y": 300,
+      "label": "3. Starts proxy/logging sidecar (restartPolicy: Always)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m4",
+      "from": "sidecar",
+      "to": "kubelet",
+      "y": 340,
+      "label": "4. Sidecar startup & readiness probe passes (unblocks app launch)",
+      "variant": "default"
+    },
+    {
+      "id": "m5",
+      "from": "kubelet",
+      "to": "app_cont",
+      "y": 425,
+      "label": "5. Spawns primary app container (sidecar is guaranteed active)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m6",
+      "from": "app_cont",
+      "to": "kubelet",
+      "y": 460,
+      "label": "6. App exits -> kubelet triggers graceful SIGTERM on sidecar",
+      "variant": "emphasis"
+    }
+  ]
+}

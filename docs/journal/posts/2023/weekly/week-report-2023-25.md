@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2023.25
-date: 2023-06-25
+created: 2023-06-25
 description: Can't be right
 categories:
   - weekly

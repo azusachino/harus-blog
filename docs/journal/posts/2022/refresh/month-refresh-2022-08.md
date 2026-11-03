@@ -1,6 +1,6 @@
 ---
 title: Monthly Refresh 2022.08
-date: 2022-08-31
+created: 2022-08-31
 description: 观念与行动尚未统一
 categories:
   - refresh

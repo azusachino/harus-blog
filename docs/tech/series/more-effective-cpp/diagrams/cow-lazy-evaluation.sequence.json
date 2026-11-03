@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Copy-On-Write (COW) & Lazy Evaluation Lifetime Flow",
+    "quality_profile": "standard",
+    "output": "cow-lazy-evaluation.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "caller",
+      "type": "frontend",
+      "label": "Caller Code",
+      "sublabel": "String s2 = s1; s2[0] = 'x'"
+    },
+    {
+      "id": "str_handle",
+      "type": "backend",
+      "label": "String Handle (s2)",
+      "sublabel": "StringValue* pointer"
+    },
+    {
+      "id": "proxy_guard",
+      "type": "backend",
+      "label": "CharProxy Hook",
+      "sublabel": "operator[] lvalue interceptor"
+    },
+    {
+      "id": "shared_buf",
+      "type": "database",
+      "label": "Shared StringValue Buffer",
+      "sublabel": "refCount & char payload"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 260,
+      "label": "Phase 1: Shallow Copy & Shared Ownership"
+    },
+    {
+      "from": 285,
+      "to": 375,
+      "label": "Phase 2: Read Access (Zero Allocation Overhead)"
+    },
+    {
+      "from": 400,
+      "to": 490,
+      "label": "Phase 3: Write Mutation Intercept & Deep Copy Split"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "caller",
+      "to": "str_handle",
+      "y": 175,
+      "label": "1. String s2 = s1 (Shallow copy constructor)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "str_handle",
+      "to": "shared_buf",
+      "y": 215,
+      "label": "2. Reuses existing heap buffer; refCount increments to 2",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "caller",
+      "to": "str_handle",
+      "y": 300,
+      "label": "3. char c = s2[1] (Read evaluation)",
+      "variant": "default"
+    },
+    {
+      "id": "m4",
+      "from": "str_handle",
+      "to": "caller",
+      "y": 340,
+      "label": "4. Returns char directly from shared buffer without cloning",
+      "variant": "default"
+    },
+    {
+      "id": "m5",
+      "from": "caller",
+      "to": "proxy_guard",
+      "y": 415,
+      "label": "5. s2[0] = 'x' (Proxy intercepts assignment as lvalue)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m6",
+      "from": "proxy_guard",
+      "to": "shared_buf",
+      "y": 455,
+      "label": "6. Detaches: decrements old refCount & allocates isolated private buffer",
+      "variant": "emphasis"
+    }
+  ]
+}

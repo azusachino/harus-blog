@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.16
-date: 2024-04-21
+created: 2024-04-21
 description: there is no way to explain the real-life
 categories:
   - weekly

@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Constructor Exception Safety: Raw Pointers vs RAII Members",
+    "quality_profile": "standard",
+    "output": "constructor-exception-safety.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "caller",
+      "type": "frontend",
+      "label": "Caller Code",
+      "sublabel": "new BookEntry()"
+    },
+    {
+      "id": "ctor",
+      "type": "backend",
+      "label": "BookEntry Constructor",
+      "sublabel": "Member Init List"
+    },
+    {
+      "id": "smart_member",
+      "type": "backend",
+      "label": "Image Member",
+      "sublabel": "std::unique_ptr<Image>"
+    },
+    {
+      "id": "heap",
+      "type": "database",
+      "label": "Heap Allocator",
+      "sublabel": "operator new / delete"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 250,
+      "label": "Phase 1: Member 1 Initialization (Success)"
+    },
+    {
+      "from": 280,
+      "to": 370,
+      "label": "Phase 2: Member 2 Allocation Throws Exception"
+    },
+    {
+      "from": 400,
+      "to": 490,
+      "label": "Phase 3: Stack Unwinding & RAII Auto-Cleanup"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "caller",
+      "to": "ctor",
+      "y": 175,
+      "label": "1. Invokes BookEntry constructor",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "ctor",
+      "to": "smart_member",
+      "y": 205,
+      "label": "2. Constructs theImage via std::make_unique<Image>()",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "smart_member",
+      "to": "heap",
+      "y": 235,
+      "label": "3. Heap memory successfully allocated for Image",
+      "variant": "default"
+    },
+    {
+      "id": "m4",
+      "from": "ctor",
+      "to": "heap",
+      "y": 295,
+      "label": "4. Allocating theAudioClip fails: operator new throws bad_alloc",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m5",
+      "from": "heap",
+      "to": "ctor",
+      "y": 335,
+      "label": "5. Exception bubbles up: BookEntry object is NOT yet constructed",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m6",
+      "from": "ctor",
+      "to": "smart_member",
+      "y": 415,
+      "label": "6. ~BookEntry() will NOT run, but fully constructed members unwind",
+      "variant": "default"
+    },
+    {
+      "id": "m7",
+      "from": "smart_member",
+      "to": "heap",
+      "y": 455,
+      "label": "7. ~unique_ptr<Image>() executes deterministically: zero memory leak!",
+      "variant": "emphasis"
+    }
+  ]
+}

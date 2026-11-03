@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.48
-date: 2024-12-01
+created: 2024-12-01
 description: A trip to Sapporo
 categories:
   - weekly

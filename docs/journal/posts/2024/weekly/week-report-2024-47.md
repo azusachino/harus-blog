@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.47
-date: 2024-11-24
+created: 2024-11-24
 description: ゲーム三昧
 categories:
   - weekly

@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.25
-date: 2024-06-23
+created: 2024-06-23
 description: lost hours
 categories:
   - weekly

@@ -1,6 +1,6 @@
 ---
 title: The Limitation of Cynicism
-date: 2025-12-02
+created: 2025-12-02
 description: cynicism is easy, but leads to nowhere
 categories:
   - life

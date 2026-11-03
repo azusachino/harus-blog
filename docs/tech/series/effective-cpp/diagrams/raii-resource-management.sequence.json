@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "RAII Resource Management & Deterministic Lifetime Control",
+    "quality_profile": "standard",
+    "output": "raii-resource-management.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "caller",
+      "type": "frontend",
+      "label": "Stack Scope / Caller",
+      "sublabel": "Local Scope & Exception Unwinding"
+    },
+    {
+      "id": "raii_wrapper",
+      "type": "backend",
+      "label": "RAII Manager",
+      "sublabel": "std::unique_ptr / std::shared_ptr"
+    },
+    {
+      "id": "resource",
+      "type": "backend",
+      "label": "Target Resource",
+      "sublabel": "Heap Object / File / Socket FD"
+    },
+    {
+      "id": "system",
+      "type": "database",
+      "label": "OS / Memory Subsystem",
+      "sublabel": "Allocator & System Handles"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 260,
+      "label": "Phase 1: Acquisition Is Initialization (RAII Binding)"
+    },
+    {
+      "from": 300,
+      "to": 380,
+      "label": "Phase 2: Scoped Resource Access"
+    },
+    {
+      "from": 420,
+      "to": 500,
+      "label": "Phase 3: Guaranteed Cleanup on Scope Exit or Exception"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "caller",
+      "to": "raii_wrapper",
+      "y": 175,
+      "label": "1. Instantiate RAII object (e.g. std::make_unique<Resource>)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "raii_wrapper",
+      "to": "system",
+      "y": 205,
+      "label": "2. Acquire raw memory or system descriptor",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "system",
+      "to": "resource",
+      "y": 235,
+      "label": "3. Construct resource and bind raw pointer into RAII handle",
+      "variant": "default"
+    },
+    {
+      "id": "m4",
+      "from": "caller",
+      "to": "resource",
+      "y": 320,
+      "label": "4. Access resource via operator-> or get() safely",
+      "variant": "default"
+    },
+    {
+      "id": "m5",
+      "from": "resource",
+      "to": "caller",
+      "y": 355,
+      "label": "5. Business logic executes; raw pointer never escapes ownership",
+      "variant": "default"
+    },
+    {
+      "id": "m6",
+      "from": "caller",
+      "to": "raii_wrapper",
+      "y": 435,
+      "label": "6. Scope exit or exception thrown -> stack unwinding triggers destructor",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m7",
+      "from": "raii_wrapper",
+      "to": "system",
+      "y": 470,
+      "label": "7. RAII destructor calls deleter: free() / close() unconditionally",
+      "variant": "emphasis"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 ---
 title: Review 2024
-date: 2024-12-31
+created: 2024-12-31
 description: 自由に描こう
 categories:
   - review

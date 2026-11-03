@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2022.15
-date: 2022-04-10
+created: 2022-04-10
 description: 神のまにまに
 categories:
   - weekly

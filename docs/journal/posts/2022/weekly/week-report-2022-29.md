@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2022.29
-date: 2022-07-17
+created: 2022-07-17
 description: Absurdity
 categories:
   - weekly

@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2023.26
-date: 2023-07-02
+created: 2023-07-02
 description: 如梦似幻
 categories:
   - weekly

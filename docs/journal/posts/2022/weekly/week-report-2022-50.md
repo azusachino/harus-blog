@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2022.50
-date: 2022-12-11
+created: 2022-12-11
 description: 真理何为
 categories:
   - weekly

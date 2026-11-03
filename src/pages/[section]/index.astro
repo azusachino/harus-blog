@@ -18,9 +18,9 @@ const titles: Record<Section, [string, string]> = {
   life: ['Life', 'Books, concerts and essays'],
 };
 const [title, subtitle] = titles[section];
-const years = section === 'journal' ? [...new Set(posts.map((p) => p.data.date.getUTCFullYear()))] : [];
+const years = section === 'journal' ? [...new Set(posts.map((p) => p.data.created.getUTCFullYear()))] : [];
 const latestYear = years[0];
-const latestYearPosts = latestYear ? posts.filter((p) => p.data.date.getUTCFullYear() === latestYear) : [];
+const latestYearPosts = latestYear ? posts.filter((p) => p.data.created.getUTCFullYear() === latestYear) : [];
 const categories = section === 'tech' ? [...new Set(posts.flatMap((p) => p.data.categories))].sort() : [];
 ---
 <Base title={title}>

@@ -1,0 +1,131 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Advanced Traffic Engineering: Mirroring, Canary Shifting & Circuit Breaking",
+    "quality_profile": "standard",
+    "output": "k8s-traffic-reshaping.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "ingress_lane",
+      "label": "Edge Proxy / Gateway"
+    },
+    {
+      "id": "routing_lane",
+      "label": "L7 Traffic Reshaping Engine"
+    },
+    {
+      "id": "shadow_lane",
+      "label": "Shadow Fleet (Dark Launch)",
+      "variant": "exception"
+    },
+    {
+      "id": "resilience_lane",
+      "label": "Resilience & Circuit Breaking"
+    }
+  ],
+  "mainPath": [
+    "rx_req",
+    "eval_rules",
+    "canary_split",
+    "cb_gate",
+    "primary_pod"
+  ],
+  "nodes": [
+    {
+      "id": "rx_req",
+      "lane": "ingress_lane",
+      "col": 0,
+      "label": "Inbound HTTP Request",
+      "sublabel": "Production traffic stream",
+      "type": "frontend"
+    },
+    {
+      "id": "eval_rules",
+      "lane": "routing_lane",
+      "col": 1,
+      "label": "Route Rule Evaluation",
+      "sublabel": "Inspect headers, paths & weights",
+      "type": "backend"
+    },
+    {
+      "id": "shadow_fork",
+      "lane": "shadow_lane",
+      "col": 2,
+      "label": "Traffic Mirror (Async)",
+      "sublabel": "Duplicate fire-and-forget payload",
+      "type": "external"
+    },
+    {
+      "id": "shadow_canary",
+      "lane": "shadow_lane",
+      "col": 3,
+      "label": "Dark Canary Pods",
+      "sublabel": "Real load test; response dropped",
+      "type": "database"
+    },
+    {
+      "id": "canary_split",
+      "lane": "routing_lane",
+      "col": 2,
+      "label": "Weight Shifter",
+      "sublabel": "90% stable / 10% canary v2",
+      "type": "backend"
+    },
+    {
+      "id": "cb_gate",
+      "lane": "resilience_lane",
+      "col": 3,
+      "label": "Circuit Breaker",
+      "sublabel": "Outlier detection & 5xx ejection",
+      "type": "security"
+    },
+    {
+      "id": "primary_pod",
+      "lane": "resilience_lane",
+      "col": 4,
+      "label": "Workload Endpoints",
+      "sublabel": "Direct container socket delivery",
+      "type": "backend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "rx_req",
+      "to": "eval_rules",
+      "label": "1. Ingest"
+    },
+    {
+      "id": "e2",
+      "from": "eval_rules",
+      "to": "shadow_fork",
+      "label": "Shadow copy"
+    },
+    {
+      "id": "e3",
+      "from": "shadow_fork",
+      "to": "shadow_canary",
+      "label": "Mirror to dark fleet"
+    },
+    {
+      "id": "e4",
+      "from": "eval_rules",
+      "to": "canary_split",
+      "label": "2. Active routing"
+    },
+    {
+      "id": "e5",
+      "from": "canary_split",
+      "to": "cb_gate",
+      "label": "3. Filter failures"
+    },
+    {
+      "id": "e6",
+      "from": "cb_gate",
+      "to": "primary_pod",
+      "label": "4. Resilient delivery"
+    }
+  ]
+}

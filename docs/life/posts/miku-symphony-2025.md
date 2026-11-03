@@ -1,6 +1,6 @@
 ---
 title: 初音ミクシンフォニー2025
-date: 2025-10-05
+created: 2025-10-05
 description: wowakaさん、ありがとう
 categories:
   - life

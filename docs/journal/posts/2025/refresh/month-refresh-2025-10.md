@@ -1,6 +1,6 @@
 ---
 title: Monthly Refresh 2025.10
-date: 2025-10-29
+created: 2025-10-29
 description: choose the hard one
 categories:
   - refresh

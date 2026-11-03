@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2023.24
-date: 2023-06-18
+created: 2023-06-18
 description: Know your disadvantage
 categories:
   - weekly

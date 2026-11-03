@@ -17,7 +17,7 @@ export async function getStaticPaths() {
     params: { tag },
     props: {
       tag,
-      items: items.sort((a, b) => b.post.data.date.getTime() - a.post.data.date.getTime()),
+      items: items.sort((a, b) => b.post.data.created.getTime() - a.post.data.created.getTime()),
     },
   }));
 }
@@ -43,7 +43,7 @@ const names: Record<Section, string> = { tech: 'Tech', journal: 'Journal', life:
         </div>
         <span class="meta mono muted">
           <span class="sec">{names[section]}</span>
-          <time datetime={day(post.data.date)}>{day(post.data.date)}</time>
+          <time datetime={day(post.data.created)}>{day(post.data.created)}</time>
           <span>♪ {trackLength(post.body)}</span>
         </span>
       </li>

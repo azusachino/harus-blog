@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.28
-date: 2024-07-14
+created: 2024-07-14
 description: bloodborne weekend
 categories:
   - weekly

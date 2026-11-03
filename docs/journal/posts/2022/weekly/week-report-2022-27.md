@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2022.27
-date: 2022-07-03
+created: 2022-07-03
 description: Systems vs Goals
 categories:
   - weekly

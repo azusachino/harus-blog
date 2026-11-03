@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2022.12
-date: 2022-03-20
+created: 2022-03-20
 description: 愛があるようでないようである
 categories:
   - weekly

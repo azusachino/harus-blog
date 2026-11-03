@@ -9,7 +9,7 @@ const esc = (s: string) =>
 export async function GET() {
   const all = (await Promise.all(SECTIONS.map(async (s) => (await published(s)).map((post) => ({ s, post })))))
     .flat()
-    .sort((a, b) => b.post.data.date.getTime() - a.post.data.date.getTime())
+    .sort((a, b) => b.post.data.created.getTime() - a.post.data.created.getTime())
     .slice(0, 30);
   const items = all
     .map(({ s, post }) => {
@@ -18,7 +18,7 @@ export async function GET() {
       <title>${esc(post.data.title)}</title>
       <link>${link}</link>
       <guid isPermaLink="true">${link}</guid>
-      <pubDate>${post.data.date.toUTCString()}</pubDate>
+      <pubDate>${post.data.created.toUTCString()}</pubDate>
       <category>${s}</category>
       <description>${esc(post.data.description)}</description>
     </item>`;

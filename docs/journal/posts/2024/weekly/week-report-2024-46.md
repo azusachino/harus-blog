@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.46
-date: 2024-11-17
+created: 2024-11-17
 description: a day trip to mt. odake
 categories:
   - weekly

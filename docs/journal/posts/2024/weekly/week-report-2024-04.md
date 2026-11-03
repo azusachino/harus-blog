@@ -1,6 +1,6 @@
 ---
 title: Weekly Report 2024.04
-date: 2024-01-28
+created: 2024-01-28
 description: enjoy today's life
 categories:
   - weekly
