@@ -44,13 +44,26 @@ Latest baseline: [run 41597121991](https://github.com/azusachino/harus-blog/acti
 
 On macOS arm64 at the baseline revision, two consecutive `make build` calls passed in 2.863s and 1.671s (41.7% faster on the second run). Each includes the frozen-lockfile installation check. The second build reused optimized images but still regenerated the site and bundles; Astro's static build is not an incremental no-op. This is not a cold-install benchmark and does not predict GitHub-hosted runner times.
 
-Removed the separate `bun scripts/archify.ts` from `verify`: the existing Astro integration calls the same renderer during `astro sync` and `astro build`. This removes a third identical rendering pass without removing diagram validation. No output cache or timestamp-based shortcut is introduced, so content, time-sensitive publication and build-time data are still evaluated.
+The first pass removed the separate `bun scripts/archify.ts` from `verify`; the Astro integration still rendered during both `astro sync` and `astro build`. The second pass skips rendering for the explicit `sync` command, leaving one complete validation/render pass in `astro build` and retaining dev-mode generation. The [Astro integration API](https://docs.astro.build/en/reference/integrations-reference/#astroconfigsetup) documents these command values, also confirmed against the installed Astro types. No output cache or timestamp-based shortcut is introduced, so content, time-sensitive publication and build-time data are still evaluated.
 
 `make check` passed after the first optimization, including formatting, type checking, palette contrast, frontmatter, travel validation and the full site build. All 7 diagram sources have generated HTML. Precompiled actionlint 1.7.12 (archive SHA-256 checked against its published checksum) and `git diff --check` passed.
 
 ## Pushed experiments and second pass
 
-Pending first pushed run. No remote timing improvement is claimed yet.
+First-pass revision: `bd767d8bd4aef53a04b43990e33aef36027e0175`, [PR #22](https://github.com/azusachino/harus-blog/pull/22).
+
+| Run / attempt | Queue | Preparation including install | Formatting + validation | Job total | Result |
+| --- | --- | --- | --- | --- | --- |
+| [41601188595 / 1](https://github.com/azusachino/harus-blog/actions/runs/41601188595/attempts/1), cold tool cache | 3s | 19s | 14s | 37s | Passed |
+| [41601188595 / 2](https://github.com/azusachino/harus-blog/actions/runs/41601188595/attempts/2), warm tool cache | 4s | 10s | 10s | 22s | Passed |
+
+For reruns, queue is attempt `run_started_at` to job start, not the original workflow creation time. New preparation includes dependency installation; the baseline combined check step included it, so phase comparisons have that approximately one-second boundary difference. Job totals remain directly comparable.
+
+The cold tool setup took 8s versus 2s warm. The reduced tool cache is 99,499,327 bytes versus the preceding full-tool cache's 123,011,610 bytes (19.1% smaller). Installs remained below one second (878ms cold, 909ms warm). Formatting took 4s cold and 1s on the warm-tool rerun even though no package cache was added; this variation does not establish a package-cache bottleneck.
+
+The warm first-pass job was 18.5% faster than the full-sample median (27s), 26.7% faster than the comparable two-checkout median (30s), and 4.3% faster than the latest baseline (23s). One warm run is not a statistically robust estimate; the cold run was slower. No guaranteed speedup is claimed.
+
+Second pass: avoid the remaining redundant Archify render during type sync. The full build remains authoritative for diagram validation. A controlled invalid-diagram probe passed: explicit type sync completed without rendering; `astro build` failed with the invalid diagram's path, as expected. The temporary fixture was removed. This expected-red diagnostic is separate from the normal acceptance gate. The second-pass `make check` passed, all 7 valid diagrams generated HTML, and actionlint plus diff checks passed. Final remote timings: pending.
 
 ## Every baseline job
 
