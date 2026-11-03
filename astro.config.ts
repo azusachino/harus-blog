@@ -1,16 +1,19 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import type { AstroIntegration } from 'astro';
 import { satteri } from '@astrojs/markdown-satteri';
 import { math } from './src/lib/math';
 import { archify } from './src/lib/archify';
 
 const nativeImport = new Function('specifier', 'return import(specifier)') as (specifier: string) => Promise<any>;
 
-function archifyIntegration() {
+function archifyIntegration(): AstroIntegration {
   return {
     name: 'archify',
     hooks: {
-      'astro:config:setup': async () => {
+      'astro:config:setup': async ({ command }) => {
+        // Type sync needs schemas, not public HTML; the build validates every diagram.
+        if (command === 'sync') return;
         const { renderArchify } = await nativeImport(new URL('./scripts/archify.ts', import.meta.url).href);
         await renderArchify();
       },

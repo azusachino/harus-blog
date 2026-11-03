@@ -15,6 +15,20 @@ groups (Added, Changed, Fixed, Removed).
 
 - Removed the footer `<PianoStrip />` keyboard, clearing space for future 3D Miku additions.
 
+## 2026-11-03 — CI preparation and redundant work
+
+### Changed
+
+- CI cancels superseded PR runs while preserving every main push, and skips PRs changing only
+  explicitly listed root documentation. Blog posts and diagrams retain the complete gate.
+- CI installs only Bun and rumdl with mise's built-in cache and checks out only Archify's skill
+  directory. Installation, formatting and validation have separate timing steps.
+- Diagram rendering runs once during the site build instead of repeating in standalone verification
+  and type sync. The build still renders and validates every diagram; dev-mode generation is retained.
+- The combined gate validates content, builds once (including Astro's type generation), then runs
+  TypeScript against those generated types instead of running a second content/type sync first.
+- The 50-run baseline and measured follow-up are recorded in `CI_PERFORMANCE.md`.
+
 ## 2026-11-03 — CV page and PDF
 
 ### Added

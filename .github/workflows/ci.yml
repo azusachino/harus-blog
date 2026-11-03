@@ -4,6 +4,20 @@ on:
   push:
     branches: [main]
   pull_request:
+    # docs/ contains the site's product: posts and diagrams must still build.
+    # No required checks are configured. Revisit this filter if check becomes required.
+    paths-ignore:
+      - README.md
+      - AGENTS.md
+      - CLAUDE.md
+      - DESIGN.md
+      - CHANGELOG.md
+      - CI_PERFORMANCE.md
+
+# A unique main-run group preserves pending runs as well as running ones.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
   contents: read
@@ -19,11 +33,21 @@ jobs:
         with:
           repository: azusachino/archify
           path: .archify
+          sparse-checkout: archify
 
       - name: Set up tools with mise
         uses: jdx/mise-action@v5
+        with:
+          # Typst is only needed by make cv, not by the validation gate.
+          install_args: bun rumdl
 
-      - name: Format check, contrast, frontmatter, build and URL parity
-        run: make check
+      - name: Install dependencies
+        run: make install
+
+      - name: Check formatting
+        run: make fmt-check
+
+      - name: Validate diagrams, types, contrast, frontmatter, travel and build
+        run: bun run verify
         env:
           ARCHIFY_RENDER: ${{ github.workspace }}/.archify/archify/lib/render.mjs
