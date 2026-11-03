@@ -5,8 +5,14 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const BLOG_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DOCS_ROOT = join(BLOG_ROOT, 'docs');
 const OUT_ROOT = join(BLOG_ROOT, 'public', 'archify');
-const RENDER_API =
-  process.env.ARCHIFY_RENDER ?? resolve(BLOG_ROOT, '..', '..', '.agents', 'skills', 'archify', 'lib', 'render.mjs');
+const CANDIDATES = [
+  process.env.ARCHIFY_RENDER,
+  resolve(BLOG_ROOT, '.archify', 'lib', 'render.mjs'),
+  resolve(BLOG_ROOT, '..', '..', '.agents', 'skills', 'archify', 'lib', 'render.mjs'),
+  resolve(BLOG_ROOT, '..', 'archify', 'lib', 'render.mjs'),
+].filter(Boolean) as string[];
+
+const RENDER_API = CANDIDATES.find((p) => existsSync(p)) ?? CANDIDATES[0];
 const SOURCE = /\.(architecture|workflow|sequence|dataflow|lifecycle|erd|class|tree|timeline|waterfall)\.json$/;
 
 function walk(dir: string): string[] {
