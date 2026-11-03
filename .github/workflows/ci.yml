@@ -25,3 +25,5 @@ jobs:
 
       - name: Format check, contrast, frontmatter, build and URL parity
         run: make check
+        env:
+          ARCHIFY_RENDER: ${{ github.workspace }}/.archify/archify/lib/render.mjs
