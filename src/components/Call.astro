@@ -1,9 +1,9 @@
 ---
 // Concert call and response in the footer: cycles through the authentic
-// call-and-response phrases in "39みゅーじっく！" (mikitoP).
+// call-and-response vocal phrases from "39みゅーじっく！" (mikitoP).
 // The stage calls ("準備OK？", "大サービス！", "大熱唱！", "未体験Night！", "もう一度名前呼んで！"),
 // the reader answers ("Yes!", "Oh Yeah!", "Hey!", "Oh Yeah!", "初音ミク！"),
-// the piano fires the matching 130 BPM chord stabs, and penlights sway.
+// original song audio plays, and penlights sway.
 const sticks = 11;
 ---
 <div class="call">
@@ -23,10 +23,10 @@ const sticks = 11;
     const status = document.querySelector('[data-call-status]');
     const askEl = document.querySelector('[data-call-ask]');
     const btnEl = document.querySelector('[data-call]');
-    const piano = document.querySelector('[data-piano]');
+    const caption = document.querySelector('[data-piano-caption]');
     if (!btnEl || !askEl) return;
 
-    // Authentic concert call-and-response phrases from "39みゅーじっく！" (mikitoP, 130 BPM, B minor)
+    // Authentic concert call-and-response audio clips from "39みゅーじっく！" (mikitoP)
     const calls = [
       {
         ask: '準備OK？',
@@ -34,15 +34,8 @@ const sticks = 11;
         lang: 'en',
         label: '♪ 準備OK？ — Yes! (39みゅーじっく！)',
         status: '準備OK？ Yes! Penlights up!',
-        notes: [
-          { note: 'A3', delay: 0 },
-          { note: 'C#4', delay: 0 },
-          { note: 'E4', delay: 0 },
-          { note: 'B3', delay: 0.18 },
-          { note: 'D4', delay: 0.18 },
-          { note: 'F#4', delay: 0.18 },
-          { note: 'B4', delay: 0.18 },
-        ],
+        audioSrc: '/audio/39-music/call1-junbi-ok.mp3',
+        durationMs: 1520,
       },
       {
         ask: '大サービス！',
@@ -50,18 +43,8 @@ const sticks = 11;
         lang: 'en',
         label: '♪ 大サービス！ — Oh Yeah! (39みゅーじっく！)',
         status: '大サービス！ Oh Yeah! Penlights up!',
-        notes: [
-          { note: 'G3', delay: 0 },
-          { note: 'B3', delay: 0 },
-          { note: 'D4', delay: 0 },
-          { note: 'A3', delay: 0.22 },
-          { note: 'C#4', delay: 0.22 },
-          { note: 'E4', delay: 0.22 },
-          { note: 'B3', delay: 0.44 },
-          { note: 'D4', delay: 0.44 },
-          { note: 'F#4', delay: 0.44 },
-          { note: 'B4', delay: 0.44 },
-        ],
+        audioSrc: '/audio/39-music/call2-dai-service.mp3',
+        durationMs: 2500,
       },
       {
         ask: '大熱唱！',
@@ -69,15 +52,8 @@ const sticks = 11;
         lang: 'en',
         label: '♪ 大熱唱！ — Hey! (39みゅーじっく！)',
         status: '大熱唱！ Hey! Penlights up!',
-        notes: [
-          { note: 'A3', delay: 0 },
-          { note: 'C#4', delay: 0 },
-          { note: 'E4', delay: 0 },
-          { note: 'B3', delay: 0.16 },
-          { note: 'D4', delay: 0.16 },
-          { note: 'F#4', delay: 0.16 },
-          { note: 'B4', delay: 0.16 },
-        ],
+        audioSrc: '/audio/39-music/call3-dai-nesshou.mp3',
+        durationMs: 2200,
       },
       {
         ask: '未体験Night！',
@@ -85,20 +61,8 @@ const sticks = 11;
         lang: 'en',
         label: '♪ 未体験Night！ — Oh Yeah! (39みゅーじっく！)',
         status: '未体験Night！ Oh Yeah! Penlights up!',
-        notes: [
-          { note: 'F#3', delay: 0 },
-          { note: 'D4', delay: 0 },
-          { note: 'G3', delay: 0.2 },
-          { note: 'B3', delay: 0.2 },
-          { note: 'D4', delay: 0.2 },
-          { note: 'A3', delay: 0.4 },
-          { note: 'C#4', delay: 0.4 },
-          { note: 'E4', delay: 0.4 },
-          { note: 'B3', delay: 0.6 },
-          { note: 'D4', delay: 0.6 },
-          { note: 'F#4', delay: 0.6 },
-          { note: 'B4', delay: 0.6 },
-        ],
+        audioSrc: '/audio/39-music/call4-mitaiken-night.mp3',
+        durationMs: 2150,
       },
       {
         ask: 'もう一度名前呼んで！',
@@ -106,18 +70,8 @@ const sticks = 11;
         lang: 'ja',
         label: '♪ もう一度名前呼んで！ — 初音ミク！ (39みゅーじっく！)',
         status: 'もう一度名前呼んで！ 初音ミク！ Penlights up!',
-        notes: [
-          { note: 'B3', delay: 0 },
-          { note: 'F#4', delay: 0 },
-          { note: 'D4', delay: 0.22 },
-          { note: 'F#4', delay: 0.22 },
-          { note: 'F#4', delay: 0.44 },
-          { note: 'A4', delay: 0.44 },
-          { note: 'B3', delay: 0.66 },
-          { note: 'D4', delay: 0.66 },
-          { note: 'F#4', delay: 0.66 },
-          { note: 'B4', delay: 0.66 },
-        ],
+        audioSrc: '/audio/39-music/call5-miku.mp3',
+        durationMs: 3850,
       },
     ];
 
@@ -125,6 +79,14 @@ const sticks = 11;
     let animTimer;
     let advanceTimer;
     let pendingNext = false;
+    let currentAudio = null;
+
+    // Preload audio instances for immediate playback on click
+    const audios = calls.map((c) => {
+      const a = new Audio(c.audioSrc);
+      a.preload = 'auto';
+      return a;
+    });
 
     const setCall = (idx) => {
       const item = calls[idx];
@@ -148,36 +110,40 @@ const sticks = 11;
 
       const activeCall = calls[current];
 
+      // Stop previous phrase audio if still playing
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+
+      // Play original song audio
+      const audio = audios[current];
+      if (audio) {
+        audio.currentTime = 0;
+        audio.play().catch(() => {});
+        currentAudio = audio;
+      }
+
+      // Wave penlights
       if (lights) {
         lights.classList.remove('on');
-        piano?.removeAttribute('data-playing');
         void lights.offsetWidth; // restart animation on repeat clicks
         lights.classList.add('on');
       }
 
-      if (piano) {
-        piano.setAttribute('data-playing', '');
-        piano.dispatchEvent(
-          new CustomEvent('piano:phrase', {
-            detail: {
-              notes: activeCall.notes,
-              label: activeCall.label,
-            },
-          }),
-        );
-      }
-
+      if (caption) caption.textContent = activeCall.label;
       if (status) status.textContent = activeCall.status;
 
+      // Keep penlights up for the phrase duration
       clearTimeout(animTimer);
+      const penlightDuration = Math.max(activeCall.durationMs + 500, 2400);
       animTimer = setTimeout(() => {
         lights?.classList.remove('on');
-        piano?.removeAttribute('data-playing');
-      }, 2900);
+      }, penlightDuration);
 
       pendingNext = true;
       clearTimeout(advanceTimer);
-      advanceTimer = setTimeout(advance, 800);
+      advanceTimer = setTimeout(advance, activeCall.durationMs);
     });
   })();
 </script>
