@@ -1,0 +1,116 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Enterprise Amazon Bedrock RAG Architecture & Guardrail Security Perimeter",
+    "quality_profile": "standard",
+    "output": "enterprise-bedrock-rag.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "client_lane",
+      "label": "Private Consumer VPC"
+    },
+    {
+      "id": "guardrail_lane",
+      "label": "Security Perimeter & Guardrails"
+    },
+    {
+      "id": "rag_lane",
+      "label": "Knowledge Base & Vector Store"
+    },
+    {
+      "id": "fm_lane",
+      "label": "Amazon Bedrock Foundation Models"
+    }
+  ],
+  "mainPath": [
+    "app_client",
+    "privatelink_ep",
+    "bedrock_guard",
+    "kb_rag",
+    "fm_model"
+  ],
+  "nodes": [
+    {
+      "id": "app_client",
+      "lane": "client_lane",
+      "col": 0,
+      "label": "Internal Application",
+      "sublabel": "Private subnet tier",
+      "type": "frontend"
+    },
+    {
+      "id": "privatelink_ep",
+      "lane": "client_lane",
+      "col": 1,
+      "label": "Bedrock VPC Endpoint",
+      "sublabel": "Interface PrivateLink",
+      "type": "cloud"
+    },
+    {
+      "id": "bedrock_guard",
+      "lane": "guardrail_lane",
+      "col": 2,
+      "label": "Bedrock Guardrails",
+      "sublabel": "PII redaction & safety",
+      "type": "security"
+    },
+    {
+      "id": "kb_rag",
+      "lane": "rag_lane",
+      "col": 3,
+      "label": "Knowledge Base",
+      "sublabel": "Managed RAG engine",
+      "type": "backend"
+    },
+    {
+      "id": "vector_store",
+      "lane": "rag_lane",
+      "col": 4,
+      "label": "OpenSearch Serverless",
+      "sublabel": "Vector search index",
+      "type": "database"
+    },
+    {
+      "id": "fm_model",
+      "lane": "fm_lane",
+      "col": 5,
+      "label": "Foundation Model",
+      "sublabel": "Inference execution",
+      "type": "database"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "app_client",
+      "to": "privatelink_ep",
+      "label": "1. Private TLS request"
+    },
+    {
+      "id": "e2",
+      "from": "privatelink_ep",
+      "to": "bedrock_guard",
+      "label": "2. Inbound prompt filter"
+    },
+    {
+      "id": "e3",
+      "from": "bedrock_guard",
+      "to": "kb_rag",
+      "label": "3. Clean prompt query"
+    },
+    {
+      "id": "e4",
+      "from": "kb_rag",
+      "to": "vector_store",
+      "label": "4. Semantic similarity search"
+    },
+    {
+      "id": "e5",
+      "from": "kb_rag",
+      "to": "fm_model",
+      "label": "5. Context-augmented prompt"
+    }
+  ]
+}

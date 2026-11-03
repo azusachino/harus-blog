@@ -1,0 +1,117 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Enterprise Multi-Account Governance, Dual-Boundary Enforcement & Cryptography",
+    "quality_profile": "standard",
+    "output": "multi-account-governance.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "id_lane",
+      "label": "Enterprise Identity Layer"
+    },
+    {
+      "id": "ou_lane",
+      "label": "Organizations Hierarchy"
+    },
+    {
+      "id": "policy_lane",
+      "label": "Dual Boundary Enforcement"
+    },
+    {
+      "id": "resource_lane",
+      "label": "Workload & Data Perimeter"
+    }
+  ],
+  "mainPath": [
+    "corp_idp",
+    "iam_center",
+    "root_ou",
+    "dual_policy",
+    "workload_acct",
+    "kms_mrk"
+  ],
+  "nodes": [
+    {
+      "id": "corp_idp",
+      "lane": "id_lane",
+      "col": 0,
+      "label": "Corporate IdP",
+      "sublabel": "Okta / Microsoft Entra ID",
+      "type": "external"
+    },
+    {
+      "id": "iam_center",
+      "lane": "id_lane",
+      "col": 1,
+      "label": "IAM Identity Center",
+      "sublabel": "SAML 2.0 & SCIM sync",
+      "type": "security"
+    },
+    {
+      "id": "root_ou",
+      "lane": "ou_lane",
+      "col": 2,
+      "label": "Control Tower OUs",
+      "sublabel": "Core, Security, Workloads",
+      "type": "cloud"
+    },
+    {
+      "id": "dual_policy",
+      "lane": "policy_lane",
+      "col": 3,
+      "label": "Dual Guardrails",
+      "sublabel": "SCPs (Principal) & RCPs",
+      "type": "security"
+    },
+    {
+      "id": "workload_acct",
+      "lane": "resource_lane",
+      "col": 4,
+      "label": "Workload Account",
+      "sublabel": "Zero-trust IAM boundaries",
+      "type": "backend"
+    },
+    {
+      "id": "kms_mrk",
+      "lane": "resource_lane",
+      "col": 5,
+      "label": "KMS Multi-Region Key",
+      "sublabel": "Identical Key ID replication",
+      "type": "database"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "corp_idp",
+      "to": "iam_center",
+      "label": "1. SAML authentication"
+    },
+    {
+      "id": "e2",
+      "from": "iam_center",
+      "to": "root_ou",
+      "label": "2. ABAC session tags"
+    },
+    {
+      "id": "e3",
+      "from": "root_ou",
+      "to": "dual_policy",
+      "label": "3. OU policy inheritance"
+    },
+    {
+      "id": "e4",
+      "from": "dual_policy",
+      "to": "workload_acct",
+      "label": "4. Data perimeter gate"
+    },
+    {
+      "id": "e5",
+      "from": "workload_acct",
+      "to": "kms_mrk",
+      "label": "5. Cross-region decrypt"
+    }
+  ]
+}

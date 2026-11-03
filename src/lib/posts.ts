@@ -54,6 +54,7 @@ export function textLang(body: string) {
 
 // Pinned order for tutorial series albums, latest series first (descending).
 export const PINNED_SERIES: string[] = [
+  'aws-sap',
   'llm-from-scratch',
   'network',
   'more-effective-cpp',
