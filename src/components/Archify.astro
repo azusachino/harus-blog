@@ -20,12 +20,10 @@
 
         const resize = () => {
           const doc = frame.contentDocument;
-          if (doc?.body) {
-            doc.body.style.background = 'transparent';
-          }
           const container = doc?.querySelector<HTMLElement>('.diagram-container');
           if (container && container.offsetHeight > 0) {
-            const target = `${Math.max(240, Math.min(840, container.offsetHeight))}px`;
+            // Account for 1px top + 1px bottom border on iframe (box-sizing: border-box)
+            const target = `${Math.max(240, Math.min(840, container.offsetHeight + 2))}px`;
             if (frame.style.height !== target) {
               frame.style.height = target;
             }
@@ -36,7 +34,7 @@
             const ratio = viewBox.height / viewBox.width;
             if (Number.isFinite(ratio) && ratio > 0) {
               const svgWidth = Math.max(0, frame.clientWidth - 16);
-              const target = `${Math.max(240, Math.min(840, Math.round(svgWidth * ratio + 16)))}px`;
+              const target = `${Math.max(240, Math.min(840, Math.round(svgWidth * ratio + 18)))}px`;
               if (frame.style.height !== target) {
                 frame.style.height = target;
               }
