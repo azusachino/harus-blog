@@ -28,3 +28,7 @@ fmt-check: ## verify formatting without modifying files
 
 check: fmt-check install ## pre-commit and CI gate: formatting, then bun run verify (contrast, frontmatter, build, URL parity)
 	bun run verify
+
+# Browser verification targets from the playwright-verify skill.
+E2E_DIR ?= .
+include e2e.mk

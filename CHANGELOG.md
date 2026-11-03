@@ -4,6 +4,14 @@ Changes to the site itself, newest first. Posts are not listed here; they are th
 One dated entry per merged change, written in the [Keep a Changelog](https://keepachangelog.com/)
 groups (Added, Changed, Fixed, Removed).
 
+## 2026-11-03 — Headless browser checks
+
+### Added
+
+- Headless-Chromium checks via the playwright-verify skill: `make e2e` runs the specs in `e2e/`
+  (home smoke; mermaid diagrams render inside their figure and survive a theme redraw) against a
+  dev server on loopback 4332. `make e2e-probe ROUTE=/path` screenshots one route.
+
 ## 2026-10-27 — Travel Atlas and trip routes
 
 ### Added

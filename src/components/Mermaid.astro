@@ -12,6 +12,7 @@
     const figures = blocks.map((pre) => {
       const figure = document.createElement('figure');
       figure.className = 'mermaid-diagram';
+      figure.dataset.testid = 'mermaid-diagram';
       figure.dataset.source = pre.textContent ?? '';
       pre.replaceWith(figure);
       return figure;
