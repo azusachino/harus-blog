@@ -7,7 +7,7 @@ split into type-based sections — **no year-wise layout**. The site code is at 
 ## Stack & tooling
 
 - `mise` pins bun and rumdl; **`make` is the task runner**; bun runs everything (no Python).
-- `make local` (dev server :4321) · `make build` (`dist/`) · `make fmt` · `make check` (the gate).
+- `make local` (dev server :4321) · `make build` (`dist/`) · `make fmt` · `make check` (the gate) · `make e2e` (headless-Chromium checks: build + preview on :4332, specs in `e2e/`).
 - `make check` = prettier + rumdl, then `bun run verify`: palette contrast (`scripts/contrast.ts`),
   frontmatter contract (`scripts/frontmatter.ts`), `astro build`, URL parity with the old MkDocs
   site (`scripts/url-parity.ts` + `scripts/mkdocs-urls.txt`). CI and the cluster builder run the same.
