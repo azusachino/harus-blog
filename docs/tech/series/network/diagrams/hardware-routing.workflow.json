@@ -25,7 +25,15 @@
       "label": "Layer 3: Router & IP Gateway"
     }
   ],
-  "mainPath": ["signal_in", "mac_learn", "mac_lookup", "switch_unicast", "router_rx", "route_match", "nat_tx"],
+  "mainPath": [
+    "signal_in",
+    "mac_learn",
+    "mac_lookup",
+    "switch_unicast",
+    "router_rx",
+    "route_match",
+    "nat_tx"
+  ],
   "nodes": [
     {
       "id": "signal_in",
