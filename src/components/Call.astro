@@ -1,9 +1,9 @@
 ---
-// Concert call and response in the footer: one click triggers the full
-// 5-section call-and-response sequence from "39みゅーじっく！" (mikitoP).
-// The stage calls ("準備OK？", "大サービス！", "大熱唱！", "未体験Night！", "もう一度名前呼んで！"),
-// the audience answers ("Yes!", "Oh Yeah!", "Hey!", "Oh Yeah!", "初音ミク！"),
-// original song audio plays seamlessly, and penlights sway continuously.
+// Concert call and response in the footer: one click plays the authentic,
+// uncut 39 Music! call-and-response section ("39みゅーじっく！" by mikitoP).
+// The stage and crowd call in full song audio: "39みゅーじっく！", "大サービス！" (Oh Yeah!),
+// "大熱唱！" (Hey!), "未体験Night！" (Oh Yeah!), "準備OK？" (Yes!), and
+// "もう一度名前呼んで！" (初音ミク!), with continuous swaying penlights.
 const sticks = 11;
 ---
 <div class="call">
@@ -25,112 +25,108 @@ const sticks = 11;
     const btnEl = document.querySelector('[data-call]');
     if (!btnEl || !askEl) return;
 
-    // The 5 authentic concert call-and-response vocal clips from "39みゅーじっく！" (mikitoP)
-    const calls = [
+    // Time-synchronized cues matching the uncut original song section
+    const cues = [
       {
-        ask: '準備OK？',
-        response: 'Yes!',
+        start: 0,
+        ask: '39みゅーじっく！',
+        response: 'Music!',
         lang: 'en',
-        status: '準備OK？ Yes! Penlights up!',
-        audioSrc: '/audio/39-music/call1-junbi-ok.mp3',
+        status: '39みゅーじっく！ Music! Penlights up!',
       },
       {
+        start: 2.1,
         ask: '大サービス！',
         response: 'Oh Yeah!',
         lang: 'en',
         status: '大サービス！ Oh Yeah!',
-        audioSrc: '/audio/39-music/call2-dai-service.mp3',
       },
       {
+        start: 6.2,
         ask: '大熱唱！',
         response: 'Hey!',
         lang: 'en',
         status: '大熱唱！ Hey!',
-        audioSrc: '/audio/39-music/call3-dai-nesshou.mp3',
       },
       {
+        start: 11.0,
         ask: '未体験Night！',
         response: 'Oh Yeah!',
         lang: 'en',
         status: '未体験Night！ Oh Yeah!',
-        audioSrc: '/audio/39-music/call4-mitaiken-night.mp3',
       },
       {
+        start: 19.8,
+        ask: '準備OK？',
+        response: 'Yes!',
+        lang: 'en',
+        status: '準備OK？ Yes!',
+      },
+      {
+        start: 30.6,
         ask: 'もう一度名前呼んで！',
         response: '初音ミク！',
         lang: 'ja',
         status: 'もう一度名前呼んで！ 初音ミク！',
-        audioSrc: '/audio/39-music/call5-miku.mp3',
       },
     ];
 
-    let current = 0;
+    const audio = new Audio('/audio/39-music/39-music-concert-call.mp3');
+    audio.preload = 'auto';
+
     let isPlaying = false;
-    let currentAudio = null;
+    let currentCue = -1;
 
-    // Preload audio objects and wire the continuous chain
-    const audios = calls.map((c, i) => {
-      const a = new Audio(c.audioSrc);
-      a.preload = 'auto';
-      a.addEventListener('ended', () => {
-        if (!isPlaying) return;
-        const next = i + 1;
-        if (next < calls.length) {
-          playStep(next);
-        } else {
-          stopConcert();
-        }
-      });
-      return a;
-    });
-
-    const setCall = (idx) => {
-      const item = calls[idx];
-      askEl.textContent = item.ask;
-      btnEl.textContent = item.response;
-      if (item.lang) btnEl.setAttribute('lang', item.lang);
+    const setCue = (cue) => {
+      askEl.textContent = cue.ask;
+      btnEl.textContent = cue.response;
+      if (cue.lang) btnEl.setAttribute('lang', cue.lang);
       else btnEl.removeAttribute('lang');
+      if (status) status.textContent = cue.status;
     };
 
-    const playStep = (idx) => {
-      current = idx;
-      setCall(idx);
-      const item = calls[idx];
-      if (status) status.textContent = item.status;
-      const audio = audios[idx];
-      if (audio) {
-        currentAudio = audio;
-        audio.currentTime = 0;
-        audio.play().catch(() => {});
+    audio.addEventListener('timeupdate', () => {
+      if (!isPlaying) return;
+      const t = audio.currentTime;
+      let cueIndex = 0;
+      for (let i = cues.length - 1; i >= 0; i--) {
+        if (t >= cues[i].start) {
+          cueIndex = i;
+          break;
+        }
       }
-    };
-
-    const startConcert = () => {
-      isPlaying = true;
-      lights?.classList.add('on');
-      btnEl.setAttribute('aria-pressed', 'true');
-      playStep(0);
-    };
+      if (cueIndex !== currentCue) {
+        currentCue = cueIndex;
+        setCue(cues[cueIndex]);
+      }
+    });
 
     const stopConcert = () => {
       isPlaying = false;
-      if (currentAudio) {
-        currentAudio.pause();
-        currentAudio.currentTime = 0;
-      }
-      currentAudio = null;
+      audio.pause();
+      audio.currentTime = 0;
+      currentCue = -1;
       lights?.classList.remove('on');
       btnEl.removeAttribute('aria-pressed');
-      current = 0;
-      setCall(0);
+      askEl.textContent = '準備OK？';
+      btnEl.textContent = 'Yes!';
+      btnEl.setAttribute('lang', 'en');
       if (status) status.textContent = 'Concert call complete.';
     };
+
+    audio.addEventListener('ended', stopConcert);
 
     btnEl.addEventListener('click', () => {
       if (isPlaying) {
         stopConcert();
       } else {
-        startConcert();
+        isPlaying = true;
+        lights?.classList.add('on');
+        btnEl.setAttribute('aria-pressed', 'true');
+        currentCue = 0;
+        setCue(cues[0]);
+        audio.currentTime = 0;
+        audio.play().catch(() => {});
       }
     });
   })();
