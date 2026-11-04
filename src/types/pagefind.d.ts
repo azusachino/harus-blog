@@ -7,6 +7,14 @@ export interface DocumentItem {
   desc?: string;
 }
 
+export type SwitcherNote = DocumentItem;
+
+export interface FullTextHit {
+  url: string;
+  title: string;
+  excerpt: string;
+}
+
 export interface PagefindSearchResult {
   id: string;
   score: number;
@@ -43,14 +51,9 @@ export interface PagefindSearchOptions {
 }
 
 export interface PagefindInstance {
-  init: () => Promise<void>;
+  init?: () => Promise<void>;
   destroy?: () => Promise<void>;
   search: (query: string, options?: PagefindSearchOptions) => Promise<{ results: PagefindSearchResult[] }>;
-  preload: (term: string) => Promise<void>;
-  filters: () => Promise<Record<string, Record<string, number>>>;
-}
-
-declare module '/pagefind/pagefind.js' {
-  const pagefind: PagefindInstance;
-  export default pagefind;
+  preload?: (term: string) => Promise<void>;
+  filters?: () => Promise<Record<string, Record<string, number>>>;
 }

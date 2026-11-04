@@ -1,11 +1,13 @@
-import type { DocumentItem, PagefindInstance, PagefindResultData } from '../types/pagefind';
+import type { FullTextHit, PagefindInstance, SwitcherNote } from '../types/pagefind';
+import { excerptParts, routeOf } from './fulltext';
+import { matchDocuments, withoutShown } from './switcher';
 
 const dynamicImport = new Function('specifier', 'return import(specifier)') as (
   specifier: string
 ) => Promise<{ default?: PagefindInstance } | PagefindInstance>;
 
 let pagefindPromise: Promise<PagefindInstance | null> | null = null;
-let documentsPromise: Promise<DocumentItem[]> | null = null;
+let documentsPromise: Promise<SwitcherNote[]> | null = null;
 
 export async function loadPagefind(): Promise<PagefindInstance | null> {
   if (pagefindPromise) return pagefindPromise;
@@ -18,8 +20,8 @@ export async function loadPagefind(): Promise<PagefindInstance | null> {
         await instance.init();
       }
       return instance as PagefindInstance;
-    } catch (err) {
-      console.warn('Pagefind index not found (available after build or in static preview):', err);
+    } catch {
+      // In local dev without pagefind build, gracefully fallback to document catalog
       return null;
     }
   })();
@@ -27,14 +29,14 @@ export async function loadPagefind(): Promise<PagefindInstance | null> {
   return pagefindPromise;
 }
 
-export async function loadDocuments(): Promise<DocumentItem[]> {
+export async function loadDocuments(): Promise<SwitcherNote[]> {
   if (documentsPromise) return documentsPromise;
 
   documentsPromise = (async () => {
     try {
       const res = await fetch('/search-index.json');
       if (!res.ok) return [];
-      return (await res.json()) as DocumentItem[];
+      return (await res.json()) as SwitcherNote[];
     } catch {
       return [];
     }
@@ -43,65 +45,102 @@ export async function loadDocuments(): Promise<DocumentItem[]> {
   return documentsPromise;
 }
 
-export function cleanUrl(url: string): string {
-  const cleaned = url.replace(/\.html$/, '').replace(/\/index$/, '');
-  return cleaned.endsWith('/') ? cleaned : `${cleaned}/`;
+export async function searchFullText(term: string, limit = 10): Promise<FullTextHit[]> {
+  const pf = await loadPagefind();
+  if (!pf) return [];
+
+  try {
+    const { results } = await pf.search(term);
+    const pages = await Promise.all(results.slice(0, limit).map((r) => r.data()));
+    return pages.map((page) => ({
+      url: routeOf(page.url),
+      title: page.meta?.title || routeOf(page.url),
+      excerpt: page.excerpt,
+    }));
+  } catch (err) {
+    console.error('Pagefind search failed:', err);
+    return [];
+  }
 }
 
-function matchDocuments(docs: DocumentItem[], query: string): DocumentItem[] {
-  const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
-  if (terms.length === 0) return docs.slice(0, 5);
+function createFileTextIcon(): SVGSVGElement {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('width', '16');
+  svg.setAttribute('height', '16');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('fill', 'none');
+  svg.setAttribute('stroke', 'currentColor');
+  svg.setAttribute('stroke-width', '1.75');
+  svg.setAttribute('stroke-linecap', 'round');
+  svg.setAttribute('stroke-linejoin', 'round');
+  svg.setAttribute('class', 'item-icon');
+  svg.setAttribute('aria-hidden', 'true');
 
-  const scored: Array<{ doc: DocumentItem; score: number }> = [];
+  const p1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  p1.setAttribute('d', 'M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z');
+  const p2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  p2.setAttribute('d', 'M14 2v4a2 2 0 0 0 2 2h4');
+  const p3 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  p3.setAttribute('d', 'M10 9H8');
+  const p4 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  p4.setAttribute('d', 'M16 13H8');
+  const p5 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  p5.setAttribute('d', 'M16 17H8');
 
-  for (const doc of docs) {
-    const titleLower = doc.title.toLowerCase();
-    const tagsLower = (doc.tags ?? []).join(' ').toLowerCase();
-    const descLower = (doc.desc ?? '').toLowerCase();
+  svg.appendChild(p1);
+  svg.appendChild(p2);
+  svg.appendChild(p3);
+  svg.appendChild(p4);
+  svg.appendChild(p5);
+  return svg;
+}
 
-    let score = 0;
-    let allMatched = true;
+function createArrowIcon(): SVGSVGElement {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('width', '14');
+  svg.setAttribute('height', '14');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('fill', 'none');
+  svg.setAttribute('stroke', 'currentColor');
+  svg.setAttribute('stroke-width', '2');
+  svg.setAttribute('stroke-linecap', 'round');
+  svg.setAttribute('stroke-linejoin', 'round');
+  svg.setAttribute('class', 'item-arrow');
+  svg.setAttribute('aria-hidden', 'true');
 
-    for (const term of terms) {
-      if (titleLower.includes(term)) {
-        score += titleLower.startsWith(term) ? 10 : 5;
-      } else if (tagsLower.includes(term)) {
-        score += 3;
-      } else if (descLower.includes(term)) {
-        score += 1;
-      } else {
-        allMatched = false;
-        break;
-      }
-    }
+  const p1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  p1.setAttribute('d', 'M7 7h10v10');
+  const p2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  p2.setAttribute('d', 'M7 17 17 7');
 
-    if (allMatched && score > 0) {
-      scored.push({ doc, score });
-    }
-  }
-
-  scored.sort((a, b) => b.score - a.score);
-  return scored.slice(0, 6).map((s) => s.doc);
+  svg.appendChild(p1);
+  svg.appendChild(p2);
+  return svg;
 }
 
 export interface SearchControllerOptions {
   dialog: HTMLDialogElement;
   input: HTMLInputElement;
-  resultsList: HTMLElement;
-  emptyState: HTMLElement;
+  listContainer: HTMLElement;
+  statusElement: HTMLElement;
+  resultsContent: HTMLElement;
   closeBtn?: HTMLElement | null;
 }
 
 export function setupSearchController(options: SearchControllerOptions): () => void {
-  const { dialog, input, resultsList, emptyState, closeBtn } = options;
+  const { dialog, input, listContainer, statusElement, resultsContent, closeBtn } = options;
 
   let selectedIndex = -1;
   let debounceTimer: ReturnType<typeof setTimeout> | undefined;
-  let allDocuments: DocumentItem[] = [];
+  let allDocuments: SwitcherNote[] = [];
+
+  function getNavigableItems(): NodeListOf<HTMLAnchorElement> {
+    return resultsContent.querySelectorAll<HTMLAnchorElement>('.switcher-link');
+  }
 
   function updateSelected(items: NodeListOf<HTMLAnchorElement>) {
     items.forEach((item, idx) => {
-      const parent = item.parentElement;
+      const parent = item.closest('.switcher-item');
       if (idx === selectedIndex) {
         parent?.classList.add('selected');
         item.setAttribute('aria-selected', 'true');
@@ -113,89 +152,73 @@ export function setupSearchController(options: SearchControllerOptions): () => v
     });
   }
 
-  function getNavigableItems(): NodeListOf<HTMLAnchorElement> {
-    return resultsList.querySelectorAll<HTMLAnchorElement>('.search-item a');
-  }
-
-  function render(docMatches: DocumentItem[], fullTextHits: PagefindResultData[], query: string) {
-    resultsList.innerHTML = '';
+  function render(documents: SwitcherNote[], textHits: FullTextHit[], query: string, searching = false) {
+    resultsContent.innerHTML = '';
     selectedIndex = -1;
 
-    const hasDocs = docMatches.length > 0;
-    const hasFull = fullTextHits.length > 0;
+    const hasDocs = documents.length > 0;
+    const hasFull = textHits.length > 0;
 
     if (!hasDocs && !hasFull) {
-      emptyState.style.display = 'flex';
-      resultsList.style.display = 'none';
-      const emptyText = emptyState.querySelector('.search-empty-text');
-      if (emptyText) {
-        emptyText.textContent = query
-          ? `No matching articles or notes for "${query}"`
-          : 'Type a query to search articles, series, notes, and full text';
+      if (searching) {
+        statusElement.style.display = 'block';
+        statusElement.textContent = 'Searching full text…';
+      } else {
+        statusElement.style.display = 'block';
+        statusElement.innerHTML = `
+          <div class="switcher-empty">
+            No matching documents or full text. Try a title, tag or phrase.
+          </div>
+        `;
       }
       return;
     }
 
-    emptyState.style.display = 'none';
-    resultsList.style.display = 'block';
+    statusElement.style.display = 'none';
 
     const frag = document.createDocumentFragment();
 
-    // 1. Articles group (Instant title & metadata matches)
+    // Group 1: Documents
     if (hasDocs) {
       const group = document.createElement('div');
-      group.className = 'search-group';
+      group.className = 'switcher-group';
 
       const heading = document.createElement('div');
-      heading.className = 'search-group-header mono';
-      heading.textContent = query ? 'Articles' : 'Suggested';
+      heading.className = 'switcher-group-heading mono';
+      heading.textContent = 'Documents';
       group.appendChild(heading);
 
       const ul = document.createElement('ul');
-      ul.className = 'search-group-list';
+      ul.className = 'switcher-group-list';
       ul.setAttribute('role', 'group');
 
-      docMatches.forEach((doc) => {
+      documents.forEach((doc) => {
         const li = document.createElement('li');
-        li.className = 'search-item';
+        li.className = 'switcher-item';
         li.setAttribute('role', 'option');
 
         const a = document.createElement('a');
         a.href = doc.url;
-        a.className = 'search-link';
+        a.className = 'switcher-link';
 
-        const main = document.createElement('div');
-        main.className = 'search-item-main';
+        a.appendChild(createFileTextIcon());
 
-        const titleRow = document.createElement('div');
-        titleRow.className = 'search-title-row';
-
-        const sectionBadge = document.createElement('span');
-        sectionBadge.className = `search-badge search-badge-${doc.section} mono`;
-        sectionBadge.textContent = doc.section;
+        const docWrapper = document.createElement('span');
+        docWrapper.className = 'switcher-document';
 
         const titleSpan = document.createElement('span');
-        titleSpan.className = 'search-title';
+        titleSpan.className = 'switcher-title';
         titleSpan.textContent = doc.title;
+        docWrapper.appendChild(titleSpan);
 
-        titleRow.appendChild(sectionBadge);
-        titleRow.appendChild(titleSpan);
-        main.appendChild(titleRow);
+        const pathSmall = document.createElement('small');
+        pathSmall.className = 'switcher-path mono';
+        pathSmall.textContent = doc.url;
+        docWrapper.appendChild(pathSmall);
 
-        if (doc.desc) {
-          const descP = document.createElement('p');
-          descP.className = 'search-desc';
-          descP.textContent = doc.desc;
-          main.appendChild(descP);
-        }
+        a.appendChild(docWrapper);
+        a.appendChild(createArrowIcon());
 
-        const actionHint = document.createElement('span');
-        actionHint.className = 'search-action-hint mono';
-        actionHint.setAttribute('aria-hidden', 'true');
-        actionHint.textContent = '↵';
-
-        a.appendChild(main);
-        a.appendChild(actionHint);
         li.appendChild(a);
 
         li.addEventListener('mouseenter', () => {
@@ -211,54 +234,57 @@ export function setupSearchController(options: SearchControllerOptions): () => v
       frag.appendChild(group);
     }
 
-    // 2. Full text group (Pagefind matches)
+    // Group 2: Full text
     if (hasFull) {
       const group = document.createElement('div');
-      group.className = 'search-group';
+      group.className = 'switcher-group';
 
       const heading = document.createElement('div');
-      heading.className = 'search-group-header mono';
-      heading.textContent = 'Full Text';
+      heading.className = 'switcher-group-heading mono';
+      heading.textContent = 'Full text';
       group.appendChild(heading);
 
       const ul = document.createElement('ul');
-      ul.className = 'search-group-list';
+      ul.className = 'switcher-group-list';
       ul.setAttribute('role', 'group');
 
-      fullTextHits.forEach((hit) => {
+      textHits.forEach((hit) => {
         const li = document.createElement('li');
-        li.className = 'search-item';
+        li.className = 'switcher-item';
         li.setAttribute('role', 'option');
 
         const a = document.createElement('a');
-        a.href = cleanUrl(hit.url);
-        a.className = 'search-link';
+        a.href = hit.url;
+        a.className = 'switcher-link';
 
-        const main = document.createElement('div');
-        main.className = 'search-item-main';
+        a.appendChild(createFileTextIcon());
 
-        const titleRow = document.createElement('div');
-        titleRow.className = 'search-title-row';
+        const docWrapper = document.createElement('span');
+        docWrapper.className = 'switcher-document';
 
         const titleSpan = document.createElement('span');
-        titleSpan.className = 'search-title';
-        titleSpan.textContent = hit.meta?.title || hit.url;
+        titleSpan.className = 'switcher-title';
+        titleSpan.textContent = hit.title;
+        docWrapper.appendChild(titleSpan);
 
-        titleRow.appendChild(titleSpan);
-        main.appendChild(titleRow);
+        const excerptSpan = document.createElement('span');
+        excerptSpan.className = 'switcher-excerpt';
 
-        const excerptP = document.createElement('p');
-        excerptP.className = 'search-excerpt';
-        excerptP.innerHTML = hit.excerpt;
-        main.appendChild(excerptP);
+        const parts = excerptParts(hit.excerpt);
+        parts.forEach((part) => {
+          if (part.mark) {
+            const markEl = document.createElement('mark');
+            markEl.textContent = part.text;
+            excerptSpan.appendChild(markEl);
+          } else {
+            excerptSpan.appendChild(document.createTextNode(part.text));
+          }
+        });
 
-        const actionHint = document.createElement('span');
-        actionHint.className = 'search-action-hint mono';
-        actionHint.setAttribute('aria-hidden', 'true');
-        actionHint.textContent = '↵';
+        docWrapper.appendChild(excerptSpan);
+        a.appendChild(docWrapper);
+        a.appendChild(createArrowIcon());
 
-        a.appendChild(main);
-        a.appendChild(actionHint);
         li.appendChild(a);
 
         li.addEventListener('mouseenter', () => {
@@ -274,9 +300,8 @@ export function setupSearchController(options: SearchControllerOptions): () => v
       frag.appendChild(group);
     }
 
-    resultsList.appendChild(frag);
+    resultsContent.appendChild(frag);
 
-    // Auto-select the first item
     const all = getNavigableItems();
     if (all.length > 0) {
       selectedIndex = 0;
@@ -285,29 +310,21 @@ export function setupSearchController(options: SearchControllerOptions): () => v
   }
 
   async function executeSearch(query: string) {
-    const trimmed = query.trim();
-    const docMatches = matchDocuments(allDocuments, trimmed);
+    const term = query.trim();
+    const documents = matchDocuments(allDocuments, term);
+    const shownUrls = new Set(documents.map((d) => d.url));
 
-    let fullTextHits: PagefindResultData[] = [];
-
-    if (trimmed) {
-      const pf = await loadPagefind();
-      if (pf) {
-        try {
-          const search = await pf.search(trimmed);
-          const shownUrls = new Set(docMatches.map((d) => cleanUrl(d.url)));
-
-          const candidates = await Promise.all(search.results.slice(0, 10).map((r) => r.data()));
-          fullTextHits = candidates
-            .filter((hit) => !shownUrls.has(cleanUrl(hit.url)))
-            .slice(0, 5);
-        } catch (err) {
-          console.error('Pagefind search failed:', err);
-        }
-      }
+    if (!term) {
+      render(documents, [], '');
+      return;
     }
 
-    render(docMatches, fullTextHits, trimmed);
+    render(documents, [], term, true);
+
+    const fullHits = await searchFullText(term);
+    const textHits = withoutShown(fullHits, shownUrls);
+
+    render(documents, textHits, term, false);
   }
 
   async function openModal() {
@@ -315,15 +332,18 @@ export function setupSearchController(options: SearchControllerOptions): () => v
       dialog.showModal();
       input.focus();
 
-      // Preload data in parallel
-      const [docs] = await Promise.all([loadDocuments(), loadPagefind()]);
-      allDocuments = docs;
+      if (allDocuments.length === 0) {
+        statusElement.style.display = 'block';
+        statusElement.textContent = 'Loading documents…';
+        const [docs] = await Promise.all([loadDocuments(), loadPagefind()]);
+        allDocuments = docs;
+      }
 
-      // Render initial recommendations if input is empty
-      if (!input.value.trim()) {
-        render(allDocuments.slice(0, 5), [], '');
+      const initialQuery = input.value.trim();
+      if (!initialQuery) {
+        render(matchDocuments(allDocuments, ''), [], '');
       } else {
-        executeSearch(input.value);
+        executeSearch(initialQuery);
       }
     }
   }
@@ -333,14 +353,15 @@ export function setupSearchController(options: SearchControllerOptions): () => v
       dialog.close();
       input.value = '';
       selectedIndex = -1;
-      resultsList.innerHTML = '';
-      emptyState.style.display = 'none';
+      resultsContent.innerHTML = '';
+      statusElement.style.display = 'none';
     }
   }
 
   function handleKeydown(e: KeyboardEvent) {
     if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
       e.preventDefault();
+      e.stopPropagation();
       if (dialog.open) closeModal();
       else openModal();
       return;
@@ -398,7 +419,7 @@ export function setupSearchController(options: SearchControllerOptions): () => v
   function handleInput() {
     clearTimeout(debounceTimer);
     const query = input.value;
-    debounceTimer = setTimeout(() => executeSearch(query), 100);
+    debounceTimer = setTimeout(() => executeSearch(query), 120);
   }
 
   window.addEventListener('keydown', handleKeydown);
