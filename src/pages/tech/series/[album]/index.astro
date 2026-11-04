@@ -1,0 +1,237 @@
+---
+// Dedicated Album Page: full tracklist for a single tutorial series,
+// styled like a vinyl record back cover with complete chapter details.
+import Base from '../../../../layouts/Base.astro';
+import Waveform from '../../../../components/Waveform.astro';
+import { albumHref, seriesAlbums, seriesHref, trackLength } from '../../../../lib/posts';
+
+export async function getStaticPaths() {
+  const albums = await seriesAlbums();
+  return albums.map((album, idx) => ({
+    params: { album: album.dir },
+    props: {
+      album,
+      disc: idx + 1,
+      prevAlbum: albums[idx - 1],
+      nextAlbum: albums[idx + 1],
+    },
+  }));
+}
+
+const { album, disc, prevAlbum, nextAlbum } = Astro.props;
+---
+<Base title={`${album.name} · Series`} description={album.description}>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a class="back-link mono" href="/tech/series/">← All Series</a>
+  </nav>
+
+  <p class="eyebrow">
+    <span>DISC {String(disc).padStart(2, '0')}</span>
+    <span class="mono muted">{album.chapters.length} tracks · ∑ ♪ {album.totalLength}</span>
+  </p>
+  <h1>{album.name}</h1>
+  {album.description && <p class="lead muted">{album.description}</p>}
+  <Waveform seed={album.dir} bars={48} />
+
+  <section class="card album-sleeve">
+    <header class="sleeve-head">
+      <h2 class="mono">Tracklist</h2>
+      <span class="mono muted">Sequence · 01–{String(album.chapters.length).padStart(2, '0')}</span>
+    </header>
+
+    <ol class="full-tracklist">
+      {album.chapters.map((c, i) => (
+        <li class="track-row">
+          <span class="track-num mono">{String(i + 1).padStart(2, '0')}</span>
+          <div class="track-body">
+            <div class="track-title-line">
+              <a class="track-title" href={seriesHref(c.id)}>
+                {c.data.title.replace(/^.*?\d+\s*-\s*/, '')}
+              </a>
+              <span class="track-dur mono muted">{trackLength(c.body)}</span>
+            </div>
+            {c.data.description && <p class="track-desc muted">{c.data.description}</p>}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  {(prevAlbum || nextAlbum) && (
+    <nav class="album-pager mono" aria-label="Series albums">
+      {prevAlbum ? (
+        <a class="pager-card card" href={albumHref(prevAlbum.dir)}>
+          <span class="pager-sub muted">← DISC {String(disc - 1).padStart(2, '0')}</span>
+          <span class="pager-name">{prevAlbum.name}</span>
+        </a>
+      ) : <span class="pager-spacer" />}
+
+      {nextAlbum ? (
+        <a class="pager-card card next" href={albumHref(nextAlbum.dir)}>
+          <span class="pager-sub muted">DISC {String(disc + 1).padStart(2, '0')} →</span>
+          <span class="pager-name">{nextAlbum.name}</span>
+        </a>
+      ) : <span class="pager-spacer" />}
+    </nav>
+  )}
+</Base>
+
+<style>
+  .breadcrumb {
+    margin-bottom: 1.25rem;
+  }
+
+  .back-link {
+    font-size: 0.88rem;
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .back-link:hover {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+
+  .lead {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin: 0.4rem 0 1.2rem;
+  }
+
+  .album-sleeve {
+    margin-top: 2rem;
+    border-top: 3px solid var(--glow);
+    padding: 1.5rem;
+  }
+
+  .sleeve-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px dashed var(--line);
+  }
+
+  .sleeve-head h2 {
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin: 0;
+  }
+
+  .full-tracklist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .track-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .track-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .track-num {
+    color: var(--primary);
+    font-size: 0.95rem;
+    padding-top: 0.1rem;
+    flex-shrink: 0;
+  }
+
+  .track-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .track-title-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .track-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .track-title:hover {
+    color: var(--primary);
+  }
+
+  .track-dur {
+    font-size: 0.82rem;
+    flex-shrink: 0;
+  }
+
+  .track-desc {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin: 0.35rem 0 0;
+  }
+
+  .album-pager {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+
+  .pager-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1rem 1.25rem;
+    text-decoration: none;
+    border-top: 2px solid var(--line);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .pager-card:hover {
+    border-top-color: var(--primary);
+  }
+
+  .pager-card.next {
+    text-align: right;
+  }
+
+  .pager-sub {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+  }
+
+  .pager-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .pager-spacer {
+    display: block;
+  }
+
+  @media (max-width: 640px) {
+    .album-pager {
+      grid-template-columns: 1fr;
+    }
+    .pager-card.next {
+      text-align: left;
+    }
+  }
+</style>

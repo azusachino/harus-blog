@@ -27,3 +27,26 @@ test("code block carries a copy button that copies code to clipboard", async ({ 
   await expect(copy).toHaveAttribute("data-copied", "true")
   await expect.poll(() => page.evaluate(() => navigator.clipboard.readText())).not.toBe("")
 })
+
+test("series catalog links to dedicated album pages with complete tracklists", async ({ page }) => {
+  await page.goto("/tech/series/")
+  await expect(page.getByRole("heading", { level: 1, name: "Series" })).toBeVisible()
+
+  // Click into the math-for-ai album
+  const mathAlbumLink = page.locator('a[href="/tech/series/math-for-ai/"]').first()
+  await expect(mathAlbumLink).toBeVisible()
+  await mathAlbumLink.click()
+
+  // Verify dedicated album page rendered
+  await expect(page).toHaveURL(/\/tech\/series\/math-for-ai\//)
+  await expect(page.getByRole("heading", { level: 1, name: "AI 数学与几何直觉" })).toBeVisible()
+  await expect(page.locator(".track-row")).toHaveCount(6)
+
+  // Navigate to chapter 1
+  const ch1Link = page.locator('a[href*="01.vectors-and-spaces"]').first()
+  await ch1Link.click()
+
+  // Verify chapter reader back button points to album
+  const backToAlbum = page.locator('a[href="/tech/series/math-for-ai/"]').first()
+  await expect(backToAlbum).toBeVisible()
+})
