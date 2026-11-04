@@ -41,7 +41,7 @@ const tracks = albums.reduce((n, a) => n + a.chapters.length, 0);
 
         <footer class="album-footer">
           <a class="album-link mono" href={albumHref(album.dir)}>
-            {album.chapters.length > 3 ? `查看全部 ${album.chapters.length} 篇 →` : '进入专辑 →'}
+            {album.chapters.length > 3 ? `View all ${album.chapters.length} tracks →` : 'View album →'}
           </a>
         </footer>
       </section>
