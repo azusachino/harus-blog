@@ -1,12 +1,12 @@
 ---
 title: "Understanding Aeron: Low-Latency Transport, Archive, and Cluster"
 created: 2025-06-11
-description: consistency and persistency
+description: "Consistency and persistence in low-latency messaging"
 categories:
   - research
 tags:
   - java
-slug: aeron-knowledge-sharing
+slug: understanding-aeron
 comments: true
 cover: "/assets/images/2025/KelpOtter.webp"
 cover_alt: "Cover photo: Kelp Otter"

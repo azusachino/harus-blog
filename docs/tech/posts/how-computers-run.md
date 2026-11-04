@@ -1,12 +1,12 @@
 ---
-title: 计算机是怎样跑起来的：从冯诺伊曼模型说起
+title: "计算机是怎样跑起来的：从冯·诺依曼模型说起"
 created: 2022-02-03
 description: 计算机并不复杂
 categories:
   - research
 tags:
   - cs
-slug: understand-how-computer-run
+slug: how-computers-run
 comments: true
 cover: "/assets/images/2022/02/WinterHalo.webp"
 cover_alt: "Cover photo: Winter Halo"

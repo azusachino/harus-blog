@@ -7,7 +7,7 @@ categories:
 tags:
   - docker
   - runc
-slug: understand-docker-containerd-runc
+slug: docker-containerd-runc
 comments: true
 cover: "/assets/images/2021/12/SiberianSunset.webp"
 cover_alt: "Cover photo: Siberian Sunset"

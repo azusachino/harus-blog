@@ -8,11 +8,11 @@ tags:
   - kubernetes
   - traefik
   - tailscale
-slug: k3s-traefik-ingress
+slug: boring-kubernetes-traefik
 comments: true
 ---
 
-In [Boring Kubernetes](k3s-migration.md) I migrated 23 services from Docker Compose to a single-node K3s box, and ended the post with a smug list of things I *didn't* need. One of them was:
+In [Boring Kubernetes](boring-kubernetes.md) I migrated 23 services from Docker Compose to a single-node K3s box, and ended the post with a smug list of things I *didn't* need. One of them was:
 
 > **No fancy ingress** (Traefik/Nginx) — Tailscale + NodePort is enough.
 

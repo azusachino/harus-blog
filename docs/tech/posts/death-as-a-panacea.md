@@ -6,7 +6,7 @@ categories:
   - research
 tags:
   - chatgpt
-slug: death-elixir
+slug: death-as-a-panacea
 comments: true
 ---
 

@@ -1,12 +1,12 @@
 ---
 title: "Understanding RocksDB: An Embedded Key-Value Store"
 created: 2025-06-12
-description: disk efficiency hack
+description: "LSM-tree architecture and high-performance embedded storage"
 categories:
   - research
 tags:
   - db
-slug: rocksdb-knowledge-sharing
+slug: understanding-rocksdb
 comments: true
 cover: "/assets/images/2025/DunluceIreland.webp"
 cover_alt: "Cover photo: Dunluce Ireland"

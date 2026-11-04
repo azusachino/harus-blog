@@ -1,13 +1,13 @@
 ---
 title: "Inside Kafka: Architecture and Replica Management"
 created: 2025-06-01
-description: an unease trip
+description: "An uneasy journey through Kafka internals"
 categories:
   - research
 tags:
   - java
   - middleware
-slug: what-i-know-about-kafka
+slug: inside-kafka
 comments: true
 cover: "/assets/images/2025/MonaValePool.webp"
 cover_alt: "Cover photo: Mona Vale Pool"
