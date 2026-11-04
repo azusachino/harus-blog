@@ -49,6 +49,7 @@ split into type-based sections — **no year-wise layout**. The site code is at 
 - Giscus comments map threads by page title (`<title> - Idealistic Daydreamer`): never change a
   published post's title or the title format.
 - URLs of published pages never change.
+- **Public content safety**: Never commit `file:///` scheme links or absolute local filesystem paths (`/home/`, `/Users/`) into blog posts or site documents. For repository and code references, always use canonical public GitHub URLs (`https://github.com/azusachino/<repo>/tree/main/...`) or relative site links. Audit authoring diffs with `git grep -E "(file:///|/home/|/Users/)" docs/`.
 
 ## Adding UI (pages, components, palettes)
 

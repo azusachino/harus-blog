@@ -25,6 +25,12 @@ function check(rel: string): string[] {
   const expected = ORDER.filter((k) => keys.includes(k));
   if (present.join() !== expected.join()) problems.push(`key order [${present}] should be [${expected}]`);
   if (required.includes('comments') && !/^comments:\s*true\s*$/m.test(match[1])) problems.push("'comments' must be true");
+
+  // Prevent local machine path and file URI leaks in public markdown
+  if (/file:\/\/\//.test(text)) problems.push("forbidden 'file:///' scheme URL found");
+  if (/\/home\/[a-zA-Z0-9_-]+/.test(text)) problems.push("forbidden local '/home/<user>' filesystem path found");
+  if (/\/Users\/[a-zA-Z0-9_-]+/.test(text)) problems.push("forbidden local '/Users/<user>' filesystem path found");
+
   return problems;
 }
 
