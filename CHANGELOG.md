@@ -4,6 +4,16 @@ Changes to the site itself, newest first. Posts are not listed here; they are th
 One dated entry per merged change, written in the [Keep a Changelog](https://keepachangelog.com/)
 groups (Added, Changed, Fixed, Removed).
 
+## Unreleased
+
+### Added
+
+- Workstation-style `make preview` and `make preview-stop` targets in `Makefile`, serving `dist/` on loopback (`127.0.0.1:4342`) and binding Tailscale Serve slot `9442`.
+
+### Fixed
+
+- `make help` suppresses filename prefixes when `e2e.mk` is included alongside `Makefile`.
+
 ## 2026-11-04 — CV content refresh
 
 ### Changed
