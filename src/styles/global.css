@@ -168,6 +168,8 @@ kbd,
 pre {
   font-family: var(--font-mono);
   font-size: 0.88em;
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0;
 }
 
 img {
@@ -298,6 +300,9 @@ img {
 }
 
 .prose :not(pre) > code {
+  font-family: var(--font-mono);
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0;
   background: color-mix(in oklab, var(--glow) 14%, transparent);
   padding: 0.15em 0.4em;
   border-radius: 4px;
