@@ -68,7 +68,7 @@ class Home extends React.Component<{}, IState, {}> {
 
 React 中比较常用的 HOOK 包括`useState`, `useEffect`, `useSelector`, `useDispatch`。
 
-```typescript
+```ts
 // 定义从全局State中取demo的SSelector
 const demoSelect = (state: RootState) => state.demo;
 

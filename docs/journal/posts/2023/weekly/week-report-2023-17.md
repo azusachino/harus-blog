@@ -26,7 +26,7 @@ cover_alt: "Cover photo: South Padre"
 
 本周觉得 UF 是一种特别有意思的算法思维。
 
-```py
+```python
 class UF:
   def __init__(self, n):
     self.n = n

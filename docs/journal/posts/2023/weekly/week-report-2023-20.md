@@ -38,7 +38,7 @@ Neo-liberalism 可以带来什么？可以参考当代的 US。Communism 可以�
    2. go install google.golang.org/grpc/cmd/protoc-gen-go-grpc
 3. run compile command `protoc --go_out=. --go-grpc_out=. ./protos/*.proto`
 
-```proto
+```protobuf
 syntax = "proto3";
 
 // relative path (accord to project structure)

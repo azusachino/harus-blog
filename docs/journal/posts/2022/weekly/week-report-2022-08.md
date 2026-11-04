@@ -27,7 +27,7 @@ Combine theory and practice: Nothing works and don't know why.
 - reverse upside down, then swap the symmetry
 - reverse left to right, then swap the symmetry
 
-```c++
+```cpp
 /*
  * clockwise rotate
  * first reverse up to down, then swap the symmetry

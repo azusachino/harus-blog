@@ -30,7 +30,7 @@ cover_alt: "Cover photo: Java Bromo"
 
 用 Python 写算法还是相当靠谱的，之前还想着顺便练习练习 Rust，结果导致两件事情都没有做好。
 
-```py
+```python
 # 单调栈
 def next_greater_element(nums: List[int]) -> List[int]:
     ret = [0] * len(nums)

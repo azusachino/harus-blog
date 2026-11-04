@@ -24,7 +24,7 @@ cover_alt: "Cover photo: Asian Elephants"
 
 根据网上的很多博客以及官方文档中的[Logstash settings file](https://www.elastic.co/guide/en/logstash/current/logstash-settings-file.html)，发现需要根据机器的配置适当调整批处理的规模，简单示例如下：
 
-```yml
+```yaml
 # logstash.yml
 node:
   name: yourNodeName
@@ -62,7 +62,7 @@ pipeline:
 
 **pipelines.yml**:
 
-```yml
+```yaml
 - pipeline.id: spring-collector
   config.string: |
     input { 

@@ -41,7 +41,7 @@ PXC 集群的架构图如下：
 
 单台机器的情况下比较简单，整个集群处在一个 Docker Network 环境下，仅向外界暴露`3306`即可。下面给出具体的`docker-compose.yml`
 
-```yml
+```yaml
 # 3.5版本开始可以指定volume的名称
 version: "3.5"
 
@@ -185,7 +185,7 @@ wsrep_sst_auth="xtrabackup:pass"
 
 #### 1. 首先部署 bootstrap 节点
 
-```yml
+```yaml
 # 通过环境变量填充下列参数(.env文件)
 version: "3.5"
 
