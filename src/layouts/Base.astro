@@ -8,11 +8,16 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  article?: boolean;
   progress?: boolean;
 }
-const { title, description, progress = false } = Astro.props;
+const { title, description, image, article = false, progress = false } = Astro.props;
 // Same "<page> - <site>" format as Material: Giscus maps comments by title.
 const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
+const canonicalURL = new URL(Astro.url.pathname, SITE.url);
+const metaDesc = description || SITE.description;
+const metaImage = image ? new URL(image, SITE.url).href : new URL('/apple-touch-icon.png', SITE.url).href;
 ---
 <!doctype html>
 <html lang="en">
@@ -20,7 +25,25 @@ const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{full}</title>
-    {description && <meta name="description" content={description} />}
+    <meta name="description" content={metaDesc} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={metaDesc} />
+    <meta property="og:site_name" content={SITE.title} />
+    <meta property="og:image" content={metaImage} />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:site" content="@azusachino" />
+    <meta name="twitter:creator" content="@azusachino" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={metaDesc} />
+    <meta name="twitter:image" content={metaImage} />
+
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

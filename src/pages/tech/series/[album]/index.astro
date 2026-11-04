@@ -20,7 +20,7 @@ export async function getStaticPaths() {
 
 const { album, disc, prevAlbum, nextAlbum } = Astro.props;
 ---
-<Base title={`${album.name} · Series`} description={album.description}>
+<Base title={`${album.name} · Series`} description={album.description} image={album.chapters[0]?.data.cover}>
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a class="back-link mono" href="/tech/series/">← All Series</a>
   </nav>
