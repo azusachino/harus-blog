@@ -1,31 +1,49 @@
 ---
-// Zero-dependency client search modal powered by Pagefind at build time.
+// Command palette & full-text search modal powered by Pagefind and local document index.
 ---
-<dialog id="search-modal" class="search-modal" aria-label="Search posts">
-  <div class="search-container">
-    <div class="search-input-wrap">
-      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<dialog id="search-modal" class="search-modal" aria-label="Search articles and notes">
+  <div class="search-wrapper">
+    <div class="search-header">
+      <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <circle cx="11" cy="11" r="8"></circle>
         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
       </svg>
       <input
         id="search-input"
         class="search-input"
-        type="search"
-        placeholder="Search articles, notes, series... (⌘K or /)"
+        type="text"
+        placeholder="Search articles, notes, series, and full text..."
         autocomplete="off"
         spellcheck="false"
       />
-      <button type="button" class="search-close mono" id="search-close-btn" aria-label="Close search">
-        <kbd>Esc</kbd>
+      <button type="button" class="search-esc mono" id="search-close-btn" aria-label="Close search">
+        <kbd>esc</kbd>
       </button>
     </div>
 
-    <div class="search-status mono muted" id="search-status" aria-live="polite">
-      Type to start searching...
+    <div class="search-body">
+      <div id="search-results" class="search-results" role="listbox" aria-label="Search results"></div>
+
+      <div id="search-empty" class="search-empty" style="display: none;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="search-empty-icon" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.3-4.3"></path>
+        </svg>
+        <p class="search-empty-text">No matching articles found.</p>
+        <p class="search-empty-hint mono muted">Try searching by title, tag, or topic</p>
+      </div>
     </div>
 
-    <ul class="search-results" id="search-results" role="listbox" aria-label="Search results"></ul>
+    <div class="search-footer mono">
+      <div class="search-footer-shortcuts">
+        <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+        <span><kbd>↵</kbd> select</span>
+        <span><kbd>esc</kbd> close</span>
+      </div>
+      <div class="search-footer-brand">
+        <span>Pagefind</span>
+      </div>
+    </div>
   </div>
 </dialog>
 
@@ -34,55 +52,82 @@
 
   const dialog = document.getElementById('search-modal') as HTMLDialogElement | null;
   const input = document.getElementById('search-input') as HTMLInputElement | null;
-  const status = document.getElementById('search-status');
   const resultsList = document.getElementById('search-results');
+  const emptyState = document.getElementById('search-empty');
   const closeBtn = document.getElementById('search-close-btn');
 
-  if (dialog && input && status && resultsList) {
-    setupSearchController({ dialog, input, status, resultsList, closeBtn });
+  if (dialog && input && resultsList && emptyState) {
+    setupSearchController({ dialog, input, resultsList, emptyState, closeBtn });
   }
 </script>
 
-<style>
+<style is:global>
   .search-modal {
+    position: fixed;
+    top: 13vh;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    width: min(42rem, calc(100vw - 2rem));
+    max-height: min(74vh, 620px);
     border: 1px solid var(--line);
-    border-radius: var(--radius);
+    border-radius: 14px;
     background: var(--surface);
     color: var(--ink);
     padding: 0;
-    max-width: 42rem;
-    width: min(92vw, 42rem);
-    margin: 10vh auto auto auto;
-    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 24px 64px -12px rgba(0, 0, 0, 0.36), 0 0 0 1px var(--line);
     overflow: hidden;
+    animation: search-modal-in 0.16s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .search-modal::backdrop {
-    background: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.52);
+    backdrop-filter: blur(8px) saturate(180%);
+    animation: search-backdrop-in 0.16s ease-out;
   }
 
-  .search-container {
+  @keyframes search-modal-in {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -10px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0) scale(1);
+    }
+  }
+
+  @keyframes search-backdrop-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .search-modal .search-wrapper {
     display: flex;
     flex-direction: column;
-    max-height: 80vh;
+    max-height: min(74vh, 620px);
   }
 
-  .search-input-wrap {
+  .search-modal .search-header {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.85rem 1.15rem;
+    gap: 0.85rem;
+    padding: 0.9rem 1.25rem;
     border-bottom: 1px solid var(--line);
     background: var(--surface);
-  }
-
-  .search-icon {
-    color: var(--muted);
     flex-shrink: 0;
   }
 
-  .search-input {
+  .search-modal .search-icon {
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+
+  .search-modal .search-input {
     flex: 1;
     font-family: var(--font-body);
     font-size: 1.05rem;
@@ -90,84 +135,276 @@
     background: none;
     border: none;
     outline: none;
+    padding: 0;
   }
 
-  .search-input::placeholder {
+  .search-modal .search-input::placeholder {
     color: var(--muted);
-    opacity: 0.8;
+    opacity: 0.75;
   }
 
-  .search-close {
-    font-size: 0.75rem;
+  .search-modal .search-esc {
+    font-size: 0.72rem;
     color: var(--muted);
     background: var(--bg);
     border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 0.15rem 0.4rem;
+    border-radius: 5px;
+    padding: 0.2rem 0.45rem;
     cursor: pointer;
+    line-height: 1;
+    transition: all 0.1s ease;
   }
 
-  .search-close:hover {
+  .search-modal .search-esc:hover {
     color: var(--ink);
     border-color: var(--glow);
   }
 
-  .search-status {
-    padding: 0.5rem 1.15rem;
-    font-size: 0.75rem;
-    background: var(--bg);
-    border-bottom: 1px solid var(--line);
+  .search-modal .search-esc kbd {
+    font: inherit;
   }
 
-  .search-results {
-    list-style: none;
-    margin: 0;
-    padding: 0.4rem 0;
+  .search-modal .search-body {
     overflow-y: auto;
-    max-height: 55vh;
+    padding: 0.5rem;
+    min-height: 160px;
   }
 
-  .search-item {
-    border-left: 3px solid transparent;
-    transition: background 0.1s ease, border-color 0.1s ease;
+  .search-modal ul,
+  .search-modal ol {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
-  .search-item.selected {
-    background: var(--bg);
-    border-left-color: var(--glow);
+  .search-modal a {
+    text-decoration: none !important;
+    color: inherit !important;
   }
 
-  .search-link {
-    display: block;
-    padding: 0.65rem 1.15rem;
-    text-decoration: none;
-    color: inherit;
+  .search-modal .search-results {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
-  .search-title {
-    display: block;
+  .search-modal .search-group {
+    margin-bottom: 0.4rem;
+  }
+
+  .search-modal .search-group-header {
+    font-size: 0.7rem;
     font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--ink);
-    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    padding: 0.35rem 0.75rem 0.25rem 0.75rem;
   }
 
-  .search-item.selected .search-title {
+  .search-modal .search-group-list {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .search-modal .search-item {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 8px;
+    transition: background 0.1s ease;
+  }
+
+  .search-modal .search-item.selected {
+    background: color-mix(in srgb, var(--glow) 15%, var(--surface));
+  }
+
+  .search-modal .search-link {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 0.85rem;
+    text-decoration: none !important;
+    color: inherit !important;
+    gap: 0.75rem;
+    border-radius: 8px;
+  }
+
+  .search-modal .search-item-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .search-modal .search-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    overflow: hidden;
+  }
+
+  .search-modal .search-badge {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    padding: 0.12rem 0.42rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 700;
+    flex-shrink: 0;
+    line-height: 1.2;
+  }
+
+  .search-modal .search-badge-tech {
+    background: color-mix(in srgb, var(--glow) 24%, var(--surface));
+    color: var(--primary);
+    border: 1px solid color-mix(in srgb, var(--glow) 40%, transparent);
+  }
+
+  .search-modal .search-badge-series {
+    background: color-mix(in srgb, var(--accent) 18%, var(--surface));
+    color: var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  }
+
+  .search-modal .search-badge-life {
+    background: color-mix(in srgb, #9f356a 18%, var(--surface));
+    color: var(--ink);
+    border: 1px solid color-mix(in srgb, #9f356a 30%, transparent);
+  }
+
+  .search-modal .search-badge-journal {
+    background: color-mix(in srgb, var(--muted) 16%, var(--surface));
+    color: var(--muted);
+    border: 1px solid var(--line);
+  }
+
+  .search-modal .search-badge-travel {
+    background: color-mix(in srgb, #39a0c5 20%, var(--surface));
+    color: var(--primary);
+    border: 1px solid color-mix(in srgb, #39a0c5 35%, transparent);
+  }
+
+  .search-modal .search-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ink);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .search-modal .search-item.selected .search-title {
     color: var(--primary);
   }
 
-  .search-excerpt {
-    margin: 0;
-    font-size: 0.825rem;
+  .search-modal .search-desc {
+    margin: 0 !important;
+    font-size: 0.8rem;
     color: var(--muted);
-    line-height: 1.45;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  :global(.search-excerpt mark) {
-    background: var(--soft);
+  .search-modal .search-excerpt {
+    margin: 0 !important;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.45;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .search-modal .search-excerpt mark {
+    background: color-mix(in srgb, var(--glow) 35%, transparent);
     color: var(--ink);
-    border-radius: 2px;
-    padding: 0.05em 0.2em;
+    border-radius: 3px;
+    padding: 0 0.15em;
     font-weight: 600;
+  }
+
+  .search-modal .search-action-hint {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--muted);
+    opacity: 0;
+    transition: opacity 0.1s ease;
+    flex-shrink: 0;
+  }
+
+  .search-modal .search-item.selected .search-action-hint {
+    opacity: 1;
+    color: var(--primary);
+  }
+
+  .search-modal .search-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    text-align: center;
+    gap: 0.35rem;
+  }
+
+  .search-modal .search-empty-icon {
+    color: var(--muted);
+    opacity: 0.5;
+    margin-bottom: 0.35rem;
+  }
+
+  .search-modal .search-empty-text {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .search-modal .search-empty-hint {
+    margin: 0;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .search-modal .search-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.65rem 1.25rem;
+    border-top: 1px solid var(--line);
+    background: var(--bg);
+    font-size: 0.72rem;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  .search-modal .search-footer-shortcuts {
+    display: flex;
+    gap: 0.85rem;
+    align-items: center;
+  }
+
+  .search-modal .search-footer kbd {
+    font: inherit;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 0.1rem 0.3rem;
+    margin-right: 0.2rem;
+  }
+
+  .search-modal .search-footer-brand {
+    font-weight: 500;
+    opacity: 0.7;
   }
 </style>

@@ -1,3 +1,12 @@
+export interface DocumentItem {
+  title: string;
+  url: string;
+  section: string;
+  date?: string;
+  tags?: string[];
+  desc?: string;
+}
+
 export interface PagefindSearchResult {
   id: string;
   score: number;

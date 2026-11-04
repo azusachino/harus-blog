@@ -67,6 +67,7 @@ test("search modal opens via button or shortcut, queries Pagefind, and closes vi
 
   // Type a query that exists across posts
   await input.fill("Kubernetes")
+  await page.waitForTimeout(300)
   const results = page.locator("#search-results .search-item")
   await expect(results.first()).toBeVisible({ timeout: 5000 })
 
