@@ -7,7 +7,7 @@
 # the part of text that becomes the link.
 
 profile:
-  updated: "2026-11-03"
+  updated: "2026-11-04"
   name: Yinchun Pang
   headline: Backend Engineer · Trading Systems · Agent-driven Engineering
   email: azusa146@gmail.com
@@ -16,7 +16,7 @@ profile:
   github: https://github.com/azusachino
   linkedin: https://www.linkedin.com/in/azusachino/
   summary: >-
-    Backend engineer with seven years of experience, now on the 24/7 on-call
+    Backend engineer with nearly eight years of experience, now on the 24/7 on-call
     trading team of a regulated Japanese crypto asset exchange, where
     correctness and uptime come first. I led the team's move to agent-driven
     engineering and proposed how agent-written work gets verified before
@@ -46,12 +46,12 @@ experience:
           its production incidents, including recovering a failed node of its
           consensus cluster.
         - >-
-          Designed and built the Kubernetes deployment layer for the
-          platform's move to Amazon EKS, led by the tech lead: a cdk8s construct
-          library and an Argo CD repository of ApplicationSets, projects and
-          per-environment overlays, which colleagues now reuse to add new
-          services, delivered through a self-hosted Argo CD. Helped take it to
-          production.
+          In the platform's move to Amazon EKS, led by the tech lead, designed
+          and built its Kubernetes deployment layer: a cdk8s construct library
+          and an Argo CD repository of ApplicationSets, projects and
+          per-environment overlays, delivered through a self-hosted Argo CD.
+          Colleagues now reuse it to add new services, and I took it to
+          production with the team.
         - >-
           Run the platform's Kubernetes operations: CVE patching, cluster and
           component upgrades, and Kubernetes operators for internal systems.
@@ -66,9 +66,9 @@ experience:
           Wrote the server-side SDK that let users run the platform from their
           own servers; one process can stand in for hundreds of clients.
         - >-
-          Helped implement the signaling service, led by the tech lead, that
-          sets up every call: peer-to-peer connections, group chats and
-          multi-party meetings.
+          Implemented the signaling service that sets up every call, on a
+          design led by the tech lead: peer-to-peer connections, group chats
+          and multi-party meetings.
         - >-
           Built the client logging system, so problems that only happened on
           users' devices could be searched and diagnosed from one console, next
@@ -86,6 +86,10 @@ experience:
         - >-
           Developed a financial content management system end to end, from the
           Java backend to the JSP front end.
+    - title: Intern
+      org: Foxconn
+      period: 2018.07 – 2018.12
+      bullets: []
 
 agents:
   title: Agent-driven Engineering

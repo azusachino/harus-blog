@@ -4,6 +4,12 @@ Changes to the site itself, newest first. Posts are not listed here; they are th
 One dated entry per merged change, written in the [Keep a Changelog](https://keepachangelog.com/)
 groups (Added, Changed, Fixed, Removed).
 
+## 2026-11-04 — CV roles without bullets
+
+### Fixed
+
+- `/cv/` skips the bullet list for a role that has none, instead of rendering an empty list.
+
 ## 2026-11-04 — Two-tier series architecture and album landing pages
 
 ### Added
