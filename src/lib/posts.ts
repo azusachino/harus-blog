@@ -54,6 +54,7 @@ export function textLang(body: string) {
 
 // Pinned order for tutorial series albums, latest series first (descending).
 export const PINNED_SERIES: string[] = [
+  'flink',
   'math-for-ai',
   'aws-sap',
   'llm-from-scratch',
@@ -64,6 +65,7 @@ export const PINNED_SERIES: string[] = [
 ];
 
 export const SERIES_DESCRIPTIONS: Record<string, string> = {
+  'flink': 'Stream processing architecture from core intuition to production runtime, backed by Apache Flink and runnable labs.',
   'math-for-ai': '从高维空间、矩阵变换机器、RoPE 旋转到损失山谷与离散采样的数学直觉。',
   'aws-sap': 'AWS 方案架构师专业级通关指南与企业级全球架构实战体系。',
   'llm-from-scratch': '深入大模型底层：从零手写分词器、注意力机制、Transformer 到训练采样。',
