@@ -69,10 +69,10 @@ export const SERIES_DESCRIPTIONS: Record<string, string> = {
   'math-for-ai': 'Mathematical intuition for modern AI: high-dimensional geometry, linear transformations, RoPE rotations, and optimization landscapes.',
   'aws-sap': 'AWS Certified Solutions Architect Professional (SAP-C03) complete blueprint: enterprise multi-account landing zones, zero-trust global networking, and resilient architectures.',
   'llm-from-scratch': 'Building a generative language model from first principles: tokenizers, attention mechanisms, GPT architecture, and autoregressive pretraining.',
-  'network': '从浏览器回车、硬件网卡、以太网到 BGP 路由与现代互联网协议全景。',
-  'more-effective-cpp': 'Scott Meyers 经典进阶之作：深入异常安全、智能指针、效率优化与技术模式。',
-  'k8s': '云原生生产落地笔记：深入容器运行时、API Server 调度、网格流量与生产排障。',
-  'effective-cpp': '现代 C++ 程序员的修养：55 个改善设计与实现的黄金法则。',
+  'network': 'Comprehensive internet protocol architecture: from browser keystroke and NICs to Ethernet, BGP routing, and modern transport protocols.',
+  'more-effective-cpp': 'Scott Meyers advanced C++ techniques: deep dive into exception safety, smart pointers, efficiency optimizations, and modern design patterns.',
+  'k8s': 'Cloud-native production engineering: container runtimes, API Server scheduling, service mesh traffic shaping, and incident triage.',
+  'effective-cpp': 'Modern C++ engineering discipline: 55 golden rules for improving software design and implementation.',
 };
 
 // Series ("albums"): chapters grouped by directory, in filename order.
