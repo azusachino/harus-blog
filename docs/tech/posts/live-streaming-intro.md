@@ -7,7 +7,7 @@ categories:
 tags:
   - cs
   - livestream
-slug: what-is-live-stream
+slug: live-streaming-intro
 comments: true
 cover: "/assets/images/2022/02/MaldivesHeart.webp"
 cover_alt: "Cover photo: Maldives Heart"

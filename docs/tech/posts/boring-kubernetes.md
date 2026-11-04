@@ -4,7 +4,7 @@ created: 2026-01-22
 description: A Private, Production-Ready Homelab with K3s & Tailscale
 categories:
   - practice
-slug: k3s-migration
+slug: boring-kubernetes
 comments: true
 ---
 

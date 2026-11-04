@@ -6,7 +6,7 @@ categories:
   - research
 tags:
   - cs
-slug: understand-how-computer-run
+slug: how-computers-run
 comments: true
 cover: "/assets/images/2022/02/WinterHalo.webp"
 cover_alt: "Cover photo: Winter Halo"

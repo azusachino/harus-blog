@@ -6,7 +6,7 @@ categories:
   - research
 tags:
   - java
-slug: aeron-knowledge-sharing
+slug: understanding-aeron
 comments: true
 cover: "/assets/images/2025/KelpOtter.webp"
 cover_alt: "Cover photo: Kelp Otter"

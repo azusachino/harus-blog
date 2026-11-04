@@ -4,7 +4,7 @@ created: 2024-04-08
 description: 历史进程中，最重要的那部分因素
 categories:
   - life
-slug: gun-germ-steel
+slug: guns-germs-and-steel
 comments: true
 cover: "/assets/book/2022/ggs.webp"
 cover_alt: "Cover photo: ggs"

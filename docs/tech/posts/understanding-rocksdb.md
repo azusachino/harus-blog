@@ -6,7 +6,7 @@ categories:
   - research
 tags:
   - db
-slug: rocksdb-knowledge-sharing
+slug: understanding-rocksdb
 comments: true
 cover: "/assets/images/2025/DunluceIreland.webp"
 cover_alt: "Cover photo: Dunluce Ireland"
