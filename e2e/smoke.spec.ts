@@ -39,7 +39,7 @@ test("series catalog links to dedicated album pages with complete tracklists", a
 
   // Verify dedicated album page rendered
   await expect(page).toHaveURL(/\/tech\/series\/math-for-ai\//)
-  await expect(page.getByRole("heading", { level: 1, name: "AI 数学与几何直觉" })).toBeVisible()
+  await expect(page.getByRole("heading", { level: 1, name: "Math for AI" })).toBeVisible()
   await expect(page.locator(".track-row")).toHaveCount(6)
 
   // Navigate to chapter 1
