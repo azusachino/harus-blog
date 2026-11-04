@@ -1,12 +1,11 @@
 // @ts-check
-import { cpSync, existsSync } from 'node:fs';
-import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
 import type { AstroIntegration } from 'astro';
 import { satteri } from '@astrojs/markdown-satteri';
 import { math } from './src/lib/math';
 import { archify } from './src/lib/archify';
+import { runPagefind } from './scripts/pagefind';
 
 const nativeImport = new Function('specifier', 'return import(specifier)') as (specifier: string) => Promise<any>;
 
@@ -29,16 +28,7 @@ function pagefindIntegration(): AstroIntegration {
     name: 'pagefind',
     hooks: {
       'astro:build:done': ({ dir }) => {
-        const site = fileURLToPath(dir);
-        const pagefindBin = fileURLToPath(new URL('./node_modules/pagefind/lib/runner/bin.cjs', import.meta.url));
-        if (existsSync(pagefindBin)) {
-          execFileSync(process.execPath, [pagefindBin, '--site', site], { stdio: 'inherit' });
-          const publicPagefind = fileURLToPath(new URL('./public/pagefind', import.meta.url));
-          const distPagefind = fileURLToPath(new URL('./dist/pagefind', import.meta.url));
-          if (existsSync(distPagefind)) {
-            cpSync(distPagefind, publicPagefind, { recursive: true });
-          }
-        }
+        runPagefind(fileURLToPath(dir));
       },
     },
   };
