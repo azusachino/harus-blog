@@ -320,6 +320,73 @@ img {
   font-size: 0.9em;
 }
 
+.code-block {
+  position: relative;
+  margin: 1.6rem 0;
+}
+
+.code-block pre {
+  margin: 0;
+}
+
+.copy-button {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.15s ease, color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+  z-index: 2;
+}
+
+.copy-button:hover,
+.copy-button:focus-visible {
+  opacity: 1;
+  color: var(--ink);
+  border-color: var(--glow);
+  background: var(--bg);
+}
+
+.copy-button[data-copied] {
+  opacity: 1;
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.copy-button [data-icon="check"] {
+  display: none;
+}
+
+.copy-button[data-copied] [data-icon="copy"] {
+  display: none;
+}
+
+.copy-button[data-copied] [data-icon="check"] {
+  display: block;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 .katex-display {
   overflow-x: auto;
   overflow-y: hidden;

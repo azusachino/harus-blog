@@ -4,6 +4,19 @@ Changes to the site itself, newest first. Posts are not listed here; they are th
 One dated entry per merged change, written in the [Keep a Changelog](https://keepachangelog.com/)
 groups (Added, Changed, Fixed, Removed).
 
+## 2026-11-04 — Two-tier series architecture and album landing pages
+
+### Added
+
+- Dedicated album pages under `/tech/series/<album>/` (`src/pages/tech/series/[album]/index.astro`) featuring complete vinyl-sleeve tracklists, chapter descriptions, track durations, and bidirectional album pager navigation.
+- Curated series descriptions in `src/lib/posts.ts` (`SERIES_DESCRIPTIONS`) and `albumHref` helper.
+
+### Changed
+
+- Replaced `/tech/series/` 25rem overflowing card layout with a clean catalog grid: each series card displays album metadata, description, opening 3-track preview, and a link into the dedicated album page.
+- Upgraded chapter reader (`src/pages/tech/series/[album]/[chapter].astro`) back link to point directly to its parent series album page.
+- Added E2E smoke tests in `e2e/smoke.spec.ts` verifying series catalog navigation and album tracklists.
+
 ## 2026-11-03 — 39 Music footer call response
 
 ### Changed

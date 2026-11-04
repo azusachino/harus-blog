@@ -54,6 +54,7 @@ export function textLang(body: string) {
 
 // Pinned order for tutorial series albums, latest series first (descending).
 export const PINNED_SERIES: string[] = [
+  'math-for-ai',
   'aws-sap',
   'llm-from-scratch',
   'network',
@@ -61,6 +62,16 @@ export const PINNED_SERIES: string[] = [
   'k8s',
   'effective-cpp',
 ];
+
+export const SERIES_DESCRIPTIONS: Record<string, string> = {
+  'math-for-ai': '从高维空间、矩阵变换机器、RoPE 旋转到损失山谷与离散采样的数学直觉。',
+  'aws-sap': 'AWS 方案架构师专业级通关指南与企业级全球架构实战体系。',
+  'llm-from-scratch': '深入大模型底层：从零手写分词器、注意力机制、Transformer 到训练采样。',
+  'network': '从浏览器回车、硬件网卡、以太网到 BGP 路由与现代互联网协议全景。',
+  'more-effective-cpp': 'Scott Meyers 经典进阶之作：深入异常安全、智能指针、效率优化与技术模式。',
+  'k8s': '云原生生产落地笔记：深入容器运行时、API Server 调度、网格流量与生产排障。',
+  'effective-cpp': '现代 C++ 程序员的修养：55 个改善设计与实现的黄金法则。',
+};
 
 // Series ("albums"): chapters grouped by directory, in filename order.
 export async function seriesAlbums() {
@@ -76,16 +87,22 @@ export async function seriesAlbums() {
   };
   return [...albums]
     .sort(([a], [b]) => order(a) - order(b))
-    .map(([dir, list]) => {
+    .map(([dir, list], idx) => {
       const totalSeconds = list.reduce((sum: number, c: { body?: string }) => sum + trackSeconds(c.body), 0);
       return {
         dir,
+        disc: idx + 1,
         // "K8S学习笔记 01 - 初见" -> "K8S学习笔记"
         name: list[0].data.title.replace(/\s*\d+\s*-.*$/, ''),
+        description: SERIES_DESCRIPTIONS[dir] ?? list[0].data.description ?? '',
         totalLength: formatSeconds(totalSeconds),
         chapters: list,
       };
     });
+}
+
+export function albumHref(dir: string) {
+  return `/tech/series/${dir}/`;
 }
 
 export function seriesHref(id: string) {
