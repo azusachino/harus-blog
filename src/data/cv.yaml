@@ -7,7 +7,7 @@
 # the part of text that becomes the link.
 
 profile:
-  updated: "2026-11-03"
+  updated: "2026-11-04"
   name: Yinchun Pang
   headline: Backend Engineer · Trading Systems · Agent-driven Engineering
   email: azusa146@gmail.com
@@ -16,12 +16,12 @@ profile:
   github: https://github.com/azusachino
   linkedin: https://www.linkedin.com/in/azusachino/
   summary: >-
-    Backend engineer with seven years of experience, now on the 24/7 on-call
+    Backend engineer with eight years of experience, now on the 24/7 on-call
     trading team of a regulated Japanese crypto asset exchange, where
-    correctness and uptime come first. I led the team's move to agent-driven
+    correctness and uptime come first. I started the team's move to agent-driven
     engineering and proposed how agent-written work gets verified before
     review. I run my own projects the same way, and build the Rust tooling
-    that gives agents memory and code intelligence.
+    that gives agents memory across sessions.
 
 experience:
   title: Experience
@@ -30,31 +30,46 @@ experience:
       org: OKCoin Japan K.K. (OKJ)
       period: 2023.08 – Present
       bullets:
+        - >-
+          Develop features in Java and Spring across the trading platform:
+          order handling, matching, market data, real-time push and the other core
+          trading services. The team expects every member to cover any of
+          them.
+        - >-
+          Built spot price monitoring in the market services, consolidating
+          prices into a reference price the rest of the platform reuses.
+        - >-
+          Built an Agrona-style processor that streams database changes from
+          Kafka (MySQL binlog via Canal) into Redshift, handling buffering,
+          concurrency, Kafka offset correctness, retries and atomic loads.
         - text: >-
-            Led the team's move to agent-driven engineering: built the team's
-            knowledge base on how our systems work, with reviewed narratives,
-            runbooks for research, plans, reviews, audits and incidents, and
-            agent skills for the daily workflows. When agent-written changes
-            piled up in the tech lead's approval queue, proposed proof of
-            effort: every merge request ties its claims to reproducible checks
-            before anyone reviews it.
+            Started the team's move to agent-driven engineering: built its
+            knowledge base on how our systems work; runbooks for research,
+            plans, reviews, audits and incidents; and agent skills for the
+            daily workflows. As agent-written changes grew, review became the
+            bottleneck, so I proposed proof of effort: every merge request would
+            tie its claims to reproducible checks before anyone reviews it.
           link:
             text: proof of effort
             href: https://azusachino.com/tech/proof-of-effort/
         - >-
-          On the 24/7 on-call rotation for the order and matching core: handled
-          its production incidents, including recovering a failed node of its
-          consensus cluster.
+          On the 24/7 on-call rotation for the whole trading platform, handling
+          production incidents across all of its core services, including
+          recovering a failed cluster node.
         - >-
-          Designed and built the Kubernetes deployment layer for the
-          platform's move to Amazon EKS, led by the tech lead: a cdk8s construct
-          library and an Argo CD repository of ApplicationSets, projects and
-          per-environment overlays, which colleagues now reuse to add new
-          services, delivered through a self-hosted Argo CD. Helped take it to
-          production.
+          In the platform's containerization and move to Amazon EKS, led by the
+          tech lead, designed and built its Kubernetes deployment layer: a cdk8s
+          construct library and an Argo CD repository of ApplicationSets, projects and
+          per-environment overlays, delivered through a self-hosted Argo CD.
+          Colleagues now reuse it to add new services.
         - >-
-          Run the platform's Kubernetes operations: CVE patching, cluster and
-          component upgrades, and Kubernetes operators for internal systems.
+          Share Kubernetes operations with the SRE team, covering the trading
+          team's services: CVE patching and cluster and component upgrades.
+        - >-
+          Building a Kubernetes operator and its CRDs for running test cases:
+          developers and QA describe a test case as a custom resource, and the
+          operator runs it, records the outcome in the resource's status, stores
+          a run summary in S3 and reports to the internal test platform.
         - >-
           Present regularly at the team's weekly technical sessions: the
           systems we operate, computer science fundamentals and LLMs.
@@ -63,88 +78,88 @@ experience:
       period: 2021.01 – 2023.08
       bullets:
         - >-
-          Wrote the server-side SDK that let users run the platform from their
-          own servers; one process can stand in for hundreds of clients.
+          Owned the server-side Java SDK that let customers' servers join calls
+          as clients; one process can simulate hundreds of clients within
+          seconds.
         - >-
-          Helped implement the signaling service, led by the tech lead, that
-          sets up every call: peer-to-peer connections, group chats and
-          multi-party meetings.
+          Contributed features to the signaling service that sets up every
+          call, designed by the tech lead: peer-to-peer connections, group
+          chats and multi-party meetings.
         - >-
-          Built the client logging system, so problems that only happened on
-          users' devices could be searched and diagnosed from one console, next
-          to metrics and signaling events.
+          Owned the client logging system on the ELK stack, used to analyze RTC
+          call quality: problems that only happened on users' devices could be
+          searched and diagnosed from one console, next to metrics and
+          signaling events.
         - >-
-          Connected WeChat Mini Program clients, which cannot speak the
-          platform's media protocol, through a dedicated gateway.
+          Built the gateway that connects WeChat Mini Program clients, which
+          cannot speak the platform's media protocol, to the platform.
         - >-
-          Turned the research platform into a shippable product: SDKs plus an
-          installable infrastructure bundle.
+          For customer delivery, which paired other teams' desktop and mobile
+          SDKs with an installable backend, packaged the Java SDK, the logging
+          stack and the other Java services with the backend into one
+          Kubernetes bundle built on Sealos.
     - title: Backend Engineer
       org: Hefei Dingfeng Digital Technology Co., Ltd
       period: 2019.01 – 2020.12
       bullets:
         - >-
-          Developed a financial content management system end to end, from the
-          Java backend to the JSP front end.
+          Added features to a content management system for a financial firm,
+          across the Java backend and the JSP front end.
+    - title: Graduate Trainee
+      org: Foxconn
+      period: 2018.07 – 2018.12
+      bullets:
+        - >-
+          Rotated through server manufacturing in Shenzhen, from motherboard
+          production to fully integrated rack-scale server systems.
 
-agents:
-  title: Agent-driven Engineering
+projects:
+  title: Projects
   projects:
-    - name: Multi-repository agent workstation
-      tag: private
+    - name: cappuccino
+      tag: Kotlin · Swift · Rust
+      href: https://github.com/azusachino/cappuccino
       text: >-
-        One working tree over my repositories, adapted from the knowledge base
-        I built at work, so an agent sees a job that spans several
-        repositories as one context. Claude Code, Codex and pi agents follow a
-        written contract: tiered process, playbooks, decision records, local
-        gates before every commit, and pushes only with my approval.
+        Native iPhone and Android app for the coding agents already running on
+        my machines: read each conversation, send prompts, stop runs and answer
+        approvals from the phone, through a Rust bridge reached peer-to-peer
+        over iroh.
+    - name: iroha
+      tag: Go · Svelte
+      href: https://github.com/azusachino/iroha
+      text: >-
+        Personal data cockpit that imports my location, activity, sleep and
+        expense history into Postgres and PostGIS, with a sanitized public
+        archive kept apart from the private API.
     - name: asobi
       tag: Rust
       href: https://github.com/azusachino/asobi
       text: >-
-        Knowledge-graph CLI and server that lets agents pick up tasks,
-        decisions and known pitfalls across sessions and machines instead of
-        rediscovering them.
-    - name: ochna
-      tag: Rust
-      href: https://github.com/azusachino/ochna
-      text: >-
-        Indexes Rust, Go, Java, C, C++ and Zig code into a symbol and call
-        graph, so agents can answer "who calls this?" without reading whole
-        files.
-
-systems:
-  title: Systems & Infrastructure
-  projects:
+        Knowledge-graph CLI and server, published on crates.io, that lets
+        agents pick up tasks, decisions and known pitfalls across sessions and
+        machines instead of rediscovering them.
     - name: harus-aeron-rs
-      tag: private · Rust
+      tag: Rust · WIP
+      href: https://github.com/azusachino/harus-aeron-rs
       text: >-
-        Reimplementation of Aeron's media driver, Archive and Cluster
-        foundations, written to learn the messaging layer my trading work runs
-        on; a real Java Aeron client exchanges ordered messages with the Rust
-        media driver in an end-to-end interop test.
-    - name: Homelab
-      tag: private
-      text: >-
-        Single-node k3s cluster that runs my own services, with my machines
-        provisioned from one Nix flake.
+        Agent-driven practice project: agents reimplement Aeron in Rust under a
+        file-by-file parity ledger against upstream, gated by an interop soak
+        between the real Java client and the Rust media driver.
 
 skills:
   title: Skills
   rows:
     - label: Programming
-      value: Java, Rust, Python, Go, TypeScript
+      value: Java, Rust, Go, TypeScript
     - label: Backend
-      value: Spring Boot, Netty, gRPC, Kafka, Aeron Cluster, MySQL, Redis, ELK
+      value: Spring Boot, Netty, gRPC, Kafka, Aeron, MySQL, Redis, ELK
     - label: Infrastructure
       value: AWS (CDK, EKS), Kubernetes (cdk8s, Argo CD), Nix, Prometheus, Grafana
-    - label: Agents
-      value: Claude Code, Codex, pi; instructions, skills, delegation and review workflows
     - label: Certification
       value: AWS Certified Solutions Architect – Professional
       href: https://www.credly.com/badges/5dd714e3-6476-4389-925e-6b61bfa668fd
     - label: Languages spoken
-      value: Chinese (native), Japanese (JLPT N1), English
+      value: Chinese (Native), Japanese (JLPT N1, 2017), English (IELTS 6.5, 2019)
     - label: Education
       value: >-
         B.Sc. Information Management and Information System, Changsha

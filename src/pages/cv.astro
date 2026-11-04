@@ -26,8 +26,7 @@ const experience = await data<{
   title: string;
   roles: { title: string; org: string; period: string; bullets: Bullet[] }[];
 }>('experience');
-const agents = await data<{ title: string; projects: Project[] }>('agents');
-const systems = await data<{ title: string; projects: Project[] }>('systems');
+const projects = await data<{ title: string; projects: Project[] }>('projects');
 const skills = await data<{ title: string; rows: { label: string; value: string; href?: string }[] }>('skills');
 
 // Splits a linked bullet around its link text: [before, link, after].
@@ -41,14 +40,10 @@ const host = (url: string) => url.replace(/^https:\/\/(www\.)?/, '').replace(/\/
 
 const sections = [
   { id: 'experience', title: experience.title },
-  { id: 'agents', title: agents.title },
-  { id: 'systems', title: systems.title },
+  { id: 'projects', title: projects.title },
   { id: 'skills', title: skills.title },
 ];
-const projectSections = [
-  { id: 'agents', ...agents },
-  { id: 'systems', ...systems },
-];
+const projectSections = [{ id: 'projects', ...projects }];
 ---
 <Base title="CV" description="True Persona">
   <article class="cv" lang="en">
@@ -88,12 +83,14 @@ const projectSections = [
                 <span class="period mono muted">{r.period}</span>
                 <span class="chev" aria-hidden="true">▸</span>
               </summary>
-              <ul class="bullets">
-                {r.bullets.map((b) => {
-                  const { before, link, after } = parts(b);
-                  return <li>{before}{link && <a href={link.href}>{link.text}</a>}{after}</li>;
-                })}
-              </ul>
+              {r.bullets.length > 0 && (
+                <ul class="bullets">
+                  {r.bullets.map((b) => {
+                    const { before, link, after } = parts(b);
+                    return <li>{before}{link && <a href={link.href}>{link.text}</a>}{after}</li>;
+                  })}
+                </ul>
+              )}
             </details>
           </li>
         ))}

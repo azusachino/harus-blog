@@ -91,13 +91,9 @@
   #for b in r.bullets [- #rich(b)]
 ]
 
-= #cv.agents.title
+= #cv.projects.title
 
-#projects(cv.agents.projects)
-
-= #cv.systems.title
-
-#projects(cv.systems.projects)
+#projects(cv.projects.projects)
 
 = #cv.skills.title
 
