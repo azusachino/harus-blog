@@ -54,11 +54,34 @@ const metaImage = image ? new URL(image, SITE.url).href : new URL('/apple-touch-
       (() => {
         // Apply theme and palette before first paint.
         const root = document.documentElement;
-        const saved = localStorage.getItem('theme');
-        const dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-        root.dataset.theme = dark ? 'dark' : 'light';
+        let mode = 'auto';
+        try {
+          const saved = localStorage.getItem('theme');
+          if (['auto', 'light', 'dark'].includes(saved)) mode = saved;
+        } catch {}
+
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+        const effectiveTheme = mode === 'auto' ? (systemDark.matches ? 'dark' : 'light') : mode;
+        root.dataset.themeMode = mode;
+        root.dataset.theme = effectiveTheme;
+
         const palette = localStorage.getItem('palette');
         if (palette && palette !== 'teal' && palettes.includes(palette)) root.dataset.palette = palette;
+
+        if (!window.__harusThemeListener) {
+          window.__harusThemeListener = true;
+          systemDark.addEventListener('change', (e) => {
+            let currentMode = 'auto';
+            try {
+              const saved = localStorage.getItem('theme');
+              if (['auto', 'light', 'dark'].includes(saved)) currentMode = saved;
+            } catch {}
+            if (currentMode === 'auto') {
+              root.dataset.theme = e.matches ? 'dark' : 'light';
+              window.dispatchEvent(new CustomEvent('theme-change', { detail: { theme: root.dataset.theme, mode: 'auto' } }));
+            }
+          });
+        }
       })();
     </script>
   </head>
@@ -107,11 +130,49 @@ const metaImage = image ? new URL(image, SITE.url).href : new URL('/apple-touch-
       })();
     </script>
     <script is:inline data-astro-rerun>
-      document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {
-        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-        document.documentElement.dataset.theme = next;
-        localStorage.setItem('theme', next);
-      });
+      (() => {
+        const btn = document.querySelector('[data-theme-toggle]');
+        if (!btn) return;
+
+        const updateButton = () => {
+          const root = document.documentElement;
+          const mode = root.dataset.themeMode || 'auto';
+          const theme = root.dataset.theme || 'light';
+          const title = mode === 'auto'
+            ? `Theme: System (${theme}) · Click to switch`
+            : `Theme: ${mode === 'dark' ? 'Dark' : 'Light'} · Click to switch`;
+          btn.setAttribute('title', title);
+          btn.setAttribute('aria-label', title);
+        };
+
+        btn.addEventListener('click', () => {
+          const root = document.documentElement;
+          const currentMode = root.dataset.themeMode || 'auto';
+          const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+          let nextMode;
+          if (currentMode === 'auto') {
+            nextMode = root.dataset.theme === 'dark' ? 'light' : 'dark';
+          } else {
+            const oppositeOfSystem = systemDark ? 'light' : 'dark';
+            nextMode = currentMode === oppositeOfSystem ? (systemDark ? 'dark' : 'light') : 'auto';
+          }
+
+          const effectiveTheme = nextMode === 'auto' ? (systemDark ? 'dark' : 'light') : nextMode;
+          root.dataset.themeMode = nextMode;
+          root.dataset.theme = effectiveTheme;
+
+          try {
+            localStorage.setItem('theme', nextMode);
+          } catch {}
+
+          updateButton();
+          window.dispatchEvent(new CustomEvent('theme-change', { detail: { theme: effectiveTheme, mode: nextMode } }));
+        });
+
+        window.addEventListener('theme-change', updateButton);
+        updateButton();
+      })();
     </script>
   </body>
 </html>

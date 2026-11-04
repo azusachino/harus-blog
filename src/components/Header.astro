@@ -27,7 +27,24 @@ const active = nav.map(([, to]) => to).filter((to) => path.startsWith(to)).sort(
       <span class="search-hint mono" aria-hidden="true">⌘K</span>
     </button>
     <button class="theme" type="button" aria-label="Toggle dark mode" data-theme-toggle>
-      <span aria-hidden="true">◐</span>
+      <svg class="theme-icon theme-icon-auto" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M12 3a9 9 0 0 1 0 18Z" fill="currentColor"></path>
+      </svg>
+      <svg class="theme-icon theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2"></path>
+        <path d="M12 20v2"></path>
+        <path d="m4.93 4.93 1.41 1.41"></path>
+        <path d="m17.66 17.66 1.41 1.41"></path>
+        <path d="M2 12h2"></path>
+        <path d="M20 12h2"></path>
+        <path d="m6.34 17.66-1.41 1.41"></path>
+        <path d="m19.07 4.93-1.41 1.41"></path>
+      </svg>
+      <svg class="theme-icon theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+      </svg>
     </button>
   </div>
   <div class="tails" aria-hidden="true"></div>
@@ -120,6 +137,9 @@ const active = nav.map(([, to]) => to).filter((to) => path.startsWith(to)).sort(
   }
 
   .theme {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font: inherit;
     color: var(--ink);
     background: none;
@@ -128,6 +148,30 @@ const active = nav.map(([, to]) => to).filter((to) => path.startsWith(to)).sort(
     width: 2.25rem;
     height: 2.25rem;
     cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .theme:hover {
+    border-color: var(--glow);
+    color: var(--primary);
+  }
+
+  .theme .theme-icon {
+    display: none;
+    flex-shrink: 0;
+  }
+
+  :root:not([data-theme-mode]) .theme .theme-icon-auto,
+  :root[data-theme-mode="auto"] .theme .theme-icon-auto {
+    display: block;
+  }
+
+  :root[data-theme-mode="light"] .theme .theme-icon-sun {
+    display: block;
+  }
+
+  :root[data-theme-mode="dark"] .theme .theme-icon-moon {
+    display: block;
   }
 
   /* Twin tails: two teal lines framing the header. */
