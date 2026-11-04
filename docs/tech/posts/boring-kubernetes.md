@@ -34,6 +34,8 @@ I didn't need Kubernetes for the sake of Kubernetes. I needed **better primitive
 **Orchestrator:** K3s v1.28 (lightweight Kubernetes)
 **Storage:** Default `local-path-provisioner` (no Longhorn/Ceph complexity)
 
+<Archify src="./diagrams/boring-kubernetes-topology.workflow.json" />
+
 ### 1. The Network Stack: Dual-Access with Tailscale
 
 This was the most interesting part of the setup. I needed:
