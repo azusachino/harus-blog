@@ -308,8 +308,8 @@ img {
 .prose pre {
   padding: 1.1rem 1.3rem;
   border-radius: var(--radius);
-  border: 1px solid var(--line);
-  background: var(--surface);
+  border: 1px solid color-mix(in srgb, var(--glow) 25%, var(--line));
+  background-color: color-mix(in srgb, var(--glow) 8%, var(--surface));
   overflow-x: auto;
   line-height: 1.65;
   font-size: 0.9em;
@@ -350,7 +350,17 @@ img {
   object-fit: cover;
 }
 
-/* Shiki dual themes follow the site theme. */
+/* Shiki code blocks: Miku light green background in light mode, dark surface in dark mode. */
+.astro-code {
+  background-color: color-mix(in srgb, var(--glow) 8%, var(--surface)) !important;
+  border-color: color-mix(in srgb, var(--glow) 25%, var(--line));
+}
+
+:root[data-theme="dark"] .prose pre,
+:root[data-theme="dark"] .astro-code {
+  border-color: var(--line);
+}
+
 :root[data-theme="dark"] .astro-code,
 :root[data-theme="dark"] .astro-code span {
   color: var(--shiki-dark) !important;
