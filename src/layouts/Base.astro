@@ -1,6 +1,7 @@
 ---
 import BackToTop from '../components/BackToTop.astro';
 import Header from '../components/Header.astro';
+import Search from '../components/Search.astro';
 import Call from '../components/Call.astro';
 import { PALETTES, SITE } from '../lib/site';
 import '../styles/global.css';
@@ -8,11 +9,16 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  article?: boolean;
   progress?: boolean;
 }
-const { title, description, progress = false } = Astro.props;
+const { title, description, image, article = false, progress = false } = Astro.props;
 // Same "<page> - <site>" format as Material: Giscus maps comments by title.
 const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
+const canonicalURL = new URL(Astro.url.pathname, SITE.url);
+const metaDesc = description || SITE.description;
+const metaImage = image ? new URL(image, SITE.url).href : new URL('/apple-touch-icon.png', SITE.url).href;
 ---
 <!doctype html>
 <html lang="en">
@@ -20,7 +26,25 @@ const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{full}</title>
-    {description && <meta name="description" content={description} />}
+    <meta name="description" content={metaDesc} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={metaDesc} />
+    <meta property="og:site_name" content={SITE.title} />
+    <meta property="og:image" content={metaImage} />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:site" content="@azusachino" />
+    <meta name="twitter:creator" content="@azusachino" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={metaDesc} />
+    <meta name="twitter:image" content={metaImage} />
+
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -30,11 +54,34 @@ const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
       (() => {
         // Apply theme and palette before first paint.
         const root = document.documentElement;
-        const saved = localStorage.getItem('theme');
-        const dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-        root.dataset.theme = dark ? 'dark' : 'light';
+        let mode = 'auto';
+        try {
+          const saved = localStorage.getItem('theme');
+          if (['auto', 'light', 'dark'].includes(saved)) mode = saved;
+        } catch {}
+
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+        const effectiveTheme = mode === 'auto' ? (systemDark.matches ? 'dark' : 'light') : mode;
+        root.dataset.themeMode = mode;
+        root.dataset.theme = effectiveTheme;
+
         const palette = localStorage.getItem('palette');
         if (palette && palette !== 'teal' && palettes.includes(palette)) root.dataset.palette = palette;
+
+        if (!window.__harusThemeListener) {
+          window.__harusThemeListener = true;
+          systemDark.addEventListener('change', (e) => {
+            let currentMode = 'auto';
+            try {
+              const saved = localStorage.getItem('theme');
+              if (['auto', 'light', 'dark'].includes(saved)) currentMode = saved;
+            } catch {}
+            if (currentMode === 'auto') {
+              root.dataset.theme = e.matches ? 'dark' : 'light';
+              window.dispatchEvent(new CustomEvent('theme-change', { detail: { theme: root.dataset.theme, mode: 'auto' } }));
+            }
+          });
+        }
       })();
     </script>
   </head>
@@ -62,6 +109,7 @@ const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
       </p>
     </footer>
     <BackToTop />
+    <Search />
     <script is:inline data-astro-rerun>
       // Favicon and browser theme color follow the palette and mode: the same
       // "ID" mark as public/favicon.svg, repainted with the current --glow.
@@ -82,11 +130,49 @@ const full = title === SITE.title ? SITE.title : `${title} - ${SITE.title}`;
       })();
     </script>
     <script is:inline data-astro-rerun>
-      document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {
-        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-        document.documentElement.dataset.theme = next;
-        localStorage.setItem('theme', next);
-      });
+      (() => {
+        const btn = document.querySelector('[data-theme-toggle]');
+        if (!btn) return;
+
+        const updateButton = () => {
+          const root = document.documentElement;
+          const mode = root.dataset.themeMode || 'auto';
+          const theme = root.dataset.theme || 'light';
+          const title = mode === 'auto'
+            ? `Theme: System (${theme}) · Click to switch`
+            : `Theme: ${mode === 'dark' ? 'Dark' : 'Light'} · Click to switch`;
+          btn.setAttribute('title', title);
+          btn.setAttribute('aria-label', title);
+        };
+
+        btn.addEventListener('click', () => {
+          const root = document.documentElement;
+          const currentMode = root.dataset.themeMode || 'auto';
+          const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+          let nextMode;
+          if (currentMode === 'auto') {
+            nextMode = root.dataset.theme === 'dark' ? 'light' : 'dark';
+          } else {
+            const oppositeOfSystem = systemDark ? 'light' : 'dark';
+            nextMode = currentMode === oppositeOfSystem ? (systemDark ? 'dark' : 'light') : 'auto';
+          }
+
+          const effectiveTheme = nextMode === 'auto' ? (systemDark ? 'dark' : 'light') : nextMode;
+          root.dataset.themeMode = nextMode;
+          root.dataset.theme = effectiveTheme;
+
+          try {
+            localStorage.setItem('theme', nextMode);
+          } catch {}
+
+          updateButton();
+          window.dispatchEvent(new CustomEvent('theme-change', { detail: { theme: effectiveTheme, mode: nextMode } }));
+        });
+
+        window.addEventListener('theme-change', updateButton);
+        updateButton();
+      })();
     </script>
   </body>
 </html>

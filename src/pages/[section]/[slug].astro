@@ -23,7 +23,7 @@ const { section, post, newer, older, number } = Astro.props;
 const { Content, headings } = await render(post);
 const link = (p?: typeof post) => p && { href: href(section, p), title: p.data.title };
 ---
-<Base title={post.data.title} description={post.data.description} progress>
+<Base title={post.data.title} description={post.data.description} image={post.data.cover} article progress>
   <Article
     lang={postLang(post)}
     back={{ href: `/${section}/`, label: section[0].toUpperCase() + section.slice(1) }}

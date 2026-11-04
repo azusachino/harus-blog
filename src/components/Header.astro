@@ -19,8 +19,32 @@ const active = nav.map(([, to]) => to).filter((to) => path.startsWith(to)).sort(
       ))}
     </nav>
     <div class="np-slot"><NowPlaying /></div>
+    <button class="search-btn" type="button" aria-label="Search posts" data-search-trigger title="Search (⌘K or /)">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <span class="search-hint mono" aria-hidden="true">⌘K</span>
+    </button>
     <button class="theme" type="button" aria-label="Toggle dark mode" data-theme-toggle>
-      <span aria-hidden="true">◐</span>
+      <svg class="theme-icon theme-icon-auto" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M12 3a9 9 0 0 1 0 18Z" fill="currentColor"></path>
+      </svg>
+      <svg class="theme-icon theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2"></path>
+        <path d="M12 20v2"></path>
+        <path d="m4.93 4.93 1.41 1.41"></path>
+        <path d="m17.66 17.66 1.41 1.41"></path>
+        <path d="M2 12h2"></path>
+        <path d="M20 12h2"></path>
+        <path d="m6.34 17.66-1.41 1.41"></path>
+        <path d="m19.07 4.93-1.41 1.41"></path>
+      </svg>
+      <svg class="theme-icon theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+      </svg>
     </button>
   </div>
   <div class="tails" aria-hidden="true"></div>
@@ -83,7 +107,39 @@ const active = nav.map(([, to]) => to).filter((to) => path.startsWith(to)).sort(
     border-bottom-color: var(--glow);
   }
 
+  .search-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font: inherit;
+    font-size: 0.85rem;
+    color: var(--muted);
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0 0.65rem;
+    height: 2.25rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .search-btn:hover {
+    color: var(--ink);
+    border-color: var(--glow);
+  }
+
+  .search-hint {
+    font-size: 0.75rem;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.05rem 0.35rem;
+  }
+
   .theme {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font: inherit;
     color: var(--ink);
     background: none;
@@ -92,6 +148,30 @@ const active = nav.map(([, to]) => to).filter((to) => path.startsWith(to)).sort(
     width: 2.25rem;
     height: 2.25rem;
     cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .theme:hover {
+    border-color: var(--glow);
+    color: var(--primary);
+  }
+
+  .theme .theme-icon {
+    display: none;
+    flex-shrink: 0;
+  }
+
+  :root:not([data-theme-mode]) .theme .theme-icon-auto,
+  :root[data-theme-mode="auto"] .theme .theme-icon-auto {
+    display: block;
+  }
+
+  :root[data-theme-mode="light"] .theme .theme-icon-sun {
+    display: block;
+  }
+
+  :root[data-theme-mode="dark"] .theme .theme-icon-moon {
+    display: block;
   }
 
   /* Twin tails: two teal lines framing the header. */
@@ -114,8 +194,19 @@ const active = nav.map(([, to]) => to).filter((to) => path.startsWith(to)).sort(
     }
 
     .np-slot,
+    .search-btn,
     .theme {
       order: 2;
+    }
+
+    .search-hint {
+      display: none;
+    }
+
+    .search-btn {
+      width: 2.25rem;
+      padding: 0;
+      justify-content: center;
     }
 
     nav {

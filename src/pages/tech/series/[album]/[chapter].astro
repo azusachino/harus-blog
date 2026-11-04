@@ -20,7 +20,7 @@ const { album, chapter, prev, next, number } = Astro.props;
 const { Content, headings } = await render(chapter);
 const link = (c?: typeof chapter) => c && { href: seriesHref(c.id), title: c.data.title };
 ---
-<Base title={chapter.data.title} description={chapter.data.description} progress>
+<Base title={chapter.data.title} description={chapter.data.description} image={chapter.data.cover} article progress>
   <Article
     lang={textLang(chapter.body ?? '')}
     back={{ href: albumHref(album.dir), label: album.name }}

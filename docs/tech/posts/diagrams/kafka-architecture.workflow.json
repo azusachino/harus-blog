@@ -1,0 +1,165 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Apache Kafka Internal Architecture & Replication Engine",
+    "quality_profile": "standard",
+    "output": "kafka-architecture.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "client_lane",
+      "label": "Client Layer"
+    },
+    {
+      "id": "ingress_lane",
+      "label": "Network & Request Processing"
+    },
+    {
+      "id": "storage_lane",
+      "label": "Replica & Partition Storage"
+    },
+    {
+      "id": "coordination_lane",
+      "label": "KRaft Consensus & Metadata Quorum"
+    }
+  ],
+  "mainPath": [
+    "client_apps",
+    "socket_server",
+    "kafka_apis",
+    "replica_manager",
+    "log_manager",
+    "disk_storage"
+  ],
+  "nodes": [
+    {
+      "id": "client_apps",
+      "lane": "client_lane",
+      "col": 0,
+      "label": "Kafka Clients & Apps",
+      "sublabel": "Producers, Consumers & Stream Processors",
+      "type": "frontend"
+    },
+    {
+      "id": "socket_server",
+      "lane": "ingress_lane",
+      "col": 1,
+      "label": "SocketServer Acceptor",
+      "sublabel": "NIO NetworkThreads & RequestChannel queue",
+      "type": "backend"
+    },
+    {
+      "id": "kafka_apis",
+      "lane": "ingress_lane",
+      "col": 2,
+      "label": "KafkaApis Request Pool",
+      "sublabel": "Decodes RPCs and routes to internal subsystems",
+      "type": "backend"
+    },
+    {
+      "id": "replica_manager",
+      "lane": "storage_lane",
+      "col": 3,
+      "label": "ReplicaManager",
+      "sublabel": "Partition ISR, High Watermark & Leader sync",
+      "type": "database"
+    },
+    {
+      "id": "log_manager",
+      "lane": "storage_lane",
+      "col": 4,
+      "label": "LogManager",
+      "sublabel": "Segment rolls, retention policies & active appenders",
+      "type": "database"
+    },
+    {
+      "id": "disk_storage",
+      "lane": "storage_lane",
+      "col": 5,
+      "label": "PageCache & File Logs",
+      "sublabel": "Zero-copy sendfile, .log, .index & .timeindex",
+      "type": "database"
+    },
+    {
+      "id": "coordinators",
+      "lane": "coordination_lane",
+      "col": 2,
+      "label": "Group & Txn Coordinators",
+      "sublabel": "Consumer group rebalance & two-phase commits",
+      "type": "security"
+    },
+    {
+      "id": "quorum_controller",
+      "lane": "coordination_lane",
+      "col": 3,
+      "label": "KRaft QuorumController",
+      "sublabel": "Raft-based metadata quorum (ZooKeeper-free)",
+      "type": "security"
+    },
+    {
+      "id": "metadata_cache",
+      "lane": "coordination_lane",
+      "col": 4,
+      "label": "Metadata Cache",
+      "sublabel": "In-memory snapshot of cluster topology & leaders",
+      "type": "backend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "client_apps",
+      "to": "socket_server",
+      "label": "Produce & Fetch TCP RPCs"
+    },
+    {
+      "id": "e2",
+      "from": "socket_server",
+      "to": "kafka_apis",
+      "label": "Dispatch request payload"
+    },
+    {
+      "id": "e3",
+      "from": "kafka_apis",
+      "to": "replica_manager",
+      "label": "Read/write partition data"
+    },
+    {
+      "id": "e4",
+      "from": "replica_manager",
+      "to": "log_manager",
+      "label": "Append record batch to partition"
+    },
+    {
+      "id": "e5",
+      "from": "log_manager",
+      "to": "disk_storage",
+      "label": "Zero-copy write to commit log"
+    },
+    {
+      "id": "e6",
+      "from": "kafka_apis",
+      "to": "coordinators",
+      "label": "JoinGroup & OffsetCommit RPCs"
+    },
+    {
+      "id": "e7",
+      "from": "kafka_apis",
+      "to": "quorum_controller",
+      "label": "LeaderAndIsr & metadata updates"
+    },
+    {
+      "id": "e8",
+      "from": "quorum_controller",
+      "to": "metadata_cache",
+      "label": "Replicate @metadata partition log"
+    },
+    {
+      "id": "e9",
+      "from": "metadata_cache",
+      "to": "replica_manager",
+      "label": "Publish active leader state"
+    }
+  ]
+}

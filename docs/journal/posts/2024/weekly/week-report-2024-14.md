@@ -44,7 +44,7 @@ class Solution(object):
 
 #### 3106. Lexicographically Smallest String After Operations With Constraint
 
-```c++
+```cpp
 class Solution {
 public:
   string getSmallestString(string s, int k) {

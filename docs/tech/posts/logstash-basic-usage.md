@@ -26,7 +26,7 @@ cover_alt: "Cover photo: Porto Flavia"
 
 FileBeat 的配置相对来说比较简单，配置好 input 和 output 就完事了。官方文档中有很多种配置条件，只不过基本上都跟场景密切关联的，下面是我用到的一些配置。
 
-```yml
+```yaml
 filebeat.inputs:
   - type: log # 最常用的类型，抽取log文件的内容
     enabled: true # 默认为true，可以不配置这行
@@ -46,7 +46,7 @@ output.logstash: # 配置好输出方的地址即可，这里采用LogStash是�
 
 LogStash 支持许多种输入、输出的方案，本次开发过程中仅用到了 FileBeat 和 Kafka 输入，ES 输出。详细配置如下：
 
-```yml
+```yaml
 input {
   beats {
       # 添加属性Type，用于后续区分处理

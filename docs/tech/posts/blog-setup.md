@@ -147,7 +147,7 @@ vim /etc/ssh/sshd_config
 
 在项目中新建`.github/workflows/deploy.yml`，然后添加相应的配置，如下：
 
-```yml
+```yaml
 name: Deploy Script
 
 on:

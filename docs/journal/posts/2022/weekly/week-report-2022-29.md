@@ -36,7 +36,7 @@ Living in a `consumerism society`, everyone is a consumer, which means, there is
 
 ### Process Java-Passed Param
 
-```c++
+```cpp
 extern "C" JNIEXPORT jint JNICALL jni_native_do_something(JNIEnv* env, jobject, jobject param) {
   if (param) {
     jclass j_clz = env->FindClass("cn/az/code/HelloJni");
@@ -57,7 +57,7 @@ extern "C" JNIEXPORT jint JNICALL jni_native_do_something(JNIEnv* env, jobject, 
 
 ### Callback Java Method
 
-```c++
+```cpp
 extern JavaVM *global_jvm_;
 
 class JVMAttach {

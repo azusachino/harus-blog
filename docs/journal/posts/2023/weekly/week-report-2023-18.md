@@ -28,7 +28,7 @@ cover_alt: "Cover photo: Popocatepetl"
 
 终于开始挑战 DP。
 
-```py
+```python
 class Solution:
     def uniquePaths(self, matrix: List[List[int]]) -> int:
         if not matrix:

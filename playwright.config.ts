@@ -5,7 +5,7 @@
 import { defineConfig, devices } from "@playwright/test"
 
 const PORT = 4332
-const COMMAND = `bunx --bun astro dev --host 127.0.0.1 --port ${PORT}`
+const COMMAND = `bunx --bun astro dev --host 127.0.0.1 --port ${PORT} --ignore-lock`
 const external = process.env.E2E_BASE_URL
 const CI = !!process.env.CI
 const chrome = devices["Desktop Chrome"]

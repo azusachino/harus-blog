@@ -1,9 +1,11 @@
 // @ts-check
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
 import type { AstroIntegration } from 'astro';
 import { satteri } from '@astrojs/markdown-satteri';
 import { math } from './src/lib/math';
 import { archify } from './src/lib/archify';
+import { runPagefind } from './scripts/pagefind';
 
 const nativeImport = new Function('specifier', 'return import(specifier)') as (specifier: string) => Promise<any>;
 
@@ -21,6 +23,17 @@ function archifyIntegration(): AstroIntegration {
   };
 }
 
+function pagefindIntegration(): AstroIntegration {
+  return {
+    name: 'pagefind',
+    hooks: {
+      'astro:build:done': ({ dir }) => {
+        runPagefind(fileURLToPath(dir));
+      },
+    },
+  };
+}
+
 export default defineConfig({
   site: 'https://azusachino.com',
   // Links are written with a trailing slash and pages build to dir/index.html
@@ -28,7 +41,7 @@ export default defineConfig({
   // so a typo still lands on the 404 page instead of the framework's error page.
   trailingSlash: 'ignore',
   devToolbar: { enabled: false },
-  integrations: [archifyIntegration()],
+  integrations: [archifyIntegration(), pagefindIntegration()],
   // Mermaid's chunks (~650 KB) load only on pages with a diagram, so Vite's
   // 500 KB warning is expected; keep the build log quiet for real warnings.
   vite: {

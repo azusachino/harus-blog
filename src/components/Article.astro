@@ -31,14 +31,14 @@ interface Props {
 const { lang, back, badge, title, created, modified, length, tags = [], headings, prev, next, comments = false, cover } = Astro.props;
 const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
 ---
-<article class="post" lang={lang}>
+<article class="post" lang={lang} data-pagefind-body>
   <header>
-    <p class="eyebrow">
+    <p class="eyebrow" data-pagefind-ignore>
       <a href={back.href}>{back.label}</a>
       {badge && <span class="badge">{badge}</span>}
     </p>
-    <h1>{title}</h1>
-    <p class="meta mono muted">
+    <h1 data-pagefind-meta="title">{title}</h1>
+    <p class="meta mono muted" data-pagefind-ignore>
       {created && (
         <time datetime={created}>
           {created}
@@ -57,7 +57,7 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
       <slot />
     </div>
     {toc.length > 0 && (
-      <nav class="toc" aria-label="On this page">
+      <nav class="toc" aria-label="On this page" data-pagefind-ignore>
         <p class="eyebrow">On this page</p>
         <ul>
           {toc.map((h) => (
@@ -68,7 +68,7 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
     )}
   </div>
 
-  <nav class="prevnext" aria-label="More">
+  <nav class="prevnext" aria-label="More" data-pagefind-ignore>
     {prev ? (
       <a href={prev.href}><span class="eyebrow">← previous track</span>{prev.title}</a>
     ) : <span />}
@@ -77,7 +77,7 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
     )}
   </nav>
 
-  {comments && <Comments />}
+  {comments && <div data-pagefind-ignore><Comments /></div>}
 </article>
 <Mermaid />
 <Archify />

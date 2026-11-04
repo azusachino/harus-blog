@@ -19,7 +19,7 @@ cover_alt: "Cover photo: Venice Beach"
 
 use `echo -n 'your_password' | base64` to generate a opaque password.
 
-```yml
+```yaml
 apiVersion: v1
 kind: Secret
 metadata:
@@ -34,7 +34,7 @@ data:
 
 a copy of config file.
 
-```yml
+```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -77,7 +77,7 @@ data:
 
 ## mysql-pvc.yml
 
-```yml
+```yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -93,7 +93,7 @@ spec:
 
 ## mysql-deployment.yml
 
-```yml
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -145,7 +145,7 @@ spec:
 
 Recommend to use `ClusterIP` rather than `NodePort`, here is just for dev practice.
 
-```yml
+```yaml
 apiVersion: v1
 kind: Service
 metadata:

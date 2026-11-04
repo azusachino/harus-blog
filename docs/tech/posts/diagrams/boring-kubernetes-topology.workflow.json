@@ -1,0 +1,194 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Boring Kubernetes: Single-Node Homelab Architecture & 3-Tier Resilience",
+    "quality_profile": "standard",
+    "output": "boring-kubernetes-topology.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "access_lane",
+      "label": "Client & Network Edge"
+    },
+    {
+      "id": "ingress_lane",
+      "label": "Dual Routing & Ingress Gateway"
+    },
+    {
+      "id": "workload_lane",
+      "label": "K3s Engine & Workload Namespaces"
+    },
+    {
+      "id": "storage_backup_lane",
+      "label": "Local Storage & 3-Tier Backup"
+    }
+  ],
+  "mainPath": [
+    "wireguard_client",
+    "subnet_router",
+    "traefik_gateway",
+    "core_services",
+    "local_nvme",
+    "restic_backup",
+    "s3_cold_storage"
+  ],
+  "nodes": [
+    {
+      "id": "wireguard_client",
+      "lane": "access_lane",
+      "col": 0,
+      "label": "Tailscale Remote Clients",
+      "sublabel": "WireGuard mesh tunnel (Zero open router ports)",
+      "type": "frontend"
+    },
+    {
+      "id": "local_lan_client",
+      "lane": "access_lane",
+      "col": 1,
+      "label": "Local LAN Devices",
+      "sublabel": "Direct Gigabit home WiFi (Apple TV, workstation)",
+      "type": "frontend"
+    },
+    {
+      "id": "subnet_router",
+      "lane": "ingress_lane",
+      "col": 1,
+      "label": "Tailscale Subnet Router",
+      "sublabel": "Advertises 10.42.0.0/16 (Pod) & 10.43.0.0/16 (Svc)",
+      "type": "security"
+    },
+    {
+      "id": "traefik_gateway",
+      "lane": "ingress_lane",
+      "col": 2,
+      "label": "Traefik Ingress Gateway",
+      "sublabel": "HostPort 80/443, TLS termination & path routing",
+      "type": "security"
+    },
+    {
+      "id": "k3s_core",
+      "lane": "workload_lane",
+      "col": 1,
+      "label": "K3s Single Node Core",
+      "sublabel": "Single binary, SQLite (kine) engine & CoreDNS",
+      "type": "backend"
+    },
+    {
+      "id": "media_services",
+      "lane": "workload_lane",
+      "col": 2,
+      "label": "Media Namespaces",
+      "sublabel": "Jellyfin, Navidrome (Hardware transcoding)",
+      "type": "backend"
+    },
+    {
+      "id": "core_services",
+      "lane": "workload_lane",
+      "col": 3,
+      "label": "Core App Namespaces",
+      "sublabel": "Immich, Vaultwarden (Resource limits enforced)",
+      "type": "backend"
+    },
+    {
+      "id": "ops_telemetry",
+      "lane": "workload_lane",
+      "col": 4,
+      "label": "Observability Namespaces",
+      "sublabel": "Prometheus, Grafana, Loki & health bots",
+      "type": "external"
+    },
+    {
+      "id": "local_nvme",
+      "lane": "storage_backup_lane",
+      "col": 3,
+      "label": "Local Path PV Storage",
+      "sublabel": "1TB NVMe host-path PVCs (No Ceph/Longhorn bloat)",
+      "type": "database"
+    },
+    {
+      "id": "restic_backup",
+      "lane": "storage_backup_lane",
+      "col": 4,
+      "label": "3-Tier Backup Engine",
+      "sublabel": "Automated DB dumps & Restic volume snapshots",
+      "type": "database"
+    },
+    {
+      "id": "s3_cold_storage",
+      "lane": "storage_backup_lane",
+      "col": 5,
+      "label": "Offsite Cold Storage",
+      "sublabel": "Encrypted deduplicated offsite sync (R2 / NAS)",
+      "type": "database"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "wireguard_client",
+      "to": "subnet_router",
+      "label": "Encrypted Tailnet tunnel"
+    },
+    {
+      "id": "e2",
+      "from": "local_lan_client",
+      "to": "traefik_gateway",
+      "label": "High-throughput LAN direct"
+    },
+    {
+      "id": "e3",
+      "from": "subnet_router",
+      "to": "traefik_gateway",
+      "label": "Route to Ingress ClusterIP"
+    },
+    {
+      "id": "e4",
+      "from": "k3s_core",
+      "to": "traefik_gateway",
+      "label": "Reconcile Ingress routes"
+    },
+    {
+      "id": "e5",
+      "from": "traefik_gateway",
+      "to": "media_services",
+      "label": "Dispatch media traffic"
+    },
+    {
+      "id": "e6",
+      "from": "traefik_gateway",
+      "to": "core_services",
+      "label": "Dispatch app traffic"
+    },
+    {
+      "id": "e7",
+      "from": "media_services",
+      "to": "local_nvme",
+      "label": "Read/write media library"
+    },
+    {
+      "id": "e8",
+      "from": "core_services",
+      "to": "local_nvme",
+      "label": "Persistent database PVCs"
+    },
+    {
+      "id": "e9",
+      "from": "ops_telemetry",
+      "to": "core_services",
+      "label": "Scrape metrics & logs"
+    },
+    {
+      "id": "e10",
+      "from": "local_nvme",
+      "to": "restic_backup",
+      "label": "Daily volume snapshot"
+    },
+    {
+      "id": "e11",
+      "from": "restic_backup",
+      "to": "s3_cold_storage",
+      "label": "Encrypted offsite sync"
+    }
+  ]
+}

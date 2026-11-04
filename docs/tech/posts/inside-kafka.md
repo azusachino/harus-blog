@@ -19,40 +19,7 @@ Apache Kafka is a distributed event streaming platform designed for high-through
 
 ## full architecture
 
-```mermaid
-graph TD
-    subgraph Client Applications
-        A[Producer Clients]
-        B[Consumer Clients]
-        C[Admin Clients]
-        D[Streams Applications]
-    end
-
-    A -- Produces messages --> E["Broker(Controller) Nodes"]
-    B -- Consumes messages --> E
-    C -- Management operations --> E
-    D -- Process, transform --> E
-
-    subgraph Kafka Cluster
-        E --> F[Socket Server]
-        F -- Route Requests --> G[KafkaApis/ControllerApis]
-        G -- Request Processor --> H[ReplicaManager]
-        H -- Manages --> J[LogManager]
-        J -- "Topic Partitions" --> K[Storage]
-
-        G --> L[GroupCoordinator]
-        G --> M[TransactionCoordinator]
-
-        subgraph Coordinator Services
-            L -- "Coordinator Services" --> N[QuorumController]
-            M -- "Coordinator Services" --> N
-        end
-
-        N -- "KRaft Controller" --> O[KRaft Controller]
-        O --> P[Kafka Broker]
-        P -- "Metadata updates" --> G
-    end
-```
+<Archify src="./diagrams/kafka-architecture.workflow.json" />
 
 ## replica management
 
