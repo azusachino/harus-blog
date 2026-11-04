@@ -4,7 +4,12 @@ Changes to the site itself, newest first. Posts are not listed here; they are th
 One dated entry per merged change, written in the [Keep a Changelog](https://keepachangelog.com/)
 groups (Added, Changed, Fixed, Removed).
 
-## 2026-11-04 — CV roles without bullets
+## 2026-11-04 — CV content refresh
+
+### Changed
+
+- The CV's two project sections (`agents`, `systems`) are one `projects` section in `cv.yaml`,
+  `/cv/` and the PDF.
 
 ### Fixed
 
