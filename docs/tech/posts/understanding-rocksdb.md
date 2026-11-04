@@ -1,7 +1,7 @@
 ---
 title: "Understanding RocksDB: An Embedded Key-Value Store"
 created: 2025-06-12
-description: disk efficiency hack
+description: "LSM-tree architecture and high-performance embedded storage"
 categories:
   - research
 tags:

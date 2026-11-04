@@ -8,7 +8,7 @@ tags:
   - kubernetes
   - traefik
   - tailscale
-slug: k3s-traefik-ingress
+slug: boring-kubernetes-traefik
 comments: true
 ---
 
