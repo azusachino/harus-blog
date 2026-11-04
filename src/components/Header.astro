@@ -19,6 +19,13 @@ const active = nav.map(([, to]) => to).filter((to) => path.startsWith(to)).sort(
       ))}
     </nav>
     <div class="np-slot"><NowPlaying /></div>
+    <button class="search-btn" type="button" aria-label="Search posts" data-search-trigger title="Search (⌘K or /)">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <span class="search-hint mono" aria-hidden="true">⌘K</span>
+    </button>
     <button class="theme" type="button" aria-label="Toggle dark mode" data-theme-toggle>
       <span aria-hidden="true">◐</span>
     </button>
@@ -83,6 +90,35 @@ const active = nav.map(([, to]) => to).filter((to) => path.startsWith(to)).sort(
     border-bottom-color: var(--glow);
   }
 
+  .search-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font: inherit;
+    font-size: 0.85rem;
+    color: var(--muted);
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0 0.65rem;
+    height: 2.25rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .search-btn:hover {
+    color: var(--ink);
+    border-color: var(--glow);
+  }
+
+  .search-hint {
+    font-size: 0.75rem;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.05rem 0.35rem;
+  }
+
   .theme {
     font: inherit;
     color: var(--ink);
@@ -114,8 +150,19 @@ const active = nav.map(([, to]) => to).filter((to) => path.startsWith(to)).sort(
     }
 
     .np-slot,
+    .search-btn,
     .theme {
       order: 2;
+    }
+
+    .search-hint {
+      display: none;
+    }
+
+    .search-btn {
+      width: 2.25rem;
+      padding: 0;
+      justify-content: center;
     }
 
     nav {

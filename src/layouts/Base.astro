@@ -1,6 +1,7 @@
 ---
 import BackToTop from '../components/BackToTop.astro';
 import Header from '../components/Header.astro';
+import Search from '../components/Search.astro';
 import Call from '../components/Call.astro';
 import { PALETTES, SITE } from '../lib/site';
 import '../styles/global.css';
@@ -85,6 +86,7 @@ const metaImage = image ? new URL(image, SITE.url).href : new URL('/apple-touch-
       </p>
     </footer>
     <BackToTop />
+    <Search />
     <script is:inline data-astro-rerun>
       // Favicon and browser theme color follow the palette and mode: the same
       // "ID" mark as public/favicon.svg, repainted with the current --glow.

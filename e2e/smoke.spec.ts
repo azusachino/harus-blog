@@ -50,3 +50,36 @@ test("series catalog links to dedicated album pages with complete tracklists", a
   const backToAlbum = page.locator('a[href="/tech/series/math-for-ai/"]').first()
   await expect(backToAlbum).toBeVisible()
 })
+
+test("search modal opens via button or shortcut, queries Pagefind, and closes via Escape", async ({ page }) => {
+  await page.goto("/")
+
+  const searchBtn = page.locator("[data-search-trigger]").first()
+  await expect(searchBtn).toBeVisible()
+
+  // Click search button to open modal
+  await searchBtn.click()
+  const modal = page.locator("#search-modal")
+  await expect(modal).toBeVisible()
+
+  const input = page.locator("#search-input")
+  await expect(input).toBeFocused()
+
+  // Type a query that exists across posts
+  await input.fill("Kubernetes")
+  const results = page.locator("#search-results .search-item")
+  await expect(results.first()).toBeVisible({ timeout: 5000 })
+
+  // Press Escape to dismiss
+  await page.keyboard.press("Escape")
+  await expect(modal).not.toBeVisible()
+
+  // Open via '/' keyboard shortcut
+  await page.keyboard.press("/")
+  await expect(modal).toBeVisible()
+  await expect(input).toBeFocused()
+
+  // Close via Escape
+  await page.keyboard.press("Escape")
+  await expect(modal).not.toBeVisible()
+})
