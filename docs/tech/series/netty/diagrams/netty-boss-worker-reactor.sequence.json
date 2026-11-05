@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Netty Boss/Worker Reactor Dispatch, ChannelPipeline & Backpressure Flow",
+    "quality_profile": "standard",
+    "output": "netty-boss-worker-reactor.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "boss",
+      "type": "frontend",
+      "label": "Boss NioEventLoop",
+      "sublabel": "ServerSocketChannel OP_ACCEPT"
+    },
+    {
+      "id": "worker",
+      "type": "backend",
+      "label": "Worker NioEventLoop",
+      "sublabel": "Single-threaded Selector + taskQueue"
+    },
+    {
+      "id": "pipeline",
+      "type": "backend",
+      "label": "ChannelPipeline",
+      "sublabel": "Head <-> Inbound / Outbound <-> Tail"
+    },
+    {
+      "id": "outbound_buf",
+      "type": "database",
+      "label": "ChannelOutboundBuffer",
+      "sublabel": "32 KB / 64 KB Watermark Guard"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 255,
+      "label": "1. Connection Acceptance & Pinning to a Single Worker EventLoop"
+    },
+    {
+      "from": 285,
+      "to": 455,
+      "label": "2. Lock-Free Pipeline Execution & Write Watermark Backpressure"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "boss",
+      "to": "worker",
+      "y": 175,
+      "label": "1. Accept NioSocketChannel & next().register(channel) via MPSC taskQueue",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "worker",
+      "to": "pipeline",
+      "y": 220,
+      "label": "2. Invoke ChannelInitializer -> fireChannelRegistered & register OP_READ",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "worker",
+      "to": "pipeline",
+      "y": 300,
+      "label": "3. OP_READ ready -> read DirectByteBuf -> fireChannelRead() through InboundHandlers",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m4",
+      "from": "pipeline",
+      "to": "outbound_buf",
+      "y": 350,
+      "label": "4. ctx.writeAndFlush(msg) -> OutboundHandlers -> stage in ChannelOutboundBuffer",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m5",
+      "from": "outbound_buf",
+      "to": "pipeline",
+      "y": 415,
+      "label": "5. If totalPendingWriteBytes > 64 KB -> flip isWritable()=false & fireChannelWritabilityChanged()",
+      "variant": "return"
+    }
+  ]
+}

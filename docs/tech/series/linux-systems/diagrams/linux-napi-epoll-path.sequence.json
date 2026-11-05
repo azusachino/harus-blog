@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Linux Network Packet Path: NIC DMA Ring, NAPI SoftIRQ, TCP Backlog & epoll",
+    "quality_profile": "standard",
+    "output": "linux-napi-epoll-path.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "nic",
+      "type": "external",
+      "label": "NIC Hardware & DMA",
+      "sublabel": "RSS Queue & rx_ring"
+    },
+    {
+      "id": "napi",
+      "type": "backend",
+      "label": "NAPI SoftIRQ Poll",
+      "sublabel": "NET_RX_SOFTIRQ / napi_poll()"
+    },
+    {
+      "id": "tcp_stack",
+      "type": "backend",
+      "label": "TCP/IP Stack",
+      "sublabel": "tcp_v4_rcv & sk_receive_queue"
+    },
+    {
+      "id": "epoll",
+      "type": "database",
+      "label": "eventpoll & User App",
+      "sublabel": "ep_poll_callback -> rdllist"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 260,
+      "label": "1. Hardware DMA & HardIRQ -> NAPI Polling Transition"
+    },
+    {
+      "from": 290,
+      "to": 445,
+      "label": "2. GRO Coalescing, TCP Protocol Processing & epoll O(1) Wakeup"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "nic",
+      "to": "napi",
+      "y": 175,
+      "label": "1. DMA frame into rx_ring & raise MSI-X IRQ (masks further IRQs)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "napi",
+      "to": "nic",
+      "y": 225,
+      "label": "2. NET_RX_SOFTIRQ polls rx_ring in batches (budget=64 packets)",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "napi",
+      "to": "tcp_stack",
+      "y": 305,
+      "label": "3. GRO merges segments -> netif_receive_skb -> ip_rcv -> tcp_v4_rcv",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m4",
+      "from": "tcp_stack",
+      "to": "epoll",
+      "y": 360,
+      "label": "4. Enqueue sk_buff into sk_receive_queue & invoke sk_data_ready()",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m5",
+      "from": "epoll",
+      "to": "tcp_stack",
+      "y": 415,
+      "label": "5. ep_poll_callback appends fd to rdllist; epoll_wait() reads socket",
+      "variant": "return"
+    }
+  ]
+}

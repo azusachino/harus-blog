@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Linux x86_64 SYSCALL Entry Trampoline vs vDSO Userspace Fastpath",
+    "quality_profile": "standard",
+    "output": "linux-syscall-trampoline.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "app",
+      "type": "frontend",
+      "label": "User Process (Ring 3)",
+      "sublabel": "glibc / Rust std caller"
+    },
+    {
+      "id": "vdso",
+      "type": "backend",
+      "label": "vDSO Shared Page (Ring 3)",
+      "sublabel": "Kernel-mapped RO page + RDTSC"
+    },
+    {
+      "id": "trampoline",
+      "type": "security",
+      "label": "entry_SYSCALL_64 (Ring 0)",
+      "sublabel": "MSR_LSTAR + swapgs + pt_regs"
+    },
+    {
+      "id": "subsys",
+      "type": "database",
+      "label": "Kernel Subsystem",
+      "sublabel": "sys_call_table[rax](regs)"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 245,
+      "label": "1. vDSO Fastpath: clock_gettime() with Zero Ring-0 Transition (~15 ns)"
+    },
+    {
+      "from": 275,
+      "to": 445,
+      "label": "2. Full Hardware SYSCALL Transition into Ring 0 Kernel Mode"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "app",
+      "to": "vdso",
+      "y": 175,
+      "label": "1. Call __vdso_clock_gettime(CLOCK_MONOTONIC) in userspace",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "vdso",
+      "to": "app",
+      "y": 220,
+      "label": "2. Read vvar seqlock + CPU RDTSC -> return timespec in Ring 3",
+      "variant": "return"
+    },
+    {
+      "id": "m3",
+      "from": "app",
+      "to": "trampoline",
+      "y": 295,
+      "label": "3. SYSCALL instruction (RIP->RCX, RFLAGS->R11, CPL 3->0, jump MSR_LSTAR)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m4",
+      "from": "trampoline",
+      "to": "subsys",
+      "y": 350,
+      "label": "4. swapgs -> switch to kernel stack -> push pt_regs -> do_syscall_64()",
+      "variant": "default"
+    },
+    {
+      "id": "m5",
+      "from": "subsys",
+      "to": "trampoline",
+      "y": 395,
+      "label": "5. Return result or -errno in pt_regs->ax",
+      "variant": "return"
+    },
+    {
+      "id": "m6",
+      "from": "trampoline",
+      "to": "app",
+      "y": 430,
+      "label": "6. Restore registers, swapgs & SYSRETQ back to Ring 3",
+      "variant": "return"
+    }
+  ]
+}

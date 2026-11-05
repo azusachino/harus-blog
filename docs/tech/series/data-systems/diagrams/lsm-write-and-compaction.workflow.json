@@ -1,0 +1,116 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "RocksDB LSM-Tree Write Path, L0 Flush & Disjoint Leveled Compaction",
+    "quality_profile": "standard",
+    "output": "lsm-write-and-compaction.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "memory_lane",
+      "label": "In-Memory Write Buffer (SkipList)"
+    },
+    {
+      "id": "wal_lane",
+      "label": "Crash Recovery Log (Sequential Disk)"
+    },
+    {
+      "id": "l0_lane",
+      "label": "Level 0 SSTables (Overlapping Key Ranges)"
+    },
+    {
+      "id": "leveled_lane",
+      "label": "Leveled SSTables L1..Ln (Disjoint + Bloom Filters)"
+    }
+  ],
+  "mainPath": [
+    "client_write",
+    "active_memtable",
+    "immutable_memtable",
+    "l0_sst",
+    "l1_compaction"
+  ],
+  "nodes": [
+    {
+      "id": "client_write",
+      "lane": "memory_lane",
+      "col": 0,
+      "label": "Client Put / Delete",
+      "sublabel": "WriteBatch with sequence number",
+      "type": "frontend"
+    },
+    {
+      "id": "wal_append",
+      "lane": "wal_lane",
+      "col": 1,
+      "label": "Append to WAL",
+      "sublabel": "Sequential fsync for durability",
+      "type": "database"
+    },
+    {
+      "id": "active_memtable",
+      "lane": "memory_lane",
+      "col": 1,
+      "label": "Active MemTable",
+      "sublabel": "Concurrent SkipList (~64 MB)",
+      "type": "backend"
+    },
+    {
+      "id": "immutable_memtable",
+      "lane": "memory_lane",
+      "col": 2,
+      "label": "Immutable MemTable",
+      "sublabel": "Sealed on write_buffer_size full",
+      "type": "backend"
+    },
+    {
+      "id": "l0_sst",
+      "lane": "l0_lane",
+      "col": 3,
+      "label": "L0 SSTable Flush",
+      "sublabel": "Data Blocks + 10-bit/key Bloom Filter",
+      "type": "database"
+    },
+    {
+      "id": "l1_compaction",
+      "lane": "leveled_lane",
+      "col": 4,
+      "label": "Leveled Compaction (L1..Ln)",
+      "sublabel": "Multi-way merge into disjoint key ranges",
+      "type": "database"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "client_write",
+      "to": "wal_append",
+      "label": "1a. Sequential append"
+    },
+    {
+      "id": "e2",
+      "from": "client_write",
+      "to": "active_memtable",
+      "label": "1b. Insert key/tombstone"
+    },
+    {
+      "id": "e3",
+      "from": "active_memtable",
+      "to": "immutable_memtable",
+      "label": "2. Freeze when full"
+    },
+    {
+      "id": "e4",
+      "from": "immutable_memtable",
+      "to": "l0_sst",
+      "label": "3. Background flush thread"
+    },
+    {
+      "id": "e5",
+      "from": "l0_sst",
+      "to": "l1_compaction",
+      "label": "4. Merge overlapping L0 & purge tombstones"
+    }
+  ]
+}

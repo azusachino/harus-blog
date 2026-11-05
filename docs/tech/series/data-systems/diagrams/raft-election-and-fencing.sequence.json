@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Raft Election Restriction, Log Matching & Monotonic Fencing Tokens",
+    "quality_profile": "standard",
+    "output": "raft-election-and-fencing.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "stale_cand",
+      "type": "external",
+      "label": "Node N5 (Partitioned)",
+      "sublabel": "Term=100, lastLogTerm=1"
+    },
+    {
+      "id": "leader_n1",
+      "type": "backend",
+      "label": "Node N1 (Up-to-Date)",
+      "sublabel": "lastLogTerm=2 -> Wins Term 101"
+    },
+    {
+      "id": "quorum",
+      "type": "backend",
+      "label": "Followers N2..N4",
+      "sublabel": "Majority Quorum (lastLogTerm=2)"
+    },
+    {
+      "id": "storage",
+      "type": "database",
+      "label": "Fenced Storage Engine",
+      "sublabel": "Enforces token >= max_token"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 255,
+      "label": "1. Stale Term-100 Candidate Rejected by Election Restriction (Sec 5.4.1)"
+    },
+    {
+      "from": 285,
+      "to": 385,
+      "label": "2. Up-to-Date Node N1 Wins Term 101 & Heals Logs"
+    },
+    {
+      "from": 415,
+      "to": 500,
+      "label": "3. Monotonic Fencing Token Blocks Zombie Leader Write"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "stale_cand",
+      "to": "quorum",
+      "y": 175,
+      "label": "1. RequestVote(term=100, lastLogTerm=1, lastLogIdx=1)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "quorum",
+      "to": "stale_cand",
+      "y": 225,
+      "label": "2. Update currentTerm=100, but voteGranted=FALSE (lastLogTerm 1 < 2)",
+      "variant": "return"
+    },
+    {
+      "id": "m3",
+      "from": "leader_n1",
+      "to": "quorum",
+      "y": 300,
+      "label": "3. RequestVote(term=101, lastLogTerm=2, lastLogIdx=2) -> Wins Quorum!",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m4",
+      "from": "leader_n1",
+      "to": "stale_cand",
+      "y": 350,
+      "label": "4. AppendEntries(term=101) backtracks prevLogIndex & heals N5 tail",
+      "variant": "default"
+    },
+    {
+      "id": "m5",
+      "from": "leader_n1",
+      "to": "storage",
+      "y": 430,
+      "label": "5. Write(fencing_token=101, key='z', val='42') -> Accepted (max_token=101)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m6",
+      "from": "stale_cand",
+      "to": "storage",
+      "y": 475,
+      "label": "6. Delayed GC-paused Write(fencing_token=2) -> REJECTED (2 < 101)!",
+      "variant": "default"
+    }
+  ]
+}

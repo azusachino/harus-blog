@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CPython Builtin & Operator Dispatch into C Type Slots (PyTypeObject)",
+    "quality_profile": "standard",
+    "output": "cpython-slot-dispatch.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "bytecode",
+      "type": "frontend",
+      "label": "Eval Frame Loop",
+      "sublabel": "_PyEval_EvalFrameDefault"
+    },
+    {
+      "id": "c_api",
+      "type": "backend",
+      "label": "Abstract Object C-API",
+      "sublabel": "PyObject_Size / PyObject_GetItem"
+    },
+    {
+      "id": "type_slots",
+      "type": "backend",
+      "label": "PyTypeObject Slots",
+      "sublabel": "tp_as_sequence / tp_as_mapping"
+    },
+    {
+      "id": "c_impl",
+      "type": "database",
+      "label": "Concrete C Struct",
+      "sublabel": "PyListObject / PyDictObject"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 255,
+      "label": "1. O(1) Sequence Length: len(my_list) -> ob_size"
+    },
+    {
+      "from": 285,
+      "to": 395,
+      "label": "2. Subscript Lookup: my_dict[key] -> mp_subscript"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "bytecode",
+      "to": "c_api",
+      "y": 175,
+      "label": "1. builtin_len() invokes PyObject_Size(PyObject *o)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "c_api",
+      "to": "type_slots",
+      "y": 210,
+      "label": "2. Dereference Py_TYPE(o)->tp_as_sequence->sq_length",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "type_slots",
+      "to": "c_impl",
+      "y": 240,
+      "label": "3. list_length() returns Py_SIZE(o) (PyVarObject.ob_size in O(1))",
+      "variant": "return"
+    },
+    {
+      "id": "m4",
+      "from": "bytecode",
+      "to": "c_api",
+      "y": 300,
+      "label": "4. BINARY_SUBSCR invokes PyObject_GetItem(v, key)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m5",
+      "from": "c_api",
+      "to": "type_slots",
+      "y": 340,
+      "label": "5. Dispatch Py_TYPE(v)->tp_as_mapping->mp_subscript",
+      "variant": "default"
+    },
+    {
+      "id": "m6",
+      "from": "type_slots",
+      "to": "c_impl",
+      "y": 375,
+      "label": "6. dict_subscript() probes compact dk_indices + dk_entries table",
+      "variant": "return"
+    }
+  ]
+}

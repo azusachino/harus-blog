@@ -1,0 +1,112 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "CPython Reference Counting & Generational Cyclic GC Trial-Subtraction",
+    "quality_profile": "standard",
+    "output": "cpython-cyclic-gc.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "fast_lane",
+      "label": "Immediate Reference Count Path (O(1))"
+    },
+    {
+      "id": "scan_lane",
+      "label": "Cyclic GC Trial Subtraction (tp_traverse)"
+    },
+    {
+      "id": "reclaim_lane",
+      "label": "Reachability Partition & Finalization"
+    }
+  ],
+  "mainPath": [
+    "py_decref",
+    "copy_gc_refs",
+    "subtract_internal",
+    "rescue_transitive",
+    "break_cycles"
+  ],
+  "nodes": [
+    {
+      "id": "py_decref",
+      "lane": "fast_lane",
+      "col": 0,
+      "label": "Py_DECREF(op)",
+      "sublabel": "Decrement ob_refcnt on scope exit",
+      "type": "frontend"
+    },
+    {
+      "id": "immediate_free",
+      "lane": "fast_lane",
+      "col": 1,
+      "label": "_Py_Dealloc(op)",
+      "sublabel": "ob_refcnt == 0 -> immediate tp_dealloc",
+      "type": "backend"
+    },
+    {
+      "id": "copy_gc_refs",
+      "lane": "scan_lane",
+      "col": 1,
+      "label": "1. update_refs()",
+      "sublabel": "Copy ob_refcnt into trial gc_refs",
+      "type": "backend"
+    },
+    {
+      "id": "subtract_internal",
+      "lane": "scan_lane",
+      "col": 2,
+      "label": "2. subtract_refs()",
+      "sublabel": "tp_traverse decrements child gc_refs",
+      "type": "backend"
+    },
+    {
+      "id": "rescue_transitive",
+      "lane": "reclaim_lane",
+      "col": 3,
+      "label": "3. move_unreachable()",
+      "sublabel": "gc_refs > 0 roots rescue reachable graph",
+      "type": "security"
+    },
+    {
+      "id": "break_cycles",
+      "lane": "reclaim_lane",
+      "col": 4,
+      "label": "4. delete_garbage()",
+      "sublabel": "Invoke tp_clear on isolated reference cycles",
+      "type": "database"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "py_decref",
+      "to": "immediate_free",
+      "label": "ob_refcnt == 0 (acyclic)"
+    },
+    {
+      "id": "e2",
+      "from": "py_decref",
+      "to": "copy_gc_refs",
+      "label": "Gen threshold exceeded"
+    },
+    {
+      "id": "e3",
+      "from": "copy_gc_refs",
+      "to": "subtract_internal",
+      "label": "Walk container graph"
+    },
+    {
+      "id": "e4",
+      "from": "subtract_internal",
+      "to": "rescue_transitive",
+      "label": "Partition gc_refs == 0"
+    },
+    {
+      "id": "e5",
+      "from": "rescue_transitive",
+      "to": "break_cycles",
+      "label": "Reclaim unreachable cycle"
+    }
+  ]
+}
