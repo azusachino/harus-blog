@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Tailscale WireGuard Mesh NAT Traversal & Declarative Tag ACLs",
+    "quality_profile": "standard",
+    "output": "tailscale-mesh-wireguard-acl.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "coord_lane",
+      "label": "Control Plane (Tailscale Coordination Server & DERP Relays)"
+    },
+    {
+      "id": "mesh_lane",
+      "label": "WireGuard Data Plane (Encrypted Direct Peer-to-Peer UDP)"
+    },
+    {
+      "id": "acl_lane",
+      "label": "Zero-Trust Enforcement (Kernel eBPF & Tag-Based Packet Filter)"
+    }
+  ],
+  "mainPath": [
+    "coord_sync",
+    "stun_nat_punch",
+    "wireguard_tunnel",
+    "tag_acl_filter",
+    "dest_daemon"
+  ],
+  "nodes": [
+    {
+      "id": "coord_sync",
+      "lane": "coord_lane",
+      "col": 0,
+      "label": "Tailscale Control Map",
+      "sublabel": "Public keys & DERP endpoints",
+      "type": "database"
+    },
+    {
+      "id": "stun_nat_punch",
+      "lane": "coord_lane",
+      "col": 1,
+      "label": "STUN Discovery / DERP",
+      "sublabel": "Disco UDP hole punching",
+      "type": "cloud"
+    },
+    {
+      "id": "wireguard_tunnel",
+      "lane": "mesh_lane",
+      "col": 2,
+      "label": "P2P WireGuard Tunnel",
+      "sublabel": "ChaCha20-Poly1305 encryption",
+      "type": "security"
+    },
+    {
+      "id": "tag_acl_filter",
+      "lane": "acl_lane",
+      "col": 3,
+      "label": "Tag-Based ACL Check",
+      "sublabel": "tag:workstation -> tag:server",
+      "type": "backend"
+    },
+    {
+      "id": "dest_daemon",
+      "lane": "acl_lane",
+      "col": 4,
+      "label": "Destination Service",
+      "sublabel": "K3s / SSH / Web service",
+      "type": "frontend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "coord_sync",
+      "to": "stun_nat_punch",
+      "label": "1. Distribute peers"
+    },
+    {
+      "id": "e2",
+      "from": "stun_nat_punch",
+      "to": "wireguard_tunnel",
+      "label": "2. Hole punch or relay"
+    },
+    {
+      "id": "e3",
+      "from": "wireguard_tunnel",
+      "to": "tag_acl_filter",
+      "label": "3. Ingress packet"
+    },
+    {
+      "id": "e4",
+      "from": "tag_acl_filter",
+      "to": "dest_daemon",
+      "label": "4. Authorized delivery"
+    }
+  ]
+}

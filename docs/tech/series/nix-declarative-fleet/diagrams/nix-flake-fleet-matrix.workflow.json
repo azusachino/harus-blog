@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Nix Flake Multi-Platform Fleet Convergence & Generation Switch",
+    "quality_profile": "standard",
+    "output": "nix-flake-fleet-matrix.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "flake_lane",
+      "label": "Flake Inputs & Lockfile (Pure Evaluation Boundary)"
+    },
+    {
+      "id": "eval_lane",
+      "label": "Host Module Dispatcher (Darwin & Linux Systems Matrix)"
+    },
+    {
+      "id": "target_lane",
+      "label": "Target Host Store & Profile (Activation Script & Symlinks)"
+    }
+  ],
+  "mainPath": [
+    "flake_lock",
+    "host_matrix",
+    "drv_instantiation",
+    "store_realisation",
+    "generation_switch"
+  ],
+  "nodes": [
+    {
+      "id": "flake_lock",
+      "lane": "flake_lane",
+      "col": 0,
+      "label": "flake.nix & flake.lock",
+      "sublabel": "Locked inputs & follows pinning",
+      "type": "database"
+    },
+    {
+      "id": "host_matrix",
+      "lane": "eval_lane",
+      "col": 1,
+      "label": "System Matrix Dispatch",
+      "sublabel": "Darwin & Linux host modules",
+      "type": "backend"
+    },
+    {
+      "id": "drv_instantiation",
+      "lane": "eval_lane",
+      "col": 2,
+      "label": "Derivation DAG (.drv)",
+      "sublabel": "Pure build graph evaluation",
+      "type": "backend"
+    },
+    {
+      "id": "store_realisation",
+      "lane": "target_lane",
+      "col": 3,
+      "label": "Nix Store Realisation",
+      "sublabel": "Immutable /nix/store paths",
+      "type": "database"
+    },
+    {
+      "id": "generation_switch",
+      "lane": "target_lane",
+      "col": 4,
+      "label": "Profile Generation Switch",
+      "sublabel": "Atomic symlink update & hooks",
+      "type": "frontend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "flake_lock",
+      "to": "host_matrix",
+      "label": "1. Pure inputs"
+    },
+    {
+      "id": "e2",
+      "from": "host_matrix",
+      "to": "drv_instantiation",
+      "label": "2. Evaluate configs"
+    },
+    {
+      "id": "e3",
+      "from": "drv_instantiation",
+      "to": "store_realisation",
+      "label": "3. Build or fetch"
+    },
+    {
+      "id": "e4",
+      "from": "store_realisation",
+      "to": "generation_switch",
+      "label": "4. Switch generation"
+    }
+  ]
+}
