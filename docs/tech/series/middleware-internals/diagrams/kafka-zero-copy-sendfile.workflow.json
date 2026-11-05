@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Kafka Zero-Copy sendfile() vs Traditional 4-Switch Socket Path",
+    "quality_profile": "standard",
+    "output": "kafka-zero-copy-sendfile.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "app_lane",
+      "label": "User Space (Kafka JVM Broker & Heap Buffers)"
+    },
+    {
+      "id": "kernel_lane",
+      "label": "Kernel Space (Linux VFS Page Cache & Socket Buffer)"
+    },
+    {
+      "id": "hw_lane",
+      "label": "Hardware Subsystem (NVMe Disk Controller & 100GbE NIC)"
+    }
+  ],
+  "mainPath": [
+    "disk_dma",
+    "page_cache",
+    "sendfile_call",
+    "skb_descriptor",
+    "nic_dma"
+  ],
+  "nodes": [
+    {
+      "id": "disk_dma",
+      "lane": "hw_lane",
+      "col": 0,
+      "label": "Disk DMA Transfer",
+      "sublabel": "DMA copies segment into Page Cache",
+      "type": "database"
+    },
+    {
+      "id": "page_cache",
+      "lane": "kernel_lane",
+      "col": 1,
+      "label": "VFS Page Cache Inodes",
+      "sublabel": "Physical RAM pages hold topic log",
+      "type": "database"
+    },
+    {
+      "id": "sendfile_call",
+      "lane": "app_lane",
+      "col": 2,
+      "label": "FileChannel.transferTo()",
+      "sublabel": "sendfile(out_fd, in_fd, offset, count)",
+      "type": "frontend"
+    },
+    {
+      "id": "skb_descriptor",
+      "lane": "kernel_lane",
+      "col": 3,
+      "label": "Socket Buffer Descriptors",
+      "sublabel": "Passes memory fd+length; zero payload copy",
+      "type": "backend"
+    },
+    {
+      "id": "nic_dma",
+      "lane": "hw_lane",
+      "col": 4,
+      "label": "NIC Scatter-Gather DMA",
+      "sublabel": "NIC DMA reads directly from Page Cache",
+      "type": "security"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "disk_dma",
+      "to": "page_cache",
+      "label": "1. Disk Read DMA"
+    },
+    {
+      "id": "e2",
+      "from": "page_cache",
+      "to": "sendfile_call",
+      "label": "2. Zero CPU Copy"
+    },
+    {
+      "id": "e3",
+      "from": "sendfile_call",
+      "to": "skb_descriptor",
+      "label": "3. Pass sk_buff"
+    },
+    {
+      "id": "e4",
+      "from": "skb_descriptor",
+      "to": "nic_dma",
+      "label": "4. Direct NIC Wire DMA"
+    }
+  ]
+}

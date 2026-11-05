@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "etcd MVCC In-Memory B-Tree Revisions, BoltDB & Watch Streams",
+    "quality_profile": "standard",
+    "output": "etcd-mvcc-bbolt-watch.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "tree_lane",
+      "label": "In-Memory treeIndex (Google B-Tree of Key Revisions)"
+    },
+    {
+      "id": "bbolt_lane",
+      "label": "On-Disk BoltDB bbolt (B+Tree Bucket keyed by Revision {main, sub})"
+    },
+    {
+      "id": "watch_lane",
+      "label": "WatchStream Multiplexer & HTTP/2 gRPC Push"
+    }
+  ],
+  "mainPath": [
+    "mvcc_put",
+    "tree_index_update",
+    "bbolt_write",
+    "watch_notify",
+    "grpc_stream_push"
+  ],
+  "nodes": [
+    {
+      "id": "mvcc_put",
+      "lane": "tree_lane",
+      "col": 0,
+      "label": "etcdctl put key val",
+      "sublabel": "Increments consistent_index & revision",
+      "type": "frontend"
+    },
+    {
+      "id": "tree_index_update",
+      "lane": "tree_lane",
+      "col": 1,
+      "label": "treeIndex Revision Entry",
+      "sublabel": "key -> revisions [{main:5, sub:0}]",
+      "type": "backend"
+    },
+    {
+      "id": "bbolt_write",
+      "lane": "bbolt_lane",
+      "col": 2,
+      "label": "BoltDB key_bucket Write",
+      "sublabel": "Key: rev 5, Value: mvccpb.KeyValue",
+      "type": "database"
+    },
+    {
+      "id": "watch_notify",
+      "lane": "watch_lane",
+      "col": 3,
+      "label": "WatchableStore Notify",
+      "sublabel": "Matches watchers with start_rev <= 5",
+      "type": "security"
+    },
+    {
+      "id": "grpc_stream_push",
+      "lane": "watch_lane",
+      "col": 4,
+      "label": "gRPC Watch Stream Push",
+      "sublabel": "Pushes Event(PUT) over HTTP/2 stream",
+      "type": "frontend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "mvcc_put",
+      "to": "tree_index_update",
+      "label": "1. Append Revision"
+    },
+    {
+      "id": "e2",
+      "from": "tree_index_update",
+      "to": "bbolt_write",
+      "label": "2. Commit Transaction"
+    },
+    {
+      "id": "e3",
+      "from": "bbolt_write",
+      "to": "watch_notify",
+      "label": "3. Broadcast Revision"
+    },
+    {
+      "id": "e4",
+      "from": "watch_notify",
+      "to": "grpc_stream_push",
+      "label": "4. Push WatchEvent"
+    }
+  ]
+}
