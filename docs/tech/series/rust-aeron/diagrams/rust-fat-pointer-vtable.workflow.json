@@ -1,0 +1,100 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Rust Static Monomorphization vs Dynamic Trait Object Fat Pointer (&dyn Trait)",
+    "quality_profile": "standard",
+    "output": "rust-fat-pointer-vtable.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "static_lane",
+      "label": "Static Dispatch: Generic Monomorphization (Zero Runtime Indirection)"
+    },
+    {
+      "id": "stack_lane",
+      "label": "Dynamic Dispatch: 16-Byte Stack Fat Pointer (&dyn Formatter)"
+    },
+    {
+      "id": "heap_ro_lane",
+      "label": "Target Concrete Data & Read-Only Compiler vtable"
+    }
+  ],
+  "mainPath": ["fat_ptr_stack", "vtable_rodata", "indirect_call"],
+  "nodes": [
+    {
+      "id": "generic_fn",
+      "lane": "static_lane",
+      "col": 0,
+      "label": "fn run<T: Formatter>(x: &T)",
+      "sublabel": "Compile-time type parameter",
+      "type": "frontend"
+    },
+    {
+      "id": "monomorphized_code",
+      "lane": "static_lane",
+      "col": 2,
+      "label": "Inlined Machine Code",
+      "sublabel": "run_MarkdownFormatter / run_RustFormatter",
+      "type": "backend"
+    },
+    {
+      "id": "fat_ptr_stack",
+      "lane": "stack_lane",
+      "col": 0,
+      "label": "&dyn Formatter (16 Bytes)",
+      "sublabel": "[data_ptr: 8B | vtable_ptr: 8B]",
+      "type": "frontend"
+    },
+    {
+      "id": "data_ptr_target",
+      "lane": "heap_ro_lane",
+      "col": 1,
+      "label": "Concrete Struct Instance",
+      "sublabel": "data_ptr -> HtmlFormatter fields",
+      "type": "database"
+    },
+    {
+      "id": "vtable_rodata",
+      "lane": "heap_ro_lane",
+      "col": 2,
+      "label": ".rodata Trait vtable",
+      "sublabel": "[drop_in_place, size, align, format_fn]",
+      "type": "security"
+    },
+    {
+      "id": "indirect_call",
+      "lane": "stack_lane",
+      "col": 3,
+      "label": "vtable.format(data_ptr, buf)",
+      "sublabel": "Runtime indirect function call",
+      "type": "backend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "generic_fn",
+      "to": "monomorphized_code",
+      "label": "rustc specializes per concrete T"
+    },
+    {
+      "id": "e2",
+      "from": "fat_ptr_stack",
+      "to": "data_ptr_target",
+      "label": "Word 0: data_ptr"
+    },
+    {
+      "id": "e3",
+      "from": "fat_ptr_stack",
+      "to": "vtable_rodata",
+      "label": "Word 1: vtable_ptr"
+    },
+    {
+      "id": "e4",
+      "from": "vtable_rodata",
+      "to": "indirect_call",
+      "label": "Lookup method slot & pass data_ptr"
+    }
+  ]
+}
