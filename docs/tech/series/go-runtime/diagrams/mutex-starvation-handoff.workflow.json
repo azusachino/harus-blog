@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Go sync.Mutex State Word: Normal Barging vs. 1ms Starvation Hand-Off",
+    "quality_profile": "standard",
+    "output": "mutex-starvation-handoff.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "fast_lane",
+      "label": "Active Barging Goroutines (Running on CPU)"
+    },
+    {
+      "id": "state_lane",
+      "label": "Mutex 32-Bit State Word (WaiterCount<<3 | Starving | Woken | Locked)"
+    },
+    {
+      "id": "sema_lane",
+      "label": "Runtime Semaphore Wait Queue (FIFO / LIFO sudog Treap)"
+    }
+  ],
+  "mainPath": [
+    "cas_attempt",
+    "normal_spin",
+    "sema_sleep",
+    "starve_check",
+    "direct_handoff"
+  ],
+  "nodes": [
+    {
+      "id": "cas_attempt",
+      "lane": "fast_lane",
+      "col": 0,
+      "label": "Fast Path CAS(0 -> 1)",
+      "sublabel": "Inline atomic.CompareAndSwapInt32",
+      "type": "frontend"
+    },
+    {
+      "id": "normal_spin",
+      "lane": "state_lane",
+      "col": 1,
+      "label": "Normal Mode Spin & Barge",
+      "sublabel": "4x runtime_doSpin(30 PAUSE); running G beats woken G",
+      "type": "backend"
+    },
+    {
+      "id": "sema_sleep",
+      "lane": "sema_lane",
+      "col": 2,
+      "label": "SemacquireMutex Park",
+      "sublabel": "Increments WaiterCount (state += 1<<3) & sleeps",
+      "type": "database"
+    },
+    {
+      "id": "starve_check",
+      "lane": "state_lane",
+      "col": 3,
+      "label": "Wait > 1ms -> mutexStarving",
+      "sublabel": "Sets Starving bit (1<<2); disables barging & spinning",
+      "type": "security"
+    },
+    {
+      "id": "direct_handoff",
+      "lane": "sema_lane",
+      "col": 4,
+      "label": "Direct Ownership Hand-Off",
+      "sublabel": "Unlock() transfers lock straight to FIFO head waiter",
+      "type": "frontend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "cas_attempt",
+      "to": "normal_spin",
+      "label": "1. Contended Lock"
+    },
+    {
+      "id": "e2",
+      "from": "normal_spin",
+      "to": "sema_sleep",
+      "label": "2. Spin Exhausted"
+    },
+    {
+      "id": "e3",
+      "from": "sema_sleep",
+      "to": "starve_check",
+      "label": "3. Woken after >1ms"
+    },
+    {
+      "id": "e4",
+      "from": "starve_check",
+      "to": "direct_handoff",
+      "label": "4. Strict FIFO Hand-Off"
+    }
+  ]
+}

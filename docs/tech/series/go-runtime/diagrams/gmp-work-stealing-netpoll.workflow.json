@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Go GMP Work-Stealing Scheduler, Syscall Hand-Off & Netpoller Integration",
+    "quality_profile": "standard",
+    "output": "gmp-work-stealing-netpoll.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "proc_lane",
+      "label": "Logical Processor P (runnext + Local Run Queue [256]G)"
+    },
+    {
+      "id": "thread_lane",
+      "label": "OS Thread M (Executing G0 Scheduler & User Goroutines)"
+    },
+    {
+      "id": "global_lane",
+      "label": "Global Run Queue, epoll Netpoller & sysmon Preemptor"
+    }
+  ],
+  "mainPath": [
+    "g_spawn",
+    "local_runq",
+    "m_execute",
+    "netpoll_park",
+    "steal_or_wake"
+  ],
+  "nodes": [
+    {
+      "id": "g_spawn",
+      "lane": "proc_lane",
+      "col": 0,
+      "label": "go fn() -> runnext Slot",
+      "sublabel": "1-slot LIFO cache on P; spills old G to local runq",
+      "type": "frontend"
+    },
+    {
+      "id": "local_runq",
+      "lane": "proc_lane",
+      "col": 1,
+      "label": "Lock-Free Local runq",
+      "sublabel": "256-element ring buffer; polls global schedtick%61",
+      "type": "database"
+    },
+    {
+      "id": "m_execute",
+      "lane": "thread_lane",
+      "col": 2,
+      "label": "M Executes G (g0 <-> g)",
+      "sublabel": "handoffp() detaches P if G blocks in OS syscall",
+      "type": "backend"
+    },
+    {
+      "id": "netpoll_park",
+      "lane": "global_lane",
+      "col": 3,
+      "label": "Netpoller & sysmon",
+      "sublabel": "gopark() on EAGAIN; sysmon sends SIGURG > 10ms",
+      "type": "security"
+    },
+    {
+      "id": "steal_or_wake",
+      "lane": "proc_lane",
+      "col": 4,
+      "label": "Work-Stealing & goready()",
+      "sublabel": "Steals half of peer P runq or wakes epoll-ready G",
+      "type": "frontend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "g_spawn",
+      "to": "local_runq",
+      "label": "1. Enqueue G"
+    },
+    {
+      "id": "e2",
+      "from": "local_runq",
+      "to": "m_execute",
+      "label": "2. schedule() dispatches G"
+    },
+    {
+      "id": "e3",
+      "from": "m_execute",
+      "to": "netpoll_park",
+      "label": "3. Non-blocking I/O or >10ms slice"
+    },
+    {
+      "id": "e4",
+      "from": "netpoll_park",
+      "to": "steal_or_wake",
+      "label": "4. netpoll ready / steal half of peer P"
+    }
+  ]
+}

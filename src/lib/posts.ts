@@ -53,6 +53,7 @@ export function textLang(body: string) {
 }
 
 export const SERIES_DESCRIPTIONS: Record<string, string> = {
+  'go-runtime': 'Go runtime and concurrency internals: the GMP work-stealing scheduler, SIGURG preemption, mspan/mcache allocator, tricolor GC hybrid write barriers, hchan/select mechanics, sync.Mutex starvation handoff, and 100 Go Mistakes.',
   'cncf-containers': 'Linux container internals and the CNCF runtime stack: namespaces, cgroups v2, PID 1 reaping, OCI image Merkle DAGs and OverlayFS, containerd shims, runc vs Rust youki, rootless Podman, Cilium eBPF dataplanes, Argo CD GitOps, and OpenTelemetry.',
   'rust-aeron': 'Rust ownership and low-latency Aeron messaging: stack/heap memory layout, fat-pointer vtables, Acquire/Release atomics, Agrona lock-free ring buffers, 3-term log buffers, Archive replay, and Raft-backed Aeron Cluster.',
   'data-systems': 'Designing data-intensive storage and distributed systems: B+ Trees vs LSM-Trees, ClickHouse columnar execution, replication quorums, consistent-hashing partitioning, MVCC & SSI transactions, and Raft consensus.',
@@ -93,8 +94,8 @@ export const SERIES_SHELVES: SeriesShelfDef[] = [
   {
     id: 'languages',
     title: 'Languages & Runtimes',
-    subtitle: 'CPython virtual machine internals, C runtime ownership, and modern C++ engineering discipline',
-    dirs: ['cpython-internals', 'more-effective-cpp', 'effective-cpp'],
+    subtitle: 'CPython virtual machine internals, Go runtime scheduler & GC, and modern C++ engineering discipline',
+    dirs: ['cpython-internals', 'go-runtime', 'more-effective-cpp', 'effective-cpp'],
   },
   {
     id: 'data-cloud',

@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Go Concurrent Tricolor Mark-Sweep GC, Hybrid Write Barrier & Mutator Assist",
+    "quality_profile": "standard",
+    "output": "tricolor-gc-hybrid-barrier.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "mutator",
+      "type": "frontend",
+      "label": "Mutator Goroutine (G)",
+      "sublabel": "User Code + Write Barrier"
+    },
+    {
+      "id": "wb_buf",
+      "type": "backend",
+      "label": "Per-P wbBuf Cache",
+      "sublabel": "Batch Pointer Shade Buffer"
+    },
+    {
+      "id": "gc_worker",
+      "type": "backend",
+      "label": "gcBgMarkWorker",
+      "sublabel": "25% CPU Concurrent Scanner"
+    },
+    {
+      "id": "mheap",
+      "type": "database",
+      "label": "mheap & gcWork Queues",
+      "sublabel": "gcmarkBits & Sweep Spans"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 310,
+      "label": "1. Sweep Termination, Hybrid Write Barrier Activation & Root Stack Scan"
+    },
+    {
+      "from": 340,
+      "to": 470,
+      "label": "2. Concurrent Tricolor Marking, Mutator Assist Debt & Mark Termination"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "gc_worker",
+      "to": "mutator",
+      "y": 175,
+      "label": "1. Brief STW enables writeBarrier.enabled = true; shades stacks black",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "mutator",
+      "to": "wb_buf",
+      "y": 225,
+      "label": "2. *slot = ptr triggers Hybrid Barrier: shade(*slot) old + shade(ptr) new",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "wb_buf",
+      "to": "mheap",
+      "y": 275,
+      "label": "3. Flush full wbBuf batch into grey gcWork queue & set gcmarkBits",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m4",
+      "from": "gc_worker",
+      "to": "mheap",
+      "y": 355,
+      "label": "4. Drain grey objects from gcWork, scan pointer fields, shade black",
+      "variant": "default"
+    },
+    {
+      "id": "m5",
+      "from": "mutator",
+      "to": "gc_worker",
+      "y": 400,
+      "label": "5. Allocation exceeds assist credit -> gcAssistAlloc() scans N bytes",
+      "variant": "return"
+    },
+    {
+      "id": "m6",
+      "from": "gc_worker",
+      "to": "mheap",
+      "y": 445,
+      "label": "6. Mark Termination (no stack rescan needed!) -> swap allocBits/gcmarkBits",
+      "variant": "emphasis"
+    }
+  ]
+}
