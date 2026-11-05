@@ -54,6 +54,7 @@ export function textLang(body: string) {
 
 // Pinned order for tutorial series albums, latest series first (descending).
 export const PINNED_SERIES: string[] = [
+  'netty',
   'flink',
   'math-for-ai',
   'aws-sap',
@@ -65,6 +66,7 @@ export const PINNED_SERIES: string[] = [
 ];
 
 export const SERIES_DESCRIPTIONS: Record<string, string> = {
+  'netty': 'Linux kernel I/O multiplexing, zero-copy buffers, Reactor event loops, framing, and backpressure, backed by Netty 4.2 and runnable labs.',
   'flink': 'Stream processing architecture from core intuition to production runtime, backed by Apache Flink and runnable labs.',
   'math-for-ai': 'Mathematical intuition for modern AI: high-dimensional geometry, linear transformations, RoPE rotations, and optimization landscapes.',
   'aws-sap': 'AWS Certified Solutions Architect Professional (SAP-C03) complete blueprint: enterprise multi-account landing zones, zero-trust global networking, and resilient architectures.',
