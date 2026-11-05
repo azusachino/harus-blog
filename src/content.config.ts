@@ -86,6 +86,8 @@ const series = defineCollection({
     created: z.coerce.date(),
     modified: z.coerce.date().optional(),
     description: z.string().optional(),
+    // URL segment override; keeps a published URL when the file is renumbered.
+    slug: z.string().optional(),
     cover: z.string().optional(),
     cover_alt: z.string().optional(),
   }),

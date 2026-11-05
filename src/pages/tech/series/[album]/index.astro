@@ -45,7 +45,7 @@ const { album, disc, prevAlbum, nextAlbum } = Astro.props;
           <span class="track-num mono">{String(i + 1).padStart(2, '0')}</span>
           <div class="track-body">
             <div class="track-title-line">
-              <a class="track-title" href={seriesHref(c.id)}>
+              <a class="track-title" href={seriesHref(c)}>
                 {c.data.title.replace(/^.*?\d+\s*-\s*/, '')}
               </a>
               <span class="track-dur mono muted">{trackLength(c.body)}</span>

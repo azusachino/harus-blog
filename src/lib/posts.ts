@@ -174,6 +174,14 @@ export function albumHref(dir: string) {
   return `/tech/series/${dir}/`;
 }
 
-export function seriesHref(id: string) {
-  return `/tech/series/${id}/`;
+type SeriesChapter = { id: string; data: { slug?: string } };
+
+// URL segment of a chapter: frontmatter `slug` when set, else the filename.
+// The filename (NN.name) still sets the order, so a chapter can move without its URL changing.
+export function chapterSlug(c: SeriesChapter) {
+  return c.data.slug ?? c.id.split('/')[1];
+}
+
+export function seriesHref(c: SeriesChapter) {
+  return `/tech/series/${c.id.split('/')[0]}/${chapterSlug(c)}/`;
 }

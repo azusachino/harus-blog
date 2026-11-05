@@ -20,7 +20,7 @@ split into type-based sections — **no year-wise layout**. The site code is at 
 ## Content layout
 
 - **Tech** — `docs/tech/posts/` + `docs/tech/series/<name>/NN.<title>.md` (ordered tutorials; the
-  filename is the URL: `/tech/series/<name>/NN.<title>/`).
+  filename sets the order and, by default, the URL: `/tech/series/<name>/NN.<title>/`; an optional `slug` overrides the URL segment so a renumbered chapter keeps its published URL).
 - **Journal** — `docs/journal/posts/<YYYY>/…`: weekly reports, monthly refreshes, yearly reviews.
 - **Life** — `docs/life/posts/`: books, concerts, essays.
 - **About** — `src/pages/about.astro`, a component page; its wordings are the owner's (ask before
@@ -34,7 +34,7 @@ split into type-based sections — **no year-wise layout**. The site code is at 
 
 - Frontmatter contract, enforced by the build: `title`, `created`, optional `modified`,
   `description`, `categories`, optional `tags`, `slug`, `comments: true`, optional `cover` + `cover_alt`
-  — in that order. Series chapters need only `title` + `created` + `description` (optional `modified`, `cover`).
+  — in that order. Series chapters need only `title` + `created` + `description` (optional `modified`, `slug`, `cover`).
   Categories and tags are **lowercase** (`research`/`practice`, `weekly`/`refresh`/`review`, `life`). Optional `lang`
   (`en`/`zh-CN`/`ja`) overrides the detected article language.
 - `created`/`slug` drive ordering and URLs (`/<section>/<slug>/`); future-dated posts are drafts.
