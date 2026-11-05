@@ -1,6 +1,7 @@
 ---
-// Series as curated domain shelves: each tutorial set with its chapters in
-// order, styled like a CD/vinyl record shelf with filter chips and runtimes.
+// Series as curated domain shelves: in "All" view, each shelf displays its top
+// 3 albums as full cards and any 4th..Nth albums as a compact "vinyl spine"
+// strip; selecting a category chip expands all albums in that shelf to full cards.
 import Base from '../../../layouts/Base.astro';
 import Waveform from '../../../components/Waveform.astro';
 import { albumHref, seriesAlbums, seriesHref, seriesShelves, trackLength } from '../../../lib/posts';
@@ -8,6 +9,7 @@ import { albumHref, seriesAlbums, seriesHref, seriesShelves, trackLength } from 
 const albums = await seriesAlbums();
 const shelves = await seriesShelves();
 const tracks = albums.reduce((n, a) => n + a.chapters.length, 0);
+const FEATURED_PER_SHELF = 3;
 ---
 <Base title="Series" description="Ordered tutorial series, organized into curated domain shelves.">
   <p class="eyebrow">{albums.length} albums · {tracks} tracks · {shelves.length} shelves</p>
@@ -26,9 +28,10 @@ const tracks = albums.reduce((n, a) => n + a.chapters.length, 0);
     ))}
   </nav>
 
-  <div class="shelves" id="all-shelves">
+  <div class="shelves" id="all-shelves" data-view-mode="all">
     {shelves.map((shelf) => {
       const shelfTracks = shelf.albums.reduce((n, a) => n + a.chapters.length, 0);
+      const overflowAlbums = shelf.albums.slice(FEATURED_PER_SHELF);
       return (
         <section class="shelf" id={`shelf-${shelf.id}`} data-shelf-section={shelf.id} aria-labelledby={`heading-${shelf.id}`}>
           <header class="shelf-head">
@@ -40,8 +43,11 @@ const tracks = albums.reduce((n, a) => n + a.chapters.length, 0);
           </header>
 
           <div class="grid">
-            {shelf.albums.map((album) => (
-              <article class="card album" aria-labelledby={album.dir}>
+            {shelf.albums.map((album, idx) => (
+              <article
+                class:list={['card', 'album', { 'overflow-card': idx >= FEATURED_PER_SHELF }]}
+                aria-labelledby={album.dir}
+              >
                 <header class="album-head">
                   <p class="eyebrow">
                     <span>DISC {String(album.disc).padStart(2, '0')}</span>
@@ -72,6 +78,29 @@ const tracks = albums.reduce((n, a) => n + a.chapters.length, 0);
               </article>
             ))}
           </div>
+
+          {overflowAlbums.length > 0 && (
+            <div class="spine-rack" data-spine-rack>
+              <div class="spine-head">
+                <span class="eyebrow">More on this shelf · {overflowAlbums.length}</span>
+                <button type="button" class="spine-expand mono" data-shelf-expand={shelf.id}>
+                  Expand all {shelf.albums.length} cards →
+                </button>
+              </div>
+              <ol class="spine-list">
+                {overflowAlbums.map((album) => (
+                  <li>
+                    <a class="spine-row" href={albumHref(album.dir)}>
+                      <span class="spine-disc mono">DISC {String(album.disc).padStart(2, '0')}</span>
+                      <span class="spine-name">{album.name}</span>
+                      {album.description && <span class="spine-desc muted">{album.description}</span>}
+                      <span class="spine-meta mono muted">{album.chapters.length} tracks · ∑ ♪ {album.totalLength} →</span>
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
         </section>
       );
     })}
@@ -80,11 +109,14 @@ const tracks = albums.reduce((n, a) => n + a.chapters.length, 0);
   <script is:inline data-astro-rerun>
     (() => {
       const nav = document.querySelector('[data-shelf-nav]');
-      if (!nav) return;
+      const container = document.getElementById('all-shelves');
+      if (!nav || !container) return;
       const chips = Array.from(nav.querySelectorAll('[data-shelf-filter]'));
       const sections = Array.from(document.querySelectorAll('[data-shelf-section]'));
+      const expandBtns = Array.from(document.querySelectorAll('[data-shelf-expand]'));
 
       const applyFilter = (target) => {
+        container.setAttribute('data-view-mode', target === 'all' ? 'all' : 'filtered');
         for (const chip of chips) {
           const active = chip.getAttribute('data-shelf-filter') === target;
           chip.classList.toggle('active', active);
@@ -101,6 +133,13 @@ const tracks = albums.reduce((n, a) => n + a.chapters.length, 0);
         chip.addEventListener('click', (e) => {
           const target = chip.getAttribute('data-shelf-filter') || 'all';
           e.preventDefault();
+          applyFilter(target);
+        });
+      }
+
+      for (const btn of expandBtns) {
+        btn.addEventListener('click', () => {
+          const target = btn.getAttribute('data-shelf-expand') || 'all';
           applyFilter(target);
         });
       }
@@ -152,6 +191,16 @@ const tracks = albums.reduce((n, a) => n + a.chapters.length, 0);
     display: grid;
     gap: 2.5rem;
     margin-top: 1.25rem;
+  }
+
+  /* In "All" overview, cap full cards at 3 (1 row) and show 4th..Nth in the compact spine rack.
+     In single-shelf filtered mode, show all full cards and hide the compact spine rack. */
+  .shelves[data-view-mode="all"] .overflow-card {
+    display: none;
+  }
+
+  .shelves[data-view-mode="filtered"] .spine-rack {
+    display: none;
   }
 
   .shelf[hidden] {
@@ -311,5 +360,103 @@ const tracks = albums.reduce((n, a) => n + a.chapters.length, 0);
   .album-link:hover {
     color: var(--accent);
     text-decoration: underline;
+  }
+
+  /* Compact Vinyl Spine Rack for albums 4..N in "All" view */
+  .spine-rack {
+    margin-top: 0.85rem;
+    padding: 0.65rem 0.9rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--glow);
+    border-radius: var(--radius);
+  }
+
+  .spine-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    padding-bottom: 0.45rem;
+    margin-bottom: 0.45rem;
+    border-bottom: 1px dashed var(--line);
+  }
+
+  .spine-expand {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 0.78rem;
+    color: var(--primary);
+    cursor: pointer;
+  }
+
+  .spine-expand:hover {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+
+  .spine-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .spine-row {
+    display: grid;
+    grid-template-columns: auto minmax(9rem, auto) 1fr auto;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.3rem 0.4rem;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: background-color 0.15s ease;
+  }
+
+  .spine-row:hover {
+    background: color-mix(in srgb, var(--glow) 10%, var(--surface));
+  }
+
+  .spine-disc {
+    font-size: 0.75rem;
+    color: var(--primary);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .spine-name {
+    font-size: 0.92rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .spine-row:hover .spine-name {
+    color: var(--primary);
+  }
+
+  .spine-desc {
+    font-size: 0.82rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+  }
+
+  .spine-meta {
+    font-size: 0.76rem;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 48rem) {
+    .spine-row {
+      grid-template-columns: auto 1fr auto;
+    }
+
+    .spine-desc {
+      display: none;
+    }
   }
 </style>
