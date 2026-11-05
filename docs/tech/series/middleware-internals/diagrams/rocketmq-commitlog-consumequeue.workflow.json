@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "RocketMQ CommitLog Append & Asynchronous ConsumeQueue Dispatch",
+    "quality_profile": "standard",
+    "output": "rocketmq-commitlog-consumequeue.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "write_lane",
+      "label": "Producer Write Path (mmap CommitLog MappedFile 1GB)"
+    },
+    {
+      "id": "dispatch_lane",
+      "label": "ReputMessageService (Async Dispatcher & Reput Offset)"
+    },
+    {
+      "id": "consume_lane",
+      "label": "Lightweight ConsumeQueue (20B Fixed Entries: Offset + Size + TagHash)"
+    }
+  ],
+  "mainPath": [
+    "commitlog_append",
+    "mmap_flush",
+    "reput_dispatcher",
+    "consumequeue_entry",
+    "consumer_read"
+  ],
+  "nodes": [
+    {
+      "id": "commitlog_append",
+      "lane": "write_lane",
+      "col": 0,
+      "label": "CommitLog Append",
+      "sublabel": "Sequential write to 1GB mapped file",
+      "type": "frontend"
+    },
+    {
+      "id": "mmap_flush",
+      "lane": "write_lane",
+      "col": 1,
+      "label": "MappedByteBuffer Flush",
+      "sublabel": "Sync or async FlushRealtimeService",
+      "type": "database"
+    },
+    {
+      "id": "reput_dispatcher",
+      "lane": "dispatch_lane",
+      "col": 2,
+      "label": "ReputMessageService",
+      "sublabel": "Reads CommitLog tail in background",
+      "type": "backend"
+    },
+    {
+      "id": "consumequeue_entry",
+      "lane": "consume_lane",
+      "col": 3,
+      "label": "ConsumeQueue 20B Index",
+      "sublabel": "offset:8B, size:4B, tagHash:8B",
+      "type": "security"
+    },
+    {
+      "id": "consumer_read",
+      "lane": "consume_lane",
+      "col": 4,
+      "label": "Consumer Pull / Push",
+      "sublabel": "Reads 20B index -> fetches CommitLog",
+      "type": "frontend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "commitlog_append",
+      "to": "mmap_flush",
+      "label": "1. Append Message"
+    },
+    {
+      "id": "e2",
+      "from": "mmap_flush",
+      "to": "reput_dispatcher",
+      "label": "2. Background Reput"
+    },
+    {
+      "id": "e3",
+      "from": "reput_dispatcher",
+      "to": "consumequeue_entry",
+      "label": "3. Dispatch Index"
+    },
+    {
+      "id": "e4",
+      "from": "consumequeue_entry",
+      "to": "consumer_read",
+      "label": "4. Index Pointer Fetch"
+    }
+  ]
+}
