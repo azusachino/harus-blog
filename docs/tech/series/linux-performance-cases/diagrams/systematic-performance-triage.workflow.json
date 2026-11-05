@@ -1,0 +1,113 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Systematic Performance Troubleshooting Decision Tree",
+    "quality_profile": "standard",
+    "output": "systematic-performance-triage.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "symptom_lane",
+      "label": "High Latency & Saturation Symptom"
+    },
+    {
+      "id": "drill_lane",
+      "label": "Kernel Subsystem Drilldown"
+    },
+    {
+      "id": "mitigation_lane",
+      "label": "Root Cause Isolation & Remediation"
+    }
+  ],
+  "mainPath": [
+    "symptom_trigger",
+    "cpu_subsystem",
+    "disk_io_subsystem",
+    "memory_subsystem",
+    "network_subsystem",
+    "remediation"
+  ],
+  "nodes": [
+    {
+      "id": "symptom_trigger",
+      "lane": "symptom_lane",
+      "col": 0,
+      "label": "Latency Spike Alert",
+      "sublabel": "SLA breach / p99 request latency degradation",
+      "type": "frontend"
+    },
+    {
+      "id": "cpu_subsystem",
+      "lane": "drill_lane",
+      "col": 1,
+      "label": "CPU Bottlenecks",
+      "sublabel": "runqlat > 1ms, %sys > 30%, softirqs",
+      "type": "backend"
+    },
+    {
+      "id": "disk_io_subsystem",
+      "lane": "drill_lane",
+      "col": 2,
+      "label": "Storage I/O Bottlenecks",
+      "sublabel": "await > 10ms, %util == 100%, flush stalls",
+      "type": "backend"
+    },
+    {
+      "id": "memory_subsystem",
+      "lane": "drill_lane",
+      "col": 3,
+      "label": "Memory & Swap Stalls",
+      "sublabel": "si/so > 0, direct reclaim, kswapd thrashing",
+      "type": "backend"
+    },
+    {
+      "id": "network_subsystem",
+      "lane": "drill_lane",
+      "col": 4,
+      "label": "Network & Drop Stalls",
+      "sublabel": "retrans/s > 0, drop counters, conntrack full",
+      "type": "backend"
+    },
+    {
+      "id": "remediation",
+      "lane": "mitigation_lane",
+      "col": 4,
+      "label": "Targeted Remediation",
+      "sublabel": "Kernel tuning, buffer sizing, lock refactoring",
+      "type": "security"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "symptom_trigger",
+      "to": "cpu_subsystem",
+      "label": "Check vmstat r / %usr"
+    },
+    {
+      "id": "e2",
+      "from": "cpu_subsystem",
+      "to": "disk_io_subsystem",
+      "label": "vmstat b high / iowait"
+    },
+    {
+      "id": "e3",
+      "from": "disk_io_subsystem",
+      "to": "memory_subsystem",
+      "label": "Page cache pressure"
+    },
+    {
+      "id": "e4",
+      "from": "memory_subsystem",
+      "to": "network_subsystem",
+      "label": "Socket buffer exhaustion"
+    },
+    {
+      "id": "e5",
+      "from": "network_subsystem",
+      "to": "remediation",
+      "label": "Apply verified fix"
+    }
+  ]
+}

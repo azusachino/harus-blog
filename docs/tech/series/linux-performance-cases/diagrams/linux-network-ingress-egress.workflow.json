@@ -1,0 +1,128 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Linux Kernel Network Ingress and Softirq Pipeline",
+    "quality_profile": "standard",
+    "output": "linux-network-ingress-egress.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "nic_lane",
+      "label": "Hardware NIC & Ring Buffer"
+    },
+    {
+      "id": "napi_lane",
+      "label": "NAPI & Softirq Processing"
+    },
+    {
+      "id": "socket_lane",
+      "label": "TCP/IP Stack & Socket Queue"
+    }
+  ],
+  "mainPath": [
+    "nic_rx",
+    "dma_ring",
+    "hard_irq",
+    "napi_poll",
+    "skb_alloc",
+    "tcp_stack",
+    "socket_queue"
+  ],
+  "nodes": [
+    {
+      "id": "nic_rx",
+      "lane": "nic_lane",
+      "col": 0,
+      "label": "Physical Wire / NIC",
+      "sublabel": "Ethernet packet arrival at physical PHY",
+      "type": "frontend"
+    },
+    {
+      "id": "dma_ring",
+      "lane": "nic_lane",
+      "col": 1,
+      "label": "DMA RX Ring Buffer",
+      "sublabel": "Driver descriptor ring (ethtool -g)",
+      "type": "database"
+    },
+    {
+      "id": "hard_irq",
+      "lane": "napi_lane",
+      "col": 1,
+      "label": "Hardware IRQ & Mask",
+      "sublabel": "CPU interrupt triggers napi_schedule()",
+      "type": "security"
+    },
+    {
+      "id": "napi_poll",
+      "lane": "napi_lane",
+      "col": 2,
+      "label": "NET_RX Softirq (ksoftirqd)",
+      "sublabel": "NAPI poll batches up to netdev_budget",
+      "type": "backend"
+    },
+    {
+      "id": "skb_alloc",
+      "lane": "napi_lane",
+      "col": 3,
+      "label": "sk_buff Allocation",
+      "sublabel": "GRO aggregation & netif_receive_skb",
+      "type": "backend"
+    },
+    {
+      "id": "tcp_stack",
+      "lane": "socket_lane",
+      "col": 4,
+      "label": "TCP/IP Protocol Engine",
+      "sublabel": "Checksum, conntrack, iptables & TCP ACK",
+      "type": "backend"
+    },
+    {
+      "id": "socket_queue",
+      "lane": "socket_lane",
+      "col": 5,
+      "label": "Socket Receive Queue",
+      "sublabel": "sk_rcvbuf buffer -> epoll wake_up()",
+      "type": "database"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "nic_rx",
+      "to": "dma_ring",
+      "label": "DMA packet bytes"
+    },
+    {
+      "id": "e2",
+      "from": "dma_ring",
+      "to": "hard_irq",
+      "label": "Trigger IRQ"
+    },
+    {
+      "id": "e3",
+      "from": "hard_irq",
+      "to": "napi_poll",
+      "label": "Schedule NET_RX"
+    },
+    {
+      "id": "e4",
+      "from": "napi_poll",
+      "to": "skb_alloc",
+      "label": "Batch harvest"
+    },
+    {
+      "id": "e5",
+      "from": "skb_alloc",
+      "to": "tcp_stack",
+      "label": "Forward packet"
+    },
+    {
+      "id": "e6",
+      "from": "tcp_stack",
+      "to": "socket_queue",
+      "label": "Queue to user fd"
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Brendan Gregg's USE Method and Performance Triage Workflow",
+    "quality_profile": "standard",
+    "output": "brendan-gregg-use-method.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "triage_lane",
+      "label": "Initial 60-Second Triage"
+    },
+    {
+      "id": "use_lane",
+      "label": "USE Method Resource Inspection"
+    },
+    {
+      "id": "trace_lane",
+      "label": "Deep Dynamic Tracing & Flame Graphs"
+    }
+  ],
+  "mainPath": [
+    "initial_triage",
+    "check_utilization",
+    "check_saturation",
+    "check_errors"
+  ],
+  "nodes": [
+    {
+      "id": "initial_triage",
+      "lane": "triage_lane",
+      "col": 0,
+      "label": "60s Triage (First 10)",
+      "sublabel": "uptime, vmstat, mpstat, pidstat, iostat, free",
+      "type": "frontend"
+    },
+    {
+      "id": "check_utilization",
+      "lane": "use_lane",
+      "col": 1,
+      "label": "1. Utilization",
+      "sublabel": "% busy time servicing work (%usr, %sys, %util)",
+      "type": "backend"
+    },
+    {
+      "id": "check_saturation",
+      "lane": "use_lane",
+      "col": 2,
+      "label": "2. Saturation",
+      "sublabel": "Queued work waiting (runqlat, await, swap)",
+      "type": "security"
+    },
+    {
+      "id": "check_errors",
+      "lane": "use_lane",
+      "col": 3,
+      "label": "3. Errors",
+      "sublabel": "Error count (packet drops, retrans, disk errs)",
+      "type": "security"
+    },
+    {
+      "id": "on_cpu_flame",
+      "lane": "trace_lane",
+      "col": 2,
+      "label": "On-CPU Flame Graph",
+      "sublabel": "perf record -F 99 -g -> stack samples",
+      "type": "database"
+    },
+    {
+      "id": "off_cpu_flame",
+      "lane": "trace_lane",
+      "col": 3,
+      "label": "Off-CPU BPF Profiling",
+      "sublabel": "bpftrace / offcputime -> lock & I/O wait",
+      "type": "database"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "initial_triage",
+      "to": "check_utilization",
+      "label": "High latency signal"
+    },
+    {
+      "id": "e2",
+      "from": "check_utilization",
+      "to": "check_saturation",
+      "label": "Verify queueing"
+    },
+    {
+      "id": "e3",
+      "from": "check_saturation",
+      "to": "check_errors",
+      "label": "Audit subsystem errors"
+    },
+    {
+      "id": "e4",
+      "from": "check_errors",
+      "to": "on_cpu_flame",
+      "label": "CPU busy (>80%)"
+    },
+    {
+      "id": "e5",
+      "from": "check_errors",
+      "to": "off_cpu_flame",
+      "label": "CPU idle / high wait"
+    }
+  ]
+}

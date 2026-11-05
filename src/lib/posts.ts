@@ -53,6 +53,7 @@ export function textLang(body: string) {
 }
 
 export const SERIES_DESCRIPTIONS: Record<string, string> = {
+  'linux-performance-cases': 'Hands-on Linux performance analysis and diagnostic cases: load average & involuntary context switches, memory watermarks & OOM badness heuristics, Page Cache writeback & block queue await latency, NIC ring buffers & conntrack saturation, and cascading failure correlation.',
   'bytecode-vms': 'Bytecode virtual machine and interpreter engineering: lexing & Pratt AST parsing, stack vs register 3-address architectures, direct threaded computed gotos, activation records & lexical closures, shapes & polymorphic inline caching, and generational cyclic garbage collection.',
   'market-automation': 'High-reliability market automation and trading systems: limit order books & FIFO matching engines, fixed-point financial precision, real-time WebSocket market data & sequence gap reconciliation, perpetual funding rates & liquidation waterfalls, and fail-closed pre-trade risk controls.',
   'nix-declarative-fleet': 'Declarative fleet engineering across macOS and Linux: pure Nix store derivations (.drv), Flake input locks, Home Manager symlink forests, SOPS-nix Age encryption, zero-trust Tailscale WireGuard mesh, and homelab k3s orchestration.',
@@ -88,7 +89,7 @@ export const SERIES_SHELVES: SeriesShelfDef[] = [
     id: 'systems',
     title: 'Systems & Networking',
     subtitle: 'Linux kernel internals, eBPF observability, high-performance I/O, and network protocols',
-    dirs: ['linux-systems', 'netty', 'rust-aeron', 'market-automation', 'network'],
+    dirs: ['linux-systems', 'linux-performance-cases', 'netty', 'rust-aeron', 'market-automation', 'network'],
   },
   {
     id: 'ai',
