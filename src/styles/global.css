@@ -17,7 +17,7 @@
 
   --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", "Segoe UI", Roboto, "Helvetica Neue", "PingFang SC", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans SC", "Noto Sans JP", "Microsoft YaHei", sans-serif;
   --font-mono: "JetBrains Mono", "SF Mono", Menlo, Monaco, Consolas, monospace;
-  --measure: 56rem;
+  --measure: 46rem;
   --radius: 10px;
   color-scheme: light;
 }
@@ -125,7 +125,7 @@ body {
 
 main {
   flex: 1;
-  width: min(100% - 2.5rem, 78rem);
+  width: min(100% - 2.5rem, 68rem);
   margin: 0 auto;
   padding: 2.5rem 0 4rem;
 }
