@@ -54,6 +54,7 @@ export function textLang(body: string) {
 
 // Pinned order for tutorial series albums, latest series first (descending).
 export const PINNED_SERIES: string[] = [
+  'data-systems',
   'cpython-internals',
   'linux-systems',
   'ai-engineering',
@@ -69,6 +70,7 @@ export const PINNED_SERIES: string[] = [
 ];
 
 export const SERIES_DESCRIPTIONS: Record<string, string> = {
+  'data-systems': 'Designing data-intensive storage and distributed systems: B+ Trees vs LSM-Trees, ClickHouse columnar execution, replication quorums, consistent-hashing partitioning, MVCC & SSI transactions, and Raft consensus.',
   'cpython-internals': 'Inside the CPython virtual machine and C runtime: tracing builtins into C type slots, PyObject memory layout, reference ownership and cyclic GC, C extensions, adaptive bytecode specialization, and PEP 703 free-threading.',
   'linux-systems': 'Linux kernel internals and production performance debugging: system calls, VFS and Page Cache LRUs, kswapd memory reclaim, cgroups, softirq packet storms, eBPF tracing, and the USE Method.',
   'ai-engineering': 'End-to-end AI systems and coding-agent engineering: forward-pass roofline arithmetic, MLA KV caches, bounded ReAct loops, MCP tooling, Tree-sitter AST call graphs, sandboxing, and pass@k evaluation.',
