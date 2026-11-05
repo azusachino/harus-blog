@@ -1,0 +1,105 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Container Networking Datapaths: Legacy Bridge/iptables vs. Cilium eBPF Socket Bypass",
+    "quality_profile": "standard",
+    "output": "cni-veth-vs-cilium-ebpf.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "pod_lane",
+      "label": "Pod Network Namespace (Socket Layer)"
+    },
+    {
+      "id": "ebpf_lane",
+      "label": "Cilium eBPF Fast Path (sock_ops + tc)"
+    },
+    {
+      "id": "legacy_lane",
+      "label": "Legacy veth + cni0 Bridge + iptables"
+    }
+  ],
+  "mainPath": [
+    "app_socket",
+    "ebpf_sock_lb",
+    "ebpf_tc_redirect",
+    "nic_or_dest_pod"
+  ],
+  "nodes": [
+    {
+      "id": "app_socket",
+      "lane": "pod_lane",
+      "col": 0,
+      "label": "Pod TCP/UDP sendmsg()",
+      "sublabel": "Targets ClusterIP or remote Pod IP",
+      "type": "frontend"
+    },
+    {
+      "id": "ebpf_sock_lb",
+      "lane": "ebpf_lane",
+      "col": 1,
+      "label": "eBPF cgroup/connect4 & sk_msg",
+      "sublabel": "O(1) ClusterIP rewrite & SOCKHASH local bypass",
+      "type": "backend"
+    },
+    {
+      "id": "legacy_veth_bridge",
+      "lane": "legacy_lane",
+      "col": 2,
+      "label": "Legacy veth0 -> Host cni0",
+      "sublabel": "NET_RX_SOFTIRQ + O(N) iptables DNAT",
+      "type": "security"
+    },
+    {
+      "id": "ebpf_tc_redirect",
+      "lane": "ebpf_lane",
+      "col": 3,
+      "label": "tc eBPF bpf_redirect_peer()",
+      "sublabel": "Jumps directly into peer Pod netns or NIC",
+      "type": "backend"
+    },
+    {
+      "id": "nic_or_dest_pod",
+      "lane": "pod_lane",
+      "col": 4,
+      "label": "Target Pod Socket / NIC",
+      "sublabel": "O(1) BPF hash delivery + Hubble ringbuf",
+      "type": "database"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "app_socket",
+      "to": "ebpf_sock_lb",
+      "label": "1. Socket Hook"
+    },
+    {
+      "id": "e2",
+      "from": "ebpf_sock_lb",
+      "to": "ebpf_tc_redirect",
+      "label": "2. L3 Packet Path"
+    },
+    {
+      "id": "e3",
+      "from": "ebpf_tc_redirect",
+      "to": "nic_or_dest_pod",
+      "label": "3. Direct Redirect"
+    },
+    {
+      "id": "e4",
+      "from": "app_socket",
+      "to": "legacy_veth_bridge",
+      "label": "Legacy veth Path",
+      "variant": "dashed"
+    },
+    {
+      "id": "e5",
+      "from": "legacy_veth_bridge",
+      "to": "nic_or_dest_pod",
+      "label": "After iptables DNAT",
+      "variant": "dashed"
+    }
+  ]
+}

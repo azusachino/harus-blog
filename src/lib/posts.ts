@@ -53,6 +53,7 @@ export function textLang(body: string) {
 }
 
 export const SERIES_DESCRIPTIONS: Record<string, string> = {
+  'cncf-containers': 'Linux container internals and the CNCF runtime stack: namespaces, cgroups v2, PID 1 reaping, OCI image Merkle DAGs and OverlayFS, containerd shims, runc vs Rust youki, rootless Podman, Cilium eBPF dataplanes, Argo CD GitOps, and OpenTelemetry.',
   'rust-aeron': 'Rust ownership and low-latency Aeron messaging: stack/heap memory layout, fat-pointer vtables, Acquire/Release atomics, Agrona lock-free ring buffers, 3-term log buffers, Archive replay, and Raft-backed Aeron Cluster.',
   'data-systems': 'Designing data-intensive storage and distributed systems: B+ Trees vs LSM-Trees, ClickHouse columnar execution, replication quorums, consistent-hashing partitioning, MVCC & SSI transactions, and Raft consensus.',
   'cpython-internals': 'Inside the CPython virtual machine and C runtime: tracing builtins into C type slots, PyObject memory layout, reference ownership and cyclic GC, C extensions, adaptive bytecode specialization, and PEP 703 free-threading.',
@@ -98,8 +99,8 @@ export const SERIES_SHELVES: SeriesShelfDef[] = [
   {
     id: 'data-cloud',
     title: 'Data & Cloud Infrastructure',
-    subtitle: 'Storage engines, distributed stream processing, Kubernetes orchestration, and cloud architecture',
-    dirs: ['data-systems', 'flink', 'k8s', 'aws-sap'],
+    subtitle: 'Storage engines, CNCF container runtimes, Kubernetes orchestration, distributed streams, and cloud architecture',
+    dirs: ['data-systems', 'cncf-containers', 'k8s', 'flink', 'aws-sap'],
   },
 ];
 
