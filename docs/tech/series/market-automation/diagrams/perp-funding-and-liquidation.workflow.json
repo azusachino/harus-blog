@@ -41,7 +41,7 @@
       "lane": "funding_lane",
       "col": 1,
       "label": "Funding Rate Clamping",
-      "sublabel": "Premium Index clamped to +-0.75%",
+      "sublabel": "Funding rate capped at +-0.75%",
       "type": "backend"
     },
     {

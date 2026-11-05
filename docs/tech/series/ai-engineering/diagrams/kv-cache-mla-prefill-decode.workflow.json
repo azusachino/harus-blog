@@ -65,7 +65,7 @@
       "lane": "decode_lane",
       "col": 4,
       "label": "Autoregressive Logits",
-      "sublabel": "5-10x lower HBM traffic per decode step",
+      "sublabel": "~40x less KV traffic per decode step (H=96 example)",
       "type": "frontend"
     }
   ],
