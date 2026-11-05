@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Perpetual Funding Rate Settlement & Liquidation Waterfall",
+    "quality_profile": "standard",
+    "output": "perp-funding-and-liquidation.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "feed_lane",
+      "label": "Oracle & Mark Price Feed (Multi-Exchange Spot Median & Basis)"
+    },
+    {
+      "id": "funding_lane",
+      "label": "Periodic Funding Engine (8-Hour Premium Clamping & Transfer)"
+    },
+    {
+      "id": "margin_lane",
+      "label": "Risk & Liquidation Engine (Maintenance Margin & Waterfall)"
+    }
+  ],
+  "mainPath": [
+    "mark_calc",
+    "funding_clamp",
+    "peer_settlement",
+    "margin_check",
+    "liquidation_waterfall"
+  ],
+  "nodes": [
+    {
+      "id": "mark_calc",
+      "lane": "feed_lane",
+      "col": 0,
+      "label": "Mark Price Calculation",
+      "sublabel": "Spot Index + 30m Basis EMA",
+      "type": "cloud"
+    },
+    {
+      "id": "funding_clamp",
+      "lane": "funding_lane",
+      "col": 1,
+      "label": "Funding Rate Clamping",
+      "sublabel": "Premium Index clamped to +-0.75%",
+      "type": "backend"
+    },
+    {
+      "id": "peer_settlement",
+      "lane": "funding_lane",
+      "col": 2,
+      "label": "Peer-to-Peer Transfer",
+      "sublabel": "Longs pay shorts or vice-versa",
+      "type": "database"
+    },
+    {
+      "id": "margin_check",
+      "lane": "margin_lane",
+      "col": 3,
+      "label": "Margin Ratio Monitor",
+      "sublabel": "Equity / Maintenance Margin",
+      "type": "security"
+    },
+    {
+      "id": "liquidation_waterfall",
+      "lane": "margin_lane",
+      "col": 4,
+      "label": "Liquidation Waterfall",
+      "sublabel": "Cancel orders -> Liquidate -> ADL",
+      "type": "frontend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "mark_calc",
+      "to": "funding_clamp",
+      "label": "1. Feed basis spread"
+    },
+    {
+      "id": "e2",
+      "from": "funding_clamp",
+      "to": "peer_settlement",
+      "label": "2. Settle 8h interval"
+    },
+    {
+      "id": "e3",
+      "from": "peer_settlement",
+      "to": "margin_check",
+      "label": "3. Deduct/credit equity"
+    },
+    {
+      "id": "e4",
+      "from": "margin_check",
+      "to": "liquidation_waterfall",
+      "label": "4. Trigger if Margin <= MMR"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Synchronous Pre-Trade Risk Guard & Dead Man's Switch Pipeline",
+    "quality_profile": "standard",
+    "output": "pre-trade-risk-guard.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "ingress_lane",
+      "label": "Client Order Intake (Strategy Signal & Idempotent cloid)"
+    },
+    {
+      "id": "risk_lane",
+      "label": "In-Memory Pre-Trade Filter (Zero-Allocation Synchronous Checks)"
+    },
+    {
+      "id": "supervisory_lane",
+      "label": "Supervisory & Kill Switch (Heartbeat Monitor & Exchange Gateway)"
+    }
+  ],
+  "mainPath": [
+    "order_intake",
+    "collar_check",
+    "position_limit",
+    "rate_limiter",
+    "venue_dispatch"
+  ],
+  "nodes": [
+    {
+      "id": "order_intake",
+      "lane": "ingress_lane",
+      "col": 0,
+      "label": "Order Intent Intake",
+      "sublabel": "Unique cloid & notional check",
+      "type": "frontend"
+    },
+    {
+      "id": "collar_check",
+      "lane": "risk_lane",
+      "col": 1,
+      "label": "Price Collar Guard",
+      "sublabel": "Validate order within +-2% of BBO",
+      "type": "security"
+    },
+    {
+      "id": "position_limit",
+      "lane": "risk_lane",
+      "col": 2,
+      "label": "Position & Margin Cap",
+      "sublabel": "Prevent max exposure breach",
+      "type": "backend"
+    },
+    {
+      "id": "rate_limiter",
+      "lane": "risk_lane",
+      "col": 3,
+      "label": "Token Bucket Throttler",
+      "sublabel": "Stay within exchange IP limits",
+      "type": "messagebus"
+    },
+    {
+      "id": "venue_dispatch",
+      "lane": "supervisory_lane",
+      "col": 4,
+      "label": "Venue Dispatch & Heartbeat",
+      "sublabel": "Send order & reset dead-man timer",
+      "type": "external"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "order_intake",
+      "to": "collar_check",
+      "label": "1. Evaluate price"
+    },
+    {
+      "id": "e2",
+      "from": "collar_check",
+      "to": "position_limit",
+      "label": "2. Verify exposure"
+    },
+    {
+      "id": "e3",
+      "from": "position_limit",
+      "to": "rate_limiter",
+      "label": "3. Check rate quota"
+    },
+    {
+      "id": "e4",
+      "from": "rate_limiter",
+      "to": "venue_dispatch",
+      "label": "4. Wire transmit"
+    }
+  ]
+}
