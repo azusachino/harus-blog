@@ -31,6 +31,13 @@ test("code block carries a copy button that copies code to clipboard", async ({ 
 test("series catalog links to dedicated album pages with complete tracklists", async ({ page }) => {
   await page.goto("/tech/series/")
   await expect(page.getByRole("heading", { level: 1, name: "Series" })).toBeVisible()
+  await expect(page.locator("[data-shelf-section]")).toHaveCount(4)
+
+  // Verify shelf filter chips toggle shelf visibility
+  const aiChip = page.locator('[data-shelf-filter="ai"]')
+  await aiChip.click()
+  await expect(page.locator('[data-shelf-section="ai"]')).toBeVisible()
+  await expect(page.locator('[data-shelf-section="systems"]')).toBeHidden()
 
   // Click into the math-for-ai album
   const mathAlbumLink = page.locator('a[href="/tech/series/math-for-ai/"]').first()
