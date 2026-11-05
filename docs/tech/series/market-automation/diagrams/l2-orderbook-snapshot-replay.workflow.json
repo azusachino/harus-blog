@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Level-2 Order Book Snapshot Intake & Sequence Gap Replay",
+    "quality_profile": "standard",
+    "output": "l2-orderbook-snapshot-replay.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "ws_lane",
+      "label": "WebSocket Data Stream (Binance/OKX Live Event Stream)"
+    },
+    {
+      "id": "engine_lane",
+      "label": "Client Reconciler (Sequence Buffer & State Machine)"
+    },
+    {
+      "id": "book_lane",
+      "label": "Local Order Book (B-Tree Bids & Asks In-Memory State)"
+    }
+  ],
+  "mainPath": [
+    "ws_buffer",
+    "rest_snapshot",
+    "seq_validator",
+    "delta_replay",
+    "live_sync"
+  ],
+  "nodes": [
+    {
+      "id": "ws_buffer",
+      "lane": "ws_lane",
+      "col": 0,
+      "label": "Buffer WebSocket Deltas",
+      "sublabel": "Buffer diffs with [U, u, pu]",
+      "type": "messagebus"
+    },
+    {
+      "id": "rest_snapshot",
+      "lane": "engine_lane",
+      "col": 1,
+      "label": "Fetch REST Snapshot",
+      "sublabel": "GET /api/v3/depth -> lastUpdateId",
+      "type": "backend"
+    },
+    {
+      "id": "seq_validator",
+      "lane": "engine_lane",
+      "col": 2,
+      "label": "Validate Sequence Gap",
+      "sublabel": "Ensure U <= lastUpdateId+1 <= u",
+      "type": "security"
+    },
+    {
+      "id": "delta_replay",
+      "lane": "book_lane",
+      "col": 3,
+      "label": "Replay Buffered Diffs",
+      "sublabel": "Apply pending deltas to local book",
+      "type": "database"
+    },
+    {
+      "id": "live_sync",
+      "lane": "book_lane",
+      "col": 4,
+      "label": "Real-Time Book Sync",
+      "sublabel": "Direct O(1) B-Tree depth updates",
+      "type": "frontend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "ws_buffer",
+      "to": "rest_snapshot",
+      "label": "1. Start buffering diffs"
+    },
+    {
+      "id": "e2",
+      "from": "rest_snapshot",
+      "to": "seq_validator",
+      "label": "2. Align snapshot ID"
+    },
+    {
+      "id": "e3",
+      "from": "seq_validator",
+      "to": "delta_replay",
+      "label": "3. Replay buffered deltas"
+    },
+    {
+      "id": "e4",
+      "from": "delta_replay",
+      "to": "live_sync",
+      "label": "4. Transition to live"
+    }
+  ]
+}

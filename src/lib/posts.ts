@@ -53,6 +53,7 @@ export function textLang(body: string) {
 }
 
 export const SERIES_DESCRIPTIONS: Record<string, string> = {
+  'market-automation': 'High-reliability market automation and trading systems: limit order books & FIFO matching engines, fixed-point financial precision, real-time WebSocket market data & sequence gap reconciliation, perpetual funding rates & liquidation waterfalls, and fail-closed pre-trade risk controls.',
   'nix-declarative-fleet': 'Declarative fleet engineering across macOS and Linux: pure Nix store derivations (.drv), Flake input locks, Home Manager symlink forests, SOPS-nix Age encryption, zero-trust Tailscale WireGuard mesh, and homelab k3s orchestration.',
   'middleware-internals': 'High-throughput middleware internals and architecture: Redis compact memory encodings & cluster replication, Kafka sparse log indexes & zero-copy sendfile, RocketMQ unified CommitLog & 2PC transactional messages, etcd dual-index MVCC & watch streams, and Nginx master-worker event loops & slab allocators.',
   'jvm-concurrency': 'HotSpot JVM internals and concurrency: 64-bit object mark words, CompressedOops, C1/C2 JIT tiered compilation, escape analysis, G1 card tables & RSets, Generational ZGC colored pointers, JMM happens-before, AQS, and Loom virtual threads.',
@@ -86,7 +87,7 @@ export const SERIES_SHELVES: SeriesShelfDef[] = [
     id: 'systems',
     title: 'Systems & Networking',
     subtitle: 'Linux kernel internals, eBPF observability, high-performance I/O, and network protocols',
-    dirs: ['linux-systems', 'netty', 'rust-aeron', 'network'],
+    dirs: ['linux-systems', 'netty', 'rust-aeron', 'market-automation', 'network'],
   },
   {
     id: 'ai',
