@@ -1,0 +1,102 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Linux VFS Object Graph, Page Cache XArray & NVMe Block Writeback",
+    "quality_profile": "standard",
+    "output": "vfs-page-cache-writeback.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "fd_lane",
+      "label": "Per-Process Descriptor Table (files_struct)"
+    },
+    {
+      "id": "vfs_lane",
+      "label": "VFS Object Cache (dentry + inode)"
+    },
+    {
+      "id": "cache_lane",
+      "label": "Page Cache (address_space XArray of Folios)"
+    },
+    {
+      "id": "block_lane",
+      "label": "Filesystem Journal & NVMe blk-mq Layer"
+    }
+  ],
+  "mainPath": [
+    "fd_entry",
+    "struct_file",
+    "dentry_inode",
+    "page_cache_folio",
+    "nvme_flush"
+  ],
+  "nodes": [
+    {
+      "id": "fd_entry",
+      "lane": "fd_lane",
+      "col": 0,
+      "label": "Process fd[3]",
+      "sublabel": "task_struct->files->fdt",
+      "type": "frontend"
+    },
+    {
+      "id": "struct_file",
+      "lane": "fd_lane",
+      "col": 1,
+      "label": "struct file",
+      "sublabel": "Open description (f_pos, f_flags)",
+      "type": "backend"
+    },
+    {
+      "id": "dentry_inode",
+      "lane": "vfs_lane",
+      "col": 2,
+      "label": "dentry -> struct inode",
+      "sublabel": "RCU path walk + i_mapping pointer",
+      "type": "backend"
+    },
+    {
+      "id": "page_cache_folio",
+      "lane": "cache_lane",
+      "col": 3,
+      "label": "address_space XArray",
+      "sublabel": "Dirty 4 KB pages / multi-page folios",
+      "type": "database"
+    },
+    {
+      "id": "nvme_flush",
+      "lane": "block_lane",
+      "col": 4,
+      "label": "ext4/XFS + blk-mq NVMe",
+      "sublabel": "fsync() / pdflush submits bio + FUA",
+      "type": "database"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "fd_entry",
+      "to": "struct_file",
+      "label": "1. Resolve fd index"
+    },
+    {
+      "id": "e2",
+      "from": "struct_file",
+      "to": "dentry_inode",
+      "label": "2. f_path.dentry->d_inode"
+    },
+    {
+      "id": "e3",
+      "from": "dentry_inode",
+      "to": "page_cache_folio",
+      "label": "3. Copy buffered write & mark PG_dirty"
+    },
+    {
+      "id": "e4",
+      "from": "page_cache_folio",
+      "to": "nvme_flush",
+      "label": "4. Writeback dirty folios & journal commit"
+    }
+  ]
+}

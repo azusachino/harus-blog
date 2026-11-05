@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "InnoDB MVCC ReadView Snapshot Lookup & Two-Phase Redo/Binlog Commit",
+    "quality_profile": "standard",
+    "output": "innodb-mvcc-two-phase-commit.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "client",
+      "type": "frontend",
+      "label": "SQL Client",
+      "sublabel": "Transaction Session"
+    },
+    {
+      "id": "bufpool",
+      "type": "backend",
+      "label": "InnoDB Buffer Pool",
+      "sublabel": "16 KB B+ Tree Pages & ReadView"
+    },
+    {
+      "id": "undolog",
+      "type": "database",
+      "label": "Undo & Redo Logs",
+      "sublabel": "roll_ptr Version Chain & WAL"
+    },
+    {
+      "id": "binlog",
+      "type": "database",
+      "label": "MySQL Server Binlog",
+      "sublabel": "Logical Replication Log"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 265,
+      "label": "Phase 1: Consistent Snapshot Read via ReadView & Undo Chain"
+    },
+    {
+      "from": 295,
+      "to": 485,
+      "label": "Phase 2: Update & Internal XA Two-Phase Commit (Redo + Binlog)"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "client",
+      "to": "bufpool",
+      "y": 175,
+      "label": "1. SELECT balance WHERE id=1 (checks ReadView [up_limit_id, low_limit_id])",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "bufpool",
+      "to": "undolog",
+      "y": 215,
+      "label": "2. Latest DB_TRX_ID is uncommitted -> traverse DB_ROLL_PTR to visible version",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "bufpool",
+      "to": "client",
+      "y": 250,
+      "label": "3. Return consistent snapshot row without locking",
+      "variant": "return"
+    },
+    {
+      "id": "m4",
+      "from": "client",
+      "to": "bufpool",
+      "y": 310,
+      "label": "4. UPDATE + COMMIT (Current Read acquires Next-Key/Record Lock)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m5",
+      "from": "bufpool",
+      "to": "undolog",
+      "y": 355,
+      "label": "5. Write Undo record & flush Redo Log in PREPARE state (fsync)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m6",
+      "from": "bufpool",
+      "to": "binlog",
+      "y": 400,
+      "label": "6. Append ROW event + XID to MySQL Binlog (sync_binlog=1 fsync)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m7",
+      "from": "binlog",
+      "to": "undolog",
+      "y": 445,
+      "label": "7. Mark Redo Log record COMMIT (crash-safe once Binlog XID is durable)",
+      "variant": "return"
+    }
+  ]
+}

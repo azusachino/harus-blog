@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "LLM Prefill vs Decode Roofline & Multi-Head Latent Attention (MLA) KV Compression",
+    "quality_profile": "standard",
+    "output": "kv-cache-mla-prefill-decode.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "prefill_lane",
+      "label": "Compute-Bound Prefill Phase (Parallel Prompt Matrix-Matrix)"
+    },
+    {
+      "id": "cache_lane",
+      "label": "Latent KV Cache Storage (HBM Bandwidth Reduction)"
+    },
+    {
+      "id": "decode_lane",
+      "label": "Memory-Bandwidth-Bound Decode Phase (Autoregressive Step)"
+    }
+  ],
+  "mainPath": [
+    "prompt_tokens",
+    "down_proj_latent",
+    "compressed_kv_hbm",
+    "up_proj_absorb",
+    "next_token"
+  ],
+  "nodes": [
+    {
+      "id": "prompt_tokens",
+      "lane": "prefill_lane",
+      "col": 0,
+      "label": "Prompt Hidden States",
+      "sublabel": "h_t in [B, T, d_model]",
+      "type": "frontend"
+    },
+    {
+      "id": "down_proj_latent",
+      "lane": "prefill_lane",
+      "col": 1,
+      "label": "Low-Rank Down-Projection",
+      "sublabel": "c_t^KV = W_DKV * h_t (d_c << n_h * d_k)",
+      "type": "backend"
+    },
+    {
+      "id": "compressed_kv_hbm",
+      "lane": "cache_lane",
+      "col": 2,
+      "label": "Compressed Latent KV Cache",
+      "sublabel": "Stores only [c_t^KV, k_t^R] in GPU HBM",
+      "type": "database"
+    },
+    {
+      "id": "up_proj_absorb",
+      "lane": "decode_lane",
+      "col": 3,
+      "label": "Matrix-Absorbed Attention",
+      "sublabel": "Fold W_UK into W_UQ to avoid expanding K/V",
+      "type": "backend"
+    },
+    {
+      "id": "next_token",
+      "lane": "decode_lane",
+      "col": 4,
+      "label": "Autoregressive Logits",
+      "sublabel": "5-10x lower HBM traffic per decode step",
+      "type": "frontend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "prompt_tokens",
+      "to": "down_proj_latent",
+      "label": "1. Compress KV heads into latent vector"
+    },
+    {
+      "id": "e2",
+      "from": "down_proj_latent",
+      "to": "compressed_kv_hbm",
+      "label": "2. Cache compact latent state in HBM"
+    },
+    {
+      "id": "e3",
+      "from": "compressed_kv_hbm",
+      "to": "up_proj_absorb",
+      "label": "3. Stream compact latents on decode"
+    },
+    {
+      "id": "e4",
+      "from": "up_proj_absorb",
+      "to": "next_token",
+      "label": "4. Emit next token & append latent"
+    }
+  ]
+}

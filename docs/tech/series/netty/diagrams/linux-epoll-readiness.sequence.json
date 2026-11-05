@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Linux epoll Internals: RB-Tree Registration & O(1) Ready-List Callback",
+    "quality_profile": "standard",
+    "output": "linux-epoll-readiness.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "reactor",
+      "type": "frontend",
+      "label": "Netty NioEventLoop",
+      "sublabel": "Selector / epoll_wait thread"
+    },
+    {
+      "id": "ep_rbr",
+      "type": "database",
+      "label": "eventpoll RB-Tree (rbr)",
+      "sublabel": "O(log N) epitem registration"
+    },
+    {
+      "id": "ep_rdllist",
+      "type": "backend",
+      "label": "Ready List (ep->rdllist)",
+      "sublabel": "O(1) doubly-linked active fds"
+    },
+    {
+      "id": "sock_wq",
+      "type": "external",
+      "label": "TCP Socket & SoftIRQ",
+      "sublabel": "sk_wq -> ep_poll_callback"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 250,
+      "label": "Phase 1: One-Time Socket Registration via epoll_ctl(EPOLL_CTL_ADD)"
+    },
+    {
+      "from": 280,
+      "to": 445,
+      "label": "Phase 2: Interrupt-Driven O(1) Readiness Notification & Drain"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "reactor",
+      "to": "ep_rbr",
+      "y": 175,
+      "label": "1. epoll_ctl(epfd, EPOLL_CTL_ADD, sockfd, EPOLLIN)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "ep_rbr",
+      "to": "sock_wq",
+      "y": 220,
+      "label": "2. Insert epitem into RB-tree & attach ep_poll_callback to socket waitqueue",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "sock_wq",
+      "to": "ep_rdllist",
+      "y": 300,
+      "label": "3. Packet arrives -> tcp_v4_rcv invokes ep_poll_callback -> O(1) push to rdllist",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m4",
+      "from": "reactor",
+      "to": "ep_rdllist",
+      "y": 355,
+      "label": "4. epoll_wait(epfd, events, maxevents, timeout)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m5",
+      "from": "ep_rdllist",
+      "to": "reactor",
+      "y": 415,
+      "label": "5. Splice ready epitems to userspace array in O(k) active sockets (no O(N) scan!)",
+      "variant": "return"
+    }
+  ]
+}

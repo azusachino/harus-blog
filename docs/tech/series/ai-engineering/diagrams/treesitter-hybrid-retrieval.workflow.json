@@ -1,0 +1,122 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Tree-Sitter AST Code Indexing, Call-Graph SQLite Store & Hybrid RRF Retrieval",
+    "quality_profile": "standard",
+    "output": "treesitter-hybrid-retrieval.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "parse_lane",
+      "label": "Incremental AST Parsing (Tree-Sitter Grammars)"
+    },
+    {
+      "id": "index_lane",
+      "label": "Relational Symbol & Call-Graph Store (SQLite)"
+    },
+    {
+      "id": "lexical_lane",
+      "label": "Lexical BM25 & AST-Chunk Vector Store"
+    },
+    {
+      "id": "fusion_lane",
+      "label": "Reciprocal Rank Fusion (RRF) & Graph Expansion"
+    }
+  ],
+  "mainPath": [
+    "source_files",
+    "treesitter_ast",
+    "sqlite_callgraph",
+    "rrf_merger",
+    "ranked_context"
+  ],
+  "nodes": [
+    {
+      "id": "source_files",
+      "lane": "parse_lane",
+      "col": 0,
+      "label": "Repository Source Tree",
+      "sublabel": "Rust / Go / TS / Python / C++",
+      "type": "frontend"
+    },
+    {
+      "id": "treesitter_ast",
+      "lane": "parse_lane",
+      "col": 1,
+      "label": "Tree-Sitter S-Expressions",
+      "sublabel": "Extract symbol defs, spans & call sites",
+      "type": "backend"
+    },
+    {
+      "id": "sqlite_callgraph",
+      "lane": "index_lane",
+      "col": 2,
+      "label": "SQLite Symbol & Call Graph",
+      "sublabel": "symbols(id, fqn, span) + refs(caller, callee)",
+      "type": "database"
+    },
+    {
+      "id": "bm25_dense",
+      "lane": "lexical_lane",
+      "col": 2,
+      "label": "BM25 + AST Chunk Vectors",
+      "sublabel": "Exact identifier match + semantic embeddings",
+      "type": "database"
+    },
+    {
+      "id": "rrf_merger",
+      "lane": "fusion_lane",
+      "col": 3,
+      "label": "RRF Score Fusion",
+      "sublabel": "sum 1 / (k + rank_i) across retrievers",
+      "type": "backend"
+    },
+    {
+      "id": "ranked_context",
+      "lane": "fusion_lane",
+      "col": 4,
+      "label": "1-Hop Call-Graph Context",
+      "sublabel": "Target symbol + callers/callees/types",
+      "type": "frontend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "source_files",
+      "to": "treesitter_ast",
+      "label": "1. Parse syntax tree"
+    },
+    {
+      "id": "e2",
+      "from": "treesitter_ast",
+      "to": "sqlite_callgraph",
+      "label": "2a. Index definitions & call edges"
+    },
+    {
+      "id": "e3",
+      "from": "treesitter_ast",
+      "to": "bm25_dense",
+      "label": "2b. Chunk along AST boundaries"
+    },
+    {
+      "id": "e4",
+      "from": "sqlite_callgraph",
+      "to": "rrf_merger",
+      "label": "3a. Structural symbol hits"
+    },
+    {
+      "id": "e5",
+      "from": "bm25_dense",
+      "to": "rrf_merger",
+      "label": "3b. Lexical + vector ranks"
+    },
+    {
+      "id": "e6",
+      "from": "rrf_merger",
+      "to": "ranked_context",
+      "label": "4. Expand 1-hop callers & signatures"
+    }
+  ]
+}

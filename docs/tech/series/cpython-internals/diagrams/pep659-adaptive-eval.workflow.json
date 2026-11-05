@@ -1,0 +1,104 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "PEP 659 Adaptive Specializing Interpreter & Inline Cache Lifecycle",
+    "quality_profile": "standard",
+    "output": "pep659-adaptive-eval.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "compile_lane",
+      "label": "Bytecode Compilation & Inline Cache Allocation"
+    },
+    {
+      "id": "specialize_lane",
+      "label": "Runtime Type Profiling & Specialization"
+    },
+    {
+      "id": "guard_lane",
+      "label": "Fast-Path Execution & Guard Deoptimization"
+    }
+  ],
+  "mainPath": [
+    "generic_opcode",
+    "warmup_counter",
+    "specialize_op",
+    "fast_specialized",
+    "deopt_fallback"
+  ],
+  "nodes": [
+    {
+      "id": "generic_opcode",
+      "lane": "compile_lane",
+      "col": 0,
+      "label": "Adaptive Opcode",
+      "sublabel": "LOAD_ATTR / BINARY_OP + CACHE slots",
+      "type": "frontend"
+    },
+    {
+      "id": "warmup_counter",
+      "lane": "specialize_lane",
+      "col": 1,
+      "label": "Warmup Backoff Counter",
+      "sublabel": "Decrements on hot loop iterations",
+      "type": "backend"
+    },
+    {
+      "id": "specialize_op",
+      "lane": "specialize_lane",
+      "col": 2,
+      "label": "_Py_Specialize_*",
+      "sublabel": "Inspect operand PyTypeObject & dk_version",
+      "type": "backend"
+    },
+    {
+      "id": "fast_specialized",
+      "lane": "guard_lane",
+      "col": 3,
+      "label": "Specialized Fast Opcode",
+      "sublabel": "LOAD_ATTR_INSTANCE_VALUE / BINARY_OP_ADD_INT",
+      "type": "database"
+    },
+    {
+      "id": "deopt_fallback",
+      "lane": "guard_lane",
+      "col": 4,
+      "label": "DEOPT_IF Guard Miss",
+      "sublabel": "Type change reverts to adaptive opcode",
+      "type": "security"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "generic_opcode",
+      "to": "warmup_counter",
+      "label": "1. Enter _PyEval_EvalFrameDefault"
+    },
+    {
+      "id": "e2",
+      "from": "warmup_counter",
+      "to": "specialize_op",
+      "label": "2. Counter reaches 0"
+    },
+    {
+      "id": "e3",
+      "from": "specialize_op",
+      "to": "fast_specialized",
+      "label": "3. Patch _Py_CODEUNIT in place"
+    },
+    {
+      "id": "e4",
+      "from": "fast_specialized",
+      "to": "deopt_fallback",
+      "label": "4. Guard fails on polymorphic type"
+    },
+    {
+      "id": "e5",
+      "from": "deopt_fallback",
+      "to": "warmup_counter",
+      "label": "5. Backoff & re-profile"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Bounded ReAct Agent Loop, Context Compaction & Sandboxed MCP Tool Execution",
+    "quality_profile": "standard",
+    "output": "bounded-react-agent-loop.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "user",
+      "type": "frontend",
+      "label": "User / Task Goal",
+      "sublabel": "Prompt & Acceptance Criteria"
+    },
+    {
+      "id": "harness",
+      "type": "backend",
+      "label": "Agent Orchestrator",
+      "sublabel": "Turn Budget, Loop & Context Guard"
+    },
+    {
+      "id": "llm",
+      "type": "database",
+      "label": "Reasoning Model",
+      "sublabel": "Structured Tool Call Generation"
+    },
+    {
+      "id": "sandbox",
+      "type": "security",
+      "label": "MCP / Sandbox Executor",
+      "sublabel": "bwrap / Landlock + JSON-RPC"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 260,
+      "label": "1. Reasoning Step & Policy-Checked Tool Dispatch"
+    },
+    {
+      "from": 290,
+      "to": 455,
+      "label": "2. Observation Truncation, Context Compaction & Verified Stop"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "user",
+      "to": "harness",
+      "y": 175,
+      "label": "1. Submit coding task (initialize max_steps, cost_budget, state)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "harness",
+      "to": "llm",
+      "y": 210,
+      "label": "2. Send messages + active MCP tool schemas",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "llm",
+      "to": "harness",
+      "y": 245,
+      "label": "3. Emit Reasoning trace + tool_use(run_tests / edit_file)",
+      "variant": "return"
+    },
+    {
+      "id": "m4",
+      "from": "harness",
+      "to": "sandbox",
+      "y": 305,
+      "label": "4. Validate policy & execute tool inside read/write sandbox",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m5",
+      "from": "sandbox",
+      "to": "harness",
+      "y": 350,
+      "label": "5. Return bounded stdout/stderr observation (head/tail cap)",
+      "variant": "return"
+    },
+    {
+      "id": "m6",
+      "from": "harness",
+      "to": "llm",
+      "y": 395,
+      "label": "6. Compact context if tokens > 80% window & feed observation",
+      "variant": "default"
+    },
+    {
+      "id": "m7",
+      "from": "llm",
+      "to": "user",
+      "y": 435,
+      "label": "7. Verification gate passes -> emit final answer & close loop",
+      "variant": "return"
+    }
+  ]
+}

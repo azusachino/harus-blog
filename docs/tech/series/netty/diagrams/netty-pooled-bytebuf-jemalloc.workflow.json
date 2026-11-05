@@ -1,0 +1,104 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Netty PooledByteBufAllocator Architecture (jemalloc ThreadLocal Cache & Buddy Slabs)",
+    "quality_profile": "standard",
+    "output": "netty-pooled-bytebuf-jemalloc.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "tls_lane",
+      "label": "Fast Path: Per-EventLoop PoolThreadCache (Zero Lock Contention)"
+    },
+    {
+      "id": "arena_lane",
+      "label": "PoolArena Size Classes (Small Subpage Slabs vs Normal Buddy Pages)"
+    },
+    {
+      "id": "chunk_lane",
+      "label": "Off-Heap Direct Memory PoolChunk (4 MB Contiguous Region)"
+    }
+  ],
+  "mainPath": [
+    "alloc_req",
+    "thread_cache",
+    "pool_arena",
+    "pool_chunk",
+    "pooled_bytebuf"
+  ],
+  "nodes": [
+    {
+      "id": "alloc_req",
+      "lane": "tls_lane",
+      "col": 0,
+      "label": "ctx.alloc().directBuffer(1024)",
+      "sublabel": "Normalize size to sizeIdx class",
+      "type": "frontend"
+    },
+    {
+      "id": "thread_cache",
+      "lane": "tls_lane",
+      "col": 1,
+      "label": "PoolThreadCache",
+      "sublabel": "Thread-local MPSC MemoryRegionCache queue",
+      "type": "backend"
+    },
+    {
+      "id": "pool_arena",
+      "lane": "arena_lane",
+      "col": 2,
+      "label": "Direct PoolArena",
+      "sublabel": "Small (<28 KB) PoolSubpage bitmap vs Normal runs",
+      "type": "backend"
+    },
+    {
+      "id": "pool_chunk",
+      "lane": "chunk_lane",
+      "col": 3,
+      "label": "PoolChunk (4 MB Off-Heap)",
+      "sublabel": "8 KB page runs managed via IntPriorityQueue",
+      "type": "database"
+    },
+    {
+      "id": "pooled_bytebuf",
+      "lane": "tls_lane",
+      "col": 4,
+      "label": "PooledUnsafeDirectByteBuf",
+      "sublabel": "Recycled wrapper via Recycler.Handle + refCnt",
+      "type": "frontend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "alloc_req",
+      "to": "thread_cache",
+      "label": "1. Lookup thread-local magazine"
+    },
+    {
+      "id": "e2",
+      "from": "thread_cache",
+      "to": "pooled_bytebuf",
+      "label": "2a. Cache hit -> init ByteBuf in O(1)"
+    },
+    {
+      "id": "e3",
+      "from": "thread_cache",
+      "to": "pool_arena",
+      "label": "2b. Cache miss -> lock least-used Arena"
+    },
+    {
+      "id": "e4",
+      "from": "pool_arena",
+      "to": "pool_chunk",
+      "label": "3. Carve subpage slab or page run"
+    },
+    {
+      "id": "e5",
+      "from": "pool_chunk",
+      "to": "pooled_bytebuf",
+      "label": "4. Bind handle & return buffer (release() returns to cache)"
+    }
+  ]
+}
