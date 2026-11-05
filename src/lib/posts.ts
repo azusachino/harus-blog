@@ -54,6 +54,7 @@ export function textLang(body: string) {
 
 // Pinned order for tutorial series albums, latest series first (descending).
 export const PINNED_SERIES: string[] = [
+  'linux-systems',
   'ai-engineering',
   'netty',
   'flink',
@@ -67,6 +68,7 @@ export const PINNED_SERIES: string[] = [
 ];
 
 export const SERIES_DESCRIPTIONS: Record<string, string> = {
+  'linux-systems': 'Linux kernel internals and production performance debugging: system calls, VFS and Page Cache LRUs, kswapd memory reclaim, cgroups, softirq packet storms, eBPF tracing, and the USE Method.',
   'ai-engineering': 'End-to-end AI systems and coding-agent engineering: forward-pass roofline arithmetic, MLA KV caches, bounded ReAct loops, MCP tooling, Tree-sitter AST call graphs, sandboxing, and pass@k evaluation.',
   'netty': 'Linux kernel I/O multiplexing, zero-copy buffers, Reactor event loops, framing, and backpressure, backed by Netty 4.2 and runnable labs.',
   'flink': 'Stream processing architecture from core intuition to production runtime, backed by Apache Flink and runnable labs.',
