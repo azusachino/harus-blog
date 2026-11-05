@@ -1,0 +1,133 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Linux Storage and Block I/O Layer Architecture",
+    "quality_profile": "standard",
+    "output": "linux-storage-io-stack.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "vfs_lane",
+      "label": "User Space & VFS Layer"
+    },
+    {
+      "id": "cache_lane",
+      "label": "Page Cache & Writeback"
+    },
+    {
+      "id": "block_lane",
+      "label": "Block Layer & NVMe Driver"
+    }
+  ],
+  "mainPath": [
+    "user_syscall",
+    "vfs_interface",
+    "page_cache",
+    "flusher_threads",
+    "block_queue",
+    "nvme_driver"
+  ],
+  "nodes": [
+    {
+      "id": "user_syscall",
+      "lane": "vfs_lane",
+      "col": 0,
+      "label": "write() / read() Syscall",
+      "sublabel": "POSIX file descriptor I/O request",
+      "type": "frontend"
+    },
+    {
+      "id": "vfs_interface",
+      "lane": "vfs_lane",
+      "col": 1,
+      "label": "VFS & File System",
+      "sublabel": "ext4 / xfs inode & extent mapping",
+      "type": "backend"
+    },
+    {
+      "id": "direct_bypass",
+      "lane": "vfs_lane",
+      "col": 2,
+      "label": "Direct I/O (O_DIRECT)",
+      "sublabel": "Zero-copy user buffer DMA bypass",
+      "type": "security"
+    },
+    {
+      "id": "page_cache",
+      "lane": "cache_lane",
+      "col": 2,
+      "label": "Page Cache (Buffered I/O)",
+      "sublabel": "radix tree / XArray dirty page buffer",
+      "type": "database"
+    },
+    {
+      "id": "flusher_threads",
+      "lane": "cache_lane",
+      "col": 3,
+      "label": "kworker / pdflush",
+      "sublabel": "dirty_background_ratio writeback",
+      "type": "backend"
+    },
+    {
+      "id": "block_queue",
+      "lane": "block_lane",
+      "col": 4,
+      "label": "Block Request Queue (mq)",
+      "sublabel": "blk-mq merge, sort, bio to request",
+      "type": "database"
+    },
+    {
+      "id": "nvme_driver",
+      "lane": "block_lane",
+      "col": 5,
+      "label": "NVMe / SSD Controller",
+      "sublabel": "Hardware submission & completion rings",
+      "type": "backend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "user_syscall",
+      "to": "vfs_interface",
+      "label": "Invoke syscall"
+    },
+    {
+      "id": "e2",
+      "from": "vfs_interface",
+      "to": "page_cache",
+      "label": "Standard buffered write"
+    },
+    {
+      "id": "e3",
+      "from": "vfs_interface",
+      "to": "direct_bypass",
+      "label": "O_DIRECT flag"
+    },
+    {
+      "id": "e4",
+      "from": "direct_bypass",
+      "to": "block_queue",
+      "label": "Bypass Page Cache"
+    },
+    {
+      "id": "e5",
+      "from": "page_cache",
+      "to": "flusher_threads",
+      "label": "Mark page dirty"
+    },
+    {
+      "id": "e6",
+      "from": "flusher_threads",
+      "to": "block_queue",
+      "label": "Flush bio requests"
+    },
+    {
+      "id": "e7",
+      "from": "block_queue",
+      "to": "nvme_driver",
+      "label": "Submit DMA ring"
+    }
+  ]
+}
