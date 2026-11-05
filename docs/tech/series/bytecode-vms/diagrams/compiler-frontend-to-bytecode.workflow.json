@@ -1,0 +1,113 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Compiler Frontend to Bytecode Emission Pipeline",
+    "quality_profile": "standard",
+    "output": "compiler-frontend-to-bytecode.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "frontend_lane",
+      "label": "Lexical & Syntactic Analysis"
+    },
+    {
+      "id": "semantic_lane",
+      "label": "Scope Resolution & Symbol Table"
+    },
+    {
+      "id": "codegen_lane",
+      "label": "Linearization & Code Object Assembly"
+    }
+  ],
+  "mainPath": [
+    "source_stream",
+    "token_stream",
+    "ast_builder",
+    "symbol_analyzer",
+    "bytecode_linearizer",
+    "code_object"
+  ],
+  "nodes": [
+    {
+      "id": "source_stream",
+      "lane": "frontend_lane",
+      "col": 0,
+      "label": "Source Text Stream",
+      "sublabel": "Raw UTF-8 character buffer",
+      "type": "frontend"
+    },
+    {
+      "id": "token_stream",
+      "lane": "frontend_lane",
+      "col": 1,
+      "label": "Lexer (Scanner)",
+      "sublabel": "Tokens with spans and literals",
+      "type": "frontend"
+    },
+    {
+      "id": "ast_builder",
+      "lane": "frontend_lane",
+      "col": 2,
+      "label": "Parser (Pratt / PEG)",
+      "sublabel": "Typed Abstract Syntax Tree",
+      "type": "backend"
+    },
+    {
+      "id": "symbol_analyzer",
+      "lane": "semantic_lane",
+      "col": 2,
+      "label": "Symbol Table Pass",
+      "sublabel": "Resolve local, global, cell & free slots",
+      "type": "database"
+    },
+    {
+      "id": "bytecode_linearizer",
+      "lane": "codegen_lane",
+      "col": 3,
+      "label": "Bytecode Linearizer",
+      "sublabel": "Flatten AST, emit opcodes & jump targets",
+      "type": "backend"
+    },
+    {
+      "id": "code_object",
+      "lane": "codegen_lane",
+      "col": 4,
+      "label": "Compiled Code Object",
+      "sublabel": "Bytecode array, consts, names & line table",
+      "type": "database"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "source_stream",
+      "to": "token_stream",
+      "label": "Scan characters"
+    },
+    {
+      "id": "e2",
+      "from": "token_stream",
+      "to": "ast_builder",
+      "label": "Consume tokens"
+    },
+    {
+      "id": "e3",
+      "from": "ast_builder",
+      "to": "symbol_analyzer",
+      "label": "Traverse scopes"
+    },
+    {
+      "id": "e4",
+      "from": "symbol_analyzer",
+      "to": "bytecode_linearizer",
+      "label": "Slot mappings & scopes"
+    },
+    {
+      "id": "e5",
+      "from": "bytecode_linearizer",
+      "to": "code_object",
+      "label": "Assemble immutable code object"
+    }
+  ]
+}

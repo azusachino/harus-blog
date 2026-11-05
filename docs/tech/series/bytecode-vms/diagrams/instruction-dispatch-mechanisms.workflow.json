@@ -1,0 +1,128 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Interpreter Instruction Dispatch Architectures",
+    "quality_profile": "standard",
+    "output": "instruction-dispatch-mechanisms.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "switch_lane",
+      "label": "Central Switch Loop (Single Indirect Branch)"
+    },
+    {
+      "id": "threaded_lane",
+      "label": "Direct Threaded Dispatch (Computed Gotos)"
+    },
+    {
+      "id": "execution_lane",
+      "label": "CPU Execution & BTB Branch Prediction"
+    }
+  ],
+  "mainPath": ["threaded_fetch", "direct_jump", "next_handler"],
+  "nodes": [
+    {
+      "id": "fetch_opcode",
+      "lane": "switch_lane",
+      "col": 0,
+      "label": "Fetch Opcode (*pc++)",
+      "sublabel": "Read next opcode from bytecode stream",
+      "type": "frontend"
+    },
+    {
+      "id": "switch_dispatcher",
+      "lane": "switch_lane",
+      "col": 1,
+      "label": "Central Switch Table",
+      "sublabel": "Single indirect jump via jump table",
+      "type": "backend"
+    },
+    {
+      "id": "switch_btb_miss",
+      "lane": "execution_lane",
+      "col": 1,
+      "label": "BTB Thrashing & Misses",
+      "sublabel": "All opcode pairs share one branch address",
+      "type": "security"
+    },
+    {
+      "id": "opcode_handler",
+      "lane": "switch_lane",
+      "col": 2,
+      "label": "Execute Opcode Logic",
+      "sublabel": "Pop operands, compute, push result",
+      "type": "backend"
+    },
+    {
+      "id": "threaded_fetch",
+      "lane": "threaded_lane",
+      "col": 0,
+      "label": "Threaded Fetch & Lookup",
+      "sublabel": "void* target = dispatch_table[*pc++];",
+      "type": "frontend"
+    },
+    {
+      "id": "direct_jump",
+      "lane": "threaded_lane",
+      "col": 1,
+      "label": "Computed Goto (goto *target)",
+      "sublabel": "Indirect jump at tail of each opcode",
+      "type": "backend"
+    },
+    {
+      "id": "btb_hit",
+      "lane": "execution_lane",
+      "col": 2,
+      "label": "Per-Opcode BTB Entries",
+      "sublabel": "Branch predictor tracks each pair transition",
+      "type": "database"
+    },
+    {
+      "id": "next_handler",
+      "lane": "threaded_lane",
+      "col": 2,
+      "label": "Next Opcode In-Place",
+      "sublabel": "Zero loop-head branch overhead",
+      "type": "backend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "fetch_opcode",
+      "to": "switch_dispatcher",
+      "label": "switch(op)"
+    },
+    {
+      "id": "e2",
+      "from": "switch_dispatcher",
+      "to": "switch_btb_miss",
+      "label": "Branch conflicts"
+    },
+    {
+      "id": "e3",
+      "from": "switch_dispatcher",
+      "to": "opcode_handler",
+      "label": "Jump to case label"
+    },
+    {
+      "id": "e4",
+      "from": "threaded_fetch",
+      "to": "direct_jump",
+      "label": "Load handler label"
+    },
+    {
+      "id": "e5",
+      "from": "direct_jump",
+      "to": "btb_hit",
+      "label": "Predictor state"
+    },
+    {
+      "id": "e6",
+      "from": "direct_jump",
+      "to": "next_handler",
+      "label": "Direct tail jump"
+    }
+  ]
+}
