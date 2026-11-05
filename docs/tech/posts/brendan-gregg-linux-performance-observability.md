@@ -22,32 +22,25 @@ This guide synthesizes Brendan Gregg's foundational performance methodology: the
 
 The Linux kernel is a layered machine. Every user-space request passes through system calls, the Virtual File System (VFS), the scheduler, virtual memory, and physical device drivers.
 
-```text
-+-------------------------------------------------------------------------+
-| Applications (Python, JVM, Node, Go, C++, Envoy)                        |
-|   Tools: jstack, pprof, USDT, gdb, perf, py-spy                         |
-+-------------------------------------------------------------------------+
-| System Libraries (glibc, musl, libpthread, jemalloc)                    |
-|   Tools: ltrace, malloc_stats, ustat                                    |
-+-------------------------------------------------------------------------+
-| System Call Interface (POSIX ABI)                                       |
-|   Tools: strace, perf trace, syscount (BPF), bpftrace                   |
-+-------------------------------------------------------------------------+
-| Virtual File System (VFS)       | Sockets & Protocol Stack (TCP/UDP)   |
-|   Tools: opensnoop, filelife    |   Tools: ss, netstat, tcpretrans,     |
-|   Tools: vfsstat, ext4dist      |   Tools: tcpconnect, tcpdrop          |
-+---------------------------------+---------------------------------------+
-| Page Cache & Virtual Memory     | CPU Scheduler & Runqueues             |
-|   Tools: free, vmstat, slabtop  |   Tools: uptime, mpstat, pidstat,     |
-|   Tools: memleak, cachestat     |   Tools: runqlat, cpudist             |
-+---------------------------------+---------------------------------------+
-| Block Device Subsystem & I/O    | Network Device Interface (NAPI, NIC)  |
-|   Tools: iostat, biolatency     |   Tools: sar -n DEV, ethtool,         |
-|   Tools: biosnoop, blktrace     |   Tools: nicstat, tcptop              |
-+-------------------------------------------------------------------------+
-```
+Brendan Gregg's iconic **Linux Performance Observability Tools** diagram maps standard and specialized inspection tools directly to their respective kernel subsystems:
 
-Observability tools should be selected by **subsystem boundary**, not by familiarity. When investigating disk latency, examining CPU percentages in `top` is useless; you must inspect the block queue depth via `iostat` and `biolatency`.
+![Brendan Gregg's Linux Performance Observability Tools Map](/assets/images/perf/linux_observability_tools.png)
+
+#### Subsystem Observability Breakdown
+
+Observability tools should always be selected by **subsystem boundary**, not by personal familiarity:
+
+| Subsystem Layer | Kernel Boundary & Scope | Classic CLI Tools | Modern eBPF / BPFtrace Tools | Primary Metrics & Focus |
+|---|---|---|---|---|
+| **Applications & Runtimes** | User-space bytecode/native execution (JVM, Node, Python, Go, C++) | `top`, `pidstat`, `jstack`, `pstack`, `gdb` | `profile`, `usdt`, `py-spy`, `async-profiler` | On-CPU execution hotspots, thread state, garbage collection stalls |
+| **System Libraries** | User-space heap allocators & runtime libraries (`glibc`, `jemalloc`, `pthreads`) | `ltrace`, `malloc_stats`, `valgrind` | `memleak`, `malloccost`, `uthreads` | Heap fragmentation, lock hold times, allocation latency |
+| **System Call Interface** | Boundary transition between user mode and kernel ring 0 | `strace`, `perf trace`, `time -v` | `syscount`, `bpftrace -e 'tracepoint:raw_syscalls:sys_enter'` | System call rate, syscall error codes, time spent in kernel mode (`%sys`) |
+| **VFS & File Systems** | File descriptors, dentry cache, inode resolution (`ext4`, `xfs`, `btrfs`) | `lsof`, `fuser`, `df -h`, `sar -v` | `opensnoop`, `filelife`, `fileslower`, `vfsstat`, `ext4dist` | File open latency, slow reads/writes, dentry/inode cache churn |
+| **Page Cache & Virtual Memory** | Page frames, swap partitions, `kswapd0` reclamation, slab caches | `free -m`, `vmstat 1`, `slabtop`, `swapon -s` | `memleak`, `cachestat`, `oomkill`, `swapin` | Page cache hit ratios, dirty writeback stalls, swap-in/swap-out rates (`si`/`so`) |
+| **CPU Scheduler & Sched** | Completely Fair Scheduler (CFS), runqueues, voluntary/involuntary switches | `uptime`, `mpstat -P ALL 1`, `pidstat -w 1` | `runqlat`, `runqlen`, `cpudist`, `offcputime` | Runqueue latency, scheduling delays, context switch frequency |
+| **Block Layer & Storage** | I/O queues, `blk-mq`, request merging, disk device drivers (NVMe, SATA) | `iostat -xz 1`, `iotop`, `blktrace` | `biolatency`, `biosnoop`, `bitesize` | Average wait time (`await`), queue size (`aqu-sz`), device saturation (`%util`) |
+| **Network Protocol Stack** | TCP/IP engine, socket buffers (`sk_buff`), connection tracking (`conntrack`) | `ss -s`, `netstat -s`, `ip -s link`, `sar -n DEV,TCP` | `tcpconnect`, `tcpretrans`, `tcpdrop`, `tcplife` | TCP retransmissions, socket buffer drops, connection setup latency |
+| **Device Drivers & Hardware** | PCIe bus, network PHY, memory buses, CPU hardware performance counters | `ethtool -S`, `lspci -v`, `perf stat` | `hardirqs`, `softirqs`, `llcstat` (cache misses) | Hardware CRC errors, DMA overruns, CPU instructions per cycle (IPC) |
 
 ---
 
@@ -162,6 +155,10 @@ Using eBPF (`bpftrace` or BCC's `offcputime`), the kernel instruments the schedu
    ```
 
 3. Group off-CPU durations by user/kernel call stack to pinpoint the exact line of code waiting on a lock or socket.
+
+Brendan Gregg's BPFtrace observability map summarizes the modern eBPF tracing arsenal across kernel probes, tracepoints, and socket filters:
+
+![Brendan Gregg's Linux BPFtrace Observability Tools](/assets/images/perf/linux_bpftrace_tools.png)
 
 ---
 
@@ -409,3 +406,21 @@ def run_lab():
 if __name__ == "__main__":
     run_lab()
 ```
+
+---
+
+### 7. Primary References & Canonical Documentation
+
+1. **Brendan Gregg's Linux Performance Portal**:
+   - [Linux Performance](http://www.brendangregg.com/linuxperf.html) (Classic diagrams, slide decks, and reference guides).
+   - [The USE Method: Computing Resource Checklist](http://www.brendangregg.com/usemethod.html).
+   - [The USE Method: Linux Checklist](http://www.brendangregg.com/USEmethod/use-linux.html).
+2. **Netflix Performance Engineering**:
+   - [Linux Performance Analysis in 60,000 Milliseconds](https://netflixtechblog.com/linux-performance-analysis-in-60-000-milliseconds-accc10403c55) (Netflix Tech Blog).
+   - [Linux Performance Analysis in 60s (ACM Queue PDF)](http://www.brendangregg.com/Articles/Netflix_Linux_Perf_Analysis_60s.pdf).
+3. **Visualization & Tracing Foundations**:
+   - [CPU Flame Graphs](http://www.brendangregg.com/flamegraphs.html) and [Off-CPU Flame Graphs](http://www.brendangregg.com/FlameGraphs/offcpuflamegraphs.html).
+   - [BPF Performance Tools (Addison-Wesley Professional, 2019)](http://www.brendangregg.com/bpf-performance-tools-book.html).
+   - [Systems Performance: Enterprise and the Cloud, 2nd Edition (Addison-Wesley Professional, 2020)](http://www.brendangregg.com/systems-performance-2nd-edition-book.html).
+4. **Practical Linux Systems Debugging**:
+   - Ni Pengfei, *Linux Performance Optimization in Practice*, Geektime.
