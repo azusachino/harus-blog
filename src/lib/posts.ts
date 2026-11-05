@@ -54,6 +54,7 @@ export function textLang(body: string) {
 
 // Pinned order for tutorial series albums, latest series first (descending).
 export const PINNED_SERIES: string[] = [
+  'cpython-internals',
   'linux-systems',
   'ai-engineering',
   'netty',
@@ -68,6 +69,7 @@ export const PINNED_SERIES: string[] = [
 ];
 
 export const SERIES_DESCRIPTIONS: Record<string, string> = {
+  'cpython-internals': 'Inside the CPython virtual machine and C runtime: tracing builtins into C type slots, PyObject memory layout, reference ownership and cyclic GC, C extensions, adaptive bytecode specialization, and PEP 703 free-threading.',
   'linux-systems': 'Linux kernel internals and production performance debugging: system calls, VFS and Page Cache LRUs, kswapd memory reclaim, cgroups, softirq packet storms, eBPF tracing, and the USE Method.',
   'ai-engineering': 'End-to-end AI systems and coding-agent engineering: forward-pass roofline arithmetic, MLA KV caches, bounded ReAct loops, MCP tooling, Tree-sitter AST call graphs, sandboxing, and pass@k evaluation.',
   'netty': 'Linux kernel I/O multiplexing, zero-copy buffers, Reactor event loops, framing, and backpressure, backed by Netty 4.2 and runnable labs.',
@@ -80,6 +82,40 @@ export const SERIES_DESCRIPTIONS: Record<string, string> = {
   'k8s': 'Cloud-native production engineering: container runtimes, API Server scheduling, service mesh traffic shaping, and incident triage.',
   'effective-cpp': 'Modern C++ engineering discipline: 55 golden rules for improving software design and implementation.',
 };
+
+export interface SeriesShelfDef {
+  id: string;
+  title: string;
+  subtitle: string;
+  dirs: string[];
+}
+
+export const SERIES_SHELVES: SeriesShelfDef[] = [
+  {
+    id: 'systems',
+    title: 'Systems & Networking',
+    subtitle: 'Linux kernel internals, eBPF observability, high-performance I/O, and network protocols',
+    dirs: ['linux-systems', 'netty', 'rust-aeron', 'network'],
+  },
+  {
+    id: 'ai',
+    title: 'AI & Machine Learning',
+    subtitle: 'Inference arithmetic, coding-agent architecture, generative models, and mathematical foundations',
+    dirs: ['ai-engineering', 'llm-from-scratch', 'math-for-ai'],
+  },
+  {
+    id: 'languages',
+    title: 'Languages & Runtimes',
+    subtitle: 'CPython virtual machine internals, C runtime ownership, and modern C++ engineering discipline',
+    dirs: ['cpython-internals', 'more-effective-cpp', 'effective-cpp'],
+  },
+  {
+    id: 'data-cloud',
+    title: 'Data & Cloud Infrastructure',
+    subtitle: 'Storage engines, distributed stream processing, Kubernetes orchestration, and cloud architecture',
+    dirs: ['data-systems', 'flink', 'k8s', 'aws-sap'],
+  },
+];
 
 // Series ("albums"): chapters grouped by directory, in filename order.
 export async function seriesAlbums() {
@@ -107,6 +143,34 @@ export async function seriesAlbums() {
         chapters: list,
       };
     });
+}
+
+export async function seriesShelves() {
+  const allAlbums = await seriesAlbums();
+  const byDir = new Map(allAlbums.map((a) => [a.dir, a]));
+  const assigned = new Set<string>();
+
+  const shelves = SERIES_SHELVES.map((shelf) => {
+    const albums = shelf.dirs
+      .map((d) => {
+        assigned.add(d);
+        return byDir.get(d);
+      })
+      .filter((a): a is NonNullable<typeof a> => Boolean(a));
+    return { ...shelf, albums };
+  }).filter((s) => s.albums.length > 0);
+
+  const unassigned = allAlbums.filter((a) => !assigned.has(a.dir));
+  if (unassigned.length > 0) {
+    shelves.push({
+      id: 'more',
+      title: 'More Series',
+      subtitle: 'Additional tutorial albums',
+      dirs: unassigned.map((a) => a.dir),
+      albums: unassigned,
+    });
+  }
+  return shelves;
 }
 
 export function albumHref(dir: string) {

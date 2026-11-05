@@ -1,68 +1,256 @@
 ---
-// Series as albums: each tutorial set with its chapters in order, styled like
-// a CD/vinyl record back cover with track numbers and durations.
+// Series as curated domain shelves: in "All" view, each shelf displays its top
+// 3 albums as full cards and any 4th..Nth albums as a compact "vinyl spine"
+// strip; selecting a category chip expands all albums in that shelf to full cards.
 import Base from '../../../layouts/Base.astro';
 import Waveform from '../../../components/Waveform.astro';
-import { albumHref, seriesAlbums, seriesHref, trackLength } from '../../../lib/posts';
+import { albumHref, seriesAlbums, seriesHref, seriesShelves, trackLength } from '../../../lib/posts';
 
 const albums = await seriesAlbums();
+const shelves = await seriesShelves();
 const tracks = albums.reduce((n, a) => n + a.chapters.length, 0);
+const FEATURED_PER_SHELF = 3;
 ---
-<Base title="Series" description="Ordered tutorial series, read like albums.">
-  <p class="eyebrow">{albums.length} albums · {tracks} tracks</p>
+<Base title="Series" description="Ordered tutorial series, organized into curated domain shelves.">
+  <p class="eyebrow">{albums.length} albums · {tracks} tracks · {shelves.length} shelves</p>
   <h1>Series</h1>
-  <p class="muted">Ordered tutorials, sequenced like albums with chapter runtimes.</p>
+  <p class="muted">Ordered tutorials, grouped by engineering domain and sequenced like albums with chapter runtimes.</p>
   <Waveform seed="series" />
 
-  <div class="grid">
-    {albums.map((album, idx) => (
-      <section class="card album" aria-labelledby={album.dir}>
-        <header class="album-head">
-          <p class="eyebrow">
-            <span>DISC {String(idx + 1).padStart(2, '0')}</span>
-            <span class="mono muted">{album.chapters.length} tracks · ∑ ♪ {album.totalLength}</span>
-          </p>
-          <h2 id={album.dir}>
-            <a href={albumHref(album.dir)}>{album.name}</a>
-          </h2>
-          {album.description && <p class="album-desc muted">{album.description}</p>}
-          <Waveform seed={album.dir} bars={28} />
-        </header>
-
-        <ol class="tracklist">
-          {album.chapters.slice(0, 3).map((c, i) => (
-            <li>
-              <span class="no mono">{String(i + 1).padStart(2, '0')}</span>
-              <a href={seriesHref(c.id)}>{c.data.title.replace(/^.*?\d+\s*-\s*/, '')}</a>
-              <span class="dur mono muted">{trackLength(c.body)}</span>
-            </li>
-          ))}
-        </ol>
-
-        <footer class="album-footer">
-          <a class="album-link mono" href={albumHref(album.dir)}>
-            {album.chapters.length > 3 ? `View all ${album.chapters.length} tracks →` : 'View album →'}
-          </a>
-        </footer>
-      </section>
+  <nav class="chips" aria-label="Series shelves" data-shelf-nav>
+    <a href="#all-shelves" class="chip active" data-shelf-filter="all" aria-current="true">
+      All <span class="chip-count mono">{albums.length}</span>
+    </a>
+    {shelves.map((shelf) => (
+      <a href={`#shelf-${shelf.id}`} class="chip" data-shelf-filter={shelf.id}>
+        {shelf.title} <span class="chip-count mono">{shelf.albums.length}</span>
+      </a>
     ))}
+  </nav>
+
+  <div class="shelves" id="all-shelves" data-view-mode="all">
+    {shelves.map((shelf) => {
+      const shelfTracks = shelf.albums.reduce((n, a) => n + a.chapters.length, 0);
+      const overflowAlbums = shelf.albums.slice(FEATURED_PER_SHELF);
+      return (
+        <section class="shelf" id={`shelf-${shelf.id}`} data-shelf-section={shelf.id} aria-labelledby={`heading-${shelf.id}`}>
+          <header class="shelf-head">
+            <div class="shelf-title-group">
+              <h2 id={`heading-${shelf.id}`}>{shelf.title}</h2>
+              <p class="shelf-sub muted">{shelf.subtitle}</p>
+            </div>
+            <span class="shelf-meta mono muted">{shelf.albums.length} albums · {shelfTracks} tracks</span>
+          </header>
+
+          <div class="grid">
+            {shelf.albums.map((album, idx) => (
+              <article
+                class:list={['card', 'album', { 'overflow-card': idx >= FEATURED_PER_SHELF }]}
+                aria-labelledby={album.dir}
+              >
+                <header class="album-head">
+                  <p class="eyebrow">
+                    <span>DISC {String(album.disc).padStart(2, '0')}</span>
+                    <span class="mono muted">{album.chapters.length} tracks · ∑ ♪ {album.totalLength}</span>
+                  </p>
+                  <h3 id={album.dir}>
+                    <a href={albumHref(album.dir)}>{album.name}</a>
+                  </h3>
+                  {album.description && <p class="album-desc muted">{album.description}</p>}
+                  <Waveform seed={album.dir} bars={24} />
+                </header>
+
+                <ol class="tracklist">
+                  {album.chapters.slice(0, 3).map((c, i) => (
+                    <li>
+                      <span class="no mono">{String(i + 1).padStart(2, '0')}</span>
+                      <a href={seriesHref(c.id)}>{c.data.title.replace(/^.*?\d+\s*-\s*/, '')}</a>
+                      <span class="dur mono muted">{trackLength(c.body)}</span>
+                    </li>
+                  ))}
+                </ol>
+
+                <footer class="album-footer">
+                  <a class="album-link mono" href={albumHref(album.dir)}>
+                    {album.chapters.length > 3 ? `View all ${album.chapters.length} tracks →` : 'View album →'}
+                  </a>
+                </footer>
+              </article>
+            ))}
+          </div>
+
+          {overflowAlbums.length > 0 && (
+            <div class="spine-rack" data-spine-rack>
+              <div class="spine-head">
+                <span class="eyebrow">More on this shelf · {overflowAlbums.length}</span>
+                <button type="button" class="spine-expand mono" data-shelf-expand={shelf.id}>
+                  Expand all {shelf.albums.length} cards →
+                </button>
+              </div>
+              <ol class="spine-list">
+                {overflowAlbums.map((album) => (
+                  <li>
+                    <a class="spine-row" href={albumHref(album.dir)}>
+                      <span class="spine-disc mono">DISC {String(album.disc).padStart(2, '0')}</span>
+                      <span class="spine-name">{album.name}</span>
+                      {album.description && <span class="spine-desc muted">{album.description}</span>}
+                      <span class="spine-meta mono muted">{album.chapters.length} tracks · ∑ ♪ {album.totalLength} →</span>
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
+        </section>
+      );
+    })}
   </div>
+
+  <script is:inline data-astro-rerun>
+    (() => {
+      const nav = document.querySelector('[data-shelf-nav]');
+      const container = document.getElementById('all-shelves');
+      if (!nav || !container) return;
+      const chips = Array.from(nav.querySelectorAll('[data-shelf-filter]'));
+      const sections = Array.from(document.querySelectorAll('[data-shelf-section]'));
+      const expandBtns = Array.from(document.querySelectorAll('[data-shelf-expand]'));
+
+      const applyFilter = (target) => {
+        container.setAttribute('data-view-mode', target === 'all' ? 'all' : 'filtered');
+        for (const chip of chips) {
+          const active = chip.getAttribute('data-shelf-filter') === target;
+          chip.classList.toggle('active', active);
+          if (active) chip.setAttribute('aria-current', 'true');
+          else chip.removeAttribute('aria-current');
+        }
+        for (const sec of sections) {
+          const match = target === 'all' || sec.getAttribute('data-shelf-section') === target;
+          sec.hidden = !match;
+        }
+      };
+
+      for (const chip of chips) {
+        chip.addEventListener('click', (e) => {
+          const target = chip.getAttribute('data-shelf-filter') || 'all';
+          e.preventDefault();
+          applyFilter(target);
+        });
+      }
+
+      for (const btn of expandBtns) {
+        btn.addEventListener('click', () => {
+          const target = btn.getAttribute('data-shelf-expand') || 'all';
+          applyFilter(target);
+        });
+      }
+    })();
+  </script>
 </Base>
 
 <style>
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.25rem 0 1.75rem;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.25rem 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.86rem;
+    white-space: nowrap;
+    transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .chip:hover {
+    border-color: var(--glow);
+    color: var(--primary);
+  }
+
+  .chip.active {
+    border-color: var(--glow);
+    background: color-mix(in srgb, var(--glow) 14%, var(--surface));
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  .chip-count {
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .shelves {
+    display: grid;
+    gap: 2.5rem;
+    margin-top: 1.25rem;
+  }
+
+  /* In "All" overview, cap full cards at 3 (1 row) and show 4th..Nth in the compact spine rack.
+     In single-shelf filtered mode, show all full cards and hide the compact spine rack. */
+  .shelves[data-view-mode="all"] .overflow-card {
+    display: none;
+  }
+
+  .shelves[data-view-mode="filtered"] .spine-rack {
+    display: none;
+  }
+
+  .shelf[hidden] {
+    display: none;
+  }
+
+  .shelf-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .shelf-title-group {
+    display: grid;
+    gap: 0.15rem;
+  }
+
+  .shelf-head h2 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+
+  .shelf-sub {
+    margin: 0;
+    font-size: 0.86rem;
+    line-height: 1.4;
+  }
+
+  .shelf-meta {
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(19.5rem, 1fr));
+    gap: 1.15rem;
   }
 
   .album {
     border-top: 3px solid var(--glow);
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;
-    padding: 1.25rem;
+    gap: 0.65rem;
+    padding: 1rem 1.15rem;
     transition: transform 0.15s ease, border-color 0.15s ease;
   }
 
@@ -86,52 +274,56 @@ const tracks = albums.reduce((n, a) => n + a.chapters.length, 0);
     white-space: nowrap;
   }
 
-  h2 {
-    margin: 0.35rem 0 0.25rem;
-    font-size: 1.2rem;
+  h3 {
+    margin: 0.3rem 0 0.2rem;
+    font-size: 1.12rem;
     text-wrap: balance;
   }
 
-  h2 a {
-    color: var(--text);
+  h3 a {
+    color: var(--ink);
     text-decoration: none;
     transition: color 0.15s ease;
   }
 
-  h2 a:hover {
+  h3 a:hover {
     color: var(--primary);
   }
 
   .album-desc {
-    font-size: 0.88rem;
-    line-height: 1.5;
-    margin: 0.2rem 0 0.6rem;
+    font-size: 0.84rem;
+    line-height: 1.45;
+    margin: 0.15rem 0 0.45rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .tracklist {
     list-style: none;
     margin: 0;
     padding: 0;
-    font-size: 0.88rem;
+    font-size: 0.85rem;
     display: flex;
     flex-direction: column;
-    gap: 0.45rem;
+    gap: 0.35rem;
   }
 
   .tracklist li {
     display: flex;
     align-items: baseline;
-    gap: 0.55rem;
+    gap: 0.5rem;
   }
 
   .tracklist .no {
     color: var(--primary);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     flex-shrink: 0;
   }
 
   .tracklist a {
-    color: var(--text);
+    color: var(--ink);
     text-decoration: none;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -146,18 +338,18 @@ const tracks = albums.reduce((n, a) => n + a.chapters.length, 0);
   }
 
   .tracklist .dur {
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     flex-shrink: 0;
   }
 
   .album-footer {
     margin-top: auto;
-    padding-top: 0.75rem;
+    padding-top: 0.6rem;
     border-top: 1px dashed var(--line);
   }
 
   .album-link {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     color: var(--primary);
     text-decoration: none;
     display: inline-flex;
@@ -168,5 +360,103 @@ const tracks = albums.reduce((n, a) => n + a.chapters.length, 0);
   .album-link:hover {
     color: var(--accent);
     text-decoration: underline;
+  }
+
+  /* Compact Vinyl Spine Rack for albums 4..N in "All" view */
+  .spine-rack {
+    margin-top: 0.85rem;
+    padding: 0.65rem 0.9rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--glow);
+    border-radius: var(--radius);
+  }
+
+  .spine-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    padding-bottom: 0.45rem;
+    margin-bottom: 0.45rem;
+    border-bottom: 1px dashed var(--line);
+  }
+
+  .spine-expand {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 0.78rem;
+    color: var(--primary);
+    cursor: pointer;
+  }
+
+  .spine-expand:hover {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+
+  .spine-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .spine-row {
+    display: grid;
+    grid-template-columns: auto minmax(9rem, auto) 1fr auto;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.3rem 0.4rem;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: background-color 0.15s ease;
+  }
+
+  .spine-row:hover {
+    background: color-mix(in srgb, var(--glow) 10%, var(--surface));
+  }
+
+  .spine-disc {
+    font-size: 0.75rem;
+    color: var(--primary);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .spine-name {
+    font-size: 0.92rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .spine-row:hover .spine-name {
+    color: var(--primary);
+  }
+
+  .spine-desc {
+    font-size: 0.82rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+  }
+
+  .spine-meta {
+    font-size: 0.76rem;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 48rem) {
+    .spine-row {
+      grid-template-columns: auto 1fr auto;
+    }
+
+    .spine-desc {
+      display: none;
+    }
   }
 </style>
