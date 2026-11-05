@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Dynamic Property Access with Monomorphic, Polymorphic, and Megamorphic Inline Caching",
+    "quality_profile": "standard",
+    "output": "inline-cache-lookup-waterfall.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "callsite_lane",
+      "label": "Callsite Bytecode Instruction"
+    },
+    {
+      "id": "fast_lane",
+      "label": "Fast Path (Inline Cache Hit)"
+    },
+    {
+      "id": "slow_lane",
+      "label": "Slow Path (Shape Miss & MRO Resolution)"
+    }
+  ],
+  "mainPath": ["load_attr_callsite", "check_cached_shape", "load_field_direct"],
+  "nodes": [
+    {
+      "id": "load_attr_callsite",
+      "lane": "callsite_lane",
+      "col": 0,
+      "label": "LOAD_ATTR (obj, 'x')",
+      "sublabel": "Attribute lookup instruction execution",
+      "type": "frontend"
+    },
+    {
+      "id": "check_cached_shape",
+      "lane": "fast_lane",
+      "col": 1,
+      "label": "Shape Guard Check",
+      "sublabel": "Compare obj->shape_id == ic->cached_shape_id",
+      "type": "security"
+    },
+    {
+      "id": "load_field_direct",
+      "lane": "fast_lane",
+      "col": 2,
+      "label": "Direct Array Slot Load",
+      "sublabel": "return obj->slots[ic->cached_slot_offset]; (O(1))",
+      "type": "database"
+    },
+    {
+      "id": "resolve_mro_dict",
+      "lane": "slow_lane",
+      "col": 1,
+      "label": "Full Hash Dict Lookup",
+      "sublabel": "Traverse MRO / prototype chain / __dict__ tables",
+      "type": "backend"
+    },
+    {
+      "id": "update_ic_state",
+      "lane": "slow_lane",
+      "col": 2,
+      "label": "Transition IC State",
+      "sublabel": "State: Mono -> Poly -> Mega",
+      "type": "backend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "load_attr_callsite",
+      "to": "check_cached_shape",
+      "label": "Inspect receiver object"
+    },
+    {
+      "id": "e2",
+      "from": "check_cached_shape",
+      "to": "load_field_direct",
+      "label": "Cache Hit: Shape matches"
+    },
+    {
+      "id": "e3",
+      "from": "check_cached_shape",
+      "to": "resolve_mro_dict",
+      "label": "Cache Miss: Shape mismatch"
+    },
+    {
+      "id": "e4",
+      "from": "resolve_mro_dict",
+      "to": "update_ic_state",
+      "label": "Record shape + slot index"
+    },
+    {
+      "id": "e5",
+      "from": "update_ic_state",
+      "to": "load_field_direct",
+      "label": "Return retrieved value"
+    }
+  ]
+}

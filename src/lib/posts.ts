@@ -53,6 +53,7 @@ export function textLang(body: string) {
 }
 
 export const SERIES_DESCRIPTIONS: Record<string, string> = {
+  'bytecode-vms': 'Bytecode virtual machine and interpreter engineering: lexing & Pratt AST parsing, stack vs register 3-address architectures, direct threaded computed gotos, activation records & lexical closures, shapes & polymorphic inline caching, and generational cyclic garbage collection.',
   'market-automation': 'High-reliability market automation and trading systems: limit order books & FIFO matching engines, fixed-point financial precision, real-time WebSocket market data & sequence gap reconciliation, perpetual funding rates & liquidation waterfalls, and fail-closed pre-trade risk controls.',
   'nix-declarative-fleet': 'Declarative fleet engineering across macOS and Linux: pure Nix store derivations (.drv), Flake input locks, Home Manager symlink forests, SOPS-nix Age encryption, zero-trust Tailscale WireGuard mesh, and homelab k3s orchestration.',
   'middleware-internals': 'High-throughput middleware internals and architecture: Redis compact memory encodings & cluster replication, Kafka sparse log indexes & zero-copy sendfile, RocketMQ unified CommitLog & 2PC transactional messages, etcd dual-index MVCC & watch streams, and Nginx master-worker event loops & slab allocators.',
@@ -99,7 +100,7 @@ export const SERIES_SHELVES: SeriesShelfDef[] = [
     id: 'languages',
     title: 'Languages & Runtimes',
     subtitle: 'CPython virtual machine internals, Go runtime scheduler & GC, HotSpot JVM, and modern C++ engineering discipline',
-    dirs: ['cpython-internals', 'go-runtime', 'jvm-concurrency', 'more-effective-cpp', 'effective-cpp'],
+    dirs: ['cpython-internals', 'bytecode-vms', 'go-runtime', 'jvm-concurrency', 'more-effective-cpp', 'effective-cpp'],
   },
   {
     id: 'data-cloud',
