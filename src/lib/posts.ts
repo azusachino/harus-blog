@@ -53,6 +53,7 @@ export function textLang(body: string) {
 }
 
 export const SERIES_DESCRIPTIONS: Record<string, string> = {
+  'nix-declarative-fleet': 'Declarative fleet engineering across macOS and Linux: pure Nix store derivations (.drv), Flake input locks, Home Manager symlink forests, SOPS-nix Age encryption, zero-trust Tailscale WireGuard mesh, and homelab k3s orchestration.',
   'middleware-internals': 'High-throughput middleware internals and architecture: Redis compact memory encodings & cluster replication, Kafka sparse log indexes & zero-copy sendfile, RocketMQ unified CommitLog & 2PC transactional messages, etcd dual-index MVCC & watch streams, and Nginx master-worker event loops & slab allocators.',
   'jvm-concurrency': 'HotSpot JVM internals and concurrency: 64-bit object mark words, CompressedOops, C1/C2 JIT tiered compilation, escape analysis, G1 card tables & RSets, Generational ZGC colored pointers, JMM happens-before, AQS, and Loom virtual threads.',
   'go-runtime': 'Go runtime and concurrency internals: the GMP work-stealing scheduler, SIGURG preemption, mspan/mcache allocator, tricolor GC hybrid write barriers, hchan/select mechanics, sync.Mutex starvation handoff, and 100 Go Mistakes.',
@@ -103,7 +104,7 @@ export const SERIES_SHELVES: SeriesShelfDef[] = [
     id: 'data-cloud',
     title: 'Data & Cloud Infrastructure',
     subtitle: 'Storage engines, CNCF container runtimes, Kubernetes orchestration, distributed streams, and cloud architecture',
-    dirs: ['data-systems', 'cncf-containers', 'middleware-internals', 'k8s', 'flink', 'aws-sap'],
+    dirs: ['data-systems', 'cncf-containers', 'middleware-internals', 'nix-declarative-fleet', 'k8s', 'flink', 'aws-sap'],
   },
 ];
 
