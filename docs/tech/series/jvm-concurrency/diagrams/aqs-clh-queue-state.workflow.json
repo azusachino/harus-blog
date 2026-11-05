@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "AQS CLH Synchronizer Queue, State Transitions & Unparking",
+    "quality_profile": "standard",
+    "output": "aqs-clh-queue-state.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "fast_lane",
+      "label": "Acquire Fast Path (volatile int state CAS)"
+    },
+    {
+      "id": "queue_lane",
+      "label": "Bidirectional CLH Wait Queue (prev / next Node Links)"
+    },
+    {
+      "id": "park_lane",
+      "label": "LockSupport.park() & Thread Signal Status"
+    }
+  ],
+  "mainPath": [
+    "state_cas",
+    "add_waiter_tail",
+    "set_signal_pred",
+    "park_thread",
+    "unpark_successor"
+  ],
+  "nodes": [
+    {
+      "id": "state_cas",
+      "lane": "fast_lane",
+      "col": 0,
+      "label": "CAS State (0 -> 1)",
+      "sublabel": "Fast path direct ownership",
+      "type": "frontend"
+    },
+    {
+      "id": "add_waiter_tail",
+      "lane": "queue_lane",
+      "col": 1,
+      "label": "Enqueue Node at Tail",
+      "sublabel": "CAS tail and link pred",
+      "type": "backend"
+    },
+    {
+      "id": "set_signal_pred",
+      "lane": "queue_lane",
+      "col": 2,
+      "label": "Set SIGNAL (-1)",
+      "sublabel": "CAS pred.waitStatus=-1",
+      "type": "security"
+    },
+    {
+      "id": "park_thread",
+      "lane": "park_lane",
+      "col": 3,
+      "label": "LockSupport.park()",
+      "sublabel": "Thread parked on futex",
+      "type": "database"
+    },
+    {
+      "id": "unpark_successor",
+      "lane": "park_lane",
+      "col": 4,
+      "label": "unparkSuccessor()",
+      "sublabel": "Unlock wakes head.next",
+      "type": "frontend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "state_cas",
+      "to": "add_waiter_tail",
+      "label": "1. Contended"
+    },
+    {
+      "id": "e2",
+      "from": "add_waiter_tail",
+      "to": "set_signal_pred",
+      "label": "2. Linked at Tail"
+    },
+    {
+      "id": "e3",
+      "from": "set_signal_pred",
+      "to": "park_thread",
+      "label": "3. Park Thread"
+    },
+    {
+      "id": "e4",
+      "from": "park_thread",
+      "to": "unpark_successor",
+      "label": "4. Release Lock"
+    }
+  ]
+}

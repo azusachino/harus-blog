@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "HotSpot 64-Bit Mark Word Transitions & Monitor Lock Inflation",
+    "quality_profile": "standard",
+    "output": "jvm-object-header-monitor-inflation.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "state_lane",
+      "label": "Mark Word Bit Encoding (64-Bit HotSpot oopDesc Header)"
+    },
+    {
+      "id": "thread_lane",
+      "label": "Thread Execution & Stack Lock Record (Fast Path)"
+    },
+    {
+      "id": "monitor_lane",
+      "label": "Heavyweight ObjectMonitor & Kernel Futex Parking (Slow Path)"
+    }
+  ],
+  "mainPath": [
+    "unlocked_obj",
+    "thin_lock_cas",
+    "contended_spin",
+    "inflate_monitor",
+    "heavyweight_park"
+  ],
+  "nodes": [
+    {
+      "id": "unlocked_obj",
+      "lane": "state_lane",
+      "col": 0,
+      "label": "Unlocked State (01)",
+      "sublabel": "hash:31, age:4, biased:0, lock:01",
+      "type": "frontend"
+    },
+    {
+      "id": "thin_lock_cas",
+      "lane": "thread_lane",
+      "col": 1,
+      "label": "Thin Lock CAS (00)",
+      "sublabel": "Displaced Mark Word on stack",
+      "type": "backend"
+    },
+    {
+      "id": "contended_spin",
+      "lane": "thread_lane",
+      "col": 2,
+      "label": "Contention & Spin",
+      "sublabel": "Adaptive spin on failed CAS",
+      "type": "security"
+    },
+    {
+      "id": "inflate_monitor",
+      "lane": "state_lane",
+      "col": 3,
+      "label": "Inflated Lock (10)",
+      "sublabel": "ObjectMonitor in C++ heap",
+      "type": "database"
+    },
+    {
+      "id": "heavyweight_park",
+      "lane": "monitor_lane",
+      "col": 4,
+      "label": "Futex Park (cxq)",
+      "sublabel": "Parked in _cxq wait queue",
+      "type": "frontend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "unlocked_obj",
+      "to": "thin_lock_cas",
+      "label": "1. synchronized CAS"
+    },
+    {
+      "id": "e2",
+      "from": "thin_lock_cas",
+      "to": "contended_spin",
+      "label": "2. Thread 2 Contends"
+    },
+    {
+      "id": "e3",
+      "from": "contended_spin",
+      "to": "inflate_monitor",
+      "label": "3. Spin Exhausted"
+    },
+    {
+      "id": "e4",
+      "from": "inflate_monitor",
+      "to": "heavyweight_park",
+      "label": "4. Enqueue & Park"
+    }
+  ]
+}

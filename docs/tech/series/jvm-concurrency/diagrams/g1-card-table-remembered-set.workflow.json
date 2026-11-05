@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "G1 GC Post-Write Barrier, Card Table & Concurrent Refinement Loop",
+    "quality_profile": "standard",
+    "output": "g1-card-table-remembered-set.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "mutator_lane",
+      "label": "Mutator Thread (Old-to-Young Heap Pointer Write)"
+    },
+    {
+      "id": "card_lane",
+      "label": "Byte Card Table (1 Byte per 512B Heap Memory)"
+    },
+    {
+      "id": "refine_lane",
+      "label": "Dirty Card Queue (DCQ) & Concurrent G1 Refine Threads"
+    }
+  ],
+  "mainPath": [
+    "field_write",
+    "card_dirty",
+    "dcq_enqueue",
+    "refine_scan",
+    "rset_update"
+  ],
+  "nodes": [
+    {
+      "id": "field_write",
+      "lane": "mutator_lane",
+      "col": 0,
+      "label": "objA.field = objB",
+      "sublabel": "Old-gen to Young-gen edge",
+      "type": "frontend"
+    },
+    {
+      "id": "card_dirty",
+      "lane": "card_lane",
+      "col": 1,
+      "label": "Card Byte 0x01 (Dirty)",
+      "sublabel": "CardIndex = (slot >> 9)",
+      "type": "database"
+    },
+    {
+      "id": "dcq_enqueue",
+      "lane": "refine_lane",
+      "col": 2,
+      "label": "Dirty Card Queue (DCQ)",
+      "sublabel": "Thread-local card buffer",
+      "type": "backend"
+    },
+    {
+      "id": "refine_scan",
+      "lane": "refine_lane",
+      "col": 3,
+      "label": "Concurrent Refine Scan",
+      "sublabel": "Parses card for references",
+      "type": "security"
+    },
+    {
+      "id": "rset_update",
+      "lane": "refine_lane",
+      "col": 4,
+      "label": "Update Target RSet",
+      "sublabel": "Inserts card in Region PRT",
+      "type": "frontend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "field_write",
+      "to": "card_dirty",
+      "label": "1. Post-Write Barrier"
+    },
+    {
+      "id": "e2",
+      "from": "card_dirty",
+      "to": "dcq_enqueue",
+      "label": "2. Filter Cross-Region"
+    },
+    {
+      "id": "e3",
+      "from": "dcq_enqueue",
+      "to": "refine_scan",
+      "label": "3. Background Refine"
+    },
+    {
+      "id": "e4",
+      "from": "refine_scan",
+      "to": "rset_update",
+      "label": "4. Record Inbound Link"
+    }
+  ]
+}
