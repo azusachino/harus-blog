@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "OCI Image Pull, Content Store & OverlayFS Copy-on-Write Union Mount",
+    "quality_profile": "standard",
+    "output": "oci-overlayfs-snapshotter.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "registry_lane",
+      "label": "OCI Registry & Content Store (SHA-256 Blobs)"
+    },
+    {
+      "id": "snapshot_lane",
+      "label": "OverlayFS Snapshotter (lowerdir & upperdir)"
+    },
+    {
+      "id": "vfs_lane",
+      "label": "Linux VFS Union Mount (merged rootfs)"
+    }
+  ],
+  "mainPath": [
+    "oci_pull",
+    "content_store",
+    "lowerdir_unpack",
+    "upperdir_cow",
+    "merged_rootfs"
+  ],
+  "nodes": [
+    {
+      "id": "oci_pull",
+      "lane": "registry_lane",
+      "col": 0,
+      "label": "OCI Manifest & Blobs",
+      "sublabel": "Pulls Index, Manifest, Config & layer tar+gzip",
+      "type": "frontend"
+    },
+    {
+      "id": "content_store",
+      "lane": "registry_lane",
+      "col": 1,
+      "label": "containerd Content Store",
+      "sublabel": "Verifies SHA-256 digest & deduplicates blobs",
+      "type": "database"
+    },
+    {
+      "id": "lowerdir_unpack",
+      "lane": "snapshot_lane",
+      "col": 2,
+      "label": "Read-Only lowerdir Stack",
+      "sublabel": "Unpacks DiffIDs by ChainID; shares Page Cache",
+      "type": "backend"
+    },
+    {
+      "id": "upperdir_cow",
+      "lane": "snapshot_lane",
+      "col": 3,
+      "label": "Writable upperdir & workdir",
+      "sublabel": "Copy-up on O_WRONLY & char(0,0) whiteouts",
+      "type": "security"
+    },
+    {
+      "id": "merged_rootfs",
+      "lane": "vfs_lane",
+      "col": 4,
+      "label": "Merged Container rootfs",
+      "sublabel": "mount -t overlay + pivot_root(2) isolation",
+      "type": "frontend"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "oci_pull",
+      "to": "content_store",
+      "label": "1. Verify SHA-256"
+    },
+    {
+      "id": "e2",
+      "from": "content_store",
+      "to": "lowerdir_unpack",
+      "label": "2. Unpack DiffIDs"
+    },
+    {
+      "id": "e3",
+      "from": "lowerdir_unpack",
+      "to": "upperdir_cow",
+      "label": "3. Copy-Up on Write"
+    },
+    {
+      "id": "e4",
+      "from": "upperdir_cow",
+      "to": "merged_rootfs",
+      "label": "4. Union Mount + pivot_root"
+    }
+  ]
+}

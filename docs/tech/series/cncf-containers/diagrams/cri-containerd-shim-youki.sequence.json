@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CRI Pod Sandbox, containerd Shim v2 & OCI Runtime (runc / youki) Handshake",
+    "quality_profile": "standard",
+    "output": "cri-containerd-shim-youki.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "kubelet",
+      "type": "frontend",
+      "label": "kubelet (CRI Client)",
+      "sublabel": "Pod SyncLoop Agent"
+    },
+    {
+      "id": "containerd",
+      "type": "backend",
+      "label": "containerd Daemon",
+      "sublabel": "CRI + Snapshotter + Task"
+    },
+    {
+      "id": "shim",
+      "type": "backend",
+      "label": "containerd-shim-v2",
+      "sublabel": "STDIO & Child Subreaper"
+    },
+    {
+      "id": "runtime",
+      "type": "database",
+      "label": "OCI Runtime (youki)",
+      "sublabel": "clone3 + pivot_root + fifo"
+    }
+  ],
+  "segments": [
+    {
+      "from": 160,
+      "to": 310,
+      "label": "1. CRI CreateContainer, OverlayFS Mount & OCI Runtime exec.fifo Barrier"
+    },
+    {
+      "from": 340,
+      "to": 470,
+      "label": "2. CRI StartContainer, Unblocking exec.fifo -> execve() & Shim Supervision"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "kubelet",
+      "to": "containerd",
+      "y": 175,
+      "label": "1. CRI CreateContainer(pod_id, image, mounts) -> mount OverlayFS rootfs",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m2",
+      "from": "containerd",
+      "to": "shim",
+      "y": 215,
+      "label": "2. ttrpc Create(bundle_path, config.json) to per-Pod shim process",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "shim",
+      "to": "runtime",
+      "y": 255,
+      "label": "3. youki create -> clone3(CLONE_NEW*), cgroups v2, pivot_root, open exec.fifo",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m4",
+      "from": "runtime",
+      "to": "shim",
+      "y": 295,
+      "label": "4. Runtime CLI parent exits; container init child blocks on exec.fifo ('created')",
+      "variant": "return"
+    },
+    {
+      "id": "m5",
+      "from": "kubelet",
+      "to": "containerd",
+      "y": 355,
+      "label": "5. CRI StartContainer(container_id) after sandbox & volumes are ready",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m6",
+      "from": "containerd",
+      "to": "shim",
+      "y": 400,
+      "label": "6. ttrpc Start(container_id) -> shim invokes 'youki start <cid>'",
+      "variant": "default"
+    },
+    {
+      "id": "m7",
+      "from": "shim",
+      "to": "runtime",
+      "y": 445,
+      "label": "7. Read exec.fifo barrier -> container init calls execve(entrypoint) under shim",
+      "variant": "emphasis"
+    }
+  ]
+}
