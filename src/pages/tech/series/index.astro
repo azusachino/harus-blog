@@ -64,7 +64,7 @@ const FEATURED_PER_SHELF = 3;
                   {album.chapters.slice(0, 3).map((c, i) => (
                     <li>
                       <span class="no mono">{String(i + 1).padStart(2, '0')}</span>
-                      <a href={seriesHref(c.id)}>{c.data.title.replace(/^.*?\d+\s*-\s*/, '')}</a>
+                      <a href={seriesHref(c)}>{c.data.title.replace(/^.*?\d+\s*-\s*/, '')}</a>
                       <span class="dur mono muted">{trackLength(c.body)}</span>
                     </li>
                   ))}

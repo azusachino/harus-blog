@@ -17,7 +17,7 @@
     },
     {
       "id": "ffn_lane",
-      "label": "Feed-Forward Stage (Norm & SwiGLU)"
+      "label": "Feed-Forward Stage (Norm & GELU MLP)"
     },
     {
       "id": "head_lane",
@@ -39,7 +39,7 @@
       "lane": "attn_lane",
       "col": 1,
       "label": "Attention Sublayer",
-      "sublabel": "Pre-RMSNorm -> Causal MHA",
+      "sublabel": "Pre-LayerNorm -> Causal MHA",
       "type": "backend"
     },
     {
@@ -55,7 +55,7 @@
       "lane": "ffn_lane",
       "col": 3,
       "label": "Feed-Forward Sublayer",
-      "sublabel": "Pre-RMSNorm -> SwiGLU MLP",
+      "sublabel": "Pre-LayerNorm -> GELU MLP (D -> 4D -> D)",
       "type": "backend"
     },
     {
@@ -71,7 +71,7 @@
       "lane": "head_lane",
       "col": 5,
       "label": "Vocabulary Projection",
-      "sublabel": "Final Norm -> Linear(D, V) -> Logits",
+      "sublabel": "Final LayerNorm -> Linear(D, V) -> Logits",
       "type": "database"
     }
   ],

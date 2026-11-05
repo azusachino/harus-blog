@@ -8,6 +8,7 @@ groups (Added, Changed, Fixed, Removed).
 
 ### Added
 
+- Optional `slug` in series chapter frontmatter: it overrides the URL segment while the filename keeps setting the order, so a chapter can be renumbered without changing its published URL. Used to put Effective C++ chapters 06-08 in the book's order.
 - Workstation-style `make preview` and `make preview-stop` targets in `Makefile`, serving `dist/` on loopback (`127.0.0.1:4342`) and binding Tailscale Serve slot `9442`.
 
 ### Fixed

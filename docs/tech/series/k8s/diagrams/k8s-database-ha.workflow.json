@@ -21,7 +21,7 @@
     },
     {
       "id": "failover_lane",
-      "label": "Consensus Failover Engine",
+      "label": "Failover Arbiter",
       "variant": "exception"
     }
   ],
@@ -84,7 +84,7 @@
       "id": "quorum_promotion",
       "lane": "failover_lane",
       "col": 2,
-      "label": "Quorum Election",
+      "label": "Leader Election",
       "sublabel": "Promote pg-1 to Primary & update Service VIP",
       "type": "backend"
     }
@@ -124,7 +124,7 @@
       "id": "e6",
       "from": "health_failover",
       "to": "quorum_promotion",
-      "label": "Consensus vote"
+      "label": "Arbiter promotes"
     },
     {
       "id": "e7",

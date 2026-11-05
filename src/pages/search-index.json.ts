@@ -1,5 +1,5 @@
 import { getCollection } from 'astro:content';
-import { day, href, published, SECTIONS } from '../lib/posts';
+import { day, href, published, SECTIONS, seriesHref } from '../lib/posts';
 
 export async function GET() {
   const items: Array<{
@@ -27,11 +27,10 @@ export async function GET() {
 
   const allSeries = await getCollection('series');
   for (const chapter of allSeries) {
-    const [album, chap] = chapter.id.split('/');
-    if (album && chap) {
+    if (chapter.id.includes('/')) {
       items.push({
         title: chapter.data.title,
-        url: `/tech/series/${album}/${chap}/`,
+        url: seriesHref(chapter),
         section: 'series',
         date: chapter.data.created ? day(chapter.data.created) : undefined,
         desc: chapter.data.description,
