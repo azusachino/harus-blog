@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Agrona Lock-Free Ring Buffer Layout & Cache-Padded Trailer Protocol",
+    "quality_profile": "standard",
+    "output": "agrona-ring-buffer-ipc.workflow.html"
+  },
+  "lanes": [
+    {
+      "id": "prod_lane",
+      "label": "Producer Core (Writes Tail & Local Head Cache)"
+    },
+    {
+      "id": "ring_lane",
+      "label": "Shared-Memory AtomicBuffer (Data Region + 768B Padded Trailer)"
+    },
+    {
+      "id": "cons_lane",
+      "label": "Consumer Core (Reads Frames & Releases Head)"
+    }
+  ],
+  "mainPath": [
+    "producer_claim",
+    "head_cache_check",
+    "data_frame_write",
+    "consumer_poll",
+    "head_release"
+  ],
+  "nodes": [
+    {
+      "id": "producer_claim",
+      "lane": "prod_lane",
+      "col": 0,
+      "label": "Producer write(msg_type, buf)",
+      "sublabel": "Align record length to 8B boundary",
+      "type": "frontend"
+    },
+    {
+      "id": "head_cache_check",
+      "lane": "prod_lane",
+      "col": 1,
+      "label": "Check HEAD_CACHE (+256)",
+      "sublabel": "Avoids reading consumer cache line",
+      "type": "backend"
+    },
+    {
+      "id": "data_frame_write",
+      "lane": "ring_lane",
+      "col": 2,
+      "label": "Data Frame [len | msg_type]",
+      "sublabel": "Write payload first, Release-store length last",
+      "type": "database"
+    },
+    {
+      "id": "consumer_poll",
+      "lane": "cons_lane",
+      "col": 3,
+      "label": "Consumer read(handler)",
+      "sublabel": "Acquire-load length > 0 at head offset",
+      "type": "backend"
+    },
+    {
+      "id": "head_release",
+      "lane": "ring_lane",
+      "col": 4,
+      "label": "Trailer HEAD_POSITION (+384)",
+      "sublabel": "Zero cleared span & Release-store head",
+      "type": "security"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "producer_claim",
+      "to": "head_cache_check",
+      "label": "1. Verify free capacity"
+    },
+    {
+      "id": "e2",
+      "from": "head_cache_check",
+      "to": "data_frame_write",
+      "label": "2. Advance TAIL (+128) & copy payload"
+    },
+    {
+      "id": "e3",
+      "from": "data_frame_write",
+      "to": "consumer_poll",
+      "label": "3. Positive length unblocks reader"
+    },
+    {
+      "id": "e4",
+      "from": "consumer_poll",
+      "to": "head_release",
+      "label": "4. Release new HEAD_POSITION (+384)"
+    }
+  ]
+}
