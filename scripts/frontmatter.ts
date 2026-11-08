@@ -11,6 +11,8 @@ const REQUIRED = ['title', 'created', 'description', 'categories', 'slug', 'comm
 // Optional keys still have a fixed place in canonical sequence.
 const ORDER = ['title', 'created', 'modified', 'description', 'categories', 'tags', 'slug', 'lang', 'comments', 'cover', 'cover_alt'];
 const SERIES_REQUIRED = ['title', 'created', 'description'];
+// The series schema (src/content.config.ts) silently drops any other key.
+const SERIES_ALLOWED = ['title', 'created', 'modified', 'description', 'slug', 'cover', 'cover_alt'];
 const EXEMPT = new Set(['index.md', 'about.md']);
 
 function check(rel: string): string[] {
@@ -21,6 +23,8 @@ function check(rel: string): string[] {
   const keys = [...match[1].matchAll(/^([A-Za-z_][\w-]*):/gm)].map((m) => m[1]);
   const required = rel.startsWith('tech/series/') ? SERIES_REQUIRED : REQUIRED;
   const problems = required.filter((k) => !keys.includes(k)).map((k) => `missing key '${k}'`);
+  if (required === SERIES_REQUIRED)
+    for (const k of keys.filter((k) => !SERIES_ALLOWED.includes(k))) problems.push(`series chapters do not use '${k}'`);
   const present = keys.filter((k) => ORDER.includes(k));
   const expected = ORDER.filter((k) => keys.includes(k));
   if (present.join() !== expected.join()) problems.push(`key order [${present}] should be [${expected}]`);

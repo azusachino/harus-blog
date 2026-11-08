@@ -14,6 +14,7 @@ groups (Added, Changed, Fixed, Removed).
 ### Fixed
 
 - `make help` suppresses filename prefixes when `e2e.mk` is included alongside `Makefile`.
+- The frontmatter check rejects series chapter keys the series schema would silently drop (36 chapters carried unused `tags`).
 
 ## 2026-11-04 — CV content refresh
 
