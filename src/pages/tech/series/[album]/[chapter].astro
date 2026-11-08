@@ -29,6 +29,7 @@ const link = (c?: typeof chapter) => c && { href: seriesHref(c), title: c.data.t
     created={day(chapter.data.created)}
     modified={chapter.data.modified ? day(chapter.data.modified) : undefined}
     length={trackLength(chapter.body)}
+    tags={chapter.data.tags ?? []}
     headings={headings}
     prev={link(prev)}
     next={link(next)}

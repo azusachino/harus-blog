@@ -12,7 +12,7 @@ const REQUIRED = ['title', 'created', 'description', 'categories', 'slug', 'comm
 const ORDER = ['title', 'created', 'modified', 'description', 'categories', 'tags', 'slug', 'lang', 'comments', 'cover', 'cover_alt'];
 const SERIES_REQUIRED = ['title', 'created', 'description'];
 // The series schema (src/content.config.ts) silently drops any other key.
-const SERIES_ALLOWED = ['title', 'created', 'modified', 'description', 'slug', 'cover', 'cover_alt'];
+const SERIES_ALLOWED = ['title', 'created', 'modified', 'description', 'tags', 'slug', 'cover', 'cover_alt'];
 const EXEMPT = new Set(['index.md', 'about.md']);
 
 function check(rel: string): string[] {

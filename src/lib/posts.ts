@@ -185,3 +185,29 @@ export function chapterSlug(c: SeriesChapter) {
 export function seriesHref(c: SeriesChapter) {
   return `/tech/series/${c.id.split('/')[0]}/${chapterSlug(c)}/`;
 }
+
+// Everything the /tags/ pages list: published posts in every section, plus series chapters.
+export interface TaggedTrack {
+  tags: string[];
+  title: string;
+  href: string;
+  label: string;
+  created: Date;
+  description?: string;
+  body?: string;
+  lang: string;
+}
+
+export async function taggedTracks(): Promise<TaggedTrack[]> {
+  const names: Record<Section, string> = { tech: 'Tech', journal: 'Journal', life: 'Life' };
+  const tracks: TaggedTrack[] = [];
+  for (const section of SECTIONS) {
+    for (const p of await published(section)) {
+      tracks.push({ tags: p.data.tags ?? [], title: p.data.title, href: href(section, p), label: names[section], created: p.data.created, description: p.data.description, body: p.body, lang: postLang(p) });
+    }
+  }
+  for (const c of await getCollection('series')) {
+    tracks.push({ tags: c.data.tags ?? [], title: c.data.title, href: seriesHref(c), label: 'Series', created: c.data.created, description: c.data.description, body: c.body, lang: textLang(c.body ?? '') });
+  }
+  return tracks;
+}

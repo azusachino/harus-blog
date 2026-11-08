@@ -86,6 +86,7 @@ const series = defineCollection({
     created: z.coerce.date(),
     modified: z.coerce.date().optional(),
     description: z.string().optional(),
+    tags: z.array(z.string().regex(/^[a-z0-9-]+$/, 'tags must be lowercase')).optional(),
     // URL segment override; keeps a published URL when the file is renumbered.
     slug: z.string().optional(),
     cover: z.string().optional(),

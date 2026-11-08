@@ -1,29 +1,25 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Waveform from '../../components/Waveform.astro';
-import { day, href, postLang, published, SECTIONS, trackLength, type Post, type Section } from '../../lib/posts';
+import { day, taggedTracks, trackLength, type TaggedTrack } from '../../lib/posts';
 
 export async function getStaticPaths() {
-  const byTag = new Map<string, { section: Section; post: Post }[]>();
-  for (const section of SECTIONS) {
-    const posts = await published(section);
-    for (const post of posts) {
-      for (const tag of post.data.tags ?? []) {
-        byTag.set(tag, [...(byTag.get(tag) ?? []), { section, post }]);
-      }
+  const byTag = new Map<string, TaggedTrack[]>();
+  for (const track of await taggedTracks()) {
+    for (const tag of track.tags) {
+      byTag.set(tag, [...(byTag.get(tag) ?? []), track]);
     }
   }
   return [...byTag.entries()].map(([tag, items]) => ({
     params: { tag },
     props: {
       tag,
-      items: items.sort((a, b) => b.post.data.created.getTime() - a.post.data.created.getTime()),
+      items: items.sort((a, b) => b.created.getTime() - a.created.getTime() || a.href.localeCompare(b.href)),
     },
   }));
 }
 
 const { tag, items } = Astro.props;
-const names: Record<Section, string> = { tech: 'Tech', journal: 'Journal', life: 'Life' };
 ---
 <Base title={`#${tag}`} description={`Posts tagged #${tag}.`}>
   <p class="eyebrow">
@@ -34,17 +30,17 @@ const names: Record<Section, string> = { tech: 'Tech', journal: 'Journal', life:
   <Waveform seed={`tag-${tag}`} />
 
   <ol class="tracks">
-    {items.map(({ section, post }, i) => (
-      <li lang={postLang(post)}>
+    {items.map((track, i) => (
+      <li lang={track.lang}>
         <span class="no mono">{String(items.length - i).padStart(2, '0')}</span>
         <div class="main">
-          <a class="title" href={href(section, post)}>{post.data.title}</a>
-          {post.data.description && <p class="desc muted">{post.data.description}</p>}
+          <a class="title" href={track.href}>{track.title}</a>
+          {track.description && <p class="desc muted">{track.description}</p>}
         </div>
         <span class="meta mono muted">
-          <span class="sec">{names[section]}</span>
-          <time datetime={day(post.data.created)}>{day(post.data.created)}</time>
-          <span>♪ {trackLength(post.body)}</span>
+          <span class="sec">{track.label}</span>
+          <time datetime={day(track.created)}>{day(track.created)}</time>
+          <span>♪ {trackLength(track.body)}</span>
         </span>
       </li>
     ))}
