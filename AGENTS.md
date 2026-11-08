@@ -34,7 +34,7 @@ split into type-based sections — **no year-wise layout**. The site code is at 
 
 - Frontmatter contract, enforced by the build: `title`, `created`, optional `modified`,
   `description`, `categories`, optional `tags`, `slug`, `comments: true`, optional `cover` + `cover_alt`
-  — in that order. Series chapters need only `title` + `created` + `description` (optional `modified`, `tags`, `slug`, `cover` + `cover_alt`); any other key fails the check, since the series schema would drop it. Series tags reuse the post vocabulary (`kubernetes`, `java`, `raft`, …) so a tag page joins posts and chapters; add a new tag only when it will cover at least two pages. A cover is the chapter's own image, never one borrowed from another post.
+  — in that order. Series chapters need only `title` + `created` + `description` (optional `modified`, `tags`, `slug`, `cover` + `cover_alt`); any other key fails the check, since the series schema would drop it. Series tags are broad topics (`linux`, `java`, `kubernetes`, `concurrency`, `memory`, …), not product or library names that a broader tag already covers (`jvm`, `kafka`, `runc`); add a new tag only when it will cover at least two pages. A cover is the chapter's own image, never one borrowed from another post.
   Categories and tags are **lowercase** (`research`/`practice`, `weekly`/`refresh`/`review`, `life`). Optional `lang`
   (`en`/`zh-CN`/`ja`) overrides the detected article language.
 - `created`/`slug` drive ordering and URLs (`/<section>/<slug>/`); future-dated posts are drafts.
