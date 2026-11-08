@@ -1,26 +1,22 @@
 ---
-// Crate-digging tag index across Tech, Journal, and Life.
+// Crate-digging tag index across Tech, Journal, Life, and Series.
 import Base from '../../layouts/Base.astro';
 import Waveform from '../../components/Waveform.astro';
-import { published, SECTIONS } from '../../lib/posts';
+import { taggedTracks } from '../../lib/posts';
 
+const tracks = await taggedTracks();
 const counts = new Map<string, number>();
-let totalPosts = 0;
-for (const section of SECTIONS) {
-  const posts = await published(section);
-  totalPosts += posts.length;
-  for (const p of posts) {
-    for (const t of p.data.tags ?? []) {
-      counts.set(t, (counts.get(t) ?? 0) + 1);
-    }
+for (const track of tracks) {
+  for (const t of track.tags) {
+    counts.set(t, (counts.get(t) ?? 0) + 1);
   }
 }
 const tags = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
 ---
-<Base title="Tags" description="Record-crate tag index across Tech, Journal, and Life.">
-  <p class="eyebrow">{tags.length} tags · {totalPosts} tracks</p>
+<Base title="Tags" description="Record-crate tag index across Tech, Journal, Life, and Series.">
+  <p class="eyebrow">{tags.length} tags · {tracks.length} tracks</p>
   <h1>Tags</h1>
-  <p class="muted">Browse posts across Tech, Journal, and Life by topic tag.</p>
+  <p class="muted">Browse posts and series chapters across Tech, Journal, Life, and Series by topic tag.</p>
   <Waveform seed="tags-crate" />
 
   <ul class="crate">

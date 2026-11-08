@@ -33,6 +33,7 @@ export async function GET() {
         url: seriesHref(chapter),
         section: 'series',
         date: chapter.data.created ? day(chapter.data.created) : undefined,
+        tags: chapter.data.tags,
         desc: chapter.data.description,
       });
     }
