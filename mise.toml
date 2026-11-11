@@ -1,4 +1,7 @@
 [tools]
+bun = "1.4"
+rumdl = "0.3"
+typst = "0.15"
 
 [env]
 '_'.file = ".env"
