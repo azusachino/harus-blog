@@ -1,5 +1,4 @@
 [tools]
-typst = "0.15.1"
 
 [env]
 '_'.file = ".env"
