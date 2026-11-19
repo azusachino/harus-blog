@@ -41,13 +41,9 @@ jobs:
           # Typst is only needed by make cv, not by the validation gate.
           install_args: bun rumdl
 
-      - name: Install dependencies
-        run: make install
-
-      - name: Check formatting
-        run: make fmt-check
-
-      - name: Validate diagrams, types, contrast, frontmatter, travel and build
-        run: bun run verify
+      # The same gate a person runs: locked install, formatting, then diagrams,
+      # types, contrast, frontmatter, travel and the build.
+      - name: Gate
+        run: make check
         env:
           ARCHIFY_RENDER: ${{ github.workspace }}/.archify/archify/lib/render.mjs

@@ -7,11 +7,11 @@ split into type-based sections — **no year-wise layout**. The site code is at 
 ## Stack & tooling
 
 - `mise` pins bun and rumdl; **`make` is the task runner**; bun runs everything (no Python).
-- `make local` (dev server :4321) · `make build` (`dist/`) · `make fmt` · `make check` (the gate) · `make e2e` (headless-Chromium checks: build + preview on :4332, specs in `e2e/`).
+- `make dev` (dev server :4321; `make local` is the same target) · `make build` (`dist/`) · `make fmt` · `make check` (the gate) · `make e2e` (headless-Chromium checks: build + preview on :4332, specs in `e2e/`).
 - `make check` = prettier + rumdl, then `bun run verify`: palette contrast (`scripts/contrast.ts`),
   frontmatter contract (`scripts/frontmatter.ts`), and `astro build`. CI and the cluster builder run the same.
 - On this network installs need `BUN_CONFIG_REGISTRY=https://registry.npmmirror.com/`; strip mirror
-  URLs from `bun.lock` afterwards. New packages wait 7 days (bun cooldown).
+  URLs from `bun.lock` afterwards. New packages wait 3 days (bun cooldown).
 - The dev server runs as a background daemon: after changing `astro.config.ts`, a collection or a
   Markdown plugin, `bunx --bun astro dev stop`, delete `node_modules/.astro`, and start again —
   the content cache does not notice those changes.

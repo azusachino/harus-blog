@@ -1,4 +1,4 @@
-.PHONY: help install local build preview preview-stop check format fmt fmt-check cv
+.PHONY: help install local dev build preview preview-stop check format fmt fmt-check cv
 
 -include .env.local
 
@@ -19,6 +19,8 @@ install: ## install locked dependencies
 
 local: install ## serve the site with live reload on :4321
 	bunx --bun astro dev --host 0.0.0.0 --port 4321
+
+dev: local ## alias for local, the dev-server verb shared with the KB and Apricot sites
 
 build: install ## build the static site into dist/
 	bunx --bun astro build

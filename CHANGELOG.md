@@ -11,6 +11,11 @@ groups (Added, Changed, Fixed, Removed).
 - Optional `slug` in series chapter frontmatter: it overrides the URL segment while the filename keeps setting the order, so a chapter can be renumbered without changing its published URL. Used to put Effective C++ chapters 06-08 in the book's order.
 - Workstation-style `make preview` and `make preview-stop` targets in `Makefile`, serving `dist/` on loopback (`127.0.0.1:4342`) and binding Tailscale Serve slot `9442`.
 
+### Changed
+
+- `make dev` starts the dev server, the name the workstation KB and Apricot sites use; `make local` still works. CI runs `make check` instead of repeating its steps.
+- Astro 7.4.12, Playwright 1.65.1, Mermaid 12.3.0 and the other dependencies moved to their latest releases, matching the other two sites.
+
 ### Fixed
 
 - `make help` suppresses filename prefixes when `e2e.mk` is included alongside `Makefile`.
