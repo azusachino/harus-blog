@@ -6,6 +6,19 @@ groups (Added, Changed, Fixed, Removed).
 
 ## Unreleased
 
+### Removed
+
+- The 18 series drafted by agents in November 2026 (116 chapters and their diagrams). They are
+  withdrawn, a deliberate exception to "URLs of published pages never change": their
+  `/tech/series/<name>/` and chapter URLs now return 404, with no redirects. The four series written
+  in 2021 and 2022 (Effective C++, More Effective C++, Kubernetes Notes, How Networks Work) stay.
+
+### Changed
+
+- `/tech/series/` shows three shelves for the four remaining series, and an empty state ("No series
+  right now.") if there is ever none. The smoke suite follows Effective C++ instead of a withdrawn
+  series, and the copy-button check uses a post.
+
 ### Added
 
 - Optional `slug` in series chapter frontmatter: it overrides the URL segment while the filename keeps setting the order, so a chapter can be renumbered without changing its published URL. Used to put Effective C++ chapters 06-08 in the book's order.
