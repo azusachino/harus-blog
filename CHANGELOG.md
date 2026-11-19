@@ -21,6 +21,8 @@ groups (Added, Changed, Fixed, Removed).
 
 ### Fixed
 
+- CI pins rumdl to 0.3.4 instead of the newest 0.3 release. A release under three days old
+  (0.3.5, 2026-11-18) reformats list spacing and failed the gate on unchanged posts.
 - `make help` suppresses filename prefixes when `e2e.mk` is included alongside `Makefile`.
 - Series chapters take `tags`: shown on the chapter page, listed on `/tags/` and `/tags/<tag>/` next to posts (labeled Series), and indexed for search. Before, the series schema silently dropped them.
 - The frontmatter check rejects series chapter keys the series schema would silently drop.
