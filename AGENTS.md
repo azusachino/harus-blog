@@ -21,6 +21,7 @@ split into type-based sections — **no year-wise layout**. The site code is at 
 
 - **Tech** — `docs/tech/posts/` + `docs/tech/series/<name>/NN.<title>.md` (ordered tutorials; the
   filename sets the order and, by default, the URL: `/tech/series/<name>/NN.<title>/`; an optional `slug` overrides the URL segment so a renumbered chapter keeps its published URL).
+  A series chapter is written by the owner; an agent may check and format it but not draft it.
 - **Journal** — `docs/journal/posts/<YYYY>/…`: weekly reports, monthly refreshes, yearly reviews.
 - **Life** — `docs/life/posts/`: books, concerts, essays.
 - **About** — `src/pages/about.astro`, a component page; its wordings are the owner's (ask before

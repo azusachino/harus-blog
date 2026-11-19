@@ -19,7 +19,7 @@ test("first route renders without console errors", async ({ page }) => {
 
 test("code block carries a copy button that copies code to clipboard", async ({ page, context }) => {
   await context.grantPermissions(["clipboard-read", "clipboard-write"])
-  await page.goto("/tech/series/llm-from-scratch/01.tokenization/")
+  await page.goto("/tech/boring-kubernetes/")
 
   const copy = page.locator(".code-block [data-copy]").first()
   await expect(copy).toBeVisible()
@@ -31,30 +31,29 @@ test("code block carries a copy button that copies code to clipboard", async ({ 
 test("series catalog links to dedicated album pages with complete tracklists", async ({ page }) => {
   await page.goto("/tech/series/")
   await expect(page.getByRole("heading", { level: 1, name: "Series" })).toBeVisible()
-  await expect(page.locator("[data-shelf-section]")).toHaveCount(4)
+  await expect(page.locator("[data-shelf-section]")).toHaveCount(3)
 
   // Verify shelf filter chips toggle shelf visibility
-  const aiChip = page.locator('[data-shelf-filter="ai"]')
-  await aiChip.click()
-  await expect(page.locator('[data-shelf-section="ai"]')).toBeVisible()
+  const languagesChip = page.locator('[data-shelf-filter="languages"]')
+  await languagesChip.click()
+  await expect(page.locator('[data-shelf-section="languages"]')).toBeVisible()
   await expect(page.locator('[data-shelf-section="systems"]')).toBeHidden()
 
-  // Click into the math-for-ai album
-  const mathAlbumLink = page.locator('a[href="/tech/series/math-for-ai/"]').first()
-  await expect(mathAlbumLink).toBeVisible()
-  await mathAlbumLink.click()
+  // Click into the effective-cpp album
+  const albumLink = page.locator('a[href="/tech/series/effective-cpp/"]').first()
+  await expect(albumLink).toBeVisible()
+  await albumLink.click()
 
   // Verify dedicated album page rendered
-  await expect(page).toHaveURL(/\/tech\/series\/math-for-ai\//)
-  await expect(page.getByRole("heading", { level: 1, name: "Math for AI" })).toBeVisible()
-  await expect(page.locator(".track-row")).toHaveCount(6)
+  await expect(page).toHaveURL(/\/tech\/series\/effective-cpp\//)
+  await expect(page.locator(".track-row")).toHaveCount(8)
 
   // Navigate to chapter 1
-  const ch1Link = page.locator('a[href*="01.vectors-and-spaces"]').first()
+  const ch1Link = page.locator('a[href*="01.accustom"]').first()
   await ch1Link.click()
 
   // Verify chapter reader back button points to album
-  const backToAlbum = page.locator('a[href="/tech/series/math-for-ai/"]').first()
+  const backToAlbum = page.locator('a[href="/tech/series/effective-cpp/"]').first()
   await expect(backToAlbum).toBeVisible()
 })
 
