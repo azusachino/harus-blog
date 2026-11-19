@@ -53,24 +53,6 @@ export function textLang(body: string) {
 }
 
 export const SERIES_DESCRIPTIONS: Record<string, string> = {
-  'linux-performance-cases': 'Hands-on Linux performance analysis and diagnostic cases: load average & involuntary context switches, memory watermarks & OOM badness heuristics, Page Cache writeback & block queue await latency, NIC ring buffers & conntrack saturation, and cascading failure correlation.',
-  'bytecode-vms': 'Bytecode virtual machine and interpreter engineering: lexing & Pratt AST parsing, stack vs register 3-address architectures, direct threaded computed gotos, activation records & lexical closures, shapes & polymorphic inline caching, and generational cyclic garbage collection.',
-  'market-automation': 'High-reliability market automation and trading systems: limit order books & FIFO matching engines, fixed-point financial precision, real-time WebSocket market data & sequence gap reconciliation, perpetual funding rates & liquidation waterfalls, and fail-closed pre-trade risk controls.',
-  'nix-declarative-fleet': 'Declarative fleet engineering across macOS and Linux: pure Nix store derivations (.drv), Flake input locks, Home Manager symlink forests, SOPS-nix Age encryption, zero-trust Tailscale WireGuard mesh, and homelab k3s orchestration.',
-  'middleware-internals': 'High-throughput middleware internals and architecture: Redis compact memory encodings & cluster replication, Kafka sparse log indexes & zero-copy sendfile, RocketMQ unified CommitLog & 2PC transactional messages, etcd dual-index MVCC & watch streams, and Nginx master-worker event loops & slab allocators.',
-  'jvm-concurrency': 'HotSpot JVM internals and concurrency: 64-bit object mark words, CompressedOops, C1/C2 JIT tiered compilation, escape analysis, G1 card tables & RSets, Generational ZGC colored pointers, JMM happens-before, AQS, and Loom virtual threads.',
-  'go-runtime': 'Go runtime and concurrency internals: the GMP work-stealing scheduler, SIGURG preemption, mspan/mcache allocator, tricolor GC hybrid write barriers, hchan/select mechanics, sync.Mutex starvation handoff, and 100 Go Mistakes.',
-  'cncf-containers': 'Linux container internals and the CNCF runtime stack: namespaces, cgroups v2, PID 1 reaping, OCI image Merkle DAGs and OverlayFS, containerd shims, runc vs Rust youki, rootless Podman, Cilium eBPF dataplanes, Argo CD GitOps, and OpenTelemetry.',
-  'rust-aeron': 'Rust ownership and low-latency Aeron messaging: stack/heap memory layout, fat-pointer vtables, Acquire/Release atomics, Agrona lock-free ring buffers, 3-term log buffers, Archive replay, and Raft-backed Aeron Cluster.',
-  'data-systems': 'Designing data-intensive storage and distributed systems: B+ Trees vs LSM-Trees, ClickHouse columnar execution, replication quorums, consistent-hashing partitioning, MVCC & SSI transactions, and Raft consensus.',
-  'cpython-internals': 'Inside the CPython virtual machine and C runtime: tracing builtins into C type slots, PyObject memory layout, reference ownership and cyclic GC, C extensions, adaptive bytecode specialization, and PEP 703 free-threading.',
-  'linux-systems': 'Linux kernel internals and production performance debugging: system calls, VFS and Page Cache LRUs, kswapd memory reclaim, cgroups, softirq packet storms, eBPF tracing, and the USE Method.',
-  'ai-engineering': 'End-to-end AI systems and coding-agent engineering: forward-pass roofline arithmetic, MLA KV caches, bounded ReAct loops, MCP tooling, Tree-sitter AST call graphs, sandboxing, and pass@k evaluation.',
-  'netty': 'Linux kernel I/O multiplexing, zero-copy buffers, Reactor event loops, framing, and backpressure, backed by Netty 4.2 and runnable labs.',
-  'flink': 'Stream processing architecture from core intuition to production runtime, backed by Apache Flink and runnable labs.',
-  'math-for-ai': 'Mathematical intuition for modern AI: high-dimensional geometry, linear transformations, RoPE rotations, and optimization landscapes.',
-  'aws-sap': 'AWS Certified Solutions Architect Professional (SAP-C03) complete blueprint: enterprise multi-account landing zones, zero-trust global networking, and resilient architectures.',
-  'llm-from-scratch': 'Building a generative language model from first principles: tokenizers, attention mechanisms, GPT architecture, and autoregressive pretraining.',
   'network': 'Comprehensive internet protocol architecture: from browser keystroke and NICs to Ethernet, BGP routing, and modern transport protocols.',
   'more-effective-cpp': 'Scott Meyers advanced C++ techniques: deep dive into exception safety, smart pointers, efficiency optimizations, and modern design patterns.',
   'k8s': 'Cloud-native production engineering: container runtimes, API Server scheduling, service mesh traffic shaping, and incident triage.',
@@ -88,26 +70,20 @@ export const SERIES_SHELVES: SeriesShelfDef[] = [
   {
     id: 'systems',
     title: 'Systems & Networking',
-    subtitle: 'Linux kernel internals, eBPF observability, high-performance I/O, and network protocols',
-    dirs: ['linux-systems', 'linux-performance-cases', 'netty', 'rust-aeron', 'market-automation', 'network'],
-  },
-  {
-    id: 'ai',
-    title: 'AI & Machine Learning',
-    subtitle: 'Inference arithmetic, coding-agent architecture, generative models, and mathematical foundations',
-    dirs: ['ai-engineering', 'llm-from-scratch', 'math-for-ai'],
+    subtitle: 'Network protocols, from the browser to the wire',
+    dirs: ['network'],
   },
   {
     id: 'languages',
     title: 'Languages & Runtimes',
-    subtitle: 'CPython virtual machine internals, Go runtime scheduler & GC, HotSpot JVM, and modern C++ engineering discipline',
-    dirs: ['cpython-internals', 'bytecode-vms', 'go-runtime', 'jvm-concurrency', 'more-effective-cpp', 'effective-cpp'],
+    subtitle: 'Modern C++ engineering discipline',
+    dirs: ['more-effective-cpp', 'effective-cpp'],
   },
   {
     id: 'data-cloud',
     title: 'Data & Cloud Infrastructure',
-    subtitle: 'Storage engines, CNCF container runtimes, Kubernetes orchestration, distributed streams, and cloud architecture',
-    dirs: ['data-systems', 'cncf-containers', 'middleware-internals', 'nix-declarative-fleet', 'k8s', 'flink', 'aws-sap'],
+    subtitle: 'Kubernetes orchestration',
+    dirs: ['k8s'],
   },
 ];
 
