@@ -6,29 +6,33 @@ groups (Added, Changed, Fixed, Removed).
 
 ## Unreleased
 
+### Added
+
+- Optional `slug` in series chapter frontmatter: it overrides the URL segment while the filename keeps setting the order, so a chapter can be renumbered without changing its published URL. Used to put Effective C++ chapters 06-08 in the book's order.
+- Workstation-style `make preview` and `make preview-stop` targets in `Makefile`, serving `dist/` on loopback (`127.0.0.1:4342`) and binding Tailscale Serve slot `9442`.
+
+### Changed
+
+- `make dev` starts the dev server, the name the workstation KB and Apricot sites use; `make local` still works. CI runs `make check` instead of repeating its steps.
+- Astro 7.4.12, Playwright 1.65.1, Mermaid 12.3.0 and the other dependencies moved to their latest releases, matching the other two sites.
+- `/tech/series/` shows three shelves for the four remaining series, and an empty state ("No series
+  right now.") if there is ever none. The smoke suite follows Effective C++ instead of a withdrawn
+  series, and the copy-button check uses a post.
+
+### Fixed
+
+- CI pins rumdl to 0.3.4 instead of the newest 0.3 release. A release under three days old
+  (0.3.5, 2026-11-18) reformats list spacing and failed the gate on unchanged posts.
+- `make help` suppresses filename prefixes when `e2e.mk` is included alongside `Makefile`.
+- Series chapters take `tags`: shown on the chapter page, listed on `/tags/` and `/tags/<tag>/` next to posts (labeled Series), and indexed for search. Before, the series schema silently dropped them.
+- The frontmatter check rejects series chapter keys the series schema would silently drop.
+
 ### Removed
 
 - The 18 series drafted by agents in November 2026 (116 chapters and their diagrams). They are
   withdrawn, a deliberate exception to "URLs of published pages never change": their
   `/tech/series/<name>/` and chapter URLs now return 404, with no redirects. The four series written
   in 2021 and 2022 (Effective C++, More Effective C++, Kubernetes Notes, How Networks Work) stay.
-
-### Changed
-
-- `/tech/series/` shows three shelves for the four remaining series, and an empty state ("No series
-  right now.") if there is ever none. The smoke suite follows Effective C++ instead of a withdrawn
-  series, and the copy-button check uses a post.
-
-### Added
-
-- Optional `slug` in series chapter frontmatter: it overrides the URL segment while the filename keeps setting the order, so a chapter can be renumbered without changing its published URL. Used to put Effective C++ chapters 06-08 in the book's order.
-- Workstation-style `make preview` and `make preview-stop` targets in `Makefile`, serving `dist/` on loopback (`127.0.0.1:4342`) and binding Tailscale Serve slot `9442`.
-
-### Fixed
-
-- `make help` suppresses filename prefixes when `e2e.mk` is included alongside `Makefile`.
-- Series chapters take `tags`: shown on the chapter page, listed on `/tags/` and `/tags/<tag>/` next to posts (labeled Series), and indexed for search. Before, the series schema silently dropped them.
-- The frontmatter check rejects series chapter keys the series schema would silently drop.
 
 ## 2026-11-04 — CV content refresh
 

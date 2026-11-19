@@ -1,6 +1,6 @@
 [tools]
 bun = "1.4"
-rumdl = "0.3"
+rumdl = "0.3.4"
 typst = "0.15"
 
 [env]

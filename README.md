@@ -18,7 +18,7 @@ Personal blog, built with [Astro](https://astro.build/) and themed after Hatsune
 Tooling is pinned by `mise` (bun, rumdl); `make` is the task runner:
 
 ```bash
-make local        # dev server with live reload at :4321
+make dev          # dev server with live reload at :4321
 make build        # static site into dist/
 make preview      # serve dist/ on 127.0.0.1:4342 and expose Tailscale slot 9442
 make preview-stop # stop the preview server and release Tailscale slot 9442
