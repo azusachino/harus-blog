@@ -21,6 +21,7 @@
     "@playwright/test": "1.65.1",
     "@types/bun": "1.4.4",
     "@types/leaflet": "1.9.22",
+    "archify": "https://github.com/azusachino/archify/releases/download/harus-2026.11.20/archify-3.2.0-2026.11.20.tgz",
     "pagefind": "1.6.0",
     "typescript": "7.0.2"
   }
