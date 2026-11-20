@@ -28,13 +28,6 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: Checkout Archify
-        uses: actions/checkout@v7
-        with:
-          repository: azusachino/archify
-          path: .archify
-          sparse-checkout: archify
-
       - name: Set up tools with mise
         uses: jdx/mise-action@v5
         with:
@@ -45,5 +38,3 @@ jobs:
       # types, contrast, frontmatter, travel and the build.
       - name: Gate
         run: make check
-        env:
-          ARCHIFY_RENDER: ${{ github.workspace }}/.archify/archify/lib/render.mjs

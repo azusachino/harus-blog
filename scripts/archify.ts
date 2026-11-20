@@ -1,20 +1,13 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
+import { createRequire } from 'node:module';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const BLOG_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DOCS_ROOT = join(BLOG_ROOT, 'docs');
 const OUT_ROOT = join(BLOG_ROOT, 'public', 'archify');
-const CANDIDATES = [
-  process.env.ARCHIFY_RENDER,
-  resolve(BLOG_ROOT, '.archify', 'archify', 'lib', 'render.mjs'),
-  resolve(BLOG_ROOT, '.archify', 'lib', 'render.mjs'),
-  resolve(BLOG_ROOT, '..', '..', '.agents', 'skills', 'archify', 'lib', 'render.mjs'),
-  resolve(BLOG_ROOT, '..', 'archify', 'archify', 'lib', 'render.mjs'),
-  resolve(BLOG_ROOT, '..', 'archify', 'lib', 'render.mjs'),
-].filter(Boolean) as string[];
-
-const RENDER_API = CANDIDATES.find((p) => existsSync(p)) ?? CANDIDATES[0];
+// The `archify` devDependency (a tarball from the fork's releases) supplies the renderer.
+const RENDER_API = createRequire(import.meta.url).resolve('archify/lib/render.mjs');
 const SOURCE = /\.(architecture|workflow|sequence|dataflow|lifecycle|erd|class|tree|timeline|waterfall)\.json$/;
 
 function walk(dir: string): string[] {
@@ -45,7 +38,7 @@ export async function renderArchify() {
     return;
   }
   if (!existsSync(RENDER_API)) {
-    throw new Error(`archify: renderer not found at ${RENDER_API}; set ARCHIFY_RENDER to the skill's lib/render.mjs`);
+    throw new Error(`archify: renderer not found at ${RENDER_API}; run 'bun install'`);
   }
   const { renderHtml } = await import(pathToFileURL(RENDER_API).href);
   rmSync(OUT_ROOT, { recursive: true, force: true });
